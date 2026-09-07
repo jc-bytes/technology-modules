@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chart Lab · Data Detectives</title>
+  <link rel="stylesheet" href="styles.css?v=20260722g" />
+  <link rel="stylesheet" href="charts.css?v=20260722g" />
+</head>
+<body>
+  <header class="hero chart-hero">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Class activities">
+        <a href="index.html">Data Cleaning</a>
+        <a class="active" href="charts.html" aria-current="page">Chart Practice</a>
+      </nav>
+      <p class="eyebrow">Extended Class · About 80–90 Minutes</p>
+      <h1>Chart Lab</h1>
+      <p>Move one step at a time from watching and recognizing charts to creating and interpreting your own.</p>
+    </div>
+  </header>
+
+  <main class="wrap chart-main">
+    <section class="card chart-overview lesson-progress" aria-label="Lesson progress" hidden>
+      <div><span id="stepCount">Step 1 of 7</span><strong id="stepName">Watch the video</strong></div>
+      <span class="timer">80–90 min</span>
+      <div class="progress-track" aria-hidden="true"><div id="classProgressBar"></div></div>
+      <p id="classProgressText" class="progress-text" aria-live="polite"></p>
+    </section>
+
+    <section id="microLearn" class="card lesson-step micro-lesson" data-lesson-screen="microLearn">
+      <p id="microLearnStep" class="step">Chart lesson</p>
+      <h2 id="microLearnTitle">Learn the chart</h2>
+      <p id="microLearnInstruction" class="hint">Study the example and watch the short video segment. Then select Next to answer three questions.</p>
+      <div class="micro-lesson-layout">
+        <article class="micro-panel example-panel" aria-labelledby="examplePanelTitle">
+          <div class="micro-panel-heading"><span>Example</span><h3 id="examplePanelTitle">Chart example</h3></div>
+          <div id="microExample" class="micro-example"></div>
+          <div class="micro-purpose"><strong>Use it to:</strong> <span id="microPurpose"></span></div>
+          <div class="micro-question"><strong>It can answer:</strong> <span id="microQuestion"></span></div>
+        </article>
+        <article class="micro-panel video-panel" aria-labelledby="videoPanelTitle">
+          <div class="micro-panel-heading"><span id="microVideoTime">Video segment</span><h3 id="videoPanelTitle">Watch this section</h3></div>
+          <div id="segmentVideoFrame" class="segment-video-frame"><div id="segmentVideo"></div></div>
+          <p id="videoWatchStatus" class="video-watch-status" aria-live="polite">Loading the video segment…</p>
+          <p class="segment-note">Watch this chart’s complete section before continuing. Progress is recorded only in the player above.</p>
+          <a id="segmentVideoLink" class="segment-link" href="https://www.youtube.com/watch?v=o7F-tbBl_hA" target="_blank" rel="noopener">Open this segment on YouTube</a>
+        </article>
+      </div>
+      <div class="micro-direction"><strong>Next:</strong> Answer three questions about this chart. Correct all three to continue.</div>
+    </section>
+
+    <section id="microCheck" class="card lesson-step micro-check" data-lesson-screen="microCheck" hidden>
+      <p id="microCheckStep" class="step">Chart check</p>
+      <h2 id="microCheckTitle">Check your understanding</h2>
+      <p class="hint">Answer all three questions. If an answer needs revision, read the explanation and try again.</p>
+      <div id="microQuestionList" class="micro-question-list"></div>
+      <div id="microCheckResult" class="result" aria-live="polite"></div>
+    </section>
+
+    <section id="video" class="card lesson-step" data-lesson-step="video" hidden>
+      <p class="step">Step 1 · Watch · About 7 minutes</p>
+      <h2>How do we choose the right graph?</h2>
+      <p class="hint">Watch the video. Listen for the three bar-chart variations and what histogram, pie, scatter, and line charts help us understand.</p>
+      <div class="video-frame">
+        <iframe data-src="https://www.youtube-nocookie.com/embed/o7F-tbBl_hA?rel=0" title="How To Choose The Right Graph (Types of Graphs and When To Use Them)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <p class="video-source">Video: “How To Choose The Right Graph (Types of Graphs and When To Use Them)” by UNDATABLE. <a href="https://www.youtube.com/watch?v=o7F-tbBl_hA" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+      <div class="watch-prompt"><strong>While you watch:</strong> Which bar variation shows ranking? What does a histogram show? Which chart shows change over time?</div>
+    </section>
+
+    <section id="examples" class="card lesson-step" data-lesson-step="examples" hidden>
+      <p class="step">Step 2 · Explore · About 15 minutes</p>
+      <h2>Explore the five chart families from the video</h2>
+      <p class="hint">Study each example. Notice its title, labels, visual shape, and the question it helps answer.</p>
+      <div class="example-grid">
+        <article class="example-card bar-family-card">
+          <div class="example-heading"><span class="chart-number">1</span><h3>Bar chart family</h3></div>
+          <div class="bar-family-grid">
+            <figure><div class="family-columns" role="img" aria-label="Vertical column chart with four separate columns"><i></i><i></i><i></i><i></i></div><figcaption><strong>Vertical / column</strong><small>Compare categories</small></figcaption></figure>
+            <figure><div class="family-horizontal" role="img" aria-label="Horizontal bar chart with four ranked bars"><i></i><i></i><i></i><i></i></div><figcaption><strong>Horizontal</strong><small>Show a ranking</small></figcaption></figure>
+            <figure><div class="family-stacked" role="img" aria-label="Stacked bar chart with bars divided into colored parts"><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span></div><figcaption><strong>Stacked</strong><small>Compare parts of totals</small></figcaption></figure>
+          </div>
+          <p><strong>Use them to:</strong> compare categories. Turn bars horizontally for ranking, or divide them into stacks to show parts of each total.</p>
+          <p class="example-question"><strong>They answer:</strong> Which category is largest, what is the ranking, or how is each total divided?</p>
+        </article>
+
+        <article class="example-card">
+          <div class="example-heading"><span class="chart-number">2</span><h3>Histogram</h3></div>
+          <svg class="example-svg histogram-example" viewBox="0 0 260 165" role="img" aria-label="Histogram showing how test scores are distributed across ranges">
+            <text x="130" y="18" text-anchor="middle" class="example-title">Distribution of test scores</text>
+            <line x1="38" y1="32" x2="38" y2="132"/><line x1="38" y1="132" x2="244" y2="132"/>
+            <rect x="48" y="105" width="46" height="27"/><rect x="94" y="70" width="46" height="62"/><rect x="140" y="42" width="46" height="90"/><rect x="186" y="88" width="46" height="44"/>
+            <text x="71" y="148" text-anchor="middle">50–59</text><text x="117" y="148" text-anchor="middle">60–69</text><text x="163" y="148" text-anchor="middle">70–79</text><text x="209" y="148" text-anchor="middle">80–89</text>
+          </svg>
+          <p><strong>Use it to:</strong> show the distribution of numerical data grouped into ranges. Its bars touch because the ranges are continuous.</p>
+          <p class="example-question"><strong>It answers:</strong> Which score range contains the most students?</p>
+        </article>
+
+        <article class="example-card">
+          <div class="example-heading"><span class="chart-number">3</span><h3>Pie chart</h3></div>
+          <div class="example-pie-wrap" role="img" aria-label="Pie chart showing how class time is divided into practice, discussion, and reflection">
+            <p class="example-title">How class time is used</p>
+            <div class="example-pie"></div>
+            <div class="example-legend"><span><i class="practice-key"></i>Practice 50%</span><span><i class="discussion-key"></i>Discussion 30%</span><span><i class="reflection-key"></i>Reflection 20%</span></div>
+          </div>
+          <p><strong>Use it to:</strong> show how one whole is divided into a few parts.</p>
+          <p class="example-question"><strong>It answers:</strong> What share of class time is practice?</p>
+        </article>
+
+        <article class="example-card">
+          <div class="example-heading"><span class="chart-number">4</span><h3>Scatter plot</h3></div>
+          <svg class="example-svg" viewBox="0 0 260 165" role="img" aria-label="Scatter plot comparing study time and quiz score">
+            <text x="130" y="18" text-anchor="middle" class="example-title">Study time and quiz score</text>
+            <line x1="38" y1="32" x2="38" y2="132"/><line x1="38" y1="132" x2="244" y2="132"/>
+            <circle cx="58" cy="118" r="6"/><circle cx="83" cy="104" r="6"/><circle cx="111" cy="109" r="6"/><circle cx="137" cy="80" r="6"/><circle cx="173" cy="69" r="6"/><circle cx="201" cy="48" r="6"/><circle cx="226" cy="41" r="6"/>
+            <text x="142" y="153" text-anchor="middle">Study hours</text><text x="12" y="82" text-anchor="middle" transform="rotate(-90 12 82)">Score</text>
+          </svg>
+          <p><strong>Use it to:</strong> look for a relationship between two numerical variables.</p>
+          <p class="example-question"><strong>It answers:</strong> Do scores tend to rise as study time rises?</p>
+        </article>
+
+        <article class="example-card">
+          <div class="example-heading"><span class="chart-number">5</span><h3>Line chart</h3></div>
+          <svg class="example-svg" viewBox="0 0 260 165" role="img" aria-label="Line chart showing temperature changing from Monday through Friday">
+            <text x="130" y="18" text-anchor="middle" class="example-title">Temperature by day</text>
+            <line x1="38" y1="32" x2="38" y2="132"/><line x1="38" y1="132" x2="244" y2="132"/>
+            <polyline points="50,110 96,84 142,92 188,55 232,42"/>
+            <circle cx="50" cy="110" r="5"/><circle cx="96" cy="84" r="5"/><circle cx="142" cy="92" r="5"/><circle cx="188" cy="55" r="5"/><circle cx="232" cy="42" r="5"/>
+            <text x="50" y="148" text-anchor="middle">M</text><text x="96" y="148" text-anchor="middle">T</text><text x="142" y="148" text-anchor="middle">W</text><text x="188" y="148" text-anchor="middle">Th</text><text x="232" y="148" text-anchor="middle">F</text>
+          </svg>
+          <p><strong>Use it to:</strong> show change over time or another meaningful ordered sequence.</p>
+          <p class="example-question"><strong>It answers:</strong> How did temperature change during the week?</p>
+        </article>
+      </div>
+      <div class="watch-prompt"><strong>Before you continue:</strong> Compare the shapes. Category bars have gaps, histogram bars touch, pie slices form a whole, scatter points are separate, and a line connects values in order.</div>
+    </section>
+
+    <section id="identify" class="card lesson-step" data-lesson-step="identify" hidden>
+      <p class="step">Step 3 · Recognize · About 10 minutes</p>
+      <h2>What type of display is it?</h2>
+      <p class="hint">Look at each shape and select its name. Use the examples from the previous step when you need help.</p>
+      <div class="identify-grid">
+        <label class="identify-card" data-identify-card="barFamily">
+          <span class="sr-only">Display A</span>
+          <div class="mini-bars" role="img" aria-label="Four separate vertical bars"><i></i><i></i><i></i><i></i></div>
+          <span>Display A</span>
+          <select data-identification="barFamily"><option value="">Choose a type</option><option value="bar">Bar chart</option><option value="histogram">Histogram</option><option value="pie">Pie chart</option><option value="scatter">Scatter plot</option><option value="line">Line chart</option></select>
+          <small class="identify-feedback" aria-live="polite"></small>
+        </label>
+        <label class="identify-card" data-identify-card="histogram">
+          <span class="sr-only">Display B</span>
+          <div class="mini-histogram" role="img" aria-label="Touching bars that show frequencies for numerical ranges"><i></i><i></i><i></i><i></i></div>
+          <span>Display B</span>
+          <select data-identification="histogram"><option value="">Choose a type</option><option value="bar">Bar chart</option><option value="histogram">Histogram</option><option value="pie">Pie chart</option><option value="scatter">Scatter plot</option><option value="line">Line chart</option></select>
+          <small class="identify-feedback" aria-live="polite"></small>
+        </label>
+        <label class="identify-card" data-identify-card="pie">
+          <span class="sr-only">Display C</span>
+          <div class="mini-pie" role="img" aria-label="A circle divided into three slices"></div>
+          <span>Display C</span>
+          <select data-identification="pie"><option value="">Choose a type</option><option value="bar">Bar chart</option><option value="histogram">Histogram</option><option value="pie">Pie chart</option><option value="scatter">Scatter plot</option><option value="line">Line chart</option></select>
+          <small class="identify-feedback" aria-live="polite"></small>
+        </label>
+        <label class="identify-card" data-identify-card="scatter">
+          <span class="sr-only">Display D</span>
+          <svg class="mini-identify-svg scatter-shape" viewBox="0 0 200 120" role="img" aria-label="Separate points spread across two axes"><circle cx="22" cy="95" r="6"/><circle cx="48" cy="78" r="6"/><circle cx="76" cy="86" r="6"/><circle cx="108" cy="55" r="6"/><circle cx="139" cy="62" r="6"/><circle cx="176" cy="27" r="6"/></svg>
+          <span>Display D</span>
+          <select data-identification="scatter"><option value="">Choose a type</option><option value="bar">Bar chart</option><option value="histogram">Histogram</option><option value="pie">Pie chart</option><option value="scatter">Scatter plot</option><option value="line">Line chart</option></select>
+          <small class="identify-feedback" aria-live="polite"></small>
+        </label>
+        <label class="identify-card" data-identify-card="line">
+          <span class="sr-only">Display E</span>
+          <svg class="mini-identify-svg" viewBox="0 0 200 120" role="img" aria-label="Points connected by a line"><polyline points="15,95 55,68 95,78 135,42 185,25"/><circle cx="15" cy="95" r="5"/><circle cx="55" cy="68" r="5"/><circle cx="95" cy="78" r="5"/><circle cx="135" cy="42" r="5"/><circle cx="185" cy="25" r="5"/></svg>
+          <span>Display E</span>
+          <select data-identification="line"><option value="">Choose a type</option><option value="bar">Bar chart</option><option value="histogram">Histogram</option><option value="pie">Pie chart</option><option value="scatter">Scatter plot</option><option value="line">Line chart</option></select>
+          <small class="identify-feedback" aria-live="polite"></small>
+        </label>
+      </div>
+      <div id="identifyResult" class="result" aria-live="polite"></div>
+    </section>
+
+    <section id="matching" class="card lesson-step" data-lesson-step="matching" hidden>
+      <p class="step">Step 4 · Decide · About 10 minutes</p>
+      <h2>Is this the correct use?</h2>
+      <p class="hint">Use the video and examples. Decide whether each chart variation is a good choice for the purpose.</p>
+      <div class="judgment-grid">
+        <fieldset class="judgment-card" data-judgment-card="verticalComparison">
+          <legend><span class="chart-chip">Vertical / column chart</span> We want to compare sales across four product categories. Is this a good choice?</legend>
+          <label><input type="radio" name="verticalComparison" value="yes" data-judgment="verticalComparison"> Yes</label>
+          <label><input type="radio" name="verticalComparison" value="no" data-judgment="verticalComparison"> No</label>
+          <p class="judgment-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="judgment-card" data-judgment-card="horizontalRanking">
+          <legend><span class="chart-chip">Horizontal bar chart</span> We want to rank ten countries from highest to lowest. Is this a good choice?</legend>
+          <label><input type="radio" name="horizontalRanking" value="yes" data-judgment="horizontalRanking"> Yes</label>
+          <label><input type="radio" name="horizontalRanking" value="no" data-judgment="horizontalRanking"> No</label>
+          <p class="judgment-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="judgment-card" data-judgment-card="stackedWhole">
+          <legend><span class="chart-chip">Stacked bar chart</span> We want to compare each class total and how much came from two groups. Is this a good choice?</legend>
+          <label><input type="radio" name="stackedWhole" value="yes" data-judgment="stackedWhole"> Yes</label>
+          <label><input type="radio" name="stackedWhole" value="no" data-judgment="stackedWhole"> No</label>
+          <p class="judgment-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="judgment-card" data-judgment-card="histogramDistribution">
+          <legend><span class="chart-chip">Histogram</span> We want to see how student heights are distributed across numerical ranges. Is this a good choice?</legend>
+          <label><input type="radio" name="histogramDistribution" value="yes" data-judgment="histogramDistribution"> Yes</label>
+          <label><input type="radio" name="histogramDistribution" value="no" data-judgment="histogramDistribution"> No</label>
+          <p class="judgment-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="judgment-card" data-judgment-card="pieTrend">
+          <legend><span class="chart-chip">Pie chart</span> We want to show how temperature changes each day for two weeks. Is this a good choice?</legend>
+          <label><input type="radio" name="pieTrend" value="yes" data-judgment="pieTrend"> Yes</label>
+          <label><input type="radio" name="pieTrend" value="no" data-judgment="pieTrend"> No</label>
+          <p class="judgment-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="judgment-card" data-judgment-card="scatterCorrelation">
+          <legend><span class="chart-chip">Scatter chart</span> We want to see whether study hours and quiz scores are correlated. Is this a good choice?</legend>
+          <label><input type="radio" name="scatterCorrelation" value="yes" data-judgment="scatterCorrelation"> Yes</label>
+          <label><input type="radio" name="scatterCorrelation" value="no" data-judgment="scatterCorrelation"> No</label>
+          <p class="judgment-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="judgment-card" data-judgment-card="lineTime">
+          <legend><span class="chart-chip">Line chart</span> We want to show how website visits change each month. Is this a good choice?</legend>
+          <label><input type="radio" name="lineTime" value="yes" data-judgment="lineTime"> Yes</label>
+          <label><input type="radio" name="lineTime" value="no" data-judgment="lineTime"> No</label>
+          <p class="judgment-feedback" aria-live="polite"></p>
+        </fieldset>
+      </div>
+      <div id="matchResult" class="result" aria-live="polite"></div>
+    </section>
+
+    <section id="builder" class="card lesson-step" data-lesson-screen="builder" hidden>
+      <p id="builderStep" class="step">Try it</p>
+      <h2 id="builderTitle">Create a practice chart</h2>
+      <p id="builderHint" class="hint">Complete the guided chart-building task.</p>
+      <div id="builderTask" class="practice-task"></div>
+
+      <div class="builder-controls">
+        <label>Chart title
+          <input id="chartTitle" type="text" maxlength="80" placeholder="Example: Practice scores by week" />
+        </label>
+        <label>Chart type
+          <select id="chartType">
+            <option value="bar">Vertical / column chart</option>
+            <option value="horizontalBar">Horizontal bar chart</option>
+            <option value="stackedBar">Stacked bar chart</option>
+            <option value="histogram">Histogram</option>
+            <option value="pie">Pie chart</option>
+            <option value="scatter">Scatter plot</option>
+            <option value="line">Line chart</option>
+          </select>
+        </label>
+        <label>X-axis or category label
+          <input id="xAxisLabel" type="text" maxlength="50" value="Week" />
+        </label>
+        <label>Y-axis or value label
+          <input id="yAxisLabel" type="text" maxlength="50" value="Practice score" />
+        </label>
+        <label class="stack-series-control">First stack label
+          <input id="seriesOneLabel" type="text" maxlength="40" value="Group A" />
+        </label>
+        <label class="stack-series-control">Second stack label
+          <input id="seriesTwoLabel" type="text" maxlength="40" value="Group B" />
+        </label>
+      </div>
+
+      <div class="chart-tip" id="chartTypeTip" aria-live="polite"></div>
+      <div class="table-scroll data-editor-scroll">
+        <table class="data-editor">
+          <thead><tr><th id="labelColumnHeading">Label</th><th class="x-value-column">X value</th><th id="valueColumnHeading">Value / Y</th><th class="stack-value-column">Series 2</th><th>Action</th></tr></thead>
+          <tbody id="chartDataBody"></tbody>
+        </table>
+      </div>
+      <div class="action-row chart-actions">
+        <button id="addDataRowBtn" class="secondary" type="button">Add data row</button>
+        <button id="createChartBtn" type="button">Create or update chart</button>
+      </div>
+      <div id="chartMessage" class="result" aria-live="polite"></div>
+      <section class="chart-preview-card" aria-labelledby="previewTitle">
+        <h3 id="previewTitle">Chart preview</h3>
+        <div id="chartPreview" class="chart-preview"><p class="empty-preview">Your chart will appear here.</p></div>
+        <p id="chartSummary" class="sr-only" aria-live="polite"></p>
+      </section>
+      <section id="practiceReadCheck" class="practice-read-check" aria-labelledby="practiceReadTitle" hidden>
+        <p class="step">Read your graph</p>
+        <h3 id="practiceReadTitle">What does your graph show?</h3>
+        <p class="hint">Use the chart you created to answer both questions.</p>
+        <div id="practiceReadQuestions" class="practice-read-questions"></div>
+        <button id="checkPracticeReadBtn" type="button">Check graph answers</button>
+        <div id="practiceReadResult" class="result" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <section id="interpret" class="card lesson-step" data-lesson-screen="interpret" hidden>
+      <p class="step">Step 22 of 23 · Explain · About 15–20 minutes</p>
+      <h2>Draft interpretation sentences</h2>
+      <p class="hint">Choose one of the charts you created. Use its specific labels or values in each evidence sentence.</p>
+      <div class="interpret-chart-picker">
+        <label>Chart to interpret
+          <select id="interpretChartSelect"></select>
+        </label>
+        <div id="interpretChartPreview" class="chart-preview interpret-chart-preview"></div>
+      </div>
+      <div class="interpretation-grid">
+        <label><span>Pattern</span><small>Describe an overall pattern or trend.</small>
+          <textarea data-sentence="pattern" rows="3" placeholder="The overall pattern shows..."></textarea>
+        </label>
+        <label><span>Comparison</span><small>Compare two labels, groups, or values.</small>
+          <textarea data-sentence="comparison" rows="3" placeholder="Compared with..., ..."></textarea>
+        </label>
+        <label><span>Outlier or limitation</span><small>Identify something unusual or something the chart cannot prove.</small>
+          <textarea data-sentence="outlier" rows="3" placeholder="One unusual value or limitation is..."></textarea>
+        </label>
+        <label><span>Conclusion</span><small>State a careful conclusion supported by the chart.</small>
+          <textarea data-sentence="conclusion" rows="3" placeholder="Overall, the data suggests..."></textarea>
+        </label>
+      </div>
+      <p id="sentenceProgress" class="mini-progress" aria-live="polite"></p>
+    </section>
+
+    <section id="evidence" class="card lesson-step" data-lesson-screen="evidence" hidden>
+      <p class="step">Step 23 of 23 · Highlight · About 10 minutes</p>
+      <h2>Highlight the strongest practice evidence</h2>
+      <p class="hint">Choose the sentence that uses the clearest and most accurate evidence from your chart.</p>
+      <fieldset class="evidence-choices">
+        <legend>Select one sentence</legend>
+        <div id="evidenceChoices"></div>
+      </fieldset>
+      <div id="strongestEvidence" class="strongest-evidence" aria-live="polite">
+        <p>Choose your strongest sentence to highlight it here.</p>
+      </div>
+      <div class="lesson-rule rules"><strong>Final check:</strong> Your strongest sentence should name evidence, avoid guessing, and match what the chart actually shows.</div>
+      <div id="chartExportPanel" class="chart-export-panel">
+        <div>
+          <strong>Chart Lab evidence report</strong>
+          <p id="chartExportHelp">Finish the activity to unlock your PDF report.</p>
+        </div>
+        <button id="downloadChartPdfBtn" type="button" disabled>Download Chart Lab PDF</button>
+      </div>
+      <div class="evidence-actions">
+        <button id="resetChartActivityBtn" class="secondary reset-chart" type="button">Reset chart activity</button>
+        <p class="hint save-note">This page saves your work automatically in this browser.</p>
+      </div>
+    </section>
+
+    <nav class="wizard-controls card" aria-label="Lesson navigation">
+      <button id="previousStepBtn" class="secondary" type="button">← Back</button>
+      <span id="navigationMessage" aria-live="polite"></span>
+      <button id="nextStepBtn" type="button">Next →</button>
+    </nav>
+  </main>
+
+  <dialog id="chartGroupDialog" class="group-dialog" aria-labelledby="chartGroupDialogTitle">
+    <form id="chartGroupForm">
+      <div class="dialog-heading">
+        <div>
+          <p class="step">Chart Lab PDF</p>
+          <h2 id="chartGroupDialogTitle">Add your submission details</h2>
+        </div>
+        <button id="closeChartGroupDialogBtn" class="icon-button" type="button" aria-label="Close group details">×</button>
+      </div>
+      <p class="hint">Enter the group information that should appear on the evidence report.</p>
+
+      <div class="group-details-grid">
+        <label>Group or class
+          <input id="chartGroupName" type="text" maxlength="60" placeholder="Example: 9A · Group 2" required />
+        </label>
+        <label>Activity date
+          <input id="chartActivityDate" type="date" required />
+        </label>
+        <label>Number of members
+          <input id="chartMemberCount" type="number" min="1" max="8" value="2" required />
+        </label>
+      </div>
+
+      <fieldset class="member-fieldset">
+        <legend>Member names</legend>
+        <div id="chartMemberFields" class="member-fields"></div>
+      </fieldset>
+
+      <div class="dialog-actions">
+        <button id="cancelChartGroupDialogBtn" class="secondary" type="button">Cancel</button>
+        <button type="submit">Create Chart Lab PDF</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer><div class="wrap">Data Detectives · Chart Lab practice before the graded chart check</div></footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js"></script>
+  <script src="charts.js?v=20260722g"></script>
+</body>
+</html>

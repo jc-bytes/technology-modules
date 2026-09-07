@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Detectives</title>
+  <link rel="stylesheet" href="styles.css?v=20260722" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Class activities">
+        <a class="active" href="index.html" aria-current="page">Data Cleaning</a>
+        <a href="charts.html">Chart Practice</a>
+      </nav>
+      <p class="eyebrow">Learn First · Practice Second · 15–20 Minutes</p>
+      <h1>Data Detectives</h1>
+      <p>Learn how responsible data cleaning works, then investigate a dataset and explain your decisions.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="learnSection" class="card learn-section" aria-labelledby="learnTitle">
+      <div class="section-heading">
+        <div>
+          <p class="step">Part 1 · Learn · About 4 minutes</p>
+          <h2 id="learnTitle" tabindex="-1">Learn before you clean</h2>
+          <p class="hint">Read these ideas and examples. They will help you make safe corrections during the investigation.</p>
+        </div>
+        <div class="timer" aria-label="Part 1 suggested time">About 4 min</div>
+      </div>
+
+      <div class="concept-grid">
+        <article class="concept-card">
+          <span class="concept-number" aria-hidden="true">1</span>
+          <h3>Why clean data?</h3>
+          <p>Incorrect or inconsistent data can produce misleading results and unfair decisions.</p>
+        </article>
+        <article class="concept-card">
+          <span class="concept-number" aria-hidden="true">2</span>
+          <h3>What should you notice?</h3>
+          <p>Look for blanks, repeated rows, impossible values, spelling differences, and inconsistent units or formats.</p>
+        </article>
+        <article class="concept-card">
+          <span class="concept-number" aria-hidden="true">3</span>
+          <h3>How should you correct it?</h3>
+          <p>Use evidence, make values consistent, and record every change. Never invent missing information.</p>
+        </article>
+      </div>
+
+      <h3 class="examples-title">Common errors and safe corrections</h3>
+      <div class="error-grid">
+        <article class="error-card">
+          <h4>Blank cell</h4>
+          <p><strong>Example:</strong> an empty study time</p>
+          <p><strong>Safe action:</strong> write <em>Not provided</em> when the answer is unknown.</p>
+        </article>
+        <article class="error-card">
+          <h4>Repeated row</h4>
+          <p><strong>Example:</strong> the same student, time, and subject appear twice</p>
+          <p><strong>Safe action:</strong> mark the repeated row so it is not counted twice.</p>
+        </article>
+        <article class="error-card">
+          <h4>Impossible number</h4>
+          <p><strong>Example:</strong> <span class="bad-example">-20 min</span> or <span class="bad-example">900 hours</span></p>
+          <p><strong>Safe action:</strong> use <em>Not provided</em> unless a source confirms the correct value.</p>
+        </article>
+        <article class="error-card">
+          <h4>Spelling or case</h4>
+          <p><strong>Example:</strong> <span class="bad-example">Scince</span> or <span class="bad-example">math</span></p>
+          <p><strong>Safe action:</strong> standardize them to <em>Science</em> and <em>Math</em>.</p>
+        </article>
+        <article class="error-card">
+          <h4>Missing unit</h4>
+          <p><strong>Example:</strong> <span class="bad-example">45</span> in a study-time column</p>
+          <p><strong>Safe action:</strong> add the expected unit when the table makes it clear, such as <em>45 min</em>.</p>
+        </article>
+        <article class="error-card">
+          <h4>Format difference</h4>
+          <p><strong>Example:</strong> <span class="bad-example">1 hour</span> among values written in minutes</p>
+          <p><strong>Safe action:</strong> use one consistent format, such as <em>60 min</em>.</p>
+        </article>
+      </div>
+
+      <div class="rules lesson-rule">
+        <strong>Remember:</strong> inspect the whole row, correct only what the evidence supports, and document what changed and why.
+      </div>
+      <div class="lesson-actions">
+        <button id="startPracticeBtn" type="button" aria-controls="practiceSection">Start Practice</button>
+        <p>Your progress will be saved automatically in this browser.</p>
+      </div>
+    </section>
+
+    <div id="practiceSection" hidden>
+    <section class="card instructions" aria-labelledby="practiceTitle">
+      <div class="section-heading">
+        <div>
+          <p class="step">Part 2 · Practice · About 13–16 minutes</p>
+          <h2 id="practiceTitle" tabindex="-1">Your mission</h2>
+          <p class="hint">Work through all five stages. Aim for careful decisions, not speed.</p>
+        </div>
+        <button id="reviewBasicsBtn" class="secondary" type="button" aria-controls="learnSection">Back to Part 1</button>
+      </div>
+      <ol>
+        <li><strong>Inspect:</strong> Read the entire dataset before changing anything.</li>
+        <li><strong>Clean:</strong> Fix blank cells, repeated rows, impossible numbers, spelling differences, and missing units.</li>
+        <li><strong>Document:</strong> Select the issue and save each corrected row.</li>
+        <li><strong>Review:</strong> Check the cleaned dataset and complete the reflection.</li>
+        <li><strong>Save:</strong> Download your completed practice report.</li>
+      </ol>
+      <div class="rules"><strong>Data-care rule:</strong> Never invent a missing answer. Use <em>Not provided</em> when the correct value is unknown.</div>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <div><p class="step">Stage 1 · About 8–10 minutes</p><h2>Clean the dataset</h2></div>
+        <button id="resetBtn" class="secondary" type="button">Reset activity</button>
+      </div>
+      <p class="hint">You may edit several rows before saving. Your work is saved automatically in this browser until you reset the activity.</p>
+      <div class="progress-track" aria-hidden="true"><div id="progressBar"></div></div>
+      <p id="progressText" class="progress-text" aria-live="polite"></p>
+
+      <div class="table-scroll">
+        <table id="dataTable">
+          <thead><tr><th>Row</th><th>Student</th><th>Study Time</th><th>Favorite Subject</th><th>Issue Found</th><th>Action</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="step">Stage 2 · About 2 minutes</p>
+      <h2>Review the change log</h2>
+      <p class="hint">Confirm that every correction has a clear reason. You should record eight problem rows.</p>
+      <div class="table-scroll">
+        <table id="logTable">
+          <thead><tr><th>Row</th><th>Column</th><th>Original Value</th><th>New Value</th><th>Reason</th></tr></thead>
+          <tbody><tr class="empty-row"><td colspan="5">No changes recorded yet.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="step">Stage 3 · About 2 minutes</p>
+      <h2>Data-care questions</h2>
+      <div class="question-grid">
+        <label>1. Why should an unknown blank be marked as Not provided instead of guessed?
+          <textarea data-question rows="3" placeholder="Explain in one sentence..."></textarea>
+        </label>
+        <label>2. Which correction required the most careful decision?
+          <textarea data-question rows="3" placeholder="Name the row and explain..."></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="step">Stage 4 · About 2 minutes</p>
+      <h2>Teamwork and responsibility check</h2>
+      <div class="check-grid">
+        <label><input type="checkbox" /> We shared the work.</label>
+        <label><input type="checkbox" /> We spoke respectfully.</label>
+        <label><input type="checkbox" /> We explained our corrections.</label>
+        <label><input type="checkbox" /> We protected the accuracy of the data.</label>
+        <label><input type="checkbox" /> We kept trying when a problem was difficult.</label>
+      </div>
+      <label class="reflection">One responsible decision our group made:
+        <textarea id="reflection" rows="4" placeholder="Write one or two sentences..."></textarea>
+      </label>
+    </section>
+
+    <section class="card submission-card" aria-labelledby="submissionTitle">
+      <p class="step">Stage 5 · Practice report</p>
+      <div class="section-heading">
+        <div>
+          <h2 id="submissionTitle">Prepare your practice report</h2>
+          <p class="hint">Complete every item below. Then add your group details and download a record of your practice.</p>
+        </div>
+        <span id="readinessBadge" class="readiness-badge" aria-live="polite">In progress</span>
+      </div>
+
+      <div class="assessment-note">
+        <strong>This is practice.</strong>
+        Use the report to review your data-cleaning decisions, change log, explanations, teamwork, and reflection before completing a separate assessed activity.
+      </div>
+
+      <div id="readinessList" class="readiness-list" aria-label="Practice report readiness">
+        <div class="readiness-item" data-readiness="activity">
+          <span class="readiness-icon" aria-hidden="true">○</span>
+          <div><strong>Data-cleaning activity</strong><span id="activityReadiness">0 of 8 problem rows recorded</span></div>
+        </div>
+        <div class="readiness-item" data-readiness="log">
+          <span class="readiness-icon" aria-hidden="true">○</span>
+          <div><strong>Change-log evidence</strong><span id="logReadiness">0 cleaned values recorded · minimum 3</span></div>
+        </div>
+        <div class="readiness-item" data-readiness="questions">
+          <span class="readiness-icon" aria-hidden="true">○</span>
+          <div><strong>Data-care explanations</strong><span id="questionsReadiness">0 of 2 answered</span></div>
+        </div>
+        <div class="readiness-item" data-readiness="teamwork">
+          <span class="readiness-icon" aria-hidden="true">○</span>
+          <div><strong>Collaboration checklist</strong><span id="teamworkReadiness">0 of 5 completed</span></div>
+        </div>
+        <div class="readiness-item" data-readiness="reflection">
+          <span class="readiness-icon" aria-hidden="true">○</span>
+          <div><strong>Responsible-decision reflection</strong><span id="reflectionReadiness">Not completed</span></div>
+        </div>
+      </div>
+
+      <div class="submission-instructions">
+        <strong>When your practice is complete:</strong>
+        <ol>
+          <li>Click <em>Download practice report</em>.</li>
+          <li>Add your group, date, and every member's full name.</li>
+          <li>Keep the PDF as a record of your completed practice.</li>
+        </ol>
+      </div>
+
+      <div class="action-row">
+        <button id="checkBtn" type="button">Check readiness</button>
+        <button id="downloadPdfBtn" class="secondary" type="button" disabled aria-describedby="downloadHelp">Download practice report</button>
+      </div>
+      <p id="downloadHelp" class="hint export-hint">Finish the practice checklist to unlock the report. Group details are added when you download.</p>
+      <div id="result" class="result" aria-live="polite"></div>
+    </section>
+    </div>
+  </main>
+
+  <dialog id="groupDialog" class="group-dialog" aria-labelledby="groupDialogTitle">
+    <form id="groupForm">
+      <div class="dialog-heading">
+        <div>
+          <p class="step">Practice evidence report</p>
+          <h2 id="groupDialogTitle">Add your report details</h2>
+        </div>
+        <button id="closeGroupDialogBtn" class="icon-button" type="button" aria-label="Close group details">×</button>
+      </div>
+      <p class="hint">Enter accurate information for your practice evidence report.</p>
+
+      <div class="group-details-grid">
+        <label>Group or class
+          <input id="groupName" type="text" maxlength="60" placeholder="Example: 6A · Group 2" required />
+        </label>
+        <label>Activity date
+          <input id="activityDate" type="date" required />
+        </label>
+        <label>Number of members
+          <input id="memberCount" type="number" min="1" max="8" value="2" required />
+        </label>
+      </div>
+
+      <fieldset class="member-fieldset">
+        <legend>Member names</legend>
+        <div id="memberFields" class="member-fields"></div>
+      </fieldset>
+
+      <div class="dialog-actions">
+        <button id="cancelGroupDialogBtn" class="secondary" type="button">Cancel</button>
+        <button type="submit">Create practice PDF</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer><div class="wrap">Data Detectives · Data-cleaning practice activity</div></footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.8/jspdf.plugin.autotable.min.js"></script>
+  <script src="script.js?v=20260722"></script>
+</body>
+</html>
