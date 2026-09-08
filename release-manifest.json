@@ -41,8 +41,8 @@
     "modules/cybersecurity-risk/index.html": "6e4bb27b6c9ebc9f171e2da177547fb277a066b93c388702e6d186aa2298aea3",
     "modules/cybersecurity-risk/printable-fallback.html": "61c9df856be2aa1d7c32304c79a0ddaf83a7cce3c0bb2f570dd3c53a2e97ae59",
     "modules/cybersecurity-risk/t3-printable.html": "5f11602d6eb4a78c0c99fe721e0ad21f82c9b1b466ea9ab60cf68b58e0c5bb63",
-    "modules/data-spreadsheets/cell-assessment-fallback.html": "57d14c3ed0a95085f72e7f77360834a5b5d8fd321955c2409160d8abfde4633a",
-    "modules/data-spreadsheets/index.html": "dd06ecba1e03e1d00d8c8bc19bd85f7f3c883e1e9925bbd02c07115936fae157",
+    "modules/data-spreadsheets/cell-assessment-fallback.html": "ce1feef8b7c51cc9e9014e97af83d35ae5e7cb243c40208d10af26a25db69496",
+    "modules/data-spreadsheets/index.html": "799407291c9a1738abeff6acbac7007a54f05798af079b4c0d1b627f5db57100",
     "modules/data-spreadsheets/printable-fallback.html": "58f2e7ee4540266d0a6083234be19b85ba5d0c1eb2a91d7646571cc48ece895a",
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "d0e0db986428b742ab211d48d277f12f219f8a4d8f8e5671943ae3f9cd291a93",
@@ -68,6 +68,8 @@
     "modules/spreadsheet-analysis/printable-fallback.html": "2f4a2056827c2d8e75109a9d2867f63d51c4054202fc6482df114c7157fdd365",
     "modules/spreadsheet-analysis/t3-printable.html": "de60cf599c463a15da0138701241c8140034b44fc3002b7b0f3c08ccd098e88c",
     "offline-guide.html": "e0e5dc6fa1b5ab157085eeafc450771b32014ac170e9d9d3e564028b0c3b7c7b",
-    "sw.js": "2b0aaa09fa9b01fd0072023b301fef7ac400e45ce09ee15f8a02b5d4d2a71e9e"
+    "sw.js": "2b0aaa09fa9b01fd0072023b301fef7ac400e45ce09ee15f8a02b5d4d2a71e9e",
+    "assets/data-spreadsheets-Beq7fSna.js": "b85a725ced20daaefad072dd97e82f867160973ccbcb9e3d04a3d9b4d031f530",
+    "assets/data-spreadsheets-CuWkhPwU.css": "1983472badd4b844323f7e9d39ef2a511f3b35fe1c7045a1a7b1449b670d28a3"
   }
 }
