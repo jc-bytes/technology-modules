@@ -48,9 +48,9 @@
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "d0e0db986428b742ab211d48d277f12f219f8a4d8f8e5671943ae3f9cd291a93",
     "modules/data-spreadsheets/trip-practice-fallback.html": "cd62b170a9fa5f196c5f9642a15f4b80c333e2b8832a25a738743c94d49e0fa5",
-    "modules/digital-representation/index.html": "479f98832e5d1a9f7d9ce40633181ad0f75c4e15e25734fecd9d40674bc9d300",
+    "modules/digital-representation/index.html": "f1344a79f33909b4b73399f6314dcd6f6d5c497ec7bde3c297ea2d495dcc708e",
     "modules/digital-representation/printable-fallback.html": "e850efd4a340cca9aa7d3b51701572d522c9a9d8c2b04ee2ea9b6ed4f239fe66",
-    "modules/digital-representation/t3-printable.html": "3f61ee6ee35573e4a2a21525f3d43cc18219bd25fbfdde23303d3426c8a81526",
+    "modules/digital-representation/t3-printable.html": "bb1e462508e8d01eda59b257031dcf5f7a5a43a8434685bfe37ec5618612001c",
     "modules/microbit-sensing/index.html": "f49fe07f5e5af017de4a93d98cc1fc4bd85a00ae58bb75ede73557c4b70dd231",
     "modules/microbit-sensing/printable-fallback.html": "8c6e2db30d04694e3656fb416d1af461d323e245dae31b8bcffe04ae5f430f98",
     "modules/microbit-sensing/t3-printable.html": "a95661d1630b8f1a09a0fb3d1202fd02f1ee4ce0cd8c655ebcd4400d515cb0ff",
@@ -71,6 +71,8 @@
     "modules/spreadsheet-analysis/printable-fallback.html": "2f4a2056827c2d8e75109a9d2867f63d51c4054202fc6482df114c7157fdd365",
     "modules/spreadsheet-analysis/t3-printable.html": "2c4341a166159e986a66a5a8b7f390d490783d017d135888aee3f4d17cc8777f",
     "offline-guide.html": "e0e5dc6fa1b5ab157085eeafc450771b32014ac170e9d9d3e564028b0c3b7c7b",
-    "sw.js": "2b0aaa09fa9b01fd0072023b301fef7ac400e45ce09ee15f8a02b5d4d2a71e9e"
+    "sw.js": "2b0aaa09fa9b01fd0072023b301fef7ac400e45ce09ee15f8a02b5d4d2a71e9e",
+    "assets/digital-representation-D8-8MOhy.js": "7099d7fcad2db0c35075f394339d15408be6afb855028f415f60cc79bb9f628a",
+    "assets/digital-representation-IOKx79M3.css": "0ec788d0a016f02e7d4fd24117fb79a4fab5703c39a9280305cd03fe0725a365"
   }
 }
