@@ -33,46 +33,125 @@
     "legacy/data-detectives/index.html": "4ebf1339cf920b5ed6c88546295a8a43a33a6526f99d1fd25b89de0e60f8d440",
     "legacy/data-detectives/script.js": "5350493693599c1a0a3bb9ebe21d0e609db68eac4ebc706b6e82245a33b95502",
     "legacy/data-detectives/styles.css": "ea0e771e9054b07f642425b817d0b0f3b254c84b189b34872cdf3d3b478fa2e4",
-    "modules/3d-modelling-foundations/index.html": "3a8a17634e302b355d6b9c81e3e0a497f39175ca3dde06ed4e74d331531591db",
+    "modules/3d-modelling-foundations/index.html": "afc333674b039e2d724eacc9781da69c5f13e1fddd38e726bc241d3fd2d30adf",
     "modules/3d-modelling-foundations/printable-fallback.html": "302724e87bdf1486aed2f6d14b70604af6af5a3424383f76128679c212c27a11",
-    "modules/3d-modelling-foundations/t3-printable.html": "a21a012b9d1a6574890f390d5401accdd6fbd96006c64ee390caa2f36f86f4c0",
-    "modules/app-design/index.html": "ae4cb263c76f2df8296ebb676913e15ea0d0568aae00c33a3ebe13945c35ee06",
+    "modules/3d-modelling-foundations/t3-printable.html": "922451368e79c646a59051db7e7f85c8e613df791382677e2e7e6840607efbcf",
+    "modules/app-design/index.html": "d7c8e28f1cc02914a818c3e26ba9918696f90eec20b3c16a1dce044324c6990e",
     "modules/app-design/printable-fallback.html": "901d106884554b0ece5f59a05feab97bc97bfeb5c4f2ebbb76dd9f475b147ebb",
-    "modules/app-design/t3-printable.html": "a0a7872a0f8e8a2a3b11292f246184a2b4a15d5911e2cddb6715b1678df8afa2",
-    "modules/cybersecurity-risk/index.html": "6e4bb27b6c9ebc9f171e2da177547fb277a066b93c388702e6d186aa2298aea3",
+    "modules/app-design/t3-printable.html": "f53f859a4394316c927a852c79162de030fc9f7186da9cea0de02b6d9139923b",
+    "modules/cybersecurity-risk/index.html": "2541829ddff48518971a2d148fb3982affc088ad6c0bff1c4363746bcf1a6a0b",
     "modules/cybersecurity-risk/printable-fallback.html": "61c9df856be2aa1d7c32304c79a0ddaf83a7cce3c0bb2f570dd3c53a2e97ae59",
-    "modules/cybersecurity-risk/t3-printable.html": "5f11602d6eb4a78c0c99fe721e0ad21f82c9b1b466ea9ab60cf68b58e0c5bb63",
+    "modules/cybersecurity-risk/t3-printable.html": "53dc65a06d4e68e6841ef6c5d5050e1fcd73ea959c5d9e3de61272a2b4133df0",
     "modules/data-spreadsheets/cell-assessment-fallback.html": "ce1feef8b7c51cc9e9014e97af83d35ae5e7cb243c40208d10af26a25db69496",
-    "modules/data-spreadsheets/index.html": "bce879be5a686abceea4e1beebba0c1950a9a5f6c8ad433769f8c23cd6981b4d",
+    "modules/data-spreadsheets/index.html": "395995a438b88e2653ec5d788ee4e13bf495a3cbb551d53c6ef02ecdc5a5f2f1",
     "modules/data-spreadsheets/printable-fallback.html": "58f2e7ee4540266d0a6083234be19b85ba5d0c1eb2a91d7646571cc48ece895a",
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
-    "modules/data-spreadsheets/t3-printable.html": "d0e0db986428b742ab211d48d277f12f219f8a4d8f8e5671943ae3f9cd291a93",
+    "modules/data-spreadsheets/t3-printable.html": "f4ab0fc60ce5e884f04b188e9e5aefbda7f8ee2b0eb00d9832c8edc67ce94812",
     "modules/data-spreadsheets/trip-practice-fallback.html": "cd62b170a9fa5f196c5f9642a15f4b80c333e2b8832a25a738743c94d49e0fa5",
-    "modules/digital-representation/index.html": "f1344a79f33909b4b73399f6314dcd6f6d5c497ec7bde3c297ea2d495dcc708e",
+    "modules/digital-representation/index.html": "ce2e790b1c7ea82608a2946d5a60d89759d3e92f8da32ef176bf380d2c57c6f9",
     "modules/digital-representation/printable-fallback.html": "e850efd4a340cca9aa7d3b51701572d522c9a9d8c2b04ee2ea9b6ed4f239fe66",
-    "modules/digital-representation/t3-printable.html": "bb1e462508e8d01eda59b257031dcf5f7a5a43a8434685bfe37ec5618612001c",
-    "modules/microbit-sensing/index.html": "f49fe07f5e5af017de4a93d98cc1fc4bd85a00ae58bb75ede73557c4b70dd231",
+    "modules/digital-representation/t3-printable.html": "e1d94de474b8c48358d3af8ed46cd630e2316fbcea5da80a400bfa33c889dc95",
+    "modules/microbit-sensing/index.html": "1ed9f56ac7c83d0080ddb262746e124131a3cbd8da5da0ea9be3d9ab35c3be54",
     "modules/microbit-sensing/printable-fallback.html": "8c6e2db30d04694e3656fb416d1af461d323e245dae31b8bcffe04ae5f430f98",
-    "modules/microbit-sensing/t3-printable.html": "a95661d1630b8f1a09a0fb3d1202fd02f1ee4ce0cd8c655ebcd4400d515cb0ff",
-    "modules/python-fundamentals/index.html": "5bab0018156c72b304525c776f5abadd713423b761a4217eb9422dd609f6a553",
+    "modules/microbit-sensing/t3-printable.html": "619cf19a68fe72ae7ac48af8f3ab07351ce93a24ea5ed4f8edd8df6db9dbab92",
+    "modules/python-fundamentals/index.html": "88a0e0b1290ad250ca34d33364e64ea4bcda0ecfa3050461ee398b5ede23eeb7",
     "modules/python-fundamentals/printable-fallback.html": "c114481d4adab07a68657d6b266fba1fe44a1c576b4a3b161e06f1d4c1ac5555",
-    "modules/python-fundamentals/t3-printable.html": "7c8919a68c8513d6f15176b78054192c96992c59b96a09821d14eb0fcd8cafef",
+    "modules/python-fundamentals/t3-printable.html": "6016c17fb3605574ed1891f5861cba5b0bdba788c8dc499cf940426dc45c6840",
     "modules/scientific-report-writing/index.html": "90d0f84bc294856fa77ba38873fa034137d2525257374612595e564b9dc479bd",
-    "modules/scratch-decomposition/index.html": "e11fa76ac9f6afa706a83ad23315ff45afdc39d928c8127ee4e4ea35ed858175",
+    "modules/scratch-decomposition/index.html": "ad76a973c8b72fe0849e804e3acd78b9548f1713b8335a82ca7e4ab9de867c6d",
     "modules/scratch-decomposition/printable-fallback.html": "07ecc4c3d526d3e019d80c15e5abcedc931d967f4aa6d78db540fd8e3e34fa6a",
-    "modules/scratch-decomposition/t3-printable.html": "80bea38ff2da7ecb0b982446dbdbf968eef34cbe868c0eb2fb741ad763158065",
-    "modules/sensor-systems/index.html": "5fd8fd0bfd5267d918a510be476421d4537f7f3dd90660f735fc3e1550a137e0",
+    "modules/scratch-decomposition/t3-printable.html": "7f2e2bec2e1defd6d73823f4c6834785db3360f8916dc02fc6527956bc965386",
+    "modules/sensor-systems/index.html": "49f8a242d7540d6df2616670d8bb11926424f3acbd6291f0c0eff04a84ee3cb5",
     "modules/sensor-systems/printable-fallback.html": "01a5006fdf60672783923b87b1c127d7264e2a2f11a40281b342f19208f0bd25",
-    "modules/sensor-systems/t3-printable.html": "a03f4a33ed0e40fd4dd336960c2188237002c3811fab921175b4e719b5cdc128",
+    "modules/sensor-systems/t3-printable.html": "5c7a4810883d96e8f799f8edfdbf787723d35619022a3f7a13ee3c8195afcaa6",
     "modules/source-credibility/index.html": "780cc08922fb638203ed69d55fd0a29cdacb11b5bbc1e66b3a61f0fc12228168",
     "modules/source-credibility/printable-fallback.html": "5ff161027e0c7ad2fe3105ce944946a5aedf62dc0b805d6f492b70e562d03063",
     "modules/spreadsheet-analysis/assessment-printable.html": "549ae41d40531fe7bd1d38680e57e88207f8ddaa953c3e3421fa35c5c585ae8c",
-    "modules/spreadsheet-analysis/index.html": "299fc0578dd824b3701cb891ab877a39f289564e1460c0174835f51fa788a32e",
+    "modules/spreadsheet-analysis/index.html": "3e69cda02174c091d97b587179d162ebdab98aca10dc6cf43a7847315098653c",
     "modules/spreadsheet-analysis/printable-fallback.html": "2f4a2056827c2d8e75109a9d2867f63d51c4054202fc6482df114c7157fdd365",
-    "modules/spreadsheet-analysis/t3-printable.html": "2c4341a166159e986a66a5a8b7f390d490783d017d135888aee3f4d17cc8777f",
+    "modules/spreadsheet-analysis/t3-printable.html": "29602973ad5a910a231b0bb41a7d1427657c23edf57fa089edc967e7de88e177",
     "offline-guide.html": "e0e5dc6fa1b5ab157085eeafc450771b32014ac170e9d9d3e564028b0c3b7c7b",
     "sw.js": "2b0aaa09fa9b01fd0072023b301fef7ac400e45ce09ee15f8a02b5d4d2a71e9e",
     "assets/digital-representation-D8-8MOhy.js": "7099d7fcad2db0c35075f394339d15408be6afb855028f415f60cc79bb9f628a",
-    "assets/digital-representation-IOKx79M3.css": "0ec788d0a016f02e7d4fd24117fb79a4fab5703c39a9280305cd03fe0725a365"
+    "assets/digital-representation-IOKx79M3.css": "0ec788d0a016f02e7d4fd24117fb79a4fab5703c39a9280305cd03fe0725a365",
+    "assets/app-design-BsW9qRzh.js": "0c61ccf2d534800d38e5e8c1d87b1129f04931ec15306ee1b80b0c0a2d4d2faa",
+    "assets/python-fundamentals-UopVgcii.js": "b47ef0ddc80cdf1532f8a3505a418112ec7292da02c754d47fd49bbec77faef1",
+    "assets/G7_DecisionPractice-Db3I2vWO.xlsx": "1f4fbc4db4ecb8823f25817cbf45a52d0fdd7a8948285b6063e9993387e12bc1",
+    "assets/sensor-systems-CMWX7cIH.js": "13e4d9d203e859803e39a92b1c3568d09d03a02afaf501a128b05f46c7e1ce0e",
+    "assets/t3-practice-DM5KbxwO.css": "0516124004f24cbfb5a6d8bad116a4f8f2ab536a7b59e12c48ca0e01841d7d23",
+    "assets/t3-practice-Cm7Y2gJO.js": "1de8a7d7383af34f27629ef97aef13c317b4bdda18408d24d91fa24730a435be",
+    "assets/spreadsheet-analysis-D9IGNUB5.js": "ae602f9dcaaae9ebdd8e9c26d88695814be361dff8085c2d4ea438ab1107cd50",
+    "assets/scratch-decomposition-P3dF-TCo.js": "ba67a2f0c99e88da4835a5e115833a419427eaabbf2f157eccc99ebdb204110f",
+    "assets/digital-representation-DYpQzZq3.js": "8a68d8a6bf476d598cc185449a1c4020e9a1397d44ffa1105ac46361787fe032",
+    "assets/microbit-sensing-D-VwsoA1.js": "1997ddcd93f8b31ca9059afe62f773df88332ec960f5832a1ba9e711d0cdcdc5",
+    "assets/3d-modelling-foundations-CPobFV33.js": "c70730e9beaf2d6f082f980e74ac8638c99cd4e655f33f97c46089bb6b73e2b4",
+    "assets/cybersecurity-risk-DW3CO71N.js": "7557ffe9fd4fc43863ea6c10a68917476d62b726f6ceae7c6966018b4b8c6342",
+    "assets/foundation-module-6gaCJ8aY.js": "58139be28dbe8244eb858efa3fc5a50628357cbc04e480fffb93496f04775974",
+    "assets/data-spreadsheets-j9u2jr0X.js": "5f4bb6115e98e855e612f676e1ef643876f7a34437b24884dd71fce75e23216a",
+    "modules/spreadsheet-analysis/assets/G7_DecisionPractice.xlsx": "1f4fbc4db4ecb8823f25817cbf45a52d0fdd7a8948285b6063e9993387e12bc1"
+  },
+  "routeScopedRepair": {
+    "date": "2026-09-14",
+    "routes": {
+      "cybersecurity-risk": [
+        "g9-w03-c01",
+        "g9-w03-c02",
+        "g9-w07-c01",
+        "g9-w08-c01"
+      ],
+      "3d-modelling-foundations": [
+        "g6-measure",
+        "g6-measure-model",
+        "g6-model",
+        "g6-model-check",
+        "g6-final-model-check"
+      ],
+      "scratch-decomposition": [
+        "g7-delivery",
+        "g8-balloon-controls",
+        "g8-balloon-rules"
+      ],
+      "digital-representation": [
+        "g8-w10-c01",
+        "g9-w01-c02",
+        "g9-w02-c01"
+      ],
+      "spreadsheet-analysis": [
+        "g7-compare",
+        "g7-chart-independent"
+      ],
+      "python-fundamentals": [
+        "g8-w07-c01",
+        "g8-w07-c02",
+        "g8-w08-c01",
+        "g8-w09-c01"
+      ],
+      "sensor-systems": [
+        "g7-distance",
+        "g7-radio",
+        "g7-warning-feedback",
+        "g7-demo-practice"
+      ],
+      "microbit-sensing": [
+        "g6-counter-build",
+        "g6-counter-test",
+        "g6-light-predict",
+        "g6-light-build",
+        "g6-light-more-tests",
+        "g6-light-change",
+        "g6-light-explain",
+        "g6-light-demonstrate"
+      ],
+      "data-spreadsheets": [
+        "g6-chart-review"
+      ],
+      "app-design": [
+        "g8-w01-c01",
+        "g8-w01-c02",
+        "g8-w02-c01",
+        "g8-w03-c01"
+      ]
+    },
+    "note": "Only selected practice URLs load the updated entry bundles. Existing assessment and library URLs retain their previous runtime."
   }
 }

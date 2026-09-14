@@ -6,11 +6,18 @@
     <meta name="theme-color" content="#143c55" />
     <meta name="description" content="Grade 6 guided practice for reading tables, cleaning data, using formulas, building a column chart, and interpreting evidence." />
     <title>Data Foundations and Spreadsheets</title>
-    <script type="module" crossorigin src="/technology-modules/assets/data-spreadsheets-Qkn9zPpY.js"></script>
-    <link rel="modulepreload" crossorigin href="/technology-modules/assets/modulepreload-polyfill-B5Qt9EMX.js">
-    <link rel="modulepreload" crossorigin href="/technology-modules/assets/class-routes-D92ijL3D.js">
-    <link rel="stylesheet" crossorigin href="/technology-modules/assets/data-spreadsheets-C7AKG8Ej.css">
-  </head>
+    
+    
+    
+    
+  <script type="module">
+const routes = new Set(["g6-chart-review"]);
+const variants = {"updated": {"js": "/technology-modules/assets/data-spreadsheets-j9u2jr0X.js", "css": ["/technology-modules/assets/data-spreadsheets-C7AKG8Ej.css"]}, "existing": {"js": "/technology-modules/assets/data-spreadsheets-Qkn9zPpY.js", "css": ["/technology-modules/assets/data-spreadsheets-C7AKG8Ej.css"]}};
+const selected = variants[routes.has(new URLSearchParams(location.search).get("class")) ? "updated" : "existing"];
+await Promise.all(selected.css.map(href => new Promise((resolve, reject) => { const link = document.createElement("link"); link.rel = "stylesheet"; link.href = href; link.onload = resolve; link.onerror = reject; document.head.append(link); })));
+await import(selected.js);
+</script>
+</head>
   <body>
     <a class="skip-link" href="#lesson">Skip to the lesson</a>
     <div id="app"></div>

@@ -5,13 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Practice spreadsheet formulas and charts with short lessons, repeated activities, saved work, and exportable evidence.">
   <title>Spreadsheet Formulas and Charts</title>
-  <script type="module" crossorigin src="/technology-modules/assets/spreadsheet-analysis-Bv4_SNpH.js"></script>
-  <link rel="modulepreload" crossorigin href="/technology-modules/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="/technology-modules/assets/class-routes-D92ijL3D.js">
-  <link rel="modulepreload" crossorigin href="/technology-modules/assets/foundation-module-Br7CbLR8.js">
-  <link rel="modulepreload" crossorigin href="/technology-modules/assets/content-helpers-BfuPXrd1.js">
-  <link rel="stylesheet" crossorigin href="/technology-modules/assets/foundation-module-Dp8NM06q.css">
-  <link rel="stylesheet" crossorigin href="/technology-modules/assets/spreadsheet-analysis-Byo9n4Ao.css">
+  
+  
+  
+  
+  
+  
+  
+<script type="module">
+const routes = new Set(["g7-compare", "g7-chart-independent"]);
+const variants = {"updated": {"js": "/technology-modules/assets/spreadsheet-analysis-D9IGNUB5.js", "css": ["/technology-modules/assets/foundation-module-Dp8NM06q.css", "/technology-modules/assets/spreadsheet-analysis-Byo9n4Ao.css"]}, "existing": {"js": "/technology-modules/assets/spreadsheet-analysis-Bv4_SNpH.js", "css": ["/technology-modules/assets/foundation-module-Dp8NM06q.css", "/technology-modules/assets/spreadsheet-analysis-Byo9n4Ao.css"]}};
+const selected = variants[routes.has(new URLSearchParams(location.search).get("class")) ? "updated" : "existing"];
+await Promise.all(selected.css.map(href => new Promise((resolve, reject) => { const link = document.createElement("link"); link.rel = "stylesheet"; link.href = href; link.onload = resolve; link.onerror = reject; document.head.append(link); })));
+await import(selected.js);
+</script>
 </head>
 <body>
 </body>

@@ -1,6 +1,13 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Grade 6 micro:bit practice for inputs, outputs, variables, conditions, and sensors."><title>micro:bit Inputs, Variables, and Sensors</title>  <script type="module" crossorigin src="/technology-modules/assets/microbit-sensing-BmNEzeDz.js"></script>
-  <link rel="modulepreload" crossorigin href="/technology-modules/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="/technology-modules/assets/class-routes-D92ijL3D.js">
-  <link rel="modulepreload" crossorigin href="/technology-modules/assets/foundation-module-Br7CbLR8.js">
-  <link rel="stylesheet" crossorigin href="/technology-modules/assets/foundation-module-Dp8NM06q.css">
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Grade 6 micro:bit practice for inputs, outputs, variables, conditions, and sensors."><title>micro:bit Inputs, Variables, and Sensors</title>  
+  
+  
+  
+  
+<script type="module">
+const routes = new Set(["g6-counter-build", "g6-counter-test", "g6-light-predict", "g6-light-build", "g6-light-more-tests", "g6-light-change", "g6-light-explain", "g6-light-demonstrate"]);
+const variants = {"updated": {"js": "/technology-modules/assets/microbit-sensing-D-VwsoA1.js", "css": ["/technology-modules/assets/foundation-module-Dp8NM06q.css"]}, "existing": {"js": "/technology-modules/assets/microbit-sensing-BmNEzeDz.js", "css": ["/technology-modules/assets/foundation-module-Dp8NM06q.css"]}};
+const selected = variants[routes.has(new URLSearchParams(location.search).get("class")) ? "updated" : "existing"];
+await Promise.all(selected.css.map(href => new Promise((resolve, reject) => { const link = document.createElement("link"); link.rel = "stylesheet"; link.href = href; link.onload = resolve; link.onerror = reject; document.head.append(link); })));
+await import(selected.js);
+</script>
 </head><body></body></html>
