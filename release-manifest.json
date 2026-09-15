@@ -48,7 +48,7 @@
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "f4ab0fc60ce5e884f04b188e9e5aefbda7f8ee2b0eb00d9832c8edc67ce94812",
     "modules/data-spreadsheets/trip-practice-fallback.html": "cd62b170a9fa5f196c5f9642a15f4b80c333e2b8832a25a738743c94d49e0fa5",
-    "modules/digital-representation/index.html": "ce2e790b1c7ea82608a2946d5a60d89759d3e92f8da32ef176bf380d2c57c6f9",
+    "modules/digital-representation/index.html": "184c69aca77b8ae67fed7a87d91359c51c22f9871b770756622d722a989e5dd6",
     "modules/digital-representation/printable-fallback.html": "e850efd4a340cca9aa7d3b51701572d522c9a9d8c2b04ee2ea9b6ed4f239fe66",
     "modules/digital-representation/t3-printable.html": "e1d94de474b8c48358d3af8ed46cd630e2316fbcea5da80a400bfa33c889dc95",
     "modules/microbit-sensing/index.html": "1ed9f56ac7c83d0080ddb262746e124131a3cbd8da5da0ea9be3d9ab35c3be54",
@@ -88,7 +88,10 @@
     "assets/cybersecurity-risk-DW3CO71N.js": "7557ffe9fd4fc43863ea6c10a68917476d62b726f6ceae7c6966018b4b8c6342",
     "assets/foundation-module-6gaCJ8aY.js": "58139be28dbe8244eb858efa3fc5a50628357cbc04e480fffb93496f04775974",
     "assets/data-spreadsheets-j9u2jr0X.js": "5f4bb6115e98e855e612f676e1ef643876f7a34437b24884dd71fce75e23216a",
-    "modules/spreadsheet-analysis/assets/G7_DecisionPractice.xlsx": "1f4fbc4db4ecb8823f25817cbf45a52d0fdd7a8948285b6063e9993387e12bc1"
+    "modules/spreadsheet-analysis/assets/G7_DecisionPractice.xlsx": "1f4fbc4db4ecb8823f25817cbf45a52d0fdd7a8948285b6063e9993387e12bc1",
+    "assets/digital-representation-OEiLjtVr.css": "142510b75ade34b161f799cbd09f9cb8ae2cbcd7650f1e0b1b8b3de2694154f0",
+    "assets/digital-representation-B9u-6lf4.js": "1433dc19b5d7551728d4313928728a28214edada16f8bb1814401024b8727d94",
+    "modules/digital-representation/sound-samples-printable.html": "814c099e3c5f4b126da76b98ded83331e55ba416cdaadbac9f1504fb9028b823"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -153,5 +156,13 @@
       ]
     },
     "note": "Only selected practice URLs load the updated entry bundles. Existing assessment and library URLs retain their previous runtime."
+  },
+  "soundSamplesRelease": {
+    "date": "2026-09-15",
+    "module": "MOD-DIGITAL-REPRESENTATION-01",
+    "version": "0.3.0",
+    "route": "g9-w01-c02",
+    "status": "pilot",
+    "note": "Six-step sampling introduction; other routes retain existing entry bundles."
   }
 }
