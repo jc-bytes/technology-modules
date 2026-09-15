@@ -48,7 +48,7 @@
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "f4ab0fc60ce5e884f04b188e9e5aefbda7f8ee2b0eb00d9832c8edc67ce94812",
     "modules/data-spreadsheets/trip-practice-fallback.html": "cd62b170a9fa5f196c5f9642a15f4b80c333e2b8832a25a738743c94d49e0fa5",
-    "modules/digital-representation/index.html": "184c69aca77b8ae67fed7a87d91359c51c22f9871b770756622d722a989e5dd6",
+    "modules/digital-representation/index.html": "c12814c0c2456e99387766918076baf8f7687632bdb46764fe9642139d596c22",
     "modules/digital-representation/printable-fallback.html": "e850efd4a340cca9aa7d3b51701572d522c9a9d8c2b04ee2ea9b6ed4f239fe66",
     "modules/digital-representation/t3-printable.html": "e1d94de474b8c48358d3af8ed46cd630e2316fbcea5da80a400bfa33c889dc95",
     "modules/microbit-sensing/index.html": "1ed9f56ac7c83d0080ddb262746e124131a3cbd8da5da0ea9be3d9ab35c3be54",
@@ -91,7 +91,9 @@
     "modules/spreadsheet-analysis/assets/G7_DecisionPractice.xlsx": "1f4fbc4db4ecb8823f25817cbf45a52d0fdd7a8948285b6063e9993387e12bc1",
     "assets/digital-representation-OEiLjtVr.css": "142510b75ade34b161f799cbd09f9cb8ae2cbcd7650f1e0b1b8b3de2694154f0",
     "assets/digital-representation-B9u-6lf4.js": "1433dc19b5d7551728d4313928728a28214edada16f8bb1814401024b8727d94",
-    "modules/digital-representation/sound-samples-printable.html": "814c099e3c5f4b126da76b98ded83331e55ba416cdaadbac9f1504fb9028b823"
+    "modules/digital-representation/sound-samples-printable.html": "636ccecb530e58c0b754875e5484364d44c6cbb547215c0b64788a1d8376e39f",
+    "assets/digital-representation-D7oiqCrc.css": "557a423890fc2fbef047eb8c09a69cb1c774a1c35d2f0f8731a817a45f4dc13c",
+    "assets/digital-representation-s_EO7UC6.js": "dcfd70657b2fc4e3aa4f6bcf4cc18d14d1269000a9baa3e8074c715afc5bb73a"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -160,9 +162,9 @@
   "soundSamplesRelease": {
     "date": "2026-09-15",
     "module": "MOD-DIGITAL-REPRESENTATION-01",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "route": "g9-w01-c02",
     "status": "pilot",
-    "note": "Six-step sampling introduction; other routes retain existing entry bundles."
+    "note": "Self-paced sampling: explanation and model before six embedded practice checks, hints and retries, then sample strip and explanation. Other routes retain their existing runtime."
   }
 }
