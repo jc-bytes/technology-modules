@@ -93,7 +93,11 @@
     "assets/digital-representation-B9u-6lf4.js": "1433dc19b5d7551728d4313928728a28214edada16f8bb1814401024b8727d94",
     "modules/digital-representation/sound-samples-printable.html": "636ccecb530e58c0b754875e5484364d44c6cbb547215c0b64788a1d8376e39f",
     "assets/digital-representation-D7oiqCrc.css": "557a423890fc2fbef047eb8c09a69cb1c774a1c35d2f0f8731a817a45f4dc13c",
-    "assets/digital-representation-s_EO7UC6.js": "dcfd70657b2fc4e3aa4f6bcf4cc18d14d1269000a9baa3e8074c715afc5bb73a"
+    "assets/digital-representation-s_EO7UC6.js": "dcfd70657b2fc4e3aa4f6bcf4cc18d14d1269000a9baa3e8074c715afc5bb73a",
+    "modules/digital-representation/sound-bits-printable.html": "a9adc7e79b78427009480bc80ddb9cfe7e29f1e2016d3e6b3745695d22c26687",
+    "modules/digital-representation/sound-bits.html": "7a70ab955852a5e00c32ebb391ca1280410f6abab57b43abf08a7cbd62775ab3",
+    "assets/sound-samples-Dg_t-zUx.css": "a3e88acf3b85dd44734cbe56c70865d1e05afbdafc2d8aa8224232d9e44f5445",
+    "assets/sound-bits-D1Mq-30i.js": "45c947ef61240422ed667f93cefd4dddc5a522588745b8bca2db727e92c227b1"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -166,5 +170,12 @@
     "route": "g9-w01-c02",
     "status": "pilot",
     "note": "Self-paced sampling: explanation and model before six embedded practice checks, hints and retries, then sample strip and explanation. Other routes retain their existing runtime."
+  },
+  "soundBitsRelease": {
+    "version": "0.1.0",
+    "date": "2026-09-15",
+    "status": "pilot",
+    "route": "modules/digital-representation/sound-bits.html",
+    "note": "Standalone activity; no link added to the samples activity. Explanation, model, practice, two-step calculation, comparison and work record."
   }
 }
