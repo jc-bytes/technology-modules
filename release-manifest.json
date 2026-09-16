@@ -98,7 +98,11 @@
     "modules/digital-representation/sound-bits.html": "a0c69ec86ae30d58c8f8a7456b74207511990122e749ab2c6818682ade3693c7",
     "assets/sound-samples-Dg_t-zUx.css": "a3e88acf3b85dd44734cbe56c70865d1e05afbdafc2d8aa8224232d9e44f5445",
     "assets/sound-bits-D1Mq-30i.js": "45c947ef61240422ed667f93cefd4dddc5a522588745b8bca2db727e92c227b1",
-    "assets/sound-bits-zpqsdfZY.js": "8abb76e2784615c90c2d8b3f42957e1c127d21106f61bc6d4f0d452377346418"
+    "assets/sound-bits-zpqsdfZY.js": "8abb76e2784615c90c2d8b3f42957e1c127d21106f61bc6d4f0d452377346418",
+    "modules/digital-representation/picture-sound-check-printable.html": "1b158ac0dbd8b9df950f9ebc2286719fa4b48f8ae874465d7e98425dda821b4f",
+    "assets/picture-sound-check-B0H7WTWV.css": "c5ec21067cc345ad7c8313428ccaafc8b66f65b6af31329e079806f8cb5842a2",
+    "modules/digital-representation/picture-sound-check.html": "0915be999954cc0d1ec26f15d1059670f6219b22feb4276fe0be697dc4125a41",
+    "assets/picture-sound-check-DNiC7PQM.js": "0aea0cb0bea7a48e60c8c79506c394d6949a10f524f334780b3ebcc45c01049c"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -178,5 +182,11 @@
     "status": "pilot",
     "route": "modules/digital-representation/sound-bits.html",
     "note": "Clarify possible values for one sample versus total stored bits for eight samples. Both checks have explanations, units and specific feedback."
+  },
+  "pictureSoundCheck": {
+    "date": "2026-09-16",
+    "version": "1.0.0",
+    "route": "modules/digital-representation/picture-sound-check.html",
+    "scope": "New independent assessment only. Existing practice routes unchanged."
   }
 }
