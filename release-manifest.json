@@ -48,7 +48,7 @@
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "f4ab0fc60ce5e884f04b188e9e5aefbda7f8ee2b0eb00d9832c8edc67ce94812",
     "modules/data-spreadsheets/trip-practice-fallback.html": "cd62b170a9fa5f196c5f9642a15f4b80c333e2b8832a25a738743c94d49e0fa5",
-    "modules/digital-representation/index.html": "83b189c6eab968948658ed0181ee0c941d4bed8ea93cf69e60511ce39207e222",
+    "modules/digital-representation/index.html": "f44b9459ff10a27290cbf68f1a66eda5cf717c7f0c697503fb3867d6ec8092ec",
     "modules/digital-representation/printable-fallback.html": "e850efd4a340cca9aa7d3b51701572d522c9a9d8c2b04ee2ea9b6ed4f239fe66",
     "modules/digital-representation/t3-printable.html": "e1d94de474b8c48358d3af8ed46cd630e2316fbcea5da80a400bfa33c889dc95",
     "modules/microbit-sensing/index.html": "1ed9f56ac7c83d0080ddb262746e124131a3cbd8da5da0ea9be3d9ab35c3be54",
@@ -95,13 +95,13 @@
     "assets/digital-representation-D7oiqCrc.css": "557a423890fc2fbef047eb8c09a69cb1c774a1c35d2f0f8731a817a45f4dc13c",
     "assets/digital-representation-s_EO7UC6.js": "dcfd70657b2fc4e3aa4f6bcf4cc18d14d1269000a9baa3e8074c715afc5bb73a",
     "modules/digital-representation/sound-bits-printable.html": "c69b9844abd76daa3bf1502e0046d4221f8509eb7813e3bbd0f0f5cf2fc59ee1",
-    "modules/digital-representation/sound-bits.html": "6bd58cf85f6bf2eef3174f7c95fd71d4ac80b34548e702aac8f1fe0d78d30f1e",
+    "modules/digital-representation/sound-bits.html": "df0b54be9319841faf01380d92c839b038f8e1ee69fd5f3596519fe4540f157d",
     "assets/sound-samples-Dg_t-zUx.css": "a3e88acf3b85dd44734cbe56c70865d1e05afbdafc2d8aa8224232d9e44f5445",
     "assets/sound-bits-D1Mq-30i.js": "45c947ef61240422ed667f93cefd4dddc5a522588745b8bca2db727e92c227b1",
     "assets/sound-bits-zpqsdfZY.js": "8abb76e2784615c90c2d8b3f42957e1c127d21106f61bc6d4f0d452377346418",
     "modules/digital-representation/picture-sound-check-printable.html": "1b158ac0dbd8b9df950f9ebc2286719fa4b48f8ae874465d7e98425dda821b4f",
     "assets/picture-sound-check-B0H7WTWV.css": "c5ec21067cc345ad7c8313428ccaafc8b66f65b6af31329e079806f8cb5842a2",
-    "modules/digital-representation/picture-sound-check.html": "a94d6052b67637d06cdf44ae8f43234c44b960ad0dcc359f5090b82a187af7f9",
+    "modules/digital-representation/picture-sound-check.html": "f21bd115e79e91d861fb62471cc48a3b3f1b7c065f3b2b08e6dbcf72be2e17d9",
     "assets/picture-sound-check-DNiC7PQM.js": "0aea0cb0bea7a48e60c8c79506c394d6949a10f524f334780b3ebcc45c01049c",
     "assets/LICENSE_LIBERATION.txt": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b",
     "assets/LiberationSans-Regular-cbskN6YR.ttf": "f8ace1f892b2bd9dc1792ba7f097fa7588f84fed48321480e04de5390828221f",
@@ -114,7 +114,12 @@
     "assets/preload-helper-Ch_bUO3j.js": "081aaf275c551d2ba26aa1cc088f0c6bd009bdb3b85c8a436e490fbee6fb56a6",
     "assets/purify.es-CEBYger9.js": "ba64ae392b2dd7aa911cfdcaac46cf5ae750b137a8264b958aa854cd1d76d673",
     "assets/sound-bits-BBkHTvJs.js": "3e97ab9f028edbf87f701a6710738760903cd7bae8adb38542417048549d96c6",
-    "assets/student-pdf--3B1JeKB.js": "649af4e3853bf2694e8306a0c3dcabb8e1208ba66871bbb3af4c16051c6a138f"
+    "assets/student-pdf--3B1JeKB.js": "649af4e3853bf2694e8306a0c3dcabb8e1208ba66871bbb3af4c16051c6a138f",
+    "assets/student-pdf-D_snfqNH.js": "8e12ba5f8293fd173796d0f2ac1caae3ff5c75d5d70c3b1951e14cf36869c26c",
+    "assets/sound-bits-Doe5C6YW.js": "f850188da0f53756412bb7c45a75d3d226e797077aeb67be3b9cd57837150089",
+    "assets/picture-sound-check-BXjDAEQS.js": "97cde72f2a5c552176447f73e8433b270f4b90933c0c5dcb183bffdeb47af863",
+    "assets/picture-sound-check-DYC6o69T.css": "a9a89126f74efcd9f5ff36623e1c02121e0afe669bf1ffdee51a3cb2b18ed6da",
+    "assets/digital-representation-BcCiWzoB.js": "c1837b8016b6395424a8e5410db30edfc0dad65e2dd50baf3c66adab569c0f4f"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -206,5 +211,10 @@
     "scope": "Picture practice, sound samples, sound bits, picture and sound assessment",
     "format": "PDF",
     "previousProgress": "Preserved"
+  },
+  "assessmentClarityRevision": {
+    "date": "2026-09-17",
+    "changes": "Clearer questions, compact answer review, one primary PDF action, technical codes removed from printed PDF",
+    "rubricChanged": false
   }
 }
