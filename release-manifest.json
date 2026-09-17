@@ -48,7 +48,7 @@
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "f4ab0fc60ce5e884f04b188e9e5aefbda7f8ee2b0eb00d9832c8edc67ce94812",
     "modules/data-spreadsheets/trip-practice-fallback.html": "cd62b170a9fa5f196c5f9642a15f4b80c333e2b8832a25a738743c94d49e0fa5",
-    "modules/digital-representation/index.html": "c12814c0c2456e99387766918076baf8f7687632bdb46764fe9642139d596c22",
+    "modules/digital-representation/index.html": "83b189c6eab968948658ed0181ee0c941d4bed8ea93cf69e60511ce39207e222",
     "modules/digital-representation/printable-fallback.html": "e850efd4a340cca9aa7d3b51701572d522c9a9d8c2b04ee2ea9b6ed4f239fe66",
     "modules/digital-representation/t3-printable.html": "e1d94de474b8c48358d3af8ed46cd630e2316fbcea5da80a400bfa33c889dc95",
     "modules/microbit-sensing/index.html": "1ed9f56ac7c83d0080ddb262746e124131a3cbd8da5da0ea9be3d9ab35c3be54",
@@ -95,14 +95,26 @@
     "assets/digital-representation-D7oiqCrc.css": "557a423890fc2fbef047eb8c09a69cb1c774a1c35d2f0f8731a817a45f4dc13c",
     "assets/digital-representation-s_EO7UC6.js": "dcfd70657b2fc4e3aa4f6bcf4cc18d14d1269000a9baa3e8074c715afc5bb73a",
     "modules/digital-representation/sound-bits-printable.html": "c69b9844abd76daa3bf1502e0046d4221f8509eb7813e3bbd0f0f5cf2fc59ee1",
-    "modules/digital-representation/sound-bits.html": "a0c69ec86ae30d58c8f8a7456b74207511990122e749ab2c6818682ade3693c7",
+    "modules/digital-representation/sound-bits.html": "6bd58cf85f6bf2eef3174f7c95fd71d4ac80b34548e702aac8f1fe0d78d30f1e",
     "assets/sound-samples-Dg_t-zUx.css": "a3e88acf3b85dd44734cbe56c70865d1e05afbdafc2d8aa8224232d9e44f5445",
     "assets/sound-bits-D1Mq-30i.js": "45c947ef61240422ed667f93cefd4dddc5a522588745b8bca2db727e92c227b1",
     "assets/sound-bits-zpqsdfZY.js": "8abb76e2784615c90c2d8b3f42957e1c127d21106f61bc6d4f0d452377346418",
     "modules/digital-representation/picture-sound-check-printable.html": "1b158ac0dbd8b9df950f9ebc2286719fa4b48f8ae874465d7e98425dda821b4f",
     "assets/picture-sound-check-B0H7WTWV.css": "c5ec21067cc345ad7c8313428ccaafc8b66f65b6af31329e079806f8cb5842a2",
-    "modules/digital-representation/picture-sound-check.html": "0915be999954cc0d1ec26f15d1059670f6219b22feb4276fe0be697dc4125a41",
-    "assets/picture-sound-check-DNiC7PQM.js": "0aea0cb0bea7a48e60c8c79506c394d6949a10f524f334780b3ebcc45c01049c"
+    "modules/digital-representation/picture-sound-check.html": "a94d6052b67637d06cdf44ae8f43234c44b960ad0dcc359f5090b82a187af7f9",
+    "assets/picture-sound-check-DNiC7PQM.js": "0aea0cb0bea7a48e60c8c79506c394d6949a10f524f334780b3ebcc45c01049c",
+    "assets/LICENSE_LIBERATION.txt": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b",
+    "assets/LiberationSans-Regular-cbskN6YR.ttf": "f8ace1f892b2bd9dc1792ba7f097fa7588f84fed48321480e04de5390828221f",
+    "assets/_commonjsHelpers-Cpj98o6Y.js": "9625379badd4849610dfe6c15453cdf0c0071264c90eef177307fac094d2aa6c",
+    "assets/digital-representation-CeFaqFY1.js": "3d8780759d68418ffd6eacd1ad63dcdf371bed4acdf4a4184dc73093d94cbeb4",
+    "assets/html2canvas.esm-DXEQVQnt.js": "7b07a9ca175c614e8e7de447198d35b0d161dd50db2c63b5f7fd6ea0e1e876f2",
+    "assets/index.es-D-zh0eV_.js": "3a3cabaf7eabdd39955395e00d19ab0ab857437f8db3d81f39e809c2e7b6d2db",
+    "assets/jspdf.es.min-DfuPkix3.js": "ea25f05715a6fde227f21bd8ea3a1dd3b95076a45cc8636ea568a496d4713aec",
+    "assets/picture-sound-check-DdJzWDr9.js": "1add206aeed3d9db9c4a16473759eaa07f9712b537995b7f9f2c0ddf94d24317",
+    "assets/preload-helper-Ch_bUO3j.js": "081aaf275c551d2ba26aa1cc088f0c6bd009bdb3b85c8a436e490fbee6fb56a6",
+    "assets/purify.es-CEBYger9.js": "ba64ae392b2dd7aa911cfdcaac46cf5ae750b137a8264b958aa854cd1d76d673",
+    "assets/sound-bits-BBkHTvJs.js": "3e97ab9f028edbf87f701a6710738760903cd7bae8adb38542417048549d96c6",
+    "assets/student-pdf--3B1JeKB.js": "649af4e3853bf2694e8306a0c3dcabb8e1208ba66871bbb3af4c16051c6a138f"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -188,5 +200,11 @@
     "version": "1.0.0",
     "route": "modules/digital-representation/picture-sound-check.html",
     "scope": "New independent assessment only. Existing practice routes unchanged."
+  },
+  "pdfSubmissionRevision": {
+    "date": "2026-09-16",
+    "scope": "Picture practice, sound samples, sound bits, picture and sound assessment",
+    "format": "PDF",
+    "previousProgress": "Preserved"
   }
 }

@@ -17,7 +17,9 @@ const routes = new Set(["g8-w10-c01", "g9-w01-c02", "g9-w02-c01"]);
 const variants = {"updated": {"js": "/technology-modules/assets/digital-representation-DYpQzZq3.js", "css": ["/technology-modules/assets/t3-practice-DM5KbxwO.css", "/technology-modules/assets/foundation-module-Dp8NM06q.css", "/technology-modules/assets/digital-representation-IOKx79M3.css"]}, "existing": {"js": "/technology-modules/assets/digital-representation-D8-8MOhy.js", "css": ["/technology-modules/assets/foundation-module-Dp8NM06q.css", "/technology-modules/assets/digital-representation-IOKx79M3.css"]}};
 const sound = {"js": "/technology-modules/assets/digital-representation-s_EO7UC6.js", "css": ["/technology-modules/assets/t3-practice-DM5KbxwO.css", "/technology-modules/assets/foundation-module-Dp8NM06q.css", "/technology-modules/assets/digital-representation-D7oiqCrc.css"]};
 const soundRoute = new URLSearchParams(location.search).get("class") === "g9-w01-c02" || location.hash.startsWith("#sound-samples-");
-const selected = soundRoute ? sound : variants[routes.has(new URLSearchParams(location.search).get("class")) ? "updated" : "existing"];
+const pdfSubmission = {"js": "/technology-modules/assets/digital-representation-CeFaqFY1.js", "css": ["/technology-modules/assets/t3-practice-DM5KbxwO.css", "/technology-modules/assets/foundation-module-Dp8NM06q.css", "/technology-modules/assets/sound-samples-Dg_t-zUx.css"]};
+const pdfRoute = ["g9-w01-c01", "g9-w01-c02"].includes(new URLSearchParams(location.search).get("class")) || location.hash.startsWith("#sound-samples-") || location.hash.startsWith("#t3-g9-w01-c01-");
+const selected = pdfRoute ? pdfSubmission : (soundRoute ? sound : variants[routes.has(new URLSearchParams(location.search).get("class")) ? "updated" : "existing"]);
 await Promise.all(selected.css.map(href => new Promise((resolve, reject) => { const link = document.createElement("link"); link.rel = "stylesheet"; link.href = href; link.onload = resolve; link.onerror = reject; document.head.append(link); })));
 await import(selected.js);
 </script>
