@@ -101,7 +101,7 @@
     "assets/sound-bits-zpqsdfZY.js": "8abb76e2784615c90c2d8b3f42957e1c127d21106f61bc6d4f0d452377346418",
     "modules/digital-representation/picture-sound-check-printable.html": "1b158ac0dbd8b9df950f9ebc2286719fa4b48f8ae874465d7e98425dda821b4f",
     "assets/picture-sound-check-B0H7WTWV.css": "c5ec21067cc345ad7c8313428ccaafc8b66f65b6af31329e079806f8cb5842a2",
-    "modules/digital-representation/picture-sound-check.html": "f21bd115e79e91d861fb62471cc48a3b3f1b7c065f3b2b08e6dbcf72be2e17d9",
+    "modules/digital-representation/picture-sound-check.html": "e707aa0b4c6a2d23137e6ffc05ff3e22614a6a1cf976210a982b4313aa7557d6",
     "assets/picture-sound-check-DNiC7PQM.js": "0aea0cb0bea7a48e60c8c79506c394d6949a10f524f334780b3ebcc45c01049c",
     "assets/LICENSE_LIBERATION.txt": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b",
     "assets/LiberationSans-Regular-cbskN6YR.ttf": "f8ace1f892b2bd9dc1792ba7f097fa7588f84fed48321480e04de5390828221f",
@@ -119,7 +119,9 @@
     "assets/sound-bits-Doe5C6YW.js": "f850188da0f53756412bb7c45a75d3d226e797077aeb67be3b9cd57837150089",
     "assets/picture-sound-check-BXjDAEQS.js": "97cde72f2a5c552176447f73e8433b270f4b90933c0c5dcb183bffdeb47af863",
     "assets/picture-sound-check-DYC6o69T.css": "a9a89126f74efcd9f5ff36623e1c02121e0afe669bf1ffdee51a3cb2b18ed6da",
-    "assets/digital-representation-BcCiWzoB.js": "c1837b8016b6395424a8e5410db30edfc0dad65e2dd50baf3c66adab569c0f4f"
+    "assets/digital-representation-BcCiWzoB.js": "c1837b8016b6395424a8e5410db30edfc0dad65e2dd50baf3c66adab569c0f4f",
+    "assets/picture-sound-check-DMk1sfL5.js": "862893487d51a5bf0ef05373351fc8b0e3fecc32492bcd4cc504f5b770131e5a",
+    "assets/picture-sound-check-B_ShnuxF.css": "d2424061ab9f0c855ca65572d435968ff492e1f9b550960128efe31293676d76"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -216,5 +218,10 @@
     "date": "2026-09-17",
     "changes": "Clearer questions, compact answer review, one primary PDF action, technical codes removed from printed PDF",
     "rubricChanged": false
+  },
+  "assessmentTransferRestrictions": {
+    "date": "2026-09-17",
+    "scope": "modules/digital-representation/picture-sound-check.html",
+    "changes": "Discourage translation; block copy, cut, paste and drag transfers; PDF and paper fallback retained."
   }
 }
