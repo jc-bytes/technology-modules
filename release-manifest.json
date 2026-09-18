@@ -43,7 +43,7 @@
     "modules/cybersecurity-risk/printable-fallback.html": "61c9df856be2aa1d7c32304c79a0ddaf83a7cce3c0bb2f570dd3c53a2e97ae59",
     "modules/cybersecurity-risk/t3-printable.html": "53dc65a06d4e68e6841ef6c5d5050e1fcd73ea959c5d9e3de61272a2b4133df0",
     "modules/data-spreadsheets/cell-assessment-fallback.html": "ce1feef8b7c51cc9e9014e97af83d35ae5e7cb243c40208d10af26a25db69496",
-    "modules/data-spreadsheets/index.html": "395995a438b88e2653ec5d788ee4e13bf495a3cbb551d53c6ef02ecdc5a5f2f1",
+    "modules/data-spreadsheets/index.html": "1d313b5baaaf7af309dbbd45d3af8e910cd5be12c1b2b75b0fe525d9e3c85391",
     "modules/data-spreadsheets/printable-fallback.html": "58f2e7ee4540266d0a6083234be19b85ba5d0c1eb2a91d7646571cc48ece895a",
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "f4ab0fc60ce5e884f04b188e9e5aefbda7f8ee2b0eb00d9832c8edc67ce94812",
@@ -127,7 +127,12 @@
     "assets/app-design-lab-BzvYjTkv.css": "418e88537065f0857ff9af6f63ddccff86bf2fbc0d36cb06ac40dba4436ed74e",
     "assets/formulas-20260918/index-DFCU-K4U.css": "7b2e2258af2454908041190023e16c7573f7c357abffcd943f951fd5152fbeda",
     "assets/formulas-20260918/index-HxlViiGR.js": "d1187ac794a18ac66ad9c589c83da77b2449f79d96a7a1fa91f83f6a624d92ec",
-    "assets/formulas-20260918/G7_Books_Starter-UbXYgoSs.xlsx": "bfc55719de0b74816d10f989e6b6efc0ce725f7510d5a5323f12060069e41441"
+    "assets/formulas-20260918/G7_Books_Starter-UbXYgoSs.xlsx": "bfc55719de0b74816d10f989e6b6efc0ce725f7510d5a5323f12060069e41441",
+    "assets/G6_Chart_Starter-Bq8OvrgS.xlsx": "80576f0e212abbc2d31659ee263dba5e943cc038bdf631cf710516c813000ea3",
+    "assets/data-spreadsheets-77H8_XLr.css": "b1c1df0bd8f3e7370dded8c327f92a7915fc88c0b6f66218d47b05232661cded",
+    "assets/data-spreadsheets-DRoY0NaW.js": "5461c4e4618efb8ad69945ca6d1faeb928c852dea14066986bb6b08ab39f7984",
+    "assets/formula-lesson-DFCU-K4U.css": "7b2e2258af2454908041190023e16c7573f7c357abffcd943f951fd5152fbeda",
+    "assets/styles-D5ME0-ta.css": "c2c68304429190018cca13c5556af2268226510bc51875e63b60233ec0671a69"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -229,5 +234,20 @@
     "date": "2026-09-17",
     "scope": "modules/digital-representation/picture-sound-check.html",
     "changes": "Discourage translation; block copy, cut, paste and drag transfers; PDF and paper fallback retained."
+  },
+  "g7CellsRelease": {
+    "date": "2026-09-18",
+    "route": "g7-cells",
+    "files": [
+      "assets/G6_Chart_Starter-Bq8OvrgS.xlsx",
+      "assets/class-routes-D92ijL3D.js",
+      "assets/data-spreadsheets-77H8_XLr.css",
+      "assets/data-spreadsheets-DRoY0NaW.js",
+      "assets/formula-lesson-DFCU-K4U.css",
+      "assets/modulepreload-polyfill-B5Qt9EMX.js",
+      "assets/styles-D5ME0-ta.css",
+      "modules/data-spreadsheets/index.html",
+      "modules/data-spreadsheets/t3-printable.html"
+    ]
   }
 }
