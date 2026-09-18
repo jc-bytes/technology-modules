@@ -67,7 +67,7 @@
     "modules/source-credibility/index.html": "780cc08922fb638203ed69d55fd0a29cdacb11b5bbc1e66b3a61f0fc12228168",
     "modules/source-credibility/printable-fallback.html": "5ff161027e0c7ad2fe3105ce944946a5aedf62dc0b805d6f492b70e562d03063",
     "modules/spreadsheet-analysis/assessment-printable.html": "549ae41d40531fe7bd1d38680e57e88207f8ddaa953c3e3421fa35c5c585ae8c",
-    "modules/spreadsheet-analysis/index.html": "3e69cda02174c091d97b587179d162ebdab98aca10dc6cf43a7847315098653c",
+    "modules/spreadsheet-analysis/index.html": "9b4dfa455bb9cf1cabb236be8ade30eab8e05d54b61b965ee6fd76dc068cf41a",
     "modules/spreadsheet-analysis/printable-fallback.html": "2f4a2056827c2d8e75109a9d2867f63d51c4054202fc6482df114c7157fdd365",
     "modules/spreadsheet-analysis/t3-printable.html": "29602973ad5a910a231b0bb41a7d1427657c23edf57fa089edc967e7de88e177",
     "offline-guide.html": "e0e5dc6fa1b5ab157085eeafc450771b32014ac170e9d9d3e564028b0c3b7c7b",
@@ -124,7 +124,10 @@
     "assets/picture-sound-check-B_ShnuxF.css": "d2424061ab9f0c855ca65572d435968ff492e1f9b550960128efe31293676d76",
     "modules/app-design/design-lab.html": "38290bfa70cc907967c9db68b7c532e3ebdc3dba1fafb162947b46e41cd46011",
     "assets/app-design-lab-qx2rSIFH.js": "dea1fe235f393af80ceb6465d4485be69720834b9e30ff45dc20f33f415247a8",
-    "assets/app-design-lab-BzvYjTkv.css": "418e88537065f0857ff9af6f63ddccff86bf2fbc0d36cb06ac40dba4436ed74e"
+    "assets/app-design-lab-BzvYjTkv.css": "418e88537065f0857ff9af6f63ddccff86bf2fbc0d36cb06ac40dba4436ed74e",
+    "assets/formulas-20260918/index-DFCU-K4U.css": "7b2e2258af2454908041190023e16c7573f7c357abffcd943f951fd5152fbeda",
+    "assets/formulas-20260918/index-HxlViiGR.js": "d1187ac794a18ac66ad9c589c83da77b2449f79d96a7a1fa91f83f6a624d92ec",
+    "assets/formulas-20260918/G7_Books_Starter-UbXYgoSs.xlsx": "bfc55719de0b74816d10f989e6b6efc0ce725f7510d5a5323f12060069e41441"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",

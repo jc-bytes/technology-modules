@@ -15,7 +15,10 @@
 <script type="module">
 const routes = new Set(["g7-compare", "g7-chart-independent"]);
 const variants = {"updated": {"js": "/technology-modules/assets/spreadsheet-analysis-D9IGNUB5.js", "css": ["/technology-modules/assets/foundation-module-Dp8NM06q.css", "/technology-modules/assets/spreadsheet-analysis-Byo9n4Ao.css"]}, "existing": {"js": "/technology-modules/assets/spreadsheet-analysis-Bv4_SNpH.js", "css": ["/technology-modules/assets/foundation-module-Dp8NM06q.css", "/technology-modules/assets/spreadsheet-analysis-Byo9n4Ao.css"]}};
-const selected = variants[routes.has(new URLSearchParams(location.search).get("class")) ? "updated" : "existing"];
+const assigned = new URLSearchParams(location.search).get("class");
+const isFormulas = assigned === "g7-formulas" || (!assigned && location.hash === "#t3-g7-formulas");
+const selected = isFormulas ? {"js": "/technology-modules/assets/formulas-20260918/index-HxlViiGR.js", "css": ["/technology-modules/assets/formulas-20260918/index-DFCU-K4U.css"]} : variants[routes.has(assigned) ? "updated" : "existing"];
+window.addEventListener("hashchange", () => { if (!assigned && (location.hash === "#t3-g7-formulas") !== isFormulas) location.reload(); });
 await Promise.all(selected.css.map(href => new Promise((resolve, reject) => { const link = document.createElement("link"); link.rel = "stylesheet"; link.href = href; link.onload = resolve; link.onerror = reject; document.head.append(link); })));
 await import(selected.js);
 </script>
