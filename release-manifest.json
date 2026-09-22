@@ -105,7 +105,7 @@
     "modules/cybersecurity-risk/printable-fallback.html": "61c9df856be2aa1d7c32304c79a0ddaf83a7cce3c0bb2f570dd3c53a2e97ae59",
     "modules/cybersecurity-risk/t3-printable.html": "53dc65a06d4e68e6841ef6c5d5050e1fcd73ea959c5d9e3de61272a2b4133df0",
     "modules/data-spreadsheets/cell-assessment-fallback.html": "ce1feef8b7c51cc9e9014e97af83d35ae5e7cb243c40208d10af26a25db69496",
-    "modules/data-spreadsheets/index.html": "644cf2cf33f96b3cb92481b7787a46e30e577da582d16438144d744e23d1cf71",
+    "modules/data-spreadsheets/index.html": "814297176ccb066938fa7e87e531702aaac367f4296d9803300cb964361885fd",
     "modules/data-spreadsheets/printable-fallback.html": "58f2e7ee4540266d0a6083234be19b85ba5d0c1eb2a91d7646571cc48ece895a",
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "0c5c609e15a262f25ea48e8d5976cc719b27497ddebca7682d12f59417855b5a",
@@ -140,7 +140,8 @@
     "modules/spreadsheet-analysis/printable-fallback.html": "2f4a2056827c2d8e75109a9d2867f63d51c4054202fc6482df114c7157fdd365",
     "modules/spreadsheet-analysis/t3-printable.html": "29602973ad5a910a231b0bb41a7d1427657c23edf57fa089edc967e7de88e177",
     "offline-guide.html": "e0e5dc6fa1b5ab157085eeafc450771b32014ac170e9d9d3e564028b0c3b7c7b",
-    "sw.js": "2b0aaa09fa9b01fd0072023b301fef7ac400e45ce09ee15f8a02b5d4d2a71e9e"
+    "sw.js": "2b0aaa09fa9b01fd0072023b301fef7ac400e45ce09ee15f8a02b5d4d2a71e9e",
+    "assets/data-spreadsheets-Dn0WhFDL.js": "9a87904500eb631caea33188942af0230dac2b3a66ed1b97114e9f352b5488d0"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -257,5 +258,27 @@
       "modules/data-spreadsheets/index.html",
       "modules/data-spreadsheets/t3-printable.html"
     ]
+  },
+  "g6CellAddressRelease": {
+    "date": "2026-09-22",
+    "route": "g6-cell-check",
+    "files": [
+      "assets/G6_Chart_Starter-Bq8OvrgS.xlsx",
+      "assets/LiberationSans-Regular-cbskN6YR.ttf",
+      "assets/_commonjsHelpers-Cpj98o6Y.js",
+      "assets/class-routes-D92ijL3D.js",
+      "assets/data-spreadsheets-DNU2vNsh.css",
+      "assets/data-spreadsheets-Dn0WhFDL.js",
+      "assets/formula-lesson-D56ihEy9.css",
+      "assets/index.es-D-zh0eV_.js",
+      "assets/jspdf.es.min-DfuPkix3.js",
+      "assets/modulepreload-polyfill-B5Qt9EMX.js",
+      "assets/practice-frame-BaIeRkwv.css",
+      "assets/practice-frame-BwDRw9ps.js",
+      "assets/preload-helper-Ch_bUO3j.js",
+      "assets/student-pdf-D_snfqNH.js",
+      "modules/data-spreadsheets/index.html"
+    ],
+    "changes": "Clarify that cell questions require a cell address: column letter first, then row number; keep Summative 1 PDF export."
   }
 }
