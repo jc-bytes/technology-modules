@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15435c">
+  <title>Complete your lunch app | Grade 8 Summative 1</title>
+  <link rel="stylesheet" href="./shared/foundation-module.css">
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+  <div class="fm-shell">
+    <header class="fm-topbar">
+      <a class="fm-brand" href="#instructions" aria-label="LunchApp test log home">
+        <span aria-hidden="true">LA</span>
+        <div><small>Grade 8 · T3 Summative 1</small><strong>LunchApp test log</strong></div>
+      </a>
+      <div class="fm-tools">
+        <div id="student-summary" class="student-summary">Name not entered</div>
+        <button id="edit-identity" class="fm-button quiet" type="button">Edit name</button>
+        <button id="download-pdf" class="fm-button primary" type="button">Download answers (PDF)</button>
+      </div>
+      <nav id="step-navigation" class="step-navigation" aria-label="Assessment pages"></nav>
+    </header>
+    <div id="save-warning" role="status" aria-live="polite"></div>
+    <main id="fm-main" tabindex="-1"></main>
+    <footer class="fm-footer">
+      <p>Your answers save in this browser. Add all three required screenshots before downloading the PDF.</p>
+      <p><a href="./printable-fallback.html">Open the paper version</a></p>
+    </footer>
+  </div>
+  <dialog id="identity-dialog" aria-labelledby="identity-title">
+    <form id="identity-form" method="dialog">
+      <div class="fm-dialog-heading">
+        <div><small>Student details</small><h2 id="identity-title">Your name and group</h2></div>
+        <button type="button" id="close-identity" aria-label="Close">×</button>
+      </div>
+      <label class="fm-field">Name
+        <input id="dialog-name" name="name" maxlength="60" autocomplete="name">
+      </label>
+      <label class="fm-field">Group
+        <select id="dialog-group" name="group">
+          <option value="">Choose your group</option><option value="8A">8A</option><option value="8B">8B</option>
+        </select>
+      </label>
+      <button class="fm-button primary" type="submit">Save details</button>
+    </form>
+  </dialog>
+  <div id="toast" class="fm-toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

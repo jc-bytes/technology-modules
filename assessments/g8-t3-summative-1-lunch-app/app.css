@@ -1,0 +1,50 @@
+.student-summary{max-width:220px;color:var(--deep);font-size:14px;font-weight:700;overflow-wrap:anywhere}
+.step-navigation{width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.step-link{min-height:42px;padding:8px;border:1px solid var(--line);border-radius:7px;background:white;color:var(--navy);font:700 14px Arial,sans-serif;cursor:pointer}
+.step-link:hover,.step-link[aria-current="step"]{border-color:var(--navy);background:#e7f1f5}
+.step-link[aria-current="step"]{box-shadow:inset 0 -4px var(--yellow)}
+.short-label{display:none}
+.page-count{display:block;margin-top:2px;color:var(--muted);font-size:11px;font-weight:400}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.intro-card{padding:18px;border:2px solid var(--line);border-radius:9px;background:white}
+.intro-card h2{margin:0 0 10px;font-size:22px;color:var(--deep)}
+.plain-steps{display:grid;gap:10px;margin:0;padding-left:1.3em;line-height:1.5}
+.inline-error:not(:empty){padding:10px 12px;border-left:5px solid var(--red);background:var(--redsoft);color:#742c26}.small-note{padding:14px 16px;border-left:6px solid var(--yellow);background:#fff2bd;line-height:1.45}
+.choice-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.message-sample{margin:18px 0;padding:16px 18px;border:2px solid var(--teal);border-radius:8px;background:var(--green)}
+.message-sample strong{display:block;margin-top:5px;font-size:21px;overflow-wrap:anywhere}
+.test-meta{display:grid;gap:12px;margin:18px 0;padding:17px;border:2px solid var(--navy);border-radius:9px;background:white}
+.test-meta p{margin:0;line-height:1.45}
+.actual-box{min-height:82px}
+.decision-select{max-width:260px}
+.upload-panel{margin-top:22px;padding:20px;border:2px dashed #78919e;border-radius:9px;background:#fff}
+.upload-panel h2{margin-top:0;font-size:22px}
+.file-label{display:inline-flex;align-items:center;min-height:48px;padding:10px 15px;border:2px solid var(--navy);border-radius:8px;background:white;color:var(--navy);font-weight:800;cursor:pointer}
+.file-label input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;clip-path:inset(50%)}
+.file-label:focus-within{outline:4px solid var(--yellow);outline-offset:3px}
+.file-hint,.upload-status{color:var(--muted);font-size:14px;line-height:1.45}
+.image-preview{display:block;max-width:100%;max-height:350px;margin:14px 0;border:1px solid var(--line);background:#eef3f4;object-fit:contain}
+.remove-image{margin-top:6px}
+.variable-frame{margin:12px 0;padding:16px;border-left:6px solid var(--teal);background:#e8f3f3;line-height:1.5}
+.completion-note{margin-top:22px;padding:17px;border:2px solid var(--line);border-radius:8px;background:white}
+#identity-dialog form{display:grid;gap:16px}
+#identity-dialog .fm-dialog-heading{margin-bottom:0}
+#close-identity{font-size:28px}
+#save-warning:not(:empty){width:min(1000px,calc(100% - 40px));margin:10px auto;padding:12px 15px;border-left:5px solid var(--red);background:var(--redsoft);color:#742c26}
+#save-warning:empty{display:none}
+.fm-pager button{width:100%;justify-content:center}
+@media(max-width:700px){
+  .step-navigation{grid-template-columns:repeat(5,minmax(58px,1fr));overflow-x:auto;padding-bottom:4px}
+  .step-link{font-size:12px;min-height:50px}
+  .step-link .long-label{display:none}.step-link .short-label{display:inline}
+  .intro-grid,.choice-fields{grid-template-columns:1fr}
+  .student-summary{max-width:none;width:auto;margin-right:auto}
+  .fm-tools{display:flex;flex-wrap:wrap}
+  .fm-tools>.fm-button{font-size:14px;padding:10px}
+  .fm-topbar{gap:12px}
+}
+@media print{
+  .step-navigation,.fm-topbar,.fm-footer,.fm-pager,.upload-panel button,.fm-toast,dialog{display:none!important}
+  body{background:white}
+  #fm-main{padding:10px 0;width:100%}
+}
