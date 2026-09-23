@@ -105,7 +105,7 @@
     "modules/cybersecurity-risk/printable-fallback.html": "61c9df856be2aa1d7c32304c79a0ddaf83a7cce3c0bb2f570dd3c53a2e97ae59",
     "modules/cybersecurity-risk/t3-printable.html": "53dc65a06d4e68e6841ef6c5d5050e1fcd73ea959c5d9e3de61272a2b4133df0",
     "modules/data-spreadsheets/cell-assessment-fallback.html": "ce1feef8b7c51cc9e9014e97af83d35ae5e7cb243c40208d10af26a25db69496",
-    "modules/data-spreadsheets/index.html": "814297176ccb066938fa7e87e531702aaac367f4296d9803300cb964361885fd",
+    "modules/data-spreadsheets/index.html": "0ee47e95607ec485ae41628d64f3052eea3cb9939a72b332a4a7fd889ab51347",
     "modules/data-spreadsheets/printable-fallback.html": "58f2e7ee4540266d0a6083234be19b85ba5d0c1eb2a91d7646571cc48ece895a",
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "0c5c609e15a262f25ea48e8d5976cc719b27497ddebca7682d12f59417855b5a",
@@ -141,7 +141,11 @@
     "modules/spreadsheet-analysis/t3-printable.html": "29602973ad5a910a231b0bb41a7d1427657c23edf57fa089edc967e7de88e177",
     "offline-guide.html": "e0e5dc6fa1b5ab157085eeafc450771b32014ac170e9d9d3e564028b0c3b7c7b",
     "sw.js": "2b0aaa09fa9b01fd0072023b301fef7ac400e45ce09ee15f8a02b5d4d2a71e9e",
-    "assets/data-spreadsheets-Dn0WhFDL.js": "9a87904500eb631caea33188942af0230dac2b3a66ed1b97114e9f352b5488d0"
+    "assets/data-spreadsheets-Dn0WhFDL.js": "9a87904500eb631caea33188942af0230dac2b3a66ed1b97114e9f352b5488d0",
+    "assets/data-spreadsheets-Cg4BTvrJ.js": "00c9a88c9056682c84d34d6801edd61bf7388d8b003d1901d3dd984f266e8634",
+    "assets/jspdf.es.min-DBoTbCtu.js": "6e1b0d49dde5d7e7edd5529fd47efe043a76b38e0180ef472b767140e9b42c59",
+    "assets/student-pdf-BkDUwZtg.js": "43d89b6f591105d3847af72220492bbb61ac1f824c8d82a8f45aff51e2197db3",
+    "assets/index.es-C11pEgwB.js": "d6750369d2fc3deba3cb5df059c49025fa53ba4ab115b892f9f454ee678cd418"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -260,25 +264,25 @@
     ]
   },
   "g6CellAddressRelease": {
-    "date": "2026-09-22",
+    "date": "2026-09-23",
     "route": "g6-cell-check",
     "files": [
       "assets/G6_Chart_Starter-Bq8OvrgS.xlsx",
       "assets/LiberationSans-Regular-cbskN6YR.ttf",
       "assets/_commonjsHelpers-Cpj98o6Y.js",
       "assets/class-routes-D92ijL3D.js",
+      "assets/data-spreadsheets-Cg4BTvrJ.js",
       "assets/data-spreadsheets-DNU2vNsh.css",
-      "assets/data-spreadsheets-Dn0WhFDL.js",
       "assets/formula-lesson-D56ihEy9.css",
-      "assets/index.es-D-zh0eV_.js",
-      "assets/jspdf.es.min-DfuPkix3.js",
+      "assets/index.es-C11pEgwB.js",
+      "assets/jspdf.es.min-DBoTbCtu.js",
       "assets/modulepreload-polyfill-B5Qt9EMX.js",
       "assets/practice-frame-BaIeRkwv.css",
       "assets/practice-frame-BwDRw9ps.js",
       "assets/preload-helper-Ch_bUO3j.js",
-      "assets/student-pdf-D_snfqNH.js",
+      "assets/student-pdf-BkDUwZtg.js",
       "modules/data-spreadsheets/index.html"
     ],
-    "changes": "Clarify that cell questions require a cell address: column letter first, then row number; keep Summative 1 PDF export."
+    "changes": "Clarify cell explanation sentence starter with number, sport club, and day; keep Summative 1 PDF export."
   }
 }
