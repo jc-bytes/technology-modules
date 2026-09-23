@@ -105,7 +105,7 @@
     "modules/cybersecurity-risk/printable-fallback.html": "61c9df856be2aa1d7c32304c79a0ddaf83a7cce3c0bb2f570dd3c53a2e97ae59",
     "modules/cybersecurity-risk/t3-printable.html": "53dc65a06d4e68e6841ef6c5d5050e1fcd73ea959c5d9e3de61272a2b4133df0",
     "modules/data-spreadsheets/cell-assessment-fallback.html": "ce1feef8b7c51cc9e9014e97af83d35ae5e7cb243c40208d10af26a25db69496",
-    "modules/data-spreadsheets/index.html": "0ee47e95607ec485ae41628d64f3052eea3cb9939a72b332a4a7fd889ab51347",
+    "modules/data-spreadsheets/index.html": "6c33fe384dcbae1fe924bfc36634920faabb60a8bb414792e6eaa72c38e374c2",
     "modules/data-spreadsheets/printable-fallback.html": "58f2e7ee4540266d0a6083234be19b85ba5d0c1eb2a91d7646571cc48ece895a",
     "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
     "modules/data-spreadsheets/t3-printable.html": "0c5c609e15a262f25ea48e8d5976cc719b27497ddebca7682d12f59417855b5a",
@@ -145,7 +145,8 @@
     "assets/data-spreadsheets-Cg4BTvrJ.js": "00c9a88c9056682c84d34d6801edd61bf7388d8b003d1901d3dd984f266e8634",
     "assets/jspdf.es.min-DBoTbCtu.js": "6e1b0d49dde5d7e7edd5529fd47efe043a76b38e0180ef472b767140e9b42c59",
     "assets/student-pdf-BkDUwZtg.js": "43d89b6f591105d3847af72220492bbb61ac1f824c8d82a8f45aff51e2197db3",
-    "assets/index.es-C11pEgwB.js": "d6750369d2fc3deba3cb5df059c49025fa53ba4ab115b892f9f454ee678cd418"
+    "assets/index.es-C11pEgwB.js": "d6750369d2fc3deba3cb5df059c49025fa53ba4ab115b892f9f454ee678cd418",
+    "assets/data-spreadsheets-CDAWe3D_.js": "20f836f984e7fef1adc712774a0bc14e8f36497e60f2aac4fe1dba68d3126483"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -271,7 +272,7 @@
       "assets/LiberationSans-Regular-cbskN6YR.ttf",
       "assets/_commonjsHelpers-Cpj98o6Y.js",
       "assets/class-routes-D92ijL3D.js",
-      "assets/data-spreadsheets-Cg4BTvrJ.js",
+      "assets/data-spreadsheets-CDAWe3D_.js",
       "assets/data-spreadsheets-DNU2vNsh.css",
       "assets/formula-lesson-D56ihEy9.css",
       "assets/index.es-C11pEgwB.js",
@@ -283,6 +284,6 @@
       "assets/student-pdf-BkDUwZtg.js",
       "modules/data-spreadsheets/index.html"
     ],
-    "changes": "Clarify cell explanation sentence starter with number, sport club, and day; keep Summative 1 PDF export."
+    "changes": "Show the Grade 6 explanation sentence starter inside the answer box as a non-counting placeholder; keep Summative 1 PDF export."
   }
 }
