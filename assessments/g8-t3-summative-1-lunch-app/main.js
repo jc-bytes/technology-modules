@@ -8,7 +8,7 @@ const TESTS = [
 ];
 const STEP_PAGES = [
   ['name', 'Your name'], ['instructions', 'Instructions'], ['test1', 'Test 1'],
-  ['test2', 'Test 2'], ['test3', 'Test 3'], ['explain', 'Explain']
+  ['test2', 'Test 2'], ['test3', 'Test 3'], ['explain', 'Explain'], ['submit', 'What to hand in']
 ];
 const blankState = () => ({
   page: 'name',
@@ -26,6 +26,7 @@ const blankState = () => ({
 let state = loadState();
 let databasePromise;
 let activeObjectUrl;
+const cropSessions = new Map();
 const main = document.querySelector('#fm-main');
 const nav = document.querySelector('#step-navigation');
 const warning = document.querySelector('#save-warning');
@@ -79,7 +80,7 @@ function renderNav() {
 function renderName() {
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Step 1 of 6 · Start here</p>
+      <p class="fm-label">Step 1 of 7 · Start here</p>
       <h1>Your name and group</h1>
       <div>Enter these details first so your test record belongs to you.</div>
     </header>
@@ -100,7 +101,7 @@ function renderName() {
 function renderInstructions() {
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Step 2 of 6</p>
+      <p class="fm-label">Step 2 of 7</p>
       <h1>Complete your lunch app</h1>
       <div>Use your saved app. Check what it says when you choose a food.</div>
     </header>
@@ -118,8 +119,7 @@ function renderInstructions() {
       <p id="food-error" class="inline-error" role="status" aria-live="polite"></p>
       <div class="message-sample"><span>Your app should use this message pattern:</span><strong id="message-preview"></strong></div>
     </section>
-    <div class="intro-grid">
-      <section class="intro-card">
+    <section class="intro-card instructions-card">
         <h2>What to do</h2>
         <ol class="plain-steps">
           <li>Open your saved LunchApp in MIT App Inventor. Keep one screen and the Confirm button.</li>
@@ -128,16 +128,7 @@ function renderInstructions() {
           <li>Do Tests 1, 2 and 3 in order. Record the message you expected, the message you saw, and Pass or Fail.</li>
         </ol>
       </section>
-      <section class="intro-card">
-        <h2>What to hand in</h2>
-        <ol class="plain-steps">
-          <li>Download this site's answers as a PDF.</li>
-          <li>Export LunchApp as an editable .aia file.</li>
-          <li>Submit both files to Google Classroom.</li>
-        </ol>
-        <p class="small-note">A screenshot is required for every test. Add it on that test page before moving on. The PDF will not download until all three screenshots are attached.</p>
-      </section>
-    </div>
+    <p class="small-note">A screenshot is required for every test. Add it on that test step before moving on. The PDF will not download until all three screenshots are attached.</p>
     <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="name">Previous step</button><button class="fm-button primary next" type="button" data-page="test1">Go to Test 1</button></nav>`;
   document.querySelector('#food-one').value = state.foodOne;
   document.querySelector('#food-two').value = state.foodTwo;
@@ -152,34 +143,36 @@ function renderTest(test) {
   const meal = selectedFood(test.food);
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Step ${test.number + 2} of 6 · Test ${test.number}</p>
+      <p class="fm-label">Step ${test.number + 2} of 7 · Test ${test.number}</p>
       <h1>Test ${test.number}</h1>
       <div>${test.action}</div>
     </header>
-    <section class="test-meta" aria-label="Test record">
-      <p><strong>Food to test:</strong> <span class="food-value"></span></p>
-      <div class="message-sample"><span>Expected message</span><strong class="expected-message"></strong></div>
-      <label class="fm-field">Actual message you saw
-        <textarea class="actual-box" id="actual-${test.id}" maxlength="180" placeholder="Copy the message shown by your running app."></textarea>
-      </label>
-      <label class="fm-field">Your decision
-        <select class="decision-select" id="decision-${test.id}">
-          <option value="">Choose Pass or Fail</option>
-          <option value="Pass">Pass</option>
-          <option value="Fail">Fail</option>
-        </select>
-        <small>Choose Pass if the actual message matches the expected message. Otherwise choose Fail.</small>
-      </label>
-    </section>
-    <section class="upload-panel">
-      <h2>Required screenshot</h2>
-      <p class="file-hint">Add a screenshot that shows the selected food and the result after Confirm. It stays in this browser and is added to your PDF. You need one screenshot for each test.</p>
-      <label class="file-label">Add or replace screenshot
-        <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
-      </label>
-      <div class="image-slot" aria-live="polite"><p class="upload-status">Add a screenshot to continue to the next step.</p></div>
-      <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
-    </section>
+    <div class="test-layout">
+      <section class="test-meta" aria-label="Test record">
+        <p><strong>Food to test:</strong> <span class="food-value"></span></p>
+        <div class="message-sample"><span>Expected message</span><strong class="expected-message"></strong></div>
+        <label class="fm-field">Actual message you saw
+          <textarea class="actual-box" id="actual-${test.id}" maxlength="180" placeholder="Copy the message shown by your running app."></textarea>
+        </label>
+        <label class="fm-field">Your decision
+          <select class="decision-select" id="decision-${test.id}">
+            <option value="">Choose Pass or Fail</option>
+            <option value="Pass">Pass</option>
+            <option value="Fail">Fail</option>
+          </select>
+          <small>Choose Pass if the actual message matches the expected message. Otherwise choose Fail.</small>
+        </label>
+      </section>
+      <section class="upload-panel">
+        <h2>Required screenshot</h2>
+        <p class="file-hint">Show the selected food and result after Confirm. You can crop off extra space before saving.</p>
+        <label class="file-label">Add or replace screenshot
+          <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
+        </label>
+        <div class="image-slot" aria-live="polite"><p class="upload-status">Add a screenshot to continue to the next step.</p></div>
+        <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
+      </section>
+    </div>
     <nav class="fm-pager" aria-label="Step navigation">
       <button class="fm-button quiet" type="button" data-page="${test.number === 1 ? 'instructions' : `test${test.number - 1}`}">Previous step</button>
       <button class="fm-button primary next" type="button" data-page="${test.number === 3 ? 'explain' : `test${test.number + 1}`}" >Next step</button>
@@ -193,7 +186,7 @@ function renderTest(test) {
 function renderExplain() {
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Step 6 of 6 · Last step</p>
+      <p class="fm-label">Step 6 of 7</p>
       <h1>Explain the variable</h1>
       <div>Say what selected_meal remembers and how the message uses it.</div>
     </header>
@@ -206,13 +199,25 @@ function renderExplain() {
       </label>
       <p class="file-hint">Use your own words. Keep the English sentence short.</p>
     </section>
-    <section class="completion-note">
-      <h2>Before you submit</h2>
-      <p>Download the PDF from the button at the top. Export your editable LunchApp .aia file. Submit both files to Google Classroom.</p>
-      <p>Your work saves in this browser. Attach the required screenshot on every test page before downloading your PDF.</p>
-    </section>
-    <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="test3">Previous step</button><span></span></nav>`;
+    <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="test3">Previous step</button><button class="fm-button primary next" type="button" data-page="submit">Next step</button></nav>`;
   main.querySelector('#explanation').value = state.explanation;
+}
+function renderSubmission() {
+  main.innerHTML = `
+    <header class="fm-hero">
+      <p class="fm-label">Step 7 of 7 · Last step</p>
+      <h1>What to hand in</h1>
+      <div>You have finished the three tests and your explanation. Submit these two files.</div>
+    </header>
+    <section class="fm-block">
+      <ol class="plain-steps">
+        <li>Download your answers as a PDF using the button at the top. It includes your three required screenshots.</li>
+        <li>Export your LunchApp from MIT App Inventor as an editable .aia file.</li>
+        <li>Submit both files to Google Classroom.</li>
+      </ol>
+      <p class="small-note">Check that the PDF includes all three test screenshots before you submit.</p>
+    </section>
+    <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="explain">Previous step</button><span></span></nav>`;
 }
 function render() {
   updateHeader();
@@ -220,6 +225,7 @@ function render() {
   if (state.page === 'name') renderName();
   else if (state.page === 'instructions') renderInstructions();
   else if (state.page === 'explain') renderExplain();
+  else if (state.page === 'submit') renderSubmission();
   else {
     const test = TESTS.find(item => item.id === state.page) || TESTS[0];
     state.page = test.id;
@@ -230,7 +236,7 @@ async function setPage(id) {
   const allowed = STEP_PAGES.map(([page]) => page);
   if (!allowed.includes(id)) return;
   const targetTestIndex = TESTS.findIndex(test => test.id === id);
-  const requiredBefore = targetTestIndex >= 0 ? TESTS.slice(0, targetTestIndex) : id === 'explain' ? TESTS : [];
+  const requiredBefore = targetTestIndex >= 0 ? TESTS.slice(0, targetTestIndex) : ['explain', 'submit'].includes(id) ? TESTS : [];
   if (id !== 'name' && (!clean(state.name) || !clean(state.group))) {
     state.page = 'name';
     saveState();
@@ -257,6 +263,10 @@ async function setPage(id) {
       return;
     }
   }
+  for (const [testId, session] of cropSessions) {
+    session.bitmap.close?.();
+    cropSessions.delete(testId);
+  }
   state.page = id;
   document.querySelector('#step-menu').open = false;
   saveState();
@@ -272,8 +282,23 @@ main.addEventListener('click', event => {
   const button = event.target.closest('[data-page]');
   if (button) void setPage(button.dataset.page);
   if (event.target.closest('.remove-image')) removeScreenshot(event.target.closest('.remove-image').dataset.test);
+  const cropButton = event.target.closest('[data-crop-action]');
+  if (cropButton) {
+    const { cropAction, test } = cropButton.dataset;
+    if (cropAction === 'save') void saveScreenshotCrop(test, false);
+    if (cropAction === 'full') void saveScreenshotCrop(test, true);
+    if (cropAction === 'cancel') void cancelScreenshotCrop(test);
+    if (cropAction === 'edit') void editScreenshotCrop(test);
+  }
 });
 main.addEventListener('input', event => {
+  const cropRange = event.target.closest('.crop-range');
+  if (cropRange) {
+    const output = main.querySelector(`#${cropRange.id}-value`);
+    if (output) output.textContent = `${cropRange.value}%`;
+    drawCropPreview(cropRange.dataset.test);
+    return;
+  }
   const { id, value } = event.target;
   if (id === 'student-name') state.name = value;
   else if (id === 'food-one') state.foodOne = value;
@@ -368,12 +393,92 @@ async function storeScreenshot(testId, file) {
   if (status) status.textContent = 'Saving screenshot in this browser…';
   try {
     const image = await compressScreenshot(file);
-    await saveScreenshot({ testId, image, fileName: file.name, savedAt: new Date().toISOString() });
-    await showScreenshot(testId);
+    await openScreenshotCrop(testId, image, file.name);
   } catch (error) {
     if (status) status.textContent = error.message || 'Screenshot could not be saved. Try a smaller image or ask your teacher for help.';
     else setToast(error.message || 'Screenshot could not be saved.');
   }
+}
+async function openScreenshotCrop(testId, image, fileName) {
+  const slot = main.querySelector('.image-slot');
+  if (!slot) return;
+  const previous = cropSessions.get(testId);
+  previous?.bitmap.close?.();
+  const bitmap = await createImageBitmap(image);
+  const session = { image, fileName, bitmap };
+  cropSessions.set(testId, session);
+  slot.innerHTML = `
+    <div class="crop-editor">
+      <p class="crop-title">Crop your screenshot (optional)</p>
+      <p class="file-hint">Move a slider to cut off extra space. The picture here is what will go into your PDF.</p>
+      <div class="crop-preview"><canvas class="crop-canvas" role="img" aria-label="Screenshot crop preview"></canvas></div>
+      <div class="crop-controls">
+        ${[['top', 'Top'], ['right', 'Right'], ['bottom', 'Bottom'], ['left', 'Left']].map(([edge, label]) => `<label class="crop-control">Crop ${label.toLowerCase()} edge <span id="crop-${edge}-${testId}-value">0%</span><input class="crop-range" id="crop-${edge}-${testId}" data-test="${testId}" data-edge="${edge}" type="range" min="0" max="40" value="0" aria-label="Crop ${label.toLowerCase()} edge"></label>`).join('')}
+      </div>
+      <div class="crop-actions">
+        <button class="fm-button primary" type="button" data-crop-action="save" data-test="${testId}">Save this crop</button>
+        <button class="fm-button quiet" type="button" data-crop-action="full" data-test="${testId}">Use full screenshot</button>
+        <button class="fm-button quiet" type="button" data-crop-action="cancel" data-test="${testId}">Cancel</button>
+      </div>
+    </div>`;
+  session.canvas = slot.querySelector('.crop-canvas');
+  drawCropPreview(testId);
+}
+function cropBounds(session) {
+  const values = Object.fromEntries([...main.querySelectorAll(`.crop-range[data-test="${session.testId}"]`)].map(input => [input.dataset.edge, Number(input.value) / 100]));
+  return {
+    left: values.left || 0,
+    top: values.top || 0,
+    width: 1 - (values.left || 0) - (values.right || 0),
+    height: 1 - (values.top || 0) - (values.bottom || 0)
+  };
+}
+function drawCropPreview(testId) {
+  const session = cropSessions.get(testId);
+  if (!session?.canvas || !session.bitmap) return;
+  session.testId = testId;
+  const bounds = cropBounds(session);
+  const { width, height } = session.bitmap;
+  const sx = Math.round(width * bounds.left);
+  const sy = Math.round(height * bounds.top);
+  const sw = Math.max(1, Math.round(width * bounds.width));
+  const sh = Math.max(1, Math.round(height * bounds.height));
+  const canvas = session.canvas;
+  canvas.width = sw;
+  canvas.height = sh;
+  canvas.getContext('2d', { alpha: false }).drawImage(session.bitmap, sx, sy, sw, sh, 0, 0, sw, sh);
+}
+function canvasToBlob(canvas) {
+  return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('This crop could not be prepared.')), 'image/jpeg', 0.9));
+}
+async function saveScreenshotCrop(testId, full) {
+  const session = cropSessions.get(testId);
+  if (!session) return;
+  const slot = main.querySelector('.image-slot');
+  const status = document.createElement('p');
+  status.className = 'upload-status';
+  status.textContent = 'Saving screenshot in this browser…';
+  slot?.replaceChildren(status);
+  try {
+    const image = full ? session.image : await canvasToBlob(session.canvas);
+    await saveScreenshot({ testId, image, originalImage: session.image, fileName: session.fileName, savedAt: new Date().toISOString() });
+    session.bitmap.close?.();
+    cropSessions.delete(testId);
+    await showScreenshot(testId);
+  } catch (error) {
+    if (status.isConnected) status.textContent = error.message || 'Could not save the screenshot.';
+    else setToast(error.message || 'Could not save the screenshot.');
+  }
+}
+async function cancelScreenshotCrop(testId) {
+  const session = cropSessions.get(testId);
+  session?.bitmap.close?.();
+  cropSessions.delete(testId);
+  await showScreenshot(testId);
+}
+async function editScreenshotCrop(testId) {
+  const record = await getScreenshot(testId).catch(() => null);
+  if (record) await openScreenshotCrop(testId, record.originalImage || record.image, record.fileName || 'screenshot');
 }
 async function showScreenshot(testId) {
   const slot = main.querySelector('.image-slot');
@@ -402,7 +507,13 @@ async function showScreenshot(testId) {
     remove.type = 'button';
     remove.dataset.test = testId;
     remove.textContent = 'Remove screenshot';
-    slot.append(image, status, remove);
+    const edit = document.createElement('button');
+    edit.className = 'fm-button quiet edit-crop';
+    edit.type = 'button';
+    edit.dataset.test = testId;
+    edit.dataset.cropAction = 'edit';
+    edit.textContent = 'Crop screenshot';
+    slot.append(image, status, edit, remove);
   } catch {
     const status = document.createElement('p');
     status.className = 'upload-status';
