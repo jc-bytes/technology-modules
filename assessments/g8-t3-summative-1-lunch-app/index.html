@@ -6,21 +6,22 @@
   <meta name="theme-color" content="#15435c">
   <title>Complete your lunch app | Grade 8 Summative 1</title>
   <link rel="stylesheet" href="./shared/foundation-module.css">
-  <link rel="stylesheet" href="./app.css?v=20260924h">
+  <link rel="stylesheet" href="./app.css?v=20260924i">
 </head>
 <body>
   <div class="fm-shell">
     <header class="fm-topbar">
-      <a class="fm-brand" href="#name" aria-label="LunchApp test log home">
-        <span aria-hidden="true">LA</span>
-        <div><small>Grade 8 · T3 Summative 1</small><strong>LunchApp test log</strong></div>
+      <a class="fm-brand" href="#name" aria-label="Technology home">
+        <div><small>Technology</small><strong>Complete your lunch app</strong></div>
       </a>
       <div class="fm-tools">
-        <div id="student-summary" class="student-summary">Name not entered</div>
-        <button id="edit-identity" class="fm-button quiet" type="button">Edit details</button>
-        <button id="download-pdf" class="fm-button primary" type="button">Download PDF</button>
+        <div id="student-summary" class="student-summary"><strong id="student-summary-name">Your name</strong><span id="student-summary-grade">Your grade</span></div>
+        <button id="edit-identity" class="fm-button quiet header-edit" type="button" aria-label="Edit name and grade">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 16.5V20h3.5L19 8.5 15.5 5 4 16.5Z"/><path d="m13.5 7 3.5 3.5"/></svg>
+        </button>
+        <button id="download-pdf" class="fm-button primary header-download" type="button">Download your answers</button>
         <details id="step-menu" class="fm-menu">
-          <summary>Steps</summary>
+          <summary><span>Steps</span></summary>
           <nav id="step-navigation" aria-label="Assessment steps"></nav>
         </details>
       </div>
@@ -47,6 +48,6 @@
     </form>
   </dialog>
   <div id="toast" class="fm-toast" role="status" aria-live="polite"></div>
-  <script type="module" src="./main.js?v=20260924h"></script>
+  <script type="module" src="./main.js?v=20260924i"></script>
 </body>
 </html>

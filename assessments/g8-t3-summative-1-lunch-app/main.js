@@ -79,10 +79,10 @@ function setToast(message) {
   setToast.timer = window.setTimeout(() => toast.classList.remove('show'), 2600);
 }
 function updateHeader() {
-  const fullName = [clean(state.firstName), clean(state.lastName)].filter(Boolean).join(' ') || 'Name not entered';
+  const fullName = [clean(state.firstName), clean(state.lastName)].filter(Boolean).join(' ') || 'Your name';
   const grade = clean(state.grade);
-  document.querySelector('#student-summary').textContent = grade ? `${fullName} · Grade ${grade}` : fullName;
-  document.querySelector('#edit-identity').hidden = state.page === 'name';
+  document.querySelector('#student-summary-name').textContent = fullName;
+  document.querySelector('#student-summary-grade').textContent = grade ? `Grade ${grade}` : 'Your grade';
 }
 function renderNav() {
   nav.innerHTML = STEP_PAGES.map(([id, label], index) => `<button class="fm-nav-link ${state.page === id ? 'is-active' : ''}" type="button" data-page="${id}" ${state.page === id ? 'aria-current="step"' : ''}><span class="fm-nav-dot">${index + 1}</span><span>${label}</span></button>`).join('');
