@@ -209,7 +209,7 @@
   #fm-main:not(.name-page):has(.phone-shell) .test-layout{gap:24px;margin:10px 0}
   #fm-main:not(.name-page):has(.phone-shell) .test-meta{gap:10px}
   #fm-main:not(.name-page):has(.phone-shell) .upload-panel h2{margin-bottom:6px}
-  #fm-main:not(.name-page):has(.phone-shell) .phone-shell{width:min(100%,250px);height:clamp(300px,calc(100vh - 430px),430px);height:clamp(300px,calc(100svh - 430px),430px)}
+  #fm-main:not(.name-page):has(.phone-shell) .phone-shell{width:min(100%,clamp(169px,calc(56.25vh - 241.875px),242px));height:clamp(300px,calc(100vh - 430px),430px);width:min(100%,clamp(169px,calc(56.25svh - 241.875px),242px));height:clamp(300px,calc(100svh - 430px),430px)}
   #fm-main:not(.name-page):has(.phone-shell) .message-sample{margin:10px 0;padding:10px 14px}
   #fm-main:not(.name-page):has(.phone-shell) .fm-field textarea{min-height:64px}
   #fm-main:not(.name-page):has(.phone-shell) .fm-pager{margin-top:12px;padding-top:10px}
