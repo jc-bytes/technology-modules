@@ -147,6 +147,19 @@ function renderTest(test) {
       <div>${test.action}</div>
     </header>
     <div class="test-layout">
+      <section class="upload-panel" aria-label="Required screenshot">
+        <div class="phone-shell">
+          <h2>Required screenshot</h2>
+          <p class="file-hint">Show the selected option and message after Confirm.</p>
+          <label class="file-label">Add or replace screenshot
+            <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
+          </label>
+          <div class="image-slot phone-screen" data-test="${test.id}" tabindex="0" role="region" aria-label="Screenshot area for Test ${test.number}. Paste a copied image here." aria-live="polite"></div>
+          <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
+          <p class="upload-status" id="screenshot-status" role="status" aria-live="polite"></p>
+          <div class="screenshot-actions"></div>
+        </div>
+      </section>
       <section class="test-meta" aria-label="Test record">
         <p><strong>Meal option to test:</strong> <span class="food-value"></span></p>
         <div class="message-sample"><span>Expected message</span><strong class="expected-message"></strong></div>
@@ -161,15 +174,6 @@ function renderTest(test) {
           </select>
           <small>Choose Pass if the messages match. Otherwise choose Fail.</small>
         </label>
-      </section>
-      <section class="upload-panel">
-        <h2>Required screenshot</h2>
-        <p class="file-hint">Show the selected option and message after Confirm. You can also paste into the phone frame.</p>
-        <label class="file-label">Add or replace screenshot
-          <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
-        </label>
-        <div class="image-slot" data-test="${test.id}" tabindex="0" role="region" aria-label="Screenshot area for Test ${test.number}. Paste a copied image here." aria-live="polite"></div>
-        <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
       </section>
     </div>
     <nav class="fm-pager" aria-label="Step navigation">
@@ -270,10 +274,8 @@ main.addEventListener('paste', event => {
   event.preventDefault();
   const testId = slot.dataset.test;
   const file = pastedImage.name ? pastedImage : new File([pastedImage], `pasted-${testId}-screenshot.png`, { type: pastedImage.type || 'image/png' });
-  const status = document.createElement('p');
-  status.className = 'upload-status';
-  status.textContent = 'Preparing pasted screenshot…';
-  slot.replaceChildren(status);
+  const status = main.querySelector('#screenshot-status');
+  if (status) status.textContent = 'Preparing pasted screenshot…';
   void storeScreenshot(testId, file);
 });
 main.addEventListener('input', event => {
@@ -364,8 +366,7 @@ async function compressScreenshot(file) {
   return blob;
 }
 async function storeScreenshot(testId, file) {
-  const slot = main.querySelector('.image-slot');
-  const status = slot?.querySelector('.upload-status');
+  const status = main.querySelector('#screenshot-status');
   if (status) status.textContent = 'Saving screenshot in this browser…';
   try {
     const image = await compressScreenshot(file);
@@ -430,11 +431,8 @@ function canvasToBlob(canvas) {
 async function saveScreenshotCrop(testId, full) {
   const session = cropSessions.get(testId);
   if (!session) return;
-  const slot = main.querySelector('.image-slot');
-  const status = document.createElement('p');
-  status.className = 'upload-status';
-  status.textContent = 'Saving screenshot in this browser…';
-  slot?.replaceChildren(status);
+  const status = main.querySelector('#screenshot-status');
+  if (status) status.textContent = 'Saving screenshot in this browser…';
   try {
     const image = full ? session.image : await canvasToBlob(session.canvas);
     await saveScreenshot({ testId, image, originalImage: session.image, fileName: session.fileName, savedAt: new Date().toISOString() });
@@ -442,7 +440,7 @@ async function saveScreenshotCrop(testId, full) {
     cropSessions.delete(testId);
     await showScreenshot(testId);
   } catch (error) {
-    if (status.isConnected) status.textContent = error.message || 'Could not save the screenshot.';
+    if (status?.isConnected) status.textContent = error.message || 'Could not save the screenshot.';
     else setToast(error.message || 'Could not save the screenshot.');
   }
 }
@@ -459,7 +457,11 @@ async function editScreenshotCrop(testId) {
 async function showScreenshot(testId) {
   const slot = main.querySelector('.image-slot');
   if (!slot) return;
+  const status = main.querySelector('#screenshot-status');
+  const actions = main.querySelector('.screenshot-actions');
   slot.replaceChildren();
+  if (status) status.textContent = '';
+  if (actions) actions.replaceChildren();
   try {
     const record = await getScreenshot(testId);
     if (!record) {
@@ -471,9 +473,7 @@ async function showScreenshot(testId) {
     image.className = 'image-preview';
     image.src = activeObjectUrl;
     image.alt = `Screenshot attached to ${testId.replace('test', 'Test ')}`;
-    const status = document.createElement('p');
-    status.className = 'upload-status';
-    status.textContent = 'Screenshot saved.';
+    if (status) status.textContent = 'Screenshot saved.';
     const remove = document.createElement('button');
     remove.className = 'fm-button quiet remove-image';
     remove.type = 'button';
@@ -485,15 +485,10 @@ async function showScreenshot(testId) {
     edit.dataset.test = testId;
     edit.dataset.cropAction = 'edit';
     edit.textContent = 'Crop screenshot';
-    const phone = document.createElement('div');
-    phone.className = 'phone-frame';
-    phone.append(image);
-    slot.append(phone, status, edit, remove);
+    slot.append(image);
+    actions?.append(edit, remove);
   } catch {
-    const status = document.createElement('p');
-    status.className = 'upload-status';
-    status.textContent = 'Image storage is unavailable here. Try another browser or ask your teacher for the paper record.';
-    slot.append(status);
+    if (status) status.textContent = 'Image storage is unavailable here. Try another browser or ask your teacher for the paper record.';
   }
 }
 async function removeScreenshot(testId) {
