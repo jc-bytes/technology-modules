@@ -128,16 +128,6 @@ function renderInstructions() {
       <p id="food-error" class="inline-error" role="status" aria-live="polite"></p>
       <div class="message-sample"><span>Your app should use this message pattern:</span><strong id="message-preview"></strong></div>
     </section>
-    <section class="intro-card instructions-card">
-        <h2>What to do</h2>
-        <ol class="plain-steps">
-          <li>Open your saved LunchApp in MIT App Inventor. Keep one screen and the Confirm button.</li>
-          <li>Put your two foods in the app. Keep the <code>selected_meal</code> variable (it remembers the chosen food) and the blocks that show the message.</li>
-          <li>Run the latest APK (app file) in BrowserStack App Live.</li>
-          <li>Complete Test 1, then Test 2, then Test 3.</li>
-        </ol>
-      </section>
-    <p class="small-note">Add one screenshot to each test page. Your PDF needs all three screenshots.</p>
     <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="name">Previous step</button><button class="fm-button primary next" type="button" data-page="test1">Go to Test 1</button></nav>`;
   document.querySelector('#food-one').value = state.foodOne;
   document.querySelector('#food-two').value = state.foodTwo;
