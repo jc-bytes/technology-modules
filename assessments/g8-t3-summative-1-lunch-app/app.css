@@ -93,6 +93,12 @@
   .fm-topbar{gap:12px}
   .fm-menu nav{left:0;right:auto;width:min(330px,calc(100vw - 32px))}
 }
+@media(min-width:701px) and (max-width:1100px){
+  .fm-topbar{height:auto;min-height:0;flex-wrap:wrap;padding:14px max(20px,calc((100vw - 850px)/2));gap:12px}
+  .fm-brand{width:100%;flex:0 0 100%}
+  .fm-tools{width:100%;justify-content:flex-end;flex-wrap:wrap;gap:12px}
+  .student-summary{margin-right:auto}
+}
 @media print{
   .fm-menu,.fm-topbar,.fm-footer,.fm-pager,.upload-panel button,.fm-toast,dialog{display:none!important}
   body{background:white}
