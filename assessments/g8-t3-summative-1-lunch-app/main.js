@@ -27,12 +27,21 @@ const blankState = () => ({
 let state = loadState();
 let databasePromise;
 let activeObjectUrl;
+let cropPreviewUrl;
+let activeCropTest;
+let cropPointer;
 const cropSessions = new Map();
 const main = document.querySelector('#fm-main');
 const nav = document.querySelector('#step-navigation');
 const warning = document.querySelector('#save-warning');
 const toast = document.querySelector('#toast');
 const dialog = document.querySelector('#identity-dialog');
+const cropDialog = document.querySelector('#crop-dialog');
+const cropStage = document.querySelector('#crop-stage');
+const cropImage = document.querySelector('#crop-image');
+const cropSelection = document.querySelector('#crop-selection');
+const cropInstruction = document.querySelector('#crop-instruction');
+const cropSaveButton = document.querySelector('#crop-save');
 
 function loadState() {
   try {
@@ -278,14 +287,21 @@ main.addEventListener('paste', event => {
   if (status) status.textContent = 'Preparing pasted screenshot…';
   void storeScreenshot(testId, file);
 });
+cropStage.addEventListener('pointerdown', startCropDrag);
+cropStage.addEventListener('pointermove', moveCropDrag);
+cropStage.addEventListener('pointerup', finishCropDrag);
+cropStage.addEventListener('pointercancel', finishCropDrag);
+cropSelection.addEventListener('keydown', resizeCropWithKeyboard);
+cropDialog.addEventListener('click', event => {
+  if (event.target.closest('#crop-cancel, #crop-close')) void cancelScreenshotCrop(activeCropTest);
+  if (event.target.closest('#crop-use-full')) void saveScreenshotCrop(activeCropTest, true);
+  if (event.target.closest('#crop-save')) void saveScreenshotCrop(activeCropTest, false);
+});
+cropDialog.addEventListener('cancel', event => {
+  event.preventDefault();
+  void cancelScreenshotCrop(activeCropTest);
+});
 main.addEventListener('input', event => {
-  const cropRange = event.target.closest('.crop-range');
-  if (cropRange) {
-    const output = main.querySelector(`#${cropRange.id}-value`);
-    if (output) output.textContent = `${cropRange.value}%`;
-    drawCropPreview(cropRange.dataset.test);
-    return;
-  }
   const { id, value } = event.target;
   if (id === 'student-first-name') state.firstName = value;
   else if (id === 'student-last-name') state.lastName = value;
@@ -307,7 +323,11 @@ main.addEventListener('change', event => {
   if (match) state.tests[match[1]].decision = value;
   if (id === 'screenshot-test1' || id === 'screenshot-test2' || id === 'screenshot-test3') {
     const testId = id.replace('screenshot-', '');
-    if (event.target.files?.[0]) storeScreenshot(testId, event.target.files[0]);
+    const file = event.target.files?.[0];
+    if (file) {
+      event.target.value = '';
+      void storeScreenshot(testId, file);
+    }
   }
   saveState();
   updateHeader();
@@ -377,67 +397,178 @@ async function storeScreenshot(testId, file) {
   }
 }
 async function openScreenshotCrop(testId, image, fileName) {
-  const slot = main.querySelector('.image-slot');
-  if (!slot) return;
-  const previous = cropSessions.get(testId);
-  previous?.bitmap.close?.();
+  if (activeCropTest) {
+    cropSessions.get(activeCropTest)?.bitmap.close?.();
+    cropSessions.delete(activeCropTest);
+    closeCropDialog();
+  }
   const bitmap = await createImageBitmap(image);
-  const session = { image, fileName, bitmap };
+  const previewUrl = URL.createObjectURL(image);
+  cropImage.src = previewUrl;
+  try {
+    await cropImage.decode();
+  } catch {
+    URL.revokeObjectURL(previewUrl);
+    cropImage.removeAttribute('src');
+    bitmap.close?.();
+    throw new Error('This screenshot could not be opened in the crop tool.');
+  }
+  cropPreviewUrl = previewUrl;
+  const session = { testId, image, fileName, bitmap, selection: null };
   cropSessions.set(testId, session);
-  slot.innerHTML = `
-    <div class="crop-editor">
-      <p class="crop-title">Crop your screenshot (optional)</p>
-      <p class="file-hint">Move a slider to cut off extra space. Check the preview before saving.</p>
-      <div class="crop-preview"><canvas class="crop-canvas" role="img" aria-label="Screenshot crop preview"></canvas></div>
-      <div class="crop-controls">
-        ${[['top', 'Top'], ['right', 'Right'], ['bottom', 'Bottom'], ['left', 'Left']].map(([edge, label]) => `<label class="crop-control">Crop ${label.toLowerCase()} edge <span id="crop-${edge}-${testId}-value">0%</span><input class="crop-range" id="crop-${edge}-${testId}" data-test="${testId}" data-edge="${edge}" type="range" min="0" max="40" value="0" aria-label="Crop ${label.toLowerCase()} edge"></label>`).join('')}
-      </div>
-      <div class="crop-actions">
-        <button class="fm-button primary" type="button" data-crop-action="save" data-test="${testId}">Save this crop</button>
-        <button class="fm-button quiet" type="button" data-crop-action="full" data-test="${testId}">Use full screenshot</button>
-        <button class="fm-button quiet" type="button" data-crop-action="cancel" data-test="${testId}">Cancel</button>
-      </div>
-    </div>`;
-  session.canvas = slot.querySelector('.crop-canvas');
-  drawCropPreview(testId);
+  activeCropTest = testId;
+  updateCropSelection(session);
+  cropDialog.showModal();
 }
-function cropBounds(session) {
-  const values = Object.fromEntries([...main.querySelectorAll(`.crop-range[data-test="${session.testId}"]`)].map(input => [input.dataset.edge, Number(input.value) / 100]));
+function closeCropDialog() {
+  if (cropDialog.open) cropDialog.close();
+  if (cropPreviewUrl) URL.revokeObjectURL(cropPreviewUrl);
+  cropPreviewUrl = null;
+  cropImage.removeAttribute('src');
+  activeCropTest = null;
+  cropPointer = null;
+}
+function cropPoint(event) {
+  const rect = cropStage.getBoundingClientRect();
   return {
-    left: values.left || 0,
-    top: values.top || 0,
-    width: 1 - (values.left || 0) - (values.right || 0),
-    height: 1 - (values.top || 0) - (values.bottom || 0)
+    x: Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width)),
+    y: Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height))
   };
 }
-function drawCropPreview(testId) {
-  const session = cropSessions.get(testId);
-  if (!session?.canvas || !session.bitmap) return;
-  session.testId = testId;
-  const bounds = cropBounds(session);
-  const { width, height } = session.bitmap;
-  const sx = Math.round(width * bounds.left);
-  const sy = Math.round(height * bounds.top);
-  const sw = Math.max(1, Math.round(width * bounds.width));
-  const sh = Math.max(1, Math.round(height * bounds.height));
-  const canvas = session.canvas;
-  canvas.width = sw;
-  canvas.height = sh;
-  canvas.getContext('2d', { alpha: false }).drawImage(session.bitmap, sx, sy, sw, sh, 0, 0, sw, sh);
+function cropBoxStyle(element, box) {
+  element.style.left = `${box.x * 100}%`;
+  element.style.top = `${box.y * 100}%`;
+  element.style.width = `${box.w * 100}%`;
+  element.style.height = `${box.h * 100}%`;
+}
+function cropShade(name, box) {
+  const shade = document.querySelector(`#crop-shade-${name}`);
+  if (!box || box.w <= 0 || box.h <= 0) {
+    shade.hidden = true;
+    return;
+  }
+  shade.hidden = false;
+  cropBoxStyle(shade, box);
+}
+function updateCropSelection(session) {
+  const box = session.selection;
+  const valid = box && box.w >= 0.015 && box.h >= 0.015;
+  cropSelection.hidden = !valid;
+  cropSaveButton.disabled = !valid;
+  if (!valid) {
+    cropShade('top', { x: 0, y: 0, w: 1, h: 1 });
+    cropShade('left', null);
+    cropShade('right', null);
+    cropShade('bottom', null);
+    cropInstruction.textContent = 'Drag over the screenshot to choose the area to keep.';
+    return;
+  }
+  cropBoxStyle(cropSelection, box);
+  cropShade('top', { x: 0, y: 0, w: 1, h: box.y });
+  cropShade('bottom', { x: 0, y: box.y + box.h, w: 1, h: 1 - box.y - box.h });
+  cropShade('left', { x: 0, y: box.y, w: box.x, h: box.h });
+  cropShade('right', { x: box.x + box.w, y: box.y, w: 1 - box.x - box.w, h: box.h });
+  cropInstruction.textContent = 'Drag the box to move it. Drag a corner to resize.';
+}
+function startCropDrag(event) {
+  const session = cropSessions.get(activeCropTest);
+  if (!session || event.button !== 0) return;
+  const target = event.target instanceof Element ? event.target : cropStage;
+  const point = cropPoint(event);
+  const handle = target.closest('[data-handle]')?.dataset.handle;
+  if (handle && session.selection) {
+    cropPointer = { pointerId: event.pointerId, mode: 'resize', handle, start: point, initial: { ...session.selection } };
+  } else if (session.selection && cropSelection.contains(target)) {
+    cropPointer = { pointerId: event.pointerId, mode: 'move', start: point, initial: { ...session.selection } };
+  } else {
+    session.selection = { x: point.x, y: point.y, w: 0, h: 0 };
+    cropPointer = { pointerId: event.pointerId, mode: 'draw', start: point };
+    updateCropSelection(session);
+  }
+  event.preventDefault();
+  cropStage.setPointerCapture(event.pointerId);
+}
+function resizeCropBox(box, handle, point) {
+  const minSide = 0.015;
+  let left = box.x;
+  let top = box.y;
+  let right = box.x + box.w;
+  let bottom = box.y + box.h;
+  if (handle.endsWith('w')) left = Math.max(0, Math.min(point.x, right - minSide));
+  else right = Math.min(1, Math.max(point.x, left + minSide));
+  if (handle.startsWith('n')) top = Math.max(0, Math.min(point.y, bottom - minSide));
+  else bottom = Math.min(1, Math.max(point.y, top + minSide));
+  return { x: left, y: top, w: right - left, h: bottom - top };
+}
+function moveCropDrag(event) {
+  if (!cropPointer || event.pointerId !== cropPointer.pointerId) return;
+  const session = cropSessions.get(activeCropTest);
+  if (!session) return;
+  event.preventDefault();
+  const point = cropPoint(event);
+  const { start, initial, mode, handle } = cropPointer;
+  if (mode === 'draw') {
+    session.selection = { x: Math.min(start.x, point.x), y: Math.min(start.y, point.y), w: Math.abs(point.x - start.x), h: Math.abs(point.y - start.y) };
+  } else if (mode === 'move') {
+    const x = Math.max(0, Math.min(1 - initial.w, initial.x + point.x - start.x));
+    const y = Math.max(0, Math.min(1 - initial.h, initial.y + point.y - start.y));
+    session.selection = { ...initial, x, y };
+  } else {
+    session.selection = resizeCropBox(initial, handle, point);
+  }
+  updateCropSelection(session);
+}
+function finishCropDrag(event) {
+  if (!cropPointer || event.pointerId !== cropPointer.pointerId) return;
+  const session = cropSessions.get(activeCropTest);
+  if (session && (!session.selection || session.selection.w < 0.015 || session.selection.h < 0.015)) session.selection = null;
+  cropPointer = null;
+  if (cropStage.hasPointerCapture(event.pointerId)) cropStage.releasePointerCapture(event.pointerId);
+  if (session) updateCropSelection(session);
+}
+function resizeCropWithKeyboard(event) {
+  const target = event.target instanceof Element ? event.target : null;
+  const handle = target?.closest('[data-handle]')?.dataset.handle;
+  const session = cropSessions.get(activeCropTest);
+  if (!handle || !session?.selection || !event.key.startsWith('Arrow')) return;
+  const delta = event.shiftKey ? 0.05 : 0.01;
+  const box = session.selection;
+  const point = {
+    x: (handle.endsWith('w') ? box.x : box.x + box.w) + (event.key === 'ArrowLeft' ? -delta : event.key === 'ArrowRight' ? delta : 0),
+    y: (handle.startsWith('n') ? box.y : box.y + box.h) + (event.key === 'ArrowUp' ? -delta : event.key === 'ArrowDown' ? delta : 0)
+  };
+  event.preventDefault();
+  session.selection = resizeCropBox(box, handle, { x: Math.max(0, Math.min(1, point.x)), y: Math.max(0, Math.min(1, point.y)) });
+  updateCropSelection(session);
 }
 function canvasToBlob(canvas) {
   return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('This crop could not be prepared.')), 'image/jpeg', 0.9));
 }
+async function cropScreenshotBlob(session) {
+  if (!session.selection) throw new Error('Drag over the screenshot to select an area first.');
+  const { width, height } = session.bitmap;
+  const { x, y, w, h } = session.selection;
+  const sx = Math.round(width * x);
+  const sy = Math.round(height * y);
+  const sw = Math.min(width - sx, Math.max(1, Math.round(width * w)));
+  const sh = Math.min(height - sy, Math.max(1, Math.round(height * h)));
+  const canvas = document.createElement('canvas');
+  canvas.width = sw;
+  canvas.height = sh;
+  canvas.getContext('2d', { alpha: false }).drawImage(session.bitmap, sx, sy, sw, sh, 0, 0, sw, sh);
+  return canvasToBlob(canvas);
+}
 async function saveScreenshotCrop(testId, full) {
   const session = cropSessions.get(testId);
-  if (!session) return;
+  if (!session || (!full && !session.selection)) return;
   const status = main.querySelector('#screenshot-status');
   if (status) status.textContent = 'Saving screenshot in this browser…';
   try {
-    const image = full ? session.image : await canvasToBlob(session.canvas);
+    const image = full ? session.image : await cropScreenshotBlob(session);
     await saveScreenshot({ testId, image, originalImage: session.image, fileName: session.fileName, savedAt: new Date().toISOString() });
     session.bitmap.close?.();
     cropSessions.delete(testId);
+    closeCropDialog();
     await showScreenshot(testId);
   } catch (error) {
     if (status?.isConnected) status.textContent = error.message || 'Could not save the screenshot.';
@@ -445,9 +576,11 @@ async function saveScreenshotCrop(testId, full) {
   }
 }
 async function cancelScreenshotCrop(testId) {
+  if (!testId) return;
   const session = cropSessions.get(testId);
   session?.bitmap.close?.();
   cropSessions.delete(testId);
+  closeCropDialog();
   await showScreenshot(testId);
 }
 async function editScreenshotCrop(testId) {

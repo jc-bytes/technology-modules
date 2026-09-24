@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#15435c">
   <title>Complete your lunch app | Grade 8 Summative 1</title>
   <link rel="stylesheet" href="./shared/foundation-module.css">
-  <link rel="stylesheet" href="./app.css?v=20260924u">
+  <link rel="stylesheet" href="./app.css?v=20260924v">
 </head>
 <body>
   <div class="fm-shell">
@@ -29,6 +29,34 @@
     <div id="save-warning" role="status" aria-live="polite"></div>
     <main id="fm-main" tabindex="-1"></main>
   </div>
+  <dialog id="crop-dialog" class="crop-dialog" aria-labelledby="crop-title">
+    <div class="crop-modal">
+      <header class="crop-dialog-heading">
+        <div><h2 id="crop-title">Crop screenshot</h2><p id="crop-instruction">Drag over the screenshot to choose the area to keep.</p></div>
+        <button id="crop-close" type="button" aria-label="Close crop tool">×</button>
+      </header>
+      <div class="crop-workspace">
+        <div id="crop-stage" class="crop-stage">
+          <img id="crop-image" alt="Screenshot to crop" draggable="false">
+          <div id="crop-shade-top" class="crop-shade"></div>
+          <div id="crop-shade-left" class="crop-shade"></div>
+          <div id="crop-shade-right" class="crop-shade"></div>
+          <div id="crop-shade-bottom" class="crop-shade"></div>
+          <div id="crop-selection" class="crop-selection" hidden aria-label="Selected crop area">
+            <button class="crop-handle handle-nw" type="button" data-handle="nw" aria-label="Resize top left corner"></button>
+            <button class="crop-handle handle-ne" type="button" data-handle="ne" aria-label="Resize top right corner"></button>
+            <button class="crop-handle handle-sw" type="button" data-handle="sw" aria-label="Resize bottom left corner"></button>
+            <button class="crop-handle handle-se" type="button" data-handle="se" aria-label="Resize bottom right corner"></button>
+          </div>
+        </div>
+      </div>
+      <footer class="crop-dialog-actions">
+        <button id="crop-use-full" class="fm-button quiet" type="button">Use full screenshot</button>
+        <button id="crop-cancel" class="fm-button quiet" type="button">Cancel</button>
+        <button id="crop-save" class="fm-button primary" type="button" disabled>Save crop</button>
+      </footer>
+    </div>
+  </dialog>
   <dialog id="identity-dialog" aria-labelledby="identity-title">
     <form id="identity-form" method="dialog">
       <div class="fm-dialog-heading">
@@ -48,6 +76,6 @@
     </form>
   </dialog>
   <div id="toast" class="fm-toast" role="status" aria-live="polite"></div>
-  <script type="module" src="./main.js?v=20260924u"></script>
+  <script type="module" src="./main.js?v=20260924v"></script>
 </body>
 </html>
