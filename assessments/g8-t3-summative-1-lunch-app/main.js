@@ -7,13 +7,14 @@ const TESTS = [
   { id: 'test3', number: 3, food: 'one', action: 'Choose food 1 again, then press Confirm.' }
 ];
 const STEP_PAGES = [
-  ['name', 'Your name'], ['instructions', 'Instructions'], ['test1', 'Test 1'],
+  ['name', 'Name'], ['instructions', 'Instructions'], ['test1', 'Test 1'],
   ['test2', 'Test 2'], ['test3', 'Test 3'], ['explain', 'Explain'], ['submit', 'What to hand in']
 ];
 const blankState = () => ({
   page: 'name',
-  name: '',
-  group: '',
+  firstName: '',
+  lastName: '',
+  grade: '',
   foodOne: 'Rice',
   foodTwo: 'Vegetables',
   tests: {
@@ -38,12 +39,20 @@ function loadState() {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
     if (!saved || typeof saved !== 'object') return blankState();
     const base = blankState();
+    const legacyName = clean(saved.name).split(/\s+/).filter(Boolean);
+    const legacyGroup = clean(saved.group);
+    const legacyFirstName = saved.firstName === undefined ? legacyName[0] ?? '' : '';
+    const legacyLastName = saved.lastName === undefined ? legacyName.slice(saved.firstName === undefined ? 1 : 0).join(' ') : '';
     const next = {
       ...base,
       ...saved,
+      firstName: saved.firstName ?? legacyFirstName,
+      lastName: saved.lastName ?? legacyLastName,
+      grade: saved.grade ?? (/^8[AB]$/i.test(legacyGroup) ? '8' : ''),
       tests: Object.fromEntries(Object.keys(base.tests).map(id => [id, { ...base.tests[id], ...(saved.tests?.[id] || {}) }]))
     };
-    if (!clean(next.name) || !clean(next.group)) next.page = 'name';
+    delete next.name;
+    delete next.group;
     return next;
   } catch {
     return blankState();
@@ -70,9 +79,9 @@ function setToast(message) {
   setToast.timer = window.setTimeout(() => toast.classList.remove('show'), 2600);
 }
 function updateHeader() {
-  const fullName = clean(state.name) || 'Name not entered';
-  const group = clean(state.group);
-  document.querySelector('#student-summary').textContent = group ? `${fullName} · ${group}` : fullName;
+  const fullName = [clean(state.firstName), clean(state.lastName)].filter(Boolean).join(' ') || 'Name not entered';
+  const grade = clean(state.grade);
+  document.querySelector('#student-summary').textContent = grade ? `${fullName} · Grade ${grade}` : fullName;
   document.querySelector('#edit-identity').hidden = state.page === 'name';
 }
 function renderNav() {
@@ -81,22 +90,23 @@ function renderNav() {
 function renderName() {
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Step 1 of 7 · Start here</p>
-      <h1>Your name and group</h1>
-      <div>Your name and group go on your PDF.</div>
+      <h1>What’s your name?</h1>
     </header>
-    <section class="fm-block">
-      <label class="fm-field">Your name
-        <input id="student-name" maxlength="60" autocomplete="name" required>
+    <section class="name-form" aria-label="Student details">
+      <label class="fm-field">First name
+        <input id="student-first-name" maxlength="60" autocomplete="given-name">
       </label>
-      <label class="fm-field">Your group
-        <select id="student-group" required><option value="">Choose your group</option><option value="8A">8A</option><option value="8B">8B</option></select>
+      <label class="fm-field">Last name
+        <input id="student-last-name" maxlength="60" autocomplete="family-name">
       </label>
-      <p id="identity-error" class="inline-error" role="status" aria-live="polite"></p>
+      <label class="fm-field">Grade
+        <input id="student-grade" maxlength="12" autocomplete="off">
+      </label>
     </section>
-    <nav class="fm-pager" aria-label="Step navigation"><span></span><button class="fm-button primary next" type="button" data-page="instructions">Continue to Instructions</button></nav>`;
-  document.querySelector('#student-name').value = state.name;
-  document.querySelector('#student-group').value = state.group;
+    <nav class="name-pager" aria-label="Continue"><button class="fm-button primary" type="button" data-page="instructions">Continue</button></nav>`;
+  document.querySelector('#student-first-name').value = state.firstName;
+  document.querySelector('#student-last-name').value = state.lastName;
+  document.querySelector('#student-grade').value = state.grade;
 }
 function renderInstructions() {
   main.innerHTML = `
@@ -215,6 +225,9 @@ function renderSubmission() {
     <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="explain">Previous step</button><span></span></nav>`;
 }
 function render() {
+  const isNamePage = state.page === 'name';
+  document.body.classList.toggle('name-screen', isNamePage);
+  main.classList.toggle('name-page', isNamePage);
   updateHeader();
   renderNav();
   if (state.page === 'name') renderName();
@@ -267,7 +280,9 @@ main.addEventListener('input', event => {
     return;
   }
   const { id, value } = event.target;
-  if (id === 'student-name') state.name = value;
+  if (id === 'student-first-name') state.firstName = value;
+  else if (id === 'student-last-name') state.lastName = value;
+  else if (id === 'student-grade') state.grade = value;
   else if (id === 'food-one') state.foodOne = value;
   else if (id === 'food-two') state.foodTwo = value;
   else if (id === 'explanation') state.explanation = value;
@@ -276,22 +291,11 @@ main.addEventListener('input', event => {
     if (match) state.tests[match[1]].actual = value;
   }
   saveState();
-  if (id === 'student-name' || id === 'student-group') {
-    if (clean(state.name) && clean(state.group)) {
-      const error = document.querySelector('#identity-error');
-      if (error) error.textContent = '';
-    }
-  }
   updateHeader();
   updateFoodPreview();
 });
 main.addEventListener('change', event => {
   const { id, value } = event.target;
-  if (id === 'student-group') state.group = value;
-  if (id === 'student-group' && clean(state.name) && clean(state.group)) {
-    const error = document.querySelector('#identity-error');
-    if (error) error.textContent = '';
-  }
   const match = id.match(/^decision-(test[123])$/);
   if (match) state.tests[match[1]].decision = value;
   if (id === 'screenshot-test1' || id === 'screenshot-test2' || id === 'screenshot-test3') {
@@ -512,7 +516,9 @@ function addHeader(doc, title, pageNo) {
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(80, 100, 110);
   doc.setFontSize(8);
-  doc.text(`${clean(state.name) || 'Name not entered'} | ${clean(state.group) || 'Group not entered'} | ${formatDate()}`, 15, 39);
+  const studentName = [clean(state.firstName), clean(state.lastName)].filter(Boolean).join(' ') || 'Name not entered';
+  const grade = clean(state.grade) ? `Grade ${clean(state.grade)}` : 'Grade not entered';
+  doc.text(`${studentName} | ${grade} | ${formatDate()}`, 15, 39);
   doc.text(`Page ${pageNo} of 5`, width - 15, 39, { align: 'right' });
   doc.setTextColor(16, 47, 64);
 }
@@ -654,14 +660,6 @@ function addExplainPage(doc) {
 }
 async function downloadPdf() {
   try {
-    if (!clean(state.name) || !clean(state.group)) {
-      state.page = 'name';
-      saveState();
-      render();
-      const error = document.querySelector('#identity-error');
-      if (error) error.textContent = 'Enter your name and choose your group before downloading.';
-      return;
-    }
     for (const test of TESTS) {
       const screenshot = await getScreenshot(test.id).catch(() => null);
       if (screenshot) continue;
@@ -690,7 +688,8 @@ async function downloadPdf() {
     doc.addPage('letter', 'portrait');
     addExplainPage(doc);
     addFooter(doc, 5);
-    const filename = `${(clean(state.name) || 'Student').replace(/[^A-Za-z0-9_-]+/g, '_')}-LunchApp-test-record.pdf`;
+    const studentName = [clean(state.firstName), clean(state.lastName)].filter(Boolean).join(' ');
+    const filename = `${(studentName || 'Student').replace(/[^A-Za-z0-9_-]+/g, '_')}-LunchApp-test-record.pdf`;
     doc.save(filename);
   } catch (error) {
     setToast(error.message || 'Could not make the PDF. Try again in this browser.');
@@ -698,15 +697,17 @@ async function downloadPdf() {
 }
 document.querySelector('#download-pdf').addEventListener('click', downloadPdf);
 document.querySelector('#edit-identity').addEventListener('click', () => {
-  document.querySelector('#dialog-name').value = state.name;
-  document.querySelector('#dialog-group').value = state.group;
+  document.querySelector('#dialog-first-name').value = state.firstName;
+  document.querySelector('#dialog-last-name').value = state.lastName;
+  document.querySelector('#dialog-grade').value = state.grade;
   dialog.showModal();
 });
 document.querySelector('#close-identity').addEventListener('click', () => dialog.close());
 document.querySelector('#identity-form').addEventListener('submit', event => {
   event.preventDefault();
-  state.name = document.querySelector('#dialog-name').value;
-  state.group = document.querySelector('#dialog-group').value;
+  state.firstName = document.querySelector('#dialog-first-name').value;
+  state.lastName = document.querySelector('#dialog-last-name').value;
+  state.grade = document.querySelector('#dialog-grade').value;
   saveState();
   updateHeader();
   dialog.close();

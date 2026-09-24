@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#15435c">
   <title>Complete your lunch app | Grade 8 Summative 1</title>
   <link rel="stylesheet" href="./shared/foundation-module.css">
-  <link rel="stylesheet" href="./app.css?v=20260924f">
+  <link rel="stylesheet" href="./app.css?v=20260924g">
 </head>
 <body>
   <div class="fm-shell">
@@ -17,7 +17,7 @@
       </a>
       <div class="fm-tools">
         <div id="student-summary" class="student-summary">Name not entered</div>
-        <button id="edit-identity" class="fm-button quiet" type="button">Edit name</button>
+        <button id="edit-identity" class="fm-button quiet" type="button">Edit details</button>
         <button id="download-pdf" class="fm-button primary" type="button">Download PDF</button>
         <details id="step-menu" class="fm-menu">
           <summary>Steps</summary>
@@ -31,21 +31,22 @@
   <dialog id="identity-dialog" aria-labelledby="identity-title">
     <form id="identity-form" method="dialog">
       <div class="fm-dialog-heading">
-        <div><small>Student details</small><h2 id="identity-title">Your name and group</h2></div>
+        <div><small>Student details</small><h2 id="identity-title">Your name and grade</h2></div>
         <button type="button" id="close-identity" aria-label="Close">×</button>
       </div>
-      <label class="fm-field">Name
-        <input id="dialog-name" name="name" maxlength="60" autocomplete="name">
+      <label class="fm-field">First name
+        <input id="dialog-first-name" name="given-name" maxlength="60" autocomplete="given-name">
       </label>
-      <label class="fm-field">Group
-        <select id="dialog-group" name="group">
-          <option value="">Choose your group</option><option value="8A">8A</option><option value="8B">8B</option>
-        </select>
+      <label class="fm-field">Last name
+        <input id="dialog-last-name" name="family-name" maxlength="60" autocomplete="family-name">
+      </label>
+      <label class="fm-field">Grade
+        <input id="dialog-grade" name="grade" maxlength="12" autocomplete="off">
       </label>
       <button class="fm-button primary" type="submit">Save details</button>
     </form>
   </dialog>
   <div id="toast" class="fm-toast" role="status" aria-live="polite"></div>
-  <script type="module" src="./main.js?v=20260924f"></script>
+  <script type="module" src="./main.js?v=20260924g"></script>
 </body>
 </html>
