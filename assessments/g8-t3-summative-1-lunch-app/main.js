@@ -6,8 +6,12 @@ const TESTS = [
   { id: 'test2', number: 2, food: 'two', action: 'Choose food 2 in your app, then press Confirm.' },
   { id: 'test3', number: 3, food: 'one', action: 'Choose food 1 again, then press Confirm.' }
 ];
+const STEP_PAGES = [
+  ['name', 'Your name'], ['instructions', 'Instructions'], ['test1', 'Test 1'],
+  ['test2', 'Test 2'], ['test3', 'Test 3'], ['explain', 'Explain']
+];
 const blankState = () => ({
-  page: 'instructions',
+  page: 'name',
   name: '',
   group: '',
   foodOne: 'Rice',
@@ -33,11 +37,13 @@ function loadState() {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
     if (!saved || typeof saved !== 'object') return blankState();
     const base = blankState();
-    return {
+    const next = {
       ...base,
       ...saved,
       tests: Object.fromEntries(Object.keys(base.tests).map(id => [id, { ...base.tests[id], ...(saved.tests?.[id] || {}) }]))
     };
+    if (!clean(next.name) || !clean(next.group)) next.page = 'name';
+    return next;
   } catch {
     return blankState();
   }
@@ -68,31 +74,36 @@ function updateHeader() {
   document.querySelector('#student-summary').textContent = group ? `${fullName} · ${group}` : fullName;
 }
 function renderNav() {
-  const pages = [
-    ['instructions', 'Instructions'], ['test1', 'Test 1'], ['test2', 'Test 2'],
-    ['test3', 'Test 3'], ['explain', 'Explain']
-  ];
-  nav.innerHTML = pages.map(([id, label], index) => `<button class="fm-nav-link ${state.page === id ? 'is-active' : ''}" type="button" data-page="${id}" ${state.page === id ? 'aria-current="step"' : ''}><span class="fm-nav-dot">${index + 1}</span><span>${label}</span></button>`).join('');
+  nav.innerHTML = STEP_PAGES.map(([id, label], index) => `<button class="fm-nav-link ${state.page === id ? 'is-active' : ''}" type="button" data-page="${id}" ${state.page === id ? 'aria-current="step"' : ''}><span class="fm-nav-dot">${index + 1}</span><span>${label}</span></button>`).join('');
+}
+function renderName() {
+  main.innerHTML = `
+    <header class="fm-hero">
+      <p class="fm-label">Step 1 of 6 · Start here</p>
+      <h1>Your name and group</h1>
+      <div>Enter these details first so your test record belongs to you.</div>
+    </header>
+    <section class="fm-block">
+      <label class="fm-field">Your name
+        <input id="student-name" maxlength="60" autocomplete="name" required>
+      </label>
+      <label class="fm-field">Your group
+        <select id="student-group" required><option value="">Choose your group</option><option value="8A">8A</option><option value="8B">8B</option></select>
+      </label>
+      <p id="identity-error" class="inline-error" role="status" aria-live="polite"></p>
+      <p class="file-hint">The date is added to your PDF when you download it.</p>
+    </section>
+    <nav class="fm-pager" aria-label="Step navigation"><span></span><button class="fm-button primary next" type="button" data-page="instructions">Continue to Instructions</button></nav>`;
+  document.querySelector('#student-name').value = state.name;
+  document.querySelector('#student-group').value = state.group;
 }
 function renderInstructions() {
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Step 1 of 5 · Start here</p>
+      <p class="fm-label">Step 2 of 6</p>
       <h1>Complete your lunch app</h1>
       <div>Use your saved app. Check what it says when you choose a food.</div>
     </header>
-    <section class="fm-block">
-      <h2>First, add your details</h2>
-      <div class="choice-fields">
-        <label class="fm-field">Your name
-          <input id="student-name" maxlength="60" autocomplete="name" value="">
-        </label>
-        <label class="fm-field">Your group
-          <select id="student-group"><option value="">Choose your group</option><option value="8A">8A</option><option value="8B">8B</option></select>
-        </label>
-      </div>
-      <p class="file-hint">The date is added to your PDF when you download it.</p>
-    </section>
     <section class="fm-block">
       <h2>Choose two foods</h2>
       <p>Rice and Vegetables are ready to use. You may keep them or choose two different foods. Use the same two names in your app's food selector.</p>
@@ -127,9 +138,7 @@ function renderInstructions() {
         <p class="small-note">A screenshot is required for every test. Add it on that test page before moving on. The PDF will not download until all three screenshots are attached.</p>
       </section>
     </div>
-    <nav class="fm-pager" aria-label="Step navigation"><span></span><button class="fm-button primary next" type="button" data-page="test1">Go to Test 1</button></nav>`;
-  document.querySelector('#student-name').value = state.name;
-  document.querySelector('#student-group').value = state.group;
+    <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="name">Previous step</button><button class="fm-button primary next" type="button" data-page="test1">Go to Test 1</button></nav>`;
   document.querySelector('#food-one').value = state.foodOne;
   document.querySelector('#food-two').value = state.foodTwo;
   updateFoodPreview();
@@ -143,7 +152,7 @@ function renderTest(test) {
   const meal = selectedFood(test.food);
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Step ${test.number + 1} of 5 · Test ${test.number}</p>
+      <p class="fm-label">Step ${test.number + 2} of 6 · Test ${test.number}</p>
       <h1>Test ${test.number}</h1>
       <div>${test.action}</div>
     </header>
@@ -184,7 +193,7 @@ function renderTest(test) {
 function renderExplain() {
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Step 5 of 5 · Last step</p>
+      <p class="fm-label">Step 6 of 6 · Last step</p>
       <h1>Explain the variable</h1>
       <div>Say what selected_meal remembers and how the message uses it.</div>
     </header>
@@ -208,7 +217,8 @@ function renderExplain() {
 function render() {
   updateHeader();
   renderNav();
-  if (state.page === 'instructions') renderInstructions();
+  if (state.page === 'name') renderName();
+  else if (state.page === 'instructions') renderInstructions();
   else if (state.page === 'explain') renderExplain();
   else {
     const test = TESTS.find(item => item.id === state.page) || TESTS[0];
@@ -217,10 +227,18 @@ function render() {
   }
 }
 async function setPage(id) {
-  const allowed = ['instructions', 'test1', 'test2', 'test3', 'explain'];
+  const allowed = STEP_PAGES.map(([page]) => page);
   if (!allowed.includes(id)) return;
-  const targetIndex = allowed.indexOf(id);
-  const requiredBefore = targetIndex >= 2 ? TESTS.slice(0, targetIndex - 1) : [];
+  const targetTestIndex = TESTS.findIndex(test => test.id === id);
+  const requiredBefore = targetTestIndex >= 0 ? TESTS.slice(0, targetTestIndex) : id === 'explain' ? TESTS : [];
+  if (id !== 'name' && (!clean(state.name) || !clean(state.group))) {
+    state.page = 'name';
+    saveState();
+    render();
+    const error = document.querySelector('#identity-error');
+    if (error) error.textContent = 'Enter your name and choose your group before continuing.';
+    return;
+  }
   for (const test of requiredBefore) {
     const screenshot = await getScreenshot(test.id).catch(() => null);
     if (!screenshot) {
@@ -231,7 +249,7 @@ async function setPage(id) {
       return;
     }
   }
-  if (state.page === 'instructions' && id !== 'instructions') {
+  if (state.page === 'instructions' && targetTestIndex >= 0) {
     const first = clean(state.foodOne), second = clean(state.foodTwo);
     if (!first || !second || first.toLocaleLowerCase() === second.toLocaleLowerCase()) {
       const error = document.querySelector('#food-error');
@@ -266,12 +284,22 @@ main.addEventListener('input', event => {
     if (match) state.tests[match[1]].actual = value;
   }
   saveState();
+  if (id === 'student-name' || id === 'student-group') {
+    if (clean(state.name) && clean(state.group)) {
+      const error = document.querySelector('#identity-error');
+      if (error) error.textContent = '';
+    }
+  }
   updateHeader();
   updateFoodPreview();
 });
 main.addEventListener('change', event => {
   const { id, value } = event.target;
   if (id === 'student-group') state.group = value;
+  if (id === 'student-group' && clean(state.name) && clean(state.group)) {
+    const error = document.querySelector('#identity-error');
+    if (error) error.textContent = '';
+  }
   const match = id.match(/^decision-(test[123])$/);
   if (match) state.tests[match[1]].decision = value;
   if (id === 'screenshot-test1' || id === 'screenshot-test2' || id === 'screenshot-test3') {
@@ -553,6 +581,14 @@ function addExplainPage(doc) {
 }
 async function downloadPdf() {
   try {
+    if (!clean(state.name) || !clean(state.group)) {
+      state.page = 'name';
+      saveState();
+      render();
+      const error = document.querySelector('#identity-error');
+      if (error) error.textContent = 'Enter your name and choose your group before downloading.';
+      return;
+    }
     for (const test of TESTS) {
       const screenshot = await getScreenshot(test.id).catch(() => null);
       if (screenshot) continue;
@@ -601,6 +637,10 @@ document.querySelector('#identity-form').addEventListener('submit', event => {
   saveState();
   updateHeader();
   dialog.close();
-  if (state.page === 'instructions') render();
+  if (state.page === 'name' || state.page === 'instructions') render();
+});
+document.querySelector('.fm-brand').addEventListener('click', event => {
+  event.preventDefault();
+  void setPage('name');
 });
 render();
