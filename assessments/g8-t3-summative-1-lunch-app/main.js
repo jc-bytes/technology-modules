@@ -164,11 +164,11 @@ function renderTest(test) {
       </section>
       <section class="upload-panel">
         <h2>Required screenshot</h2>
-        <p class="file-hint">Show the selected food and result after Confirm. You can crop off extra space before saving.</p>
+        <p class="file-hint">Show the food and result after Confirm. You can also paste into the phone frame.</p>
         <label class="file-label">Add or replace screenshot
           <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
         </label>
-        <div class="image-slot" aria-live="polite"></div>
+        <div class="image-slot" data-test="${test.id}" tabindex="0" role="region" aria-label="Screenshot area for Test ${test.number}. Paste a copied image here." aria-live="polite"></div>
         <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
       </section>
     </div>
@@ -260,6 +260,21 @@ main.addEventListener('click', event => {
     if (cropAction === 'cancel') void cancelScreenshotCrop(test);
     if (cropAction === 'edit') void editScreenshotCrop(test);
   }
+});
+main.addEventListener('paste', event => {
+  const slot = event.target instanceof Element ? event.target.closest('.image-slot') : null;
+  if (!slot || !main.contains(slot) || event.target.closest('input, textarea, select, button, [contenteditable="true"]')) return;
+  const imageItem = [...(event.clipboardData?.items || [])].find(item => item.kind === 'file' && item.type.startsWith('image/'));
+  const pastedImage = imageItem?.getAsFile();
+  if (!pastedImage) return;
+  event.preventDefault();
+  const testId = slot.dataset.test;
+  const file = pastedImage.name ? pastedImage : new File([pastedImage], `pasted-${testId}-screenshot.png`, { type: pastedImage.type || 'image/png' });
+  const status = document.createElement('p');
+  status.className = 'upload-status';
+  status.textContent = 'Preparing pasted screenshot…';
+  slot.replaceChildren(status);
+  void storeScreenshot(testId, file);
 });
 main.addEventListener('input', event => {
   const cropRange = event.target.closest('.crop-range');
@@ -470,7 +485,10 @@ async function showScreenshot(testId) {
     edit.dataset.test = testId;
     edit.dataset.cropAction = 'edit';
     edit.textContent = 'Crop screenshot';
-    slot.append(image, status, edit, remove);
+    const phone = document.createElement('div');
+    phone.className = 'phone-frame';
+    phone.append(image);
+    slot.append(phone, status, edit, remove);
   } catch {
     const status = document.createElement('p');
     status.className = 'upload-status';

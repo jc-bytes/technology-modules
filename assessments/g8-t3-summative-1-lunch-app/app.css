@@ -156,6 +156,12 @@
 #fm-main:not(.name-page) .file-hint,
 #fm-main:not(.name-page) .upload-status{color:#506564;font-size:.875rem;line-height:1.5}
 #fm-main:not(.name-page) .image-preview{max-height:300px;border-color:#b6c2bd;background:#f7f5ef}
+#fm-main:not(.name-page) .image-slot:empty{width:min(100%,226px);aspect-ratio:9/16;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin:14px auto;padding:18px;border:7px solid #183232;border-radius:30px;background:#f7f5ef;color:#506564;text-align:center;cursor:pointer}
+#fm-main:not(.name-page) .image-slot:empty::before{content:"Click here to paste";font-weight:700}
+#fm-main:not(.name-page) .image-slot:empty::after{content:"Ctrl+V · ⌘V";font-size:.85rem}
+#fm-main:not(.name-page) .image-slot:focus-visible{outline:3px solid #286883;outline-offset:4px}
+#fm-main:not(.name-page) .phone-frame{width:min(100%,226px);aspect-ratio:9/16;margin:14px auto;padding:7px;border:7px solid #183232;border-radius:30px;background:#183232}
+#fm-main:not(.name-page) .phone-frame .image-preview{width:100%;height:100%;max-width:none;max-height:none;margin:0;border:0;border-radius:16px;background:#f7f5ef;object-fit:contain}
 #fm-main:not(.name-page) .variable-frame{margin:18px 0;padding:16px 20px;border-left:4px solid #286883;background:#f7f5ef;line-height:1.65}
 #fm-main:not(.name-page) .fm-pager{display:flex;justify-content:space-between;gap:12px;margin:24px 0 0;padding-top:20px;border-top:1px solid #d8ded9}
 #fm-main:not(.name-page) .fm-pager button{width:auto;min-width:124px;min-height:48px;justify-content:center;border-radius:6px}
