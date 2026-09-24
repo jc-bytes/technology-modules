@@ -164,7 +164,6 @@ function renderTest(test) {
         <input class="upload-input" type="file" id="screenshot-${test.id}" accept="image/*" tabindex="-1" aria-hidden="true">
         <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
         <p class="upload-status" id="screenshot-status" role="status" aria-live="polite"></p>
-        <div class="screenshot-actions"></div>
       </section>
       <section class="test-meta" aria-label="Test record">
         <p><strong>Meal option to test:</strong> <span class="food-value"></span></p>
@@ -592,11 +591,9 @@ async function showScreenshot(testId) {
   const slot = main.querySelector('.image-slot');
   if (!slot) return;
   const status = main.querySelector('#screenshot-status');
-  const actions = main.querySelector('.screenshot-actions');
   slot.replaceChildren();
   slot.classList.remove('has-image');
   if (status) status.textContent = '';
-  if (actions) actions.replaceChildren();
   try {
     const record = await getScreenshot(testId);
     if (!record) {
@@ -626,6 +623,10 @@ async function showScreenshot(testId) {
     image.alt = `Screenshot attached to ${testId.replace('test', 'Test ')}`;
     slot.classList.add('has-image');
     if (status) status.textContent = 'Screenshot saved.';
+    const actions = document.createElement('div');
+    actions.className = 'screenshot-actions';
+    actions.setAttribute('role', 'group');
+    actions.setAttribute('aria-label', 'Screenshot options');
     const remove = document.createElement('button');
     remove.className = 'fm-button quiet remove-image';
     remove.type = 'button';
@@ -642,8 +643,8 @@ async function showScreenshot(testId) {
     replace.type = 'button';
     replace.dataset.uploadImage = testId;
     replace.textContent = 'Replace screenshot';
-    slot.append(image);
-    actions?.append(edit, replace, remove);
+    actions.append(edit, replace, remove);
+    slot.append(image, actions);
   } catch {
     if (status) status.textContent = 'Image storage is unavailable here. Try another browser or ask your teacher for the paper record.';
   }
