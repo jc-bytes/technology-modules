@@ -2,9 +2,9 @@ const STORAGE_KEY = 'g8:lunchapp:summative-1:v1';
 const DB_NAME = 'g8-lunchapp-summative-1';
 const DB_VERSION = 1;
 const TESTS = [
-  { id: 'test1', number: 1, food: 'one', action: 'Choose food 1 in your app, then press Confirm.' },
-  { id: 'test2', number: 2, food: 'two', action: 'Choose food 2 in your app, then press Confirm.' },
-  { id: 'test3', number: 3, food: 'one', action: 'Choose food 1 again, then press Confirm.' }
+  { id: 'test1', number: 1, food: 'one', action: 'Choose meal option 1 in your app, then press Confirm.' },
+  { id: 'test2', number: 2, food: 'two', action: 'Choose meal option 2 in your app, then press Confirm.' },
+  { id: 'test3', number: 3, food: 'one', action: 'Choose meal option 1 again, then press Confirm.' }
 ];
 const STEP_PAGES = [
   ['name', 'Name'], ['instructions', 'Instructions'], ['test1', 'Test 1'],
@@ -115,13 +115,13 @@ function renderInstructions() {
       <h1>Set up your tests</h1>
     </header>
     <section class="fm-block">
-      <h2>Choose two foods</h2>
-      <p>Use Rice and Vegetables, or choose two different foods. Use the same foods in your app.</p>
+      <h2>Choose two meal options</h2>
+      <p>Use Rice and Vegetables, or choose two other meal options. Use those names in your app.</p>
       <div class="choice-fields">
-        <label class="fm-field">Food 1
+        <label class="fm-field">Meal option 1
           <input id="food-one" maxlength="30" value="" autocomplete="off">
         </label>
-        <label class="fm-field">Food 2
+        <label class="fm-field">Meal option 2
           <input id="food-two" maxlength="30" value="" autocomplete="off">
         </label>
       </div>
@@ -135,7 +135,7 @@ function renderInstructions() {
 }
 function updateFoodPreview() {
   const preview = document.querySelector('#message-preview');
-  if (preview) preview.textContent = `You chose: ${clean(state.foodOne) || '[food 1]'}`;
+  if (preview) preview.textContent = `You chose: ${clean(state.foodOne) || '[meal option 1]'}`;
 }
 function renderTest(test) {
   const data = state.tests[test.id];
@@ -148,7 +148,7 @@ function renderTest(test) {
     </header>
     <div class="test-layout">
       <section class="test-meta" aria-label="Test record">
-        <p><strong>Food to test:</strong> <span class="food-value"></span></p>
+        <p><strong>Meal option to test:</strong> <span class="food-value"></span></p>
         <div class="message-sample"><span>Expected message</span><strong class="expected-message"></strong></div>
         <label class="fm-field">Actual message you saw
           <textarea class="actual-box" id="actual-${test.id}" maxlength="180" placeholder="Copy the message shown by your running app."></textarea>
@@ -164,7 +164,7 @@ function renderTest(test) {
       </section>
       <section class="upload-panel">
         <h2>Required screenshot</h2>
-        <p class="file-hint">Show the food and result after Confirm. You can also paste into the phone frame.</p>
+        <p class="file-hint">Show the selected option and message after Confirm. You can also paste into the phone frame.</p>
         <label class="file-label">Add or replace screenshot
           <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
         </label>
@@ -555,22 +555,22 @@ function addInstructionPage(doc) {
   addHeader(doc, 'Instructions', 1);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(13);
-  doc.text('Choose two foods', 16, 55);
+  doc.text('Choose two meal options', 16, 55);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(11);
-  doc.text(`Food 1: ${clean(state.foodOne) || 'Not entered'}`, 16, 66);
-  doc.text(`Food 2: ${clean(state.foodTwo) || 'Not entered'}`, 16, 75);
+  doc.text(`Meal option 1: ${clean(state.foodOne) || 'Not entered'}`, 16, 66);
+  doc.text(`Meal option 2: ${clean(state.foodTwo) || 'Not entered'}`, 16, 75);
   doc.setDrawColor(23, 124, 114);
   doc.setFillColor(227, 244, 236);
   doc.roundedRect(15, 82, 185, 21, 2, 2, 'FD');
   doc.setFont('helvetica', 'bold');
-  doc.text(`Message pattern: You chose: ${clean(state.foodOne) || '[food]'}`, 20, 95);
+  doc.text(`Message pattern: You chose: ${clean(state.foodOne) || '[meal option 1]'}`, 20, 95);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(13);
   doc.text('Do these steps', 16, 118);
   const steps = [
     'Open your saved LunchApp in MIT App Inventor. Keep one screen and the Confirm button.',
-    'Use your two foods. Keep the selected_meal variable; it remembers the chosen food. Keep the blocks that show the message.',
+    'Use your two meal options. Keep selected_meal to remember the selected option. Keep the blocks that show the message.',
     'Run the latest APK (app file) in BrowserStack App Live.',
     'Complete Test 1, then Test 2, then Test 3. Record each test on its page.'
   ];
@@ -603,7 +603,7 @@ async function addTestPage(doc, test, pageNo) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(12);
   doc.text(test.action, 16, 55);
-  addLabel(doc, 'Food to test', selectedFood(test.food), 67, { size: 11 });
+  addLabel(doc, 'Meal option to test', selectedFood(test.food), 67, { size: 11 });
   addLabel(doc, 'Expected message', expectedMessage(test.food), 84, { size: 11 });
   const entry = state.tests[test.id];
   const actualY = addLabel(doc, 'Actual message you saw', clean(entry.actual) || 'Not entered', 103, { width: 178, size: 10.5 });
