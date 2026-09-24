@@ -202,3 +202,16 @@
 @media(hover:none){
   #fm-main:not(.name-page) .screenshot-actions{opacity:1;visibility:visible}
 }
+@media(min-width:701px){
+  #fm-main:not(.name-page):has(.phone-shell){margin:8px auto 12px;padding:10px 0 12px}
+  #fm-main:not(.name-page):has(.phone-shell) .fm-hero{margin-bottom:12px}
+  #fm-main:not(.name-page):has(.phone-shell) .fm-hero>div{margin-top:8px}
+  #fm-main:not(.name-page):has(.phone-shell) .test-layout{gap:24px;margin:10px 0}
+  #fm-main:not(.name-page):has(.phone-shell) .test-meta{gap:10px}
+  #fm-main:not(.name-page):has(.phone-shell) .upload-panel h2{margin-bottom:6px}
+  #fm-main:not(.name-page):has(.phone-shell) .phone-shell{width:min(100%,250px);height:clamp(300px,calc(100vh - 430px),430px);height:clamp(300px,calc(100svh - 430px),430px)}
+  #fm-main:not(.name-page):has(.phone-shell) .message-sample{margin:10px 0;padding:10px 14px}
+  #fm-main:not(.name-page):has(.phone-shell) .fm-field textarea{min-height:64px}
+  #fm-main:not(.name-page):has(.phone-shell) .fm-pager{margin-top:12px;padding-top:10px}
+  #fm-main:not(.name-page):has(.phone-shell) .fm-pager button{min-height:44px}
+}

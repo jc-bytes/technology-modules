@@ -622,7 +622,6 @@ async function showScreenshot(testId) {
     image.src = activeObjectUrl;
     image.alt = `Screenshot attached to ${testId.replace('test', 'Test ')}`;
     slot.classList.add('has-image');
-    if (status) status.textContent = 'Screenshot saved.';
     const actions = document.createElement('div');
     actions.className = 'screenshot-actions';
     actions.setAttribute('role', 'group');
