@@ -128,7 +128,7 @@ function renderInstructions() {
           <li>Do Tests 1, 2 and 3 in order. Record the message you expected, the message you saw, and Pass or Fail.</li>
         </ol>
       </section>
-    <p class="small-note">A screenshot is required for every test. Add it on that test step before moving on. The PDF will not download until all three screenshots are attached.</p>
+    <p class="small-note">Each test needs a screenshot showing the selected food and result. Screenshots are required in your PDF.</p>
     <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="name">Previous step</button><button class="fm-button primary next" type="button" data-page="test1">Go to Test 1</button></nav>`;
   document.querySelector('#food-one').value = state.foodOne;
   document.querySelector('#food-two').value = state.foodTwo;
@@ -169,7 +169,7 @@ function renderTest(test) {
         <label class="file-label">Add or replace screenshot
           <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
         </label>
-        <div class="image-slot" aria-live="polite"><p class="upload-status">Add a screenshot to continue to the next step.</p></div>
+        <div class="image-slot" aria-live="polite"><p class="upload-status">A screenshot is required for your PDF.</p></div>
         <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
       </section>
     </div>
@@ -215,7 +215,6 @@ function renderSubmission() {
         <li>Export your LunchApp from MIT App Inventor as an editable .aia file.</li>
         <li>Submit both files to Google Classroom.</li>
       </ol>
-      <p class="small-note">Check that the PDF includes all three test screenshots before you submit.</p>
     </section>
     <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="explain">Previous step</button><span></span></nav>`;
 }
@@ -235,34 +234,6 @@ function render() {
 async function setPage(id) {
   const allowed = STEP_PAGES.map(([page]) => page);
   if (!allowed.includes(id)) return;
-  const targetTestIndex = TESTS.findIndex(test => test.id === id);
-  const requiredBefore = targetTestIndex >= 0 ? TESTS.slice(0, targetTestIndex) : ['explain', 'submit'].includes(id) ? TESTS : [];
-  if (id !== 'name' && (!clean(state.name) || !clean(state.group))) {
-    state.page = 'name';
-    saveState();
-    render();
-    const error = document.querySelector('#identity-error');
-    if (error) error.textContent = 'Enter your name and choose your group before continuing.';
-    return;
-  }
-  for (const test of requiredBefore) {
-    const screenshot = await getScreenshot(test.id).catch(() => null);
-    if (!screenshot) {
-      const message = `Add the screenshot for Test ${test.number} before moving on.`;
-      const inline = document.querySelector('#screenshot-requirement');
-      if (inline) inline.textContent = message;
-      else setToast(message);
-      return;
-    }
-  }
-  if (state.page === 'instructions' && targetTestIndex >= 0) {
-    const first = clean(state.foodOne), second = clean(state.foodTwo);
-    if (!first || !second || first.toLocaleLowerCase() === second.toLocaleLowerCase()) {
-      const error = document.querySelector('#food-error');
-      if (error) error.textContent = 'Enter two different foods before starting the tests.';
-      return;
-    }
-  }
   for (const [testId, session] of cropSessions) {
     session.bitmap.close?.();
     cropSessions.delete(testId);
@@ -489,7 +460,7 @@ async function showScreenshot(testId) {
     if (!record) {
       const status = document.createElement('p');
       status.className = 'upload-status';
-      status.textContent = 'Add a screenshot to continue to the next step.';
+      status.textContent = 'A screenshot is required for your PDF.';
       slot.append(status);
       return;
     }
