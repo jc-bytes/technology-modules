@@ -36,6 +36,7 @@
   .fm-tools{display:flex;flex-wrap:wrap}
   .fm-tools>.fm-button{font-size:14px;padding:10px}
   .fm-topbar{gap:12px}
+  .fm-menu nav{left:0;right:auto;width:min(330px,calc(100vw - 32px))}
 }
 @media print{
   .fm-menu,.fm-topbar,.fm-footer,.fm-pager,.upload-panel button,.fm-toast,dialog{display:none!important}
