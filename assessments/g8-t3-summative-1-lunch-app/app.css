@@ -1,4 +1,4 @@
-.fm-topbar{height:136px;min-height:136px;flex-wrap:nowrap;padding:0 max(24px,calc((100vw - 1500px)/2));gap:24px;border-top:8px solid var(--deep);border-bottom:3px solid var(--line)}
+.fm-topbar{height:112px;min-height:112px;flex-wrap:nowrap;padding:0 max(24px,calc((100vw - 1500px)/2));gap:24px;border-top:8px solid var(--deep);border-bottom:3px solid var(--line)}
 .fm-brand{gap:0}
 .fm-brand>span{display:none}
 .fm-brand div{gap:5px}
@@ -8,10 +8,10 @@
 .student-summary{min-width:118px;max-width:210px;display:grid;gap:3px;color:var(--deep);overflow-wrap:anywhere}
 .student-summary strong{font-size:21px;line-height:1.15}
 .student-summary span{font-size:18px;line-height:1.15}
-.header-edit{width:64px;min-width:64px;height:64px;display:grid;place-items:center;padding:12px;border:2px solid #78919e;border-radius:10px;background:var(--paper);color:var(--navy)}
+.header-edit{width:56px;min-width:56px;height:56px;display:grid;place-items:center;padding:10px;border:2px solid #78919e;border-radius:10px;background:var(--paper);color:var(--navy)}
 .header-edit svg{width:31px;height:31px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.header-download{min-height:68px;padding:14px 20px;border-radius:10px;font-size:22px;white-space:nowrap}
-.fm-menu summary{min-width:150px;min-height:72px;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:10px;font-size:24px;white-space:nowrap}
+.header-download{min-height:60px;padding:12px 20px;border-radius:10px;font-size:22px;white-space:nowrap}
+.fm-menu summary{min-width:150px;min-height:64px;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 20px;border-radius:10px;font-size:24px;white-space:nowrap}
 .fm-menu summary::-webkit-details-marker{display:none}
 .fm-menu summary::before{content:"▶";font-size:18px}
 #step-navigation .fm-nav-link{width:100%;display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center;padding:10px;border:0;text-align:left;background:transparent;color:var(--deep);font:inherit;cursor:pointer}
@@ -56,14 +56,14 @@
 #save-warning:empty{display:none}
 .fm-pager button{width:100%;justify-content:center}
 .name-screen #save-warning{display:none!important}
-#fm-main.name-page{width:min(1200px,calc(100% - 48px));max-width:1200px;padding:58px 0 60px}
-.name-page .fm-hero{margin:0 0 46px;padding:0;border:0}
-.name-page .fm-hero h1{font-size:clamp(48px,5vw,76px);letter-spacing:-2px}
-.name-form{display:grid;gap:40px}
-.name-page .fm-field{gap:12px;font-size:30px;font-weight:400}
-.name-page .fm-field input{min-height:84px;padding:12px 16px;border-width:3px;border-radius:9px;font-size:26px}
-.name-pager{margin-top:28px}
-.name-pager .fm-button{min-width:192px;min-height:84px;padding:18px 32px;border-radius:10px;font-size:24px}
+#fm-main.name-page{width:min(1200px,calc(100% - 48px));max-width:1200px;padding:68px 0 48px}
+.name-page .fm-hero{margin:0 0 40px;padding:0;border:0}
+.name-page .fm-hero h1{font-size:clamp(48px,4.5vw,70px);letter-spacing:-2px}
+.name-form{display:grid;gap:36px}
+.name-page .fm-field{gap:10px;font-size:27px;font-weight:400}
+.name-page .fm-field input{min-height:72px;padding:10px 16px;border-width:3px;border-radius:9px;font-size:24px}
+.name-pager{margin-top:26px}
+.name-pager .fm-button{min-width:192px;min-height:76px;padding:16px 30px;border-radius:10px;font-size:22px}
 @media(max-width:700px){
   .fm-topbar{height:auto;min-height:0;flex-wrap:wrap;padding:14px 18px;gap:12px}
   .fm-brand{width:100%}
@@ -98,6 +98,17 @@
   .fm-brand{width:100%;flex:0 0 100%}
   .fm-tools{width:100%;justify-content:flex-end;flex-wrap:wrap;gap:12px}
   .student-summary{margin-right:auto}
+  .header-edit{width:52px;min-width:52px;height:52px}
+  .header-download{min-height:52px;padding:10px 14px;font-size:18px}
+  .fm-menu summary{min-width:128px;min-height:52px;padding:10px 16px;font-size:20px}
+  #fm-main.name-page{padding:30px 0 24px}
+  .name-page .fm-hero{margin-bottom:28px}
+  .name-page .fm-hero h1{font-size:48px}
+  .name-form{gap:24px}
+  .name-page .fm-field{gap:8px;font-size:22px}
+  .name-page .fm-field input{min-height:60px;font-size:21px}
+  .name-pager{margin-top:20px}
+  .name-pager .fm-button{min-width:160px;min-height:56px;padding:12px 22px;font-size:18px}
 }
 @media print{
   .fm-menu,.fm-topbar,.fm-footer,.fm-pager,.upload-panel button,.fm-toast,dialog{display:none!important}
