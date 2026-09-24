@@ -72,12 +72,12 @@ function renderNav() {
     ['instructions', 'Instructions'], ['test1', 'Test 1'], ['test2', 'Test 2'],
     ['test3', 'Test 3'], ['explain', 'Explain']
   ];
-  nav.innerHTML = pages.map(([id, label], index) => `<button class="step-link" type="button" data-page="${id}" ${state.page === id ? 'aria-current="step"' : ''}><span class="long-label">${label}</span><span class="short-label">${label}</span><span class="page-count">${index + 1} of 5</span></button>`).join('');
+  nav.innerHTML = pages.map(([id, label], index) => `<button class="fm-nav-link ${state.page === id ? 'is-active' : ''}" type="button" data-page="${id}" ${state.page === id ? 'aria-current="step"' : ''}><span class="fm-nav-dot">${index + 1}</span><span>${label}</span></button>`).join('');
 }
 function renderInstructions() {
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Page 1 of 5 · Start here</p>
+      <p class="fm-label">Step 1 of 5 · Start here</p>
       <h1>Complete your lunch app</h1>
       <div>Use your saved app. Check what it says when you choose a food.</div>
     </header>
@@ -127,7 +127,7 @@ function renderInstructions() {
         <p class="small-note">A screenshot is required for every test. Add it on that test page before moving on. The PDF will not download until all three screenshots are attached.</p>
       </section>
     </div>
-    <nav class="fm-pager" aria-label="Page controls"><span></span><button class="fm-button primary next" type="button" data-page="test1">Go to Test 1</button></nav>`;
+    <nav class="fm-pager" aria-label="Step navigation"><span></span><button class="fm-button primary next" type="button" data-page="test1">Go to Test 1</button></nav>`;
   document.querySelector('#student-name').value = state.name;
   document.querySelector('#student-group').value = state.group;
   document.querySelector('#food-one').value = state.foodOne;
@@ -143,7 +143,7 @@ function renderTest(test) {
   const meal = selectedFood(test.food);
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Page ${test.number + 1} of 5 · Test ${test.number}</p>
+      <p class="fm-label">Step ${test.number + 1} of 5 · Test ${test.number}</p>
       <h1>Test ${test.number}</h1>
       <div>${test.action}</div>
     </header>
@@ -168,12 +168,12 @@ function renderTest(test) {
       <label class="file-label">Add or replace screenshot
         <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
       </label>
-      <div class="image-slot" aria-live="polite"><p class="upload-status">Add a screenshot to continue to the next page.</p></div>
+      <div class="image-slot" aria-live="polite"><p class="upload-status">Add a screenshot to continue to the next step.</p></div>
       <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
     </section>
-    <nav class="fm-pager" aria-label="Page controls">
-      <button class="fm-button quiet" type="button" data-page="${test.number === 1 ? 'instructions' : `test${test.number - 1}`}">Previous page</button>
-      <button class="fm-button primary next" type="button" data-page="${test.number === 3 ? 'explain' : `test${test.number + 1}`}" >Next page</button>
+    <nav class="fm-pager" aria-label="Step navigation">
+      <button class="fm-button quiet" type="button" data-page="${test.number === 1 ? 'instructions' : `test${test.number - 1}`}">Previous step</button>
+      <button class="fm-button primary next" type="button" data-page="${test.number === 3 ? 'explain' : `test${test.number + 1}`}" >Next step</button>
     </nav>`;
   main.querySelector('.food-value').textContent = meal;
   main.querySelector('.expected-message').textContent = expectedMessage(test.food);
@@ -184,7 +184,7 @@ function renderTest(test) {
 function renderExplain() {
   main.innerHTML = `
     <header class="fm-hero">
-      <p class="fm-label">Page 5 of 5 · Last step</p>
+      <p class="fm-label">Step 5 of 5 · Last step</p>
       <h1>Explain the variable</h1>
       <div>Say what selected_meal remembers and how the message uses it.</div>
     </header>
@@ -202,7 +202,7 @@ function renderExplain() {
       <p>Download the PDF from the button at the top. Export your editable LunchApp .aia file. Submit both files to Google Classroom.</p>
       <p>Your work saves in this browser. Attach the required screenshot on every test page before downloading your PDF.</p>
     </section>
-    <nav class="fm-pager" aria-label="Page controls"><button class="fm-button quiet" type="button" data-page="test3">Previous page</button><span></span></nav>`;
+    <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="test3">Previous step</button><span></span></nav>`;
   main.querySelector('#explanation').value = state.explanation;
 }
 function render() {
@@ -240,6 +240,7 @@ async function setPage(id) {
     }
   }
   state.page = id;
+  document.querySelector('#step-menu').open = false;
   saveState();
   render();
   main.focus({ preventScroll: true });
@@ -355,7 +356,7 @@ async function showScreenshot(testId) {
     if (!record) {
       const status = document.createElement('p');
       status.className = 'upload-status';
-      status.textContent = 'Add a screenshot to continue to the next page.';
+      status.textContent = 'Add a screenshot to continue to the next step.';
       slot.append(status);
       return;
     }
