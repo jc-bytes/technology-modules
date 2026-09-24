@@ -659,7 +659,7 @@ async function removeScreenshot(testId) {
   }
 }
 
-function addHeader(doc, title, pageNo) {
+function addHeader(doc, title) {
   const width = doc.internal.pageSize.getWidth();
   doc.setFillColor(245, 185, 29);
   doc.roundedRect(15, 14, 14, 14, 2, 2, 'F');
@@ -678,19 +678,9 @@ function addHeader(doc, title, pageNo) {
   doc.setFontSize(8);
   const studentName = [clean(state.firstName), clean(state.lastName)].filter(Boolean).join(' ') || 'Name not entered';
   const grade = clean(state.grade) ? `Grade ${clean(state.grade)}` : 'Grade not entered';
-  doc.text(`${studentName} | ${grade} | ${formatDate()}`, 15, 39);
-  doc.text(`Page ${pageNo} of 5`, width - 15, 39, { align: 'right' });
+  const identity = `${studentName} | ${grade} | ${formatDate()}`;
+  doc.text(doc.splitTextToSize(identity, width - 30), 15, 39);
   doc.setTextColor(16, 47, 64);
-}
-function addLabel(doc, label, value, y, { width = 180, size = 11 } = {}) {
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(9);
-  doc.text(label, 16, y);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(size);
-  const lines = doc.splitTextToSize(value || 'Not entered', width);
-  doc.text(lines, 16, y + 6);
-  return y + 6 + lines.length * (size * 0.36 + 1.2);
 }
 function addFooter(doc, pageNo) {
   const width = doc.internal.pageSize.getWidth();
@@ -704,7 +694,7 @@ function addFooter(doc, pageNo) {
   doc.setTextColor(16, 47, 64);
 }
 function addInstructionPage(doc) {
-  addHeader(doc, 'Instructions', 1);
+  addHeader(doc, 'Instructions');
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(13);
   doc.text('Choose two meal options', 16, 55);
@@ -750,38 +740,120 @@ function addInstructionPage(doc) {
   doc.setFontSize(9.5);
   doc.text(doc.splitTextToSize('This PDF includes one screenshot for each test.', 174), 20, y + 20);
 }
-async function addTestPage(doc, test, pageNo) {
-  addHeader(doc, `Test ${test.number}`, pageNo);
+async function addTestPage(doc, test) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(12);
-  doc.text(test.action, 16, 55);
-  addLabel(doc, 'Meal option to test', selectedFood(test.food), 67, { size: 11 });
-  addLabel(doc, 'Expected message', expectedMessage(test.food), 84, { size: 11 });
-  const entry = state.tests[test.id];
-  const actualY = addLabel(doc, 'Actual message you saw', clean(entry.actual) || 'Not entered', 103, { width: 178, size: 10.5 });
-  addLabel(doc, 'Your decision', clean(entry.decision) || 'Not selected', Math.max(125, actualY + 2), { size: 10.5 });
+  doc.text(doc.splitTextToSize(test.action, 182), 16, 54);
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const leftX = 15;
+  const top = 65;
+  const panelHeight = 188;
+  const leftWidth = 82;
+  const gutter = 8;
+  const rightX = leftX + leftWidth + gutter;
+  const rightWidth = pageWidth - rightX - 15;
+  const innerX = rightX + 7;
+  const innerWidth = rightWidth - 14;
+
+  doc.setDrawColor(185, 201, 208);
+  doc.setLineWidth(0.35);
+  doc.setFillColor(247, 245, 239);
+  doc.roundedRect(leftX, top, leftWidth, panelHeight, 2, 2, 'FD');
+  doc.setFillColor(255, 255, 255);
+  doc.roundedRect(rightX, top, rightWidth, panelHeight, 2, 2, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(40, 104, 131);
+  doc.text('Required screenshot', leftX + 6, top + 10);
+  doc.setDrawColor(210, 221, 220);
+  doc.line(leftX + 6, top + 14, leftX + leftWidth - 6, top + 14);
+  const frameX = leftX + 6;
+  const frameY = top + 18;
+  const frameWidth = leftWidth - 12;
+  const frameHeight = panelHeight - 25;
+  doc.setFillColor(255, 255, 255);
+  doc.roundedRect(frameX, frameY, frameWidth, frameHeight, 1.5, 1.5, 'FD');
   const shot = await getScreenshot(test.id).catch(() => null);
-  const imageTop = 151;
   if (shot?.image) {
     const data = await blobToDataUrl(shot.image);
     const props = doc.getImageProperties(data);
-    const maxWidth = 180;
-    const maxHeight = 105;
-    const scale = Math.min(maxWidth / props.width, maxHeight / props.height);
+    const scale = Math.min((frameWidth - 2) / props.width, (frameHeight - 2) / props.height);
     const width = props.width * scale;
     const height = props.height * scale;
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9);
-    doc.text('Required screenshot', 16, imageTop - 4);
-    doc.addImage(data, 'JPEG', 16, imageTop, width, height, undefined, 'FAST');
+    const x = frameX + (frameWidth - width) / 2;
+    const y = frameY + (frameHeight - height) / 2;
+    doc.addImage(data, 'JPEG', x, y, width, height, undefined, 'FAST');
   } else {
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9);
-    doc.setTextColor(80, 100, 110);
+    doc.setFontSize(10);
     doc.setTextColor(166, 65, 53);
-    doc.text('Required screenshot missing.', 16, imageTop + 4);
-    doc.setTextColor(16, 47, 64);
+    doc.text('Screenshot missing', frameX + frameWidth / 2, frameY + frameHeight / 2, { align: 'center' });
   }
+
+  const entry = state.tests[test.id];
+  let y = top + 10;
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(80, 100, 110);
+  doc.text('Meal option to test', innerX, y);
+  y += 6;
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10.5);
+  doc.setTextColor(16, 47, 64);
+  const mealLines = doc.splitTextToSize(selectedFood(test.food) || 'Not entered', innerWidth);
+  doc.text(mealLines, innerX, y);
+  y += Math.max(5, mealLines.length * 4.5) + 6;
+
+  const expectedLines = doc.splitTextToSize(expectedMessage(test.food), innerWidth - 10);
+  const expectedHeight = 17 + expectedLines.length * 4.4;
+  doc.setFillColor(227, 244, 236);
+  doc.roundedRect(innerX, y, innerWidth, expectedHeight, 1.5, 1.5, 'F');
+  doc.setFillColor(40, 104, 131);
+  doc.rect(innerX, y, 1.3, expectedHeight, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(40, 104, 131);
+  doc.text('Expected message', innerX + 5, y + 6);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9.5);
+  doc.setTextColor(16, 47, 64);
+  doc.text(expectedLines, innerX + 5, y + 13);
+  y += expectedHeight + 7;
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(80, 100, 110);
+  doc.text('Actual message you saw', innerX, y);
+  y += 6;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9.5);
+  const actualLines = doc.splitTextToSize(clean(entry.actual) || 'Not entered', innerWidth - 8);
+  const actualHeight = Math.max(31, actualLines.length * 4.2 + 10);
+  doc.setDrawColor(185, 201, 208);
+  doc.setFillColor(255, 255, 255);
+  doc.roundedRect(innerX, y, innerWidth, actualHeight, 1.5, 1.5, 'FD');
+  doc.setTextColor(16, 47, 64);
+  doc.text(actualLines, innerX + 4, y + 7);
+  y += actualHeight + 6;
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(80, 100, 110);
+  doc.text('Your decision', innerX, y);
+  y += 4;
+  const decision = clean(entry.decision) || 'Not selected';
+  const decisionColors = decision === 'Pass' ? [227, 244, 236] : decision === 'Fail' ? [252, 232, 229] : [242, 243, 240];
+  const decisionText = decision === 'Pass' ? [25, 102, 71] : decision === 'Fail' ? [147, 48, 39] : [80, 100, 110];
+  doc.setFillColor(...decisionColors);
+  doc.roundedRect(innerX, y, innerWidth, 12, 1.5, 1.5, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.setTextColor(...decisionText);
+  doc.text(decision, innerX + 5, y + 8);
+  doc.setTextColor(16, 47, 64);
+  addHeader(doc, `Test ${test.number}`);
 }
 function blobToDataUrl(blob) {
   return new Promise((resolve, reject) => {
@@ -792,7 +864,7 @@ function blobToDataUrl(blob) {
   });
 }
 function addExplainPage(doc) {
-  addHeader(doc, 'Explain the variable', 5);
+  addHeader(doc, 'Explain the variable');
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(11);
   doc.text('In one sentence, say what selected_meal remembers and how the message uses it.', 16, 57);
@@ -842,7 +914,7 @@ async function downloadPdf() {
     addFooter(doc, 1);
     for (let index = 0; index < TESTS.length; index++) {
       doc.addPage('letter', 'portrait');
-      await addTestPage(doc, TESTS[index], index + 2);
+      await addTestPage(doc, TESTS[index]);
       addFooter(doc, index + 2);
     }
     doc.addPage('letter', 'portrait');
