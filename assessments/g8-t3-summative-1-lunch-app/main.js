@@ -157,17 +157,14 @@ function renderTest(test) {
     </header>
     <div class="test-layout">
       <section class="upload-panel" aria-label="Required screenshot">
+        <h2>Required screenshot</h2>
         <div class="phone-shell">
-          <h2>Required screenshot</h2>
-          <p class="file-hint">Show the selected option and message after Confirm.</p>
-          <label class="file-label">Add or replace screenshot
-            <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
-          </label>
           <div class="image-slot phone-screen" data-test="${test.id}" tabindex="0" role="region" aria-label="Screenshot area for Test ${test.number}. Paste a copied image here." aria-live="polite"></div>
-          <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
-          <p class="upload-status" id="screenshot-status" role="status" aria-live="polite"></p>
-          <div class="screenshot-actions"></div>
         </div>
+        <input class="upload-input" type="file" id="screenshot-${test.id}" accept="image/*" tabindex="-1" aria-hidden="true">
+        <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
+        <p class="upload-status" id="screenshot-status" role="status" aria-live="polite"></p>
+        <div class="screenshot-actions"></div>
       </section>
       <section class="test-meta" aria-label="Test record">
         <p><strong>Meal option to test:</strong> <span class="food-value"></span></p>
@@ -264,6 +261,10 @@ nav.addEventListener('click', event => {
 main.addEventListener('click', event => {
   const button = event.target.closest('[data-page]');
   if (button) void setPage(button.dataset.page);
+  const pasteButton = event.target.closest('[data-paste-image]');
+  if (pasteButton) pasteButton.closest('.image-slot')?.focus();
+  const uploadButton = event.target.closest('[data-upload-image]');
+  if (uploadButton) main.querySelector(`#screenshot-${uploadButton.dataset.uploadImage}`)?.click();
   if (event.target.closest('.remove-image')) removeScreenshot(event.target.closest('.remove-image').dataset.test);
   const cropButton = event.target.closest('[data-crop-action]');
   if (cropButton) {
@@ -593,11 +594,28 @@ async function showScreenshot(testId) {
   const status = main.querySelector('#screenshot-status');
   const actions = main.querySelector('.screenshot-actions');
   slot.replaceChildren();
+  slot.classList.remove('has-image');
   if (status) status.textContent = '';
   if (actions) actions.replaceChildren();
   try {
     const record = await getScreenshot(testId);
     if (!record) {
+      const emptyActions = document.createElement('div');
+      emptyActions.className = 'screenshot-empty-actions';
+      const paste = document.createElement('button');
+      paste.className = 'fm-button primary';
+      paste.type = 'button';
+      paste.dataset.pasteImage = '';
+      paste.textContent = 'Paste screenshot';
+      const upload = document.createElement('button');
+      upload.className = 'fm-button quiet';
+      upload.type = 'button';
+      upload.dataset.uploadImage = testId;
+      upload.textContent = 'Upload screenshot';
+      const shortcut = document.createElement('p');
+      shortcut.textContent = 'Ctrl+V · ⌘V';
+      emptyActions.append(paste, upload, shortcut);
+      slot.append(emptyActions);
       return;
     }
     if (activeObjectUrl) URL.revokeObjectURL(activeObjectUrl);
@@ -606,6 +624,7 @@ async function showScreenshot(testId) {
     image.className = 'image-preview';
     image.src = activeObjectUrl;
     image.alt = `Screenshot attached to ${testId.replace('test', 'Test ')}`;
+    slot.classList.add('has-image');
     if (status) status.textContent = 'Screenshot saved.';
     const remove = document.createElement('button');
     remove.className = 'fm-button quiet remove-image';
@@ -618,8 +637,13 @@ async function showScreenshot(testId) {
     edit.dataset.test = testId;
     edit.dataset.cropAction = 'edit';
     edit.textContent = 'Crop screenshot';
+    const replace = document.createElement('button');
+    replace.className = 'fm-button quiet';
+    replace.type = 'button';
+    replace.dataset.uploadImage = testId;
+    replace.textContent = 'Replace screenshot';
     slot.append(image);
-    actions?.append(edit, remove);
+    actions?.append(edit, replace, remove);
   } catch {
     if (status) status.textContent = 'Image storage is unavailable here. Try another browser or ask your teacher for the paper record.';
   }
