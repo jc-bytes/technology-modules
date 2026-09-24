@@ -10,7 +10,7 @@
 .student-summary span{font-size:14px;line-height:1.15}
 .header-edit{width:42px;min-width:42px;height:42px;display:grid;place-items:center;padding:8px;border:2px solid #78919e;border-radius:8px;background:var(--paper);color:var(--navy)}
 .header-edit svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.header-download{min-height:44px;padding:9px 13px;border-radius:8px;font-size:16px;white-space:nowrap}
+.header-download{min-height:44px;padding:9px 12px;border-radius:8px;font-size:15px;white-space:nowrap}
 .fm-menu summary{min-width:92px;min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 12px;border-radius:8px;font-size:16px;white-space:nowrap}
 .fm-menu summary::-webkit-details-marker{display:none}
 .fm-menu summary::before{content:"▶";font-size:18px}
@@ -56,10 +56,10 @@
 #save-warning:empty{display:none}
 .fm-pager button{width:100%;justify-content:center}
 .name-screen #save-warning{display:none!important}
-#fm-main.name-page{width:min(760px,calc(100% - 48px));max-width:760px;padding:40px 0 24px}
-.name-page .fm-hero{margin:0 0 20px;padding:0;border:0}
+#fm-main.name-page{width:min(750px,calc(100% - 48px));max-width:750px;padding:48px 0 24px}
+.name-page .fm-hero{margin:0 0 27px;padding:0;border:0}
 .name-page .fm-hero h1{font-size:52px;letter-spacing:-1.5px}
-.name-form{display:grid;gap:22px}
+.name-form{display:grid;gap:26px}
 .name-page .fm-field{gap:6px;font-size:20px;font-weight:400}
 .name-page .fm-field input{min-height:52px;padding:8px 12px;border-width:2px;border-radius:7px;font-size:20px}
 .name-pager{margin-top:19px}
