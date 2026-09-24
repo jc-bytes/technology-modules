@@ -115,3 +115,56 @@
   body{background:white}
   #fm-main{padding:10px 0;width:100%}
 }
+
+/* Give every step after the name page the same quiet lesson layout. */
+#fm-main:not(.name-page){
+  width:min(850px,calc(100% - 40px));
+  max-width:850px;
+  margin:22px auto 40px;
+  padding:clamp(18px,4vw,30px);
+  border:1px solid #b6c2bd;
+  border-radius:12px;
+  background:white;
+}
+#fm-main:not(.name-page) .fm-hero{margin:0 0 20px;padding:0;border:0}
+#fm-main:not(.name-page) .fm-hero>p,
+#fm-main:not(.name-page) .fm-label{margin:0 0 10px;color:#286883;font-size:.8rem;letter-spacing:.06em;font-weight:700;text-transform:none}
+#fm-main:not(.name-page) .fm-hero h1{margin:0;color:#183232;font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.2;letter-spacing:normal}
+#fm-main:not(.name-page) .fm-hero>div{max-width:800px;margin:14px 0 0;color:#506564;font-size:1.1rem;line-height:1.5}
+#fm-main:not(.name-page) .fm-block{padding:0;border:0}
+#fm-main:not(.name-page) .fm-block h2{margin:0 0 12px;color:#183232;font-size:1.55rem;line-height:1.3}
+#fm-main:not(.name-page) .fm-block p{line-height:1.65}
+#fm-main:not(.name-page) .fm-field{gap:6px;color:#183232;font-weight:600}
+#fm-main:not(.name-page) .fm-field input,
+#fm-main:not(.name-page) .fm-field textarea,
+#fm-main:not(.name-page) .fm-field select{min-height:46px;padding:10px 12px;border:1px solid #819b9a;border-radius:6px;background:white;color:#183232;font:inherit}
+#fm-main:not(.name-page) .fm-field textarea{min-height:82px}
+#fm-main:not(.name-page) .fm-field small{color:#506564;font-size:.875rem;font-weight:400}
+#fm-main:not(.name-page) .fm-field input:focus-visible,
+#fm-main:not(.name-page) .fm-field textarea:focus-visible,
+#fm-main:not(.name-page) .fm-field select:focus-visible{outline:2px solid #286883;outline-offset:1px}
+#fm-main:not(.name-page) .message-sample{margin:18px 0;padding:16px 20px;border:0;border-left:4px solid #286883;border-radius:0;background:#f7f5ef}
+#fm-main:not(.name-page) .message-sample span{color:#506564;font-size:.9rem;font-weight:600}
+#fm-main:not(.name-page) .message-sample strong{margin-top:5px;color:#183232;font-size:1.15rem}
+#fm-main:not(.name-page) .test-layout{gap:22px;margin:20px 0}
+#fm-main:not(.name-page) .test-meta{gap:16px;padding:0;border:0;border-radius:0;background:transparent}
+#fm-main:not(.name-page) .test-meta p{line-height:1.55}
+#fm-main:not(.name-page) .upload-panel{padding:18px;border:1px dashed #819b9a;border-radius:8px;background:#fbfaf3}
+#fm-main:not(.name-page) .upload-panel h2{margin:0 0 10px;color:#183232;font-size:1.2rem}
+#fm-main:not(.name-page) .file-label{min-height:44px;padding:10px 14px;border:0;border-radius:6px;background:#15435c;color:white;font-weight:700}
+#fm-main:not(.name-page) .file-label:focus-within{outline:3px solid #286883;outline-offset:3px}
+#fm-main:not(.name-page) .file-hint,
+#fm-main:not(.name-page) .upload-status{color:#506564;font-size:.875rem;line-height:1.5}
+#fm-main:not(.name-page) .image-preview{max-height:300px;border-color:#b6c2bd;background:#f7f5ef}
+#fm-main:not(.name-page) .variable-frame{margin:18px 0;padding:16px 20px;border-left:4px solid #286883;background:#f7f5ef;line-height:1.65}
+#fm-main:not(.name-page) .fm-pager{display:flex;justify-content:space-between;gap:12px;margin:24px 0 0;padding-top:20px;border-top:1px solid #d8ded9}
+#fm-main:not(.name-page) .fm-pager button{width:auto;min-width:124px;min-height:48px;justify-content:center;border-radius:6px}
+#fm-main:not(.name-page) .fm-pager .next{margin-left:auto}
+@media(max-width:700px){
+  #fm-main:not(.name-page){width:calc(100% - 28px);margin:14px auto 28px;padding:18px}
+  #fm-main:not(.name-page) .test-layout{grid-template-columns:minmax(0,1fr);gap:20px}
+  #fm-main:not(.name-page) .choice-fields{grid-template-columns:minmax(0,1fr)}
+  #fm-main:not(.name-page) .fm-pager{flex-direction:column}
+  #fm-main:not(.name-page) .fm-pager button{width:100%}
+  #fm-main:not(.name-page) .fm-pager .next{margin-left:0}
+}
