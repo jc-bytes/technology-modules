@@ -121,10 +121,10 @@
   width:min(850px,calc(100% - 40px));
   max-width:850px;
   margin:22px auto 40px;
-  padding:clamp(18px,4vw,30px);
-  border:1px solid #b6c2bd;
-  border-radius:12px;
-  background:white;
+  padding:22px 0 40px;
+  border:0;
+  border-radius:0;
+  background:transparent;
 }
 #fm-main:not(.name-page) .fm-hero{margin:0 0 20px;padding:0;border:0}
 #fm-main:not(.name-page) .fm-hero>p,
@@ -149,7 +149,7 @@
 #fm-main:not(.name-page) .test-layout{gap:22px;margin:20px 0}
 #fm-main:not(.name-page) .test-meta{gap:16px;padding:0;border:0;border-radius:0;background:transparent}
 #fm-main:not(.name-page) .test-meta p{line-height:1.55}
-#fm-main:not(.name-page) .upload-panel{padding:18px;border:1px dashed #819b9a;border-radius:8px;background:#fbfaf3}
+#fm-main:not(.name-page) .upload-panel{padding:0 0 0 22px;border:0;border-left:1px solid #d8ded9;border-radius:0;background:transparent}
 #fm-main:not(.name-page) .upload-panel h2{margin:0 0 10px;color:#183232;font-size:1.2rem}
 #fm-main:not(.name-page) .file-label{min-height:44px;padding:10px 14px;border:0;border-radius:6px;background:#15435c;color:white;font-weight:700}
 #fm-main:not(.name-page) .file-label:focus-within{outline:3px solid #286883;outline-offset:3px}
@@ -161,9 +161,10 @@
 #fm-main:not(.name-page) .fm-pager button{width:auto;min-width:124px;min-height:48px;justify-content:center;border-radius:6px}
 #fm-main:not(.name-page) .fm-pager .next{margin-left:auto}
 @media(max-width:700px){
-  #fm-main:not(.name-page){width:calc(100% - 28px);margin:14px auto 28px;padding:18px}
+  #fm-main:not(.name-page){width:calc(100% - 28px);margin:14px auto 28px;padding:8px 0 28px}
   #fm-main:not(.name-page) .test-layout{grid-template-columns:minmax(0,1fr);gap:20px}
   #fm-main:not(.name-page) .choice-fields{grid-template-columns:minmax(0,1fr)}
+  #fm-main:not(.name-page) .upload-panel{padding:18px 0 0;border-top:1px solid #d8ded9;border-left:0}
   #fm-main:not(.name-page) .fm-pager{flex-direction:column}
   #fm-main:not(.name-page) .fm-pager button{width:100%}
   #fm-main:not(.name-page) .fm-pager .next{margin-left:0}
