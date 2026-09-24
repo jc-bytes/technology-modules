@@ -1,4 +1,4 @@
-.fm-topbar{height:82px;min-height:82px;flex-wrap:nowrap;padding:0 max(24px,calc((100vw - 1000px)/2));gap:18px;border-top:5px solid var(--deep);border-bottom:2px solid var(--line)}
+.fm-topbar{height:82px;min-height:82px;flex-wrap:nowrap;padding:0 max(24px,calc((100vw - 950px)/2));gap:18px;border-top:5px solid var(--deep);border-bottom:2px solid var(--line)}
 .fm-brand{gap:0}
 .fm-brand>span{display:none}
 .fm-brand div{gap:5px}
