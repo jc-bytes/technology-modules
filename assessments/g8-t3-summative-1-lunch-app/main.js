@@ -73,6 +73,7 @@ function updateHeader() {
   const fullName = clean(state.name) || 'Name not entered';
   const group = clean(state.group);
   document.querySelector('#student-summary').textContent = group ? `${fullName} · ${group}` : fullName;
+  document.querySelector('#edit-identity').hidden = state.page === 'name';
 }
 function renderNav() {
   nav.innerHTML = STEP_PAGES.map(([id, label], index) => `<button class="fm-nav-link ${state.page === id ? 'is-active' : ''}" type="button" data-page="${id}" ${state.page === id ? 'aria-current="step"' : ''}><span class="fm-nav-dot">${index + 1}</span><span>${label}</span></button>`).join('');
@@ -82,7 +83,7 @@ function renderName() {
     <header class="fm-hero">
       <p class="fm-label">Step 1 of 7 · Start here</p>
       <h1>Your name and group</h1>
-      <div>Enter these details first so your test record belongs to you.</div>
+      <div>Your name and group go on your PDF.</div>
     </header>
     <section class="fm-block">
       <label class="fm-field">Your name
@@ -92,7 +93,6 @@ function renderName() {
         <select id="student-group" required><option value="">Choose your group</option><option value="8A">8A</option><option value="8B">8B</option></select>
       </label>
       <p id="identity-error" class="inline-error" role="status" aria-live="polite"></p>
-      <p class="file-hint">The date is added to your PDF when you download it.</p>
     </section>
     <nav class="fm-pager" aria-label="Step navigation"><span></span><button class="fm-button primary next" type="button" data-page="instructions">Continue to Instructions</button></nav>`;
   document.querySelector('#student-name').value = state.name;
@@ -102,12 +102,11 @@ function renderInstructions() {
   main.innerHTML = `
     <header class="fm-hero">
       <p class="fm-label">Step 2 of 7</p>
-      <h1>Complete your lunch app</h1>
-      <div>Use your saved app. Check what it says when you choose a food.</div>
+      <h1>Set up your tests</h1>
     </header>
     <section class="fm-block">
       <h2>Choose two foods</h2>
-      <p>Rice and Vegetables are ready to use. You may keep them or choose two different foods. Use the same two names in your app's food selector.</p>
+      <p>Use Rice and Vegetables, or choose two different foods. Use the same foods in your app.</p>
       <div class="choice-fields">
         <label class="fm-field">Food 1
           <input id="food-one" maxlength="30" value="" autocomplete="off">
@@ -123,12 +122,12 @@ function renderInstructions() {
         <h2>What to do</h2>
         <ol class="plain-steps">
           <li>Open your saved LunchApp in MIT App Inventor. Keep one screen and the Confirm button.</li>
-          <li>Put your two foods in the selector. Keep the selected_meal variable and message blocks.</li>
-          <li>Run your latest APK in BrowserStack App Live.</li>
-          <li>Do Tests 1, 2 and 3 in order. Record the message you expected, the message you saw, and Pass or Fail.</li>
+          <li>Put your two foods in the app. Keep the <code>selected_meal</code> variable (it remembers the chosen food) and the blocks that show the message.</li>
+          <li>Run the latest APK (app file) in BrowserStack App Live.</li>
+          <li>Complete Test 1, then Test 2, then Test 3.</li>
         </ol>
       </section>
-    <p class="small-note">Each test needs a screenshot showing the selected food and result. Screenshots are required in your PDF.</p>
+    <p class="small-note">Add one screenshot to each test page. Your PDF needs all three screenshots.</p>
     <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="name">Previous step</button><button class="fm-button primary next" type="button" data-page="test1">Go to Test 1</button></nav>`;
   document.querySelector('#food-one').value = state.foodOne;
   document.querySelector('#food-two').value = state.foodTwo;
@@ -160,7 +159,7 @@ function renderTest(test) {
             <option value="Pass">Pass</option>
             <option value="Fail">Fail</option>
           </select>
-          <small>Choose Pass if the actual message matches the expected message. Otherwise choose Fail.</small>
+          <small>Choose Pass if the messages match. Otherwise choose Fail.</small>
         </label>
       </section>
       <section class="upload-panel">
@@ -169,7 +168,7 @@ function renderTest(test) {
         <label class="file-label">Add or replace screenshot
           <input type="file" id="screenshot-${test.id}" accept="image/*" aria-label="Add or replace screenshot for Test ${test.number}">
         </label>
-        <div class="image-slot" aria-live="polite"><p class="upload-status">A screenshot is required for your PDF.</p></div>
+        <div class="image-slot" aria-live="polite"></div>
         <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
       </section>
     </div>
@@ -191,13 +190,11 @@ function renderExplain() {
       <div>Say what selected_meal remembers and how the message uses it.</div>
     </header>
     <section class="fm-block">
-      <h2>Write one sentence</h2>
       <p>A variable is like a little note inside the program. It keeps a value so the program can use it later.</p>
       <div class="variable-frame">The variable selected_meal remembers __________, so the message can show __________.</div>
       <label class="fm-field" for="explanation">My one-sentence explanation
-        <textarea id="explanation" maxlength="220" rows="3" placeholder="The variable selected_meal..."></textarea>
+        <textarea id="explanation" maxlength="220" rows="3"></textarea>
       </label>
-      <p class="file-hint">Use your own words. Keep the English sentence short.</p>
     </section>
     <nav class="fm-pager" aria-label="Step navigation"><button class="fm-button quiet" type="button" data-page="test3">Previous step</button><button class="fm-button primary next" type="button" data-page="submit">Next step</button></nav>`;
   main.querySelector('#explanation').value = state.explanation;
@@ -207,12 +204,11 @@ function renderSubmission() {
     <header class="fm-hero">
       <p class="fm-label">Step 7 of 7 · Last step</p>
       <h1>What to hand in</h1>
-      <div>You have finished the three tests and your explanation. Submit these two files.</div>
     </header>
     <section class="fm-block">
       <ol class="plain-steps">
         <li>Download your answers as a PDF using the button at the top. It includes your three required screenshots.</li>
-        <li>Export your LunchApp from MIT App Inventor as an editable .aia file.</li>
+        <li>Export your LunchApp as an editable App Inventor project file (.aia).</li>
         <li>Submit both files to Google Classroom.</li>
       </ol>
     </section>
@@ -381,7 +377,7 @@ async function openScreenshotCrop(testId, image, fileName) {
   slot.innerHTML = `
     <div class="crop-editor">
       <p class="crop-title">Crop your screenshot (optional)</p>
-      <p class="file-hint">Move a slider to cut off extra space. The picture here is what will go into your PDF.</p>
+      <p class="file-hint">Move a slider to cut off extra space. Check the preview before saving.</p>
       <div class="crop-preview"><canvas class="crop-canvas" role="img" aria-label="Screenshot crop preview"></canvas></div>
       <div class="crop-controls">
         ${[['top', 'Top'], ['right', 'Right'], ['bottom', 'Bottom'], ['left', 'Left']].map(([edge, label]) => `<label class="crop-control">Crop ${label.toLowerCase()} edge <span id="crop-${edge}-${testId}-value">0%</span><input class="crop-range" id="crop-${edge}-${testId}" data-test="${testId}" data-edge="${edge}" type="range" min="0" max="40" value="0" aria-label="Crop ${label.toLowerCase()} edge"></label>`).join('')}
@@ -458,10 +454,6 @@ async function showScreenshot(testId) {
   try {
     const record = await getScreenshot(testId);
     if (!record) {
-      const status = document.createElement('p');
-      status.className = 'upload-status';
-      status.textContent = 'A screenshot is required for your PDF.';
-      slot.append(status);
       return;
     }
     if (activeObjectUrl) URL.revokeObjectURL(activeObjectUrl);
@@ -472,7 +464,7 @@ async function showScreenshot(testId) {
     image.alt = `Screenshot attached to ${testId.replace('test', 'Test ')}`;
     const status = document.createElement('p');
     status.className = 'upload-status';
-    status.textContent = `Saved in this browser: ${record.fileName}`;
+    status.textContent = 'Screenshot saved.';
     const remove = document.createElement('button');
     remove.className = 'fm-button quiet remove-image';
     remove.type = 'button';
@@ -542,7 +534,6 @@ function addFooter(doc, pageNo) {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(80, 100, 110);
-  doc.text('Submit this PDF with your LunchApp .aia file.', 15, height - 8);
   doc.text(`${pageNo} / 5`, width - 15, height - 8, { align: 'right' });
   doc.setTextColor(16, 47, 64);
 }
@@ -565,9 +556,9 @@ function addInstructionPage(doc) {
   doc.text('Do these steps', 16, 118);
   const steps = [
     'Open your saved LunchApp in MIT App Inventor. Keep one screen and the Confirm button.',
-    'Use your two foods in the selector. Keep the selected_meal variable and message blocks.',
-    'Run your latest APK in BrowserStack App Live.',
-    'Test food 1, food 2, then food 1 again. Record the expected message, actual message, and Pass or Fail.'
+    'Use your two foods. Keep the selected_meal variable; it remembers the chosen food. Keep the blocks that show the message.',
+    'Run the latest APK (app file) in BrowserStack App Live.',
+    'Complete Test 1, then Test 2, then Test 3. Record each test on its page.'
   ];
   let y = 130;
   for (let i = 0; i < steps.length; i++) {
@@ -588,10 +579,10 @@ function addInstructionPage(doc) {
   doc.roundedRect(15, y + 3, 185, 36, 2, 2, 'F');
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
-  doc.text('Required screenshots', 20, y + 12);
+  doc.text('Screenshots', 20, y + 12);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9.5);
-  doc.text(doc.splitTextToSize('Attach all three test screenshots. Download this PDF and submit it with your editable LunchApp .aia file to Google Classroom.', 174), 20, y + 20);
+  doc.text(doc.splitTextToSize('This PDF includes one screenshot for each test.', 174), 20, y + 20);
 }
 async function addTestPage(doc, test, pageNo) {
   addHeader(doc, `Test ${test.number}`, pageNo);
@@ -658,7 +649,7 @@ function addExplainPage(doc) {
   doc.text(response, 20, 128);
   doc.setFontSize(9);
   doc.setTextColor(80, 100, 110);
-  doc.text('Download the PDF and submit it with your LunchApp .aia file.', 16, 188);
+  doc.text('Submit this PDF and your editable App Inventor project file (.aia) to Google Classroom.', 16, 188);
   doc.setTextColor(16, 47, 64);
 }
 async function downloadPdf() {
