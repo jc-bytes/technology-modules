@@ -719,11 +719,12 @@ function addInstructionPage(doc) {
   let y = 130;
   for (let i = 0; i < steps.length; i++) {
     doc.setFillColor(21, 67, 92);
-    doc.circle(19, y - 1.3, 3, 'F');
+    const circleCenterY = y - 1.3;
+    doc.circle(19, circleCenterY, 3, 'F');
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(8);
-    doc.text(String(i + 1), 19, y + 1.4, { align: 'center' });
+    doc.text(String(i + 1), 19, circleCenterY + 1, { align: 'center' });
     doc.setTextColor(16, 47, 64);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10.5);
