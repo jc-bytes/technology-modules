@@ -146,9 +146,9 @@
     "modules/sensor-systems/t3-printable.html": "5c7a4810883d96e8f799f8edfdbf787723d35619022a3f7a13ee3c8195afcaa6",
     "modules/source-credibility/index.html": "780cc08922fb638203ed69d55fd0a29cdacb11b5bbc1e66b3a61f0fc12228168",
     "modules/source-credibility/printable-fallback.html": "5ff161027e0c7ad2fe3105ce944946a5aedf62dc0b805d6f492b70e562d03063",
-    "modules/spreadsheet-analysis/assessment-printable.html": "549ae41d40531fe7bd1d38680e57e88207f8ddaa953c3e3421fa35c5c585ae8c",
+    "modules/spreadsheet-analysis/assessment-printable.html": "975b7d3f35a8dbf4322edad7c5e03d89875f815a0821dfdf30d3c76ee002acc8",
     "modules/spreadsheet-analysis/assets/G7_DecisionPractice.xlsx": "1f4fbc4db4ecb8823f25817cbf45a52d0fdd7a8948285b6063e9993387e12bc1",
-    "modules/spreadsheet-analysis/index.html": "9b4dfa455bb9cf1cabb236be8ade30eab8e05d54b61b965ee6fd76dc068cf41a",
+    "modules/spreadsheet-analysis/index.html": "16fc1255b2cc8acf61142e1ac12e935f0e58e7dd1dcfb5ac07301b709c5afb0c",
     "modules/spreadsheet-analysis/printable-fallback.html": "2f4a2056827c2d8e75109a9d2867f63d51c4054202fc6482df114c7157fdd365",
     "modules/spreadsheet-analysis/t3-printable.html": "29602973ad5a910a231b0bb41a7d1427657c23edf57fa089edc967e7de88e177",
     "offline-guide.html": "e0e5dc6fa1b5ab157085eeafc450771b32014ac170e9d9d3e564028b0c3b7c7b",
@@ -158,7 +158,12 @@
     "assessments/g8-t3-summative-1-lunch-app/main.js": "4dd7406a73041cf276338b2337ef9b80976e68711f534374835ce0e91dc6ef92",
     "assessments/g8-t3-summative-1-lunch-app/printable-fallback.html": "b38cfce8644ab34cd3d80b34319eb141fad38aec03527054c93b1b188b8ece69",
     "assessments/g8-t3-summative-1-lunch-app/shared/foundation-module.css": "3debaade0d901e2fc6b912f2a271701ff266f1b3badc12dc6ceefefaaf5e9493",
-    "assessments/g8-t3-summative-1-lunch-app/shared/jspdf.umd.min.js": "5feb83f439480e06687f9e6f23a8a162b12157b9606aa6ffc70c7e961b7c6013"
+    "assessments/g8-t3-summative-1-lunch-app/shared/jspdf.umd.min.js": "5feb83f439480e06687f9e6f23a8a162b12157b9606aa6ffc70c7e961b7c6013",
+    "assets/G7_Books_Starter-UbXYgoSs.xlsx": "bfc55719de0b74816d10f989e6b6efc0ce725f7510d5a5323f12060069e41441",
+    "assets/formative-content-BjETTaIi.js": "2f9fe19a1dd63b1e196b38e9c13be49f072ac03595a26d49d14beab09bedff92",
+    "assets/formative-content-cdODhnPs.css": "ea983ccb91c8182a78871c36dd4f6a31a64ce0e6b675cbadcb7793f8340f50a2",
+    "assets/spreadsheet-analysis-CH5cr512.js": "c4e03669cd4f6b10766e42fcf7ea508f30c627d4c084dce6a0b19a26149a2398",
+    "assets/spreadsheet-analysis-DSJxdP8F.css": "5f0c66f96e27ec9615943d13197d0ea3d72b04cf14a3c2a9789ad60a2a7d9884"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
