@@ -172,13 +172,13 @@ function renderTest(test) {
           <small>Look at your app after pressing Confirm. Fill in the blank with the exact words shown under the button. If nothing appeared, write "No message appeared."</small>
           <textarea class="actual-box" id="actual-${test.id}" maxlength="180"></textarea>
         </label>
-        <label class="fm-field">2. Did your message match the expected message above?
+        <label class="fm-field">2. After you clicked Confirm, did the label show the expected message?
           <select class="decision-select" id="decision-${test.id}">
             <option value="">Choose Yes or No</option>
-            <option value="Pass">Yes, it matched (Pass)</option>
-            <option value="Fail">No, it was different or missing (Fail)</option>
+            <option value="Pass">Yes, it showed the expected message (Pass)</option>
+            <option value="Fail">No, it was wrong, blank, or did not update (Fail)</option>
           </select>
-          <small>Compare the message you typed with the expected message above.</small>
+          <small>Check the label under the button in your running app.</small>
         </label>
       </section>
     </div>
@@ -897,7 +897,7 @@ async function addTestPage(doc, test) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(8.5);
   doc.setTextColor(80, 100, 110);
-  doc.text('Did it match?', innerX, y);
+  doc.text('Did the label show the right message?', innerX, y);
   y += 4;
   const decision = clean(entry.decision) || 'Not selected';
   const decisionColors = decision === 'Pass' ? [227, 244, 236] : decision === 'Fail' ? [252, 232, 229] : [242, 243, 240];
