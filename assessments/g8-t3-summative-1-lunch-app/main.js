@@ -27,6 +27,7 @@ const blankState = () => ({
 let state = loadState();
 let databasePromise;
 let activeObjectUrl;
+let enlargedImageUrl;
 let cropPreviewUrl;
 let activeCropTest;
 let cropPointer;
@@ -42,6 +43,8 @@ const cropImage = document.querySelector('#crop-image');
 const cropSelection = document.querySelector('#crop-selection');
 const cropInstruction = document.querySelector('#crop-instruction');
 const cropSaveButton = document.querySelector('#crop-save');
+const imageDialog = document.querySelector('#image-dialog');
+const enlargedImage = document.querySelector('#enlarged-image');
 
 function loadState() {
   try {
@@ -158,9 +161,8 @@ function renderTest(test) {
     <div class="test-layout">
       <section class="upload-panel" aria-label="Required screenshot">
         <h2>Required screenshot</h2>
-        <div class="phone-shell">
-          <div class="image-slot phone-screen" data-test="${test.id}" tabindex="0" role="region" aria-label="Screenshot area for Test ${test.number}. Paste a copied image here." aria-live="polite"></div>
-        </div>
+        <p class="screenshot-help">After you press Confirm, save a picture of your app on this device. It must show the selected meal and the message. Click <strong>Choose screenshot</strong> below and select that picture.</p>
+        <div class="image-slot" data-test="${test.id}" role="group" aria-label="Screenshot for Test ${test.number}"></div>
         <input class="upload-input" type="file" id="screenshot-${test.id}" accept="image/*" tabindex="-1" aria-hidden="true">
         <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
         <p class="upload-status" id="screenshot-status" role="status" aria-live="polite"></p>
@@ -242,6 +244,7 @@ function render() {
 async function setPage(id) {
   const allowed = STEP_PAGES.map(([page]) => page);
   if (!allowed.includes(id)) return;
+  if (imageDialog.open) imageDialog.close();
   for (const [testId, session] of cropSessions) {
     session.bitmap.close?.();
     cropSessions.delete(testId);
@@ -260,10 +263,10 @@ nav.addEventListener('click', event => {
 main.addEventListener('click', event => {
   const button = event.target.closest('[data-page]');
   if (button) void setPage(button.dataset.page);
-  const pasteButton = event.target.closest('[data-paste-image]');
-  if (pasteButton) pasteButton.closest('.image-slot')?.focus();
   const uploadButton = event.target.closest('[data-upload-image]');
   if (uploadButton) main.querySelector(`#screenshot-${uploadButton.dataset.uploadImage}`)?.click();
+  const viewButton = event.target.closest('[data-view-image]');
+  if (viewButton) viewScreenshot(viewButton.dataset.viewImage);
   if (event.target.closest('.remove-image')) removeScreenshot(event.target.closest('.remove-image').dataset.test);
   const cropButton = event.target.closest('[data-crop-action]');
   if (cropButton) {
@@ -274,18 +277,11 @@ main.addEventListener('click', event => {
     if (cropAction === 'edit') void editScreenshotCrop(test);
   }
 });
-main.addEventListener('paste', event => {
-  const slot = event.target instanceof Element ? event.target.closest('.image-slot') : null;
-  if (!slot || !main.contains(slot) || event.target.closest('input, textarea, select, button, [contenteditable="true"]')) return;
-  const imageItem = [...(event.clipboardData?.items || [])].find(item => item.kind === 'file' && item.type.startsWith('image/'));
-  const pastedImage = imageItem?.getAsFile();
-  if (!pastedImage) return;
-  event.preventDefault();
-  const testId = slot.dataset.test;
-  const file = pastedImage.name ? pastedImage : new File([pastedImage], `pasted-${testId}-screenshot.png`, { type: pastedImage.type || 'image/png' });
-  const status = main.querySelector('#screenshot-status');
-  if (status) status.textContent = 'Preparing pasted screenshot…';
-  void storeScreenshot(testId, file);
+imageDialog.querySelector('#close-image').addEventListener('click', () => imageDialog.close());
+imageDialog.addEventListener('close', () => {
+  enlargedImage.removeAttribute('src');
+  if (enlargedImageUrl) URL.revokeObjectURL(enlargedImageUrl);
+  enlargedImageUrl = null;
 });
 cropStage.addEventListener('pointerdown', startCropDrag);
 cropStage.addEventListener('pointermove', moveCropDrag);
@@ -390,7 +386,10 @@ async function storeScreenshot(testId, file) {
   if (status) status.textContent = 'Saving screenshot in this browser…';
   try {
     const image = await compressScreenshot(file);
-    await openScreenshotCrop(testId, image, file.name);
+    await saveScreenshot({ testId, image, originalImage: image, fileName: file.name, savedAt: new Date().toISOString() });
+    await showScreenshot(testId);
+    const currentStatus = main.querySelector('#screenshot-status');
+    if (currentStatus) currentStatus.textContent = `Screenshot added to Test ${testId.slice(-1)}. Click the image to view it larger.`;
   } catch (error) {
     if (status) status.textContent = error.message || 'Screenshot could not be saved. Try a smaller image or ask your teacher for help.';
     else setToast(error.message || 'Screenshot could not be saved.');
@@ -596,22 +595,16 @@ async function showScreenshot(testId) {
   if (status) status.textContent = '';
   try {
     const record = await getScreenshot(testId);
+    if (!slot.isConnected || slot.dataset.test !== testId) return;
     if (!record) {
       const emptyActions = document.createElement('div');
       emptyActions.className = 'screenshot-empty-actions';
-      const paste = document.createElement('button');
-      paste.className = 'fm-button primary';
-      paste.type = 'button';
-      paste.dataset.pasteImage = '';
-      paste.textContent = 'Paste screenshot';
       const upload = document.createElement('button');
-      upload.className = 'fm-button quiet';
+      upload.className = 'fm-button primary';
       upload.type = 'button';
       upload.dataset.uploadImage = testId;
-      upload.textContent = 'Upload screenshot';
-      const shortcut = document.createElement('p');
-      shortcut.textContent = 'Ctrl+V · ⌘V';
-      emptyActions.append(paste, upload, shortcut);
+      upload.textContent = 'Choose screenshot';
+      emptyActions.append(upload);
       slot.append(emptyActions);
       return;
     }
@@ -622,15 +615,24 @@ async function showScreenshot(testId) {
     image.src = activeObjectUrl;
     image.alt = `Screenshot attached to ${testId.replace('test', 'Test ')}`;
     slot.classList.add('has-image');
+    const view = document.createElement('button');
+    view.className = 'screenshot-view';
+    view.type = 'button';
+    view.dataset.viewImage = testId;
+    view.setAttribute('aria-label', `View Test ${testId.slice(-1)} screenshot larger`);
+    const viewLabel = document.createElement('span');
+    viewLabel.textContent = 'View larger';
+    view.append(image, viewLabel);
+    const remove = document.createElement('button');
+    remove.className = 'remove-image';
+    remove.type = 'button';
+    remove.dataset.test = testId;
+    remove.setAttribute('aria-label', `Remove Test ${testId.slice(-1)} screenshot`);
+    remove.textContent = '×';
     const actions = document.createElement('div');
     actions.className = 'screenshot-actions';
     actions.setAttribute('role', 'group');
     actions.setAttribute('aria-label', 'Screenshot options');
-    const remove = document.createElement('button');
-    remove.className = 'fm-button quiet remove-image';
-    remove.type = 'button';
-    remove.dataset.test = testId;
-    remove.textContent = 'Remove screenshot';
     const edit = document.createElement('button');
     edit.className = 'fm-button quiet edit-crop';
     edit.type = 'button';
@@ -642,14 +644,23 @@ async function showScreenshot(testId) {
     replace.type = 'button';
     replace.dataset.uploadImage = testId;
     replace.textContent = 'Replace screenshot';
-    actions.append(edit, replace, remove);
-    slot.append(image, actions);
+    actions.append(replace, edit);
+    slot.append(view, remove, actions);
   } catch {
     if (status) status.textContent = 'Image storage is unavailable here. Try another browser or ask your teacher for the paper record.';
   }
 }
+async function viewScreenshot(testId) {
+  const record = await getScreenshot(testId).catch(() => null);
+  if (!record?.image) return;
+  enlargedImageUrl = URL.createObjectURL(record.image);
+  enlargedImage.src = enlargedImageUrl;
+  enlargedImage.alt = `Test ${testId.slice(-1)} screenshot`;
+  imageDialog.showModal();
+}
 async function removeScreenshot(testId) {
   try {
+    if (imageDialog.open) imageDialog.close();
     await deleteScreenshot(testId);
     if (activeObjectUrl) URL.revokeObjectURL(activeObjectUrl);
     activeObjectUrl = null;
