@@ -170,16 +170,17 @@ function renderTest(test) {
       <section class="test-meta" aria-label="Test record">
         <p><strong>Meal option to test:</strong> <span class="food-value"></span></p>
         <div class="message-sample"><span>Expected message</span><strong class="expected-message"></strong></div>
-        <label class="fm-field">Actual message you saw
-          <textarea class="actual-box" id="actual-${test.id}" maxlength="180" placeholder="Copy the message shown by your running app."></textarea>
+        <label class="fm-field">1. What message did your app show?
+          <small>Look at your app after pressing Confirm. Type the words you see there. If nothing appeared, type "No message appeared."</small>
+          <textarea class="actual-box" id="actual-${test.id}" maxlength="180" placeholder="Type the message from your app here."></textarea>
         </label>
-        <label class="fm-field">Your decision
+        <label class="fm-field">2. Did your message match the expected message above?
           <select class="decision-select" id="decision-${test.id}">
-            <option value="">Choose Pass or Fail</option>
-            <option value="Pass">Pass</option>
-            <option value="Fail">Fail</option>
+            <option value="">Choose Yes or No</option>
+            <option value="Pass">Yes, it matched (Pass)</option>
+            <option value="Fail">No, it was different or missing (Fail)</option>
           </select>
-          <small>Choose Pass if the messages match. Otherwise choose Fail.</small>
+          <small>Compare the message you typed with the expected message above.</small>
         </label>
       </section>
     </div>
@@ -837,7 +838,7 @@ async function addTestPage(doc, test) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(8.5);
   doc.setTextColor(80, 100, 110);
-  doc.text('Actual message you saw', innerX, y);
+  doc.text('Message my app showed', innerX, y);
   y += 6;
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9.5);
@@ -853,7 +854,7 @@ async function addTestPage(doc, test) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(8.5);
   doc.setTextColor(80, 100, 110);
-  doc.text('Your decision', innerX, y);
+  doc.text('Did it match?', innerX, y);
   y += 4;
   const decision = clean(entry.decision) || 'Not selected';
   const decisionColors = decision === 'Pass' ? [227, 244, 236] : decision === 'Fail' ? [252, 232, 229] : [242, 243, 240];
