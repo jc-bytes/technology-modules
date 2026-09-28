@@ -160,9 +160,7 @@ function renderTest(test) {
     </header>
     <div class="test-layout">
       <section class="upload-panel" aria-label="Required screenshot">
-        <h2>Required screenshot</h2>
-        <p class="screenshot-help">After you press Confirm, save a picture of your app on this device. It must show the selected meal and the message. Click <strong>Choose screenshot</strong> below and select that picture.</p>
-        <div class="image-slot" data-test="${test.id}" role="group" aria-label="Screenshot for Test ${test.number}"></div>
+        <div class="image-slot" data-test="${test.id}" role="group" tabindex="0" aria-label="Screenshot for Test ${test.number}"></div>
         <input class="upload-input" type="file" id="screenshot-${test.id}" accept="image/*" tabindex="-1" aria-hidden="true">
         <p id="screenshot-requirement" class="inline-error" role="status" aria-live="polite"></p>
         <p class="upload-status" id="screenshot-status" role="status" aria-live="polite"></p>
@@ -264,6 +262,8 @@ nav.addEventListener('click', event => {
 main.addEventListener('click', event => {
   const button = event.target.closest('[data-page]');
   if (button) void setPage(button.dataset.page);
+  const pasteButton = event.target.closest('[data-paste-image]');
+  if (pasteButton) void pasteScreenshotFromClipboard(pasteButton.dataset.pasteImage);
   const uploadButton = event.target.closest('[data-upload-image]');
   if (uploadButton) main.querySelector(`#screenshot-${uploadButton.dataset.uploadImage}`)?.click();
   const viewButton = event.target.closest('[data-view-image]');
@@ -278,6 +278,34 @@ main.addEventListener('click', event => {
     if (cropAction === 'edit') void editScreenshotCrop(test);
   }
 });
+document.addEventListener('paste', event => {
+  if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+  if (cropDialog.open || imageDialog.open || dialog.open) return;
+  const test = TESTS.find(item => item.id === state.page);
+  if (!test) return;
+  const imageItem = [...(event.clipboardData?.items || [])].find(item => item.kind === 'file' && item.type.startsWith('image/'));
+  const image = imageItem?.getAsFile();
+  if (!image) return;
+  event.preventDefault();
+  void storeScreenshot(test.id, image);
+});
+async function pasteScreenshotFromClipboard(testId) {
+  const status = main.querySelector('#screenshot-status');
+  try {
+    if (!navigator.clipboard?.read) throw new Error('Clipboard button is unavailable in this browser. Press Ctrl+V on Windows or ⌘V on Mac.');
+    const items = await navigator.clipboard.read();
+    const imageItem = items.flatMap(item => item.types.filter(type => type.startsWith('image/')).map(type => ({ item, type })))[0];
+    if (!imageItem) throw new Error('No picture is copied yet. Copy a screenshot first, then press Paste screenshot.');
+    const image = await imageItem.item.getType(imageItem.type);
+    if (state.page !== testId) return;
+    await storeScreenshot(testId, image);
+  } catch (error) {
+    if (status?.isConnected) status.textContent = error.name === 'NotAllowedError'
+      ? 'Clipboard access was blocked. Press Ctrl+V on Windows or ⌘V on Mac, or choose a saved picture.'
+      : error.message || 'Could not paste the screenshot. Press Ctrl+V or ⌘V, or choose a saved picture.';
+    main.querySelector('.image-slot')?.focus();
+  }
+}
 imageDialog.querySelector('#close-image').addEventListener('click', () => imageDialog.close());
 imageDialog.addEventListener('close', () => {
   enlargedImage.removeAttribute('src');
@@ -600,12 +628,25 @@ async function showScreenshot(testId) {
     if (!record) {
       const emptyActions = document.createElement('div');
       emptyActions.className = 'screenshot-empty-actions';
+      const title = document.createElement('h2');
+      title.textContent = 'Required screenshot';
+      const instructions = document.createElement('p');
+      instructions.className = 'screenshot-instructions';
+      instructions.textContent = 'After you press Confirm, save a picture of your app on this device. It must show the selected meal and the message. Paste a copied picture, or choose a saved picture below.';
+      const paste = document.createElement('button');
+      paste.className = 'fm-button quiet';
+      paste.type = 'button';
+      paste.dataset.pasteImage = testId;
+      paste.textContent = 'Paste screenshot';
       const upload = document.createElement('button');
       upload.className = 'fm-button primary';
       upload.type = 'button';
       upload.dataset.uploadImage = testId;
       upload.textContent = 'Choose screenshot';
-      emptyActions.append(upload);
+      const shortcut = document.createElement('p');
+      shortcut.className = 'screenshot-shortcut';
+      shortcut.textContent = 'Keyboard: Ctrl+V (Windows) or ⌘V (Mac)';
+      emptyActions.append(title, instructions, paste, upload, shortcut);
       slot.append(emptyActions);
       return;
     }
