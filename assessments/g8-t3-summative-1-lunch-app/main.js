@@ -169,8 +169,8 @@ function renderTest(test) {
         <p><strong>Meal option to test:</strong> <span class="food-value"></span></p>
         <div class="message-sample"><span>Expected message</span><strong class="expected-message"></strong></div>
         <label class="fm-field">1. What message did your app show?
-          <small>Look at your app after pressing Confirm. Type the words you see there. If nothing appeared, type "No message appeared."</small>
-          <textarea class="actual-box" id="actual-${test.id}" maxlength="180" placeholder="Type the message from your app here."></textarea>
+          <small>Look at your app after pressing Confirm. Fill in the blank with the exact words shown under the button. If nothing appeared, write "No message appeared."</small>
+          <textarea class="actual-box" id="actual-${test.id}" maxlength="180"></textarea>
         </label>
         <label class="fm-field">2. Did your message match the expected message above?
           <select class="decision-select" id="decision-${test.id}">
@@ -188,7 +188,9 @@ function renderTest(test) {
     </nav>`;
   main.querySelector('.food-value').textContent = meal;
   main.querySelector('.expected-message').textContent = expectedMessage(test.food);
-  main.querySelector(`#actual-${test.id}`).value = data.actual;
+  const actual = main.querySelector(`#actual-${test.id}`);
+  actual.placeholder = `When I select ${meal || 'my meal'} and click Confirm, the label under the button shows _____.`;
+  actual.value = data.actual;
   main.querySelector(`#decision-${test.id}`).value = data.decision;
   showScreenshot(test.id);
 }
