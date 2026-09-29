@@ -1,4 +1,4 @@
-import "./foundation-module.css";
+
 import { practiceCheckSpecs } from "./t3-practice.js";
 import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js";
 import { downloadStudentPdf } from "./student-pdf.js";
@@ -81,7 +81,7 @@ export function mountFoundationModule(config) {
     const feedback = saved.checked ? `<div class="fm-feedback ${saved.passed?'success':'retry'}" role="status">${saved.passed?'Correct.':escapeHtml(activity.retry || 'Look at the example and try again.')}</div>` : '';
     const count = config.layout === 'clean-step' && item.items.length === 1 ? '' : `<p>Question ${shownIndex+1} of ${item.items.length}</p>`;
     const questionNav = config.layout === 'clean-step' && item.items.length === 1 ? '' : `<nav class="fm-pager" aria-label="Question navigation">${shownIndex?`<button class="fm-button quiet" data-choice-position="${shownIndex-1}">Previous question</button>`:'<span></span>'}${shownIndex<item.items.length-1?`<button class="fm-button quiet" data-choice-position="${shownIndex+1}">Next question</button>`:''}</nav>`;
-    return `${hero(item)}${count}${block('',config.layout === 'clean-step' && item.items.length === 1 ? '' : activity.title,`${activity.visual || ''}<p class="fm-question">${activity.question}</p><form id="fm-choice-form"><input type="hidden" name="activity" value="${shownIndex}"><div class="fm-choices">${choices}</div><button class="fm-button primary">Check</button></form>${feedback}${questionNav}`)}${pager(item)}`;
+    return `${hero(item)}${count}${block('',config.layout === 'clean-step' && item.items.length === 1 ? '' : activity.title,`${activity.context ? `<div class="fm-context"><p><strong>Context.</strong> ${escapeHtml(activity.context)}</p></div>` : ''}${activity.visual || ''}<p class="fm-question">${activity.question}</p><form id="fm-choice-form"><input type="hidden" name="activity" value="${shownIndex}"><div class="fm-choices">${choices}</div><button class="fm-button primary">Check</button></form>${feedback}${questionNav}`)}${pager(item)}`;
   }
   function formPage(item) {
     const saved = state.responses[item.responseSource || item.id] || {};
@@ -90,7 +90,8 @@ export function mountFoundationModule(config) {
     const input=field.type==='textarea'?`<textarea name="${field.name}" rows="${field.rows || 4}">${escapeHtml(saved[field.name] || '')}</textarea>`:`<input name="${field.name}" value="${escapeHtml(saved[field.name] ?? '')}" type="${field.type || 'text'}" ${field.min!==undefined?`min="${field.min}"`:''}>`;
     const count = config.layout === 'clean-step' && item.fields.length === 1 ? '' : `<p>Part ${position+1} of ${item.fields.length}</p>`;
     const answerNav = config.layout === 'clean-step' && item.fields.length === 1 ? '' : `<nav class="fm-pager" aria-label="Answer navigation">${position?`<button class="fm-button quiet" data-form-position="${position-1}">Previous part</button>`:'<span></span>'}${position<item.fields.length-1?`<button class="fm-button primary" data-form-position="${position+1}">Next part</button>`:''}</nav>`;
-    return `${hero(item)}${position===0?item.intro || '':''}<form id="fm-record-form" class="fm-record-form">${count}<label class="fm-field"><span>${field.label}</span>${input}<small>${field.help || ''}</small></label></form>${answerNav}${pager(item)}`;
+    const fieldContext = field.context ? `<div class="fm-context"><p><strong>Context.</strong> ${escapeHtml(field.context)}</p></div>` : '';
+    return `${hero(item)}${position===0?item.intro || '':''}${fieldContext}<form id="fm-record-form" class="fm-record-form">${count}<label class="fm-field"><span>${field.label}</span>${input}<small>${field.help || ''}</small></label></form>${answerNav}${pager(item)}`;
   }
   function sensorPage(item) {
     const stored = state.responses[item.id] || {};
@@ -106,7 +107,7 @@ export function mountFoundationModule(config) {
   function reviewPage(item) {
     const report=foundationEvidence(config,state);
     const body=report.slice(report.indexOf('<section>'),report.lastIndexOf('</html>'));
-    return `${hero(item)}${report.includes('<section>') ? body : '<p>No web answers entered.</p>'}${pager(item)}`;
+    return `${hero(item)}${item.summary || ''}${report.includes('<section>') ? body : '<p>No web answers entered.</p>'}${pager(item)}`;
   }
   async function downloadReport(button) {
     const announce = message => toast(config.practiceOnly && message.startsWith('PDF ready:')
