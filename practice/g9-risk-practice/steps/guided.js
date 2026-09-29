@@ -1,6 +1,6 @@
 import { choiceSetStep } from '../step-patterns.js';
 
-export const guided = choiceSetStep({
+export const guided = {...choiceSetStep({
   id: 'guided', title: 'Identify the danger', short: 'Threat clues', stage: 'guided',
   items: [
     {title:'Case 1: New login page', question:'What danger matches a message that asks for your school password on a new page?', options:['Phishing','Ransomware','Brute-force attack'], answer:0, hint:'A fake message or login page that asks for private information is phishing.', context:'You receive an email that looks like it comes from your school\'s IT team. It says your account will be locked in 24 hours unless you confirm your password on a new login page. The message creates urgency and asks you to enter your school password on a page you have not used before.'},
@@ -10,4 +10,4 @@ export const guided = choiceSetStep({
     {title:'Case 5: Safer first action', question:'What is the safest first action after receiving an unexpected password request?', options:['Show it to the teacher and check through the official school site','reply with the password quickly','Forward it to all classmates'], answer:0, hint:'Do not use the message link. Check through a trusted official route.', context:'You receive a message asking for your school password. It says your account will be closed if you do not respond quickly. You did not request this message, and you are not sure whether it really comes from the school.'},
     {title:'Case 6: Protection for guesses', question:'Which protection makes repeated password guessing harder?', options:['A long unique password and multi-factor authentication','A shorter shared password','Turning off account alerts'], answer:0, hint:'A long unique password reduces guessing success; multi-factor authentication adds another check.', context:'An account has been targeted by repeated password guessing. The password is short and shared among several students. The account does not use multi-factor authentication, so anyone who guesses the password can log in directly.'},
   ],
-});
+}), summary:'Do questions 1–3 to check the three dangers. Questions 4–6 are extra practice. After question 3, choose <a href="#compare">Written practice</a>.'};

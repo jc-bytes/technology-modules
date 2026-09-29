@@ -46,6 +46,11 @@ export function foundationPdfReport(config, state) {
     } else if (section.kind === 'sensor') {
       for (const key of ['light', 'threshold', 'output']) blocks.push({label: key, answer: saved[key] ?? 'Not answered'});
     }
+    const earlier = (section.legacyFields || []).filter(field => String(saved[field.name] ?? '').trim());
+    if (earlier.length) {
+      blocks.push({heading: 'Earlier saved answers'});
+      for (const field of earlier) blocks.push({label: field.label, answer: saved[field.name]});
+    }
     for (const check of section.inlineChecks || []) blocks.push({label: check.label, answer: state.inlineAnswers?.[check.key] || 'Not answered'});
 
     const readSource = source => {
@@ -74,6 +79,7 @@ export function foundationPdfReport(config, state) {
         ...(section.kind === 'sensor' ? ['light','threshold','output'].map(key => ({type:'response',label:key,answer:saved[key] ?? ''})) : []),
         ...(section.inlineChecks || []).map((check,index) => ({type:'response',label:check.label,answer:readSource({kind:'inline-check',index})})),
       ];
+    for (const field of earlier) pdfItems.push({type:'response',label:`Earlier: ${field.label}`,answer:saved[field.name]});
     if (pdfItems.length || section.pdf?.prompt || section.pdf?.visual) tasks.push({
       heading:section.pdf?.heading || section.title,
       prompt:section.pdf?.prompt || section.summary || 'Your recorded work for this section.',

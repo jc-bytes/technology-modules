@@ -6,5 +6,6 @@ export const site = {
   shortTitle: 'Compare online risks',
   subject: 'Technology',
   layout: 'clean-step',
+  practiceOnly: true,
   storageKey: 'formative:g9-risk-practice:v1',
 };
