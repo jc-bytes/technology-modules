@@ -1,7 +1,7 @@
 import { site } from './site.js';
 import { safetyModel } from './steps/safety-model.js';
 import { model } from './steps/model.js';
-import { guided } from './steps/guided.js';
+import { guided } from './steps/guided.js?v=20260929a';
 import { compare } from './steps/compare.js';
 import { explain } from './steps/explain.js';
 import { independent } from './steps/independent.js';
