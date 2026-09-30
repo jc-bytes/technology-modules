@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-B5Qt9EMX.js";import{m}from"./styles-CwGQNHlY.js";import"./practice-frame-B4v-X3Oc.js";/* empty css                       */import"./content-DYD5hYow.js";import"./jspdf.es.min-DBoTbCtu.js";import"./preload-helper-Ch_bUO3j.js";m(document.querySelector("#app"));
