@@ -10,6 +10,9 @@
       if (new URLSearchParams(location.search).get('class') === 'g6-cell-check') {
         location.replace(new URL('cell-assessment.html' + location.hash, location.href));
       }
+      if (new URLSearchParams(location.search).get('class') === 'g6-table-check') {
+        location.replace(new URL('story-assessment.html' + location.search + location.hash, location.href));
+      }
     </script>
     <script type="module" crossorigin src="/technology-modules/assets/data-spreadsheets-CDAWe3D_.js"></script>
     <link rel="modulepreload" crossorigin href="/technology-modules/assets/modulepreload-polyfill-B5Qt9EMX.js">

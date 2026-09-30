@@ -117,9 +117,9 @@
     "modules/cybersecurity-risk/t3-printable.html": "53dc65a06d4e68e6841ef6c5d5050e1fcd73ea959c5d9e3de61272a2b4133df0",
     "modules/data-spreadsheets/cell-assessment-fallback.html": "ce1feef8b7c51cc9e9014e97af83d35ae5e7cb243c40208d10af26a25db69496",
     "modules/data-spreadsheets/cell-assessment.html": "7ddc072aadc818ef7ac20d6606b50f882c3d42408c14180c3be6e4acd196be14",
-    "modules/data-spreadsheets/index.html": "2a5a8a26d6b19ddba7977b0a9d42ae90bee0646072073149d358ef3177b01ed6",
+    "modules/data-spreadsheets/index.html": "dc3b153c0a65fdc1852c7f2e8f8d3b3962be3dcf532bf7cb5f8969035f28e14c",
     "modules/data-spreadsheets/printable-fallback.html": "58f2e7ee4540266d0a6083234be19b85ba5d0c1eb2a91d7646571cc48ece895a",
-    "modules/data-spreadsheets/story-assessment-fallback.html": "7210cf987f39450b6ff23b28b06ae5f4c14008c6108645d7228fb79cb250f84d",
+    "modules/data-spreadsheets/story-assessment-fallback.html": "ee88184167f3ed05edd2f0a07d972c3886365eb9a52a87b70cff134dc5633e9f",
     "modules/data-spreadsheets/t3-printable.html": "0c5c609e15a262f25ea48e8d5976cc719b27497ddebca7682d12f59417855b5a",
     "modules/data-spreadsheets/table-reading-printable.html": "2166a4298d5de48f8be65aaf9ddad8a20e1ba84f2fe67a99009ce9f3b7399f8e",
     "modules/data-spreadsheets/trip-practice-fallback.html": "cd62b170a9fa5f196c5f9642a15f4b80c333e2b8832a25a738743c94d49e0fa5",
@@ -205,7 +205,12 @@
     "practice/g9-risk-practice/steps/priority.js": "26cecbaeee80b95eee191f995e60b07a8f0d3075e89f83280e5dce061eb01041",
     "practice/g9-risk-practice/steps/review.js": "76395ac5b15e99cfc31b30c2a49acf85a42d4ea4731bafeff6541068f6bb2ece",
     "practice/g9-risk-practice/validate.js": "d052bd0de93070730a4b991f0be08edafae4d1c09b540b7001896f2ee3018669",
-    "practice/g9-risk-practice/steps/safety-model.js": "cc08ffd472b715298bdfccb92b528d92da02ddc85b71895b61ee0cad74233380"
+    "practice/g9-risk-practice/steps/safety-model.js": "cc08ffd472b715298bdfccb92b528d92da02ddc85b71895b61ee0cad74233380",
+    "assets/content-DYD5hYow.js": "c9e3cec673b7b40b62700781ab21d6e24abbd0b199b037c18fb9d01faf62b3be",
+    "assets/data-spreadsheets-story-assessment-Chl4650t.js": "72b56f4482519860993f6e06e35b23932dbde6f97c6a0a6f7b5859045b0e6e0e",
+    "assets/styles-BG_x66EI.js": "2b9db3780ce21e559e8dced18bfa3edaa0a40cde821a604b1c9602744c3404a9",
+    "assets/styles-h8jrkudo.css": "4c71794f8880e3a811c6ef1a28adf3620932d3ad78c43252d0d760e2467a7d39",
+    "modules/data-spreadsheets/story-assessment.html": "60468645fd68bb8a23e18657d1bb786a43cc3ffb28a60f0a9f751690d629885e"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
@@ -368,6 +373,32 @@
       "assets/student-pdf-CZ3xIKc9.js",
       "modules/data-spreadsheets/cell-assessment.html",
       "modules/data-spreadsheets/index.html"
+    ]
+  },
+  "g6StoryCheckRelease": {
+    "date": "2026-09-30",
+    "route": "modules/data-spreadsheets/index.html?class=g6-table-check",
+    "target": "modules/data-spreadsheets/story-assessment.html",
+    "scope": "Grade 6 Summative 2 only; other spreadsheet routes keep their existing entry bundle.",
+    "changes": "Reread story navigation, optional progression, selected-cell heading formatting, table title, two cell addresses and two explanations, PDF evidence.",
+    "files": [
+      "assets/_commonjsHelpers-Cpj98o6Y.js",
+      "assets/content-DYD5hYow.js",
+      "assets/data-spreadsheets-story-assessment-Chl4650t.js",
+      "assets/formula-lesson-D56ihEy9.css",
+      "assets/html2canvas.esm-DXEQVQnt.js",
+      "assets/index.es-C11pEgwB.js",
+      "assets/jspdf.es.min-DBoTbCtu.js",
+      "assets/modulepreload-polyfill-B5Qt9EMX.js",
+      "assets/practice-frame-B4v-X3Oc.js",
+      "assets/practice-frame-BaIeRkwv.css",
+      "assets/preload-helper-Ch_bUO3j.js",
+      "assets/purify.es-CEBYger9.js",
+      "assets/styles-BG_x66EI.js",
+      "assets/styles-h8jrkudo.css",
+      "modules/data-spreadsheets/index.html",
+      "modules/data-spreadsheets/story-assessment-fallback.html",
+      "modules/data-spreadsheets/story-assessment.html"
     ]
   }
 }
