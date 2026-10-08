@@ -1,0 +1,98 @@
+/* This layout belongs to generated formative sites. The hub's other routes
+   keep their existing shared styles. */
+.fm-clean-step{min-height:100vh;background:#fffefa;color:#173647}
+.fm-clean-step .fm-topbar{min-height:108px;background:#fffefa;border-bottom:1px solid #c1d0d6;padding:18px max(24px,calc((100vw - 1120px)/2));gap:20px}
+.fm-clean-step .fm-brand-title{display:grid;gap:4px;min-width:220px}
+.fm-clean-step .fm-brand-title small{font-size:15px;font-weight:600;color:#244252}
+.fm-clean-step .fm-activity-title{max-width:470px;font-size:23px;line-height:1.2;color:#183b50}
+.fm-clean-step .fm-tools{gap:12px}
+.fm-clean-step .fm-student{gap:12px}
+.fm-clean-step #fm-student-label{line-height:1.22}
+.fm-clean-step .fm-student small{margin-top:3px;font-size:15px}
+.fm-clean-step .fm-edit{width:52px;height:52px;display:grid;place-items:center;padding:0;border:1px solid #9cb4c0;border-radius:8px;background:#fff;color:#16425a}
+.fm-clean-step .fm-button.primary,.fm-clean-step .fm-menu summary{min-height:54px;background:#17445d;color:#fff;border-radius:8px}
+.fm-clean-step .fm-menu summary{display:flex;align-items:center;gap:10px}
+.fm-clean-step .fm-menu summary::before{content:'▶';font-size:15px}
+.fm-clean-step .fm-menu[open] summary::before{content:'▼'}
+.fm-clean-step #fm-main{width:min(1040px,calc(100% - 48px));max-width:none;padding:70px 0 92px;font-size:21px;line-height:1.55}
+.fm-clean-step #fm-main p{line-height:1.58}
+.fm-clean-step .fm-hero{margin-bottom:26px;padding:0;border:0}
+.fm-clean-step .fm-hero>p{margin:0 0 16px;color:#227b71;font-size:16px;font-weight:700;text-transform:none;letter-spacing:0}
+.fm-clean-step .fm-hero h1{font-size:clamp(40px,5.1vw,66px);line-height:1.12;letter-spacing:-.035em;color:#153b52}
+.fm-clean-step .fm-hero>div{color:#244252}
+.fm-clean-step .fm-source{margin:24px 0;padding:20px 26px;border-left:5px solid #246e8b;background:#f7f6f1}
+.fm-clean-step .fm-source p{margin:0}
+.fm-clean-step #fm-main table{width:100%;margin:22px 0 20px;border-collapse:collapse;background:#fff;font-size:19px}
+.fm-clean-step #fm-main caption{text-align:left;padding:0 0 12px;font-size:18px;font-weight:700;color:#173647}
+.fm-clean-step #fm-main th,.fm-clean-step #fm-main td{border:1px solid #9eb6c2;padding:12px 15px;text-align:left;vertical-align:top}
+.fm-clean-step #fm-main thead th{background:#e8f4f6}
+.fm-clean-step #fm-main tbody th{background:#f6fafb;font-weight:600}
+.fm-clean-step .fm-block{padding:0;border:0}
+.fm-clean-step .fm-block h2{margin:0 0 18px;font-size:23px;color:#244252}
+.fm-clean-step .fm-question{font-size:23px}
+.fm-clean-step .fm-choice span{border-width:1px;border-color:#9eb6c2;border-radius:7px}
+.fm-clean-step .fm-pager{margin-top:30px;padding-top:0;border:0;align-items:center}
+.fm-clean-step .fm-pager a{width:max-content;min-height:58px;padding:14px 22px;border:0;border-radius:8px}
+.fm-clean-step .fm-pager a:not(.next){padding-left:0;background:transparent;color:#17445d}
+.fm-clean-step .fm-pager .next{justify-self:end;background:#17445d;color:#fff}
+.fm-clean-step .fm-footer{width:min(1040px,calc(100% - 48px))}
+.fm-clean-step .t3-lab{margin:0}
+.fm-clean-step t3-check{display:block;margin-top:24px}
+.fm-clean-step t3-check label{display:grid;gap:12px;font-weight:700}
+.fm-clean-step t3-check select,.fm-clean-step t3-check input{width:min(100%,520px);min-height:52px;padding:10px 12px;border:1px solid #7996a4;border-radius:7px;background:#fff;color:#173647;font:inherit}
+.fm-clean-step t3-check button{min-height:50px;margin-top:15px;padding:10px 20px;border:0;border-radius:7px;background:#17445d;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.fm-clean-step t3-check p[role=status]:empty{display:none}
+.fm-clean-step t3-check p[role=status]{margin:12px 0;padding:12px 16px;border-left:4px solid #227b71;background:#e8f4ef;font-size:18px}
+.fm-clean-step .fm-record-form{margin-top:18px}
+.fm-clean-step .fm-field small{font-size:16px}
+@media(max-width:760px){.fm-clean-step .fm-topbar{position:static;padding:16px 20px}.fm-clean-step .fm-brand-title{min-width:0;width:100%}.fm-clean-step .fm-activity-title{font-size:21px}.fm-clean-step .fm-tools{width:100%;gap:10px}.fm-clean-step #fm-main{width:calc(100% - 36px);padding:42px 0 70px;font-size:18px}.fm-clean-step .fm-hero h1{font-size:clamp(36px,9vw,48px)}.fm-clean-step .fm-source{padding:16px 18px}.fm-clean-step #fm-main table{font-size:16px}.fm-clean-step #fm-main th,.fm-clean-step #fm-main td{padding:9px 10px}.fm-clean-step .fm-pager{grid-template-columns:1fr}.fm-clean-step .fm-pager .next{justify-self:start}}
+@media print{.fm-clean-step #fm-main{width:100%;padding:0}}
+
+.division-row {border:1px solid #9ebac4;padding:1rem;margin:1rem 0;display:grid;grid-template-columns:1fr 1fr;gap:1rem;min-width:0;}
+.division-row legend {font-weight:700;padding:0 .4rem;}
+.division-row t3-check {min-width:0;}
+.division-row input {width:100%;box-sizing:border-box;}
+@media(max-width:600px){.division-row{grid-template-columns:1fr;}}
+
+/* Keep the division worksheet compact and align each equation on the same columns. */
+.fm-clean-step #fm-main .division-table {width:100%;max-width:680px;table-layout:fixed;}
+.fm-clean-step #fm-main .division-table th:first-child {width:72%;}
+.fm-clean-step #fm-main .division-table th:last-child {width:28%;}
+.fm-clean-step #fm-main .division-table th,.fm-clean-step #fm-main .division-table td {padding:14px 20px;vertical-align:top;}
+.fm-clean-step #fm-main .division-equation {display:grid;grid-template-columns:80px 60px 80px;align-items:start;gap:10px;}
+.fm-clean-step #fm-main .division-equation > span {display:grid;place-items:center;min-height:52px;white-space:nowrap;}
+.fm-clean-step #fm-main division-table-check t3-check {display:block;margin:0;min-width:0;max-width:100%;}
+.fm-clean-step #fm-main division-table-check t3-check input {display:block;width:100%;height:52px;min-height:52px;padding:8px;box-sizing:border-box;text-align:center;font-variant-numeric:tabular-nums;}
+.fm-clean-step #fm-main .division-table td:last-child t3-check {width:80px;}
+.fm-clean-step #fm-main division-table-check t3-check > button {display:none;}
+.fm-clean-step #fm-main division-table-check t3-check > [role=status] {font-size:14px;line-height:1.3;margin:6px 0 0;padding:0;border:0;background:transparent;overflow-wrap:anywhere;}
+.fm-clean-step #fm-main division-table-check t3-check[data-outcome=wrong] input,.fm-clean-step #fm-main division-table-check t3-check[data-outcome=blank] input {border:2px solid #a32920;}
+.fm-clean-step #fm-main division-table-check t3-check[data-outcome=correct] input {border:2px solid #087f55;}
+.fm-clean-step #fm-main .division-final {display:grid;gap:10px;margin:28px 0 20px;font-weight:700;}
+.fm-clean-step #fm-main .division-final t3-check {width:220px;max-width:100%;}
+@media(max-width:600px){
+ .fm-clean-step #fm-main .division-table th,.fm-clean-step #fm-main .division-table td {padding:12px 10px;}
+ .fm-clean-step #fm-main .division-table th:first-child {width:70%;}
+ .fm-clean-step #fm-main .division-table th:last-child {width:30%;}
+ .fm-clean-step #fm-main .division-equation {grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr);gap:5px;}
+ .fm-clean-step #fm-main .division-table td:last-child t3-check {width:100%;max-width:70px;}
+ .fm-clean-step #fm-main .division-table thead th {font-size:15px;}
+}
+/* Keep per-box feedback visual; the batch status announces the result. */
+.fm-clean-step #fm-main division-table-check t3-check > [role=status] {display:none;}
+.fm-clean-step #fm-main division-table-check t3-check[data-outcome=correct] input {background:#e8f5ed;color:#145735;border-color:#087f55;}
+.fm-clean-step #fm-main division-table-check t3-check[data-outcome=wrong] input,
+.fm-clean-step #fm-main division-table-check t3-check[data-outcome=blank] input {background:#fff0ef;color:#84251e;border-color:#a32920;}
+
+/* Keep the whole binary number visible while focusing on one bit. */
+.fm-clean-step #fm-main .bit-focus-table {table-layout:fixed;max-width:720px;}
+.fm-clean-step #fm-main .bit-focus-table th,.fm-clean-step #fm-main .bit-focus-table td {text-align:center;vertical-align:middle;}
+.fm-clean-step #fm-main .bit-focus-table th:first-child,.fm-clean-step #fm-main .bit-focus-table td:first-child {width:26%;text-align:left;}
+.fm-clean-step #fm-main .bit-focus-table thead th:not(:first-child) {font-size:30px;}
+.fm-clean-step #fm-main .bit-focus-table .bit-active {background:#fff0b3;color:#473400;border-left:3px solid #a87500;border-right:3px solid #a87500;font-weight:700;}
+.fm-clean-step #fm-main .bit-focus-table thead .bit-active {border-top:3px solid #a87500;}
+.fm-clean-step #fm-main .bit-focus-table tr:last-child .bit-active {border-bottom:3px solid #a87500;}
+.bit-focus-label {display:block;font-size:13px;line-height:1.3;font-weight:700;white-space:nowrap;}
+@media(max-width:480px){.fm-clean-step #fm-main .bit-focus-table th,.fm-clean-step #fm-main .bit-focus-table td{padding:9px 5px;}.fm-clean-step #fm-main .bit-focus-table th:first-child,.fm-clean-step #fm-main .bit-focus-table td:first-child{width:29%;}.bit-focus-label{font-size:11px;}}
+
+.binary-factor{color:#075985;background:#e0f2fe;border-radius:4px;padding:0 .16em;font-weight:700}.binary-exponent{color:#8a304d;background:#fce7ef;border-radius:4px;padding:0 .16em;font-weight:700}.binary-color-key{display:block;margin-top:8px;font-size:15px;font-weight:400;line-height:1.7}.binary-color-key .binary-factor,.binary-color-key .binary-exponent{white-space:nowrap}

@@ -1,0 +1,2 @@
+import {choiceStep} from '../step-patterns.js?v=section-counts-14';
+export const step=choiceStep({"id": "digits", "title": "Spot a binary number", "short": "Digits", "activityTitle": "Only 0 and 1", "table": {"caption": "Binary digits", "columns": ["Digit", "Allowed in binary?"], "rows": [["0", "Yes"], ["1", "Yes"], ["2 to 9", "No"]]}, "question": "Which number uses only binary digits?", "options": ["1021", "1010", "2010"], "answer": 1, "hint": "Look for a number with only 0 and 1.", "stage": "guided"});

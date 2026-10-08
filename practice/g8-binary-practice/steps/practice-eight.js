@@ -1,0 +1,13 @@
+import {conversion} from './conversion-pattern.js?v=section-counts-14';
+export const step = conversion({
+  "id": "practice-eight",
+  "given": "1000",
+  "binary": false,
+  "sum": "8 + 0 + 0 + 0",
+  "options": [
+    "0 + 0 + 0 + 1",
+    "8 + 0 + 0 + 0",
+    "0 + 4 + 0 + 0"
+  ],
+  "hint": "Use the position as the exponent. Work out each power, multiply by its digit, then add."
+});

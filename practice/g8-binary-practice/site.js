@@ -1,0 +1,1 @@
+export const site = {id:'MOD-DATA-BINARY-01',slug:'g8-binary-practice',title:'Read binary numbers',shortTitle:'Binary practice',subject:'Technology',layout:'clean-step',storageKey:'formative:g8-binary-practice:v1'};
