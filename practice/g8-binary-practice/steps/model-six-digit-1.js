@@ -1,4 +1,4 @@
-import {exampleStep} from '../step-patterns.js?v=binary-width-16';
+import {exampleStep} from '../step-patterns.js?v=binary-copy-17';
 export const step=exampleStep({
   "id": "model-six-digit-1-v1",
   "title": "4. Multiply the next digit to the left",

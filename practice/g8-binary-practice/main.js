@@ -1,7 +1,7 @@
-import './division-table-check.js?v=binary-width-16';
-import { mountFoundationModule } from './shared/foundation-module.js?v=binary-width-16';
-import { lesson } from './lesson.js?v=binary-width-16';
-import { validateLesson } from './validate.js?v=binary-width-16';
+import './division-table-check.js?v=binary-copy-17';
+import { mountFoundationModule } from './shared/foundation-module.js?v=binary-copy-17';
+import { lesson } from './lesson.js?v=binary-copy-17';
+import { validateLesson } from './validate.js?v=binary-copy-17';
 // Keep saved division work when removing the fixed four-bit wording.
 try {
  const prefix='t3-practice:v1:'+location.pathname+location.search+':';

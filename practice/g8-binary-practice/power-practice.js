@@ -1,4 +1,4 @@
-import {tableHtml} from './content.js?v=binary-width-16';
+import {tableHtml} from './content.js?v=binary-copy-17';
 // Existing sums keep their labels and saved keys. New boxes precede them in PDF order.
 export function withPowerPractice(section) {
  const visual=section.pdf?.visual;

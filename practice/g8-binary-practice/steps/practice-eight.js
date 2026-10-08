@@ -1,4 +1,4 @@
-import {conversion} from './conversion-pattern.js?v=binary-width-16';
+import {conversion} from './conversion-pattern.js?v=binary-copy-17';
 export const step = conversion({
   "id": "practice-eight",
   "given": "1000",

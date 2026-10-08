@@ -1,4 +1,4 @@
-import {tableHtml} from '../content.js?v=binary-width-16';
+import {tableHtml} from '../content.js?v=binary-copy-17';
 export function divisionRows(number) {
  const rows=[];let n=Number(number);
  do {const quotient=Math.floor(n/2),remainder=n%2;rows.push({number:n,quotient,remainder});n=quotient;} while(n>0);
@@ -16,10 +16,10 @@ export function divisionStep({id,given,stage='independent',guided=false,extra=fa
   const start=i===0?`<span class="division-start">${given}</span>`:check(`Row ${i+1} starting number for ${given}`,row.number);
   html+=`<tr><td><div class="division-equation">${start}<span>÷ 2 =</span>${check(`Quotient for ${row.number} ÷ 2`,row.quotient)}</div></td><td>${check(`Remainder for ${row.number} ÷ 2`,row.remainder)}</td></tr>`;
  });
- html+='</tbody></table><p>Read the remainders from bottom to top. Write those digits in the answer box. You do not need to add zeros at the start.</p>';
+ html+='</tbody></table><p>Read the remainders from bottom to top. Write those digits in the answer box.</p>';
  html+=`<label class="division-final">Completed binary number${check(`Binary answer for ${given}`,answer,true)}</label><button type="button" class="fm-button primary division-check-all">Check my work</button><p class="division-batch-status" role="status"></p></division-table-check>`;
  html+='</div>';
- return {id,followUp:sum?decimalCheckStep({id:id+'-check-decimal-v1',given,sum,options}):null,title:extra?`Extra: convert decimal ${given}`:guided?'Try dividing 12 by 2':`Convert decimal ${given} to binary`,short:extra?`Extra ${given}`:guided?'Divide 12':given,kind:'html',stage,html,pdf:{prompt:prompt+' Show the whole-number answer and remainder for every division. Read the remainders from bottom to top. Starting zeros are optional.',visual:{type:'table',...table},items}};
+ return {id,followUp:sum?decimalCheckStep({id:id+'-check-decimal-v1',given,sum,options}):null,title:extra?`Extra: convert decimal ${given}`:guided?'Try dividing 12 by 2':`Convert decimal ${given} to binary`,short:extra?`Extra ${given}`:guided?'Divide 12':given,kind:'html',stage,html,pdf:{prompt:prompt+' Show the whole-number answer and remainder for every division. Read the remainders from bottom to top.',visual:{type:'table',...table},items}};
 }
 
 function decimalCheckStep({id,given,sum,options}) {

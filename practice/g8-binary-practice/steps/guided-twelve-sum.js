@@ -1,4 +1,4 @@
-import {guidedSelect} from '../step-patterns.js?v=binary-width-16';
+import {guidedSelect} from '../step-patterns.js?v=binary-copy-17';
 export const step = guidedSelect({
   "id": "guided-twelve-sum",
   "title": "Check binary 1100",

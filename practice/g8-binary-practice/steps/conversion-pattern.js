@@ -1,5 +1,5 @@
-import {divisionStep} from './division-pattern.js?v=binary-width-16';
-import {tableHtml, bitTable} from '../content.js?v=binary-width-16';
+import {divisionStep} from './division-pattern.js?v=binary-copy-17';
+import {tableHtml, bitTable} from '../content.js?v=binary-copy-17';
 export function conversion({id, given, binary, sum, options, hint, extra=false}) {
  if(binary)return divisionStep({id,given,sum,options,extra});
  const table=bitTable(given);
