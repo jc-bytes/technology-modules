@@ -615,21 +615,21 @@ export const lesson={...site,sections:[
     "kind": "form",
     "assessment": true,
     "summary": "2 points. A few words are enough.",
-    "intro": "<p>You have written 10 ÷ 2 = 5 remainder 0. What number do you divide by 2 next? Why?</p>",
+    "intro": "<p>You have written: 10 ÷ 2 = 5 remainder 0.</p>",
     "fields": [
       {
         "name": "next",
-        "label": "Next number",
+        "label": "Which number do you divide by 2 next?",
         "type": "text"
       },
       {
         "name": "why",
-        "label": "Why do you use that number?",
+        "label": "Why did you choose that number?",
         "type": "text"
       }
     ],
     "pdf": {
-      "prompt": "You have written 10 ÷ 2 = 5 remainder 0. What number do you divide by 2 next? Why?"
+      "prompt": "You have written: 10 ÷ 2 = 5 remainder 0."
     }
   },
   {
@@ -639,69 +639,69 @@ export const lesson={...site,sections:[
     "kind": "form",
     "assessment": true,
     "summary": "2 points. A few words are enough.",
-    "intro": "<p>When do you stop dividing? Which way do you read the remainders?</p>",
+    "intro": "<p>Think about the division table you use to change decimal into binary.</p>",
     "fields": [
       {
         "name": "stop",
-        "label": "Stop when…",
+        "label": "What whole-number answer tells you to stop dividing?",
         "type": "text"
       },
       {
         "name": "read",
-        "label": "Read the remainders from…",
+        "label": "Do you read the remainder column from top to bottom or bottom to top?",
         "type": "text"
       }
     ],
     "pdf": {
-      "prompt": "When do you stop dividing? Which way do you read the remainders?"
+      "prompt": "Think about the division table you use to change decimal into binary."
     }
   },
   {
     "id": "q7",
-    "title": "7. Build one multiplication",
+    "title": "7. Where do positions start?",
     "short": "Question 7",
     "kind": "form",
     "assessment": true,
     "summary": "2 points. A few words are enough.",
-    "intro": "<p>In binary 1010, use the leftmost digit. Write the two missing numbers in ___ × 2^___.</p>",
+    "intro": "<p>To change binary into decimal, you number the digit positions.</p>",
     "fields": [
       {
-        "name": "digit",
-        "label": "Binary digit before ×",
+        "name": "starting_side_v2",
+        "label": "Do you start counting positions at the leftmost or rightmost digit?",
         "type": "text"
       },
       {
-        "name": "exponent",
-        "label": "Position used as the exponent",
+        "name": "starting_position_v2",
+        "label": "What position number do you start with?",
         "type": "text"
       }
     ],
     "pdf": {
-      "prompt": "In binary 1010, use the leftmost digit. Write the two missing numbers in ___ × 2^___."
+      "prompt": "To change binary into decimal, you number the digit positions."
     }
   },
   {
     "id": "q8",
-    "title": "8. What does a zero add?",
+    "title": "8. What happens when the digit is 0?",
     "short": "Question 8",
     "kind": "form",
     "assessment": true,
     "summary": "2 points. A few words are enough.",
-    "intro": "<p>What does a binary digit 0 add to the decimal total? Why?</p>",
+    "intro": "<p>Think about a binary digit that is 0.</p>",
     "fields": [
       {
         "name": "zero",
-        "label": "It adds…",
+        "label": "What is the result when you multiply that 0 by its power of 2?",
         "type": "text"
       },
       {
         "name": "why",
-        "label": "Why?",
+        "label": "Why is that the result?",
         "type": "text"
       }
     ],
     "pdf": {
-      "prompt": "What does a binary digit 0 add to the decimal total? Why?"
+      "prompt": "Think about a binary digit that is 0."
     }
   },
   {
