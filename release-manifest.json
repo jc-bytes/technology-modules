@@ -292,7 +292,7 @@
     "assessments/g8-binary-conversion-check/shared/foundation-evidence.js": "cff276f30eb1b767b7ccc1ea55c4721ace705a51dbb6cfe656687f17af1b9a00",
     "assessments/g8-binary-conversion-check/shared/jspdf.umd.min.js": "e6551fcdc32f09d6853b2c5126d18d01d9447e0da618a41a11ebeee0f6c20d54",
     "assessments/g8-binary-conversion-check/shared/pdf-fonts/LiberationSans-Regular.ttf": "f8ace1f892b2bd9dc1792ba7f097fa7588f84fed48321480e04de5390828221f",
-    "assessments/g8-binary-conversion-check/shared/power-input.js": "04c1cf9f0cc9eced902c26e3f6f00d6f1e85cc44c5d3e22191f8ffa8674e3d02"
+    "assessments/g8-binary-conversion-check/shared/power-input.js": "40dd0829a6e8ca5021c27115543806034bc600940d62e91b831efe3ed2f27b53"
   },
   "routeScopedRepair": {
     "date": "2026-09-14",
