@@ -1,4 +1,4 @@
-import {exampleStep} from '../step-patterns.js?v=power-practice-15';
+import {exampleStep} from '../step-patterns.js?v=binary-width-16';
 export const step = exampleStep({
   "id": "rule-model",
   "title": "Say binary or decimal",

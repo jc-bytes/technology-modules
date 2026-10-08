@@ -1,4 +1,4 @@
-import {conversion} from './conversion-pattern.js?v=power-practice-15';
+import {conversion} from './conversion-pattern.js?v=binary-width-16';
 export const step = conversion({
   "id": "extra-13",
   "given": "13",

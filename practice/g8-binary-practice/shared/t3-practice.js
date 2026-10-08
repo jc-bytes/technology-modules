@@ -1,3 +1,7 @@
+export function practiceAnswerMatches(value, answer, format) {
+ if(format !== 'binary') return value === answer;
+ return /^[01]+$/.test(value) && /^[01]+$/.test(answer) && value.replace(/^0+(?=.)/, '') === answer.replace(/^0+(?=.)/, '');
+}
 export const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const checkNumber = (label, answer, hint) => `<t3-check answer="${answer}" hint="${escapeHTML(hint)}"><label>${label}<input inputmode="numeric" autocomplete="off" aria-label="${escapeHTML(label)}"></label></t3-check>`;
 export const checkChoice = (label, choices, answer, hint) => `<t3-check answer="${escapeHTML(answer)}" hint="${escapeHTML(hint)}"><label>${label}<select aria-label="${escapeHTML(label)}"><option value="">Choose…</option>${choices.map(c=>`<option>${escapeHTML(c)}</option>`).join('')}</select></label></t3-check>`;
@@ -19,7 +23,7 @@ class PracticeCheck extends (globalThis.HTMLElement || class {}) {
   const result=document.createElement('p');result.setAttribute('role','status');this.append(button,result);
   const publish=()=>this.dispatchEvent(new CustomEvent('formative-check-answer',{bubbles:true,detail:{key,label:input.getAttribute('aria-label'),value:input.value}}));
   publish();
-  button.onclick=()=>{const value=input.value.trim();result.textContent=!value?(input.tagName==='SELECT'?'Choose an answer.':'Enter an answer.'):value===this.getAttribute('answer')?'Correct.':this.getAttribute('hint')||'Try again.';};
+  button.onclick=()=>{const value=input.value.trim();result.textContent=!value?(input.tagName==='SELECT'?'Choose an answer.':'Enter an answer.'):practiceAnswerMatches(value,this.getAttribute('answer'),this.getAttribute('answer-format'))?'Correct.':this.getAttribute('hint')||'Try again.';};
   const save=()=>{result.textContent='';drafts.set(key,input.value);publish();try{localStorage.setItem(key,input.value);}catch{result.textContent='This browser cannot save your answer. Download before closing.';}};
   input.addEventListener('input',save);input.addEventListener('change',save);
  }

@@ -1,5 +1,5 @@
 
-import { practiceCheckSpecs } from "./t3-practice.js";
+import { practiceCheckSpecs } from "./t3-practice.js?v=binary-width-16";
 import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js";
 import { downloadStudentPdf } from "./student-pdf.js";
 import { selectClassRoute } from "./class-routes.js";

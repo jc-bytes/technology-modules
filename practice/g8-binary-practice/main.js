@@ -1,7 +1,22 @@
-import './division-table-check.js?v=power-practice-15';
-import { mountFoundationModule } from './shared/foundation-module.js?v=power-practice-15';
-import { lesson } from './lesson.js?v=power-practice-15';
-import { validateLesson } from './validate.js?v=power-practice-15';
+import './division-table-check.js?v=binary-width-16';
+import { mountFoundationModule } from './shared/foundation-module.js?v=binary-width-16';
+import { lesson } from './lesson.js?v=binary-width-16';
+import { validateLesson } from './validate.js?v=binary-width-16';
+// Keep saved division work when removing the fixed four-bit wording.
+try {
+ const prefix='t3-practice:v1:'+location.pathname+location.search+':';
+ const saved=JSON.parse(localStorage.getItem(lesson.storageKey)||'{}');
+ const keys=new Set([...Object.keys(localStorage),...Object.keys(saved.inlineAnswers||{})]);
+ for(const key of keys) {
+  if(!key.startsWith(prefix))continue;
+  const updated=key.replace(/Convert decimal (\d+) into four binary digits\.:/, 'Convert decimal $1 to binary.:').replace(/:Four bits for (\d+)$/, ':Binary answer for $1').replace(/:Completed four-bit binary number for decimal 12$/, ':Completed binary number for decimal 12');
+  if(updated===key)continue;
+  const value=saved.inlineAnswers?.[key] ?? localStorage.getItem(key);
+  if(value!==null && value!==undefined && localStorage.getItem(updated)===null)localStorage.setItem(updated,value);
+  if(saved.inlineAnswers && !(updated in saved.inlineAnswers))saved.inlineAnswers[updated]=value;
+ }
+ localStorage.setItem(lesson.storageKey,JSON.stringify(saved));
+} catch { /* The runtime reports storage failure. */ }
 validateLesson(lesson);
 document.title = lesson.title;
 // Preserve answers to unchanged guided questions when their instructional wording changes.

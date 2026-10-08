@@ -1,4 +1,4 @@
-import {exampleStep} from '../step-patterns.js?v=power-practice-15';
+import {exampleStep} from '../step-patterns.js?v=binary-width-16';
 export const step=exampleStep({
   "id": "model-six-add-v1",
   "title": "7. Add the results",

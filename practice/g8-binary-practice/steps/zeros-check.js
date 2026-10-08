@@ -1,4 +1,4 @@
-import {guidedSelect} from '../step-patterns.js?v=power-practice-15';
+import {guidedSelect} from '../step-patterns.js?v=binary-width-16';
 export const step = guidedSelect({
   "id": "zeros-check",
   "title": "Check starting zeros",
