@@ -111,3 +111,10 @@
 /* Allow headings to wrap inside their columns. */
 .fm-clean-step #fm-main .assessment-table thead th{text-align:center;white-space:normal;line-height:1.3;overflow-wrap:break-word;}
 .fm-clean-step #fm-main .assessment-table thead th span{white-space:normal;}
+
+.fm-clean-step #fm-main .power-entry{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:100%;white-space:nowrap;}
+.fm-clean-step #fm-main .power-entry input{width:2.1em;min-height:42px;padding:4px;text-align:center;}
+.fm-clean-step #fm-main .power-entry .power-digit{color:#075985;background:#e0f2fe;}
+.fm-clean-step #fm-main .power-entry sup{align-self:flex-start;position:relative;top:-8px;line-height:1;}
+.fm-clean-step #fm-main .power-entry .power-exponent{width:1.8em;min-height:30px;font-size:.75em;color:#8a304d;background:#fce7ef;}
+@media(max-width:600px){.fm-clean-step #fm-main .power-entry{gap:2px}.fm-clean-step #fm-main .power-entry input{width:1.7em;min-height:34px}.fm-clean-step #fm-main .power-entry .power-exponent{width:1.6em;min-height:24px}}

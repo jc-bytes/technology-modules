@@ -316,7 +316,7 @@ export const lesson={...site,sections:[
     "short": "Question 3",
     "kind": "form",
     "assessment": true,
-    "summary": "4 points. Write each multiplication using a power of 2. Fill the results row. Then add all four results. You can type x for × and ^ before an exponent.",
+    "summary": "4 points. Fill the blue box with the binary digit. Fill the raised pink box with its position. Work out each result. Then add all four results.",
     "answerTable": {
       "columns": [
         "Binary digit",
@@ -336,16 +336,16 @@ export const lesson={...site,sections:[
         [
           "Multiply",
           {
-            "field": "m0"
+            "field": "m0", "powerInput": true
           },
           {
-            "field": "m1"
+            "field": "m1", "powerInput": true
           },
           {
-            "field": "m2"
+            "field": "m2", "powerInput": true
           },
           {
-            "field": "m3"
+            "field": "m3", "powerInput": true
           }
         ],
         [
@@ -465,7 +465,7 @@ export const lesson={...site,sections:[
     "short": "Question 4",
     "kind": "form",
     "assessment": true,
-    "summary": "4 points. Write each multiplication using a power of 2. Fill the results row. Then add all four results. You can type x for × and ^ before an exponent.",
+    "summary": "4 points. Fill the blue box with the binary digit. Fill the raised pink box with its position. Work out each result. Then add all four results.",
     "answerTable": {
       "columns": [
         "Binary digit",
@@ -485,16 +485,16 @@ export const lesson={...site,sections:[
         [
           "Multiply",
           {
-            "field": "m0"
+            "field": "m0", "powerInput": true
           },
           {
-            "field": "m1"
+            "field": "m1", "powerInput": true
           },
           {
-            "field": "m2"
+            "field": "m2", "powerInput": true
           },
           {
-            "field": "m3"
+            "field": "m3", "powerInput": true
           }
         ],
         [

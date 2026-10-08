@@ -1,3 +1,4 @@
+import {splitPower, joinPower} from './power-input.js?v=power-boxes-1';
 
 import { practiceCheckSpecs } from "./t3-practice.js";
 import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js";
@@ -108,7 +109,13 @@ export function mountFoundationModule(config) {
         return `<input name="${escapeHtml(name)}" aria-label="${escapeHtml(field.label)}" value="${escapeHtml(saved[name] ?? '')}" autocomplete="off">`;
       };
       const bitTable=item.answerTable.columns[0]==='Binary digit';
-      const cell=(value,row,index)=>typeof value==='object'?inputFor(value.field):`<span class="${bitTable && index>0?(row==='Position'?'binary-exponent':row==='Binary digit'?'binary-factor':''):''}">${escapeHtml(value)}</span>`;
+      const powerFor = name => {
+        const parts=splitPower(saved[name]);
+        if (!parts) return inputFor(name);
+        const field=item.fields.find(field=>field.name===name);
+        return `<span class="power-entry" data-power-field="${escapeHtml(name)}"><input type="hidden" name="${escapeHtml(name)}" value="${escapeHtml(saved[name] ?? '')}"><input class="power-digit" data-power-part="digit" aria-label="${escapeHtml(field.label)} binary digit" inputmode="numeric" value="${escapeHtml(parts.digit)}"><span aria-hidden="true">× 2</span><sup><input class="power-exponent" data-power-part="exponent" aria-label="${escapeHtml(field.label)} exponent" inputmode="numeric" value="${escapeHtml(parts.exponent)}"></sup></span>`;
+      };
+      const cell=(value,row,index)=>typeof value==='object'?(value.powerInput?powerFor(value.field):inputFor(value.field)):`<span class="${bitTable && index>0?(row==='Position'?'binary-exponent':row==='Binary digit'?'binary-factor':''):''}">${escapeHtml(value)}</span>`;
       const table=`<table class="assessment-table"><thead><tr>${item.answerTable.columns.map((value,index)=>`<th scope="col">${cell(value,item.answerTable.columns[0],index)}</th>`).join('')}</tr></thead><tbody>${item.answerTable.rows.map(row=>`<tr>${row.map((value,index)=>`<td>${cell(value,row[0],index)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
       const tails=item.tailFields.map(name=>{const field=item.fields.find(field=>field.name===name);return `<label class="fm-field"><span>${escapeHtml(field.label)}</span>${inputFor(name)}</label>`;}).join('');
       return `${hero(item)}<form id="fm-record-form" class="fm-record-form assessment-form">${table}${tails}</form>${pager(item)}`;
@@ -172,7 +179,7 @@ export function mountFoundationModule(config) {
       state.attempts.push({id:uid(),at:new Date().toISOString(),sectionId:item.id,sectionTitle:item.title,activityTitle:activity.title,activityIndex,passed:result.passed,evaluated:true,response:{selected:activity.options[result.answer]}});save();render();
     });
     document.querySelectorAll('[data-choice-position]').forEach(button=>button.addEventListener('click',()=>{state.choicePositions[item.id]=Number(button.dataset.choicePosition);state.responses[item.id]={activity:state.choicePositions[item.id],checked:false};save();render({focus:true});}));
-    document.querySelector('#fm-record-form')?.addEventListener('input',event=>{const key=item.responseSource || item.id;state.responses[key]={...state.responses[key],...Object.fromEntries(new FormData(event.currentTarget)),saved:false};save();});
+    document.querySelector('#fm-record-form')?.addEventListener('input',event=>{const power=event.target.closest('[data-power-field]');if(power) power.querySelector('input[type=hidden]').value=joinPower(power.querySelector('[data-power-part=digit]').value,power.querySelector('[data-power-part=exponent]').value);const key=item.responseSource || item.id;state.responses[key]={...state.responses[key],...Object.fromEntries(new FormData(event.currentTarget)),saved:false};save();});
     document.querySelector('#fm-record-form')?.addEventListener('submit',event=>event.preventDefault());
     document.querySelector('#fm-review-download')?.addEventListener('click',event=>downloadReport(event.currentTarget));
     document.querySelectorAll('[data-form-position]').forEach(button=>button.addEventListener('click',()=>{state.formPositions[item.id]=Number(button.dataset.formPosition);save();render({focus:true});}));
