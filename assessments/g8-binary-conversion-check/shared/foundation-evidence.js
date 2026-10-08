@@ -65,7 +65,7 @@ export function foundationPdfReport(config, state) {
       }
       return '';
     };
-    const pdfItems = section.pdf?.items?.map(item => item.type === 'calculation'
+    let pdfItems = section.pdf?.items?.map(item => item.type === 'calculation'
       ? {type:'calculation',label:item.label,multiplication:readSource(item.multiplicationSource),total:readSource(item.totalSource)}
       : {type:'response',label:item.label,answer:readSource(item.source)})
       ?? [
@@ -74,10 +74,27 @@ export function foundationPdfReport(config, state) {
         ...(section.kind === 'sensor' ? ['light','threshold','output'].map(key => ({type:'response',label:key,answer:saved[key] ?? ''})) : []),
         ...(section.inlineChecks || []).map((check,index) => ({type:'response',label:check.label,answer:readSource({kind:'inline-check',index})})),
       ];
+    let visual = section.pdf?.visual;
+    if (section.answerTable) {
+      const showAnswer = value => String(value ?? '').trim() || 'Not answered';
+      const superscripts = '⁰¹²³⁴⁵⁶⁷⁸⁹';
+      const showFormula = value => {
+        const text=showAnswer(value), match=text.match(/^\s*([0-9_]+)\s*[x×*]\s*2\s*\^\s*([0-9_]+)\s*$/i);
+        return match ? `${match[1]} × 2${[...match[2]].map(digit => superscripts[Number(digit)] ?? digit).join('')}` : text;
+      };
+      visual = {
+        type:'table', caption:section.pdf?.visual?.caption,
+        columns:section.answerTable.columns,
+        rows:section.answerTable.rows.map(row => row.map(cell => typeof cell === 'object'
+          ? cell.powerInput ? showFormula(saved[cell.field]) : showAnswer(saved[cell.field])
+          : cell)),
+      };
+      pdfItems = section.tailFields.map(name => ({type:'response',label:section.fields.find(field => field.name === name).label,answer:saved[name] ?? ''}));
+    }
     if (pdfItems.length || section.pdf?.prompt || section.pdf?.visual) tasks.push({
       heading:section.pdf?.heading || section.title,
       prompt:section.pdf?.prompt || section.summary || 'Your recorded work for this section.',
-      visual:section.pdf?.visual,
+      visual,
       pageBreakBefore: Boolean(section.pdf?.pageBreakBefore),
       items:pdfItems,
     });

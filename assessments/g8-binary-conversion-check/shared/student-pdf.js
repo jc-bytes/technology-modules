@@ -191,7 +191,14 @@ function createStructuredLayout(pdf, report) {
         row.forEach((value,columnIndex)=>{
           const x=left+6+columnIndex*colWidth;
           pdf.setFillColor(...(rowIndex===0?colors.pale:colors.white));pdf.setDrawColor(...colors.line);pdf.rect(x,tableY,colWidth,height,'FD');
-          pdf.setFontSize(8);setText(rowIndex===0?colors.navy:colors.ink);pdf.text(linesFor(String(value??''),8,colWidth-5),x+2.5,tableY+5);
+          pdf.setFontSize(8);setText(rowIndex===0?colors.navy:colors.ink);
+          const text=String(value??''), power=text.match(/^(.*2)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)$/);
+          if(power){
+            pdf.text(power[1],x+2.5,tableY+5);
+            const exponent=[...power[2]].map(digit=>'⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(digit)).join('');
+            const exponentX=x+2.5+pdf.getTextWidth(power[1]);
+            pdf.setFontSize(6);pdf.text(exponent,exponentX,tableY+3.5);
+          }else pdf.text(linesFor(text,8,colWidth-5),x+2.5,tableY+5);
         });
         tableY+=height;
       });
@@ -255,7 +262,8 @@ function createStructuredLayout(pdf, report) {
   for(const task of report.tasks||[]){
     if(task.pageBreakBefore&&pageHasTask)newPage();
     const promptLines=linesFor(task.prompt||'Student responses for this section.',9,width-14),promptHeight=Math.max(9,promptLines.length*lineHeight(9)+4),visual=task.visual,graphicHeight=visualHeight(visual),introHeight=14+promptHeight+(visual?graphicHeight+3:0);
-    if(y+introHeight>bottom)newPage();
+    const completeHeight=introHeight+3+(task.items||[]).reduce((sum,item)=>sum+itemHeight(item)+3,0)+3;
+    if(y+introHeight>bottom || completeHeight<=bottom-23 && y+completeHeight>bottom)newPage();
     drawTaskLabel(task);
     drawPrompt(task.prompt);
     if(visual){y+=drawVisual(visual,y)+3;}

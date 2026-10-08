@@ -1,8 +1,8 @@
 import {splitPower, joinPower} from './power-input.js?v=power-boxes-1';
 
 import { practiceCheckSpecs } from "./t3-practice.js";
-import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js";
-import { downloadStudentPdf } from "./student-pdf.js";
+import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=filled-pdf-tables-4";
+import { downloadStudentPdf } from "./student-pdf.js?v=filled-pdf-tables-4";
 import { selectClassRoute } from "./class-routes.js";
 
 const clone = (value) => JSON.parse(JSON.stringify(value));
