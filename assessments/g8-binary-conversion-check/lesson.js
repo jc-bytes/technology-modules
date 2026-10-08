@@ -13,7 +13,7 @@ export const lesson={...site,sections:[
     "short": "Question 1",
     "kind": "form",
     "assessment": true,
-    "summary": "4 points. Complete the division table. Write your final answer using four bits.",
+    "summary": "4 points. Complete the division table. Write the binary number below.",
     "fields": [
       {
         "name": "q0",
@@ -57,7 +57,7 @@ export const lesson={...site,sections:[
       },
       {
         "name": "binary",
-        "label": "Completed four-bit binary number",
+        "label": "Completed binary number",
         "type": "text"
       }
     ],
@@ -65,7 +65,7 @@ export const lesson={...site,sections:[
       "columns": [
         "Start",
         "Divide",
-        "Whole-number answer",
+        "Answer",
         "Remainder"
       ],
       "rows": [
@@ -109,14 +109,14 @@ export const lesson={...site,sections:[
       "binary"
     ],
     "pdf": {
-      "prompt": "Convert decimal 6 into four-bit binary. Show every division and remainder.",
+      "prompt": "Convert decimal 6 into binary. Show every division and remainder.",
       "visual": {
         "type": "table",
         "caption": "Decimal 6",
         "columns": [
           "Start",
           "Divide",
-          "Whole-number answer",
+          "Answer",
           "Remainder"
         ],
         "rows": [
@@ -148,7 +148,7 @@ export const lesson={...site,sections:[
     "short": "Question 2",
     "kind": "form",
     "assessment": true,
-    "summary": "4 points. Complete the division table. Write your final answer using four bits.",
+    "summary": "4 points. Complete the division table. Write the binary number below.",
     "fields": [
       {
         "name": "q0",
@@ -207,7 +207,7 @@ export const lesson={...site,sections:[
       },
       {
         "name": "binary",
-        "label": "Completed four-bit binary number",
+        "label": "Completed binary number",
         "type": "text"
       }
     ],
@@ -215,7 +215,7 @@ export const lesson={...site,sections:[
       "columns": [
         "Start",
         "Divide",
-        "Whole-number answer",
+        "Answer",
         "Remainder"
       ],
       "rows": [
@@ -271,14 +271,14 @@ export const lesson={...site,sections:[
       "binary"
     ],
     "pdf": {
-      "prompt": "Convert decimal 11 into four-bit binary. Show every division and remainder.",
+      "prompt": "Convert decimal 11 into binary. Show every division and remainder.",
       "visual": {
         "type": "table",
         "caption": "Decimal 11",
         "columns": [
           "Start",
           "Divide",
-          "Whole-number answer",
+          "Answer",
           "Remainder"
         ],
         "rows": [
