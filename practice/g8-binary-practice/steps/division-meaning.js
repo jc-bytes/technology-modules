@@ -1,4 +1,4 @@
-import {exampleStep} from '../step-patterns.js?v=section-counts-14';
+import {exampleStep} from '../step-patterns.js?v=power-practice-15';
 export const step=exampleStep({
   "id": "division-meaning",
   "title": "Convert decimal 13 to binary",

@@ -1,7 +1,7 @@
-import './division-table-check.js?v=section-counts-14';
-import { mountFoundationModule } from './shared/foundation-module.js?v=section-counts-14';
-import { lesson } from './lesson.js?v=section-counts-14';
-import { validateLesson } from './validate.js?v=section-counts-14';
+import './division-table-check.js?v=power-practice-15';
+import { mountFoundationModule } from './shared/foundation-module.js?v=power-practice-15';
+import { lesson } from './lesson.js?v=power-practice-15';
+import { validateLesson } from './validate.js?v=power-practice-15';
 validateLesson(lesson);
 document.title = lesson.title;
 // Preserve answers to unchanged guided questions when their instructional wording changes.

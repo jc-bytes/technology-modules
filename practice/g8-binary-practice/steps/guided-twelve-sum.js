@@ -1,4 +1,4 @@
-import {guidedSelect} from '../step-patterns.js?v=section-counts-14';
+import {guidedSelect} from '../step-patterns.js?v=power-practice-15';
 export const step = guidedSelect({
   "id": "guided-twelve-sum",
   "title": "Check binary 1100",

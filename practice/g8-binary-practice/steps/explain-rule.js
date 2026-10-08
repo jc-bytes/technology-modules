@@ -1,4 +1,4 @@
-import {explanationStep} from '../step-patterns.js?v=section-counts-14';
+import {explanationStep} from '../step-patterns.js?v=power-practice-15';
 export const step = explanationStep({
   "id": "explain-rule",
   "title": "Explain the rule",

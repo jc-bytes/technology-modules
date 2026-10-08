@@ -1,5 +1,5 @@
-import { tableHtml, mathText } from './content.js?v=section-counts-14';
-import { taskPdf } from './pdf.js?v=section-counts-14';
+import { tableHtml, mathText } from './content.js?v=power-practice-15';
+import { taskPdf } from './pdf.js?v=power-practice-15';
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 

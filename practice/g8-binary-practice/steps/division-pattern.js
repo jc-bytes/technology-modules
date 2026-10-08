@@ -1,4 +1,4 @@
-import {tableHtml} from '../content.js?v=section-counts-14';
+import {tableHtml} from '../content.js?v=power-practice-15';
 export function divisionRows(number) {
  const rows=[];let n=Number(number);
  do {const quotient=Math.floor(n/2),remainder=n%2;rows.push({number:n,quotient,remainder});n=quotient;} while(n>0);

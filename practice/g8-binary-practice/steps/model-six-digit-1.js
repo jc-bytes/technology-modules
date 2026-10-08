@@ -1,4 +1,4 @@
-import {exampleStep} from '../step-patterns.js?v=section-counts-14';
+import {exampleStep} from '../step-patterns.js?v=power-practice-15';
 export const step=exampleStep({
   "id": "model-six-digit-1-v1",
   "title": "4. Multiply the next digit to the left",
