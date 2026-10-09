@@ -1,0 +1,2 @@
+import { choiceStep } from '../step-patterns.js';
+export const check = choiceStep({id:'check',title:'Check the two jobs',short:'Two jobs',activityTitle:'Compare the movement change',stage:'independent',table:{caption:'Same loop, different movement',columns:['Movement','Repeat count'],rows:[['40','2'],['30','2']]},question:'When movement changes from 40 to 30 but repeat stays at 2, which value stays the same?',options:['The final x position','The deliveries count'],answer:1,hint:'The movement changes, but change deliveries by 1 still runs twice.'});
