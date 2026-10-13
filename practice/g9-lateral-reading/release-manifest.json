@@ -1,6 +1,6 @@
 {
   "id": "g9-lateral-reading",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "steps": 7,
   "videoQuestions": 5,
   "videoChunks": [
@@ -34,7 +34,7 @@
     "shared/pdf-fonts/LiberationSans-Regular.ttf": "f8ace1f892b2bd9dc1792ba7f097fa7588f84fed48321480e04de5390828221f",
     "shared/student-pdf.js": "23e9aa0c633e6a871a4edf0a160df69e316cef46dae4ad3158c2ca340013eeb2",
     "shared/t3-practice.js": "8fd047dec2b757b240fb116dd5eb24f4d2c7776d0e95ccb07db191b7ae85db6d",
-    "site.js": "a51f7e796b9882d09dd379679b8caa824b10f85fe6738b845bc47c82830cc3de",
+    "site.js": "80c4cd938474c2b1194ebe790d965a5cd286c6eb21de2db9313c707b3babf667",
     "step-patterns.js": "d96e82a5a2999cb0480a9c596adafe4938a2805d73e42c4c674d7fc5fbcbd21f",
     "steps/appearance.js": "17c0b52bd59bb2433204709bb2e9386db56d0ab3634ae65300df95089d58586f",
     "steps/compare.js": "ee1c80a335b38c027c67528b48d9110fcea2f0aa283e4c5fbc69cbb13e820565",
