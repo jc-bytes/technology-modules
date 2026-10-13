@@ -1,0 +1,51 @@
+{
+  "id": "g9-lateral-reading",
+  "version": "1.0.0",
+  "videoChunks": [
+    [
+      75,
+      181
+    ],
+    [
+      267,
+      329
+    ],
+    [
+      451,
+      554
+    ]
+  ],
+  "files": {
+    "activity.css": "d6b9cc317c9f875943ae18562afeedb2a72cf0baf076a330069cc012f1be755a",
+    "content.js": "196fdb10ff95464a5712560f126c522ead0805d6c4fbbc20799c2291918c5cc7",
+    "index.html": "434da71c97a5bb7c9e75cebf5c8045a6b9954b5e3c79ff695c57ac4904ae7c85",
+    "lesson.js": "97751883d614ac225ebd01f98acc747955262d0cb54e1a4b1906d0f20a157eb2",
+    "main.js": "a0ae8e8bddbeb47b983150803e69f7c8d8923bf15a08852b9a23b8a0fdf214ed",
+    "pdf.js": "99ae618cafcd9adca6317176dd6c9fb96f6e8a04ed5f2725f88828948793ee69",
+    "printable-fallback.html": "ed4424d9b000d665a825f04fbaa3a1d1c054ec2ef6d25bb02ef5f367b3184487",
+    "shared/class-routes.js": "701d1273cfb9e0ab1c1745ccfd291fd7859af24fca54b9336a76225238a3afbc",
+    "shared/foundation-evidence.js": "b2d1b6011522892d97781e9eb114eb26fe9d09998676a94b09c11a177d26a17d",
+    "shared/foundation-module.css": "3debaade0d901e2fc6b912f2a271701ff266f1b3badc12dc6ceefefaaf5e9493",
+    "shared/foundation-module.js": "c293719f30fcec3da5f4fee619f01ba116349e599460c2f83a523d13549ae376",
+    "shared/jspdf.umd.min.js": "e6551fcdc32f09d6853b2c5126d18d01d9447e0da618a41a11ebeee0f6c20d54",
+    "shared/pdf-fonts/LiberationSans-Regular.ttf": "f8ace1f892b2bd9dc1792ba7f097fa7588f84fed48321480e04de5390828221f",
+    "shared/student-pdf.js": "23e9aa0c633e6a871a4edf0a160df69e316cef46dae4ad3158c2ca340013eeb2",
+    "shared/t3-practice.js": "8fd047dec2b757b240fb116dd5eb24f4d2c7776d0e95ccb07db191b7ae85db6d",
+    "site.js": "a51f7e796b9882d09dd379679b8caa824b10f85fe6738b845bc47c82830cc3de",
+    "step-patterns.js": "d96e82a5a2999cb0480a9c596adafe4938a2805d73e42c4c674d7fc5fbcbd21f",
+    "steps/appearance.js": "17c0b52bd59bb2433204709bb2e9386db56d0ab3634ae65300df95089d58586f",
+    "steps/compare.js": "3c133f611e6e59cea58b62e6ab875ccbe371259c5896545715a242eae45b469c",
+    "steps/conclusion.js": "4211b25e822fae95c5a6fd11558843a0b13b299b8e78fa5d909241414488dac5",
+    "steps/explain.js": "010a44dd4da60741de0d556fad7cb3b3d45501690e04be13d71160dd3f5bab87",
+    "steps/guided.js": "ae2e0b846a24940f63cbde47d965c3fcd4da1eedf4e4d58656c2c882cc68d995",
+    "steps/independent.js": "50496f4eff238f8492ce514006f8b6d18c663bb7ff6650342c790258d9bfe0fa",
+    "steps/method-answer.js": "b808fd54ab62ee56c0ab82d4f57dd851cb6433d446b96fa31d37c46975c68975",
+    "steps/method.js": "3f6e119ecc6b400010bc0562419ac08c2348637a532fc73e1889d80f6243df54",
+    "steps/model.js": "cc78ee5f374219013a57e1e714a47c549f19340d3666211ecad0f1ca73193a1a",
+    "steps/next-action.js": "020ca8808885c70debd62442faf0ad91f06fa4baf0de8c3f9c5b6e125152d5c5",
+    "steps/review.js": "5d362555d455ca7a5a44c50f552782412a69087de08958c43634d4bbbe52ccd6",
+    "steps/source-one.js": "498bc9ce14b28814eaf32ab80ca62600141c196346c82aa51a1dca1192bcffc3",
+    "steps/source-two.js": "84ac9e82a313742be2fb3cdaa263214c0014e26e005049901a4c9b766d392287",
+    "validate.js": "d052bd0de93070730a4b991f0be08edafae4d1c09b540b7001896f2ee3018669"
+  }
+}

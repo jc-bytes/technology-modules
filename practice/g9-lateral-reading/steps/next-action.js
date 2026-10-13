@@ -1,0 +1,2 @@
+import {photoContext} from '../content.js';import {explanationStep} from '../step-patterns.js';
+export const nextAction=explanationStep({id:'next-action',title:'Choose a useful next check',short:'Your next check',table:photoContext,question:'What source would you check to find out whether it actually snowed in the town today?',fieldId:'next-source-v1',help:'Name the source and explain what evidence you would look for. If you cannot verify a claim, pause sharing it as fact.'});

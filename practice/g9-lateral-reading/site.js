@@ -1,0 +1,1 @@
+export const site={id:'G9-LATERAL-READING',slug:'g9-lateral-reading',title:'Check before you share',shortTitle:'Check before you share',subject:'Technology',layout:'clean-step',storageKey:'formative:g9-lateral-reading:v1'};

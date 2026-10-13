@@ -1,0 +1,15 @@
+import {site} from './site.js';
+import {model} from './steps/model.js';
+import {guided} from './steps/guided.js';
+import {appearance} from './steps/appearance.js';
+import {method} from './steps/method.js';
+import {methodAnswer} from './steps/method-answer.js';
+import {compare} from './steps/compare.js';
+import {explain} from './steps/explain.js';
+import {independent} from './steps/independent.js';
+import {nextAction} from './steps/next-action.js';
+import {sourceOne} from './steps/source-one.js';
+import {sourceTwo} from './steps/source-two.js';
+import {conclusion} from './steps/conclusion.js';
+import {review} from './steps/review.js';
+export const lesson={...site,sections:[model,guided,appearance,method,methodAnswer,compare,explain,independent,nextAction,sourceOne,sourceTwo,conclusion,review]};

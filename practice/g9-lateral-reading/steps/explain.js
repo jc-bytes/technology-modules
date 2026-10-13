@@ -1,0 +1,2 @@
+import {repeatedSources} from '../content.js';import {explanationStep} from '../step-patterns.js';
+export const explain=explanationStep({id:'explain',title:'Explain what is still missing',short:'Explain',table:repeatedSources,question:'What evidence would help you check whether the robot-dog rescue happened?',fieldId:'missing-evidence-v1',help:'Name an original record or a source with direct knowledge. Explain what it could show. A written answer is saved for discussion; it is not automatically graded.'});
