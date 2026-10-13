@@ -1,6 +1,8 @@
 {
   "id": "g9-lateral-reading",
-  "version": "1.0.1",
+  "version": "2.0.0",
+  "steps": 7,
+  "videoQuestions": 5,
   "videoChunks": [
     [
       75,
@@ -19,14 +21,15 @@
     "activity.css": "d6b9cc317c9f875943ae18562afeedb2a72cf0baf076a330069cc012f1be755a",
     "content.js": "196fdb10ff95464a5712560f126c522ead0805d6c4fbbc20799c2291918c5cc7",
     "index.html": "434da71c97a5bb7c9e75cebf5c8045a6b9954b5e3c79ff695c57ac4904ae7c85",
-    "lesson.js": "e9c8fb967ed5584709fc5eec95c6937b2dab285caf8aa7150c883e5683ba8b06",
+    "lesson.js": "7ef45352756517dab297008e819d8890518f392ca82bdafadebd7a3c95c9f2bd",
     "main.js": "a0ae8e8bddbeb47b983150803e69f7c8d8923bf15a08852b9a23b8a0fdf214ed",
     "pdf.js": "99ae618cafcd9adca6317176dd6c9fb96f6e8a04ed5f2725f88828948793ee69",
-    "printable-fallback.html": "2665d3d6acfa3b137ba5c0510764418651d36c7f924828943126a5ed56df2719",
+    "previous-lesson.js": "e9c8fb967ed5584709fc5eec95c6937b2dab285caf8aa7150c883e5683ba8b06",
+    "printable-fallback.html": "e1a85787349a00fda88da3f40b7fadf0f6888665be7568e260db76d1e7eecd5f",
     "shared/class-routes.js": "701d1273cfb9e0ab1c1745ccfd291fd7859af24fca54b9336a76225238a3afbc",
-    "shared/foundation-evidence.js": "b2d1b6011522892d97781e9eb114eb26fe9d09998676a94b09c11a177d26a17d",
+    "shared/foundation-evidence.js": "e1d0979fb28a60886a6c3d825608e5e31e63cb9f161d872f8477b5f00f7a237a",
     "shared/foundation-module.css": "3debaade0d901e2fc6b912f2a271701ff266f1b3badc12dc6ceefefaaf5e9493",
-    "shared/foundation-module.js": "c293719f30fcec3da5f4fee619f01ba116349e599460c2f83a523d13549ae376",
+    "shared/foundation-module.js": "cad9454183b17896c5337428ae3f13cae21944c9d0ec576bbe9d6a9237f2c815",
     "shared/jspdf.umd.min.js": "e6551fcdc32f09d6853b2c5126d18d01d9447e0da618a41a11ebeee0f6c20d54",
     "shared/pdf-fonts/LiberationSans-Regular.ttf": "f8ace1f892b2bd9dc1792ba7f097fa7588f84fed48321480e04de5390828221f",
     "shared/student-pdf.js": "23e9aa0c633e6a871a4edf0a160df69e316cef46dae4ad3158c2ca340013eeb2",
@@ -35,7 +38,7 @@
     "step-patterns.js": "d96e82a5a2999cb0480a9c596adafe4938a2805d73e42c4c674d7fc5fbcbd21f",
     "steps/appearance.js": "17c0b52bd59bb2433204709bb2e9386db56d0ab3634ae65300df95089d58586f",
     "steps/compare.js": "ee1c80a335b38c027c67528b48d9110fcea2f0aa283e4c5fbc69cbb13e820565",
-    "steps/conclusion.js": "4211b25e822fae95c5a6fd11558843a0b13b299b8e78fa5d909241414488dac5",
+    "steps/conclusion.js": "d9814043425f3a1271da5b7aa7445c5a40917febff5893c67e5ad4e10d9b6d30",
     "steps/explain.js": "010a44dd4da60741de0d556fad7cb3b3d45501690e04be13d71160dd3f5bab87",
     "steps/guided.js": "ae2e0b846a24940f63cbde47d965c3fcd4da1eedf4e4d58656c2c882cc68d995",
     "steps/independent.js": "50496f4eff238f8492ce514006f8b6d18c663bb7ff6650342c790258d9bfe0fa",
@@ -45,8 +48,9 @@
     "steps/next-action.js": "020ca8808885c70debd62442faf0ad91f06fa4baf0de8c3f9c5b6e125152d5c5",
     "steps/review.js": "5d362555d455ca7a5a44c50f552782412a69087de08958c43634d4bbbe52ccd6",
     "steps/source-limits.js": "ed3e1bab6917318f5c5147910e9f67f656b1ce6f4a01fa8151d8fc1023146853",
-    "steps/source-one.js": "498bc9ce14b28814eaf32ab80ca62600141c196346c82aa51a1dca1192bcffc3",
-    "steps/source-two.js": "84ac9e82a313742be2fb3cdaa263214c0014e26e005049901a4c9b766d392287",
+    "steps/source-one.js": "f2409369123d7be6da817e54f7bd2acbf8cee327c20526c1ba882013c4dc38ee",
+    "steps/source-two.js": "02b39dcbf69a12028ad498a6af45c04730b1bc5184f9114adf3d81fc0749c608",
+    "steps/video-questions.js": "eeb8ec9e1a91c6ffba5ec3a4b287e90cfc67d9f1e6c90c45e693536e56744fa2",
     "validate.js": "d052bd0de93070730a4b991f0be08edafae4d1c09b540b7001896f2ee3018669"
   }
 }

@@ -1,3 +1,12 @@
+function evidenceSections(config,state){
+ const archived=(config.archivedSections || []).filter(section=>{
+  const saved=state.responses?.[section.responseSource || section.id] || {};
+  return (section.fields || []).some(field=>String(saved[field.name] || '').trim()) ||
+   (section.items || []).some((item,index)=>state.choiceDrafts?.[`${section.id}:${index}`]!==undefined || (state.attempts || []).some(a=>a.sectionId===section.id && (a.activityIndex===index || a.activityTitle===item.title))) ||
+   (section.inlineChecks || []).some(check=>String(state.inlineAnswers?.[check.key] || '').trim());
+ }).map(section=>({...section,title:`Earlier saved work: ${section.title}`}));
+ return [...config.sections,...archived];
+}
 export const escapeEvidence = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function checkChoice(raw, expected, optionCount) {
   if (raw === null || raw === undefined || raw === '') return { checked:false, message:'Choose an answer.' };
@@ -7,7 +16,7 @@ export function checkChoice(raw, expected, optionCount) {
 }
 export function foundationEvidence(config, state) {
   const e=escapeEvidence, identity=state.identity || {};
-  const fields=config.sections.map(section=>{
+  const fields=evidenceSections(config,state).map(section=>{
     const saved=state.responses[section.responseSource || section.id] || {};
     let answers='';
     if(section.kind==='form') answers=section.fields.map(field=>`<p><strong>${e(field.label)}</strong><br>${e(saved[field.name] || 'Not answered')}</p>`).join('');
@@ -30,7 +39,7 @@ export function foundationPdfReport(config, state) {
   const identity = state.identity || {};
   const blocks = [];
   const tasks = [];
-  for (const section of config.sections) {
+  for (const section of evidenceSections(config,state)) {
     if (section.kind === 'review') continue;
     const saved = state.responses[section.responseSource || section.id] || {};
     blocks.push({heading: section.title});

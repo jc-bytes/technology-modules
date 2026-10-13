@@ -11,6 +11,7 @@ const uid = () => `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 export function mountFoundationModule(config) {
   config = selectClassRoute(config, new URLSearchParams(location.search).get("class"));
   config.sections = config.sections.map(section=>({...section,inlineChecks:practiceCheckSpecs(section.html)}));
+  config.archivedSections=(config.archivedSections || []).map(section=>({...section,inlineChecks:practiceCheckSpecs(section.html)}));
   const assignedRoute = config.assignedRoute;
   const gradeLabel = config.gradeLabel || "Grade 6 Technology";
   const classes = config.classes || ["6A", "6B", "6C"];
