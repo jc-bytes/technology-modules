@@ -1,4 +1,4 @@
-import {videoStep} from '../step-patterns.js';
+import {videoStep} from '../step-patterns.js?v=3.1.1';
 const credit='Common Sense Education, Hoaxes and Fakes. Video: CrashCourse, Check Yourself with Lateral Reading.';
 const field=(name,label)=>({name,label,stepTitle:'Question '+name.match(/q(\d)/)[1],type:'textarea',help:'Write a short answer in your own words.'});
 export const creators={id:'video-creators-v2',title:'Part 1: Questions 1 and 2',short:'Questions 1–2',kind:'form',stage:'model',intro:'',fields:[field('video-q1-v2','What does Green mean when he says “information does not just appear” on the Internet?'),field('video-q2-v2','What is the first question John says we must ask ourselves about things we see online?')],pdf:{prompt:'Watch the creator-and-purpose chunk, 1:15–3:01, and answer the original video questions.'}};

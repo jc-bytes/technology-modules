@@ -1,4 +1,4 @@
-import {modelSources} from '../content.js';import {exampleStep} from '../step-patterns.js';
+import {modelSources} from '../content.js?v=3.1.1';import {exampleStep} from '../step-patterns.js?v=3.1.1';
 export const model=exampleStep({id:'model',title:'Someone made this information',short:'Who made it?',explanation:'Posts, videos and search results come from people or systems people create. Their purpose may be to inform, entertain, persuade or sell. Ask who made the information and why.',source:'A fictional post claims a giant penguin visited a shopping mall.',action:'Compare the post with what the studio and the mall say.',table:modelSources,takeaway:'The studio identifies the clip as animation. The mall says no visit occurred. The clip is not evidence that a real giant penguin visited. Your answers save in this browser; download a PDF before changing devices.'});
 
 const clip={start:75,end:181,title:'Who made it and why?'};

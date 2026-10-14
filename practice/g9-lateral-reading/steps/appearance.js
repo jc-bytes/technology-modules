@@ -1,2 +1,2 @@
-import {choiceStep} from '../step-patterns.js';
+import {choiceStep} from '../step-patterns.js?v=3.1.1';
 export const appearance=choiceStep({id:'appearance',title:'A convincing page is not proof',short:'Appearance',activityTitle:'Look beyond the page',table:{caption:'Two checks',columns:['Check','What it establishes'],rows:[['Logo, neat layout, many likes','How the page looks or how popular it is.'],['Original source and relevant evidence','What supports the specific claim.']]},question:'Which check is useful for deciding whether a claim is supported?',options:['Count its likes','Check the original source and evidence','Trust its professional logo'],answer:1,hint:'Choose the check that investigates the claim, rather than its appearance.'});

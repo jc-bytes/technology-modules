@@ -1,10 +1,10 @@
-import {singleActionLesson} from './step-flow.js';
-import {site} from './site.js';
-import {creators,reading,sources,watchCreators,watchReading,watchSources} from './steps/video-questions.js';
-import {sourceOne} from './steps/source-one.js';
-import {sourceTwo} from './steps/source-two.js';
-import {conclusion} from './steps/conclusion.js';
-import {review} from './steps/review.js';
-import {lesson as previous} from './previous-lesson.js';
+import {singleActionLesson} from './step-flow.js?v=3.1.1';
+import {site} from './site.js?v=3.1.1';
+import {creators,reading,sources,watchCreators,watchReading,watchSources} from './steps/video-questions.js?v=3.1.1';
+import {sourceOne} from './steps/source-one.js?v=3.1.1';
+import {sourceTwo} from './steps/source-two.js?v=3.1.1';
+import {conclusion} from './steps/conclusion.js?v=3.1.1';
+import {review} from './steps/review.js?v=3.1.1';
+import {lesson as previous} from './previous-lesson.js?v=3.1.1';
 const sections=[watchCreators,creators,watchReading,reading,watchSources,sources,sourceOne,sourceTwo,conclusion,review];
 export const lesson=singleActionLesson({...site,sections,archivedSections:previous.sections.filter(old=>!sections.some(current=>current.id===old.id)&&old.kind!=='review')});
