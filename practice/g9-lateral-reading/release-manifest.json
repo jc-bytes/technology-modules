@@ -1,7 +1,7 @@
 {
   "id": "g9-lateral-reading",
-  "version": "3.0.0",
-  "steps": 11,
+  "version": "3.1.0",
+  "steps": 14,
   "videoQuestions": 5,
   "videoChunks": [
     [
@@ -18,14 +18,14 @@
     ]
   ],
   "files": {
-    "activity.css": "b9d794a18e64812b06d71c8186259e22a8308697100c834ea73894dbba6ef5c4",
+    "activity.css": "b9df467adf5c96fa125e78a3be1ddcdff233c783dab32ae4b25a74c91fbed0e6",
     "content.js": "196fdb10ff95464a5712560f126c522ead0805d6c4fbbc20799c2291918c5cc7",
     "index.html": "434da71c97a5bb7c9e75cebf5c8045a6b9954b5e3c79ff695c57ac4904ae7c85",
-    "lesson.js": "81def33e2cc1fa70c483f7527565f7a91afe712bad909bbd3c715cdfa552cec3",
+    "lesson.js": "2fd7bedf3ee42eedd04c432cf7d7d7dbb2682a2585cc177c67548a2538e5b6ef",
     "main.js": "a0ae8e8bddbeb47b983150803e69f7c8d8923bf15a08852b9a23b8a0fdf214ed",
     "pdf.js": "99ae618cafcd9adca6317176dd6c9fb96f6e8a04ed5f2725f88828948793ee69",
     "previous-lesson.js": "e9c8fb967ed5584709fc5eec95c6937b2dab285caf8aa7150c883e5683ba8b06",
-    "printable-fallback.html": "3c2aacead464afc13d8d00fcbdb0f25c1d18a5221b9bb1f0917799568bf34f63",
+    "printable-fallback.html": "e17ff72dcbf3c1071dc7804b0bd0b3322486de1cc36f9ec90e707ab4cb5376cc",
     "shared/class-routes.js": "701d1273cfb9e0ab1c1745ccfd291fd7859af24fca54b9336a76225238a3afbc",
     "shared/foundation-evidence.js": "77e37f4561d354a1bd9fc2ec3323fdaed29a3d036da6a88336d47955ed878606",
     "shared/foundation-module.css": "3debaade0d901e2fc6b912f2a271701ff266f1b3badc12dc6ceefefaaf5e9493",
@@ -36,7 +36,7 @@
     "shared/t3-practice.js": "8fd047dec2b757b240fb116dd5eb24f4d2c7776d0e95ccb07db191b7ae85db6d",
     "site.js": "4337dfcd819dfdd25beda22b72142098132d62d150f2174c4e0f7aeb7abb0bd1",
     "step-flow.js": "ecc2093aa9044880465aa4a253887da83743c5c304ce0d66f14f991b4d1642bf",
-    "step-patterns.js": "d96e82a5a2999cb0480a9c596adafe4938a2805d73e42c4c674d7fc5fbcbd21f",
+    "step-patterns.js": "792e2c3d5ef565fda56408d344feca421d537f49c73ff615a7a80a7cafdf5cbe",
     "steps/appearance.js": "17c0b52bd59bb2433204709bb2e9386db56d0ab3634ae65300df95089d58586f",
     "steps/compare.js": "ee1c80a335b38c027c67528b48d9110fcea2f0aa283e4c5fbc69cbb13e820565",
     "steps/conclusion.js": "d9814043425f3a1271da5b7aa7445c5a40917febff5893c67e5ad4e10d9b6d30",
@@ -51,10 +51,11 @@
     "steps/source-limits.js": "ed3e1bab6917318f5c5147910e9f67f656b1ce6f4a01fa8151d8fc1023146853",
     "steps/source-one.js": "ba1d1a723e58bb78daa2c0bf206d2d0031ca839acfa73d7c9fe73c030add4c51",
     "steps/source-two.js": "ef4a8eeda6095d351a88422f4d9331ec0f2024081b15bd9ee508536fd4ff3b3c",
-    "steps/video-questions.js": "e8891b5ec82cd66b35efeef6a6ec940ef99545c40ffbaad4d3c2642f47384dda",
+    "steps/video-questions.js": "c527d5e058e9340eb7495ca3fef94c679cd22f98475aba8405b4e1fcc97e3b0e",
     "validate.js": "d052bd0de93070730a4b991f0be08edafae4d1c09b540b7001896f2ee3018669"
   },
   "persistentNavigation": true,
   "showPaperVersion": false,
-  "compactIdentity": true
+  "compactIdentity": true,
+  "dedicatedWatchSteps": 3
 }

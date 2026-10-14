@@ -35,3 +35,9 @@ export function explanationStep({id, title, short, table, question, fieldId, hel
     pdf: taskPdf({prompt: question, table, label: question, source: {kind:'field', name:fieldId}}),
   };
 }
+
+// A video is one normal Watch step, followed by separate answer steps.
+export function videoStep({id, title, short=title, embedUrl, openUrl, instruction, stopAt, credit, stage='model'}) {
+  return {id,title,short,kind:'html',stage,
+    html:`<section class="fm-video-step"><iframe title="${escape(title)}" src="${escape(embedUrl)}" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe><p>${escape(instruction)}</p><p><a href="${escape(openUrl)}" target="_blank" rel="noopener">Open on YouTube</a>${stopAt ? ` · Stop at ${escape(stopAt)}.` : ''}</p>${credit ? `<small>${escape(credit)}</small>` : ''}</section>`};
+}
