@@ -1,10 +1,10 @@
-import {singleActionLesson} from './step-flow.js?v=3.1.1';
-import {site} from './site.js?v=3.1.1';
-import {creators,reading,sources,watchCreators,watchReading,watchSources} from './steps/video-questions.js?v=3.1.1';
-import {sourceOne} from './steps/source-one.js?v=3.1.1';
-import {sourceTwo} from './steps/source-two.js?v=3.1.1';
-import {conclusion} from './steps/conclusion.js?v=3.1.1';
-import {review} from './steps/review.js?v=3.1.1';
-import {lesson as previous} from './previous-lesson.js?v=3.1.1';
+import {singleActionLesson} from './step-flow.js?v=3.2.0';
+import {site} from './site.js?v=3.2.0';
+import {creators,reading,sources,watchCreators,watchReading,watchSources} from './steps/video-questions.js?v=3.2.0';
+import {sourceOne} from './steps/source-one.js?v=3.2.0';
+import {sourceTwo} from './steps/source-two.js?v=3.2.0';
+import {conclusion} from './steps/conclusion.js?v=3.2.0';
+import {review} from './steps/review.js?v=3.2.0';
+import {lesson as previous} from './previous-lesson.js?v=3.2.0';
 const sections=[watchCreators,creators,watchReading,reading,watchSources,sources,sourceOne,sourceTwo,conclusion,review];
 export const lesson=singleActionLesson({...site,sections,archivedSections:previous.sections.filter(old=>!sections.some(current=>current.id===old.id)&&old.kind!=='review')});

@@ -1,2 +1,2 @@
-import {photoContext} from '../content.js?v=3.1.1';import {choiceStep} from '../step-patterns.js?v=3.1.1';
+import {photoContext} from '../content.js?v=3.2.0';import {choiceStep} from '../step-patterns.js?v=3.2.0';
 export const independent=choiceStep({id:'independent',title:'A real picture can have a false caption',short:'Check context',stage:'independent',activityTitle:'Use the original context',table:photoContext,question:'What does the archive evidence establish?',options:['The photograph proves it snowed today','The photograph is necessarily computer-generated','The photograph does not support today’s local snow claim'],answer:2,hint:'Compare the date and location. A real old photograph cannot establish today’s event.'});

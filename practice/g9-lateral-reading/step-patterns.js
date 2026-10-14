@@ -1,5 +1,5 @@
-import { tableHtml } from './content.js?v=3.1.1';
-import { taskPdf } from './pdf.js?v=3.1.1';
+import { tableHtml } from './content.js?v=3.2.0';
+import { taskPdf } from './pdf.js?v=3.2.0';
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 
@@ -28,10 +28,10 @@ export function choiceStep({id, title, short, activityTitle, table, question, op
   };
 }
 
-export function explanationStep({id, title, short, table, question, fieldId, help}) {
+export function explanationStep({id, title, short, table, question, fieldId, help, plainLanguage, starter, replayStepId}) {
   return {
     id, title, short, kind: 'form', stage:'practice', authoring:{question, table}, intro: tableHtml(table),
-    fields: [{name: fieldId, label: question, type:'textarea', help}],
+    fields: [{name: fieldId, label: question, type:'textarea', help, plainLanguage, starter, replayStepId}],
     pdf: taskPdf({prompt: question, table, label: question, source: {kind:'field', name:fieldId}}),
   };
 }

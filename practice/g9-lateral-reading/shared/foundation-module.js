@@ -1,8 +1,8 @@
 
-import { practiceCheckSpecs } from "./t3-practice.js?v=3.1.1";
-import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=3.1.1";
-import { downloadStudentPdf } from "./student-pdf.js?v=3.1.1";
-import { selectClassRoute } from "./class-routes.js?v=3.1.1";
+import { practiceCheckSpecs } from "./t3-practice.js?v=3.2.0";
+import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=3.2.0";
+import { downloadStudentPdf } from "./student-pdf.js?v=3.2.0";
+import { selectClassRoute } from "./class-routes.js?v=3.2.0";
 
 const clone = (value) => JSON.parse(JSON.stringify(value));
 const escapeHtml = (value = "") => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
@@ -93,7 +93,15 @@ export function mountFoundationModule(config) {
   function formPage(item) {
     const saved = state.responses[item.responseSource || item.id] || {};
     if(config.singleActionSteps){
-      const fields=item.fields.map(field=>{const input=field.type==='textarea'?`<textarea name="${field.name}" rows="${field.rows || 3}">${escapeHtml(saved[field.name] || '')}</textarea>`:`<input name="${field.name}" value="${escapeHtml(saved[field.name] ?? '')}" type="${field.type || 'text'}">`;return `<label class="fm-field"><span>${field.label}</span>${input}${field.help?`<small>${field.help}</small>`:''}</label>`;}).join('');
+      const fields=item.fields.map(field=>{
+        const id='fm-answer-'+encodeURIComponent(field.name),helpId=id+'-help';
+        const support=config.readingSupport ? `${field.plainLanguage?`<p class="fm-plain-language"><strong>In simpler words:</strong> ${escapeHtml(field.plainLanguage)}</p>`:''}${field.starter?`<p class="fm-sentence-starter"><strong>You can start:</strong> ${escapeHtml(field.starter)}</p>`:''}` : '';
+        const recordedSource=field.sourceFieldName ? String(saved[field.sourceFieldName] || '').trim() : '';
+        let sourceHref='';try{const parsed=new URL(recordedSource || field.defaultSourceUrl || '');if(['https:','http:'].includes(parsed.protocol))sourceHref=parsed.href;}catch{}
+        const sourceContext=config.readingSupport && field.sourceFieldName ? sourceHref ? `<p class="fm-source-context"><a href="${escapeHtml(sourceHref)}" target="_blank" rel="noopener">Open your report</a></p>` : recordedSource ? `<p class="fm-source-context">Your report: ${escapeHtml(recordedSource)}</p>` : '' : '';
+        const input=field.type==='textarea'?`<textarea id="${id}" name="${field.name}" ${field.help?`aria-describedby="${helpId}"`:''} rows="${field.rows || 3}">${escapeHtml(saved[field.name] || '')}</textarea>`:`<input id="${id}" name="${field.name}" value="${escapeHtml(saved[field.name] ?? '')}" type="${field.type || 'text'}" ${field.help?`aria-describedby="${helpId}"`:''}>`;
+        return `<div class="fm-field"><label for="${id}">${field.label}</label>${sourceContext}${support}${input}${field.help?`<small id="${helpId}">${field.help}</small>`:''}${config.readingSupport && field.replayStepId?`<p><a href="#${escapeHtml(field.replayStepId)}">Replay this clip</a></p>`:''}</div>`;
+      }).join('');
       return `${hero(item)}${item.intro || ''}<form id="fm-record-form" class="fm-record-form">${fields}</form>${pager(item)}`;
     }
     const position = Math.max(0, Math.min(Number.isInteger(state.formPositions[item.id]) ? state.formPositions[item.id] : 0,item.fields.length-1));
@@ -126,18 +134,35 @@ export function mountFoundationModule(config) {
   }
   function toast(message) { const el = document.querySelector("#fm-toast"); el.textContent = message; el.classList.add("show"); setTimeout(() => el.classList.remove("show"), 1800); }
   function render({ focus = false } = {}) {
+    if(config.readingSupport && 'speechSynthesis' in window) speechSynthesis.cancel();
     const notice=document.querySelector("#fm-toast");if(notice)notice.textContent="";
     const item = section(); if (!state.visited.includes(item.id)) state.visited.push(item.id); save();
     const renderer = item.kind === "choice" ? choicePage : item.kind === "form" ? formPage : item.kind === "sensor" ? sensorPage : item.kind === "review" ? reviewPage : lessonPage;
     const launch = assignedRoute && config.layout !== "clean-step" && item.id === config.sections[0].id ? `<p class="fm-label">${escapeHtml(assignedRoute.title)}</p>${assignedRoute.assignmentStatus === "optional-unassigned" ? `<p class="fm-block">${escapeHtml(assignedRoute.instructions)}</p>` : ""}` : "";
     document.querySelector("#fm-main").classList.toggle("fm-identity-screen", editingIdentity && !!config.compactIdentity);
     document.querySelector("#fm-main").innerHTML = editingIdentity ? identityPage() : launch + renderer(item);
+    document.querySelector('#fm-main').classList.toggle('fm-reading-width', !!config.readingSupport && !item.html?.includes('fm-video-step'));
+    if(config.readingSupport && !editingIdentity && item.kind!=='review' && !item.html?.includes('fm-video-step')) {
+      const main=document.querySelector('#fm-main'),hero=main.querySelector('.fm-hero');
+      const available='speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+      hero?.insertAdjacentHTML('afterend',available ? '<div class="fm-reading-tools"><button type="button" id="fm-read-aloud" class="fm-button quiet" aria-pressed="false">Read aloud</button><span id="fm-reading-status" role="status"></span></div>' : '<p class="fm-reading-unavailable">Read aloud is unavailable in this browser.</p>');
+    }
     document.querySelector(".fm-menu nav").innerHTML = nav(); bind(item);
     document.querySelector("#fm-student-label").innerHTML = studentLabel();
     save();
     if (focus) { document.querySelector("#fm-main").focus({ preventScroll: true }); scrollTo({ top: 0, behavior: "smooth" }); }
   }
   function bind(item) {
+    const readButton=document.querySelector('#fm-read-aloud');
+    readButton?.addEventListener('click',()=>{
+      const status=document.querySelector('#fm-reading-status');
+      if(readButton.getAttribute('aria-pressed')==='true'){speechSynthesis.cancel();readButton.textContent='Read aloud';readButton.setAttribute('aria-pressed','false');status.textContent='';return;}
+      const text=Array.from(document.querySelectorAll('#fm-main h1,#fm-main h2,#fm-main p,.fm-field>label,.fm-field>small,#fm-main th,#fm-main td,#fm-main caption')).map(node=>node.innerText).filter(Boolean).join('. ');
+      const utterance=new SpeechSynthesisUtterance(text.replace(/\s+/g,' ').trim());utterance.lang='en';utterance.rate=0.9;
+      const reset=()=>{if(!readButton.isConnected)return;readButton.textContent='Read aloud';readButton.setAttribute('aria-pressed','false');status.textContent='';};
+      utterance.onend=reset;utterance.onerror=event=>{reset();if(['canceled','interrupted'].includes(event.error))return;if(status.isConnected)status.textContent='Read aloud is unavailable. Try your device’s reading tool.';};
+      readButton.textContent='Stop reading';readButton.setAttribute('aria-pressed','true');speechSynthesis.cancel();speechSynthesis.speak(utterance);
+    });
     const identityForm=document.querySelector('#fm-identity-form');
     const captureIdentity=()=>{state.identity=Object.fromEntries(new FormData(identityForm));save();document.querySelector('#fm-student-label').innerHTML=studentLabel();};
     identityForm?.addEventListener('input',captureIdentity);

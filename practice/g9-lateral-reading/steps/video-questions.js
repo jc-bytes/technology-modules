@@ -1,6 +1,12 @@
-import {videoStep} from '../step-patterns.js?v=3.1.1';
+import {videoStep} from '../step-patterns.js?v=3.2.0';
 const credit='Common Sense Education, Hoaxes and Fakes. Video: CrashCourse, Check Yourself with Lateral Reading.';
-const field=(name,label)=>({name,label,stepTitle:'Question '+name.match(/q(\d)/)[1],type:'textarea',help:'Write a short answer in your own words.'});
+const support={
+ 1:['Who puts information online?','Information is put online by ___.','watch-creators-v1'],
+ 2:['What should you ask first when you see information online?','The first question is ___.','watch-creators-v1'],
+ 3:['Why is reading only that website not enough to check if it is true?','Reading only one website is not enough because ___.','watch-reading-v1'],
+ 4:['How do you check other websites? Why does that help?','Lateral reading means ___. It helps because ___.','watch-reading-v1'],
+ 5:['What kinds of websites can you check?','I can check ___.','watch-sources-v1']};
+const field=(name,label)=>{const n=name.match(/q(\d)/)[1];return {name,label,stepTitle:'Question '+n,type:'textarea',help:'Write a short answer in your own words.',plainLanguage:support[n][0],starter:support[n][1],replayStepId:support[n][2]};};
 export const creators={id:'video-creators-v2',title:'Part 1: Questions 1 and 2',short:'Questions 1–2',kind:'form',stage:'model',intro:'',fields:[field('video-q1-v2','What does Green mean when he says “information does not just appear” on the Internet?'),field('video-q2-v2','What is the first question John says we must ask ourselves about things we see online?')],pdf:{prompt:'Watch the creator-and-purpose chunk, 1:15–3:01, and answer the original video questions.'}};
 export const reading={id:'video-reading-v2',title:'Part 1: Questions 3 and 4',short:'Questions 3–4',kind:'form',stage:'guided',intro:'',fields:[field('video-q3-v2','Why is reading a website vertically not a great way to determine reliable information?'),field('video-q4-v2','What is lateral reading, and why is it more effective than vertical reading to determine reliable information?')],pdf:{prompt:'Watch the vertical-and-lateral-reading chunk, 4:27–5:29, and answer the original video questions.'}};
 export const sources={id:'video-sources-v2',title:'Question 5',short:'Question 5',kind:'form',stage:'guided',intro:'',fields:[field('video-q5-v2','Where should you go when you read laterally?')],pdf:{prompt:'Watch the sources chunk, 7:31–9:14, and answer the original video question.'}};

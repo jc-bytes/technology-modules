@@ -46,3 +46,9 @@
 .fm-clean-step #fm-main .fm-video-step iframe{width:min(100%,960px,max(240px,calc((100dvh - 360px)*1.777778)));height:auto;aspect-ratio:16/9;margin:0 auto 16px}
 .fm-clean-step .fm-video-step{width:100%;margin:auto 0}.fm-clean-step .fm-video-step small{display:block;color:#45616f;font-size:13px;line-height:1.4;margin-top:12px}
 @media(max-width:760px){.fm-clean-step #fm-main .fm-video-step iframe{width:100%}.fm-clean-step .fm-video-step{margin:12px 0}}
+
+/* Readable task widths and optional support without replacing student answers. */
+.fm-clean-step #fm-main.fm-reading-width{width:min(760px,calc(100% - 40px));font-size:20px;line-height:1.5}.fm-clean-step #fm-main.fm-reading-width p{line-height:1.5}.fm-clean-step .fm-reading-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 14px}.fm-clean-step .fm-reading-tools button{min-height:44px;padding:8px 14px;font-size:16px}.fm-clean-step .fm-reading-tools [role=status]{font-size:14px}.fm-clean-step .fm-plain-language,.fm-clean-step .fm-sentence-starter{font-size:18px}.fm-clean-step .fm-field>span,.fm-clean-step .fm-field>label{font-size:20px;font-weight:700}.fm-clean-step .fm-field input,.fm-clean-step .fm-field textarea{font-size:20px;line-height:1.5}.fm-clean-step #fm-main.fm-reading-width .fm-identity-panel{font-size:18px}
+@media(max-width:760px){.fm-clean-step #fm-main.fm-reading-width{width:calc(100% - 32px);font-size:18px}.fm-clean-step .fm-field>span,.fm-clean-step .fm-field>label,.fm-clean-step .fm-field input,.fm-clean-step .fm-field textarea{font-size:18px}}
+
+.fm-clean-step .fm-field .fm-plain-language,.fm-clean-step .fm-field .fm-sentence-starter{font-weight:400}
