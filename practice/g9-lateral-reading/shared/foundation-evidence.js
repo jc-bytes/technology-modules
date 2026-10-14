@@ -2,7 +2,7 @@ function evidenceSections(config,state){
  const archived=(config.archivedSections || []).filter(section=>{
   const saved=state.responses?.[section.responseSource || section.id] || {};
   return (section.fields || []).some(field=>String(saved[field.name] || '').trim()) ||
-   (section.items || []).some((item,index)=>state.choiceDrafts?.[`${section.id}:${index}`]!==undefined || (state.attempts || []).some(a=>a.sectionId===section.id && (a.activityIndex===index || a.activityTitle===item.title))) ||
+   (section.items || []).some((item,index)=>state.choiceDrafts?.[`${section.responseSource || section.id}:${item.sourceIndex ?? index}`]!==undefined || (state.attempts || []).some(a=>a.sectionId===(section.responseSource || section.id) && (a.activityIndex===(item.sourceIndex ?? index) || a.activityTitle===item.title))) ||
    (section.inlineChecks || []).some(check=>String(state.inlineAnswers?.[check.key] || '').trim());
  }).map(section=>({...section,title:`Earlier saved work: ${section.title}`}));
  return [...config.sections,...archived];
@@ -21,8 +21,8 @@ export function foundationEvidence(config, state) {
     let answers='';
     if(section.kind==='form') answers=section.fields.map(field=>`<p><strong>${e(field.label)}</strong><br>${e(saved[field.name] || 'Not answered')}</p>`).join('');
     if(section.kind==='choice') answers=section.items.map((item,index)=>{
-      const draft=state.choiceDrafts?.[`${section.id}:${index}`];
-      const attempt=[...state.attempts].reverse().find(a=>a.sectionId===section.id && (a.activityIndex===index || a.activityTitle===item.title));
+      const draft=state.choiceDrafts?.[`${section.responseSource || section.id}:${item.sourceIndex ?? index}`];
+      const attempt=[...state.attempts].reverse().find(a=>a.sectionId===(section.responseSource || section.id) && (a.activityIndex===(item.sourceIndex ?? index) || a.activityTitle===item.title));
       const value=draft!==undefined ? item.options[draft] : attempt?.response?.selected;
       return `<p><strong>${e(item.question)}</strong><br>${e(value || 'Not answered')}</p>`;
     }).join('');
@@ -47,7 +47,7 @@ export function foundationPdfReport(config, state) {
       for (const field of section.fields) blocks.push({label: field.label, answer: saved[field.name] || 'Not answered'});
     } else if (section.kind === 'choice') {
       section.items.forEach((item, index) => {
-        const draft = state.choiceDrafts?.[`${section.id}:${index}`];
+        const draft = state.choiceDrafts?.[`${section.responseSource || section.id}:${item.sourceIndex ?? index}`];
         const attempt = [...state.attempts].reverse().find(a => a.sectionId === section.id && (a.activityIndex === index || a.activityTitle === item.title));
         const value = draft !== undefined ? item.options[draft] : attempt?.response?.selected;
         blocks.push({label: item.question, answer: value || 'Not answered'});
@@ -72,9 +72,9 @@ export function foundationPdfReport(config, state) {
       if (source.kind === 'choice') {
         const item = section.items?.[source.index];
         if (!item) return '';
-        const draft = state.choiceDrafts?.[`${section.id}:${source.index}`];
+        const draft = state.choiceDrafts?.[`${section.responseSource || section.id}:${item.sourceIndex ?? source.index}`];
         if (draft !== undefined) return item.options[draft] ?? '';
-        const attempt = [...(state.attempts || [])].reverse().find(entry => entry.sectionId === section.id && (entry.activityIndex === source.index || entry.activityTitle === item.title));
+        const attempt = [...(state.attempts || [])].reverse().find(entry => entry.sectionId === (section.responseSource || section.id) && (entry.activityIndex === (item.sourceIndex ?? source.index) || entry.activityTitle === item.title));
         return attempt?.response?.selected ?? '';
       }
       return '';

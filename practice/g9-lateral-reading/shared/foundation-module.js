@@ -48,23 +48,26 @@ export function mountFoundationModule(config) {
     return `<span><strong>${escapeHtml([state.identity.firstName,state.identity.lastName].filter(Boolean).join(' ') || 'Your name')}</strong><small>${escapeHtml(state.identity.grade ? `Grade ${state.identity.grade}` : 'Your grade')}</small></span>`;
   }
   function shell() {
+    const footer = config.showPaperVersion === false ? '' : `<footer class="fm-footer"><a href="${escapeHtml(assignedRoute?.fallback || './printable-fallback.html')}" target="_blank">Paper version</a></footer>`;
     const title = escapeHtml(assignedRoute?.title || config.shortTitle || config.title);
     const branding = config.layout === 'clean-step'
       ? `<div class="fm-brand-title"><small>${escapeHtml(config.subject || 'Technology')}</small><strong class="fm-activity-title">${title}</strong></div>`
       : `<strong class="fm-activity-title">${title}</strong>`;
-    return `<div class="fm-shell ${config.layout === 'clean-step' ? 'fm-clean-step' : ''}"><header class="fm-topbar">${branding}<div class="fm-tools"><div class="fm-student"><span id="fm-student-label">${studentLabel()}</span><button id="fm-edit-identity" class="fm-edit" aria-label="Edit your name and grade" title="Edit your name and grade"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m16 3 5 5-12 12-6 1 1-6Z"/><path d="m14 5 5 5"/></svg></button></div><button id="fm-download" class="fm-button primary">Download your answers</button><details class="fm-menu"><summary>Steps</summary><nav aria-label="Activity steps">${nav()}</nav></details></div></header><p id="fm-storage-warning" role="status"></p><main id="fm-main" tabindex="-1"></main><footer class="fm-footer"><a href="${escapeHtml(assignedRoute?.fallback || './printable-fallback.html')}" target="_blank">Paper version</a></footer></div><div id="fm-toast" class="fm-toast" role="status" aria-live="polite"></div>`;
+    return `<div class="fm-shell ${config.layout === 'clean-step' ? 'fm-clean-step' : ''} ${config.persistentNavigation ? 'fm-persistent-navigation' : ''}"><header class="fm-topbar">${branding}<div class="fm-tools"><div class="fm-student"><span id="fm-student-label">${studentLabel()}</span><button id="fm-edit-identity" class="fm-edit" aria-label="Edit your name and grade" title="Edit your name and grade"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m16 3 5 5-12 12-6 1 1-6Z"/><path d="m14 5 5 5"/></svg></button></div><button id="fm-download" class="fm-button primary" aria-label="Download your answers" title="Download your answers"><svg class="fm-tool-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5"/></svg><span class="fm-tool-text">Download your answers</span></button><details class="fm-menu"><summary aria-label="Steps" title="Steps"><svg class="fm-tool-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 5h13M8 12h13M8 19h13M3 5h1M3 12h1M3 19h1"/></svg><span class="fm-tool-text">Steps</span></summary><nav aria-label="Activity steps">${nav()}</nav></details></div></header><p id="fm-storage-warning" role="status"></p><main id="fm-main" tabindex="-1"></main>${footer}</div><div id="fm-toast" class="fm-toast" role="status" aria-live="polite"></div>`;
   }
   function identityPage() {
+    if(config.compactIdentity) return `<section class="fm-identity-panel" aria-labelledby="fm-identity-title"><h1 id="fm-identity-title">${state.identityStarted ? 'Your details' : 'Before you start'}</h1><p>Add your name and grade.</p><form id="fm-identity-form">${[['firstName','First name','given-name'],['lastName','Last name','family-name'],['grade','Grade','off']].map(([key,label,autocomplete])=>`<label class="fm-field fm-identity-${key}">${label}<input name="${key}" value="${escapeHtml(state.identity[key])}" autocomplete="${autocomplete}" maxlength="70"></label>`).join('')}<button class="fm-button primary">${state.identityStarted ? 'Save and return' : 'Start lesson →'}</button></form></section>`;
     return `<h1>What is your name?</h1><form id="fm-identity-form">${[['firstName','First name','given-name'],['lastName','Last name','family-name'],['grade','Grade','off']].map(([key,label,autocomplete])=>`<label class="fm-field">${label}<input name="${key}" value="${escapeHtml(state.identity[key])}" autocomplete="${autocomplete}" maxlength="70"></label>`).join('')}<button class="fm-button primary">Continue</button></form>`;
   }
   function hero(item) {
     const index = config.sections.findIndex((entry) => entry.id === item.id);
     const progress = `${config.layout === 'clean-step' ? `${escapeHtml(assignedRoute?.title || config.title)} · ` : ''}Step ${index + 1} of ${config.sections.length}`;
-    return `<header class="fm-hero"><p>${progress}</p><h1>${item.title}</h1>${item.summary ? `<div>${item.summary}</div>` : ""}</header>`;
+    return `<header class="fm-hero">${config.persistentNavigation ? '' : `<p>${progress}</p>`}<h1>${item.title}</h1>${item.summary ? `<div>${item.summary}</div>` : ""}</header>`;
   }
   function pager(item) {
     const index = config.sections.findIndex((entry) => entry.id === item.id);
     const previous = config.sections[index - 1]; const next = config.sections[index + 1];
+    if (config.persistentNavigation) return `<nav class="fm-pager fm-step-bar" aria-label="Lesson navigation">${previous ? `<a class="previous" href="#${previous.id}">← Previous step</a>` : '<span class="fm-nav-placeholder" aria-hidden="true"></span>'}<span class="fm-step-count" aria-label="Step ${index + 1} of ${config.sections.length}">Step ${index + 1} of ${config.sections.length}</span>${next ? `<a class="next" href="#${next.id}">Next step →</a>` : '<span class="fm-nav-placeholder" aria-hidden="true"></span>'}</nav>`;
     return `<nav class="fm-pager" aria-label="Lesson navigation">${previous ? `<a href="#${previous.id}">${config.layout === 'clean-step' ? '← Previous step' : `← ${previous.short}`}</a>` : "<span></span>"}${next ? `<a class="next" href="#${next.id}">${config.layout === 'clean-step' ? 'Next step' : `${next.short} →`}</a>` : ""}</nav>`;
   }
   function block(label, title, html, className = "") { return `<section class="fm-block ${className}"><p class="fm-label">${label}</p>${title ? `<h2>${title}</h2>` : ''}${html}</section>`; }
@@ -73,11 +76,14 @@ export function mountFoundationModule(config) {
   }
   function lessonPage(item) { return `${hero(item)}${item.html}${pager(item)}`; }
   function choicePage(item) {
+    const sourceId=item.responseSource || item.id;
     const priorIndex = state.choicePositions[item.id] ?? (state.responses[item.id]?.activity ?? (passedCount(item.id) % item.items.length));
     const shownIndex = Number.isInteger(priorIndex) && priorIndex>=0 && priorIndex<item.items.length ? priorIndex : 0;
     const activity = item.items[shownIndex];
-    const saved = state.responses[item.id] || {};
-    const answer = state.choiceDrafts[`${item.id}:${shownIndex}`] ?? saved.answer;
+    const sourceIndex=activity.sourceIndex ?? shownIndex;
+    const candidate=state.responses[sourceId] || {};
+    const saved=activity.sourceIndex===undefined || candidate.activity===sourceIndex ? candidate : {};
+    const answer=state.choiceDrafts[`${sourceId}:${sourceIndex}`] ?? saved.answer;
     const choices = activity.options.map((option,index)=>`<label class="fm-choice"><input type="radio" name="answer" value="${index}" ${String(answer)===String(index)?'checked':''}><span><b aria-hidden="true">${index+1}</b>${escapeHtml(option)}</span></label>`).join('');
     const feedback = saved.checked ? `<div class="fm-feedback ${saved.passed?'success':'retry'}" role="status">${saved.passed?'Correct.':escapeHtml(activity.retry || 'Look at the example and try again.')}</div>` : '';
     const count = config.layout === 'clean-step' && item.items.length === 1 ? '' : `<p>Question ${shownIndex+1} of ${item.items.length}</p>`;
@@ -86,6 +92,10 @@ export function mountFoundationModule(config) {
   }
   function formPage(item) {
     const saved = state.responses[item.responseSource || item.id] || {};
+    if(config.singleActionSteps){
+      const fields=item.fields.map(field=>{const input=field.type==='textarea'?`<textarea name="${field.name}" rows="${field.rows || 3}">${escapeHtml(saved[field.name] || '')}</textarea>`:`<input name="${field.name}" value="${escapeHtml(saved[field.name] ?? '')}" type="${field.type || 'text'}">`;return `<label class="fm-field"><span>${field.label}</span>${input}${field.help?`<small>${field.help}</small>`:''}</label>`;}).join('');
+      return `${hero(item)}${item.intro || ''}<form id="fm-record-form" class="fm-record-form">${fields}</form>${pager(item)}`;
+    }
     const position = Math.max(0, Math.min(Number.isInteger(state.formPositions[item.id]) ? state.formPositions[item.id] : 0,item.fields.length-1));
     const field = item.fields[position];
     const input=field.type==='textarea'?`<textarea name="${field.name}" rows="${field.rows || 4}">${escapeHtml(saved[field.name] || '')}</textarea>`:`<input name="${field.name}" value="${escapeHtml(saved[field.name] ?? '')}" type="${field.type || 'text'}" ${field.min!==undefined?`min="${field.min}"`:''}>`;
@@ -120,6 +130,7 @@ export function mountFoundationModule(config) {
     const item = section(); if (!state.visited.includes(item.id)) state.visited.push(item.id); save();
     const renderer = item.kind === "choice" ? choicePage : item.kind === "form" ? formPage : item.kind === "sensor" ? sensorPage : item.kind === "review" ? reviewPage : lessonPage;
     const launch = assignedRoute && config.layout !== "clean-step" && item.id === config.sections[0].id ? `<p class="fm-label">${escapeHtml(assignedRoute.title)}</p>${assignedRoute.assignmentStatus === "optional-unassigned" ? `<p class="fm-block">${escapeHtml(assignedRoute.instructions)}</p>` : ""}` : "";
+    document.querySelector("#fm-main").classList.toggle("fm-identity-screen", editingIdentity && !!config.compactIdentity);
     document.querySelector("#fm-main").innerHTML = editingIdentity ? identityPage() : launch + renderer(item);
     document.querySelector(".fm-menu nav").innerHTML = nav(); bind(item);
     document.querySelector("#fm-student-label").innerHTML = studentLabel();
@@ -132,14 +143,15 @@ export function mountFoundationModule(config) {
     identityForm?.addEventListener('input',captureIdentity);
     identityForm?.addEventListener('submit',event=>{event.preventDefault();captureIdentity();state.identityStarted=true;editingIdentity=false;save();render({focus:true});});
     const choiceForm=document.querySelector('#fm-choice-form');
-    choiceForm?.addEventListener('change',()=>{const data=new FormData(choiceForm),index=Number(data.get('activity'));state.choicePositions[item.id]=index;state.choiceDrafts[`${item.id}:${index}`]=Number(data.get('answer'));state.responses[item.id]={answer:Number(data.get('answer')),activity:index,checked:false};save();document.querySelector('.fm-feedback')?.remove();});
+    choiceForm?.addEventListener('change',()=>{const data=new FormData(choiceForm),index=Number(data.get('activity'));state.choicePositions[item.id]=index;const sourceIndex=item.items[index].sourceIndex ?? index,sourceId=item.responseSource || item.id;state.choiceDrafts[`${sourceId}:${sourceIndex}`]=Number(data.get('answer'));state.responses[sourceId]={answer:Number(data.get('answer')),activity:sourceIndex,checked:false};save();document.querySelector('.fm-feedback')?.remove();});
     choiceForm?.addEventListener('submit',event=>{
       event.preventDefault();const data=new FormData(choiceForm),activityIndex=Number(data.get('activity')),activity=item.items[activityIndex];
       const result=checkChoice(data.get('answer'),activity.answer,activity.options.length);
       if(!result.checked){toast(result.message);return;}
-      state.choicePositions[item.id]=activityIndex;state.choiceDrafts[`${item.id}:${activityIndex}`]=result.answer;
-      state.responses[item.id]={...result,activity:activityIndex};
-      state.attempts.push({id:uid(),at:new Date().toISOString(),sectionId:item.id,sectionTitle:item.title,activityTitle:activity.title,activityIndex,passed:result.passed,evaluated:true,response:{selected:activity.options[result.answer]}});save();render();
+      const sourceIndex=activity.sourceIndex ?? activityIndex,sourceId=item.responseSource || item.id;
+      state.choicePositions[item.id]=activityIndex;state.choiceDrafts[`${sourceId}:${sourceIndex}`]=result.answer;
+      state.responses[sourceId]={...result,activity:sourceIndex};
+      state.attempts.push({id:uid(),at:new Date().toISOString(),sectionId:sourceId,sectionTitle:item.title,activityTitle:activity.title,activityIndex:sourceIndex,passed:result.passed,evaluated:true,response:{selected:activity.options[result.answer]}});save();render();
     });
     document.querySelectorAll('[data-choice-position]').forEach(button=>button.addEventListener('click',()=>{state.choicePositions[item.id]=Number(button.dataset.choicePosition);state.responses[item.id]={activity:state.choicePositions[item.id],checked:false};save();render({focus:true});}));
     document.querySelector('#fm-record-form')?.addEventListener('input',event=>{const key=item.responseSource || item.id;state.responses[key]={...state.responses[key],...Object.fromEntries(new FormData(event.currentTarget)),saved:false};save();});
