@@ -1,0 +1,6 @@
+export const profile = {caption:'Fictional profile for Alex', columns:['Profile item','Shown to everyone'],rows:[['Nickname','ArtFox'],['Personal details','A home address and phone number']]};
+export const camera = {caption:'Fictional PhotoFun app',columns:['App task','Permission request'],rows:[['Take a photo','Use the camera'],['When needed','Only while taking a photo']]};
+export const contacts = {caption:'Fictional PuzzlePop app',columns:['App task','Permission request'],rows:[['Play a number puzzle','Read all saved contacts']]};
+export const location = {caption:'Fictional public post',columns:['Post item','Audience'],rows:[['Exact live location','Everyone'],['General drawing tip','Everyone']]};
+const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+export const tableHtml = table => `<table><caption>${escape(table.caption)}</caption><thead><tr>${table.columns.map(column=>`<th scope="col">${escape(column)}</th>`).join('')}</tr></thead><tbody>${table.rows.map(row=>`<tr scope="row">${row.map((cell,index)=>index===0?`<th scope="row">${escape(cell)}</th>`:`<td>${escape(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;

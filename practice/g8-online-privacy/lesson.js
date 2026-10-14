@@ -1,0 +1,11 @@
+import {singleActionLesson} from './step-flow.js?v=1.0.0';
+import {site} from './site.js?v=1.0.0';
+import {model} from './steps/model.js?v=1.0.0';
+import {modelProfile} from './steps/model-profile.js?v=1.0.0';
+import {guided} from './steps/guided.js?v=1.0.0';
+import {cameraChoice} from './steps/camera.js?v=1.0.0';
+import {contactChoice} from './steps/contacts.js?v=1.0.0';
+import {locationChoice} from './steps/location.js?v=1.0.0';
+import {explain} from './steps/explain.js?v=1.0.0';
+import {review} from './steps/review.js?v=1.0.0';
+export const lesson=singleActionLesson({...site,sections:[model,modelProfile,guided,cameraChoice,contactChoice,locationChoice,explain,review]});

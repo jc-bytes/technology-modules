@@ -1,0 +1,9 @@
+import { singleActionLesson } from './step-flow.js?v=1.0.0';
+import { site } from './site.js?v=1.0.0';
+import { model } from './steps/model.js?v=1.0.0';
+import { guided } from './steps/guided.js?v=1.0.0';
+import { compare } from './steps/compare.js?v=1.0.0';
+import { independent } from './steps/independent.js?v=1.0.0';
+import { explain } from './steps/explain.js?v=1.0.0';
+import { review } from './steps/review.js?v=1.0.0';
+export const lesson = singleActionLesson({...site, sections:[model,guided,compare,independent,explain,review]});
