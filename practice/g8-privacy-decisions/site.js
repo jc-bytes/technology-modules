@@ -1,0 +1,1 @@
+export const site={id:'G8-PRIVACY-DECISIONS',slug:'g8-privacy-decisions',title:'Privacy decisions: follow the data',shortTitle:'Privacy decisions',subject:'Technology',layout:'clean-step',practiceOnly:true,singleActionSteps:true,persistentNavigation:true,compactIdentity:true,readingSupport:true,showPaperVersion:false,storageKey:'formative:g8-privacy-decisions:v1'};
