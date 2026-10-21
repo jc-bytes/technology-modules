@@ -1,0 +1,251 @@
+{
+  "id": "MOD-STEAM-STICK-BLE-01",
+  "slug": "walking-stick-bluetooth-guide",
+  "title": "Add Bluetooth sound",
+  "version": "1.0.0",
+  "status": "pilot",
+  "recommendedGrades": [
+    8
+  ],
+  "tracks": [
+    "Core"
+  ],
+  "sourcePath": "technology-learning-hub/standalone-sites/walking-stick-bluetooth-guide",
+  "publishedUrl": "https://jc-bytes.github.io/technology-modules/practice/walking-stick-bluetooth-guide/",
+  "owner": "Porfirio Rios",
+  "lastReviewed": "2026-10-21",
+  "estimatedMinutes": null,
+  "timingStatus": "Unknown, pilot required",
+  "prerequisites": [
+    "Use MakeCode Blocks",
+    "A Bluetooth-capable laptop with Chrome, or supported Android Chrome",
+    "A microbit and USB data cable",
+    "Existing working sensor project for final integration"
+  ],
+  "objectives": [
+    "Send three named states using Bluetooth UART",
+    "Rehearse connection with buttons",
+    "Integrate reporting into the existing sensor decision loop",
+    "Explain real results and connection limits"
+  ],
+  "sections": [
+    {
+      "id": "bt-goal",
+      "title": "Make the message travel",
+      "entryPath": "#bt-goal",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-new-project",
+      "title": "Start a button rehearsal",
+      "entryPath": "#bt-new-project",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-extension",
+      "title": "Add Bluetooth blocks",
+      "entryPath": "#bt-extension",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-pairing",
+      "title": "Set the classroom connection mode",
+      "entryPath": "#bt-pairing",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-service",
+      "title": "Start the message service",
+      "entryPath": "#bt-service",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-status",
+      "title": "Start with an unknown result",
+      "entryPath": "#bt-status",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-flag",
+      "title": "Start disconnected",
+      "entryPath": "#bt-flag",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-connected",
+      "title": "Notice a connection",
+      "entryPath": "#bt-connected",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-disconnected",
+      "title": "Notice a lost connection",
+      "entryPath": "#bt-disconnected",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-button-near",
+      "title": "Make A mean near",
+      "entryPath": "#bt-button-near",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-button-far",
+      "title": "Make B mean farther",
+      "entryPath": "#bt-button-far",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-button-unknown",
+      "title": "Make A+B mean unknown",
+      "entryPath": "#bt-button-unknown",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-guard",
+      "title": "Send only while connected",
+      "entryPath": "#bt-guard",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-send-line",
+      "title": "Send one whole message",
+      "entryPath": "#bt-send-line",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-heartbeat",
+      "title": "Wait half a second",
+      "entryPath": "#bt-heartbeat",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-flash",
+      "title": "Run your rehearsal",
+      "entryPath": "#bt-flash",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-open-sounds",
+      "title": "Open the sound website",
+      "entryPath": "#bt-open-sounds",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-enable-sound",
+      "title": "Allow the website to play",
+      "entryPath": "#bt-enable-sound",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-connect",
+      "title": "Connect your micro:bit",
+      "entryPath": "#bt-connect",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-try-near",
+      "title": "Try the near message",
+      "entryPath": "#bt-try-near",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-try-far",
+      "title": "Try the farther message",
+      "entryPath": "#bt-try-far",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-try-unknown",
+      "title": "Try the unknown message",
+      "entryPath": "#bt-try-unknown",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-try-disconnect",
+      "title": "Check a lost connection",
+      "entryPath": "#bt-try-disconnect",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-remove-buttons",
+      "title": "Remove the rehearsal-only blocks",
+      "entryPath": "#bt-remove-buttons",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-open-original",
+      "title": "Open the saved sensor program",
+      "entryPath": "#bt-open-original",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-original-extension",
+      "title": "Add Bluetooth to the sensor copy",
+      "entryPath": "#bt-original-extension",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-original-setting",
+      "title": "Check the sensor copy connection mode",
+      "entryPath": "#bt-original-setting",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-append-addon",
+      "title": "Move the Bluetooth setup",
+      "entryPath": "#bt-append-addon",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-sensor-unknown",
+      "title": "Send unknown for a failed reading",
+      "entryPath": "#bt-sensor-unknown",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-sensor-near",
+      "title": "Send the near sensor result",
+      "entryPath": "#bt-sensor-near",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-sensor-far",
+      "title": "Send the farther sensor result",
+      "entryPath": "#bt-sensor-far",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-sensor-send",
+      "title": "Send after the fresh decision",
+      "entryPath": "#bt-sensor-send",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-real-test",
+      "title": "Check the real sensor messages",
+      "entryPath": "#bt-real-test",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-check-message",
+      "title": "Choose the message",
+      "entryPath": "#bt-check-message",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-explain-result",
+      "title": "Explain one real result",
+      "entryPath": "#bt-explain-result",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "bt-review",
+      "title": "Review your saved answers",
+      "entryPath": "#bt-review",
+      "estimatedMinutes": null
+    }
+  ],
+  "offline": "Print printable-fallback.html. Live BLE requires a compatible browser and actual hardware.",
+  "teacherGuidePath": "technology-learning-hub/teacher-materials/steam-bluetooth.md"
+}

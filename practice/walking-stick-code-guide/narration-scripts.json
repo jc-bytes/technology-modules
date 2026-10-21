@@ -199,6 +199,12 @@
       "file": "assets/narration/practice-far-af2c0110fd68.mp3"
     },
     {
+      "id": "bluetooth-sound",
+      "text": "Add sound through Bluetooth. In this guide. The companion website plays the warning through a laptop or supported Android device. Your team programs the microbit messages in a separate short guide.. Open Add Bluetooth sound in a new tab. Build and test its button rehearsal before adding messages to your sensor loop.. Check. You keep this guide open and follow the Bluetooth guide in another tab.",
+      "sha256": "f6a71e34116b319ab4ef8bd3e6ed0ebe181da3480854b785fdd560719f6132a4",
+      "file": "assets/narration/bluetooth-sound-f6a71e34116b.mp3"
+    },
+    {
       "id": "fix-one-problem",
       "text": "Correct one program problem. In Make Code · your saved program. Changing one thing makes it easier to tell what fixed the behavior. If a practice check failed, correct its matching block and save a new numbered .hex before transferring again. Check. Both practice positions give the expected response with valid readings.",
       "sha256": "a3db8be312244a5d6caac012b0de4712bd7c5d7f5e5905387052bd3c06077b2c",

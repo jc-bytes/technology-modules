@@ -1,0 +1,220 @@
+{
+  "model": "hexgrad/Kokoro-82M",
+  "voice": "af_heart",
+  "language": "English (US)",
+  "speed": 0.92,
+  "license": "Apache-2.0",
+  "scope": "Reviewed authored English directions only. No student data.",
+  "records": [
+    {
+      "id": "bt-goal",
+      "text": "Make the message travel. In this guide. Your micro:bit makes a decision. Bluetooth sends that decision to the sound website. The laptop or Android device plays the sound. Follow the path from micro:bit to the website. Check. The micro:bit sends text. The website plays the warning.",
+      "sha256": "cfcebe6cb48e00c208d185e0f02d6ae4c84d9f4cf4687819897eeb599261ef37",
+      "file": "assets/narration/bt-goal-cfcebe6cb48e.mp3"
+    },
+    {
+      "id": "bt-new-project",
+      "text": "Start a button rehearsal. In Make Code · Home. Bluetooth sends a short message without a cable. First use buttons as pretend sensor results. This checks the connection before you change your sensor program. Create a new project named WalkingStick_BLE_Rehearsal_01. Check. A separate blank rehearsal project opens.",
+      "sha256": "c5995173567456b147c11fc05cd1f19d3c8740827b3d361ff4918f5c1747aa38",
+      "file": "assets/narration/bt-new-project-c59951735674.mp3"
+    },
+    {
+      "id": "bt-extension",
+      "text": "Add Bluetooth blocks. In Make Code · Extensions. An extension adds blocks to Make Code. Bluetooth and micro:bit radio cannot run together. Search for Bluetooth and select the official Bluetooth extension. Check. The Bluetooth category appears in the block toolbox.",
+      "sha256": "c9317bbffa0ef47d4d9132732201cbadf3f6805e66d2747a89d5a8890d248e9d",
+      "file": "assets/narration/bt-extension-c9317bbffa0e.mp3"
+    },
+    {
+      "id": "bt-pairing",
+      "text": "Set the classroom connection mode. With your teacher · Make Code gear menu → Project Settings. For this supervised browser test, No Pairing Required lets the website connect. Anyone nearby can also connect, so use this mode only for the teacher-approved tabletop demonstration. Have your teacher select No Pairing Required: Anyone can connect via Bluetooth for the rehearsal project. Check. The rehearsal uses the teacher-approved no-pairing setting.",
+      "sha256": "54d39b472fde1ca1124cdfc8aa4e30ae2205ad42298ddd20638f41802fe03c20",
+      "file": "assets/narration/bt-pairing-54d39b472fde.mp3"
+    },
+    {
+      "id": "bt-service",
+      "text": "Start the message service. In Make Code · on start. you art is a service for sending short text messages. Starting it makes this message channel available when the program starts. Place Bluetooth → bluetooth uart service inside on start. Check. The program starts the you art service once.",
+      "sha256": "29e5b6946cfbdc47536b5dd8f964edce1e917ce5c0e832b1d5695cd924bfa7f1",
+      "file": "assets/narration/bt-service-29e5b6946cfb.mp3"
+    },
+    {
+      "id": "bt-status",
+      "text": "Start with an unknown result. In Make Code · Variables and on start. A variable is a named place holding a value. status holds the message we will send. unknown means we have no usable sensor result. Create status and set it to the text \"unknown\" in on start. Check. status starts as text in uppercase.",
+      "sha256": "1db422ff212cd8898aa16e968c21fdae77f74b3c9beb8ea81a82a02ebe0a86c3",
+      "file": "assets/narration/bt-status-1db422ff212c.mp3"
+    },
+    {
+      "id": "bt-flag",
+      "text": "Start disconnected. In Make Code · Variables and on start. B T connected holds true or false. At startup the website has not connected yet. Create B T connected and set it to Logic → false in on start. Check. B T connected starts false.",
+      "sha256": "fd0345a99790f6d53f5d7ef840b623314b5f1904d07926111ab56dab9b1354fb",
+      "file": "assets/narration/bt-flag-fd0345a99790.mp3"
+    },
+    {
+      "id": "bt-connected",
+      "text": "Notice a connection. In Make Code · Bluetooth. An event runs when something happens. This event runs when the micro:bit gets a Bluetooth connection. Add on bluetooth connected and put set B T connected to true inside it. Check. The flag becomes true when a device connects.",
+      "sha256": "193959d9e36246601afb9112c0ae7709ccd5623e2bea2bc96945d0cb3ed38ef1",
+      "file": "assets/narration/bt-connected-193959d9e362.mp3"
+    },
+    {
+      "id": "bt-disconnected",
+      "text": "Notice a lost connection. In Make Code · Bluetooth. When the connection closes, the program must stop sending and stop keeping an old result as its starting state. Add on bluetooth disconnected with B T connected set to false and status set to \"unknown\". Check. A lost connection clears the connection flag and old status.",
+      "sha256": "8a21445b503249c4a58e36ac476c201c091d714073499ef84d1fec648366653b",
+      "file": "assets/narration/bt-disconnected-8a21445b5032.mp3"
+    },
+    {
+      "id": "bt-button-near",
+      "text": "Make A mean near. In Make Code · Input. The buttons are temporary pretend inputs. near is the exact message for a usable distance at 30 centimetres or nearer. Add on button A pressed and set status to \"near\" inside it. Check. Pressing A selects the near message.",
+      "sha256": "5d45742473480c03c9175aa9c05e5bd8869db7cac30de4b827b6fda525f153fd",
+      "file": "assets/narration/bt-button-near-5d4574247348.mp3"
+    },
+    {
+      "id": "bt-button-far",
+      "text": "Make B mean farther. In Make Code · Input. far means a usable sensor reading above 30 centimetres. It never means every possible obstacle has been checked. Add on button B pressed and set status to \"far\" inside it. Check. Pressing B selects the far message.",
+      "sha256": "1dfb394aed0efc91cfd41ed37cf9457f25a02248a31df8610f69bd059d00a69e",
+      "file": "assets/narration/bt-button-far-1dfb394aed0e.mp3"
+    },
+    {
+      "id": "bt-button-unknown",
+      "text": "Make A+B mean unknown. In Make Code · Input. unknown is different from far. A missing or unusable measurement cannot say that the area is clear. Add on button A+B pressed and set status to \"unknown\" inside it. Check. Pressing A and B together selects unknown.",
+      "sha256": "5b4ebade8a6907c3733f273435aa29ea6bec06b12365b295a0e20a1e6e866d54",
+      "file": "assets/narration/bt-button-unknown-5b4ebade8a69.mp3"
+    },
+    {
+      "id": "bt-guard",
+      "text": "Send only while connected. In Make Code · Basic and Logic. Forever repeats its instructions. The if block allows a send only when B T connected is true. Place if B T connected then inside a forever block. Check. The forever loop contains a connection check.",
+      "sha256": "6f40068b79262bee9f40e371dee5299f0468fe1ac0ccae1f78c8ae24cb213f6a",
+      "file": "assets/narration/bt-guard-6f40068b7926.mp3"
+    },
+    {
+      "id": "bt-send-line",
+      "text": "Send one whole message. In Make Code · inside if B T connected. The website reads one message per line. uart write line adds the line ending for you. Place Bluetooth → uart write line with status in its text slot. Check. The selected message is sent as a complete line.",
+      "sha256": "d6770b81fcf32c9214b9fb63aafecf6dec86fee38ff85b97c9d01f78adf594fc",
+      "file": "assets/narration/bt-send-line-d6770b81fcf3.mp3"
+    },
+    {
+      "id": "bt-heartbeat",
+      "text": "Wait half a second. In Make Code · forever, below the whole if block. five hundred milliseconds is half a second. Repeating the message lets the website notice when messages stop arriving. Place Basic → pause five hundred outside the if block, at the bottom of forever. Check. The loop sends at roughly half-second intervals while connected.",
+      "sha256": "678e6df10b214f5fe6ffe7c05d4b62199d3d2f69d40acaaa2809a8725958cd24",
+      "file": "assets/narration/bt-heartbeat-678e6df10b21.mp3"
+    },
+    {
+      "id": "bt-flash",
+      "text": "Run your rehearsal. In Make Code · Download, then computer MICROBIT drive. The physical micro:bit must run the new program before it can send messages to the website. Download WalkingStick_BLE_Rehearsal_01.hex and copy it to the MICROBIT drive using the checked U S B connection. Check. The micro:bit runs the rehearsal program.",
+      "sha256": "47c6973a1db8e2844087d061a38ec21b9955d93e18d91bdc58c8ce18536aaecf",
+      "file": "assets/narration/bt-flash-47c6973a1db8.mp3"
+    },
+    {
+      "id": "bt-open-sounds",
+      "text": "Open the sound website. In your browser · new tab. Keep the guide visible so you can return to each instruction. The sound website receives your micro:bit messages. Open Walking-stick sounds in a new tab using the link below. Check. The separate sound website opens beside this guide.",
+      "sha256": "fcf3a060ca7fd4a3d54ad1c207ba690eed0006e51d28f73aa232087b43eac5c0",
+      "file": "assets/narration/bt-open-sounds-fcf3a060ca7f.mp3"
+    },
+    {
+      "id": "bt-enable-sound",
+      "text": "Allow the website to play. On Walking-stick sounds. Browsers wait for a person to click before playing sound. Enabling sound is separate from connecting a micro:bit. Click Enable sound. Check. The page can play sound after your click.",
+      "sha256": "f222da927fd9c99f182ca088d115c48a115730cf9669e471a9c7be92f5b1aa8f",
+      "file": "assets/narration/bt-enable-sound-f222da927fd9.mp3"
+    },
+    {
+      "id": "bt-connect",
+      "text": "Connect your micro:bit. On Walking-stick sounds. The browser asks which nearby device you want. Choose your team’s identified micro:bit. Click Connect micro:bit and select the team device in the browser chooser. Check. The website shows a live connection and starts receiving unknown.",
+      "sha256": "e4c6dc5e99465c7b28066645ff0bc491a1ce92eb5a355838142229c166a18022",
+      "file": "assets/narration/bt-connect-e4c6dc5e9946.mp3"
+    },
+    {
+      "id": "bt-try-near",
+      "text": "Try the near message. At your micro:bit and Walking-stick sounds. A is still a pretend input. This test checks the message and sound path. Press button A once. Check. The page receives near and gives its near warning.",
+      "sha256": "daee0c37ad5f62061732b541a73ea8cd874c7f4a3cccda8ed73560bfa9241cf2",
+      "file": "assets/narration/bt-try-near-daee0c37ad5f.mp3"
+    },
+    {
+      "id": "bt-try-far",
+      "text": "Try the farther message. At your micro:bit and Walking-stick sounds. B changes the selected message, which the repeating loop sends again. Press button B once. Check. The page receives far and stops the near warning.",
+      "sha256": "9055bf79486e3d5198042876c7020c430c16c3be999f6e65993d1af5b59c57d2",
+      "file": "assets/narration/bt-try-far-9055bf79486e.mp3"
+    },
+    {
+      "id": "bt-try-unknown",
+      "text": "Try the unknown message. At your micro:bit and Walking-stick sounds. Unknown must remain different from a measured farther reading. Press A and B together. Check. The page receives unknown and shows that no usable reading is available.",
+      "sha256": "35777018c6908ce90832a535a0cf5a9315ca5cd8ee280929f7532ce4f8ac3eda",
+      "file": "assets/narration/bt-try-unknown-35777018c690.mp3"
+    },
+    {
+      "id": "bt-try-disconnect",
+      "text": "Check a lost connection. On Walking-stick sounds. Without a connection, an earlier far message is no longer a current result. Click Disconnect. Check. The page changes to disconnected or unknown and stops the near sound.",
+      "sha256": "b8e8a1dc2250efcf33149301608104b0ba4a6a431a3cb6c36435da2f7b8a8614",
+      "file": "assets/narration/bt-try-disconnect-b8e8a1dc2250.mp3"
+    },
+    {
+      "id": "bt-remove-buttons",
+      "text": "Remove the rehearsal-only blocks. In Make Code · rehearsal project. The real sensor must choose the message. Its own loop must send each result after the fresh sensor decision. Delete the three temporary button event blocks and the rehearsal forever sending block. Check. Only the variables, you art service and two connection events remain in the add-on.",
+      "sha256": "5449783120dc2b0009b1659dff21bbe58b6a77ef5e0b850b9bbf097768fa6ccc",
+      "file": "assets/narration/bt-remove-buttons-5449783120dc.mp3"
+    },
+    {
+      "id": "bt-open-original",
+      "text": "Open the saved sensor program. In a second Make Code editor tab. The original program already knows your sensor’s extension, connections and valid-reading rule. Preserve that work. Import the latest working sensor .hex and save a new numbered copy for Bluetooth work. Check. The saved sensor blocks are visible in a separate project.",
+      "sha256": "25b55f65e03ea5356e61c90f1c0462d4f0003d154059ca90c5d11936553d95bb",
+      "file": "assets/narration/bt-open-original-25b55f65e03e.mp3"
+    },
+    {
+      "id": "bt-original-extension",
+      "text": "Add Bluetooth to the sensor copy. In Make Code · sensor project · Extensions. Extensions belong to each Make Code project. Adding Bluetooth to the rehearsal does not add it to your sensor project.. Add the official Bluetooth extension to this saved sensor copy.. Check. This project has both its existing sensor blocks and the Bluetooth category.",
+      "sha256": "e750bc21023b1639e815d326551456fba6c7b481c3d07150039d69c69cdc125b",
+      "file": "assets/narration/bt-original-extension-e750bc21023b.mp3"
+    },
+    {
+      "id": "bt-original-setting",
+      "text": "Check the sensor copy connection mode. With your teacher · sensor project · gear menu → Project Settings. The sound website needs the same approved Bluetooth connection mode in the program you actually transfer.. Select the teacher-approved No Pairing Required setting for this saved sensor copy.. Check. The sensor copy has the same approved setting as the tested rehearsal.",
+      "sha256": "1836847b8b570f92ccac89d98d0f4443ac64aeba8cf0c73dbd147af0063a016f",
+      "file": "assets/narration/bt-original-setting-1836847b8b57.mp3"
+    },
+    {
+      "id": "bt-append-addon",
+      "text": "Move the Bluetooth setup. In Make Code · rehearsal and sensor projects · JavaScript. JavaScript is the text view of your blocks. The remaining add-on starts Bluetooth and records connections. It has no sensor pins or separate sender. Copy the remaining rehearsal JavaScript and paste it at the end of the existing sensor program. Check. The sensor project contains the variables, you art service and connection events alongside its original sensor code.",
+      "sha256": "9c8cbf22802bec8b6f63a728ecdf6b84389d1635f8db357136fa6a56e756ed27",
+      "file": "assets/narration/bt-append-addon-9c8cbf22802b.mp3"
+    },
+    {
+      "id": "bt-sensor-unknown",
+      "text": "Send unknown for a failed reading. In Make Code · original invalid-reading branch. Use the original checked validity branch. A sensor error must never become far. Add set status to \"unknown\" before the existing question-mark display. Check. The invalid branch selects unknown and still shows its existing display.",
+      "sha256": "bb7df7bc7aea5d580d3ce697d24534146a60d8efcfec57825d1f23badfa08af9",
+      "file": "assets/narration/bt-sensor-unknown-bb7df7bc7aea.mp3"
+    },
+    {
+      "id": "bt-sensor-near",
+      "text": "Send the near sensor result. In Make Code · valid reading, distanceCm ≤ 30 branch. The original valid-reading branch already compares distanceCm with 30. Use that same decision. Add set status to \"near\" before the existing X display. Check. A usable near reading selects near and still shows X.",
+      "sha256": "02fff30f292e0bb3991fc240dfa342ecd6437faead48e32fc923fbb6d9a59795",
+      "file": "assets/narration/bt-sensor-near-02fff30f292e.mp3"
+    },
+    {
+      "id": "bt-sensor-far",
+      "text": "Send the farther sensor result. In Make Code · valid reading, distanceCm > 30 branch. far belongs only to the existing valid-reading branch above 30 centimetres. The display remains part of your built model. Add set status to \"far\" before the existing clear-screen block. Check. A usable farther reading selects far and still clears the LEDs.",
+      "sha256": "f896a4e99c5d48ad33ad7088c050dd6f1fd17a4e07736da99bcd220d2ac963f1",
+      "file": "assets/narration/bt-sensor-far-f896a4e99c5d.mp3"
+    },
+    {
+      "id": "bt-sensor-send",
+      "text": "Send after the fresh decision. In Make Code · end of the original sensor-reading forever loop. Put sending in the same loop as the sensor decision. If that loop stops producing results, the website will stop hearing messages and show unknown. Add the checked if B T connected → uart write line status stack after the complete decision, followed by pause five hundred. Check. One sensor loop reads, checks validity, selects status and display, sends that status if connected, then waits.",
+      "sha256": "35a582ddc83441b2505d738476f6e4e815ef6c8d01b1461f9312cc1a21095a62",
+      "file": "assets/narration/bt-sensor-send-35a582ddc834.mp3"
+    },
+    {
+      "id": "bt-real-test",
+      "text": "Check the real sensor messages. At the supervised tabletop model and Walking-stick sounds. Now the sensor, rather than buttons, selects the message. Check the website and model together. Save and transfer the next numbered sensor .hex, reconnect the website, and run your teacher-checked 20 centimetres, 40 centimetres and unusable-reading checks. Check. Usable 20 centimetres gives X and near; usable 40 centimetres gives a blank display and far; an unusable reading gives ? and unknown.",
+      "sha256": "7222ea007ed934be73822b444e791a65688e32ec7cd772f4854d08860a31c79f",
+      "file": "assets/narration/bt-real-test-7222ea007ed9.mp3"
+    },
+    {
+      "id": "bt-check-message",
+      "text": "Choose the message. In this guide. The words must match exactly so both devices understand the same state. Which message should an unusable reading send?. Choices. far. unknown. near",
+      "sha256": "c464fc55ad8ad0204d50a387342603f379a2ed739478d2975ef02fb036599f87",
+      "file": "assets/narration/bt-check-message-c464fc55ad8a.mp3"
+    },
+    {
+      "id": "bt-explain-result",
+      "text": "Explain one real result. In this guide. Button rehearsal and sensor tests prove different things. Use actual observations. What did you test, and what happened?",
+      "sha256": "af24a34af1cc8adfbadfc38925123cc7bd94e5155d2f1110be73eacc76a62623",
+      "file": "assets/narration/bt-explain-result-af24a34af1cc.mp3"
+    }
+  ]
+}

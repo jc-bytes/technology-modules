@@ -31,6 +31,7 @@ export const narrationFiles = {
   "transfer-program": "assets/narration/transfer-program-3dfa59926b7d.mp3",
   "practice-near": "assets/narration/practice-near-09c9dde9f8d0.mp3",
   "practice-far": "assets/narration/practice-far-af2c0110fd68.mp3",
+  "bluetooth-sound": "assets/narration/bluetooth-sound-f6a71e34116b.mp3",
   "fix-one-problem": "assets/narration/fix-one-problem-a3db8be31224.mp3",
   "record-trials": "assets/narration/record-trials-054f4b832201.mp3",
   "one-improvement": "assets/narration/one-improvement-2456bb968c56.mp3",

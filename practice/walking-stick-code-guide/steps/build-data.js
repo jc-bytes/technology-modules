@@ -438,6 +438,26 @@ export const buildSteps = [
     "stage": "guided"
   },
   {
+    "id": "bluetooth-sound",
+    "title": "Add sound through Bluetooth",
+    "why": "The companion website plays the warning through a laptop or supported Android device. Your team programs the microbit messages in a separate short guide.",
+    "where": "In this guide",
+    "do": "Open Add Bluetooth sound in a new tab. Build and test its button rehearsal before adding messages to your sensor loop.",
+    "expected": "You keep this guide open and follow the Bluetooth guide in another tab.",
+    "help": "The button rehearsal tests the connection, not the sensor. Keep a backup of your working sensor program. Return here for your original testing and report steps.",
+    "links": [
+      [
+        "Open Add Bluetooth sound",
+        "../walking-stick-bluetooth-guide/"
+      ],
+      [
+        "Open sound website",
+        "../walking-stick-sounds/"
+      ]
+    ],
+    "stage": "guided"
+  },
+  {
     "id": "fix-one-problem",
     "title": "Correct one program problem",
     "why": "Changing one thing makes it easier to tell what fixed the behavior.",
