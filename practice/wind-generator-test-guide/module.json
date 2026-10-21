@@ -1,0 +1,271 @@
+{
+  "id": "MOD-STEAM-WIND-01",
+  "slug": "wind-generator-test-guide",
+  "title": "Test your wind generator",
+  "version": "1.0.0",
+  "status": "pilot",
+  "gradeRange": [
+    8,
+    8
+  ],
+  "sourcePath": "technology-learning-hub/standalone-sites/wind-generator-test-guide",
+  "publishedUrl": "https://jc-bytes.github.io/technology-modules/practice/wind-generator-test-guide/",
+  "prerequisites": [
+    "Built low-voltage wind model",
+    "Teacher-configured meter and guarded fan",
+    "Read a decimal number"
+  ],
+  "estimatedTime": "Unknown, classroom pilot required",
+  "offline": "Serve the downloaded guide folder locally, or use printable-fallback.html. Hardware testing needs the actual supervised model.",
+  "lastReviewed": "2026-10-20",
+  "objectives": [
+    "Read voltage in volts",
+    "Compare fan-off and fan-on conditions",
+    "Keep original readings and test one change",
+    "Explain the result and its limits"
+  ],
+  "software": [
+    "Web browser"
+  ],
+  "owner": "Porfirio Rios",
+  "recommendedGrades": [
+    8
+  ],
+  "tracks": [
+    "Core"
+  ],
+  "estimatedMinutes": null,
+  "timingStatus": "Unknown, classroom pilot required",
+  "sections": [
+    {
+      "id": "goal",
+      "title": "Test the built model",
+      "entryPath": "#goal",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "energy-path",
+      "title": "Follow the moving air",
+      "entryPath": "#energy-path",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "voltage",
+      "title": "Check what voltage tells us",
+      "entryPath": "#voltage",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "model-reading",
+      "title": "Read an example meter",
+      "entryPath": "#model-reading",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "practice-record",
+      "title": "Practise a reading",
+      "entryPath": "#practice-record",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "teacher-setup",
+      "title": "Check the equipment with your teacher",
+      "entryPath": "#teacher-setup",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "fixed-setup",
+      "title": "Record the fixed setup",
+      "entryPath": "#fixed-setup",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "prediction",
+      "title": "Write your prediction",
+      "entryPath": "#prediction",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-off-ready",
+      "title": "Start with the fan off",
+      "entryPath": "#before-off-ready",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-off-1",
+      "title": "Fan off: reading 1",
+      "entryPath": "#before-off-1",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-off-2",
+      "title": "Fan off: reading 2",
+      "entryPath": "#before-off-2",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-off-3",
+      "title": "Fan off: reading 3",
+      "entryPath": "#before-off-3",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-on-ready",
+      "title": "Turn the fan on",
+      "entryPath": "#before-on-ready",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-on-1",
+      "title": "Fan on: reading 1",
+      "entryPath": "#before-on-1",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-on-2",
+      "title": "Fan on: reading 2",
+      "entryPath": "#before-on-2",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-on-3",
+      "title": "Fan on: reading 3",
+      "entryPath": "#before-on-3",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-stop",
+      "title": "Stop before comparing",
+      "entryPath": "#before-stop",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "before-compare",
+      "title": "Compare your first results",
+      "entryPath": "#before-compare",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "choose-change",
+      "title": "Choose one small change",
+      "entryPath": "#choose-change",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "make-change",
+      "title": "Make the checked change",
+      "entryPath": "#make-change",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "change-record",
+      "title": "Keep a change record",
+      "entryPath": "#change-record",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-setup",
+      "title": "Check the repeat setup",
+      "entryPath": "#after-setup",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-off-ready",
+      "title": "Repeat with the fan off",
+      "entryPath": "#after-off-ready",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-off-1",
+      "title": "After change: off reading 1",
+      "entryPath": "#after-off-1",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-off-2",
+      "title": "After change: off reading 2",
+      "entryPath": "#after-off-2",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-off-3",
+      "title": "After change: off reading 3",
+      "entryPath": "#after-off-3",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-on-ready",
+      "title": "Repeat with the fan on",
+      "entryPath": "#after-on-ready",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-on-1",
+      "title": "After change: on reading 1",
+      "entryPath": "#after-on-1",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-on-2",
+      "title": "After change: on reading 2",
+      "entryPath": "#after-on-2",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-on-3",
+      "title": "After change: on reading 3",
+      "entryPath": "#after-on-3",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-stop",
+      "title": "Stop the fan after testing",
+      "entryPath": "#after-stop",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "after-compare",
+      "title": "Explain whether the change helped",
+      "entryPath": "#after-compare",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "limits",
+      "title": "Choose an honest limit",
+      "entryPath": "#limits",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "report-note",
+      "title": "Add a test explanation",
+      "entryPath": "#report-note",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "save-evidence",
+      "title": "Save your test evidence",
+      "entryPath": "#save-evidence",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "review",
+      "title": "Your saved answers",
+      "entryPath": "#review",
+      "estimatedMinutes": null
+    }
+  ],
+  "teacherGuidePath": "technology-learning-hub/teacher-materials/steam-physical-guides.md",
+  "accessibility": [
+    "Keyboard controls",
+    "Readable responsive text",
+    "Optional bundled English narration",
+    "Text alternatives for concept diagrams"
+  ],
+  "deviceRequirements": [
+    "School computer and modern browser",
+    "USB connection for coding projects"
+  ],
+  "accounts": "No account is needed for the guide. Use school-approved editor accounts if required.",
+  "internet": "Local HTTP serving supports bundled guide assets. Opening online editors and Classroom needs internet.",
+  "submission": "Use the current shared four-heading Google Doc and the existing one-team Classroom assignment. Guide PDF is supporting evidence."
+}

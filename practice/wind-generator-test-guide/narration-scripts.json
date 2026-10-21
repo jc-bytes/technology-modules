@@ -1,0 +1,220 @@
+{
+  "model": "hexgrad/Kokoro-82M",
+  "voice": "af_heart",
+  "language": "English (US)",
+  "speed": 0.92,
+  "license": "Apache-2.0",
+  "scope": "Reviewed authored English directions only. No student data.",
+  "records": [
+    {
+      "id": "goal",
+      "text": "Test the built model. At the wind model. Our wind model is already built. We will compare its voltage with the fan off and on. Voltage is an electrical measurement shown in volts, written V. Point to the model and the meter that will measure it. Check. You can identify the model you will test.",
+      "sha256": "1ed1e292705ed072ed3f4877ecc244755d2ffc1af613e81907cec96872123b6c",
+      "file": "assets/narration/goal-1ed1e292705e.mp3"
+    },
+    {
+      "id": "energy-path",
+      "text": "Follow the moving air. At the wind model. Moving air pushes the blades. The blades turn a shaft, a rod that turns the generator. The generator changes movement into electrical energy. Follow the arrows in the drawing from air to meter. Check. The arrows connect the fan, model blades, shaft, generator and meter.",
+      "sha256": "94f23cf1026e7c3c2b1beb43b597b14a64a9cfff18ed0d229eac7f80c687ff10",
+      "file": "assets/narration/energy-path-94f23cf1026e.mp3"
+    },
+    {
+      "id": "voltage",
+      "text": "Check what voltage tells us. At the wind model. Voltage describes electrical push between two points. Our teacher sets the meter to measure it. A voltage reading alone does not tell us how much useful power the model supplies. Choose the evidence of measured voltage. Which is evidence of voltage?. Choices. A meter reading with the unit V. Blades spinning. A drawing of a house",
+      "sha256": "75b113d5705cfc0498fe70a737cf80bec38ffc96ae7884ab07539352d074a1fa",
+      "file": "assets/narration/voltage-75b113d5705c.mp3"
+    },
+    {
+      "id": "model-reading",
+      "text": "Read an example meter. At the wind model. This picture is a made-up example. Its display says zero point four two volts. Copy every digit, including the decimal point. Choose the reading shown in the example. What does the example display show?. Choices. 42 V. zero point four two volts. 4.2 V. Check. This is practice. It is not a result from our model.",
+      "sha256": "79a0b736deb1f95ef29ed87eda2bb7bbc1951c734639206e827b828d588c1a7e",
+      "file": "assets/narration/model-reading-79a0b736deb1.mp3"
+    },
+    {
+      "id": "practice-record",
+      "text": "Practise a reading. In this guide. A useful record says the condition and the reading. Here is a made-up result: fan on, reading 1, zero point four two volts. Write one practice record from this example. What is the made-up practice record?. Check. Your practice record includes zero point four two volts.",
+      "sha256": "8af6716f825c90e7eca1c72fc0037adbace93552a360072b92f9c6a3891bb67d",
+      "file": "assets/narration/practice-record-8af6716f825c.mp3"
+    },
+    {
+      "id": "teacher-setup",
+      "text": "Check the equipment with your teacher. At the wind model. The meter setup depends on the real generator. Your teacher checks the base, blades, low-voltage connections, meter and guarded fan. Ask your teacher to check the complete setup before any powered test. Check. Your teacher has checked the equipment and can show you the voltage display.",
+      "sha256": "5960dd8e7af5e13b964b40f9e455190b6e9e648adbd795774a5a5884445dafc7",
+      "file": "assets/narration/teacher-setup-5960dd8e7af5.mp3"
+    },
+    {
+      "id": "fixed-setup",
+      "text": "Record the fixed setup. At the wind model. A fair comparison changes the fan condition while keeping the other parts the same. Your teacher chooses a safe position and one fan-on setting. Write the checked setup in the field below. Which setup will stay fixed?. Check. The distance, setting and agreed waits are written down.",
+      "sha256": "a9df8aaf35792882d6975f98d4b8c32a38f6829bfc04ce9724505bf7f76407d2",
+      "file": "assets/narration/fixed-setup-a9df8aaf3579.mp3"
+    },
+    {
+      "id": "prediction",
+      "text": "Write your prediction. In this guide. A prediction says what you expect before you see your test results. It can turn out to be wrong. Write what you expect when the fan turns on. What do you predict, and why?. Check. Your answer names a change you expect and a reason.",
+      "sha256": "ebc34b2f020519dbd6639ec2bc90245556811040591885aa9ab56fbea427a5f5",
+      "file": "assets/narration/prediction-ebc34b2f0205.mp3"
+    },
+    {
+      "id": "before-off-ready",
+      "text": "Start with the fan off. At the wind model. These are the first real results. The model and meter stay in the checked positions. Ask your teacher to confirm the fan is off and the blades have stopped. Check. The blades have stopped and the checked meter display is visible.",
+      "sha256": "9cb83b023ad8cc4a1c8ce14c0def3396b1890f06ed53e0b8a424cd1a9f6f35bb",
+      "file": "assets/narration/before-off-ready-9cb83b023ad8.mp3"
+    },
+    {
+      "id": "before-off-1",
+      "text": "Fan off: reading 1. At the wind model. Record the display exactly. A real zero is a result. A missing reading is not zero. Read the voltage with the fan off after the agreed wait. Before the change, fan off: what is reading 1?. Check. You have recorded this reading with V.",
+      "sha256": "b313a7b3f233d6276ca5d91cc5b414ef878fa064d78dc204855c909ef340212e",
+      "file": "assets/narration/before-off-1-b313a7b3f233.mp3"
+    },
+    {
+      "id": "before-off-2",
+      "text": "Fan off: reading 2. At the wind model. Record the display exactly. A real zero is a result. A missing reading is not zero. Read the voltage with the fan off after the agreed wait. Before the change, fan off: what is reading 2?. Check. You have recorded this reading with V.",
+      "sha256": "188b4585d01b3843d85c89155324c4a8b4876e438eac04d312e22832beaacd43",
+      "file": "assets/narration/before-off-2-188b4585d01b.mp3"
+    },
+    {
+      "id": "before-off-3",
+      "text": "Fan off: reading 3. At the wind model. Record the display exactly. A real zero is a result. A missing reading is not zero. Read the voltage with the fan off after the agreed wait. Before the change, fan off: what is reading 3?. Check. You have recorded this reading with V.",
+      "sha256": "080906dd346273a7879b1f97320de99bff618b8517f06e2e5b4a226c6b8f96e4",
+      "file": "assets/narration/before-off-3-080906dd3462.mp3"
+    },
+    {
+      "id": "before-on-ready",
+      "text": "Turn the fan on. At the wind model. Keep the marked distance, blades, generator and meter connections the same. Ask your teacher to run the fan at the checked fixed setting. Check. After the agreed settling time, you can read the voltage without touching the model.",
+      "sha256": "bb5991dce8289c2257f0260afe43adc16278635d3132b197914cee0d0c23252e",
+      "file": "assets/narration/before-on-ready-bb5991dce828.mp3"
+    },
+    {
+      "id": "before-on-1",
+      "text": "Fan on: reading 1. At the wind model. Use the same wait between readings. Small changes in the display can happen. Read the voltage after the agreed wait. Before the change, fan on: what is reading 1?. Check. You have recorded this reading with V.",
+      "sha256": "6a819a50c389313aa9fafe6a6fa4e0f242905def6d0aa0bc5808494433091b9f",
+      "file": "assets/narration/before-on-1-6a819a50c389.mp3"
+    },
+    {
+      "id": "before-on-2",
+      "text": "Fan on: reading 2. At the wind model. Use the same wait between readings. Small changes in the display can happen. Read the voltage after the agreed wait. Before the change, fan on: what is reading 2?. Check. You have recorded this reading with V.",
+      "sha256": "64f8221f43197a62164280335ad3a4db854ec8616e720c37ccd4695ad147fb9e",
+      "file": "assets/narration/before-on-2-64f8221f4319.mp3"
+    },
+    {
+      "id": "before-on-3",
+      "text": "Fan on: reading 3. At the wind model. Use the same wait between readings. Small changes in the display can happen. Read the voltage after the agreed wait. Before the change, fan on: what is reading 3?. Check. You have recorded this reading with V.",
+      "sha256": "574a0736dd3eea5dab7116936b82641020e886dde84cd7dc222b51e7ce494463",
+      "file": "assets/narration/before-on-3-574a0736dd3e.mp3"
+    },
+    {
+      "id": "before-stop",
+      "text": "Stop before comparing. At the wind model. A still model is safe to inspect. The first six results stay saved even if a test failed. Ask your teacher to stop the fan. Check. All blades have stopped before anyone touches the model.",
+      "sha256": "c7d2fc4934b908f7d3bb5fadffe7a9ff75f8329b1497a8c0479a38b124687c58",
+      "file": "assets/narration/before-stop-c7d2fc4934b9.mp3"
+    },
+    {
+      "id": "before-compare",
+      "text": "Compare your first results. In this guide. Compare the three fan-off readings with the three fan-on readings. Look for higher, lower, similar or changing readings. You do not need to calculate an average. Describe the pattern using your actual readings. What do the first six readings show?. Check. Your comparison uses actual values, including V.",
+      "sha256": "c62a34c5667601f0ab6479564838e9ed1d6c76a5c5b8d726a906817d97bdf305",
+      "file": "assets/narration/before-compare-c62a34c56676.mp3"
+    },
+    {
+      "id": "choose-change",
+      "text": "Choose one small change. In this guide. Use your observations to choose one small improvement with your teacher. Changing several things makes the cause hard to explain. Name one change that your teacher agrees can be tested safely. What one change will you test, and why?. Check. Your answer names one change and the evidence behind it.",
+      "sha256": "c0807e6e4093e3b208c094fea23f58adab42f19c18fdf5e1502954a3da8f079b",
+      "file": "assets/narration/choose-change-c0807e6e4093.mp3"
+    },
+    {
+      "id": "make-change",
+      "text": "Make the checked change. At the wind model. The fan must be off and every blade stopped. The teacher checks any physical or electrical adjustment. Make the one agreed change with your teacher. Check. Only the agreed part has changed.",
+      "sha256": "9a71e91d25074cf0f5e718ea1d4c5ce10be8c8f81a63b879ae8f324244be6ca3",
+      "file": "assets/narration/make-change-9a71e91d2507.mp3"
+    },
+    {
+      "id": "change-record",
+      "text": "Keep a change record. In this guide. A dated note helps someone understand what differs between the tests. Keep your first results. Write the date and the one change made. What changed before the second test?. Check. Your note describes the real change.",
+      "sha256": "c923f5517d970abe6fa57c04173c43694cc116b7dc3a80adf2949c6138566884",
+      "file": "assets/narration/change-record-c923f5517d97.mp3"
+    },
+    {
+      "id": "after-setup",
+      "text": "Check the repeat setup. At the wind model. Repeat the same comparison after the change. Keep the marked position, fixed fan setting, meter setup and timing. Only the agreed change differs. Ask your teacher to check the repeat setup. Check. Your teacher has checked the change and the test conditions.",
+      "sha256": "1071fd03922985ea6d0f535ae3a1fe3d760006eb7f657db02f29afab1cd0d513",
+      "file": "assets/narration/after-setup-1071fd039229.mp3"
+    },
+    {
+      "id": "after-off-ready",
+      "text": "Repeat with the fan off. At the wind model. The next six entries are after-change results. They do not replace your original results. Ask your teacher to confirm the fan is off and the blades have stopped. Check. The meter is ready for the second set of fan-off readings.",
+      "sha256": "e766ff140b0aa1f75251d485bf29ea76d40f8bd59ce358d01b6913bb906eeb66",
+      "file": "assets/narration/after-off-ready-e766ff140b0a.mp3"
+    },
+    {
+      "id": "after-off-1",
+      "text": "After change: off reading 1. At the wind model. Keep these results separate from the first set. Read the voltage with the fan off after the agreed wait. After the change, fan off: what is reading 1?. Check. This after-change reading includes V.",
+      "sha256": "dd1eea07aa648498ebeb15d3a752cfe625a68a3fe80e174ee4f797b0bb4e43e9",
+      "file": "assets/narration/after-off-1-dd1eea07aa64.mp3"
+    },
+    {
+      "id": "after-off-2",
+      "text": "After change: off reading 2. At the wind model. Keep these results separate from the first set. Read the voltage with the fan off after the agreed wait. After the change, fan off: what is reading 2?. Check. This after-change reading includes V.",
+      "sha256": "76ab2e20e3c29b0ddc55d1db3915bc26e7aac813cfe6a17494fcf5325076d269",
+      "file": "assets/narration/after-off-2-76ab2e20e3c2.mp3"
+    },
+    {
+      "id": "after-off-3",
+      "text": "After change: off reading 3. At the wind model. Keep these results separate from the first set. Read the voltage with the fan off after the agreed wait. After the change, fan off: what is reading 3?. Check. This after-change reading includes V.",
+      "sha256": "6c1273620768e88331fb7ad043cbc965480662ed3b823ebcc09072fd5268b625",
+      "file": "assets/narration/after-off-3-6c1273620768.mp3"
+    },
+    {
+      "id": "after-on-ready",
+      "text": "Repeat with the fan on. At the wind model. Use the same fan setting and marked position as the first test. Ask your teacher to run the fan at the checked setting. Check. The blades have had the same agreed settling time.",
+      "sha256": "865f53ed0709c5986edeccf2736ca033bd7a546ad975eca03558d50237f690a5",
+      "file": "assets/narration/after-on-ready-865f53ed0709.mp3"
+    },
+    {
+      "id": "after-on-1",
+      "text": "After change: on reading 1. At the wind model. Keep the agreed time between readings. Read the voltage after the agreed wait. After the change, fan on: what is reading 1?. Check. This after-change reading includes V.",
+      "sha256": "e6635ec58edb45286177c62883b20d84a44951edd6d902f88275ad77ffaf7b25",
+      "file": "assets/narration/after-on-1-e6635ec58edb.mp3"
+    },
+    {
+      "id": "after-on-2",
+      "text": "After change: on reading 2. At the wind model. Keep the agreed time between readings. Read the voltage after the agreed wait. After the change, fan on: what is reading 2?. Check. This after-change reading includes V.",
+      "sha256": "db6ed6843c70e32aeeaa5ad2134cc937de54736aa744cb8eaf87ff7288f944de",
+      "file": "assets/narration/after-on-2-db6ed6843c70.mp3"
+    },
+    {
+      "id": "after-on-3",
+      "text": "After change: on reading 3. At the wind model. Keep the agreed time between readings. Read the voltage after the agreed wait. After the change, fan on: what is reading 3?. Check. This after-change reading includes V.",
+      "sha256": "d44862d4e17e1d510bdba397c34f20a6e0dd23a4c65c37a646b761d035c1e517",
+      "file": "assets/narration/after-on-3-d44862d4e17e.mp3"
+    },
+    {
+      "id": "after-stop",
+      "text": "Stop the fan after testing. At the wind model. The model must stop before you pack away or adjust anything. Ask your teacher to stop the fan. Check. All blades have stopped.",
+      "sha256": "aa9f4c5b29191aa15f04e3f302c1d8aafe32cdeb25de74b67f2c7995957b870f",
+      "file": "assets/narration/after-stop-aa9f4c5b2919.mp3"
+    },
+    {
+      "id": "after-compare",
+      "text": "Explain whether the change helped. In this guide. Use both sets of real results. A change may help, make no clear difference or make the result worse. All three findings are useful. Compare your fan-on results before and after the change. What changed in the results?. Check. Your answer uses readings from both sets.",
+      "sha256": "4c87baa2c3157d1ac7b2952fc3381189f07db94cec8d92e32d7828f3b1c24c73",
+      "file": "assets/narration/after-compare-4c87baa2c315.mp3"
+    },
+    {
+      "id": "limits",
+      "text": "Choose an honest limit. At the wind model. We measured voltage. We did not measure useful power delivered to a device. A fan test also differs from wind outside. Choose the conclusion our voltage test supports. Which statement stays within our test?. Choices. Our model can power a home. Our meter showed voltage under the conditions we recorded. Spinning blades prove we can charge a phone.",
+      "sha256": "609e5b042b280b82ca0af4f6e21c3d134589f57f804a06d6351cd0d3d66637e9",
+      "file": "assets/narration/limits-609e5b042b28.mp3"
+    },
+    {
+      "id": "report-note",
+      "text": "Add a test explanation. In this guide. Your current report uses four headings: Project; Research; Test and improvement; References. Keep those headings. Your test work belongs in Test and improvement. Draft a short conclusion to add under Test and improvement. What will you add to your current report?. Check. Your conclusion states the result and one limit.",
+      "sha256": "fe18abd6c4ecefcc730dbb2f5eeba2740fe202c61337eb1efbeec968ca41f3ec",
+      "file": "assets/narration/report-note-fe18abd6c4ec.mp3"
+    },
+    {
+      "id": "save-evidence",
+      "text": "Save your test evidence. In this guide. Your guide answers include practice and real records. Keep the practice label. The blank CSV is a backup for recording tests, not a file of completed results. Use Download your answers at the top to save your work. Check. You have downloaded your actual answers, including any unfinished tests.",
+      "sha256": "897918546e0fb412840d99d9edc692468eeec8c1336771708ef46f63e87c0687",
+      "file": "assets/narration/save-evidence-897918546e0f.mp3"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+Test set,Fan condition,Reading number,Voltage (V),Fan setting,Distance (cm),Wait between readings (seconds),Observation
+Before change,Off,1,,,,,
+Before change,Off,2,,,,,
+Before change,Off,3,,,,,
+Before change,On,1,,,,,
+Before change,On,2,,,,,
+Before change,On,3,,,,,
+After change,Off,1,,,,,
+After change,Off,2,,,,,
+After change,Off,3,,,,,
+After change,On,1,,,,,
+After change,On,2,,,,,
+After change,On,3,,,,,

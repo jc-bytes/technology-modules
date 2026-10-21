@@ -1,0 +1,244 @@
+{
+  "model": "hexgrad/Kokoro-82M",
+  "voice": "af_heart",
+  "language": "English (US)",
+  "speed": 0.92,
+  "license": "Apache-2.0",
+  "scope": "Reviewed authored English directions only. No student data.",
+  "records": [
+    {
+      "id": "goal",
+      "text": "Program your built model. At your built walking-stick model. The sensor measures distance. Your program chooses a display. X means an obstacle is near; a blank display means a valid reading is farther away. A question mark means the reading cannot be used. Point to the sensor and the micro:bit display. Check. You can point to the input and the output.",
+      "sha256": "181495dcb4a75a8003f4a6c0876d9723488cb558a17f00033d1736424d40a618",
+      "file": "assets/narration/goal-181495dcb4a7.mp3"
+    },
+    {
+      "id": "open-editor",
+      "text": "Open Make Code. In your browser. Make Code is the place where you change the micro:bit program. This guide gives directions in a separate tab. Open Make Code using the link below. Check. The micro:bit Make Code home page is open.",
+      "sha256": "58bd835bb810f6b44419ba1286ad46212fa3c067e6051c7023f7f136e2b76d0b",
+      "file": "assets/narration/open-editor-58bd835bb810.mp3"
+    },
+    {
+      "id": "open-team-project",
+      "text": "Open your team program. In Make Code · Home. Your team program contains the sensor block and settings that match the built model. Another sensor example can use different settings. Open the latest team walking-stick project. If it is a .hex file, choose Import, then Import File, and select that file. Check. Your existing sensor blocks appear in the editor.",
+      "sha256": "0ebd870e6a955e54bc19860dd26bcdc09c4b185676bf020eaaa89ded3cec9d8a",
+      "file": "assets/narration/open-team-project-0ebd870e6a95.mp3"
+    },
+    {
+      "id": "save-backup",
+      "text": "Save the starting program. In Make Code · project name and Download. A backup lets you return to the program before today’s changes. A .hex file is the program file you can reopen in Make Code. Name this copy WalkingStick_01 and use Download to save its .hex file. Check. WalkingStick_01.hex is saved in your team folder.",
+      "sha256": "5dcbcd28c76258300f3dfc8f5e7b8dd8735f5873cfe4a76c1315ced0cd018658",
+      "file": "assets/narration/save-backup-5dcbcd28c762.mp3"
+    },
+    {
+      "id": "find-sensor",
+      "text": "Find the distance block. In Make Code · Blocks workspace. The sensor block asks the built sensor for a measurement. Its extension and pin choices belong to your existing model. Find the block that reads the ultrasonic sensor. Check. You can point to the distance-reading block and its selected settings.",
+      "sha256": "c1798f3ea4869d5f70a771376c6727f21b92f4c3e9c838c1bd737d6a4e7b13e0",
+      "file": "assets/narration/find-sensor-c1798f3ea486.mp3"
+    },
+    {
+      "id": "units",
+      "text": "Check the distance unit. In Make Code · existing sensor block. A centimetre is a small unit on your ruler. Our warning uses 30 centimetres, so the sensor value must also use centimetres. Check that your existing distance reading is in centimetres. Check. Your teacher confirms that the value used by the program is centimetres.",
+      "sha256": "a3e4ec06abd2a6e752e9998d14de88d6d01762593b26e57493040aeafa709b57",
+      "file": "assets/narration/units-a3e4ec06abd2.mp3"
+    },
+    {
+      "id": "validity-gate",
+      "text": "Identify an unusable reading. In Make Code · existing sensor project. Sometimes the sensor does not get a useful echo. Different sensor blocks report this in different ways. A failed reading must never mean the path is clear. Ask your teacher to identify the existing test that says whether a reading is valid. Check. You know the exact validity test for this sensor block.",
+      "sha256": "5a4443ce6cb1f9ab8374b62b77c74bcf9a4214caf3bd17578faaf883bec723f6",
+      "file": "assets/narration/validity-gate-5a4443ce6cb1.mp3"
+    },
+    {
+      "id": "verify-reading",
+      "text": "Check one live reading. At the tabletop model · existing program. A number in the editor does not prove the built sensor works. This check uses the real sensor. With your teacher, compare the current sensor reading with a ruler measurement of the cardboard obstacle. Check. The actual sensor responds to the obstacle and gives a plausible centimetre reading.",
+      "sha256": "de6a1acc7d36c667217a889efab1eee890d926a255662b30132f2460fe5f8433",
+      "file": "assets/narration/verify-reading-de6a1acc7d36.mp3"
+    },
+    {
+      "id": "reading-check",
+      "text": "Check what the number means. In this guide. A sensor reading is useful only when its unit and validity are known. Choose the answer that follows our program rule. The sensor fails to return a usable reading. What should the display mean?. Choices. The path is clear. The distance is exactly zero. The reading cannot be used. Check. Check your answer before continuing.",
+      "sha256": "4d2421d5a6570bec8649b7c6091c4e5042aee0e37bdbedf9ffee843fdf9e07ad",
+      "file": "assets/narration/reading-check-4d2421d5a657.mp3"
+    },
+    {
+      "id": "rule",
+      "text": "Read the three display choices. In this guide. The program checks validity first. Only a valid reading can be compared with 30. Trace the three paths in the diagram. Check. You can explain when the program shows ?, X or a blank display.",
+      "sha256": "057d725f4611260f131d6c9016fe60b681e89696a8e12d36a7ee2895fb4d9846",
+      "file": "assets/narration/rule-057d725f4611.mp3"
+    },
+    {
+      "id": "distance-variable",
+      "text": "Name the distance value. In Make Code · Variables. A variable is a named place that holds a value. distanceCm will hold the latest distance in centimetres. Create the variable distanceCm. If your project already has one clear distance variable, rename it to distanceCm. Check. The Variables menu contains distanceCm.",
+      "sha256": "4983679a286a870cef67c9974e6defcc15da28fd86fe396d4db1c268c592fa9d",
+      "file": "assets/narration/distance-variable-4983679a286a.mp3"
+    },
+    {
+      "id": "valid-variable",
+      "text": "Name the reading check. In Make Code · Variables. readingValid will hold true or false. True means this reading passed your sensor’s checked validity test. Create a variable named readingValid. Check. The Variables menu contains readingValid.",
+      "sha256": "fd66f3a10c9cbe1c820a8c8ac14f35c238e4edf6fdb5b783e82861001fe26972",
+      "file": "assets/narration/valid-variable-fd66f3a10c9c.mp3"
+    },
+    {
+      "id": "find-loop",
+      "text": "Find the repeating instructions. In Make Code · Basic. Forever repeats its blocks while the program runs. Repeating lets the display change when the cardboard moves. Find the forever block that already reads your sensor. Check. You can point to the repeating sensor instructions.",
+      "sha256": "5ac709c48a4bebd8a82b2836cbb3f32c6e4f2db1fae4717e6824225c1e1a7fa2",
+      "file": "assets/narration/find-loop-5ac709c48a4b.mp3"
+    },
+    {
+      "id": "store-reading",
+      "text": "Store one fresh distance. In Make Code · existing sensor-reading loop. Read the sensor once, then use that same value for the decision. This avoids comparing two different moments. Use set distanceCm to hold the result of the existing centimetre sensor block. Check. The loop saves the fresh measurement in distanceCm.",
+      "sha256": "ec4a56ecce20bc7ec997cc5e9bceaa028e96be893c90a5f1d92534dc55d840a2",
+      "file": "assets/narration/store-reading-ec4a56ecce20.mp3"
+    },
+    {
+      "id": "store-validity",
+      "text": "Store the validity result. In Make Code · immediately after the distance assignment. The next decision needs to know whether this particular measurement can be trusted. Set readingValid to the checked true-or-false test identified with your teacher. Check. readingValid describes the same fresh reading stored in distanceCm.",
+      "sha256": "5cc4e1b2b936c5e16048eb3f60d5a9b81560d479bd7c74f52292bbe8c9b09e31",
+      "file": "assets/narration/store-validity-5cc4e1b2b936.mp3"
+    },
+    {
+      "id": "outer-if",
+      "text": "Add the first decision. In Make Code · Logic. An if block asks a yes-or-no question. We first ask whether the measurement is valid. Place an if true then block after the readingValid assignment, inside the same repeating loop. Check. The decision sits after the two updated values.",
+      "sha256": "aa716eb65548b8fe6c1a43d169e8b5cead03f2a3e02eba1cb2e529c66c1265b0",
+      "file": "assets/narration/outer-if-aa716eb65548.mp3"
+    },
+    {
+      "id": "use-validity",
+      "text": "Check readingValid. In Make Code · new if condition. A true-or-false value fits directly in an if condition. When it is true, the program follows the then branch. Put readingValid in the condition of the new if block. Check. The top decision reads if readingValid then.",
+      "sha256": "0be09351d6a02c26ac4719862bc15a3553b112a4c8780809abbb199352cddcc7",
+      "file": "assets/narration/use-validity-0be09351d6a0.mp3"
+    },
+    {
+      "id": "add-invalid-branch",
+      "text": "Add the other path. In Make Code · outer if block. Else is the path used when the if question is false. Here it handles an unusable reading. Use the + control on the if block to add an else branch. Check. The outer decision has then and else spaces.",
+      "sha256": "646a947a6a6e9cd32d73c9122d9068bf5f0983f34d1fe99c505b8a22b8b1f413",
+      "file": "assets/narration/add-invalid-branch-646a947a6a6e.mp3"
+    },
+    {
+      "id": "invalid-display",
+      "text": "Show an unusable reading. In Make Code · outer else branch. A question mark is a visible warning that the measurement is unknown. This makes a failed reading different from a clear display. Put Basic → show string \"?\" in the outer else branch. Check. An unusable reading follows the ? path.",
+      "sha256": "8af8d867cb7117da059b210dc66def48124ef88baf718ed44a17faf2a97029a2",
+      "file": "assets/narration/invalid-display-8af8d867cb71.mp3"
+    },
+    {
+      "id": "near-if",
+      "text": "Add the distance decision. In Make Code · outer then branch. The inner decision runs only after the reading is valid. This prevents an error value from being treated as a real distance. Place a second if true then block inside the outer then branch. Check. The second decision is nested inside the valid-reading path.",
+      "sha256": "0bd7ac9518b48181e36f54095e2a56467eddbb120c0dc5d8412ebbcf98c820d2",
+      "file": "assets/narration/near-if-0bd7ac9518b4.mp3"
+    },
+    {
+      "id": "near-condition",
+      "text": "Compare the distance with 30. In Make Code · inner if condition. The sign ≤ means less than or equal to. It includes 30 itself. Use a Logic comparison to make the inner condition distanceCm ≤ 30. Check. The inner condition includes values below 30 and exactly 30.",
+      "sha256": "616336851a02c458af8585c582b7d8c31092848ac6ac2acf5cef950d6e94161e",
+      "file": "assets/narration/near-condition-616336851a02.mp3"
+    },
+    {
+      "id": "near-display",
+      "text": "Show the near warning. In Make Code · inner then branch. The X tells the viewer that a valid reading is at or below our chosen warning distance. Put Basic → show icon → No inside the inner then branch. Check. The inner then branch contains the X-shaped No icon.",
+      "sha256": "841facc96ceb86ef084dc1585a993af170b51a420b7c8ac1b7222885472fdfa7",
+      "file": "assets/narration/near-display-841facc96ceb.mp3"
+    },
+    {
+      "id": "far-branch",
+      "text": "Add the far path. In Make Code · inner if block. When a valid distance is not 30 or less, it is above 30. The inner else handles that case. Add an else branch to the inner if block. Check. The inner decision has a near then branch and a far else branch.",
+      "sha256": "165112667a1b4695358e33e4da15df955c85fed626e76f01c37f02853aa2caa9",
+      "file": "assets/narration/far-branch-165112667a1b.mp3"
+    },
+    {
+      "id": "far-display",
+      "text": "Clear the far display. In Make Code · inner else branch. Clear screen turns off the LEDs. We use it only after the reading has passed the validity check and is above 30. Put Basic → clear screen in the inner else branch. Check. A valid distance above 30 follows the clear-screen path.",
+      "sha256": "0eb68313dc741e38ca823448afdfcd451689685ca73ea5e4a207d7a3a35a708c",
+      "file": "assets/narration/far-display-0eb68313dc74.mp3"
+    },
+    {
+      "id": "remove-conflict",
+      "text": "Keep one warning display. In Make Code · same repeating loop. A second show number or icon in forever can overwrite your warning. The display should show the result of this decision. Remove the old repeating distance-display block after confirming your distance reading works. Check. The repeating loop has one decision controlling the warning display.",
+      "sha256": "b5ac3765d2c9b3781f45c1b4b09bb6dd10d16d2783c952e1d3d410eac5a95f8b",
+      "file": "assets/narration/remove-conflict-b5ac3765d2c9.mp3"
+    },
+    {
+      "id": "check-order",
+      "text": "Check the block order. In Make Code · complete forever stack. Each repeat must read first, decide second and display the selected result. Compare your stack with this order. Check. Your stack has the reading, validity check and nested decision in the same order.",
+      "sha256": "c83d9450d33f69c0820c8c78f1a82b5e30d4289d232cb215e58909f3e6452d00",
+      "file": "assets/narration/check-order-c83d9450d33f.mp3"
+    },
+    {
+      "id": "boundary-check",
+      "text": "Check exactly 30 centimetres. In this guide. The equal part of ≤ matters at the boundary. Choose the answer that follows our program rule. A valid reading is exactly 30 centimetres. Which display follows our rule?. Choices. X. Blank display. ?. Check. Check your answer before continuing.",
+      "sha256": "f290443dfdeb3753b2694e749350265d51b7eae5a924c280176b94217fd00e99",
+      "file": "assets/narration/boundary-check-f290443dfdeb.mp3"
+    },
+    {
+      "id": "far-check",
+      "text": "Check the far branch. In this guide. The program reaches the far branch only after a valid reading. Choose the answer that follows our program rule. A valid reading is 40 centimetres. Which display should appear?. Choices. X. Blank display. ?. Check. Check your answer before continuing.",
+      "sha256": "838650b6c1da435f0f61e62d4f3ef03022608f3ba91f19ee9a2a62969605ae56",
+      "file": "assets/narration/far-check-838650b6c1da.mp3"
+    },
+    {
+      "id": "download-program",
+      "text": "Save your changed program. In Make Code · project name and Download. A saved version records exactly which program you will test. Your team can reopen it later. Save the changed project as the next unused WalkingStick number and download its .hex file. Check. The new numbered .hex is saved with your earlier version.",
+      "sha256": "f9d4b396365e388b8ff535fd82006101226153b65ce988a2539f7b170efb6749",
+      "file": "assets/narration/download-program-f9d4b396365e.mp3"
+    },
+    {
+      "id": "transfer-program",
+      "text": "Transfer the program. On your computer · MICROBIT drive. The physical micro:bit needs the new program before you can test its sensor response. With the built model connected by its checked U S B connection, copy the new .hex file to the MICROBIT drive. Check. The transfer finishes and the model starts the new program.",
+      "sha256": "3dfa59926b7daf2cfc985a2ba44e85cc4288a9a5759f63d872e74a87f09011c9",
+      "file": "assets/narration/transfer-program-3dfa59926b7d.mp3"
+    },
+    {
+      "id": "practice-near",
+      "text": "Try the near warning. At the tabletop model. This is a building check before the repeated tests. Measure from the sensor’s front face. Place the cardboard obstacle at 20 centimetres and observe the display. Check. For a usable sensor reading at 20 centimetres, the display shows X.",
+      "sha256": "09c9dde9f8d0bd2433cccbc8338e17e08bf3f737873db123c2ccf1363ad0968a",
+      "file": "assets/narration/practice-near-09c9dde9f8d0.mp3"
+    },
+    {
+      "id": "practice-far",
+      "text": "Try the far response. At the tabletop model. The same obstacle lets you change only the distance. Move the same cardboard obstacle to 40 centimetres and observe the display. Check. For a usable reading at 40 centimetres, the display clears.",
+      "sha256": "af2c0110fd684430262fecf4a9cb15c7bd77484a6aaf931d00733d756c754726",
+      "file": "assets/narration/practice-far-af2c0110fd68.mp3"
+    },
+    {
+      "id": "fix-one-problem",
+      "text": "Correct one program problem. In Make Code · your saved program. Changing one thing makes it easier to tell what fixed the behavior. If a practice check failed, correct its matching block and save a new numbered .hex before transferring again. Check. Both practice positions give the expected response with valid readings.",
+      "sha256": "a3db8be312244a5d6caac012b0de4712bd7c5d7f5e5905387052bd3c06077b2c",
+      "file": "assets/narration/fix-one-problem-a3db8be31224.mp3"
+    },
+    {
+      "id": "record-trials",
+      "text": "Record the six trials. In your shared team report · Test and improvement. Real tests can fail. Keep the actual reading and display so another person can see what happened. Use the trial sheet to record three tries at 20 centimetres and three at 40 centimetres. Move the cardboard away and back for each try. Check. Six actual trial rows show ruler distance, sensor reading, expected display and actual display.",
+      "sha256": "054f4b8322012302336fe872f54a7f0e98f3b114223ccb298ad469d3a8d6add5",
+      "file": "assets/narration/record-trials-054f4b832201.mp3"
+    },
+    {
+      "id": "one-improvement",
+      "text": "Choose one improvement. In your team program. Use the failed or inconsistent behavior to choose a small change. Keep the 30 centimetres rule for the same comparison. Agree one program improvement with your teacher, then save and transfer its new version. Check. You can name what changed and which observed problem it addresses.",
+      "sha256": "2456bb968c563797a98e7c042cdaf9e8e50e8ada609beb74744c0183c412fbec",
+      "file": "assets/narration/one-improvement-2456bb968c56.mp3"
+    },
+    {
+      "id": "retest",
+      "text": "Retest the saved version. At the tabletop model · trial sheet. Repeating the same tests lets you compare the old and new behavior fairly. Run three new tries at each distance using the same obstacle, positions and measurement method. Check. A separate after-change record keeps six new trials alongside the original results.",
+      "sha256": "47b6061a86df691c10d40218bf87cc3156bc58f2d85aa30af6dba8776bbeef16",
+      "file": "assets/narration/retest-47b6061a86df.mp3"
+    },
+    {
+      "id": "explain-contribution",
+      "text": "Explain your code change. In this guide. A useful explanation names what you changed and what the real model did. Write a short explanation of your own program contribution. What did you change, and what happened in a real test?. Check. Your explanation includes one actual result and one limit.",
+      "sha256": "669ee487f0ffb8ebff830492390b9d19d4f7f2d2023ba4a0647445f97b2daaff",
+      "file": "assets/narration/explain-contribution-669ee487f0ff.mp3"
+    },
+    {
+      "id": "finish-report",
+      "text": "Finish the shared report. In your shared Google Doc. The current Classroom assignment uses four headings. Your code and tests support the same shared report. Update Project; Research; Test and improvement; References using your own work and actual results. Check. The four headings explain the project, two sourced ideas, the real test and improvement, and two sources.",
+      "sha256": "ee074af9d6898a3a007e5aa8d1b4fff1ee37976ea33608ad895ed86aa0f68aeb",
+      "file": "assets/narration/finish-report-ee074af9d689.mp3"
+    },
+    {
+      "id": "submit",
+      "text": "Submit the program and report. In Google Classroom · existing 8B STEAM assignment. The teacher needs the program that produced your recorded behavior, plus access to the shared report. Have one team member attach the shared report and final numbered .hex to the existing assignment by its announced deadline. Check. The report opens for your teacher; the saved .hex matches the model you demonstrate.",
+      "sha256": "f1af62ca421ab598e17ac15767486db774efc6cb40606d18ce96fc02f7b9c23a",
+      "file": "assets/narration/submit-f1af62ca421a.mp3"
+    }
+  ]
+}

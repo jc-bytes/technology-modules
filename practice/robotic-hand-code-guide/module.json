@@ -1,0 +1,350 @@
+{
+  "id": "MOD-STEAM-HAND-01",
+  "slug": "robotic-hand-code-guide",
+  "title": "Code your robotic hand",
+  "version": "1.0.0",
+  "status": "pilot",
+  "gradeRange": [
+    8,
+    8
+  ],
+  "sourcePath": "technology-learning-hub/standalone-sites/robotic-hand-code-guide",
+  "publishedUrl": "https://jc-bytes.github.io/technology-modules/practice/robotic-hand-code-guide/",
+  "prerequisites": [
+    "Already assembled Arduino Uno hand",
+    "Teacher-checked existing power and movement limits",
+    "Use a keyboard and save a file"
+  ],
+  "estimatedTime": "Unknown, classroom pilot required",
+  "offline": "Serve the downloaded guide folder locally, or use printable-fallback.html. Hardware testing needs the actual supervised model.",
+  "lastReviewed": "2026-10-20",
+  "objectives": [
+    "Explain setup and repeating loop",
+    "Read knob inputs and map bounded motor commands",
+    "Use buttons to change bounded positions",
+    "Verify, upload and test the current five-servo program"
+  ],
+  "software": [
+    "Arduino IDE",
+    "Servo library"
+  ],
+  "owner": "Porfirio Rios",
+  "recommendedGrades": [
+    8
+  ],
+  "tracks": [
+    "Core"
+  ],
+  "estimatedMinutes": null,
+  "timingStatus": "Unknown, classroom pilot required",
+  "sections": [
+    {
+      "id": "goal",
+      "title": "Control the assembled hand",
+      "entryPath": "#goal",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "editor",
+      "title": "Open Arduino IDE",
+      "entryPath": "#editor",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "shared-work",
+      "title": "Find the latest sketch",
+      "entryPath": "#shared-work",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "new-sketch",
+      "title": "Save a named sketch",
+      "entryPath": "#new-sketch",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "frame",
+      "title": "Keep two empty sections",
+      "entryPath": "#frame",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "library",
+      "title": "Add the servo library",
+      "entryPath": "#library",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "names",
+      "title": "Name the five motors",
+      "entryPath": "#names",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "button-pins",
+      "title": "Name the button pins",
+      "entryPath": "#button-pins",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "remember-positions",
+      "title": "Remember two positions",
+      "entryPath": "#remember-positions",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "sections-check",
+      "title": "Choose where names belong",
+      "entryPath": "#sections-check",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "attach",
+      "title": "Match motors to signal pins",
+      "entryPath": "#attach",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "pullup",
+      "title": "Prepare the four buttons",
+      "entryPath": "#pullup",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "start-positions",
+      "title": "Send the starting commands",
+      "entryPath": "#start-positions",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "verify-setup",
+      "title": "Verify the setup code",
+      "entryPath": "#verify-setup",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "verify-errors",
+      "title": "Read the first error",
+      "entryPath": "#verify-errors",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "loop-place",
+      "title": "Find the repeating section",
+      "entryPath": "#loop-place",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "read-knob1",
+      "title": "Read knob one",
+      "entryPath": "#read-knob1",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "map-knob1",
+      "title": "Scale knob one",
+      "entryPath": "#map-knob1",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "write-knob1",
+      "title": "Command motor one",
+      "entryPath": "#write-knob1",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "explain-map",
+      "title": "Check the number ranges",
+      "entryPath": "#explain-map",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "knob2",
+      "title": "Add knob two",
+      "entryPath": "#knob2",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "knob3",
+      "title": "Add knob three",
+      "entryPath": "#knob3",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "knob-audit",
+      "title": "Compare all three knobs",
+      "entryPath": "#knob-audit",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "pressed-low",
+      "title": "Recognize a pressed button",
+      "entryPath": "#pressed-low",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "middle-up",
+      "title": "Add the middle-up button",
+      "entryPath": "#middle-up",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "middle-limit",
+      "title": "Explain the upper limit",
+      "entryPath": "#middle-limit",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "middle-down",
+      "title": "Add the middle-down button",
+      "entryPath": "#middle-down",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "base-up",
+      "title": "Add the base-up button",
+      "entryPath": "#base-up",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "base-down",
+      "title": "Add the base-down button",
+      "entryPath": "#base-down",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "button-order",
+      "title": "Check the four button blocks",
+      "entryPath": "#button-order",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "loop-pause",
+      "title": "Finish with a short pause",
+      "entryPath": "#loop-pause",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "braces",
+      "title": "Check the code sections",
+      "entryPath": "#braces",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "reference",
+      "title": "Compare the complete sketch",
+      "entryPath": "#reference",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "verify-final",
+      "title": "Verify the full sketch",
+      "entryPath": "#verify-final",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "explain-code",
+      "title": "Explain one code path",
+      "entryPath": "#explain-code",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "save-before-run",
+      "title": "Save the verified version",
+      "entryPath": "#save-before-run",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "teacher-check",
+      "title": "Ask for the hardware check",
+      "entryPath": "#teacher-check",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-port",
+      "title": "Select the checked board",
+      "entryPath": "#board-port",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "upload",
+      "title": "Upload the checked program",
+      "entryPath": "#upload",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "knob-test",
+      "title": "Try one knob",
+      "entryPath": "#knob-test",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "button-test",
+      "title": "Try one button",
+      "entryPath": "#button-test",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "record-run",
+      "title": "Record what really happened",
+      "entryPath": "#record-run",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "debug",
+      "title": "Find one cause at a time",
+      "entryPath": "#debug",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "retest",
+      "title": "Retest a correction",
+      "entryPath": "#retest",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "test-limits",
+      "title": "Separate commands from angles",
+      "entryPath": "#test-limits",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "zip",
+      "title": "Save the whole sketch folder",
+      "entryPath": "#zip",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "handoff",
+      "title": "Share the latest version",
+      "entryPath": "#handoff",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "report",
+      "title": "Write the coding report",
+      "entryPath": "#report",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "finish",
+      "title": "Check your saved work",
+      "entryPath": "#finish",
+      "estimatedMinutes": null
+    }
+  ],
+  "teacherGuidePath": "technology-learning-hub/teacher-materials/steam-physical-guides.md",
+  "accessibility": [
+    "Keyboard controls",
+    "Readable responsive text",
+    "Optional bundled English narration",
+    "Text alternatives for concept diagrams"
+  ],
+  "deviceRequirements": [
+    "School computer and modern browser",
+    "USB connection for coding projects"
+  ],
+  "accounts": "No account is needed for the guide. Use school-approved editor accounts if required.",
+  "internet": "Local HTTP serving supports bundled guide assets. Opening online editors and Classroom needs internet.",
+  "submission": "Use the current shared four-heading Google Doc and the existing one-team Classroom assignment. Guide PDF is supporting evidence."
+}

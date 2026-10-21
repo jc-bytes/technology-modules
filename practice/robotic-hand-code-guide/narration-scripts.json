@@ -1,0 +1,298 @@
+{
+  "model": "hexgrad/Kokoro-82M",
+  "voice": "af_heart",
+  "language": "English (US)",
+  "speed": 0.92,
+  "license": "Apache-2.0",
+  "scope": "Reviewed authored English directions only. No student data.",
+  "records": [
+    {
+      "id": "goal",
+      "text": "Control the assembled hand. In this guide. A program is a list of instructions. Our Ardweeno reads three knobs and four buttons. It sends position numbers to five servo motors. A servo is a motor that moves toward a chosen position. Find the three knobs and four buttons on your existing model without powering or moving it. Check. You can point to the seven controls. You will write code, not rebuild the hand.",
+      "sha256": "dc58f0f4ca7c351f6ff6f0b19e59a02befec550becf2d40c6b7a34fb2ad15821",
+      "file": "assets/narration/goal-dc58f0f4ca7c.mp3"
+    },
+    {
+      "id": "editor",
+      "text": "Open Ardweeno I D E. On your computer. Ardweeno I D E is the computer program where you write, check and send Ardweeno code. This website is your instruction book. Open Ardweeno I D E and keep this guide beside it. Check. You can see the code editor.",
+      "sha256": "7f0b8d4594f61c4b3ae1b8916414adff1632a1de45b4bff11e39e863dd0e4c08",
+      "file": "assets/narration/editor-7f0b8d4594f6.mp3"
+    },
+    {
+      "id": "shared-work",
+      "text": "Find the latest sketch. In your existing team Drive folder. A sketch is an Ardweeno program saved in a folder. Two people editing different copies can overwrite each other. Ask your teammate which numbered sketch is the latest. If the team already started, download that ZIP and open its .ino file. Check. One person is the current editor. Everyone knows which version they are using.",
+      "sha256": "fb5554e8f77a2f98f878399f86e7ad7626aefdb45eda71e5e3b9bc35b1477715",
+      "file": "assets/narration/shared-work-fb5554e8f77a.mp3"
+    },
+    {
+      "id": "new-sketch",
+      "text": "Save a named sketch. Ardweeno I D E > File. Saving gives your work a home. Ardweeno keeps the .ino file inside a folder with the same name. For a new team program, choose New Sketch, then Save As. Use RoboticHand_01 as the sketch name. Check. A folder named RoboticHand_01 contains RoboticHand_01.ino.",
+      "sha256": "f9c25bb40ccafa66fb245583b25e3001793b1d0e032831e2630557c33f7fdf9f",
+      "file": "assets/narration/new-sketch-f9c25bb40cca.mp3"
+    },
+    {
+      "id": "frame",
+      "text": "Keep two empty sections. In the sketch editor. setup() runs once when the board starts. loop() repeats while the board runs. Curly braces mark the start and end of each section. For a new sketch, keep exactly the two sections shown below. Check. There is one setup() and one loop(). Both have an opening { and a closing }.",
+      "sha256": "1defa5025cbc3294550e5b467c110e139f6a4a5e3a01b820e46103a7f40b05b0",
+      "file": "assets/narration/frame-1defa5025cbc.mp3"
+    },
+    {
+      "id": "library",
+      "text": "Add the servo library. At the very top, before setup(). A library is a ready-made set of instructions. Servo.h teaches our sketch how to send servo position commands. Add this line. Check. The first line is #include <Servo.h>.",
+      "sha256": "ee2b6f311325e70022ad931fcc1c2f925aedd6c1026051a37711b9ce3aac0610",
+      "file": "assets/narration/library-ee2b6f311325.mp3"
+    },
+    {
+      "id": "names",
+      "text": "Name the five motors. Below #include, before setup(). Each Servo object gives one motor a name in our code. Think of five labelled instruction boxes. motor1 and motor2 must stay separate. Add these five lines. Check. There are five Servo names, motor1 through motor5.",
+      "sha256": "838efb6a5aaf3703edf87aa414b5bc7e257a18f92ebd909709f65a19ef5e3667",
+      "file": "assets/narration/names-838efb6a5aaf.mp3"
+    },
+    {
+      "id": "button-pins",
+      "text": "Name the button pins. Below the five Servo lines, before setup(). A pin is a numbered connection on the Ardweeno. const int gives a whole number a name that stays fixed. We read S1 as pin 2. Add the four button pin names. Check. S1 is 2, S2 is 3, S3 is 4 and S4 is 5.",
+      "sha256": "3852c70bb156741f613f0e3776040c9ce4254ff0e42513a868226ab5f34c8996",
+      "file": "assets/narration/button-pins-3852c70bb156.mp3"
+    },
+    {
+      "id": "remember-positions",
+      "text": "Remember two positions. Below the button pin names, before setup(). A variable is a named value the program can change. The two button-controlled motors need to remember their current command. Add these two starting values. Check. middleAngle begins at 125. baseAngle begins at 86.",
+      "sha256": "404247dd8f63dbf3061bea85b3f28f754385c47f4ac347ec5a53ac2d324490aa",
+      "file": "assets/narration/remember-positions-404247dd8f63.mp3"
+    },
+    {
+      "id": "sections-check",
+      "text": "Choose where names belong. In this guide. Names used by both setup() and loop() belong above both sections. Names placed inside a section may only be usable there. Choose the correct location for the five Servo names. Where do Servo motor1; through Servo motor5; belong?. Choices. Above setup(), after the include line. Inside the last closing brace. Inside a second loop(). Check. You can explain where shared names belong.",
+      "sha256": "4548a48f293a611d7237ce4f6136af4e2c72c22b1c3af7fd702679cad0ffbb1a",
+      "file": "assets/narration/sections-check-4548a48f293a.mp3"
+    },
+    {
+      "id": "attach",
+      "text": "Match motors to signal pins. Inside setup(), between its braces. attach() tells the library which signal pin sends instructions to each motor. It can start servo signals when the program runs. Add the five attach lines. Check. Motor 1 uses D6, motor 2 D7, motor 3 D8, motor 4 D9 and motor 5 D10.",
+      "sha256": "6df33c311d5a093c2a6f99c5ab8833c712eec4010c3391fb9537d09ed7af8ac8",
+      "file": "assets/narration/attach-6df33c311d5a.mp3"
+    },
+    {
+      "id": "pullup",
+      "text": "Prepare the four buttons. Inside setup(), after the attach lines. pinMode chooses how a pin works. input pull up uses an internal pull-up setting. With our checked button wiring, an unpressed button reads high and a pressed button reads low. Add these four pinMode lines. Check. All four button names use input pull up.",
+      "sha256": "97bc9bead0a7b4cad452e5e3cf5166fb5405faa010bc4d7a659de6f88bb0f80c",
+      "file": "assets/narration/pullup-97bc9bead0a7.mp3"
+    },
+    {
+      "id": "start-positions",
+      "text": "Send the starting commands. Inside setup(), after pinMode. write() sends a position command. It does not measure the motor angle. These lines use the two remembered values. Add the two write lines before setup() closes. Check. Motor 4 receives 125 and motor 5 receives 86 when setup() runs.",
+      "sha256": "1689c9db7c1e78fc8b18bd509900bea94977a724b728c3b2dada5f82ef91e67d",
+      "file": "assets/narration/start-positions-1689c9db7c1e.mp3"
+    },
+    {
+      "id": "verify-setup",
+      "text": "Verify the setup code. Ardweeno I D E > Verify, the checkmark button. Verify checks whether the computer can compile your sketch. Compile means translating code into instructions the board can run. Verify does not run the hand. Choose Verify with the board still disconnected. Check. The I D E finishes without a compilation error.",
+      "sha256": "892b78d6228e86154387221273937a8f98dc494f6111e4dfe7fe9f4f4252ae3f",
+      "file": "assets/narration/verify-setup-892b78d6228e.mp3"
+    },
+    {
+      "id": "verify-errors",
+      "text": "Read the first error. Ardweeno I D E, message area and code editor. One missing character can create several error messages. Fixing the first error often removes the others. If Verify failed, read the first error and compare that line and the line above with this guide. Then Verify again. Check. Your setup code verifies, or you have one exact error to show the teacher.",
+      "sha256": "82dddbc7cf21db46c0a97a3d561e1bc4006d39e0526cda3612ac4dc7fa72cc4c",
+      "file": "assets/narration/verify-errors-82dddbc7cf21.mp3"
+    },
+    {
+      "id": "loop-place",
+      "text": "Find the repeating section. Inside the existing void loop() braces. loop() repeats. It reads the controls again and again so the hand can respond when you move a knob or press a button. Place your cursor on a blank line inside loop(). Check. You are below void loop() { and above its matching }.",
+      "sha256": "247333d03f38de9bed8dcf98966ec082f064ea69b8b0a0eba8871aa514ff44f7",
+      "file": "assets/narration/loop-place-247333d03f38.mp3"
+    },
+    {
+      "id": "read-knob1",
+      "text": "Read knob one. Inside loop(), at the beginning. analogRead(A one) reads the knob on A one. For the intended Uno program, its reading is a whole number from 0 to 1023. pot1 stores the reading. Add the line below. Check. pot1 now names the latest A one reading.",
+      "sha256": "3b9cedbc9b1c857f15f705c9f791b4f5a17acbe42db5c9e2cdd5fba6a37b453b",
+      "file": "assets/narration/read-knob1-3b9cedbc9b1c.mp3"
+    },
+    {
+      "id": "map-knob1",
+      "text": "Scale knob one. Inside loop(), immediately after the pot1 line. map() changes one number range into another. A reading of 0 maps to command 0; 1023 maps to command 57. A halfway reading gives roughly a halfway command. Add the angle1 line. Check. angle1 holds a command from 0 to 57.",
+      "sha256": "3a86e54db14cda2300af473f338229e9b032eec095e19c4b167a0d5c81d3c6e0",
+      "file": "assets/narration/map-knob1-3a86e54db14c.mp3"
+    },
+    {
+      "id": "write-knob1",
+      "text": "Command motor one. Inside loop(), after angle1. motor1.write(angle1) sends the scaled number to motor 1. Read, scale, send is our pattern for each knob. Add the motor1.write line. Check. Knob one has three lines in the order read, map, write.",
+      "sha256": "6a8cb0471e0f2c32a348d7e54818a3e175e0ccdce2aeede0ace3a92062c5b55b",
+      "file": "assets/narration/write-knob1-6a8cb0471e0f.mp3"
+    },
+    {
+      "id": "explain-map",
+      "text": "Check the number ranges. In this guide. The knob can report 1024 different readings. Our program turns those readings into a smaller set of motor commands. Choose the correct meaning of the map line. What does map(pot1, 0, 1023, 0, 57) produce?. Choices. A position command from 0 to 57. A measured physical angle from 0 to 1023. A new pin number. Check. You understand input readings and output commands.",
+      "sha256": "488b182f02fb5d1f6caa50714a84de0d4026f398af320e8c2e3b86fa75e5fffd",
+      "file": "assets/narration/explain-map-488b182f02fb.mp3"
+    },
+    {
+      "id": "knob2",
+      "text": "Add knob two. Inside loop(), after the three knob-one lines. The second knob uses the same pattern with different names, pin and output range. Each motor needs its own values. Add the three lines below. Check. A two controls motor2 with commands from 0 to 180.",
+      "sha256": "5b8ba857859e3acb772ef23d3c30b4f62423e59796ade24c0a08a6f022ac8271",
+      "file": "assets/narration/knob2-5b8ba857859e.mp3"
+    },
+    {
+      "id": "knob3",
+      "text": "Add knob three. Inside loop(), after the knob-two lines. The third knob has its own pin and a smaller output range than knob two. Add the three lines below. Check. A three controls motor3 with commands from 0 to 90.",
+      "sha256": "4f0fc7c1dba1811947a57abcbcfef73d3e0fdedead490553309a3a4e5ba32b24",
+      "file": "assets/narration/knob3-4f0fc7c1dba1.mp3"
+    },
+    {
+      "id": "knob-audit",
+      "text": "Compare all three knobs. In loop(), the nine knob lines. A tiny copied mistake can make two knobs control the same motor. A visual check catches that before hardware runs. Match A one to motor1 and 0–57; A two to motor2 and 0–180; A three to motor3 and 0–90. Check. Each knob has its own three-line group.",
+      "sha256": "33f6f0be39de84b53e7ea1552909989e86612982a78720de599e18305673162c",
+      "file": "assets/narration/knob-audit-33f6f0be39de.mp3"
+    },
+    {
+      "id": "pressed-low",
+      "text": "Recognize a pressed button. In this guide. digitalRead reads high or low. == asks whether two values are equal. A single = assigns a value instead. if runs the code in its braces only when its question is true. Read: if digitalRead S3 equals low, run the middle-up instructions. Check. You can explain why low means pressed for this program.",
+      "sha256": "7f8aaba79ae3bdf70654b2f2e4aa2079bc4d2357fd2fa035d48710a6d1eede01",
+      "file": "assets/narration/pressed-low-7f8aaba79ae3.mp3"
+    },
+    {
+      "id": "middle-up",
+      "text": "Add the middle-up button. Inside loop(), after the knobs. ++ adds one to the remembered command. The if limit check brings it back to 160 if it went above 160. write sends the bounded value. delay(20) waits 20 milliseconds. Add this complete S3 block. Check. Holding S3 raises middleAngle toward 160. It cannot keep increasing above 160 in this block.",
+      "sha256": "e5c7b79e82aa7df98d21bc3cf95ac2e9cbb71aff00789cd6d0c178fe1c4fc0c9",
+      "file": "assets/narration/middle-up-e5c7b79e82aa.mp3"
+    },
+    {
+      "id": "middle-limit",
+      "text": "Explain the upper limit. In this guide. The command is checked before it is sent. That keeps a held button from making the number grow forever. Choose the next sent value when middleAngle is already 160 and S3 is held. The ++ line changes 160 to 161. What does the limit check do before write()?. Choices. Sets middleAngle back to 160. Sends 161 and hopes the motor stops. Disconnects the power. Check. You understand why the two limit lines matter.",
+      "sha256": "de84c8a60408aab8ce4f7415c8b1231ad5a791144ffa911bcacec9a778cfbdc5",
+      "file": "assets/narration/middle-limit-de84c8a60408.mp3"
+    },
+    {
+      "id": "middle-down",
+      "text": "Add the middle-down button. Inside loop(), after the complete S3 block. -- subtracts one. The lower limit check sets the command back to 90 if it went below 90. Add this complete S1 block. Check. Holding S1 lowers the motor4 command toward 90.",
+      "sha256": "813edf724b61316f6710b759453139cee56c691ad1f9c5cc4faffb0bf5e70654",
+      "file": "assets/narration/middle-down-813edf724b61.mp3"
+    },
+    {
+      "id": "base-up",
+      "text": "Add the base-up button. Inside loop(), after the complete S1 block. The base has its own remembered command, baseAngle. S4 adds one and stops the command at 176. Add the S4 block. Check. S4 commands motor5 toward 176.",
+      "sha256": "fb58269c09387b51088f9bba1d389cc73a112ab28b4970c1e9d80ef388d5d135",
+      "file": "assets/narration/base-up-fb58269c0938.mp3"
+    },
+    {
+      "id": "base-down",
+      "text": "Add the base-down button. Inside loop(), after the complete S4 block. S2 subtracts one from the base command. The lower limit keeps it at or above zero. Add the S2 block. Check. S2 commands motor5 toward 0.",
+      "sha256": "ff48a0b10bc1ce203a1c21b4ee02d02a70b791ea38a7c53e816537edf1f37724",
+      "file": "assets/narration/base-down-ff48a0b10bc1.mp3"
+    },
+    {
+      "id": "button-order",
+      "text": "Check the four button blocks. Inside loop(), after the knob groups. Our program checks each button separately. It does not stop you pressing opposing buttons at once. That is why we use one button at a time. Check the block order is S3, S1, S4, S2. Check. S3/S1 write motor4. S4/S2 write motor5.",
+      "sha256": "5eb69f4e683f60c02fcf5f3ada983a808c914bd670c62dfd0d1fd97327cc1cf6",
+      "file": "assets/narration/button-order-5eb69f4e683f.mp3"
+    },
+    {
+      "id": "loop-pause",
+      "text": "Finish with a short pause. Inside loop(), after the final S2 block and before loop() closes. A millisecond is one thousandth of a second. delay(15) pauses for 15 milliseconds before the next pass through loop(). Button blocks add their own pauses when pressed. Add delay(15); on its own line. Check. There is one final delay(15) inside loop().",
+      "sha256": "16c4a9939fc402c1e9ef757c8f4ce886fe3057027565b62f455506c933839b81",
+      "file": "assets/narration/loop-pause-16c4a9939fc4.mp3"
+    },
+    {
+      "id": "braces",
+      "text": "Check the code sections. In the complete sketch. Every opening brace needs a closing brace. Braces inside a button block belong inside loop(), so each inner section must close before the next one starts. Find one setup(), one loop(), four button if blocks and four smaller limit if blocks. Check. All sections close, and none of the knob or button code is outside loop().",
+      "sha256": "5a8a18a394181cda56be3647c22f8772e3bebd5eea29f852a3af87916a940efe",
+      "file": "assets/narration/braces-5a8a18a39418.mp3"
+    },
+    {
+      "id": "reference",
+      "text": "Compare the complete sketch. In this guide and Ardweeno I D E. The reference download is the current five-motor team program. Use it to find typing differences after assembling your own code. Download the reference ZIP, unzip it and compare its .ino with your sketch. Check. Your shared sketch follows the same behavior and keeps every limit check.",
+      "sha256": "1561fd32705f213fe002d74c0bded266c0c6c17fb2e194e1cd28609f1724a417",
+      "file": "assets/narration/reference-1561fd32705f.mp3"
+    },
+    {
+      "id": "verify-final",
+      "text": "Verify the full sketch. Ardweeno I D E > Verify. A successful Verify proves the code compiles for the selected board configuration. It does not prove wiring, power or movement are correct. Choose Verify on the complete sketch. Check. Compilation finishes without errors.",
+      "sha256": "9842ddef17cc83dbcfa4d1a97f6e9ae8b28e094c46d0913b49f735485c97c11b",
+      "file": "assets/narration/verify-final-9842ddef17cc.mp3"
+    },
+    {
+      "id": "explain-code",
+      "text": "Explain one code path. In this guide. You understand a program when you can follow an input through its steps to an output. Explain one knob or one button using the frame. How does your chosen control produce a motor command?. Check. You name the input, command range and motor.",
+      "sha256": "ef4c0c3c237978c8759d751acec2ec7b38ff88ada52793f2ea0fa1adf922ff0f",
+      "file": "assets/narration/explain-code-ef4c0c3c2379.mp3"
+    },
+    {
+      "id": "save-before-run",
+      "text": "Save the verified version. Ardweeno I D E > File > Save. Save before connecting hardware so the program you check is the program you can recover. Save the latest complete numbered sketch. Check. The saved file matches the code that passed Verify.",
+      "sha256": "c0d015b6e6a9cdf2b717dbba126c95c4ac87f642b490ac3807f0a4b4e67c1a36",
+      "file": "assets/narration/save-before-run-c0d015b6e6a9.mp3"
+    },
+    {
+      "id": "teacher-check",
+      "text": "Ask for the hardware check. At the assembled model, with the teacher. Servo signals can move the mechanism as soon as an uploaded program starts. Code numbers alone cannot establish safe physical movement. Show the teacher the saved code and ask them to check the real board, power, starting positions and allowed movement before connecting and uploading. Check. The teacher either approves this exact setup or tells you what to correct.",
+      "sha256": "f388e46c1299b7144cc54320910de9255b9e5235f1829daf960195c65522ffe8",
+      "file": "assets/narration/teacher-check-f388e46c1299.mp3"
+    },
+    {
+      "id": "board-port",
+      "text": "Select the checked board. Ardweeno I D E board and port selection, with the teacher. Ardweeno I D E needs the real board type and its connected port to send the program to the right place. Select the board and port the teacher identifies for this connected model. Check. The selected board and port match the checked hardware.",
+      "sha256": "df3bf5df7f0463716e43806b61e3e229b7e6dfbb73ddc0cf445f6bf0f08d1350",
+      "file": "assets/narration/board-port-df3bf5df7f04.mp3"
+    },
+    {
+      "id": "upload",
+      "text": "Upload the checked program. Ardweeno I D E > Upload, with the teacher. Upload sends your compiled sketch to the board. When it starts, setup() runs once and loop() begins repeating. After the teacher approves the exact setup and code, choose Upload. Check. The I D E reports that uploading finished.",
+      "sha256": "3164d98c23261b73abd1f91f5e74e836e1b74395308950e7c451d5da58327e68",
+      "file": "assets/narration/upload-3164d98c2326.mp3"
+    },
+    {
+      "id": "knob-test",
+      "text": "Try one knob. At the checked model, with the teacher. Testing one input at a time shows which input caused the response. A correct compile cannot tell us which physical part moved. Turn knob 1 slowly within the teacher-checked range and observe motor 1. Repeat separately for knobs 2 and 3. Check. You know what actually moved for each knob.",
+      "sha256": "08b09229f2fa9e9276e5f064e6a4173520f47cb356d013b22a0bed317debcf9b",
+      "file": "assets/narration/knob-test-08b09229f2fa.mp3"
+    },
+    {
+      "id": "button-test",
+      "text": "Try one button. At the checked model, with the teacher. Each button should change one remembered command in one direction while it is held. Releasing it stops that button block from changing the command. Try S1, S2, S3 and S4 separately, staying within the teacher-checked movement. Check. S1/S3 move motor4 in opposing command directions. S2/S4 move motor5 in opposing command directions.",
+      "sha256": "4719aaa393f659d0e4c2b760f2ec64357e2824eaba9e007b3f48a233d2f26506",
+      "file": "assets/narration/button-test-4719aaa393f6.mp3"
+    },
+    {
+      "id": "record-run",
+      "text": "Record what really happened. In this guide. An honest observation helps you fix a problem. A result is something you actually saw, not something the code suggests should happen. Record one control test using the frame. What happened when you tried one control?. Check. Your note names the control, expected motor and actual response.",
+      "sha256": "7ca36ef41c090a3157be16c3641a83eabee5a4c60837c39f9c6473256f484065",
+      "file": "assets/narration/record-run-7ca36ef41c09.mp3"
+    },
+    {
+      "id": "debug",
+      "text": "Find one cause at a time. Ardweeno I D E and the test note, with the teacher. Changing several things together makes it hard to know which change fixed a problem. Start with the exact control that failed. For a failed control, compare its input name, motor name and limits with the reference before making one checked correction. Check. You can name one suspected cause and one proposed correction.",
+      "sha256": "ab16c7fc450bb0dc5b783422576eec31f8bd4ffedccfc33150753a2a337c85c3",
+      "file": "assets/narration/debug-ab16c7fc450b.mp3"
+    },
+    {
+      "id": "retest",
+      "text": "Retest a correction. With the teacher and your saved test note. A correction is only an improvement if new evidence shows it helped. Keep the old observation so you can compare. After any code change, Verify again, save a new numbered version and repeat the affected control test after teacher approval. Check. You have a before-and-after note for the same control.",
+      "sha256": "fae1cddfe570c1cd221a8ce5e5b16ce745399defa69513d87210169ee915d0e0",
+      "file": "assets/narration/retest-fae1cddfe570.mp3"
+    },
+    {
+      "id": "test-limits",
+      "text": "Separate commands from angles. In this guide. The code bounds command numbers. Our eyes observe motion. Neither proves an exact angle, lifting strength or an automatic gripping routine. Choose the claim supported by checking this code. What can code inspection show about the S3 block?. Choices. Its written commands are capped at 160. The physical joint always reaches exactly 160 degrees. The hand can lift any object. Check. You can describe what the evidence actually proves.",
+      "sha256": "b38ff07cd253f676c71c12db9d1a699d08215383f3d92b7d67a98bfe130d7baf",
+      "file": "assets/narration/test-limits-b38ff07cd253.mp3"
+    },
+    {
+      "id": "zip",
+      "text": "Save the whole sketch folder. Your computer file manager. A ZIP keeps the named folder and its .ino file together. That makes the next teammate more likely to open the correct program. Close or save Ardweeno I D E, then compress the whole latest numbered sketch folder as a ZIP. Check. The ZIP contains a named sketch folder and its matching .ino.",
+      "sha256": "7da7108af98525c64b4f9b6e394e7f1a4d318c20ffc890b3b8908ac7525f9033",
+      "file": "assets/narration/zip-7da7108af985.mp3"
+    },
+    {
+      "id": "handoff",
+      "text": "Share the latest version. Your existing team Drive folder. The next teammate needs your real saved program and a short note about its state. Guide answers in this browser are not automatically shared. Upload the numbered sketch ZIP and tell the next editor its exact filename and whether it was only verified or also tested on hardware. Check. The team can find one clear latest version and earlier versions remain available.",
+      "sha256": "aa10040f82991473a4eb11d9e3ce4d5f6d7b9602adcc7348c81c0dc3db2e2433",
+      "file": "assets/narration/handoff-aa10040f8299.mp3"
+    },
+    {
+      "id": "report",
+      "text": "Write the coding report. In your existing project report. A short explanation connects your code to what you learned. Use your actual work and observations. Write under the four current headings: Project; Research; Test and improvement; References. Write your four short report parts. Check. The report names the five-motor controls, explains research in your own words, gives an honest test and improvement note, and lists exact source links.",
+      "sha256": "4a65e365a86ad9c0033b6255d8aee1ab8aae02ec7688298466481688d23eb101",
+      "file": "assets/narration/report-4a65e365a86a.mp3"
+    }
+  ]
+}

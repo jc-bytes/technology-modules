@@ -1,0 +1,295 @@
+{
+  "id": "MOD-STEAM-STICK-01",
+  "slug": "walking-stick-code-guide",
+  "title": "Code your walking stick",
+  "version": "1.0.0",
+  "status": "pilot",
+  "gradeRange": [
+    8,
+    8
+  ],
+  "sourcePath": "technology-learning-hub/standalone-sites/walking-stick-code-guide",
+  "publishedUrl": "https://jc-bytes.github.io/technology-modules/practice/walking-stick-code-guide/",
+  "prerequisites": [
+    "Already assembled walking-stick model",
+    "Working sensor read and documented validity condition",
+    "Use MakeCode Blocks"
+  ],
+  "estimatedTime": "Unknown, classroom pilot required",
+  "offline": "Serve the downloaded guide folder locally, or use printable-fallback.html. Hardware testing needs the actual supervised model.",
+  "lastReviewed": "2026-10-20",
+  "objectives": [
+    "Store a fresh valid distance reading",
+    "Build nested warning decisions",
+    "Test and explain near, far and unusable readings"
+  ],
+  "software": [
+    "Microsoft MakeCode",
+    "Existing hardware-specific sensor project"
+  ],
+  "owner": "Porfirio Rios",
+  "recommendedGrades": [
+    8
+  ],
+  "tracks": [
+    "Core"
+  ],
+  "estimatedMinutes": null,
+  "timingStatus": "Unknown, classroom pilot required",
+  "sections": [
+    {
+      "id": "goal",
+      "title": "Program your built model",
+      "entryPath": "#goal",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "open-editor",
+      "title": "Open MakeCode",
+      "entryPath": "#open-editor",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "open-team-project",
+      "title": "Open your team program",
+      "entryPath": "#open-team-project",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "save-backup",
+      "title": "Save the starting program",
+      "entryPath": "#save-backup",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "find-sensor",
+      "title": "Find the distance block",
+      "entryPath": "#find-sensor",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "units",
+      "title": "Check the distance unit",
+      "entryPath": "#units",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "validity-gate",
+      "title": "Identify an unusable reading",
+      "entryPath": "#validity-gate",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "verify-reading",
+      "title": "Check one live reading",
+      "entryPath": "#verify-reading",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "reading-check",
+      "title": "Check what the number means",
+      "entryPath": "#reading-check",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "rule",
+      "title": "Read the three display choices",
+      "entryPath": "#rule",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "distance-variable",
+      "title": "Name the distance value",
+      "entryPath": "#distance-variable",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "valid-variable",
+      "title": "Name the reading check",
+      "entryPath": "#valid-variable",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "find-loop",
+      "title": "Find the repeating instructions",
+      "entryPath": "#find-loop",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "store-reading",
+      "title": "Store one fresh distance",
+      "entryPath": "#store-reading",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "store-validity",
+      "title": "Store the validity result",
+      "entryPath": "#store-validity",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "outer-if",
+      "title": "Add the first decision",
+      "entryPath": "#outer-if",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "use-validity",
+      "title": "Check readingValid",
+      "entryPath": "#use-validity",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "add-invalid-branch",
+      "title": "Add the other path",
+      "entryPath": "#add-invalid-branch",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "invalid-display",
+      "title": "Show an unusable reading",
+      "entryPath": "#invalid-display",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "near-if",
+      "title": "Add the distance decision",
+      "entryPath": "#near-if",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "near-condition",
+      "title": "Compare the distance with 30",
+      "entryPath": "#near-condition",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "near-display",
+      "title": "Show the near warning",
+      "entryPath": "#near-display",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "far-branch",
+      "title": "Add the far path",
+      "entryPath": "#far-branch",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "far-display",
+      "title": "Clear the far display",
+      "entryPath": "#far-display",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "remove-conflict",
+      "title": "Keep one warning display",
+      "entryPath": "#remove-conflict",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "check-order",
+      "title": "Check the block order",
+      "entryPath": "#check-order",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "boundary-check",
+      "title": "Check exactly 30 cm",
+      "entryPath": "#boundary-check",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "far-check",
+      "title": "Check the far branch",
+      "entryPath": "#far-check",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "download-program",
+      "title": "Save your changed program",
+      "entryPath": "#download-program",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "transfer-program",
+      "title": "Transfer the program",
+      "entryPath": "#transfer-program",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "practice-near",
+      "title": "Try the near warning",
+      "entryPath": "#practice-near",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "practice-far",
+      "title": "Try the far response",
+      "entryPath": "#practice-far",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "fix-one-problem",
+      "title": "Correct one program problem",
+      "entryPath": "#fix-one-problem",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "record-trials",
+      "title": "Record the six trials",
+      "entryPath": "#record-trials",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "one-improvement",
+      "title": "Choose one improvement",
+      "entryPath": "#one-improvement",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "retest",
+      "title": "Retest the saved version",
+      "entryPath": "#retest",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "explain-contribution",
+      "title": "Explain your code change",
+      "entryPath": "#explain-contribution",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "finish-report",
+      "title": "Finish the shared report",
+      "entryPath": "#finish-report",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "submit",
+      "title": "Submit the program and report",
+      "entryPath": "#submit",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "review",
+      "title": "Review your guide answers",
+      "entryPath": "#review",
+      "estimatedMinutes": null
+    }
+  ],
+  "teacherGuidePath": "technology-learning-hub/teacher-materials/steam-physical-guides.md",
+  "accessibility": [
+    "Keyboard controls",
+    "Readable responsive text",
+    "Optional bundled English narration",
+    "Text alternatives for concept diagrams"
+  ],
+  "deviceRequirements": [
+    "School computer and modern browser",
+    "USB connection for coding projects"
+  ],
+  "accounts": "No account is needed for the guide. Use school-approved editor accounts if required.",
+  "internet": "Local HTTP serving supports bundled guide assets. Opening online editors and Classroom needs internet.",
+  "submission": "Use the current shared four-heading Google Doc and the existing one-team Classroom assignment. Guide PDF is supporting evidence."
+}

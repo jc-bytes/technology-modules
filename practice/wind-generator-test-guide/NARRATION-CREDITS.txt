@@ -1,0 +1,6 @@
+English read-aloud directions are computer-generated locally with Kokoro-82M, af_heart voice, speed 0.92.
+Model: https://huggingface.co/hexgrad/Kokoro-82M
+Software: https://github.com/hexgrad/kokoro
+Model license: Apache-2.0, see KOKORO-LICENSE.txt.
+Narration uses authored lesson directions, not student answers or personal data.
+Credit original source-language recordings separately. Do not present English TTS as an original-language speaker.

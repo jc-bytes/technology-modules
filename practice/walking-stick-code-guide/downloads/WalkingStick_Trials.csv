@@ -1,0 +1,13 @@
+Round,Trial,Ruler distance cm,Sensor reading cm or No reading,Expected display,Actual display,Program version
+Before change,1,20,,X,,
+Before change,2,20,,X,,
+Before change,3,20,,X,,
+Before change,1,40,,Clear only if reading is valid,,
+Before change,2,40,,Clear only if reading is valid,,
+Before change,3,40,,Clear only if reading is valid,,
+After change,1,20,,X,,
+After change,2,20,,X,,
+After change,3,20,,X,,
+After change,1,40,,Clear only if reading is valid,,
+After change,2,40,,Clear only if reading is valid,,
+After change,3,40,,Clear only if reading is valid,,
