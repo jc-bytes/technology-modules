@@ -1,14 +1,46 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Walking stick sounds</title><meta name="description" content="Connect your micro:bit and hear its obstacle-warning messages."><link rel="stylesheet" href="./style.css?v=1.0.0"></head>
-<body><main>
-<header><a href="../walking-stick-bluetooth-guide/">← Coding guide</a><span>Technology · STEAM</span></header>
-<h1>Hear your walking stick</h1>
-<p class="intro">Your micro:bit sends a message. This page turns <strong>NEAR</strong> into a sound through this device's speakers.</p>
-<div class="setup"><div><h2>1. Connect your micro:bit</h2><p id="support">Checking this browser…</p><div class="buttons"><button id="connect" class="primary">Connect micro:bit</button><button id="disconnect" disabled>Disconnect</button></div><p id="connection" role="status">Not connected.</p></div><div><h2>2. Turn on sound</h2><div class="buttons"><button id="sound" aria-pressed="false">Enable sound</button><button id="test">Test speaker</button></div><div class="settings"><label for="sound-mode">Warning sound</label><select id="sound-mode"><option value="beep">Beep</option><option value="voice">Spoken words</option></select><label for="volume">Volume <output id="volume-label" for="volume">25%</output></label><input id="volume" type="range" min="0" max="60" value="25"></div><p id="audio-status" role="status">Sound is off. Start with a low device volume.</p></div></div>
-<section id="reading" class="reading" data-state="waiting" aria-labelledby="reading-title"><p id="source">LIVE MICRO:BIT</p><h2 id="reading-title" role="status" aria-live="polite">Waiting for a connection</h2><p id="reading-detail">Connect the micro:bit, then send a message.</p><p id="last-message">No message received.</p></section>
-<p class="note">Keep this tab open and visible. This is a supervised tabletop demonstration.</p>
-<details class="help"><summary>Connect in Chrome</summary><ol><li>Use Chrome on a laptop or an Android device with Bluetooth turned on.</li><li>Upload your MakeCode Bluetooth UART program to the micro:bit. Follow the coding guide's connection settings.</li><li>Click Connect micro:bit. Choose the device named BBC micro:bit.</li><li>Click Enable sound. Test the buttons before using sensor readings.</li></ol><p>Chrome on iPhone or iPad does not provide this Web Bluetooth connection. School policies or a disabled Bluetooth adapter can also block it.</p><p>If the device connects but sends nothing, check <code>start UART service</code> and <code>UART write line</code> in the program. After uploading a new program, disconnect and connect again.</p></details>
-<details id="demo-panel" class="help"><summary>Try without a micro:bit</summary><p>This demo sends made-up messages inside the page. It does not test Bluetooth or your sensor.</p><div class="buttons"><button id="start-demo">Start demo</button><button id="exit-demo" disabled>Exit demo</button></div><div id="demo-controls" hidden><div class="buttons"><button data-demo="NEAR">Send NEAR</button><button data-demo="FAR">Send FAR</button><button data-demo="UNKNOWN">Send UNKNOWN</button><button id="pause-demo">Stop demo messages</button></div><p>The demo repeats its selected message every half second. Stop messages to see the three-second timeout.</p></div></details>
-<details class="help"><summary>What students program</summary><p>Send exactly one of these lines after each fresh decision, about every half second while connected.</p><table><thead><tr><th>Micro:bit message</th><th>Page response</th></tr></thead><tbody><tr><td><code>NEAR</code></td><td>Show “Obstacle near” and play the selected warning when sound is enabled.</td></tr><tr><td><code>FAR</code></td><td>Show “Farther reading reported” and stop the warning.</td></tr><tr><td><code>UNKNOWN</code></td><td>Show “Reading unknown” and stop the warning.</td></tr></tbody></table><p>If messages stop for more than three seconds, the page stops the warning and shows “No recent message”. A connection alone is not a sensor test.</p><a href="../walking-stick-bluetooth-guide/">Build the micro:bit program step by step →</a></details>
-<footer>No accounts, uploads or student details are needed. <a href="https://makecode.microbit.org/reference/bluetooth/uart-write-line" target="_blank" rel="noopener">MakeCode UART reference</a></footer>
-</main><script type="module" src="./main.js?v=1.0.0"></script></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smart Steps · Walking stick sounds</title>
+<meta name="description" content="Connect your micro:bit and hear its walking-stick warning.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%231a5146'/%3E%3Cpath d='M20 7v26l8-7-15-12 15 0-15 12' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css?v=1.1.0">
+</head>
+<body>
+<div class="page">
+<header class="topbar">
+ <a class="brand" href="./" aria-label="Smart Steps home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18l6-5-12-8 12 0-12 8"/></svg></span><span>Smart Steps<small>WALKING STICK</small></span></a>
+ <a class="guide-link" href="../walking-stick-code-guide/#bluetooth-sound">Build the code <span aria-hidden="true">↗</span></a>
+</header>
+<main>
+ <div class="intro"><h1>A little sound.<br>A clearer warning.</h1><p>Connect your micro:bit to hear what it reports.</p></div>
+ <section id="reading" class="console" data-state="disconnected" aria-labelledby="reading-title">
+  <div class="console-top"><span id="source" class="source">MICRO:BIT</span><span id="connection" class="connection" role="status">Not connected</span><button id="disconnect" class="text-button disconnect" disabled hidden>Disconnect</button></div>
+  <div class="signal">
+   <div class="signal-icon" aria-hidden="true">
+    <svg class="icon-default" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 9v30l10-9-20-14 20 0-20 14"/></svg>
+    <svg class="icon-near" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M24 13v14"/><circle cx="24" cy="34" r="1.5" fill="currentColor" stroke="none"/></svg>
+    <svg class="icon-far" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 24h24m-7-7 7 7-7 7"/></svg>
+    <svg class="icon-unknown" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M17 18a7 7 0 0 1 14 0c0 5-7 5-7 10"/><circle cx="24" cy="35" r="1.5" fill="currentColor" stroke="none"/></svg>
+   </div>
+   <h2 id="reading-title" aria-live="polite" aria-atomic="true">Ready to connect</h2>
+   <p id="reading-detail">Your micro:bit's warning will appear here.</p>
+   <p id="last-message" class="last-message">No message yet</p>
+  </div>
+  <div class="console-bottom">
+   <p id="support" class="compatibility" role="status" hidden></p>
+   <div class="main-actions"><button id="connect" class="button primary"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18l6-5-12-8 12 0-12 8"/></svg><span id="connect-label">Connect micro:bit</span></button><button id="sound" class="button sound-button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Zm5 3a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg><span id="sound-label">Enable sound</span></button></div>
+   <p id="audio-status" class="audio-status" role="status">Sound is off</p>
+  </div>
+ </section>
+ <div class="utilities">
+  <details class="settings"><summary>Sound settings <span aria-hidden="true">⌄</span></summary><div class="settings-body"><label for="sound-mode">Warning sound</label><select id="sound-mode"><option value="beep">Gentle beep</option><option value="voice">“Obstacle near”</option></select><label for="volume">Volume <output id="volume-label" for="volume">25%</output></label><input id="volume" type="range" min="0" max="60" value="25"><button id="test" class="button test-button">Test speaker</button></div></details>
+  <div class="demo-toggle"><button id="start-demo" class="text-button">Try a demo <span aria-hidden="true">→</span></button><button id="exit-demo" class="text-button" disabled hidden>Exit demo ×</button></div>
+ </div>
+ <div id="demo-controls" class="demo" hidden><p><strong>Demo mode.</strong> These messages come from this page, not a micro:bit.</p><div class="demo-buttons"><button data-demo="NEAR">Near</button><button data-demo="FAR">Farther away</button><button data-demo="UNKNOWN">Unknown</button><button id="pause-demo" class="text-button">Stop messages</button></div></div>
+ <footer><span>Keep this tab visible during your tabletop test.</span><details class="help"><summary>Connection help</summary><div><p>Use Chrome on a laptop or supported Android device. Turn on Bluetooth, then choose your BBC micro:bit after clicking Connect.</p><p>Your micro:bit needs the Bluetooth UART program and connection setting from the <a href="../walking-stick-code-guide/#bluetooth-sound">walking-stick guide</a>. Reconnect after uploading a new program.</p><p>Chrome on iPhone or iPad does not offer this connection. School device settings may also block Bluetooth.</p><p>NEAR plays the warning. FAR and UNKNOWN stop it. If messages stop arriving, the page pauses the warning.</p></div></details></footer>
+</main>
+</div>
+<script type="module" src="./main.js?v=1.1.0"></script>
+</body></html>

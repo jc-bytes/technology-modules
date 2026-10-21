@@ -2,7 +2,7 @@ export const buildSteps = [
   {
     "id": "goal",
     "title": "Program your built model",
-    "why": "The sensor measures distance. Your program chooses a display. X means an obstacle is near; a blank display means a valid reading is farther away. A question mark means the reading cannot be used.",
+    "why": "The sensor measures distance. Your program chooses a display. X means an obstacle is near; a blank display means a valid reading is farther away. A question mark means the reading cannot be used. Later you will add Bluetooth messages so a separate sound page can play the near warning.",
     "where": "At your built walking-stick model",
     "do": "Point to the sensor and the micro:bit display.",
     "expected": "You can point to the input and the output.",
@@ -81,7 +81,7 @@ export const buildSteps = [
   {
     "id": "validity-gate",
     "title": "Identify an unusable reading",
-    "why": "Sometimes the sensor does not get a useful echo. Different sensor blocks report this in different ways. A failed reading must never mean the path is clear.",
+    "why": "Sometimes the sensor does not get a useful echo. Different sensor blocks report this in different ways. A failed reading must never mean the path is clear. Continue only after your teacher confirms the exact validity test for this sensor.",
     "where": "In MakeCode · existing sensor project",
     "do": "Ask your teacher to identify the existing test that says whether a reading is valid.",
     "expected": "You know the exact validity test for this sensor block.",
@@ -438,26 +438,6 @@ export const buildSteps = [
     "stage": "guided"
   },
   {
-    "id": "bluetooth-sound",
-    "title": "Add sound through Bluetooth",
-    "why": "The companion website plays the warning through a laptop or supported Android device. Your team programs the microbit messages in a separate short guide.",
-    "where": "In this guide",
-    "do": "Open Add Bluetooth sound in a new tab. Build and test its button rehearsal before adding messages to your sensor loop.",
-    "expected": "You keep this guide open and follow the Bluetooth guide in another tab.",
-    "help": "The button rehearsal tests the connection, not the sensor. Keep a backup of your working sensor program. Return here for your original testing and report steps.",
-    "links": [
-      [
-        "Open Add Bluetooth sound",
-        "../walking-stick-bluetooth-guide/"
-      ],
-      [
-        "Open sound website",
-        "../walking-stick-sounds/"
-      ]
-    ],
-    "stage": "guided"
-  },
-  {
     "id": "fix-one-problem",
     "title": "Correct one program problem",
     "why": "Changing one thing makes it easier to tell what fixed the behavior.",
@@ -470,9 +450,585 @@ export const buildSteps = [
     "stage": "guided"
   },
   {
+    "id": "bluetooth-sound",
+    "title": "Add a Bluetooth sound warning",
+    "why": "Your distance program already chooses X, blank or ?. Next you will send that same decision to the sound website. First use buttons to practise the connection; then use the real sensor.",
+    "where": "In this walking-stick guide",
+    "do": "Keep following this guide to add Bluetooth to the working sensor program.",
+    "expected": "You will build the sender yourself, then test the separate sound page.",
+    "help": "Save the working sensor .hex before the button rehearsal replaces the program on the physical micro:bit.",
+    "links": [],
+    "stage": "guided"
+  },
+  {
+    "id": "bt-goal",
+    "title": "Make the message travel",
+    "why": "Your micro:bit makes a decision. Bluetooth sends that decision to the sound website. The laptop or Android device plays the sound.",
+    "where": "In this guide",
+    "do": "Follow the path from micro:bit to the website.",
+    "expected": "The micro:bit sends text. The website plays the warning.",
+    "links": [],
+    "image": "assets/bluetooth-path.svg",
+    "alt": "A microbit sends NEAR, FAR or UNKNOWN over Bluetooth to a browser, which plays sound through its device speakers.",
+    "stage": "model"
+  },
+  {
+    "id": "bt-new-project",
+    "title": "Start a button rehearsal",
+    "why": "Bluetooth sends a short message without a cable. First use buttons as pretend sensor results. This checks the connection before you change your sensor program. Keep the working sensor program in its existing editor tab; the new rehearsal opens in another MakeCode tab. The rehearsal replaces the program on the board while you test buttons. Your saved sensor .hex stays unchanged.",
+    "where": "In MakeCode · Home",
+    "do": "Open MakeCode Home in a new tab and create WalkingStick_BLE_Rehearsal_01.",
+    "expected": "You have this guide, the saved sensor project and a separate blank rehearsal project.",
+    "help": "Keep your latest working sensor .hex saved in the team folder. This rehearsal has no sensor code and cannot measure an obstacle.",
+    "links": [
+      [
+        "Open MakeCode",
+        "https://makecode.microbit.org/"
+      ]
+    ],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-extension",
+    "title": "Add Bluetooth blocks",
+    "why": "An extension adds blocks to MakeCode. Bluetooth and micro:bit radio cannot run together. If MakeCode asks to remove radio, stop until your teacher confirms it is unused. Keep the existing sensor extension and pin settings.",
+    "where": "In MakeCode · Extensions",
+    "do": "Search for Bluetooth and select the official Bluetooth extension.",
+    "expected": "The Bluetooth category appears in the block toolbox.",
+    "help": "If MakeCode asks to remove radio, check with your teacher that the project does not need it before accepting. Keep the sensor extension when you later add Bluetooth to the sensor project.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-pairing",
+    "title": "Set the classroom connection mode",
+    "why": "For this supervised browser test, No Pairing Required lets the website connect. Anyone nearby can also connect, so use this mode only for the teacher-approved tabletop demonstration.",
+    "where": "With your teacher · MakeCode gear menu → Project Settings",
+    "do": "Have your teacher select No Pairing Required: Anyone can connect via Bluetooth for the rehearsal project.",
+    "expected": "The rehearsal uses the teacher-approved no-pairing setting.",
+    "help": "This is a visible project security choice. The browser chooser still asks permission to select a device. If your teacher requires another mode, stop and use their checked computer and pairing steps instead.",
+    "links": [
+      [
+        "Official MakeCode pairing-mode explanation",
+        "https://support.microbit.org/support/solutions/articles/19000080745-what-are-the-different-bluetooth-pairing-modes-in-makecode-"
+      ]
+    ],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-service",
+    "title": "Start the message service",
+    "why": "UART is a service for sending short text messages. Starting it makes this message channel available when the program starts.",
+    "where": "In MakeCode · on start",
+    "do": "Place Bluetooth → bluetooth uart service inside on start.",
+    "expected": "The program starts the UART service once.",
+    "help": "Expand the Bluetooth category or its more section to find the UART blocks.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "bluetooth.startUartService()"
+  },
+  {
+    "id": "bt-status",
+    "title": "Start with an unknown result",
+    "why": "A variable is a named place holding a value. status holds the message we will send. UNKNOWN means we have no usable sensor result. Choose a text block from Text for the value, rather than another variable.",
+    "where": "In MakeCode · Variables and on start",
+    "do": "In Variables, choose Make a Variable and name it status. In on start, use set status to the text \"UNKNOWN\".",
+    "expected": "status starts as text in uppercase.",
+    "help": "Use a text value with quotes in JavaScript. Do not type UNKNOWN as a variable name.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "let status = \"UNKNOWN\""
+  },
+  {
+    "id": "bt-flag",
+    "title": "Start disconnected",
+    "why": "btConnected holds true or false. At startup the website has not connected yet.",
+    "where": "In MakeCode · Variables and on start",
+    "do": "In Variables, create btConnected. In on start, set btConnected to the Logic value false.",
+    "expected": "btConnected starts false.",
+    "help": "False is a Logic value. Do not use the text \"false\".",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "let btConnected = false"
+  },
+  {
+    "id": "bt-connected",
+    "title": "Notice a connection",
+    "why": "An event runs when something happens. This event runs when the micro:bit gets a Bluetooth connection.",
+    "where": "In MakeCode · Bluetooth",
+    "do": "Add on bluetooth connected and put set btConnected to true inside it.",
+    "expected": "The flag becomes true when a device connects.",
+    "help": "This means a device connected. It does not confirm a sensor reading or prove which person is using the device.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "bluetooth.onBluetoothConnected(function () {\n    btConnected = true\n})"
+  },
+  {
+    "id": "bt-disconnected",
+    "title": "Notice a lost connection",
+    "why": "When the connection closes, the program must stop sending and stop keeping an old result as its starting state.",
+    "where": "In MakeCode · Bluetooth",
+    "do": "Add on bluetooth disconnected with btConnected set to false and status set to \"UNKNOWN\".",
+    "expected": "A lost connection clears the connection flag and old status.",
+    "help": "Keep these assignments in this event. They do not change the sensor wiring.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "bluetooth.onBluetoothDisconnected(function () {\n    btConnected = false\n    status = \"UNKNOWN\"\n})"
+  },
+  {
+    "id": "bt-button-near",
+    "title": "Make A mean near",
+    "why": "The buttons are temporary pretend inputs. NEAR is the exact message for a usable distance at 30 cm or nearer.",
+    "where": "In MakeCode · Input",
+    "do": "Add on button A pressed and set status to \"NEAR\" inside it.",
+    "expected": "Pressing A selects the NEAR message.",
+    "help": "This changes text only. It does not take a sensor measurement.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "input.onButtonPressed(Button.A, function () {\n    status = \"NEAR\"\n})"
+  },
+  {
+    "id": "bt-button-far",
+    "title": "Make B mean farther",
+    "why": "FAR means a usable sensor reading above 30 cm. It never means every possible obstacle has been checked.",
+    "where": "In MakeCode · Input",
+    "do": "Add on button B pressed and set status to \"FAR\" inside it.",
+    "expected": "Pressing B selects the FAR message.",
+    "help": "",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "input.onButtonPressed(Button.B, function () {\n    status = \"FAR\"\n})"
+  },
+  {
+    "id": "bt-button-unknown",
+    "title": "Make A+B mean unknown",
+    "why": "UNKNOWN is different from FAR. A missing or unusable measurement cannot say that the area is clear.",
+    "where": "In MakeCode · Input",
+    "do": "Add on button A+B pressed and set status to \"UNKNOWN\" inside it.",
+    "expected": "Pressing A and B together selects UNKNOWN.",
+    "help": "",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "input.onButtonPressed(Button.AB, function () {\n    status = \"UNKNOWN\"\n})"
+  },
+  {
+    "id": "bt-guard",
+    "title": "Send only while connected",
+    "why": "Forever repeats its instructions. The if block allows a send only when btConnected is true. In the rehearsal, this is the only forever loop.",
+    "where": "In MakeCode · Basic and Logic",
+    "do": "Place if btConnected then inside a forever block.",
+    "expected": "The forever loop contains a connection check.",
+    "help": "This separate sender is only for the button rehearsal. You will delete it and put sending after the real sensor decision later.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "basic.forever(function () {\n    if (btConnected) {\n        // Put the send block here next.\n    }\n})"
+  },
+  {
+    "id": "bt-send-line",
+    "title": "Send one whole message",
+    "why": "The website reads one message per line. uart write line adds the line ending for you.",
+    "where": "In MakeCode · inside if btConnected",
+    "do": "Place Bluetooth → uart write line with status in its text slot.",
+    "expected": "The selected message is sent as a complete line.",
+    "help": "Use uart write line, not uart write string. Do not add extra labels, numbers or spaces to the status text.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "bluetooth.uartWriteLine(status)"
+  },
+  {
+    "id": "bt-heartbeat",
+    "title": "Wait half a second",
+    "why": "500 milliseconds is half a second. Repeating the message lets the website notice when messages stop arriving.",
+    "where": "In MakeCode · forever, below the whole if block",
+    "do": "Place Basic → pause 500 outside the if block, at the bottom of forever.",
+    "expected": "The loop sends at roughly half-second intervals while connected.",
+    "help": "The pause stays outside if so the loop also waits when disconnected. This heartbeat confirms recent messages, not a fresh sensor measurement by itself.",
+    "links": [
+      [
+        "Complete button rehearsal reference, .ts",
+        "downloads/WalkingStick_BLE_Button_Reference.ts"
+      ]
+    ],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "basic.forever(function () {\n    if (btConnected) {\n        bluetooth.uartWriteLine(status)\n    }\n    basic.pause(500)\n})"
+  },
+  {
+    "id": "bt-flash",
+    "title": "Run your rehearsal",
+    "why": "The physical micro:bit must run the new program before it can send messages to the website.",
+    "where": "In MakeCode · Download, then computer MICROBIT drive",
+    "do": "Download WalkingStick_BLE_Rehearsal_01.hex and copy it to the MICROBIT drive using the checked USB connection.",
+    "expected": "The micro:bit runs the rehearsal program.",
+    "help": "Keep the built model on the table. The simulator does not prove a physical Bluetooth connection. Recheck the approved project security setting if flashing changed it.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-open-sounds",
+    "title": "Open the sound website",
+    "why": "Keep the guide visible so you can return to each instruction. The sound website receives your micro:bit messages. Use the teacher-checked Chrome laptop over HTTPS or localhost. iPhone and iPad Chrome cannot make this connection. Keep the sound tab visible during each test.",
+    "where": "In your browser · new tab",
+    "do": "Open Walking-stick sounds in a new tab, then return to this guide for the next instruction.",
+    "expected": "The separate sound website opens beside this guide.",
+    "help": "Use the teacher-checked browser and computer. If Bluetooth is unavailable in the page, ask for that checked setup rather than changing sensor wiring.",
+    "links": [
+      [
+        "Open Walking-stick sounds",
+        "../walking-stick-sounds/"
+      ]
+    ],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-enable-sound",
+    "title": "Allow the website to play",
+    "why": "Browsers wait for a person to click before playing sound. Enabling sound is separate from connecting a micro:bit. Use the real micro:bit connection for these steps. The page’s labelled demo simulates messages and cannot test Bluetooth.",
+    "where": "On Walking-stick sounds",
+    "do": "Switch to the Walking-stick sounds tab. Click Enable sound. Observe the result there, then return to this guide.",
+    "expected": "The page can play sound after your click.",
+    "help": "Check the computer volume with your teacher. A muted computer cannot prove the sound works.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-connect",
+    "title": "Connect your micro:bit",
+    "why": "The browser asks which nearby device you want. Choose your team’s identified micro:bit.",
+    "where": "On Walking-stick sounds",
+    "do": "Switch to the Walking-stick sounds tab. Click Connect micro:bit and select the team device in the browser chooser. Observe the result there, then return to this guide.",
+    "expected": "The website shows a live connection and starts receiving UNKNOWN.",
+    "help": "Select only your team’s identified device. This browser chooser gives the website permission to connect. If the device is missing, check the flashed UART program and approved Project Settings with your teacher. No Pairing Required allows nearby devices to connect too.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-try-near",
+    "title": "Try the near message",
+    "why": "A is still a pretend input. This test checks the message and sound path.",
+    "where": "At your micro:bit and Walking-stick sounds",
+    "do": "Switch to the Walking-stick sounds tab. Press button A once. Observe the result there, then return to this guide.",
+    "expected": "The page receives NEAR and gives its near warning.",
+    "help": "This is a button rehearsal, not an obstacle test. If the page remains UNKNOWN, check the connection and exact uppercase text.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-try-far",
+    "title": "Try the farther message",
+    "why": "B changes the selected message, which the repeating loop sends again.",
+    "where": "At your micro:bit and Walking-stick sounds",
+    "do": "Switch to the Walking-stick sounds tab. Press button B once. Observe the result there, then return to this guide.",
+    "expected": "The page receives FAR and stops the near warning.",
+    "help": "FAR reports a selected state in this rehearsal. It cannot reassure someone that a walking route is clear.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-try-unknown",
+    "title": "Try the unknown message",
+    "why": "Unknown must remain different from a measured farther reading.",
+    "where": "At your micro:bit and Walking-stick sounds",
+    "do": "Switch to the Walking-stick sounds tab. Press A and B together. Observe the result there, then return to this guide.",
+    "expected": "The page receives UNKNOWN and shows that no usable reading is available.",
+    "help": "The website must not label UNKNOWN as clear or safe.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-try-disconnect",
+    "title": "Check a lost connection",
+    "why": "Without a connection, an earlier FAR message is no longer a current result. A stopped or stale stream must also become unknown; the page cannot keep treating an old FAR as current.",
+    "where": "On Walking-stick sounds",
+    "do": "Switch to the Walking-stick sounds tab. Click Disconnect. Observe the result there, then return to this guide.",
+    "expected": "The page changes to disconnected or unknown and stops the near sound.",
+    "help": "After reconnecting, test stopping incoming messages with your teacher. The page must become unknown when messages are stale, even if the last message was FAR.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-remove-buttons",
+    "title": "Remove the rehearsal-only blocks",
+    "why": "The real sensor must choose the message. Its own loop must send each result after the fresh sensor decision. Return to the MakeCode rehearsal tab before deleting these blocks.",
+    "where": "In MakeCode · rehearsal project",
+    "do": "Delete the three temporary button event blocks and the rehearsal forever sending block.",
+    "expected": "Only status and btConnected initialization, UART startup and the two connection events remain. No button handler or forever loop remains.",
+    "help": "Keep the earlier button-rehearsal .hex. Save this smaller add-on as a new version. The real sensor loop will send messages later; do not leave an extra background sender.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-open-original",
+    "title": "Open the saved sensor program",
+    "why": "The original program already knows your sensor’s extension, connections and valid-reading rule. Preserve that work. Check that status and btConnected are not already used for another job before adding the new code.",
+    "where": "In a second MakeCode editor tab",
+    "do": "Switch to the saved sensor project tab. Import the latest working sensor .hex and save a new numbered copy for Bluetooth work.",
+    "expected": "The saved sensor blocks are visible in a separate project.",
+    "help": "Confirm it is the working walking-stick program. If it already uses names status or btConnected for another job, ask your teacher to resolve those names before pasting.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-original-extension",
+    "title": "Add Bluetooth to the sensor copy",
+    "why": "Extensions belong to each MakeCode project. Adding Bluetooth to the rehearsal does not add it to your sensor project. If MakeCode asks to remove radio, stop until your teacher confirms it is unused. Keep the existing sensor extension and pin settings.",
+    "where": "In MakeCode · sensor project · Extensions",
+    "do": "Add the official Bluetooth extension to this saved sensor copy.",
+    "expected": "This project has both its existing sensor blocks and the Bluetooth category.",
+    "help": "If it asks to remove radio, check with your teacher that the sensor extension does not need radio. Do not remove the sensor extension or change its pins.",
+    "links": [],
+    "stage": "guided"
+  },
+  {
+    "id": "bt-original-setting",
+    "title": "Check the sensor copy connection mode",
+    "why": "The sound website needs the same approved Bluetooth connection mode in the program you actually transfer.",
+    "where": "With your teacher · sensor project · gear menu → Project Settings",
+    "do": "Select the teacher-approved No Pairing Required setting for this saved sensor copy.",
+    "expected": "The sensor copy has the same approved setting as the tested rehearsal.",
+    "help": "This permits nearby devices to connect. Use this configuration for the supervised tabletop demonstration. The website chooser still asks which device to use.",
+    "links": [],
+    "stage": "guided"
+  },
+  {
+    "id": "bt-open-rehearsal-text",
+    "title": "Open the add-on as text",
+    "why": "JavaScript is another view of the blocks you made. You need only the setup left after deleting rehearsal buttons and its sender.",
+    "where": "In MakeCode · rehearsal project tab",
+    "do": "Click JavaScript in the rehearsal project.",
+    "expected": "The text shows initialization, UART startup and two connection handlers.",
+    "help": "Confirm the text contains no input.onButtonPressed and no basic.forever before copying.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-copy-setup",
+    "title": "Copy the remaining setup",
+    "why": "Copy keeps the text ready to paste into the saved sensor project. It does not change that sensor program yet.",
+    "where": "In MakeCode · rehearsal JavaScript editor",
+    "do": "Click inside the editor, select all its text and use Copy.",
+    "expected": "The remaining rehearsal setup is copied.",
+    "help": "Use the editor’s Copy command or the computer’s copy shortcut. Keep this rehearsal tab open.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "// The setup you copy contains these parts:\nlet status = \"UNKNOWN\"\nlet btConnected = false\nbluetooth.startUartService()\nbluetooth.onBluetoothConnected(function () {\n    btConnected = true\n})\nbluetooth.onBluetoothDisconnected(function () {\n    btConnected = false\n    status = \"UNKNOWN\"\n})"
+  },
+  {
+    "id": "bt-sensor-paste-position",
+    "title": "Find the paste position",
+    "why": "The original sensor code must stay exactly where it is. Add the Bluetooth setup after it, outside its blocks.",
+    "where": "In MakeCode · saved sensor copy tab",
+    "do": "Open JavaScript and place the cursor on an empty line after the program’s final line.",
+    "expected": "The cursor is after the whole program, outside its existing functions and forever loop.",
+    "help": "If you cannot identify the end of the whole program, ask your teacher to point to the paste location before changing it.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-append-addon",
+    "title": "Paste after the sensor program",
+    "why": "The copied setup is added after the old text. Do not replace the sensor program or paste inside its forever loop.",
+    "where": "In MakeCode · saved sensor copy · JavaScript editor",
+    "do": "Use Paste on the empty line after the final line of the sensor program.",
+    "expected": "The existing sensor text stays above the new status, btConnected, UART startup and connection events.",
+    "help": "The new text must be outside every function and forever block. Check the closing braces before pasting. If errors appear, undo the paste and ask your teacher to check the cursor position.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "// Your existing sensor program stays above this line.\n// Paste the copied Bluetooth setup on a new line here.\n// Do not paste inside basic.forever(function () { ... })."
+  },
+  {
+    "id": "bt-return-blocks",
+    "title": "Check the combined blocks",
+    "why": "The new setup should sit beside the existing sensor code. A second sender would hide a stopped sensor by repeating old results.",
+    "where": "In MakeCode · saved sensor copy",
+    "do": "Click Blocks and inspect the combined program.",
+    "expected": "The original sensor loop remains. Bluetooth setup and events exist, with no rehearsal button events or extra sending loop.",
+    "help": "Resolve any duplicate variable names or code errors with your teacher before continuing.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-sensor-unknown",
+    "title": "Send unknown for a failed reading",
+    "why": "Use the original checked validity branch. A sensor error must never become FAR. Use the outer else branch that already shows ?. Keep the actual checked sensor validity test.",
+    "where": "In MakeCode · original invalid-reading branch",
+    "do": "Add set status to \"UNKNOWN\" before the existing question-mark display.",
+    "expected": "The invalid branch selects UNKNOWN and still shows its existing display.",
+    "help": "Keep the actual sensor’s checked validity test. Do not replace it with an assumed pin or a guessed rule such as every positive number is valid.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "status = \"UNKNOWN\"\n// Keep the existing question-mark display below this assignment."
+  },
+  {
+    "id": "bt-sensor-near",
+    "title": "Send the near sensor result",
+    "why": "The original valid-reading branch already compares distanceCm with 30. Use that same decision.",
+    "where": "In MakeCode · valid reading, distanceCm ≤ 30 branch",
+    "do": "Add set status to \"NEAR\" before the existing X display.",
+    "expected": "A usable near reading selects NEAR and still shows X.",
+    "help": "",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "status = \"NEAR\"\n// Keep the existing X display below this assignment."
+  },
+  {
+    "id": "bt-sensor-far",
+    "title": "Send the farther sensor result",
+    "why": "FAR belongs only to the existing valid-reading branch above 30 cm. The display remains part of your built model.",
+    "where": "In MakeCode · valid reading, distanceCm > 30 branch",
+    "do": "Add set status to \"FAR\" before the existing clear-screen block.",
+    "expected": "A usable farther reading selects FAR and still clears the LEDs.",
+    "help": "Keep all three status assignments in the original sensor decision branches. Do not create a second decision using a second reading.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "status = \"FAR\"\n// Keep the existing clear-screen block below this assignment."
+  },
+  {
+    "id": "bt-sensor-send",
+    "title": "Send after the fresh decision",
+    "why": "Put sending in the same loop as the sensor decision. If that loop stops producing results, the website will stop hearing messages and show unknown. Put this sender after the closing end of the complete valid/near/far decision, but still inside the sensor’s forever loop. If a checked pause already exists there, have your teacher reconcile it with the 500 ms wait; do not stack duplicate waits.",
+    "where": "In MakeCode · end of the original sensor-reading forever loop",
+    "do": "At the bottom of the existing sensor forever loop, add if btConnected → uart write line status, then pause 500 after that if.",
+    "expected": "Read once → check validity → choose status and display → send when connected → wait, all in the same sensor loop.",
+    "help": "Do not restore the separate rehearsal sender. Put sending outside every near, far and invalid branch so every completed reading can be reported. Keep a checked sensor timing requirement; ask your teacher to reconcile an existing pause instead of stacking duplicate waits.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided",
+    "code": "// After the EXISTING fresh sensor read, validity check,\n// status assignment and display decision, in the SAME loop:\nif (btConnected) {\n    bluetooth.uartWriteLine(status)\n}\nbasic.pause(500)"
+  },
+  {
+    "id": "bt-save-integrated",
+    "title": "Save the combined program",
+    "why": "A new version keeps the earlier sensor program available. You will test this exact new version.",
+    "where": "In MakeCode · saved sensor copy · Download",
+    "do": "Name and download the next unused numbered WalkingStick .hex.",
+    "expected": "The saved version contains the sensor program and Bluetooth additions.",
+    "help": "Keep older versions in the team folder.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-transfer-integrated",
+    "title": "Run the combined program",
+    "why": "The physical micro:bit still has the button rehearsal until you replace it with the sensor program.",
+    "where": "On your computer · MICROBIT drive",
+    "do": "Copy the new numbered sensor .hex to MICROBIT using the checked USB connection.",
+    "expected": "The physical board runs the sensor-and-Bluetooth version.",
+    "help": "Keep the board and built model on the table. Do not change sensor wires.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-reconnect-integrated",
+    "title": "Reconnect the sound page",
+    "why": "Flashing restarts the micro:bit and closes its old Bluetooth connection. Connect to the updated program.",
+    "where": "On Walking-stick sounds · active browser tab",
+    "do": "Switch to the sound page and click Connect micro:bit to select your team’s device again.",
+    "expected": "The page receives the updated sensor messages. Return to this guide after checking.",
+    "help": "Enable sound again if the page requires it. Keep the sound page visible during the next physical checks. If the board is missing, recheck the teacher-approved Project Settings.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-real-test",
+    "title": "Practise the real near message",
+    "why": "The sensor now chooses the message. This is a practice check before your formal repeated tests.",
+    "where": "At the tabletop model · Walking-stick sounds tab visible",
+    "do": "Keep the sound page active and place the cardboard 20 cm from the sensor’s front face. Observe both displays, then return to this guide.",
+    "expected": "A usable reading near 20 cm gives X on the micro:bit and NEAR with a warning on the sound page.",
+    "help": "Keep the same cardboard and measured position from your earlier practice. If either display disagrees, stop and check the actual reading and latest program with your teacher.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-real-far",
+    "title": "Practise the real farther message",
+    "why": "Use the same cardboard. This changes the distance rather than the program.",
+    "where": "At the tabletop model · Walking-stick sounds tab visible",
+    "do": "Switch to the sound page and move the cardboard to 40 cm from the sensor face. Observe both displays, then return to this guide.",
+    "expected": "A usable reading near 40 cm clears the micro:bit LEDs and reports FAR. The near warning stops.",
+    "help": "FAR reports the measured condition. It cannot confirm a walking route is clear.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-real-unknown",
+    "title": "Check an unusable sensor reading",
+    "why": "The failed-reading path must send UNKNOWN, not FAR. Use your actual sensor’s safe checked test.",
+    "where": "With your teacher · tabletop model and active sound page",
+    "do": "Ask your teacher to run the model’s checked unusable-reading test while the sound page is visible.",
+    "expected": "The micro:bit shows ? and the sound page reports UNKNOWN. Return to this guide after checking.",
+    "help": "Do not unplug or move live wires to create an error. If no safe test is prepared, stop here and have your teacher prepare it before claiming this check passed.",
+    "links": [],
+    "phase": "Bluetooth sound",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-check-message",
+    "title": "Choose the message",
+    "why": "The words must match exactly so both devices understand the same state.",
+    "where": "In this guide",
+    "kind": "check",
+    "question": "Which message should an unusable reading send?",
+    "options": [
+      "FAR",
+      "UNKNOWN",
+      "NEAR"
+    ],
+    "answer": 1,
+    "hint": "An unusable reading cannot tell us how far away the obstacle is.",
+    "stage": "guided"
+  },
+  {
+    "id": "bt-explain-result",
+    "title": "Explain one real result",
+    "why": "Button rehearsal and sensor tests prove different things. Use actual observations.",
+    "where": "In this guide",
+    "kind": "response",
+    "question": "What did you test, and what happened?",
+    "starter": "I tested ___. The micro:bit sent ___. The website ___. One thing we still need to check is ___.",
+    "stage": "independent"
+  },
+  {
     "id": "record-trials",
     "title": "Record the six trials",
-    "why": "Real tests can fail. Keep the actual reading and display so another person can see what happened.",
+    "why": "Real tests can fail. Keep the actual reading and display so another person can see what happened. Use the final sensor-and-Bluetooth program for these formal trials.",
     "where": "In your shared team report · Test and improvement",
     "do": "Use the trial sheet to record three tries at 20 cm and three at 40 cm. Move the cardboard away and back for each try.",
     "expected": "Six actual trial rows show ruler distance, sensor reading, expected display and actual display.",

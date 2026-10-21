@@ -3,7 +3,7 @@
   "slug": "walking-stick-bluetooth-guide",
   "title": "Add Bluetooth sound",
   "version": "1.0.0",
-  "status": "pilot",
+  "status": "superseded",
   "recommendedGrades": [
     8
   ],
@@ -247,5 +247,6 @@
     }
   ],
   "offline": "Print printable-fallback.html. Live BLE requires a compatible browser and actual hardware.",
-  "teacherGuidePath": "technology-learning-hub/teacher-materials/steam-bluetooth.md"
+  "teacherGuidePath": "technology-learning-hub/teacher-materials/steam-bluetooth.md",
+  "replacedBy": "MOD-STEAM-STICK-01"
 }
