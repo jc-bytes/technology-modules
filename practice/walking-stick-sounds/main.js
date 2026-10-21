@@ -9,7 +9,7 @@ $('support').textContent=supported?'Use Chrome with Bluetooth turned on. Choose 
 $('connect').disabled=!supported;
 const connection=new MicrobitConnection({bluetooth:navigator.bluetooth,onState:handleConnection,onBytes:bytes=>{if(mode==='live'&&connectionState==='connected'&&!hidden)receive(bytes);}});
 function handleConnection(event){connectionState=event.state;latest=null;parser.reset();speaker.stop();lastWarning=-Infinity;
- $('connection').textContent=event.state==='connected'?`Connected to ${event.deviceName||'micro:bit'}. Waiting for messages.`:event.state==='connecting'?'Choose the micro:bit, then wait for its UART service.':event.message||'Not connected.';
+ $('connection').textContent=event.state==='connected'?`Connected to ${event.deviceName||'micro:bit'}.`:event.state==='connecting'?'Choose the micro:bit, then wait for its UART service.':event.message||'Not connected.';
  $('connect').disabled=!supported||event.state==='connecting'||event.state==='connected';$('disconnect').disabled=!['connecting','connected'].includes(event.state);render();}
 function receive(bytes){for(const state of parser.push(bytes))latest={state,receivedAt:performance.now()};render();}
 function reading(){if(hidden)return 'hidden';if(mode==='live'&&connectionState!=='connected')return connectionState;return classifyFreshness(latest,performance.now());}
