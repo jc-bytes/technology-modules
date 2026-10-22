@@ -1,6 +1,6 @@
-import {site} from './site.js?v=1.4.0';
-import {buildSteps} from './steps/build-data.js?v=1.4.0';
-import {narrationFiles} from './narration-manifest.js?v=1.4.0';
+import {site} from './site.js?v=1.4.1';
+import {buildSteps} from './steps/build-data.js?v=1.4.1';
+import {narrationFiles} from './narration-manifest.js?v=1.4.1';
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function render(s){
  const image=s.image?`<figure class="build-picture"><img src="${e(s.image)}" alt="${e(s.alt||s.title)}"><figcaption><a href="${e(s.image)}" target="_blank" rel="noopener">Open picture full size</a></figcaption></figure>`:'';

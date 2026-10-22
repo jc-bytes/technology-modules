@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-HAND-01",
   "slug": "robotic-hand-code-guide",
   "title": "Code your robotic hand",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -130,13 +130,13 @@
     },
     {
       "id": "base-up",
-      "title": "Read the base pair and add increase",
+      "title": "Make S4 move down",
       "entryPath": "#base-up",
       "estimatedMinutes": null
     },
     {
       "id": "base-down",
-      "title": "Add the base-down button",
+      "title": "Make S2 move up",
       "entryPath": "#base-down",
       "estimatedMinutes": null
     },

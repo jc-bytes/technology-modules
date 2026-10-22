@@ -98,15 +98,15 @@
     },
     {
       "id": "base-up",
-      "text": "Read the base pair and add increase. Inside loop(), after the complete S1 block. The base has its own saved button readings and command. S4 increases only when S2 is not pressed. Replace the old S4 block with these two readings and the guarded increase block, after the S1 block. Check. S4 alone increases baseAngle up to 176. Both base buttons pressed skips this block.",
-      "sha256": "cd05aa3a1bb8eb7704adba9e01b29596a2c3971591ed4cb75f6f743f80851893",
-      "file": "assets/narration/base-up-cd05aa3a1bb8.mp3"
+      "text": "Make S4 move down. Inside loop(), after the complete S1 block. S4 moves the base joint down by increasing its command. This block runs only when S4 is pressed and S2 is not. Replace the old S4 block with these two readings and the guarded increase block, after the S1 block. Check. S4 alone moves the base joint down. Its command increases up to 176. Both base buttons pressed skips this block.",
+      "sha256": "c5d2441225ab955224ef4c7a3131f6a6a0893512f344178293c982ccaa6175f1",
+      "file": "assets/narration/base-up-c5d2441225ab.mp3"
     },
     {
       "id": "base-down",
-      "text": "Add the base-down button. Inside loop(), after the complete S4 block. S2 decreases only when S4 is not pressed. The lower limit keeps baseAngle at or above zero. Replace the old S2 block with this guarded decrease block, after the S4 block. Check. S2 alone lowers the command toward 0. Both base buttons pressed leaves the command unchanged.",
-      "sha256": "ed9398994aaaee175000c4c600bbdfd5aa7088a0c45afa4c197698d550967ab2",
-      "file": "assets/narration/base-down-ed9398994aaa.mp3"
+      "text": "Make S2 move up. Inside loop(), after the complete S4 block. S2 moves the base joint up by decreasing its command. This block runs only when S2 is pressed and S4 is not. The lower limit keeps baseAngle at or above zero. Replace the old S2 block with this guarded decrease block, after the S4 block. Check. S2 alone moves the base joint up. Its command decreases to 0. Both base buttons pressed leaves the target unchanged.",
+      "sha256": "a4c08517027bfd7457f28c8e0f06dfc775801f653ca110fa603b3557e369fe8c",
+      "file": "assets/narration/base-down-a4c08517027b.mp3"
     },
     {
       "id": "loop-pause",
