@@ -8,165 +8,165 @@
   "records": [
     {
       "id": "goal",
-      "text": "Measure distance and hear a warning. At your already-built walking stick. The micro:bit measures how far away an object is. The website shows that distance in centimetres and plays a warning when the object is 30 centimetres away or closer. Keep the built model on a table. Save your old program, build each part of the code, then test the distance and warning. Check. A nearby object gives X on the micro:bit, a distance on the website and a warning sound. Keep the existing built sensor connections: Trig P0 and Echo P1. Have the teacher check the powered sensor interface before physical tests. Keep the model on a table. This is a classroom prototype, not tested mobility equipment.",
-      "sha256": "997ec81fa894f337cf3fdc6d487af428d2060f6aa0d09a7f4d06b9380b5fb0c6",
-      "file": "assets/narration/goal-997ec81fa894.mp3"
+      "text": "Measure distance and hear a warning. At your already-built walking stick. The micro:bit measures how far away an object is. The website shows that distance in centimetres and plays a warning when the object is 30 centimetres away or closer. Keep the built model on a table. Save your old program, add one small JavaScript section at a time, then switch to Blocks to understand it. Test the distance and warning after building. Check: A nearby object gives X on the micro:bit, a distance on the website and a warning sound. Keep the existing built sensor connections: Trig P0 and Echo P1. Have the teacher check the powered sensor interface before physical tests. Keep the model on a table. This is a classroom prototype, not tested mobility equipment.",
+      "sha256": "cc3a77d233004545c2b9ac1c613d8a22366487fff0714f29ca8fb5dffa4a2c2a",
+      "file": "assets/narration/goal-cc3a77d23300.mp3"
     },
     {
       "id": "open-team-project",
-      "text": "Protect the old program and make a test copy. In Make Code · Home → your team project. A backup keeps the earlier team program available while you build a new test program. Open your latest team project and download a backup named WalkingStick_BeforeBluetooth.hex. Return Home and create a new project named WalkingStick_Bluetooth_Test. Check. Your earlier .hex is saved, and the new test project is open. Keep the old team project. For an older saved .hex, use Import → Import File before making its backup. The following pages work in the new test project.",
-      "sha256": "634adce5b2cb98d378386f7720b0d7f16bea7a2f15ad5cf0ac9caf50051835bd",
-      "file": "assets/narration/open-team-project-634adce5b2cb.mp3"
+      "text": "Protect the old program and make a test copy. In Make Code · Home → your team project. A backup keeps the earlier team program available while you build a new test program. Open your latest team project and download a backup named WalkingStick_BeforeBluetooth.hex. Return Home and create a new project named WalkingStick_Bluetooth_Test. Check: Your earlier .hex is saved, and the new test project is open. Keep the old team project. For an older saved .hex, use Import → Import File before making its backup. The following pages work in the new test project.",
+      "sha256": "6f6b3dc011928e52d20eb2abead7651c2f075444428e2ae48e4c30c0fc067d97",
+      "file": "assets/narration/open-team-project-6f6b3dc01192.mp3"
     },
     {
       "id": "bluetooth-sound",
-      "text": "Add the Bluetooth blocks. In the new Make Code test project · Extensions. Bluetooth lets the micro:bit send messages without a cable. Adding its extension puts Bluetooth blocks in the toolbox. Open Extensions and add the official Bluetooth extension to WalkingStick_Bluetooth_Test. Check. A Bluetooth category appears in the toolbox. If Make Code asks to remove the radio extension, Bluetooth uses its place in this test project. Keep the original project and backup. Ask the teacher to resolve a different conflict or a memory error.",
-      "sha256": "9ba3f0f9205112ebbd59455f04ee81f253bc1c14b9d4bd8249127271b69feee8",
-      "file": "assets/narration/bluetooth-sound-9ba3f0f92051.mp3"
+      "text": "Add the Bluetooth blocks. In the new Make Code test project · Extensions. Bluetooth lets the micro:bit send messages without a cable. Adding its extension puts Bluetooth blocks in the toolbox. Open Extensions and add the official Bluetooth extension to WalkingStick_Bluetooth_Test. Check: A Bluetooth category appears in the toolbox. If Make Code asks to remove the radio extension, Bluetooth uses its place in this test project. Keep the original project and backup. Ask the teacher to resolve a different conflict or a memory error.",
+      "sha256": "d9a3389a5734e67780c8fcc2f7d2d20a8da5facc8790f9b9d7d8a29c6d3f1dae",
+      "file": "assets/narration/bluetooth-sound-d9a3389a5734.mp3"
     },
     {
       "id": "connection-setting",
-      "text": "Choose the classroom Bluetooth setting. In Make Code · Project Settings. No Pairing Required lets nearby devices connect for this teacher-supervised demonstration. Chrome still asks which device to use. Open Settings → Project Settings and select No Pairing Required. Close the settings. Later, download this updated project to the physical micro:bit. Check. No Pairing Required is selected. The board uses it only after you download the updated program. If school policy requires a different mode, have the teacher verify that connection route. Do not guess among nearby boards.",
-      "sha256": "28e1123d85bb11e3364ad990167acb14a275967672b4051962e3efb14ac7cecb",
-      "file": "assets/narration/connection-setting-28e1123d85bb.mp3"
+      "text": "Choose the classroom Bluetooth setting. In Make Code · Project Settings. No Pairing Required lets nearby devices connect for this teacher-supervised demonstration. Chrome still asks which device to use. Open Settings → Project Settings and select No Pairing Required. Close the settings. Later, download this updated project to the physical micro:bit. Check: No Pairing Required is selected. The board uses it only after you download the updated program. If school policy requires a different mode, have the teacher verify that connection route. Do not guess among nearby boards.",
+      "sha256": "664f64feef0f584094a7b4b71a1e4e68e46d21f2d97e4d6a0ca992d4a5607fff",
+      "file": "assets/narration/connection-setting-664f64feef0f.mp3"
     },
     {
       "id": "sensor-profile",
-      "text": "Create the six named storage boxes. In the new test project · JavaScript. A variable is a named box that remembers a value. Two boxes hold pin names, two hold numbers, one holds a word and one holds true or false. Choose JavaScript. In this new empty test project, remove the starter code and type these six lines. They only create variables; they do not read the sensor or send anything. Check. Choose Blocks. on start shows P0, P1 and unknown. Check the variable names in Variables. Type each name exactly, including capital letters. DigitalPin.P0 means pin zero; DigitalPin.P1 means pin one. 0 is a number, \"unknown\" is a text word and false means not connected. Make Code may hide starting values of 0 and false in Blocks. If an unused name disappears, open Variables → Make a Variable and create that name again.",
-      "sha256": "248d39e637d9ecce0a4ba4aa39470552ac85773ad03ee96b5efde269d800b255",
-      "file": "assets/narration/sensor-profile-248d39e637d9.mp3"
+      "text": "Create the six named storage boxes. In Make Code · JavaScript, then Blocks. A variable is a named box that remembers a value. Two boxes hold pin names, two hold numbers, one holds a word and one holds true or false. Choose JavaScript. Copy these six lines into the empty test project. Choose Blocks and find the starting values in on start. First coding step only: replace the starter code in the new test project. Each variable is a named storage box. The pin boxes say where to send and read the pulse. Check: on start sets Trig to P0, Echo to P1 and stick status to unknown. Zero and false starting values may be hidden. Type each name exactly, including capital letters. DigitalPin.P0 means pin zero; DigitalPin.P1 means pin one. 0 is a number, \"unknown\" is a text word and false means not connected. Make Code may hide starting values of 0 and false in Blocks. If an unused name disappears, open Variables → Make a Variable and create that name again.",
+      "sha256": "7629b20898e64fbdcccd5b81a672647565673e82eaffeca03f56b8bf6eddb235",
+      "file": "assets/narration/sensor-profile-7629b20898e6.mp3"
     },
     {
       "id": "start-uart",
-      "text": "Start the Bluetooth message service. In Blocks · on start. on start runs once when the program starts. you art service prepares Bluetooth text messages; it does not send a reading. Put the message service below your variable setup. Open Bluetooth and drag bluetooth uart service into on start, below set stick status to unknown. Check trigPin is P0 and echoPin is P1. Keep those two assignments in on start. Keep decisions and you art write line out of on start. They will go in forever later. Check. on start has the initial values and one bluetooth uart service, matching the image. Your initial zero and false values may be hidden after switching views. Do not add near and far here: they must be chosen using each new reading.",
-      "sha256": "a0259ce9d73ea845f7687b7bccf54874bf37e1caa2b9af2eb5440d0554480019",
-      "file": "assets/narration/start-uart-a0259ce9d73e.mp3"
+      "text": "Start the Bluetooth message service. In Make Code · JavaScript, then Blocks. on start runs once when the program starts. you art service prepares Bluetooth text messages; it does not send a reading. Keep your six variable lines. Add this one line below them. Choose Blocks and compare on start. Add at the bottom of the JavaScript, outside any function or event. This service prepares a Bluetooth text channel. It does not send a reading yet. Check: on start now has one bluetooth uart service below the starting values. Your initial zero and false values may be hidden after switching views. Do not add near and far here: they must be chosen using each new reading.",
+      "sha256": "0ff6934788d19b6b864a5f4bc4af77ab98b0360e6b34025cdb928f1601a852db",
+      "file": "assets/narration/start-uart-0ff6934788d1.mp3"
     },
     {
       "id": "rule",
-      "text": "Write the small sensor-reading function. In Make Code · JavaScript, then Blocks. A function is a named group of instructions. This helper sends a tiny pulse on P0, then measures how long the echo on P1 lasts. Its answer is time, not centimetres. Choose JavaScript. Below your existing code, type this function without deleting the variable setup or Bluetooth service. Then return to Blocks. Check. A separate purple function stack appears. It is outside on start and outside forever. 0 means trigger off; 1 means on. The waits are 2 and 10 microseconds. The return line gives back the echo time and stops waiting after 2five hundred0 microseconds. In Blocks, that return expression appears grey. It is expected. Keep the function named readUltrasonicDistance.",
-      "sha256": "b36e0a2301d2e69ce40da2b9be411d1f9c04beecff70639cb24d6045c9257375",
-      "file": "assets/narration/rule-b36e0a2301d2.mp3"
+      "text": "Write the small sensor-reading function. In Make Code · JavaScript, then Blocks. A function is a named group of instructions. This helper sends a tiny pulse on P0, then measures how long the echo on P1 lasts. Its answer is time, not centimetres. Paste the sensor helper below the code already in your project. Choose Blocks and find the separate purple function. Add this entire function at the bottom of the JavaScript. Keep the existing lines. P0 sends the short trigger pulse. P1 measures the returning echo. The answer is microseconds, not centimetres. Check: The function is its own stack. Its return expression may appear grey, which is expected. 0 means trigger off; 1 means on. The waits are 2 and 10 microseconds. The return line gives back the echo time and stops waiting after 2five hundred0 microseconds. In Blocks, that return expression appears grey. It is expected. Keep the function named readUltrasonicDistance.",
+      "sha256": "7f686db97fa044fe46ca3f177b3104e46115bb74b3c4dc446bd2506105c36098",
+      "file": "assets/narration/rule-7f686db97fa0.mp3"
     },
     {
       "id": "connection-events",
-      "text": "Build the two connection events. In Blocks · two separate Bluetooth event stacks. These events run when Bluetooth connects or disconnects. They remember the connection while forever reads the sensor. Build two separate event stacks. From Bluetooth, drag on bluetooth connected into the workspace. Put Variables → set B T connected to inside it, using Logic → true. Drag on bluetooth disconnected into another empty space. Put set B T connected to false inside it. Below false, add set stick status to with a Text value unknown. Check. The two events match the image. Neither is inside on start, forever or the sensor function. An event runs when the connection changes. true means connected; false means disconnected. These events remember the connection while forever reads the sensor.",
-      "sha256": "7a02d1388adf76d44d23e1df78b441a8b0c04beaeaf0442cf707a877cdd4c359",
-      "file": "assets/narration/connection-events-7a02d1388adf.mp3"
+      "text": "Build the two connection events. In Make Code · JavaScript, then Blocks. These events run when Bluetooth connects or disconnects. They remember the connection while forever reads the sensor. Add these two event handlers. Choose Blocks and compare the connected and disconnected stacks. Add both events at the bottom, after the sensor function’s closing brace. Do not put them inside that function. An event runs when the connection changes. It does not belong inside forever. Check: Two separate Bluetooth stacks appear. Connected sets true; disconnected sets false and unknown. An event runs when the connection changes. true means connected; false means disconnected. These events remember the connection while forever reads the sensor.",
+      "sha256": "1c78f79273c1bf634a56c96000209ff02e2225b743afad3b2e9608e79066da8e",
+      "file": "assets/narration/connection-events-1c78f79273c1.mp3"
     },
     {
       "id": "read-echo",
-      "text": "Read a fresh echo in forever. In Blocks · the empty forever stack. forever repeats. Each repeat must read the sensor again before making a decision. Put the sensor call first in forever. From Basic, drag one forever stack into the workspace if there is not one already. Inside forever, add Variables → set echoTime to. From Functions, place the value-shaped call readUltrasonicDistance in its value socket. Check. forever begins with set echoTime to call readUltrasonicDistance. Use the function call that returns a number. Keep the separate purple function definition outside forever.",
-      "sha256": "3a6f742cf5313b898b2b83e015ce308689f26751db94f7ad77bb4544a20da163",
-      "file": "assets/narration/read-echo-3a6f742cf531.mp3"
+      "text": "Read a fresh echo in forever. In Make Code · JavaScript, then Blocks. forever repeats. Each repeat must read the sensor again before making a decision. Add this short repeating loop. Choose Blocks and trace the function call followed by the pause. Add this whole forever at the bottom, outside the other stacks. There must be only one forever. The function definition is the recipe. This function call runs that recipe and saves its answer in echoTime. Check: forever reads a fresh echo and pauses for five hundred ms. Keep later additions between these two instructions. Use the function call that returns a number. Keep the separate purple function definition outside forever.",
+      "sha256": "f2c49152d1a10ee68fb1fab5d201dadb767d74f5704d0f334b24b3b91b9fd016",
+      "file": "assets/narration/read-echo-f2c49152d1a1.mp3"
     },
     {
       "id": "unknown-message",
-      "text": "Build the failed-reading branch first. In Blocks · forever → first if. An unusable echo must choose unknown. This test also catches 0 when no echo arrives. Below the sensor call in forever, build the first if/else. Drag Logic → if/else below set echoTime. Add else with + if needed. Put Logic → or in the condition. Fill it with echoTime < 116 and echoTime > 23200. Inside then, add set distanceCm to 0, set stick status to the Text word unknown, then Basic → show string with ?. Leave the outer else empty for now. Check. The first then contains exactly the failed-reading result. The next page fills its else. < means less than; > means greater than. OR means either test can select this branch. 0 here marks an unusable distance. It must not be sent as a real measurement.",
-      "sha256": "49bd9fd5e17010a443161b89c3dd2935bae2d8a7d8a78b8e8e3b0d015affcfab",
-      "file": "assets/narration/unknown-message-49bd9fd5e170.mp3"
+      "text": "Build the failed-reading branch first. In Make Code · JavaScript, then Blocks. An unusable echo must choose unknown. This test also catches 0 when no echo arrives. Insert this if/else between the read and the pause. Choose Blocks and inspect the failed-reading branch. Inside forever: add below echoTime = readUltrasonicDistance() and above basic.pause(five hundred). || means OR. A missing echo is 0, so it enters this branch. The 0 is a placeholder, not a measured distance. Check: The first then sets 0 and unknown and shows ?. Its else is empty for the next step. < means less than; > means greater than. OR means either test can select this branch. 0 here marks an unusable distance. It must not be sent as a real measurement.",
+      "sha256": "2608c7a6fed0cac74e74a00c1bd51189e9c7dceb76a464f0b135de287d143f72",
+      "file": "assets/narration/unknown-message-2608c7a6fed0.mp3"
     },
     {
       "id": "convert-distance",
-      "text": "Turn echo time into centimetres. In Blocks · the outer sensor if’s else. The sound travels out and back. Dividing its echo time by 58 estimates centimetres. Rounding keeps one decimal place. Build the distance calculation inside the outer else. Add set distanceCm to inside the empty outer else. From Math, fit arithmetic blocks together to make echoTime ÷ 58, then multiply that answer by 10. Place that result inside Math → round. Divide the rounded answer by 10 and put the whole calculation in set distanceCm. Check. The calculation reads round((echoTime ÷ 58) × 10) ÷ 10. An echo of 1177 gives about 20.3 centimetres. Build the sockets from the inside outward. For 20.293… centimetres: ×10 gives 202.93…, round gives 203, then ÷10 gives 20.3. Leave room below this calculation for the near/far check.",
-      "sha256": "b74083ac7bcd52844212c03dcc23a7b0cde6f4e9ef7a185a9ef8464ee9672272",
-      "file": "assets/narration/convert-distance-b74083ac7bcd.mp3"
+      "text": "Turn echo time into centimetres. In Make Code · JavaScript, then Blocks. The sound travels out and back. Dividing its echo time by 58 estimates centimetres. Rounding keeps one decimal place. Put this calculation inside the empty outer else. Choose Blocks and follow the calculation from inside to outside. Inside the empty else of the echoTime check. Put this line between its opening and closing braces. Divide by 58 to estimate centimetres. Multiply by 10, round, then divide by 10 to keep one decimal place. Check: The outer else contains set distanceCm to the calculation. An echo of 1177 gives about 20.3 centimetres. Build the sockets from the inside outward. For 20.293… centimetres: ×10 gives 202.93…, round gives 203, then ÷10 gives 20.3. Leave room below this calculation for the near/far check.",
+      "sha256": "ba324e92cc892dec637cb4ce194885359c0023a3983b897d9625bba598259b0d",
+      "file": "assets/narration/convert-distance-ba324e92cc89.mp3"
     },
     {
       "id": "near-message",
-      "text": "Build the nearby-object branch. In Blocks · first if’s else → distanceCm ≤ 30. A usable distance of 30 centimetres or less chooses near and displays X. Build near inside a second if. Put Logic → if/else below set distanceCm, inside the outer else. Set its condition to distanceCm ≤ 30. Use the comparison dropdown to choose ≤. Inside this inner then, put set stick status to the Text word near, then Basic → show icon with X, the No icon. Check. near is inside both checks. Keep the inner else empty for the next step. ≤ means less than or equal to. Exactly 30 belongs to near. Keep the unknown branch above separate.",
-      "sha256": "6193db2bb2cfa0aaf175d87bc2a70943546a6e4c554cef13cf1f86b4113344b8",
-      "file": "assets/narration/near-message-6193db2bb2cf.mp3"
+      "text": "Build the nearby-object branch. In Make Code · JavaScript, then Blocks. A usable distance of 30 centimetres or less chooses near and displays X. Keep the calculation in place. Add this second if/else directly below it. Choose Blocks and check the nesting. Inside the outer else: add below the distanceCm calculation, before that else’s closing brace. <= means less than or equal to. Exactly 30 centimetres counts as near. IconNames.No is the X icon. Check: The distance check is inside the outer else. Its then sets near and shows X. Its inner else is still empty. ≤ means less than or equal to. Exactly 30 belongs to near. Keep the unknown branch above separate.",
+      "sha256": "1ce84addbaffb8776ce01ca2e8d0f6b8cab4f03bdd7a0144aca8f8b285b922d8",
+      "file": "assets/narration/near-message-1ce84addbaff.mp3"
     },
     {
       "id": "far-message",
-      "text": "Fill the farther-object else. In Blocks · outer else → inner distance check’s else. The inner else runs only after the echo was accepted and the distance was found to be above 30 centimetres. Fill the else belonging to distanceCm ≤ 30. Inside the inner else, add Variables → set stick status to with the Text word far. Below far in that same inner else, add Basic → clear screen. Check. A usable distance above 30 centimetres chooses far and clears the LEDs. The outer else contains the conversion and the whole distance check. The inner else contains far and clear screen. Match the nesting in the image.",
-      "sha256": "22b8284c98f75c17381b3072753a1ed9d4458d73737edd76db758860b69f7bd3",
-      "file": "assets/narration/far-message-22b8284c98f7.mp3"
+      "text": "Fill the farther-object else. In Make Code · JavaScript, then Blocks. The inner else runs only after the echo was accepted and the distance was found to be above 30 centimetres. Fill only the empty inner else with these two lines. Choose Blocks and follow the near and far paths. Inside the empty inner else belonging to distanceCm <= 30. Keep the outer else and its calculation. The outer else means the echo was accepted. The inner else means the accepted distance is greater than 30 centimetres. Check: The inner else sets far and clears the LEDs. It runs only for an accepted reading above 30 centimetres. The outer else contains the conversion and the whole distance check. The inner else contains far and clear screen. Match the nesting in the image.",
+      "sha256": "35baf163646053093dba51975f4843ed11d37df236e6efdeb676c8aaa2443af7",
+      "file": "assets/narration/far-message-35baf1636460.mp3"
     },
     {
       "id": "send-fresh",
-      "text": "Build the Bluetooth sending checks. In Blocks · bottom of the same forever stack. Send after choosing the reading. A usable message has a word and centimetres, like near,20.3. Build the sender at the bottom of forever. After the entire sensor if/else, add Logic → if with B T connected as its condition. Inside that if, add if/else. Compare stick status = the Text word unknown. Leave its then and else empty for the next step. Check. The sending if is inside forever and outside all sensor-result branches. The outer sending if asks whether Bluetooth is connected. The inner sending if asks whether this reading is unknown. They do different jobs.",
-      "sha256": "62cb72b7b13bc4c626c2f013aafca65d034384b1e2acfd3c36a8de9cb2c5bdad",
-      "file": "assets/narration/send-fresh-62cb72b7b13b.mp3"
+      "text": "Build the Bluetooth sending checks. In Make Code · JavaScript, then Blocks. Send after choosing the reading. A usable message has a word and centimetres, like near,20.3. Add the sender below the complete sensor decision. Choose Blocks and inspect its two checks. The next step adds centimetres to the second message. Inside forever: add after the entire sensor if/else and before basic.pause(five hundred). Keep this sender outside both sensor branches. First ask whether Bluetooth is connected. Then ask whether the reading is unknown. Each reading sends only one line. Check: The new if B T connected is inside forever, after the sensor decision. Both sending branches currently send only the word. The outer sending if asks whether Bluetooth is connected. The inner sending if asks whether this reading is unknown. They do different jobs.",
+      "sha256": "9b82cffbaac45e056c14d6244378557a17e1410d32a4da9202c224d74a63333d",
+      "file": "assets/narration/send-fresh-9b82cffbaac4.mp3"
     },
     {
       "id": "send-distance",
-      "text": "Send the chosen word and distance. In Blocks · the two empty Bluetooth sending branches. A comma separates the result from the centimetres estimate. Write line ends the message for the website. Fill the sender and add its repeating pause. In the unknown then, add Bluetooth → uart write line with the variable stick status. In its else, add another uart write line. Put Text → join in its value socket. Use join’s + for three inputs: variable stick status, a Text comma , and variable distanceCm. After the entire if B T connected, add Basic → pause (ms) five hundred, still inside forever. Check. One message per reading: near,20.3, far,40 or unknown. Use variable blocks for stick status and distanceCm; do not type those names as text. Put a comma with no spaces in the middle join input. Keep the pause outside the sending if.",
-      "sha256": "68b45835e1323f77118006fd4d88f7c0c7f5b1c6c0dcfd17682166b70d4e8db9",
-      "file": "assets/narration/send-distance-68b45835e132.mp3"
+      "text": "Send the chosen word and distance. In Make Code · JavaScript, then Blocks. A comma separates the result from the centimetres estimate. Write line ends the message for the website. Find the else inside if B T connected. Replace only its you art line. Choose Blocks and inspect the join block. In the sender’s else only: replace its bluetooth.uartWriteLine(stick status) line with this line. Keep the unknown line unchanged. The plus signs join text and the number. The comma separates them so the website can read both values. Check: unknown sends only the word. The else joins word, comma and centimetres, such as near,20.3 or far,40. The five hundred ms pause stays after the whole sender. Use variable blocks for stick status and distanceCm; do not type those names as text. Put a comma with no spaces in the middle join input. Keep the pause outside the sending if.",
+      "sha256": "c2d8660713563146efe94cade1d87a7a2e7c7e5720c80163f37fcdc14e41d4c4",
+      "file": "assets/narration/send-distance-c2d866071356.mp3"
     },
     {
       "id": "complete-program",
-      "text": "Check the five stacks you built. In Make Code · whole Blocks workspace. The finished image is a check for placement. Your program should read a new echo, choose one result, then send that result and a usable distance. Compare your own blocks with the five stacks below. Trace a missing echo, a 20 centimetres reading and a 40 centimetres reading through the branches. Check. One on start, one sensor function, two Bluetooth events and one forever. Each usable reading sends a result with centimetres; unknown sends no number. Check the two different sensor else branches and the separate sending if. Correct misplaced blocks in your own program. The simulator cannot prove a physical ultrasonic reading or Bluetooth connection.",
-      "sha256": "95be94fb2bab2a386938ca918f6fb4febc6d4bc40a18664b905fb3f9f1a47bb3",
-      "file": "assets/narration/complete-program-95be94fb2bab.mp3"
+      "text": "Check the five stacks you built. In Make Code · whole Blocks workspace. The finished image is a check for placement. Your program should read a new echo, choose one result, then send that result and a usable distance. Compare your own blocks with the five stacks below. Trace a missing echo, a 20 centimetres reading and a 40 centimetres reading through the branches. Check: One on start, one sensor function, two Bluetooth events and one forever. Each usable reading sends a result with centimetres; unknown sends no number. Check the two different sensor else branches and the separate sending if. Correct misplaced blocks in your own program. The simulator cannot prove a physical ultrasonic reading or Bluetooth connection.",
+      "sha256": "7a7631fb8b3e4231bd0f654898b56f69707c905417704c66d23cecae9878856f",
+      "file": "assets/narration/complete-program-7a7631fb8b3e.mp3"
     },
     {
       "id": "save-transfer",
-      "text": "Save and run the updated program. In Make Code · Download, then the MICROBIT drive. A numbered file records the exact program being tested. The simulator cannot prove a physical ultrasonic reading or Bluetooth link. Download the next unused numbered .hex, for example WalkingStick_02.hex. Copy it to the MICROBIT drive using the checked U S B data cable. Check. Wait for copying and flashing to finish. Keep the cable connected until the board is running the updated program. Keep the earlier backup. If Make Code shows errors or downloading removes a needed setting, resolve that before testing the model.",
-      "sha256": "4b09b133432075db42b2a50be35d327f0e5f2ccacda70cb82cecdbc816036037",
-      "file": "assets/narration/save-transfer-4b09b1334320.mp3"
+      "text": "Save and run the updated program. In Make Code · Download, then the MICROBIT drive. A numbered file records the exact program being tested. The simulator cannot prove a physical ultrasonic reading or Bluetooth link. Download the next unused numbered .hex, for example WalkingStick_02.hex. Copy it to the MICROBIT drive using the checked U S B data cable. Check: Wait for copying and flashing to finish. Keep the cable connected until the board is running the updated program. Keep the earlier backup. If Make Code shows errors or downloading removes a needed setting, resolve that before testing the model.",
+      "sha256": "d63da13e18fcbb24e3924bb55a5bdaf9f0b7b1aa9d2f473720162578649ca2d6",
+      "file": "assets/narration/save-transfer-d63da13e18fc.mp3"
     },
     {
       "id": "sound-page",
-      "text": "Open the sound page. In Chrome · a separate tab. The website is already provided. It plays the warning sent by your micro:bit. Browsers wait for a click before allowing sound. Open Walking-stick sounds and click Enable sound. Check. The page is ready to play a warning; connecting is the next step. Use the checked Chrome laptop and HTTPS site. Keep its tab visible during each test. The labelled demo is only a website demonstration, not a Bluetooth test.",
-      "sha256": "476cf183cfb3f78448d55a7104c0903f29309bc932421b71debb1db1c467d80e",
-      "file": "assets/narration/sound-page-476cf183cfb3.mp3"
+      "text": "Open the sound page. In Chrome · a separate tab. The website is already provided. It plays the warning sent by your micro:bit. Browsers wait for a click before allowing sound. Open Walking-stick sounds and click Enable sound. Check: The page is ready to play a warning; connecting is the next step. Use the checked Chrome laptop and HTTPS site. Keep its tab visible during each test. The labelled demo is only a website demonstration, not a Bluetooth test.",
+      "sha256": "1d44639d35f0aa9865c0cc60bd74ac188bf28d81b5bb7d4c30b33c7d66ffc3c8",
+      "file": "assets/narration/sound-page-1d44639d35f0.mp3"
     },
     {
       "id": "connect-board",
-      "text": "Connect your team’s micro:bit. On Walking-stick sounds. Chrome asks which nearby board to connect. Your program must be running on the board you choose. Click Connect micro:bit and select your team’s identified device. Check. The website receives fresh messages. With a usable echo, it shows the sensor distance in centimetres as well as near or far. If Chrome shows No compatible devices found, cancel. In Make Code choose Settings → Project Settings → No Pairing Required, download the program again and wait for flashing to finish. Press Reset once and retry. If still empty, check that Chrome has Bluetooth access in macOS settings. Chrome on iPhone or iPad cannot make this connection.",
-      "sha256": "08af551de77c8f89aff0703b9737cfd76e6369734130fcb73b0f9c3aa140d6cc",
-      "file": "assets/narration/connect-board-08af551de77c.mp3"
+      "text": "Connect your team’s micro:bit. On Walking-stick sounds. Chrome asks which nearby board to connect. Your program must be running on the board you choose. Click Connect micro:bit and select your team’s identified device. Check: The website receives fresh messages. With a usable echo, it shows the sensor distance in centimetres as well as near or far. If Chrome shows No compatible devices found, cancel. In Make Code choose Settings → Project Settings → No Pairing Required, download the program again and wait for flashing to finish. Press Reset once and retry. If still empty, check that Chrome has Bluetooth access in macOS settings. Chrome on iPhone or iPad cannot make this connection.",
+      "sha256": "1f7a5d1ea32c5a8cb672456b05238b7159b25d10629025254ed8eae3c807fe61",
+      "file": "assets/narration/connect-board-1f7a5d1ea32c.mp3"
     },
     {
       "id": "test-near",
-      "text": "Test cardboard at 20 centimetres. At the tabletop model · sound tab visible. This checks the whole path: sensor → program → Bluetooth → website → speaker. Use a ruler, not a guessed distance. Place cardboard 20 centimetres from the sensor’s front face. Compare the website’s sensor distance with the ruler, then check the display and sound. Check. A usable reading near 20 centimetres shows X, near, an estimated distance near 20 centimetres and the warning. The ruler shows where you placed the cardboard; the website shows what the ultrasonic sensor estimated. They may differ. If the number is missing, upload the updated program and reconnect.",
-      "sha256": "b4d12fb90a97527bf01ea901acecaabc16015c787376c56a4923c5b6216d04fd",
-      "file": "assets/narration/test-near-b4d12fb90a97.mp3"
+      "text": "Test cardboard at 20 centimetres. At the tabletop model · sound tab visible. This checks the whole path: sensor → program → Bluetooth → website → speaker. Use a ruler, not a guessed distance. Place cardboard 20 centimetres from the sensor’s front face. Compare the website’s sensor distance with the ruler, then check the display and sound. Check: A usable reading near 20 centimetres shows X, near, an estimated distance near 20 centimetres and the warning. The ruler shows where you placed the cardboard; the website shows what the ultrasonic sensor estimated. They may differ. If the number is missing, upload the updated program and reconnect.",
+      "sha256": "c32566d3dce1e863bb45f64ad049a1adbd903f35f36b15c92cb6def061045b9b",
+      "file": "assets/narration/test-near-c32566d3dce1.mp3"
     },
     {
       "id": "test-far",
-      "text": "Move the same cardboard to 40 centimetres. At the tabletop model · sound tab visible. Keep the object and setup the same while changing the distance. The result must come from a valid new reading. Move the cardboard to 40 centimetres from the sensor face and observe again. Check. A usable reading near 40 centimetres gives a blank display, far and an estimated distance near 40 centimetres. The warning stops. The sound page says Beyond 30 centimetres. That describes the reported measurement, not proof that the surroundings are safe.",
-      "sha256": "dd611fe481335b9e47314f2ddc66eb13a510d1ea03c2db19903d444c1c9d5c57",
-      "file": "assets/narration/test-far-dd611fe48133.mp3"
+      "text": "Move the same cardboard to 40 centimetres. At the tabletop model · sound tab visible. Keep the object and setup the same while changing the distance. The result must come from a valid new reading. Move the cardboard to 40 centimetres from the sensor face and observe again. Check: A usable reading near 40 centimetres gives a blank display, far and an estimated distance near 40 centimetres. The warning stops. The sound page says Beyond 30 centimetres. That describes the reported measurement, not proof that the surroundings are safe.",
+      "sha256": "d41fa535e0800a2aa042dda4eb5f31035a585b7e67b221274c79ec409de3b126",
+      "file": "assets/narration/test-far-d41fa535e080.mp3"
     },
     {
       "id": "test-unknown",
-      "text": "Check an unusable sensor reading. With your teacher · sound tab visible. The first if must report unknown for a missing echo or an echo outside the accepted interval. Test this path with the teacher as well as the near and far paths. Have your teacher run a safe missing-echo or out-of-range test for this built model. Check. The board shows ?. The website reports unknown, shows a dash instead of a distance and stops the warning. Do not move live sensor wires to force an error. If a safe test is not prepared, record Test not run and have the teacher arrange it.",
-      "sha256": "94eca4e546e7af2819c6a7301e2b7272ca34c72effa57862a7981c6654692804",
-      "file": "assets/narration/test-unknown-94eca4e546e7.mp3"
+      "text": "Check an unusable sensor reading. With your teacher · sound tab visible. The first if must report unknown for a missing echo or an echo outside the accepted interval. Test this path with the teacher as well as the near and far paths. Have your teacher run a safe missing-echo or out-of-range test for this built model. Check: The board shows ?. The website reports unknown, shows a dash instead of a distance and stops the warning. Do not move live sensor wires to force an error. If a safe test is not prepared, record Test not run and have the teacher arrange it.",
+      "sha256": "792b61c24d0b74179064344236076e9cfc5b733a69177df939cc55a0e5d59a8f",
+      "file": "assets/narration/test-unknown-792b61c24d0b.mp3"
     },
     {
       "id": "test-connection-loss",
-      "text": "Check loss of the connection. On Walking-stick sounds · tabletop model. A disconnected board must not leave an old warning sounding. Separately, more than three seconds without fresh complete messages makes the page show Signal paused. Click Disconnect and check that sound stops. Reconnect the same board and wait for a fresh result. Check. Disconnection clears the number and stops sound. Reconnecting shows a number only after a new usable reading. Signal paused also clears an old number. For a separate stale-stream check, the teacher can pause sending in a checked test copy while keeping Bluetooth connected. The labelled website demo’s Stop messages button tests the page timer only, not the sensor or Bluetooth.",
-      "sha256": "01a14aa874ecf8d47c5024630ececf00f0ed86c163c18e534232405b0e25d4da",
-      "file": "assets/narration/test-connection-loss-01a14aa874ec.mp3"
+      "text": "Check loss of the connection. On Walking-stick sounds · tabletop model. A disconnected board must not leave an old warning sounding. Separately, more than three seconds without fresh complete messages makes the page show Signal paused. Click Disconnect and check that sound stops. Reconnect the same board and wait for a fresh result. Check: Disconnection clears the number and stops sound. Reconnecting shows a number only after a new usable reading. Signal paused also clears an old number. For a separate stale-stream check, the teacher can pause sending in a checked test copy while keeping Bluetooth connected. The labelled website demo’s Stop messages button tests the page timer only, not the sensor or Bluetooth.",
+      "sha256": "d7722d5e936676d203d5c6dfb0d632b04c1227b14e4e9a272bcb365299d21ee9",
+      "file": "assets/narration/test-connection-loss-d7722d5e9366.mp3"
     },
     {
       "id": "record-trials",
-      "text": "Keep three real trials at each distance. In your existing team test record. One successful try can happen by chance. Repeat the same measured positions so failures are visible too. Run three trials at a ruler distance of 20 centimetres and three at 40 centimetres. For each, record ruler distance, website sensor distance, board display, website word and sound. Check. Six real trials show what happened, including any failed or missing readings. Keep ruler distance and sensor distance in separate columns. Write unavailable for a dash; never copy an old value or invent zero. Record differences as they happen.",
-      "sha256": "18e48cd887d9c53d4549137e005dc97fe6f01be13c51f7eb09d3111f59a9ccfc",
-      "file": "assets/narration/record-trials-18e48cd887d9.mp3"
+      "text": "Keep three real trials at each distance. In your existing team test record. One successful try can happen by chance. Repeat the same measured positions so failures are visible too. Run three trials at a ruler distance of 20 centimetres and three at 40 centimetres. For each, record ruler distance, website sensor distance, board display, website word and sound. Check: Six real trials show what happened, including any failed or missing readings. Keep ruler distance and sensor distance in separate columns. Write unavailable for a dash; never copy an old value or invent zero. Record differences as they happen.",
+      "sha256": "c81553a69a91d9e665210a77378c48e2701627587eb0c3abb07b225a6f4494f1",
+      "file": "assets/narration/record-trials-c81553a69a91.mp3"
     },
     {
       "id": "improve-retest",
-      "text": "Improve one thing and repeat the tests. In the same project and team test record. Changing one thing helps you see what caused a difference. Keep the original observations. If a correction is needed, make one teacher-checked correction using the first results. Download the next numbered .hex and copy it to MICROBIT. Wait for transfer, reconnect the sound page and repeat the same six trials. Check. If corrected, a separate after-change record can be compared with the original. If every trial worked, record that no correction was needed. Keep the original results and the 30 centimetres rule. If every trial worked, record that no correction was needed. If a correction is made, fix one thing, such as a wrong message branch or duplicate sender. Ask the teacher before changing physical settings or sensor timing.",
-      "sha256": "4509ce0eaa1de5ae1e66e301ebc989323c625e73c11e018e8d27e87cd9b06ea1",
-      "file": "assets/narration/improve-retest-4509ce0eaa1d.mp3"
+      "text": "Improve one thing and repeat the tests. In the same project and team test record. Changing one thing helps you see what caused a difference. Keep the original observations. If a correction is needed, make one teacher-checked correction using the first results. Download the next numbered .hex and copy it to MICROBIT. Wait for transfer, reconnect the sound page and repeat the same six trials. Check: If corrected, a separate after-change record can be compared with the original. If every trial worked, record that no correction was needed. Keep the original results and the 30 centimetres rule. If every trial worked, record that no correction was needed. If a correction is made, fix one thing, such as a wrong message branch or duplicate sender. Ask the teacher before changing physical settings or sensor timing.",
+      "sha256": "12d02e5931b81a45e860bba43145346a72b5a7349622c2747cfbf307dbf6e8b3",
+      "file": "assets/narration/improve-retest-12d02e5931b8.mp3"
     },
     {
       "id": "save-evidence",
-      "text": "Save the final program and results. In your existing team folder and shared report. The saved code should match the program that produced the recorded behavior. The guide itself does not collect answers. Keep the final numbered .hex and actual test notes in the team folder. Update Test and improvement in the shared report. Check. The next editor can find the working version, results and any untested behavior. Keep Project, Research, Test and improvement, References. Label missing tests honestly. Use the exact sources you actually consulted.",
-      "sha256": "dc31301d566cbe8f5b9171f69814ed1f026176a8337489245ea1cd5de315dbc0",
-      "file": "assets/narration/save-evidence-dc31301d566c.mp3"
+      "text": "Save the final program and results. In your existing team folder and shared report. The saved code should match the program that produced the recorded behavior. The guide itself does not collect answers. Keep the final numbered .hex and actual test notes in the team folder. Update Test and improvement in the shared report. Check: The next editor can find the working version, results and any untested behavior. Keep Project, Research, Test and improvement, References. Label missing tests honestly. Use the exact sources you actually consulted.",
+      "sha256": "603a52c706016f3c5df7f3eaf0bb4dfe066e1f2fc9a26eea5a79533d40aa158a",
+      "file": "assets/narration/save-evidence-603a52c70601.mp3"
     },
     {
       "id": "submit",
-      "text": "Use the existing team handoff. In Google Classroom · existing STEAM assignment. The teacher needs access to the shared report and the final program that your team demonstrates. This is the same project, not another assignment. Have one team member attach the shared report and final numbered .hex to the existing assignment by its announced deadline. Check. The files open for your teacher and match the demonstrated tabletop model. Each member explains their contribution and one actual result. The website does not submit files for you.",
-      "sha256": "641ec1655f9c76db43c5e2f5c63bbaf0b35aa158d773cb7dd8080fa8d6bc710e",
-      "file": "assets/narration/submit-641ec1655f9c.mp3"
+      "text": "Use the existing team handoff. In Google Classroom · existing STEAM assignment. The teacher needs access to the shared report and the final program that your team demonstrates. This is the same project, not another assignment. Have one team member attach the shared report and final numbered .hex to the existing assignment by its announced deadline. Check: The files open for your teacher and match the demonstrated tabletop model. Each member explains their contribution and one actual result. The website does not submit files for you.",
+      "sha256": "b55d5ae92dd205324258180b7b4ae01a75ffa8b3614cb76d42874a88e9f37298",
+      "file": "assets/narration/submit-b55d5ae92dd2.mp3"
     }
   ]
 }

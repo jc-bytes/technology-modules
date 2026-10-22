@@ -1,7 +1,7 @@
 export const site = {
   "id": "MOD-STEAM-STICK-01",
   "slug": "walking-stick-code-guide",
-  "version": "1.9.1",
+  "version": "1.10.0",
   "title": "Code your walking stick",
   "shortTitle": "Walking stick",
   "subject": "Technology",

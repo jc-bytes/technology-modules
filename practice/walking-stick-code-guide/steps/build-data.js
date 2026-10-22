@@ -4,7 +4,7 @@ export const buildSteps = [
     "title": "Measure distance and hear a warning",
     "where": "At your already-built walking stick",
     "why": "The micro:bit measures how far away an object is. The website shows that distance in centimetres and plays a warning when the object is 30 cm away or closer.",
-    "do": "Keep the built model on a table. Save your old program, build each part of the code, then test the distance and warning.",
+    "do": "Keep the built model on a table. Save your old program, add one small JavaScript section at a time, then switch to Blocks to understand it. Test the distance and warning after building.",
     "expected": "A nearby object gives X on the micro:bit, a distance on the website and a warning sound.",
     "help": "Keep the existing built sensor connections: Trig P0 and Echo P1. Have the teacher check the powered sensor interface before physical tests. Keep the model on a table. This is a classroom prototype, not tested mobility equipment.",
     "links": [
@@ -61,180 +61,167 @@ export const buildSteps = [
   {
     "id": "sensor-profile",
     "title": "Create the six named storage boxes",
-    "where": "In the new test project · JavaScript",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "A variable is a named box that remembers a value. Two boxes hold pin names, two hold numbers, one holds a word and one holds true or false.",
-    "do": "Choose JavaScript. In this new empty test project, remove the starter code and type these six lines. They only create variables; they do not read the sensor or send anything.",
-    "expected": "Choose Blocks. on start shows P0, P1 and UNKNOWN. Check the variable names in Variables.",
+    "do": "Choose JavaScript. Copy these six lines into the empty test project. Choose Blocks and find the starting values in on start.",
+    "expected": "on start sets Trig to P0, Echo to P1 and stickStatus to UNKNOWN. Zero and false starting values may be hidden.",
     "help": "Type each name exactly, including capital letters. DigitalPin.P0 means pin zero; DigitalPin.P1 means pin one. 0 is a number, \"UNKNOWN\" is a text word and false means not connected. MakeCode may hide starting values of 0 and false in Blocks. If an unused name disappears, open Variables → Make a Variable and create that name again.",
     "links": [],
     "stage": "guided",
-    "code": "let trigPin = DigitalPin.P0\nlet echoPin = DigitalPin.P1\nlet echoTime = 0\nlet distanceCm = 0\nlet stickStatus = \"UNKNOWN\"\nlet btConnected = false"
+    "code": "let trigPin = DigitalPin.P0\nlet echoPin = DigitalPin.P1\nlet echoTime = 0\nlet distanceCm = 0\nlet stickStatus = \"UNKNOWN\"\nlet btConnected = false",
+    "placement": "First coding step only: replace the starter code in the new test project.",
+    "explain": "Each variable is a named storage box. The pin boxes say where to send and read the pulse.",
+    "pairImage": "sensor-profile"
   },
   {
     "id": "start-uart",
     "title": "Start the Bluetooth message service",
-    "where": "In Blocks · on start",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "on start runs once when the program starts. UART service prepares Bluetooth text messages; it does not send a reading.",
-    "do": "Put the message service below your variable setup.",
-    "expected": "on start has the initial values and one bluetooth uart service, matching the image.",
+    "do": "Keep your six variable lines. Add this one line below them. Choose Blocks and compare on start.",
+    "expected": "on start now has one bluetooth uart service below the starting values.",
     "help": "Your initial zero and false values may be hidden after switching views. Do not add NEAR and FAR here: they must be chosen using each new reading.",
     "links": [],
     "stage": "guided",
-    "diagram": "startup",
-    "actions": [
-      "Open Bluetooth and drag bluetooth uart service into on start, below set stickStatus to UNKNOWN.",
-      "Check trigPin is P0 and echoPin is P1. Keep those two assignments in on start.",
-      "Keep decisions and UART write line out of on start. They will go in forever later."
-    ]
+    "code": "bluetooth.startUartService()",
+    "placement": "Add at the bottom of the JavaScript, outside any function or event.",
+    "explain": "This service prepares a Bluetooth text channel. It does not send a reading yet.",
+    "pairImage": "start-uart"
   },
   {
     "id": "rule",
     "title": "Write the small sensor-reading function",
     "where": "In MakeCode · JavaScript, then Blocks",
     "why": "A function is a named group of instructions. This helper sends a tiny pulse on P0, then measures how long the echo on P1 lasts. Its answer is time, not centimetres.",
-    "do": "Choose JavaScript. Below your existing code, type this function without deleting the variable setup or Bluetooth service. Then return to Blocks.",
-    "expected": "A separate purple function stack appears. It is outside on start and outside forever.",
+    "do": "Paste the sensor helper below the code already in your project. Choose Blocks and find the separate purple function.",
+    "expected": "The function is its own stack. Its return expression may appear grey, which is expected.",
     "help": "0 means trigger off; 1 means on. The waits are 2 and 10 microseconds. The return line gives back the echo time and stops waiting after 25000 microseconds. In Blocks, that return expression appears grey. It is expected. Keep the function named readUltrasonicDistance.",
     "links": [],
     "stage": "guided",
-    "diagram": "sensor",
     "code": "function readUltrasonicDistance() {\n    pins.digitalWritePin(trigPin, 0)\n    control.waitMicros(2)\n    pins.digitalWritePin(trigPin, 1)\n    control.waitMicros(10)\n    pins.digitalWritePin(trigPin, 0)\n    return pins.pulseIn(echoPin, PulseValue.High, 25000)\n}",
-    "codeLabel": "Type this sensor helper only. Keep the code already in your project."
+    "placement": "Add this entire function at the bottom of the JavaScript. Keep the existing lines.",
+    "explain": "P0 sends the short trigger pulse. P1 measures the returning echo. The answer is microseconds, not centimetres.",
+    "pairImage": "rule"
   },
   {
     "id": "connection-events",
     "title": "Build the two connection events",
-    "where": "In Blocks · two separate Bluetooth event stacks",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "These events run when Bluetooth connects or disconnects. They remember the connection while forever reads the sensor.",
-    "do": "Build two separate event stacks.",
-    "expected": "The two events match the image. Neither is inside on start, forever or the sensor function.",
+    "do": "Add these two event handlers. Choose Blocks and compare the connected and disconnected stacks.",
+    "expected": "Two separate Bluetooth stacks appear. Connected sets true; disconnected sets false and UNKNOWN.",
     "help": "An event runs when the connection changes. true means connected; false means disconnected. These events remember the connection while forever reads the sensor.",
     "links": [],
     "stage": "guided",
-    "diagram": "events",
-    "actions": [
-      "From Bluetooth, drag on bluetooth connected into the workspace. Put Variables → set btConnected to inside it, using Logic → true.",
-      "Drag on bluetooth disconnected into another empty space. Put set btConnected to false inside it.",
-      "Below false, add set stickStatus to with a Text value UNKNOWN."
-    ]
+    "code": "bluetooth.onBluetoothConnected(function () {\n    btConnected = true\n})\n\nbluetooth.onBluetoothDisconnected(function () {\n    btConnected = false\n    stickStatus = \"UNKNOWN\"\n})",
+    "placement": "Add both events at the bottom, after the sensor function’s closing brace. Do not put them inside that function.",
+    "explain": "An event runs when the connection changes. It does not belong inside forever.",
+    "pairImage": "connection-events"
   },
   {
     "id": "read-echo",
     "title": "Read a fresh echo in forever",
-    "where": "In Blocks · the empty forever stack",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "forever repeats. Each repeat must read the sensor again before making a decision.",
-    "do": "Put the sensor call first in forever.",
-    "actions": [
-      "From Basic, drag one forever stack into the workspace if there is not one already.",
-      "Inside forever, add Variables → set echoTime to.",
-      "From Functions, place the value-shaped call readUltrasonicDistance in its value socket."
-    ],
-    "expected": "forever begins with set echoTime to call readUltrasonicDistance.",
+    "do": "Add this short repeating loop. Choose Blocks and trace the function call followed by the pause.",
+    "expected": "forever reads a fresh echo and pauses for 500 ms. Keep later additions between these two instructions.",
     "help": "Use the function call that returns a number. Keep the separate purple function definition outside forever.",
     "links": [],
-    "stage": "guided"
+    "stage": "guided",
+    "code": "basic.forever(function () {\n    echoTime = readUltrasonicDistance()\n    basic.pause(500)\n})",
+    "placement": "Add this whole forever at the bottom, outside the other stacks. There must be only one forever.",
+    "explain": "The function definition is the recipe. This function call runs that recipe and saves its answer in echoTime.",
+    "pairImage": "read-echo"
   },
   {
     "id": "unknown-message",
     "title": "Build the failed-reading branch first",
-    "where": "In Blocks · forever → first if",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "An unusable echo must choose UNKNOWN. This test also catches 0 when no echo arrives.",
-    "do": "Below the sensor call in forever, build the first if/else.",
-    "expected": "The first then contains exactly the failed-reading result. The next page fills its else.",
+    "do": "Insert this if/else between the read and the pause. Choose Blocks and inspect the failed-reading branch.",
+    "expected": "The first then sets 0 and UNKNOWN and shows ?. Its else is empty for the next step.",
     "help": "< means less than; > means greater than. OR means either test can select this branch. 0 here marks an unusable distance. It must not be sent as a real measurement.",
     "links": [],
     "stage": "guided",
-    "diagram": "unknown",
-    "actions": [
-      "Drag Logic → if/else below set echoTime. Add else with + if needed.",
-      "Put Logic → or in the condition. Fill it with echoTime < 116 and echoTime > 23200.",
-      "Inside then, add set distanceCm to 0, set stickStatus to the Text word UNKNOWN, then Basic → show string with ?. Leave the outer else empty for now."
-    ]
+    "code": "if (echoTime < 116 || echoTime > 23200) {\n    distanceCm = 0\n    stickStatus = \"UNKNOWN\"\n    basic.showString(\"?\")\n} else {\n}",
+    "placement": "Inside forever: add below echoTime = readUltrasonicDistance() and above basic.pause(500).",
+    "explain": "|| means OR. A missing echo is 0, so it enters this branch. The 0 is a placeholder, not a measured distance.",
+    "pairImage": "unknown-message"
   },
   {
     "id": "convert-distance",
     "title": "Turn echo time into centimetres",
-    "where": "In Blocks · the outer sensor if’s else",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "The sound travels out and back. Dividing its echo time by 58 estimates centimetres. Rounding keeps one decimal place.",
-    "do": "Build the distance calculation inside the outer else.",
-    "actions": [
-      "Add set distanceCm to inside the empty outer else.",
-      "From Math, fit arithmetic blocks together to make echoTime ÷ 58, then multiply that answer by 10.",
-      "Place that result inside Math → round. Divide the rounded answer by 10 and put the whole calculation in set distanceCm."
-    ],
-    "expected": "The calculation reads round((echoTime ÷ 58) × 10) ÷ 10. An echo of 1177 gives about 20.3 cm.",
+    "do": "Put this calculation inside the empty outer else. Choose Blocks and follow the calculation from inside to outside.",
+    "expected": "The outer else contains set distanceCm to the calculation. An echo of 1177 gives about 20.3 cm.",
     "help": "Build the sockets from the inside outward. For 20.293… cm: ×10 gives 202.93…, round gives 203, then ÷10 gives 20.3. Leave room below this calculation for the near/far check.",
     "links": [],
     "stage": "guided",
-    "diagram": "near"
+    "code": "distanceCm = Math.round(echoTime / 58 * 10) / 10",
+    "placement": "Inside the empty else of the echoTime check. Put this line between its opening and closing braces.",
+    "explain": "Divide by 58 to estimate cm. Multiply by 10, round, then divide by 10 to keep one decimal place.",
+    "pairImage": "convert-distance"
   },
   {
     "id": "near-message",
     "title": "Build the nearby-object branch",
-    "where": "In Blocks · first if’s else → distanceCm ≤ 30",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "A usable distance of 30 cm or less chooses NEAR and displays X.",
-    "do": "Build NEAR inside a second if.",
-    "expected": "NEAR is inside both checks. Keep the inner else empty for the next step.",
+    "do": "Keep the calculation in place. Add this second if/else directly below it. Choose Blocks and check the nesting.",
+    "expected": "The distance check is inside the outer else. Its then sets NEAR and shows X. Its inner else is still empty.",
     "help": "≤ means less than or equal to. Exactly 30 belongs to NEAR. Keep the UNKNOWN branch above separate.",
     "links": [],
     "stage": "guided",
-    "diagram": "near",
-    "actions": [
-      "Put Logic → if/else below set distanceCm, inside the outer else.",
-      "Set its condition to distanceCm ≤ 30. Use the comparison dropdown to choose ≤.",
-      "Inside this inner then, put set stickStatus to the Text word NEAR, then Basic → show icon with X, the No icon."
-    ]
+    "code": "if (distanceCm <= 30) {\n    stickStatus = \"NEAR\"\n    basic.showIcon(IconNames.No)\n} else {\n}",
+    "placement": "Inside the outer else: add below the distanceCm calculation, before that else’s closing brace.",
+    "explain": "<= means less than or equal to. Exactly 30 cm counts as NEAR. IconNames.No is the X icon.",
+    "pairImage": "near-message"
   },
   {
     "id": "far-message",
     "title": "Fill the farther-object else",
-    "where": "In Blocks · outer else → inner distance check’s else",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "The inner else runs only after the echo was accepted and the distance was found to be above 30 cm.",
-    "do": "Fill the else belonging to distanceCm ≤ 30.",
-    "expected": "A usable distance above 30 cm chooses FAR and clears the LEDs.",
+    "do": "Fill only the empty inner else with these two lines. Choose Blocks and follow the NEAR and FAR paths.",
+    "expected": "The inner else sets FAR and clears the LEDs. It runs only for an accepted reading above 30 cm.",
     "help": "The outer else contains the conversion and the whole distance check. The inner else contains FAR and clear screen. Match the nesting in the image.",
     "links": [],
     "stage": "guided",
-    "diagram": "far",
-    "actions": [
-      "Inside the inner else, add Variables → set stickStatus to with the Text word FAR.",
-      "Below FAR in that same inner else, add Basic → clear screen."
-    ]
+    "code": "stickStatus = \"FAR\"\nbasic.clearScreen()",
+    "placement": "Inside the empty inner else belonging to distanceCm <= 30. Keep the outer else and its calculation.",
+    "explain": "The outer else means the echo was accepted. The inner else means the accepted distance is greater than 30 cm.",
+    "pairImage": "far-message"
   },
   {
     "id": "send-fresh",
     "title": "Build the Bluetooth sending checks",
-    "where": "In Blocks · bottom of the same forever stack",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "Send after choosing the reading. A usable message has a word and cm, like NEAR,20.3.",
-    "do": "Build the sender at the bottom of forever.",
-    "expected": "The sending if is inside forever and outside all sensor-result branches.",
+    "do": "Add the sender below the complete sensor decision. Choose Blocks and inspect its two checks. The next step adds cm to the second message.",
+    "expected": "The new if btConnected is inside forever, after the sensor decision. Both sending branches currently send only the word.",
     "help": "The outer sending if asks whether Bluetooth is connected. The inner sending if asks whether this reading is UNKNOWN. They do different jobs.",
     "links": [],
     "stage": "guided",
-    "diagram": "send",
-    "actions": [
-      "After the entire sensor if/else, add Logic → if with btConnected as its condition.",
-      "Inside that if, add if/else. Compare stickStatus = the Text word UNKNOWN.",
-      "Leave its then and else empty for the next step."
-    ]
+    "code": "if (btConnected) {\n    if (stickStatus == \"UNKNOWN\") {\n        bluetooth.uartWriteLine(stickStatus)\n    } else {\n        bluetooth.uartWriteLine(stickStatus)\n    }\n}",
+    "placement": "Inside forever: add after the entire sensor if/else and before basic.pause(500). Keep this sender outside both sensor branches.",
+    "explain": "First ask whether Bluetooth is connected. Then ask whether the reading is UNKNOWN. Each reading sends only one line.",
+    "pairImage": "send-fresh"
   },
   {
     "id": "send-distance",
     "title": "Send the chosen word and distance",
-    "where": "In Blocks · the two empty Bluetooth sending branches",
+    "where": "In MakeCode · JavaScript, then Blocks",
     "why": "A comma separates the result from the cm estimate. Write line ends the message for the website.",
-    "do": "Fill the sender and add its repeating pause.",
-    "actions": [
-      "In the UNKNOWN then, add Bluetooth → uart write line with the variable stickStatus.",
-      "In its else, add another uart write line. Put Text → join in its value socket.",
-      "Use join’s + for three inputs: variable stickStatus, a Text comma , and variable distanceCm.",
-      "After the entire if btConnected, add Basic → pause (ms) 500, still inside forever."
-    ],
-    "expected": "One message per reading: NEAR,20.3, FAR,40 or UNKNOWN.",
+    "do": "Find the else inside if btConnected. Replace only its UART line. Choose Blocks and inspect the join block.",
+    "expected": "UNKNOWN sends only the word. The else joins word, comma and cm, such as NEAR,20.3 or FAR,40. The 500 ms pause stays after the whole sender.",
     "help": "Use variable blocks for stickStatus and distanceCm; do not type those names as text. Put a comma with no spaces in the middle join input. Keep the pause outside the sending if.",
     "links": [],
     "stage": "guided",
-    "diagram": "send"
+    "code": "bluetooth.uartWriteLine(stickStatus + \",\" + distanceCm)",
+    "placement": "In the sender’s else only: replace its bluetooth.uartWriteLine(stickStatus) line with this line. Keep the UNKNOWN line unchanged.",
+    "explain": "The plus signs join text and the number. The comma separates them so the website can read both values.",
+    "pairImage": "send-distance"
   },
   {
     "id": "complete-program",
