@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-STICK-01",
   "slug": "walking-stick-code-guide",
   "title": "Code your walking stick",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -11,18 +11,18 @@
   "sourcePath": "technology-learning-hub/standalone-sites/walking-stick-code-guide",
   "publishedUrl": "https://jc-bytes.github.io/technology-modules/practice/walking-stick-code-guide/",
   "prerequisites": [
-    "Already assembled walking-stick model",
-    "Working sensor read and documented validity condition",
-    "Use MakeCode Blocks"
+    "Built walking-stick model with its existing working sensor program",
+    "One confirmed sensor read, centimetre unit and invalid-reading condition",
+    "Teacher-checked Chrome laptop and Bluetooth setup"
   ],
   "estimatedTime": "Unknown, classroom pilot required",
   "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
   "lastReviewed": "2026-10-21",
   "objectives": [
-    "Store a fresh valid distance reading",
-    "Build nested warning decisions",
-    "Test and explain near, far and unusable readings",
-    "Build Bluetooth UART messages and connect the sound page"
+    "Keep the existing sensor adapter and pin settings",
+    "Explain valid near, valid far and unusable outcomes",
+    "Send one fresh NEAR/FAR/UNKNOWN message from the sensor loop",
+    "Test the board display and website sound using real measured distances"
   ],
   "software": [
     "Microsoft MakeCode",
@@ -36,509 +36,143 @@
     "Core"
   ],
   "estimatedMinutes": null,
-  "timingStatus": "Unknown, classroom pilot required",
+  "timingStatus": "Shortened route; student completion time still needs classroom observation",
   "sections": [
     {
       "id": "goal",
-      "title": "Program your built model",
+      "title": "One program, three results",
       "entryPath": "#goal",
       "estimatedMinutes": null
     },
     {
-      "id": "open-editor",
-      "title": "Open MakeCode",
-      "entryPath": "#open-editor",
-      "estimatedMinutes": null
-    },
-    {
       "id": "open-team-project",
-      "title": "Open your team program",
+      "title": "Open and protect the working program",
       "entryPath": "#open-team-project",
       "estimatedMinutes": null
     },
     {
-      "id": "save-backup",
-      "title": "Save the starting program",
-      "entryPath": "#save-backup",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "find-sensor",
-      "title": "Find the distance block",
-      "entryPath": "#find-sensor",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "units",
-      "title": "Check the distance unit",
-      "entryPath": "#units",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "validity-gate",
-      "title": "Identify an unusable reading",
-      "entryPath": "#validity-gate",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "verify-reading",
-      "title": "Check one live reading",
-      "entryPath": "#verify-reading",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "reading-check",
-      "title": "Recognize an unusable reading",
-      "entryPath": "#reading-check",
+      "id": "sensor-profile",
+      "title": "Check the existing sensor once",
+      "entryPath": "#sensor-profile",
       "estimatedMinutes": null
     },
     {
       "id": "rule",
-      "title": "Read the three display choices",
+      "title": "Keep the 30 cm rule",
       "entryPath": "#rule",
       "estimatedMinutes": null
     },
     {
-      "id": "distance-variable",
-      "title": "Name the distance value",
-      "entryPath": "#distance-variable",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "valid-variable",
-      "title": "Name the reading check",
-      "entryPath": "#valid-variable",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "find-loop",
-      "title": "Find the repeating instructions",
-      "entryPath": "#find-loop",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "store-reading",
-      "title": "Store one fresh distance",
-      "entryPath": "#store-reading",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "store-validity",
-      "title": "Store the validity result",
-      "entryPath": "#store-validity",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "outer-if",
-      "title": "Add the first decision",
-      "entryPath": "#outer-if",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "use-validity",
-      "title": "Check readingValid",
-      "entryPath": "#use-validity",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "add-invalid-branch",
-      "title": "Add the other path",
-      "entryPath": "#add-invalid-branch",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "invalid-display",
-      "title": "Show an unusable reading",
-      "entryPath": "#invalid-display",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "near-if",
-      "title": "Add the distance decision",
-      "entryPath": "#near-if",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "near-condition",
-      "title": "Compare the distance with 30",
-      "entryPath": "#near-condition",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "near-display",
-      "title": "Show the near warning",
-      "entryPath": "#near-display",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "far-branch",
-      "title": "Add the far path",
-      "entryPath": "#far-branch",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "far-display",
-      "title": "Clear the far display",
-      "entryPath": "#far-display",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "remove-conflict",
-      "title": "Keep one warning display",
-      "entryPath": "#remove-conflict",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "check-order",
-      "title": "Check the block order",
-      "entryPath": "#check-order",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "boundary-check",
-      "title": "Include exactly 30 cm",
-      "entryPath": "#boundary-check",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "far-check",
-      "title": "Follow the farther branch",
-      "entryPath": "#far-check",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "download-program",
-      "title": "Save your changed program",
-      "entryPath": "#download-program",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "transfer-program",
-      "title": "Transfer the program",
-      "entryPath": "#transfer-program",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "practice-near",
-      "title": "Try the near warning",
-      "entryPath": "#practice-near",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "practice-far",
-      "title": "Try the far response",
-      "entryPath": "#practice-far",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "fix-one-problem",
-      "title": "Correct one program problem",
-      "entryPath": "#fix-one-problem",
-      "estimatedMinutes": null
-    },
-    {
       "id": "bluetooth-sound",
-      "title": "Add a Bluetooth sound warning",
+      "title": "Add Bluetooth to this project",
       "entryPath": "#bluetooth-sound",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-goal",
-      "title": "Make the message travel",
-      "entryPath": "#bt-goal",
+      "id": "connection-setting",
+      "title": "Use the checked classroom setting",
+      "entryPath": "#connection-setting",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-new-project",
-      "title": "Start a button rehearsal",
-      "entryPath": "#bt-new-project",
+      "id": "start-uart",
+      "title": "Prepare the two message variables",
+      "entryPath": "#start-uart",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-extension",
-      "title": "Add Bluetooth blocks",
-      "entryPath": "#bt-extension",
+      "id": "connection-events",
+      "title": "Remember connection and disconnection",
+      "entryPath": "#connection-events",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-pairing",
-      "title": "Set the classroom connection mode",
-      "entryPath": "#bt-pairing",
+      "id": "near-message",
+      "title": "Add the near message",
+      "entryPath": "#near-message",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-service",
-      "title": "Start the message service",
-      "entryPath": "#bt-service",
+      "id": "far-message",
+      "title": "Add the farther message",
+      "entryPath": "#far-message",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-status",
-      "title": "Start with an unknown result",
-      "entryPath": "#bt-status",
+      "id": "unknown-message",
+      "title": "Add the unusable-reading message",
+      "entryPath": "#unknown-message",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-flag",
-      "title": "Start disconnected",
-      "entryPath": "#bt-flag",
+      "id": "send-fresh",
+      "title": "Send after the fresh sensor decision",
+      "entryPath": "#send-fresh",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-connected",
-      "title": "Notice a connection",
-      "entryPath": "#bt-connected",
+      "id": "save-transfer",
+      "title": "Save and run the updated program",
+      "entryPath": "#save-transfer",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-disconnected",
-      "title": "Notice a lost connection",
-      "entryPath": "#bt-disconnected",
+      "id": "sound-page",
+      "title": "Open the sound page",
+      "entryPath": "#sound-page",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-button-near",
-      "title": "Make A mean near",
-      "entryPath": "#bt-button-near",
+      "id": "connect-board",
+      "title": "Connect your team’s micro:bit",
+      "entryPath": "#connect-board",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-button-far",
-      "title": "Make B mean farther",
-      "entryPath": "#bt-button-far",
+      "id": "test-near",
+      "title": "Test cardboard at 20 cm",
+      "entryPath": "#test-near",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-button-unknown",
-      "title": "Make A+B mean unknown",
-      "entryPath": "#bt-button-unknown",
+      "id": "test-far",
+      "title": "Move the same cardboard to 40 cm",
+      "entryPath": "#test-far",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-guard",
-      "title": "Send only while connected",
-      "entryPath": "#bt-guard",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-send-line",
-      "title": "Send one whole message",
-      "entryPath": "#bt-send-line",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-heartbeat",
-      "title": "Wait half a second",
-      "entryPath": "#bt-heartbeat",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-flash",
-      "title": "Run your rehearsal",
-      "entryPath": "#bt-flash",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-open-sounds",
-      "title": "Open the sound website",
-      "entryPath": "#bt-open-sounds",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-enable-sound",
-      "title": "Allow the website to play",
-      "entryPath": "#bt-enable-sound",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-connect",
-      "title": "Connect your micro:bit",
-      "entryPath": "#bt-connect",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-try-near",
-      "title": "Try the near message",
-      "entryPath": "#bt-try-near",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-try-far",
-      "title": "Try the farther message",
-      "entryPath": "#bt-try-far",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-try-unknown",
-      "title": "Try the unknown message",
-      "entryPath": "#bt-try-unknown",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-try-disconnect",
-      "title": "Check a lost connection",
-      "entryPath": "#bt-try-disconnect",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-remove-buttons",
-      "title": "Remove the rehearsal-only blocks",
-      "entryPath": "#bt-remove-buttons",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-open-original",
-      "title": "Open the saved sensor program",
-      "entryPath": "#bt-open-original",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-original-extension",
-      "title": "Add Bluetooth to the sensor copy",
-      "entryPath": "#bt-original-extension",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-original-setting",
-      "title": "Check the sensor copy connection mode",
-      "entryPath": "#bt-original-setting",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-open-rehearsal-text",
-      "title": "Open the add-on as text",
-      "entryPath": "#bt-open-rehearsal-text",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-copy-setup",
-      "title": "Copy the remaining setup",
-      "entryPath": "#bt-copy-setup",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-sensor-paste-position",
-      "title": "Find the paste position",
-      "entryPath": "#bt-sensor-paste-position",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-append-addon",
-      "title": "Paste after the sensor program",
-      "entryPath": "#bt-append-addon",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-return-blocks",
-      "title": "Check the combined blocks",
-      "entryPath": "#bt-return-blocks",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-sensor-unknown",
-      "title": "Send unknown for a failed reading",
-      "entryPath": "#bt-sensor-unknown",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-sensor-near",
-      "title": "Send the near sensor result",
-      "entryPath": "#bt-sensor-near",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-sensor-far",
-      "title": "Send the farther sensor result",
-      "entryPath": "#bt-sensor-far",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-sensor-send",
-      "title": "Send after the fresh decision",
-      "entryPath": "#bt-sensor-send",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-save-integrated",
-      "title": "Save the combined program",
-      "entryPath": "#bt-save-integrated",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-transfer-integrated",
-      "title": "Run the combined program",
-      "entryPath": "#bt-transfer-integrated",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-reconnect-integrated",
-      "title": "Reconnect the sound page",
-      "entryPath": "#bt-reconnect-integrated",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-real-test",
-      "title": "Practise the real near message",
-      "entryPath": "#bt-real-test",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-real-far",
-      "title": "Practise the real farther message",
-      "entryPath": "#bt-real-far",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-real-unknown",
+      "id": "test-unknown",
       "title": "Check an unusable sensor reading",
-      "entryPath": "#bt-real-unknown",
+      "entryPath": "#test-unknown",
       "estimatedMinutes": null
     },
     {
-      "id": "bt-check-message",
-      "title": "Send UNKNOWN for unusable readings",
-      "entryPath": "#bt-check-message",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "bt-explain-result",
-      "title": "Add the Bluetooth test note",
-      "entryPath": "#bt-explain-result",
+      "id": "test-connection-loss",
+      "title": "Check loss of the connection",
+      "entryPath": "#test-connection-loss",
       "estimatedMinutes": null
     },
     {
       "id": "record-trials",
-      "title": "Record the six trials",
+      "title": "Keep three real trials at each distance",
       "entryPath": "#record-trials",
       "estimatedMinutes": null
     },
     {
-      "id": "one-improvement",
-      "title": "Choose one improvement",
-      "entryPath": "#one-improvement",
+      "id": "improve-retest",
+      "title": "Improve one thing and repeat the tests",
+      "entryPath": "#improve-retest",
       "estimatedMinutes": null
     },
     {
-      "id": "retest",
-      "title": "Retest the saved version",
-      "entryPath": "#retest",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "explain-contribution",
-      "title": "Explain your code change",
-      "entryPath": "#explain-contribution",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "finish-report",
-      "title": "Finish the shared report",
-      "entryPath": "#finish-report",
+      "id": "save-evidence",
+      "title": "Save the final program and results",
+      "entryPath": "#save-evidence",
       "estimatedMinutes": null
     },
     {
       "id": "submit",
-      "title": "Submit the program and report",
+      "title": "Use the existing team handoff",
       "entryPath": "#submit",
       "estimatedMinutes": null
     }
