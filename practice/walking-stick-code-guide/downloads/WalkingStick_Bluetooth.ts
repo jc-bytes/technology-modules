@@ -37,7 +37,7 @@ basic.forever(function () {
         basic.showString("?")
     } else {
         // The original sensor code returns microseconds, not centimetres.
-        distanceCm = echoTime / 58
+        distanceCm = Math.round(echoTime / 58 * 10) / 10
 
         if (distanceCm <= 30) {
             stickStatus = "NEAR"
@@ -48,9 +48,13 @@ basic.forever(function () {
         }
     }
 
-    // Send only the result of the fresh reading above.
+    // Send one fresh line: NEAR,20.3 or FAR,40. Unknown has no distance.
     if (btConnected) {
-        bluetooth.uartWriteLine(stickStatus)
+        if (stickStatus == "UNKNOWN") {
+            bluetooth.uartWriteLine(stickStatus)
+        } else {
+            bluetooth.uartWriteLine(stickStatus + "," + distanceCm)
+        }
     }
 
     basic.pause(500)

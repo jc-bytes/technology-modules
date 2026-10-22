@@ -1,8 +1,8 @@
-import {programCode} from './shared/walking-stick-program.js?v=1.7.0';
-import {renderBlockDiagram} from './shared/walking-stick-blocks.js?v=1.7.0';
-import {site} from './site.js?v=1.7.0';
-import {buildSteps} from './steps/build-data.js?v=1.7.0';
-import {narrationFiles} from './narration-manifest.js?v=1.7.0';
+import {programCode} from './shared/walking-stick-program.js?v=1.8.0';
+import {renderBlockDiagram} from './shared/walking-stick-blocks.js?v=1.8.0';
+import {site} from './site.js?v=1.8.0';
+import {buildSteps} from './steps/build-data.js?v=1.8.0';
+import {narrationFiles} from './narration-manifest.js?v=1.8.0';
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function render(s){
  const diagram=s.diagram?renderBlockDiagram(s.diagram):'';

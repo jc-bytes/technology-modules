@@ -1,19 +1,16 @@
-/**
- * Small, fail-closed ASCII notification protocol. Each message ends in LF;
- * CRLF is accepted too. Notifications may contain fragments or several lines.
- *
- * createLineParser({maxLineBytes = 16}) returns:
- *   push(Uint8Array) -> Array<'NEAR' | 'FAR' | 'UNKNOWN'>
- *   reset() -> void, clears partial/discarded input on disconnect/reconnect.
- *
- * Malformed bytes, misplaced CR and oversized lines emit UNKNOWN immediately,
- * once per bad line. The remainder is discarded through LF, so a suffix such
- * as FAR cannot turn a damaged line into a safe report. Empty or unsupported
- * complete lines produce UNKNOWN. No TextDecoder replacement is allowed.
- *
- * maxLineBytes bounds content bytes, excluding the optional CR before LF.
- * This module does not connect to Bluetooth or make claims about hardware.
+/** LF-delimited ASCII reports. UART notifications may split or combine lines.
+ * Legacy status-only senders remain supported, without a distance.
+ * Invalid or damaged reports become UNKNOWN and clear the displayed distance.
  */
+export function parseReport(line) {
+  if (['NEAR','FAR','UNKNOWN'].includes(line)) return {state:line,distanceCm:null};
+  const match=/^(NEAR|FAR),(\d{1,3}(?:\.\d)?)$/.exec(line);
+  if (!match) return {state:'UNKNOWN',distanceCm:null};
+  const distanceCm=Number(match[2]),state=match[1];
+  if(distanceCm<2||distanceCm>400||(state==='NEAR')!==(distanceCm<=30))return {state:'UNKNOWN',distanceCm:null};
+  return {state,distanceCm};
+}
+function validLine(line) {return line==='UNKNOWN'||parseReport(line).state!=='UNKNOWN';}
 export function createLineParser({ maxLineBytes = 16 } = {}) {
   if (!Number.isInteger(maxLineBytes) || maxLineBytes < 7 || maxLineBytes > 256) {
     throw new RangeError('maxLineBytes must be an integer from 7 to 256');
@@ -45,7 +42,7 @@ export function createLineParser({ maxLineBytes = 16 } = {}) {
         continue;
       }
       if (byte === 10) {
-        events.push(line === 'NEAR' || line === 'FAR' || line === 'UNKNOWN' ? line : 'UNKNOWN');
+        events.push(validLine(line) ? line : 'UNKNOWN');
         reset();
         continue;
       }
@@ -58,8 +55,8 @@ export function createLineParser({ maxLineBytes = 16 } = {}) {
         pendingCR = true;
         continue;
       }
-      // Strict ASCII uppercase only: spaces, NUL, Unicode and lowercase fail.
-      if (byte < 65 || byte > 90 || line.length >= maxLineBytes) {
+      // Only uppercase words, decimal digits, comma and decimal point are allowed.
+      if (!((byte >= 65 && byte <= 90) || (byte >= 48 && byte <= 57) || byte === 44 || byte === 46) || line.length >= maxLineBytes) {
         rejectLine();
         continue;
       }

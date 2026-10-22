@@ -8,9 +8,9 @@
   "records": [
     {
       "id": "goal",
-      "text": "One complete sensor and Bluetooth program. At your already-built walking stick. The program measures an echo, checks whether it can use it, then chooses unknown, near or far. The Bluetooth website plays a warning for near. Use the complete P0/P1 program in this guide. First protect your old work, then paste the program once and inspect its real blocks. Check. The finished Blocks workspace has five separate stacks: on start, a sensor function, two Bluetooth events and forever. Keep the existing built sensor connections: Trig P0 and Echo P1. Have the teacher check the powered sensor interface before physical tests. Keep the model on a table. This is a classroom prototype, not tested mobility equipment.",
-      "sha256": "7314696c40a84c0c990b0b4bf4dc439d8795e5cb054b1f4c1a544a5d58e69839",
-      "file": "assets/narration/goal-7314696c40a8.mp3"
+      "text": "Measure distance and hear a warning. At your already-built walking stick. The micro:bit measures how far away an object is. The website shows that distance in centimetres and plays a warning when the object is 30 centimetres away or closer. Keep the built model on a table. Save your old program first, then follow the guide to add distance messages and test them. Check. A nearby object gives X on the micro:bit, a distance on the website and a warning sound. Keep the existing built sensor connections: Trig P0 and Echo P1. Have the teacher check the powered sensor interface before physical tests. Keep the model on a table. This is a classroom prototype, not tested mobility equipment.",
+      "sha256": "7a0d928e222f7a15e12ddc70ce5bd13e02ed42e2285168bf5c65c01b5bb80fb7",
+      "file": "assets/narration/goal-7a0d928e222f.mp3"
     },
     {
       "id": "open-team-project",
@@ -62,9 +62,9 @@
     },
     {
       "id": "near-message",
-      "text": "Follow a usable echo to near. In Blocks · first if’s else → distanceCm ≤ 30. The outer else handles accepted echoes. It divides echoTime by 58 to estimate centimetres. A second if then checks whether that distance is at or below 30 centimetres. In the outer else, find set distanceCm to echoTime ÷ 58. Follow the inner distanceCm ≤ 30 branch to set stick status near and show icon X. Check. Only an accepted echo can become near. Exactly 30 centimetres belongs to this branch. ÷ 58 converts this program’s raw echo time into centimetres once. ≤ means less than or equal to. The X is the No icon. Inspect the blocks already present; do not add a second conversion or another if.",
-      "sha256": "736805fc458729c259dc46815dd6893786caefa552a2127c3e3b3e8b1f2285b6",
-      "file": "assets/narration/near-message-736805fc4587.mp3"
+      "text": "Follow a usable echo to near. In Blocks · first if’s else → distanceCm ≤ 30. The outer else handles accepted echoes. Divide echoTime by 58 to get centimetres, then round to one decimal place. The second if checks whether that rounded distance is at or below 30 centimetres. In the outer else, find set distanceCm to round(echoTime ÷ 58 × 10) ÷ 10. Follow distanceCm ≤ 30 to set stick status near and show icon X. Check. Only an accepted echo can become near. Exactly 30 centimetres belongs to this branch. For example, 1177 microseconds becomes about 20.3 centimetres. Multiply by 10, round to a whole number, then divide by 10 to keep one decimal place. The X is the No icon. Keep these supplied blocks together.",
+      "sha256": "bd429d1866bdd35f3c33cb643293c81a67a5e480cdeb3abcba6eb415bda53adc",
+      "file": "assets/narration/near-message-bd429d1866bd.mp3"
     },
     {
       "id": "far-message",
@@ -74,9 +74,9 @@
     },
     {
       "id": "send-fresh",
-      "text": "Inspect the sender after the whole decision. In Blocks · bottom of the same forever stack. The sensor decision chooses one word first. A separate if then sends that word only when B T connected is true. After the complete sensor if/else, find if B T connected with Bluetooth uart write line stick status inside. Find pause five hundred after that if, still inside forever. Check. There is one sensor loop and one you art write line. Sending is outside every result branch. The pause runs even when disconnected. Write line sends the chosen word with a line ending so the website can read a complete message. The five hundred-millisecond pause is half a second. No sender or loop pause belongs in on start. Do not append an old distance: sender.",
-      "sha256": "f212ce1021c3d98b94f6db24031be2a48d95f8f21080296e84d357e7d5bf8175",
-      "file": "assets/narration/send-fresh-f212ce1021c3.mp3"
+      "text": "Inspect the sender after the whole decision. In Blocks · bottom of the same forever stack. A Bluetooth message carries the result and the distance together. near,20.3 means the object is near and the sensor estimated 20.3 centimetres. The comma separates the two parts. After the sensor decision, find if B T connected. Inside it, unknown sends only stick status. Its else sends stick status joined to a comma and distanceCm. Find pause five hundred after the whole sending if. Check. Each loop sends one line: near,20.3, far,40 or unknown. unknown sends no pretend zero distance. There are two you art write line blocks in different branches. Only one runs for each reading. Both are inside if B T connected and outside the sensor decision. Write line adds the line ending. The pause runs even when disconnected.",
+      "sha256": "7009e82f4982a5647f021874749b694292cd1677f68161b2e54557bbe205064a",
+      "file": "assets/narration/send-fresh-7009e82f4982.mp3"
     },
     {
       "id": "complete-program",
@@ -98,39 +98,39 @@
     },
     {
       "id": "connect-board",
-      "text": "Connect your team’s micro:bit. On Walking-stick sounds. Chrome asks which nearby board to connect. Your program must be running on the board you choose. Click Connect micro:bit and select your team’s identified device. Check. The website shows a live connection and receives fresh sensor messages. If no board appears, check Bluetooth, the uploaded you art program and its connection setting. Use the teacher-checked laptop; Chrome on iPhone or iPad cannot make this Web Bluetooth connection.",
-      "sha256": "078b4aff9fc92bd9cc0b66f58926e17b4a0df62c71a6dc6376f4cef28e225d09",
-      "file": "assets/narration/connect-board-078b4aff9fc9.mp3"
+      "text": "Connect your team’s micro:bit. On Walking-stick sounds. Chrome asks which nearby board to connect. Your program must be running on the board you choose. Click Connect micro:bit and select your team’s identified device. Check. The website receives fresh messages. With a usable echo, it shows the sensor distance in centimetres as well as near or far. If no board appears, check Bluetooth, the uploaded you art program and its connection setting. Use the teacher-checked laptop; Chrome on iPhone or iPad cannot make this Web Bluetooth connection.",
+      "sha256": "ffd92412240b7438404dcdd18d508afda60cbeefc2b54ad08ff9051a68c0e390",
+      "file": "assets/narration/connect-board-ffd92412240b.mp3"
     },
     {
       "id": "test-near",
-      "text": "Test cardboard at 20 centimetres. At the tabletop model · sound tab visible. This checks the whole path: sensor → program → Bluetooth → website → speaker. Use a ruler, not a guessed distance. Place the cardboard 20 centimetres from the sensor’s front face and observe both displays and the sound. Check. A usable reading near 20 centimetres gives X, near and the near warning. If results disagree, keep the model on the table and compare the pasted program, board display, website word and uploaded version. This program sends status words, not numeric distances.",
-      "sha256": "0a14bd7444f65f9344c5cc36f18e64307c2e4f1154742157047a99a6bf04c022",
-      "file": "assets/narration/test-near-0a14bd7444f6.mp3"
+      "text": "Test cardboard at 20 centimetres. At the tabletop model · sound tab visible. This checks the whole path: sensor → program → Bluetooth → website → speaker. Use a ruler, not a guessed distance. Place cardboard 20 centimetres from the sensor’s front face. Compare the website’s sensor distance with the ruler, then check the display and sound. Check. A usable reading near 20 centimetres shows X, near, an estimated distance near 20 centimetres and the warning. The ruler shows where you placed the cardboard; the website shows what the ultrasonic sensor estimated. They may differ. If the number is missing, upload the updated program and reconnect.",
+      "sha256": "b4d12fb90a97527bf01ea901acecaabc16015c787376c56a4923c5b6216d04fd",
+      "file": "assets/narration/test-near-b4d12fb90a97.mp3"
     },
     {
       "id": "test-far",
-      "text": "Move the same cardboard to 40 centimetres. At the tabletop model · sound tab visible. Keep the object and setup the same while changing the distance. The result must come from a valid new reading. Move the cardboard to 40 centimetres from the sensor face and observe again. Check. A usable reading near 40 centimetres gives a blank display and far. The near warning stops. The sound page says Beyond 30 centimetres. That describes the reported measurement, not proof that the surroundings are safe.",
-      "sha256": "fc65781f0ccd8c1a7913a12c4ea3f9857a24ec60f348260bc10284c9e7a9a3c1",
-      "file": "assets/narration/test-far-fc65781f0ccd.mp3"
+      "text": "Move the same cardboard to 40 centimetres. At the tabletop model · sound tab visible. Keep the object and setup the same while changing the distance. The result must come from a valid new reading. Move the cardboard to 40 centimetres from the sensor face and observe again. Check. A usable reading near 40 centimetres gives a blank display, far and an estimated distance near 40 centimetres. The warning stops. The sound page says Beyond 30 centimetres. That describes the reported measurement, not proof that the surroundings are safe.",
+      "sha256": "dd611fe481335b9e47314f2ddc66eb13a510d1ea03c2db19903d444c1c9d5c57",
+      "file": "assets/narration/test-far-dd611fe48133.mp3"
     },
     {
       "id": "test-unknown",
-      "text": "Check an unusable sensor reading. With your teacher · sound tab visible. The first if must report unknown for a missing echo or an echo outside the accepted interval. Test this path with the teacher as well as the near and far paths. Have your teacher run a safe missing-echo or out-of-range test for this built model. Check. The board shows ? and the website reports unknown, with the near warning stopped. Do not move live sensor wires to force an error. If a safe test is not prepared, record Test not run and have the teacher arrange it.",
-      "sha256": "2849702bb7e5157c8adbf4287448e8bbf5ac90e8af92aba862120ff0026a3f25",
-      "file": "assets/narration/test-unknown-2849702bb7e5.mp3"
+      "text": "Check an unusable sensor reading. With your teacher · sound tab visible. The first if must report unknown for a missing echo or an echo outside the accepted interval. Test this path with the teacher as well as the near and far paths. Have your teacher run a safe missing-echo or out-of-range test for this built model. Check. The board shows ?. The website reports unknown, shows a dash instead of a distance and stops the warning. Do not move live sensor wires to force an error. If a safe test is not prepared, record Test not run and have the teacher arrange it.",
+      "sha256": "94eca4e546e7af2819c6a7301e2b7272ca34c72effa57862a7981c6654692804",
+      "file": "assets/narration/test-unknown-94eca4e546e7.mp3"
     },
     {
       "id": "test-connection-loss",
-      "text": "Check loss of the connection. On Walking-stick sounds · tabletop model. A disconnected board must not leave an old warning sounding. Separately, more than three seconds without fresh complete messages makes the page show Signal paused. Click Disconnect and check that sound stops. Reconnect the same board and wait for a fresh result. Check. The page shows disconnection, then returns to live sensor messages after reconnecting. For a separate stale-stream check, the teacher can pause sending in a checked test copy while keeping Bluetooth connected. The labelled website demo’s Stop messages button tests the page timer only, not the sensor or Bluetooth.",
-      "sha256": "e4b9afd7592a1f89c46bfb461e22e419484945a56234a22105deb56431ab2dd7",
-      "file": "assets/narration/test-connection-loss-e4b9afd7592a.mp3"
+      "text": "Check loss of the connection. On Walking-stick sounds · tabletop model. A disconnected board must not leave an old warning sounding. Separately, more than three seconds without fresh complete messages makes the page show Signal paused. Click Disconnect and check that sound stops. Reconnect the same board and wait for a fresh result. Check. Disconnection clears the number and stops sound. Reconnecting shows a number only after a new usable reading. Signal paused also clears an old number. For a separate stale-stream check, the teacher can pause sending in a checked test copy while keeping Bluetooth connected. The labelled website demo’s Stop messages button tests the page timer only, not the sensor or Bluetooth.",
+      "sha256": "01a14aa874ecf8d47c5024630ececf00f0ed86c163c18e534232405b0e25d4da",
+      "file": "assets/narration/test-connection-loss-01a14aa874ec.mp3"
     },
     {
       "id": "record-trials",
-      "text": "Keep three real trials at each distance. In your existing team test record. One successful try can happen by chance. Repeat the same measured positions so failures are visible too. Run three trials with cardboard measured at 20 centimetres and three at 40 centimetres. Record the ruler distance, board display, website word and sound for each trial. Check. Six real trials show what happened, including any failed or missing readings. The website receives unknown, near or far, not a numeric sensor reading. Record the ruler position and the results you actually observe. Do not replace a missing result with a made-up zero.",
-      "sha256": "169f9f08beae0ae5652a0fb76e581425ae02fc79251a6baac3f315f06880b5df",
-      "file": "assets/narration/record-trials-169f9f08beae.mp3"
+      "text": "Keep three real trials at each distance. In your existing team test record. One successful try can happen by chance. Repeat the same measured positions so failures are visible too. Run three trials at a ruler distance of 20 centimetres and three at 40 centimetres. For each, record ruler distance, website sensor distance, board display, website word and sound. Check. Six real trials show what happened, including any failed or missing readings. Keep ruler distance and sensor distance in separate columns. Write unavailable for a dash; never copy an old value or invent zero. Record differences as they happen.",
+      "sha256": "18e48cd887d9c53d4549137e005dc97fe6f01be13c51f7eb09d3111f59a9ccfc",
+      "file": "assets/narration/record-trials-18e48cd887d9.mp3"
     },
     {
       "id": "improve-retest",
