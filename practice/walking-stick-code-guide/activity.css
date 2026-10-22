@@ -107,3 +107,6 @@
 @media(max-width:520px){.guide-header .fm-menu nav{max-width:calc(100vw - 24px);width:340px}.guide-header .guide-step-link{min-height:48px}}
 
 .guide-header .fm-menu summary{width:auto;min-width:64px;height:auto;min-height:44px;padding:10px 14px;font-size:16px;line-height:1.4}
+
+/* Text-only tasks use the available lesson width. */
+.build-step:not(.with-picture),.build-step:not(.with-picture)>.build-copy{width:100%;max-width:none}
