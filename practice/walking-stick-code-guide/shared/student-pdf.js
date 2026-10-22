@@ -275,7 +275,7 @@ function createStructuredLayout(pdf, report) {
 }
 
 export async function createStudentPdf(report, font) {
-  const jspdfModule = await import('./jspdf.umd.min.js?v=1.9.0');
+  const jspdfModule = await import('./jspdf.umd.min.js?v=1.9.1');
   const { jsPDF } = globalThis.jspdf || jspdfModule.default || jspdfModule;
   const pdf = new jsPDF({ unit: 'mm', format: 'a4', compress: true, putOnlyUsedFonts: true });
   pdf.addFileToVFS('StudentSans.ttf', font || await fontData());

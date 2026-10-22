@@ -1,5 +1,5 @@
-import {stepAliases} from './step-aliases.js?v=1.9.0';
-import {attachNarration,stopGuideNarration} from './shared/guide-narration.js?v=1.9.0';
+import {stepAliases} from './step-aliases.js?v=1.9.1';
+import {attachNarration,stopGuideNarration} from './shared/guide-narration.js?v=1.9.1';
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function mountGuide(lesson){
  const steps=lesson.sections;

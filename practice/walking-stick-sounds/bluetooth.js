@@ -108,7 +108,7 @@ export class MicrobitConnection {
 
 function connectionMessage(error, phase) {
   if (phase === 'chooser' && error?.name === 'NotFoundError') {
-    return 'No micro:bit selected. Turn on Bluetooth, then choose Connect and select your micro:bit.';
+    return 'No micro:bit selected. If the list was empty, select No Pairing Required in MakeCode, download the updated program to the board, press Reset once and try again.';
   }
   if ((phase === 'service' || phase === 'characteristic') && error?.name === 'NotFoundError') {
     return 'The micro:bit UART service is missing. Download the sound sender program with Bluetooth UART enabled, then reconnect.';

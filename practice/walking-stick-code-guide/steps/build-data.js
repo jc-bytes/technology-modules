@@ -7,7 +7,12 @@ export const buildSteps = [
     "do": "Keep the built model on a table. Save your old program, build each part of the code, then test the distance and warning.",
     "expected": "A nearby object gives X on the micro:bit, a distance on the website and a warning sound.",
     "help": "Keep the existing built sensor connections: Trig P0 and Echo P1. Have the teacher check the powered sensor interface before physical tests. Keep the model on a table. This is a classroom prototype, not tested mobility equipment.",
-    "links": [],
+    "links": [
+      [
+        "Open Bluetooth sound site",
+        "../walking-stick-sounds/"
+      ]
+    ],
     "stage": "guided"
   },
   {
@@ -47,8 +52,8 @@ export const buildSteps = [
     "title": "Choose the classroom Bluetooth setting",
     "where": "In MakeCode · Project Settings",
     "why": "No Pairing Required lets nearby devices connect for this teacher-supervised demonstration. Chrome still asks which device to use.",
-    "do": "In the test project, select the teacher-approved No Pairing Required setting before building the Bluetooth sender.",
-    "expected": "The Bluetooth extension and checked connection setting are ready.",
+    "do": "Open Settings → Project Settings and select No Pairing Required. Close the settings. Later, download this updated project to the physical micro:bit.",
+    "expected": "No Pairing Required is selected. The board uses it only after you download the updated program.",
     "help": "If school policy requires a different mode, have the teacher verify that connection route. Do not guess among nearby boards.",
     "links": [],
     "stage": "guided"
@@ -265,7 +270,7 @@ export const buildSteps = [
     "help": "Use the checked Chrome laptop and HTTPS site. Keep its tab visible during each test. The labelled demo is only a website demonstration, not a Bluetooth test.",
     "links": [
       [
-        "Open Walking-stick sounds",
+        "Open Bluetooth sound site",
         "../walking-stick-sounds/"
       ]
     ],
@@ -278,8 +283,13 @@ export const buildSteps = [
     "why": "Chrome asks which nearby board to connect. Your program must be running on the board you choose.",
     "do": "Click Connect micro:bit and select your team’s identified device.",
     "expected": "The website receives fresh messages. With a usable echo, it shows the sensor distance in cm as well as NEAR or FAR.",
-    "help": "If no board appears, check Bluetooth, the uploaded UART program and its connection setting. Use the teacher-checked laptop; Chrome on iPhone or iPad cannot make this Web Bluetooth connection.",
-    "links": [],
+    "help": "If Chrome shows No compatible devices found, cancel. In MakeCode choose Settings → Project Settings → No Pairing Required, download the program again and wait for flashing to finish. Press Reset once and retry. If still empty, check that Chrome has Bluetooth access in macOS settings. Chrome on iPhone or iPad cannot make this connection.",
+    "links": [
+      [
+        "Open Bluetooth sound site",
+        "../walking-stick-sounds/"
+      ]
+    ],
     "stage": "guided"
   },
   {
@@ -290,7 +300,12 @@ export const buildSteps = [
     "do": "Place cardboard 20 cm from the sensor’s front face. Compare the website’s sensor distance with the ruler, then check the display and sound.",
     "expected": "A usable reading near 20 cm shows X, NEAR, an estimated distance near 20 cm and the warning.",
     "help": "The ruler shows where you placed the cardboard; the website shows what the ultrasonic sensor estimated. They may differ. If the number is missing, upload the updated program and reconnect.",
-    "links": [],
+    "links": [
+      [
+        "Open Bluetooth sound site",
+        "../walking-stick-sounds/"
+      ]
+    ],
     "stage": "guided",
     "image": "assets/test-positions.svg",
     "alt": "Test cardboard at 20 cm reference drawing. Open full size for the labels."
@@ -303,7 +318,12 @@ export const buildSteps = [
     "do": "Move the cardboard to 40 cm from the sensor face and observe again.",
     "expected": "A usable reading near 40 cm gives a blank display, FAR and an estimated distance near 40 cm. The warning stops.",
     "help": "The sound page says Beyond 30 cm. That describes the reported measurement, not proof that the surroundings are safe.",
-    "links": [],
+    "links": [
+      [
+        "Open Bluetooth sound site",
+        "../walking-stick-sounds/"
+      ]
+    ],
     "stage": "guided"
   },
   {
@@ -314,7 +334,12 @@ export const buildSteps = [
     "do": "Have your teacher run a safe missing-echo or out-of-range test for this built model.",
     "expected": "The board shows ?. The website reports UNKNOWN, shows a dash instead of a distance and stops the warning.",
     "help": "Do not move live sensor wires to force an error. If a safe test is not prepared, record Test not run and have the teacher arrange it.",
-    "links": [],
+    "links": [
+      [
+        "Open Bluetooth sound site",
+        "../walking-stick-sounds/"
+      ]
+    ],
     "stage": "guided"
   },
   {
@@ -325,7 +350,12 @@ export const buildSteps = [
     "do": "Click Disconnect and check that sound stops. Reconnect the same board and wait for a fresh result.",
     "expected": "Disconnection clears the number and stops sound. Reconnecting shows a number only after a new usable reading. Signal paused also clears an old number.",
     "help": "For a separate stale-stream check, the teacher can pause sending in a checked test copy while keeping Bluetooth connected. The labelled website demo’s Stop messages button tests the page timer only, not the sensor or Bluetooth.",
-    "links": [],
+    "links": [
+      [
+        "Open Bluetooth sound site",
+        "../walking-stick-sounds/"
+      ]
+    ],
     "stage": "guided"
   },
   {
@@ -336,7 +366,12 @@ export const buildSteps = [
     "do": "Run three trials at a ruler distance of 20 cm and three at 40 cm. For each, record ruler distance, website sensor distance, board display, website word and sound.",
     "expected": "Six real trials show what happened, including any failed or missing readings.",
     "help": "Keep ruler distance and sensor distance in separate columns. Write unavailable for a dash; never copy an old value or invent zero. Record differences as they happen.",
-    "links": [],
+    "links": [
+      [
+        "Open Bluetooth sound site",
+        "../walking-stick-sounds/"
+      ]
+    ],
     "stage": "guided"
   },
   {
@@ -347,7 +382,12 @@ export const buildSteps = [
     "do": "If a correction is needed, make one teacher-checked correction using the first results. Download the next numbered .hex and copy it to MICROBIT. Wait for transfer, reconnect the sound page and repeat the same six trials.",
     "expected": "If corrected, a separate after-change record can be compared with the original. If every trial worked, record that no correction was needed.",
     "help": "Keep the original results and the 30 cm rule. If every trial worked, record that no correction was needed. If a correction is made, fix one thing, such as a wrong message branch or duplicate sender. Ask the teacher before changing physical settings or sensor timing.",
-    "links": [],
+    "links": [
+      [
+        "Open Bluetooth sound site",
+        "../walking-stick-sounds/"
+      ]
+    ],
     "stage": "guided"
   },
   {

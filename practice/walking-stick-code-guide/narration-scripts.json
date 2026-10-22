@@ -26,9 +26,9 @@
     },
     {
       "id": "connection-setting",
-      "text": "Choose the classroom Bluetooth setting. In Make Code · Project Settings. No Pairing Required lets nearby devices connect for this teacher-supervised demonstration. Chrome still asks which device to use. In the test project, select the teacher-approved No Pairing Required setting before building the Bluetooth sender. Check. The Bluetooth extension and checked connection setting are ready. If school policy requires a different mode, have the teacher verify that connection route. Do not guess among nearby boards.",
-      "sha256": "221e7d21ce1cc928e008660843fc1cb17b6ac600f357ecec5be441dd1a0ff346",
-      "file": "assets/narration/connection-setting-221e7d21ce1c.mp3"
+      "text": "Choose the classroom Bluetooth setting. In Make Code · Project Settings. No Pairing Required lets nearby devices connect for this teacher-supervised demonstration. Chrome still asks which device to use. Open Settings → Project Settings and select No Pairing Required. Close the settings. Later, download this updated project to the physical micro:bit. Check. No Pairing Required is selected. The board uses it only after you download the updated program. If school policy requires a different mode, have the teacher verify that connection route. Do not guess among nearby boards.",
+      "sha256": "28e1123d85bb11e3364ad990167acb14a275967672b4051962e3efb14ac7cecb",
+      "file": "assets/narration/connection-setting-28e1123d85bb.mp3"
     },
     {
       "id": "sensor-profile",
@@ -116,9 +116,9 @@
     },
     {
       "id": "connect-board",
-      "text": "Connect your team’s micro:bit. On Walking-stick sounds. Chrome asks which nearby board to connect. Your program must be running on the board you choose. Click Connect micro:bit and select your team’s identified device. Check. The website receives fresh messages. With a usable echo, it shows the sensor distance in centimetres as well as near or far. If no board appears, check Bluetooth, the uploaded you art program and its connection setting. Use the teacher-checked laptop; Chrome on iPhone or iPad cannot make this Web Bluetooth connection.",
-      "sha256": "ffd92412240b7438404dcdd18d508afda60cbeefc2b54ad08ff9051a68c0e390",
-      "file": "assets/narration/connect-board-ffd92412240b.mp3"
+      "text": "Connect your team’s micro:bit. On Walking-stick sounds. Chrome asks which nearby board to connect. Your program must be running on the board you choose. Click Connect micro:bit and select your team’s identified device. Check. The website receives fresh messages. With a usable echo, it shows the sensor distance in centimetres as well as near or far. If Chrome shows No compatible devices found, cancel. In Make Code choose Settings → Project Settings → No Pairing Required, download the program again and wait for flashing to finish. Press Reset once and retry. If still empty, check that Chrome has Bluetooth access in macOS settings. Chrome on iPhone or iPad cannot make this connection.",
+      "sha256": "08af551de77c8f89aff0703b9737cfd76e6369734130fcb73b0f9c3aa140d6cc",
+      "file": "assets/narration/connect-board-08af551de77c.mp3"
     },
     {
       "id": "test-near",

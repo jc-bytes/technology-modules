@@ -123,3 +123,5 @@
 .snippet-reference .makecode-picture{margin-top:16px}.snippet-reference .makecode-picture figcaption{font-size:14px}.snippet-reference .makecode-picture img{max-width:100%}
 
 .build-step:has(.build-actions) .build-copy>details{margin-top:0}
+
+.resource-link.bluetooth-site-link{display:inline-flex;gap:12px;margin:2px 0 12px;background:#00695c;color:#fff;border-color:#00695c;font-size:17px;line-height:1.4;text-decoration:none}.resource-link.bluetooth-site-link:hover{background:#004f46}.resource-link.bluetooth-site-link:visited{color:#fff}

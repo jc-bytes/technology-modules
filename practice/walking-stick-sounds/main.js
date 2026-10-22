@@ -1,6 +1,6 @@
-import {MicrobitConnection} from './bluetooth.js?v=1.2.0';
-import {createLineParser,classifyFreshness,parseReport} from './protocol.js?v=1.2.0';
-import {WarningAudio} from './audio.js?v=1.2.0';
+import {MicrobitConnection} from './bluetooth.js?v=1.3.0';
+import {createLineParser,classifyFreshness,parseReport} from './protocol.js?v=1.3.0';
+import {WarningAudio} from './audio.js?v=1.3.0';
 const $=id=>document.getElementById(id);
 const parser=createLineParser(),speaker=new WarningAudio();
 let connectionState='disconnected',latest=null,soundEnabled=false,lastWarning=-Infinity,previousView='',mode='live',demoState='UNKNOWN',demoTimer=null,hidden=document.hidden;

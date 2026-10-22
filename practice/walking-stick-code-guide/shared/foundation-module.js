@@ -1,9 +1,9 @@
-import { attachNarration, stopGuideNarration } from "./guide-narration.js?v=1.9.0";
+import { attachNarration, stopGuideNarration } from "./guide-narration.js?v=1.9.1";
 
-import { practiceCheckSpecs } from "./t3-practice.js?v=1.9.0";
-import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=1.9.0";
-import { downloadStudentPdf } from "./student-pdf.js?v=1.9.0";
-import { selectClassRoute } from "./class-routes.js?v=1.9.0";
+import { practiceCheckSpecs } from "./t3-practice.js?v=1.9.1";
+import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=1.9.1";
+import { downloadStudentPdf } from "./student-pdf.js?v=1.9.1";
+import { selectClassRoute } from "./class-routes.js?v=1.9.1";
 
 const clone = (value) => JSON.parse(JSON.stringify(value));
 const escapeHtml = (value = "") => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
