@@ -56,9 +56,9 @@
     },
     {
       "id": "reading-check",
-      "text": "Check what the number means. In this guide. A sensor reading is useful only when its unit and validity are known. Choose the answer that follows our program rule. The sensor fails to return a usable reading. What should the display mean?. Choices. The path is clear. The distance is exactly zero. The reading cannot be used. Check. Check your answer before continuing.",
-      "sha256": "4d2421d5a6570bec8649b7c6091c4e5042aee0e37bdbedf9ffee843fdf9e07ad",
-      "file": "assets/narration/reading-check-4d2421d5a657.mp3"
+      "text": "Recognize an unusable reading. In Make Code · existing validity decision. A sensor value is useful only when its unit and validity are known. A failed measurement means the distance is unknown. Read the invalid-reading branch and follow its path to the question-mark display. A failed reading reaches ?. It never counts as a clear path.",
+      "sha256": "9b9905281a96002e67a9871a9953e9e930ccfda7da781fe9bc37710a22087de7",
+      "file": "assets/narration/reading-check-9b9905281a96.mp3"
     },
     {
       "id": "rule",
@@ -164,15 +164,15 @@
     },
     {
       "id": "boundary-check",
-      "text": "Check exactly 30 centimetres. In this guide. The equal part of ≤ matters at the boundary. Choose the answer that follows our program rule. A valid reading is exactly 30 centimetres. Which display follows our rule?. Choices. X. Blank display. ?. Check. Check your answer before continuing.",
-      "sha256": "f290443dfdeb3753b2694e749350265d51b7eae5a924c280176b94217fd00e99",
-      "file": "assets/narration/boundary-check-f290443dfdeb.mp3"
+      "text": "Include exactly 30 centimetres. In Make Code · distance comparison. The sign ≤ means less than or equal to. A valid reading of exactly 30 centimetres belongs to the near branch. Check that the near condition reads distanceCm ≤ 30. The condition includes exactly 30 centimetres and displays X.",
+      "sha256": "01072dce739a6a488e06243592bf52489e0ee25e238b104be9a1d3e400ebf2fb",
+      "file": "assets/narration/boundary-check-01072dce739a.mp3"
     },
     {
       "id": "far-check",
-      "text": "Check the far branch. In this guide. The program reaches the far branch only after a valid reading. Choose the answer that follows our program rule. A valid reading is 40 centimetres. Which display should appear?. Choices. X. Blank display. ?. Check. Check your answer before continuing.",
-      "sha256": "838650b6c1da435f0f61e62d4f3ef03022608f3ba91f19ee9a2a62969605ae56",
-      "file": "assets/narration/far-check-838650b6c1da.mp3"
+      "text": "Follow the farther branch. In Make Code · valid-reading decision. A valid reading of 40 centimetres is above 30 centimetres. The inner else branch clears the LEDs only after the reading passes the validity check. Follow the valid 40 centimetres example through the inner else branch. A valid 40 centimetres reading reaches clear screen. An unusable reading follows the separate ? branch.",
+      "sha256": "2a3a2a8b67fd4dc52a81a95b34ae7d3ff12b57297e077c3e30baac2fbc1ca19e",
+      "file": "assets/narration/far-check-2a3a2a8b67fd.mp3"
     },
     {
       "id": "download-program",
@@ -422,9 +422,9 @@
     },
     {
       "id": "bt-sensor-send",
-      "text": "Send after the fresh decision. In Make Code · end of the original sensor-reading forever loop. Put sending in the same loop as the sensor decision. If that loop stops producing results, the website will stop hearing messages and show unknown. Put this sender after the closing end of the complete valid/near/far decision, but still inside the sensor’s forever loop. If a checked pause already exists there, have your teacher reconcile it with the five hundred ms wait; do not stack duplicate waits. At the bottom of the existing sensor forever loop, add if B T connected → uart write line status, then pause five hundred after that if. Check. Read once → check validity → choose status and display → send when connected → wait, all in the same sensor loop.",
-      "sha256": "4a47c7db49146bdfcf4ddb07997d21f90c5a2a32a02d5d4a195b55d5fc6396fd",
-      "file": "assets/narration/bt-sensor-send-4a47c7db4914.mp3"
+      "text": "Send after the fresh decision. In Make Code · end of the original sensor-reading forever loop. Keep the sender inside the sensor’s forever loop, after the complete valid/near/far decision. If fresh readings stop, this loop must stop sending too. The website can then show Signal paused. Use only one checked pause.. At the bottom of the existing sensor forever loop, add if B T connected → uart write line status, then pause five hundred after that if.. Check. Read once → check validity → choose status and display → send when connected → wait, all in the same sensor loop.",
+      "sha256": "8b460c39d4c4533fd7eb1d2d20088368461d9ca1a5954b68c82502e500d3f557",
+      "file": "assets/narration/bt-sensor-send-8b460c39d4c4.mp3"
     },
     {
       "id": "bt-save-integrated",
@@ -464,15 +464,15 @@
     },
     {
       "id": "bt-check-message",
-      "text": "Choose the message. In this guide. The words must match exactly so both devices understand the same state. Which message should an unusable reading send?. Choices. far. unknown. near",
-      "sha256": "c464fc55ad8ad0204d50a387342603f379a2ed739478d2975ef02fb036599f87",
-      "file": "assets/narration/bt-check-message-c464fc55ad8a.mp3"
+      "text": "Send unknown for unusable readings. In Make Code · original invalid-reading branch. The text messages must match exactly. unknown means the sensor did not provide a usable distance; far belongs only to a valid farther reading. Check that the branch showing ? also sets status to \"unknown\". The invalid branch sends unknown in uppercase after the fresh decision.",
+      "sha256": "a806701979f829ee0f7b555145e424b29c0c36e1b4f89076c1d8dff89417b66d",
+      "file": "assets/narration/bt-check-message-a806701979f8.mp3"
     },
     {
       "id": "bt-explain-result",
-      "text": "Explain one real result. In this guide. Button rehearsal and sensor tests prove different things. Use actual observations. What did you test, and what happened?",
-      "sha256": "af24a34af1cc8adfbadfc38925123cc7bd94e5155d2f1110be73eacc76a62623",
-      "file": "assets/narration/bt-explain-result-af24a34af1cc.mp3"
+      "text": "Add the Bluetooth test note. In your shared team report · Test and improvement. Button rehearsal checks the connection. A real sensor test checks the model and the website together. Record which test actually ran. Add one actual Bluetooth test observation to the existing test notes, naming the test, message and website behavior. The existing notes state what ran, what the micro:bit sent and what the sound page did.",
+      "sha256": "e030f2b51d2ea7f2e8c2765722e51966b6222398d0d5ca9cec46d288456c9140",
+      "file": "assets/narration/bt-explain-result-e030f2b51d2e.mp3"
     },
     {
       "id": "record-trials",
@@ -494,9 +494,9 @@
     },
     {
       "id": "explain-contribution",
-      "text": "Explain your code change. In this guide. A useful explanation names what you changed and what the real model did. Write a short explanation of your own program contribution. What did you change, and what happened in a real test?. Check. Your explanation includes one actual result and one limit.",
-      "sha256": "669ee487f0ffb8ebff830492390b9d19d4f7f2d2023ba4a0647445f97b2daaff",
-      "file": "assets/narration/explain-contribution-669ee487f0ff.mp3"
+      "text": "Explain your code change. In your shared team report · Test and improvement. A useful explanation names what you changed and what the real model did. Add a short note naming your own program change, one actual test result and one limit. Your note identifies the change, ruler distance, sensor reading, display result and an untested condition.",
+      "sha256": "39f9fb32a2038275876955d88fc26abe3928a347e0ff4651ef79a3862ba1c455",
+      "file": "assets/narration/explain-contribution-39f9fb32a203.mp3"
     },
     {
       "id": "finish-report",
@@ -506,9 +506,9 @@
     },
     {
       "id": "submit",
-      "text": "Submit the program and report. In Google Classroom · existing 8B STEAM assignment. The teacher needs the program that produced your recorded behavior, plus access to the shared report. Have one team member attach the shared report and final numbered .hex to the existing assignment by its announced deadline. Check. The report opens for your teacher; the saved .hex matches the model you demonstrate.",
-      "sha256": "f1af62ca421ab598e17ac15767486db774efc6cb40606d18ce96fc02f7b9c23a",
-      "file": "assets/narration/submit-f1af62ca421a.mp3"
+      "text": "Submit the program and report. In Google Classroom · existing 8B STEAM assignment. The teacher needs the program that produced your recorded behavior, plus access to the shared report. Have one team member attach the shared report and final numbered .hex to the existing assignment by its announced deadline. The report opens for your teacher; the saved .hex matches the model you demonstrate.",
+      "sha256": "69d21a35612c6675b73de92bb369c3a6bf86e40915b1234ad86539b0f2a4ad97",
+      "file": "assets/narration/submit-69d21a35612c.mp3"
     }
   ]
 }

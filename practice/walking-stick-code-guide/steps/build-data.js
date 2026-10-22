@@ -104,24 +104,15 @@ export const buildSteps = [
   },
   {
     "id": "reading-check",
-    "title": "Check what the number means",
-    "why": "A sensor reading is useful only when its unit and validity are known.",
-    "where": "In this guide",
-    "do": "Choose the answer that follows our program rule.",
-    "expected": "Check your answer before continuing.",
-    "help": "",
+    "title": "Recognize an unusable reading",
+    "why": "A sensor value is useful only when its unit and validity are known. A failed measurement means the distance is unknown.",
+    "where": "In MakeCode · existing validity decision",
+    "do": "Read the invalid-reading branch and follow its path to the question-mark display.",
+    "expected": "A failed reading reaches ?. It never counts as a clear path.",
+    "help": "Keep the exact validity test confirmed for the actual sensor.",
     "links": [],
     "phase": "Program the warning",
-    "stage": "guided",
-    "kind": "check",
-    "question": "The sensor fails to return a usable reading. What should the display mean?",
-    "options": [
-      "The path is clear.",
-      "The distance is exactly zero.",
-      "The reading cannot be used."
-    ],
-    "answer": 2,
-    "hint": "A failed measurement cannot tell us that the path is clear."
+    "stage": "model"
   },
   {
     "id": "rule",
@@ -342,45 +333,27 @@ export const buildSteps = [
   },
   {
     "id": "boundary-check",
-    "title": "Check exactly 30 cm",
-    "why": "The equal part of ≤ matters at the boundary.",
-    "where": "In this guide",
-    "do": "Choose the answer that follows our program rule.",
-    "expected": "Check your answer before continuing.",
-    "help": "",
+    "title": "Include exactly 30 cm",
+    "why": "The sign ≤ means less than or equal to. A valid reading of exactly 30 cm belongs to the near branch.",
+    "where": "In MakeCode · distance comparison",
+    "do": "Check that the near condition reads distanceCm ≤ 30.",
+    "expected": "The condition includes exactly 30 cm and displays X.",
+    "help": "Use ≤ rather than <. The equal part includes the boundary value.",
     "links": [],
     "phase": "Program the warning",
-    "stage": "guided",
-    "kind": "check",
-    "question": "A valid reading is exactly 30 cm. Which display follows our rule?",
-    "options": [
-      "X",
-      "Blank display",
-      "?"
-    ],
-    "answer": 0,
-    "hint": "The near rule includes exactly 30."
+    "stage": "model"
   },
   {
     "id": "far-check",
-    "title": "Check the far branch",
-    "why": "The program reaches the far branch only after a valid reading.",
-    "where": "In this guide",
-    "do": "Choose the answer that follows our program rule.",
-    "expected": "Check your answer before continuing.",
-    "help": "",
+    "title": "Follow the farther branch",
+    "why": "A valid reading of 40 cm is above 30 cm. The inner else branch clears the LEDs only after the reading passes the validity check.",
+    "where": "In MakeCode · valid-reading decision",
+    "do": "Follow the valid 40 cm example through the inner else branch.",
+    "expected": "A valid 40 cm reading reaches clear screen. An unusable reading follows the separate ? branch.",
+    "help": "Keep clear screen in the inner else, inside the valid-reading path.",
     "links": [],
     "phase": "Program the warning",
-    "stage": "guided",
-    "kind": "check",
-    "question": "A valid reading is 40 cm. Which display should appear?",
-    "options": [
-      "X",
-      "Blank display",
-      "?"
-    ],
-    "answer": 1,
-    "hint": "40 is above 30, so the inner else clears the LEDs."
+    "stage": "model"
   },
   {
     "id": "download-program",
@@ -917,7 +890,7 @@ export const buildSteps = [
   {
     "id": "bt-sensor-send",
     "title": "Send after the fresh decision",
-    "why": "Put sending in the same loop as the sensor decision. If that loop stops producing results, the website will stop hearing messages and show unknown. Put this sender after the closing end of the complete valid/near/far decision, but still inside the sensor’s forever loop. If a checked pause already exists there, have your teacher reconcile it with the 500 ms wait; do not stack duplicate waits.",
+    "why": "Keep the sender inside the sensor’s forever loop, after the complete valid/near/far decision. If fresh readings stop, this loop must stop sending too. The website can then show Signal paused. Use only one checked pause.",
     "where": "In MakeCode · end of the original sensor-reading forever loop",
     "do": "At the bottom of the existing sensor forever loop, add if btConnected → uart write line status, then pause 500 after that if.",
     "expected": "Read once → check validity → choose status and display → send when connected → wait, all in the same sensor loop.",
@@ -1001,29 +974,25 @@ export const buildSteps = [
   },
   {
     "id": "bt-check-message",
-    "title": "Choose the message",
-    "why": "The words must match exactly so both devices understand the same state.",
-    "where": "In this guide",
-    "kind": "check",
-    "question": "Which message should an unusable reading send?",
-    "options": [
-      "FAR",
-      "UNKNOWN",
-      "NEAR"
-    ],
-    "answer": 1,
-    "hint": "An unusable reading cannot tell us how far away the obstacle is.",
-    "stage": "guided"
+    "title": "Send UNKNOWN for unusable readings",
+    "why": "The text messages must match exactly. UNKNOWN means the sensor did not provide a usable distance; FAR belongs only to a valid farther reading.",
+    "where": "In MakeCode · original invalid-reading branch",
+    "stage": "model",
+    "do": "Check that the branch showing ? also sets status to \"UNKNOWN\".",
+    "expected": "The invalid branch sends UNKNOWN in uppercase after the fresh decision.",
+    "help": "Keep NEAR for valid readings at 30 cm or nearer, and FAR for valid readings above 30 cm.",
+    "links": []
   },
   {
     "id": "bt-explain-result",
-    "title": "Explain one real result",
-    "why": "Button rehearsal and sensor tests prove different things. Use actual observations.",
-    "where": "In this guide",
-    "kind": "response",
-    "question": "What did you test, and what happened?",
-    "starter": "I tested ___. The micro:bit sent ___. The website ___. One thing we still need to check is ___.",
-    "stage": "independent"
+    "title": "Add the Bluetooth test note",
+    "why": "Button rehearsal checks the connection. A real sensor test checks the model and the website together. Record which test actually ran.",
+    "where": "In your shared team report · Test and improvement",
+    "stage": "guided",
+    "do": "Add one actual Bluetooth test observation to the existing test notes, naming the test, message and website behavior.",
+    "expected": "The existing notes state what ran, what the micro:bit sent and what the sound page did.",
+    "help": "Use only actual observations. If the test did not run, write Test not run. Keep the same shared report; this is not a separate submission.",
+    "links": []
   },
   {
     "id": "record-trials",
@@ -1070,16 +1039,13 @@ export const buildSteps = [
     "id": "explain-contribution",
     "title": "Explain your code change",
     "why": "A useful explanation names what you changed and what the real model did.",
-    "where": "In this guide",
-    "do": "Write a short explanation of your own program contribution.",
-    "expected": "Your explanation includes one actual result and one limit.",
-    "help": "",
+    "where": "In your shared team report · Test and improvement",
+    "do": "Add a short note naming your own program change, one actual test result and one limit.",
+    "expected": "Your note identifies the change, ruler distance, sensor reading, display result and an untested condition.",
+    "help": "Use your actual measurements and observations. Keep this note in the existing report.",
     "links": [],
     "phase": "Program the warning",
-    "stage": "guided",
-    "kind": "response",
-    "question": "What did you change, and what happened in a real test?",
-    "starter": "I changed ____. At ____ cm, the sensor read ____ and the display showed ____. We did not test ____."
+    "stage": "guided"
   },
   {
     "id": "finish-report",
@@ -1100,20 +1066,9 @@ export const buildSteps = [
     "where": "In Google Classroom · existing 8B STEAM assignment",
     "do": "Have one team member attach the shared report and final numbered .hex to the existing assignment by its announced deadline.",
     "expected": "The report opens for your teacher; the saved .hex matches the model you demonstrate.",
-    "help": "Show the physical model on its table. Each member explains their contribution and one real result. Guide checkmarks do not prove the hardware passed.",
+    "help": "Show the physical model on its table. Each member explains their contribution and one real result. Use the actual model and test records as evidence.",
     "links": [],
     "phase": "Program the warning",
     "stage": "guided"
-  },
-  {
-    "id": "review",
-    "title": "Review your guide answers",
-    "kind": "review",
-    "why": "Keep your actual observations.",
-    "where": "In this guide",
-    "do": "Review your saved answers.",
-    "expected": "Your downloaded guide answers reflect what you wrote.",
-    "help": "Download is available even if the project is unfinished. Submit the actual team report and .hex in Classroom.",
-    "links": []
   }
 ];

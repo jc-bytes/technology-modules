@@ -20,39 +20,369 @@
     },
     {
       "id": "voltage",
-      "text": "Check what voltage tells us. At the wind model. Voltage describes electrical push between two points. Our teacher sets the meter to measure it. A voltage reading alone does not tell us how much useful power the model supplies. Choose the evidence of measured voltage. Which is evidence of voltage?. Choices. A meter reading with the unit V. Blades spinning. A drawing of a house",
-      "sha256": "75b113d5705cfc0498fe70a737cf80bec38ffc96ae7884ab07539352d074a1fa",
-      "file": "assets/narration/voltage-75b113d5705c.mp3"
+      "text": "Recognize measured voltage. At the wind model. Voltage describes electrical push between two points. Our teacher sets the meter to measure it. A voltage reading alone does not tell us how much useful power the model supplies. Look for the reading with the unit V on the checked meter. A meter reading in V is evidence of voltage. Turning blades alone are not voltage evidence.",
+      "sha256": "55994f430be46ad7b79a41b9a85f33a4db1d0a73f2569c73a80b84f4ab1d8ffa",
+      "file": "assets/narration/voltage-55994f430be4.mp3"
     },
     {
       "id": "model-reading",
-      "text": "Read an example meter. At the wind model. This picture is a made-up example. Its display says zero point four two volts. Copy every digit, including the decimal point. Choose the reading shown in the example. What does the example display show?. Choices. 42 V. zero point four two volts. 4.2 V. Check. This is practice. It is not a result from our model.",
-      "sha256": "79a0b736deb1f95ef29ed87eda2bb7bbc1951c734639206e827b828d588c1a7e",
-      "file": "assets/narration/model-reading-79a0b736deb1.mp3"
+      "text": "Read an example meter. At the wind model. This picture is a made-up example. Its display says zero point four two volts. Copy every digit, including the decimal point. Read the made-up display as zero point four two volts. The example says zero point four two volts. Keep its decimal point. This fictional number is not a result from your model.",
+      "sha256": "248f204f863cc4cd551e60fdc0dc3a84afa581a0f6cac4b35c19314de8399b6a",
+      "file": "assets/narration/model-reading-248f204f863c.mp3"
     },
     {
       "id": "practice-record",
-      "text": "Practise a reading. In this guide. A useful record says the condition and the reading. Here is a made-up result: fan on, reading 1, zero point four two volts. Write one practice record from this example. What is the made-up practice record?. Check. Your practice record includes zero point four two volts.",
-      "sha256": "8af6716f825c90e7eca1c72fc0037adbace93552a360072b92f9c6a3891bb67d",
-      "file": "assets/narration/practice-record-8af6716f825c.mp3"
+      "text": "Read a worked record. Worked example only. A useful record says the condition and the reading. Here is a made-up result: fan on, reading 1, zero point four two volts. Read this made-up record: fan on; reading 1; voltage zero point four two volts. A useful test record names the fan condition, reading number and voltage with V.",
+      "sha256": "526cfa28d540173e117e785ee78d6edeb2fefc169823aacc9e3f424373cb829a",
+      "file": "assets/narration/practice-record-526cfa28d540.mp3"
+    },
+    {
+      "id": "board-identify",
+      "text": "Find your board. At the Freenove board. The photo shows the Freenove Projects Board V1.2 used for these directions. It does not show the wiring of your turbine prototype. The smaller control board plugs into it.. Find the project-board name and your plugged-in control board.. Check. Your teacher confirms the actual control board before you choose it in Ardweeno I D E.",
+      "sha256": "618ec585694664a8586b077c37389d243a9c6746419201b527366b025c4a7d00",
+      "file": "assets/narration/board-identify-618ec5856946.mp3"
+    },
+    {
+      "id": "board-power-off",
+      "text": "Remove power first. At the Freenove board. Switches share connections between board modules. Change switches and wires only with the board and test source disconnected.. Ask your teacher to disconnect U S B power and every external signal source.. Check. The board is unpowered and no generator or battery is connected.",
+      "sha256": "50703252ed46b8e1d1d2a9160056ebc5cc52ceda8fa3a0834baf85fdd26e691d",
+      "file": "assets/narration/board-power-off-50703252ed46.mp3"
+    },
+    {
+      "id": "board-display-switch",
+      "text": "Enable the number display. At the Freenove board. The four-digit display is labelled Digital Tube. Its internal wiring already reaches the shift-register chips, which pass the display pattern along.. Set Digital Tube switch 15 ON with power off.. Check. Digital Tube is ON. All unused module switches are OFF.",
+      "sha256": "ad93ac4db488ac2781d2e9a6aff5eb3efa63209ba077ae4aebef8561d51887a0",
+      "file": "assets/narration/board-display-switch-ad93ac4db488.mp3"
+    },
+    {
+      "id": "board-a0-switches",
+      "text": "Free the A zero input. At the Freenove board. A zero will measure a voltage. The light sensor and thermistor, a temperature sensor, also use A zero when their switches are on.. Check that Light Res and Thermistor are OFF.. Check. A zero is free for the checked measuring circuit.",
+      "sha256": "0b0cc60ddb3745a066baa000af471906048003b1b470d15ec46c44ac7c84b1a4",
+      "file": "assets/narration/board-a0-switches-0b0cc60ddb37.mp3"
+    },
+    {
+      "id": "board-display-pins",
+      "text": "Find the three display pins. At the Freenove board. D eleven carries the pattern. D thirteen is the clock that moves its bits along. D twelve is the latch that makes the new pattern appear. A bit is one small on/off instruction.. Match each name in this excerpt to its pin number.. Check. Data is D eleven, latch is D twelve and clock is D thirteen.",
+      "sha256": "bfea4d5aede7f4d1307f46e633022d83f4da9744f661e1823d6c093ffe036da0",
+      "file": "assets/narration/board-display-pins-bfea4d5aede7.mp3"
+    },
+    {
+      "id": "board-display-download",
+      "text": "Get the display check. In this guide. Test the existing display before connecting a measuring signal. This small sketch should show zero one two three. A sketch is an Ardweeno program.. Download the display-check sketch.. Check. You have DisplayCheck.ino.",
+      "sha256": "5488cede18a3d11c6d0db6a15464c31c18971b6de81b99fb77104e752be96a39",
+      "file": "assets/narration/board-display-download-5488cede18a3.mp3"
+    },
+    {
+      "id": "board-display-open",
+      "text": "Open the display sketch. In Ardweeno I D E. Ardweeno I D E is where you open, upload and run the program on the board. The guide only explains it.. Open DisplayCheck.ino in Ardweeno I D E.. Check. The editor contains the display-check program.",
+      "sha256": "26ddd34fb5fcc55e6b990aefa206ac52daf40432f5b0821eb192ae498ed5b93c",
+      "file": "assets/narration/board-display-open-26ddd34fb5fc.mp3"
+    },
+    {
+      "id": "board-display-usb",
+      "text": "Power the display test. At the Freenove control board. U S B powers the board and lets the computer find its port. Keep the turbine, AA battery and every other external signal disconnected.. Connect the checked U S B data cable between the control board and computer.. Check. The board has U S B power and its port can appear in Ardweeno I D E.",
+      "sha256": "1369fbbf6077fd3032111af51caf9b4088f536e37618772eeb654695950945f0",
+      "file": "assets/narration/board-display-usb-1369fbbf6077.mp3"
+    },
+    {
+      "id": "board-board-port",
+      "text": "Choose the board and port. In Ardweeno I D E. A U S B data cable carries the program from the computer. The board choice must match the actual plugged-in control board.. Select Ardweeno Uno and the U S B port after your teacher confirms a classic Uno-compatible 5 V control board.. Check. Ardweeno I D E shows the checked board and port.",
+      "sha256": "cb2f9322c97a110985048cdd2d368f936626a4b759cc673ceb2b66233ff18b12",
+      "file": "assets/narration/board-board-port-cb2f9322c97a.mp3"
+    },
+    {
+      "id": "board-display-upload",
+      "text": "Upload the display check. In Ardweeno I D E. Upload copies the program to the connected board. U S B supplies board power. There is still no measuring source connected.. Click Upload for DisplayCheck.ino.. Check. Ardweeno I D E reports a completed upload.",
+      "sha256": "e49e666075db99f0afa7ec9548a782054f0cef5b3ce40da77d477192014d5a6c",
+      "file": "assets/narration/board-display-upload-e49e666075db.mp3"
+    },
+    {
+      "id": "board-display-read",
+      "text": "Check all four positions. At the Freenove board. zero one two three checks the digit positions and the segment patterns. A segment is one small line that helps draw a number.. Check that the board display reads zero one two three.. Check. All four digits are readable and in order.",
+      "sha256": "e49ec73dc2fb7e57a5963b16553174eb695a4ad4e4ac77b3a4ba1bb28cd99dc2",
+      "file": "assets/narration/board-display-read-e49ec73dc2fb.mp3"
+    },
+    {
+      "id": "board-bench-download",
+      "text": "Get the voltage program. In this guide. WindVoltageBench.ino is a supplied bench-test program. You will read its main parts instead of typing a long program without understanding it.. Download the voltage sketch.. Check. You have WindVoltageBench.ino.",
+      "sha256": "cead23d4ff61c912187eb224831f0767b1f64364714727834685171607c54d36",
+      "file": "assets/narration/board-bench-download-cead23d4ff61.mp3"
+    },
+    {
+      "id": "board-bench-open",
+      "text": "Open the voltage sketch. In Ardweeno I D E. Keep the original downloaded file. Work on the supplied sketch in Ardweeno I D E.. Open WindVoltageBench.ino.. Check. The voltage program is visible in the editor.",
+      "sha256": "6112bebbb21583ba0a36d782d12d385402a646304bada6b770ba95b7d4b5c379",
+      "file": "assets/narration/board-bench-open-6112bebbb215.mp3"
+    },
+    {
+      "id": "board-input-pin",
+      "text": "Find the measuring input. In Ardweeno I D E. analog read reads A zero. On the checked 5 V, 10-bit board, its count runs from 0 to one thousand twenty three. A zero must stay nonnegative and below the actual powered board reference voltage.. Find voltage pin near the top of the sketch.. Check. It names A zero as the measuring input.",
+      "sha256": "db637f54af9158df8342d6db09d61636d0287bba67cbb9ba8bebed35a8f4237b",
+      "file": "assets/narration/board-input-pin-db637f54af91.mp3"
+    },
+    {
+      "id": "board-digit-codes",
+      "text": "Read the digit patterns. In Ardweeno I D E. The DIGIT table stores patterns for 0 through 9. These hexadecimal codes are instructions for the display segments. Keep the checked table.. Find the DIGIT table in the sketch.. Check. The first pattern is for 0, the next for 1, and so on.",
+      "sha256": "4446dfa08c3744d66fa462ddd07cb4ec300050e0eace4e89e35a64c703c0cd28",
+      "file": "assets/narration/board-digit-codes-4446dfa08c37.mp3"
+    },
+    {
+      "id": "board-send-digit",
+      "text": "Follow one display update. In Ardweeno I D E. send digit chooses a display position and sends its segment pattern. low prepares the latch; high shows the pattern after the two shift out calls.. Find send digit in the sketch.. Check. You can locate the two pattern transfers between low and high.",
+      "sha256": "9fa2799ea7999d9adf172d55d473def4bc922c39b1a3aa18b3b843bff000f38b",
+      "file": "assets/narration/board-send-digit-9fa2799ea799.mp3"
+    },
+    {
+      "id": "board-divider-idea",
+      "text": "Read the bench divider. At the Freenove board. Two equal 10 kilohm resistors make a divider. A resistor limits current. In this divider, A zero sees about half the known source voltage. The lower resistor goes to ground, ground.. Trace the known AA source through the two resistors in the drawing.. Check. A zero is at the middle junction. The source negative and board ground share a connection.",
+      "sha256": "d5d41c3676cd8cae37e814cff6cfd8ea2ebc855bf750bf4a3e023ce77f686b3c",
+      "file": "assets/narration/board-divider-idea-d5d41c3676cd.mp3"
+    },
+    {
+      "id": "board-scale",
+      "text": "Find why we multiply. In Ardweeno I D E. The code converts the A zero count into volts. It then multiplies by input scale to estimate the voltage before the divider. Equal ten kilohm resistors give a scale of 2.. Find input scale near the top of the sketch.. Check. For this bench divider, input scale is 2.",
+      "sha256": "26242ca88dba9ecc61b1a792f03755d52b80a8a5d74fd264c8c0ad68415c529d",
+      "file": "assets/narration/board-scale-26242ca88dba.mp3"
+    },
+    {
+      "id": "board-reference",
+      "text": "Find the reference voltage. In Ardweeno I D E. reference voltage is the board voltage used to convert counts to volts. 5.00 is a starting estimate for the checked 5 V board.. Find reference voltage in the sketch.. Check. You know where your teacher can enter the measured reference voltage for calibration.",
+      "sha256": "910d54cad4448b080efb5c9461f42a30a2a825c3c9de0d7952a547436bc20a00",
+      "file": "assets/narration/board-reference-910d54cad444.mp3"
+    },
+    {
+      "id": "board-average",
+      "text": "Follow the eight samples. In Ardweeno I D E. The program takes eight quick A zero samples and adds their counts. Dividing the total by 8 gives their average, which can reduce small jumps.. Find the loop that adds eight samples.. Check. The loop runs eight times before calculating voltage.",
+      "sha256": "b195922b5b8eeaea7e7c924875806c338ce85efa3f0c304e96191fecc2853804",
+      "file": "assets/narration/board-average-b195922b5b8e.mp3"
+    },
+    {
+      "id": "board-conversion",
+      "text": "Follow counts into volts. In Ardweeno I D E. First divide by 8 for the average count. Then multiply by the reference and divide by one thousand twenty three to estimate A zero volts. Finally multiply by the divider scale.. Read the voltage calculation from left to right.. Check. The final value estimates source volts for the configured divider.",
+      "sha256": "523d7d3fc9e72f1cd08c9d7c948b798815772c7eb8b129e4f8eb67250777d558",
+      "file": "assets/narration/board-conversion-523d7d3fc9e7.mp3"
+    },
+    {
+      "id": "board-rounding",
+      "text": "Read the rounding step. In Ardweeno I D E. Multiplying by 100 changes volts into hundredths. Adding 0.5 before keeping the whole number rounds a positive value to the nearest hundredth.. Find hundredths inside make screen.. Check. The display rounds the estimated positive reading.",
+      "sha256": "0bd8add863f9e3e475f851dfa7ac211f39ff11a5abae96dad607960538b7df81",
+      "file": "assets/narration/board-rounding-0bd8add863f9.mp3"
+    },
+    {
+      "id": "board-decimal",
+      "text": "Find the decimal point. In Ardweeno I D E. make screen fills three positions as whole volts, tenths and hundredths. The fourth position is blank. The mask & 0x7f adds the decimal point after the first digit.. Find the first and last screen assignments.. Check. You can identify the decimal point and intentionally blank position.",
+      "sha256": "a2c7d14436ddbea48906c85fbfd55f36a8f9980f95270a05eccc313db214cdbe",
+      "file": "assets/narration/board-decimal-a2c7d14436dd.mp3"
+    },
+    {
+      "id": "board-refresh",
+      "text": "Find the display refresh. In Ardweeno I D E. The loop lights each position briefly, then blanks it before the next. Repeating this fast makes the digits look steady. A new measurement is prepared about every one hundred milliseconds.. Find the four-position scan in loop.. Check. You can see where the program refreshes the display.",
+      "sha256": "b4c35c714b820e887a8fa3ba04a94d823806ec182be7e568f17c197b3ab6565d",
+      "file": "assets/narration/board-refresh-b4c35c714b82.mp3"
+    },
+    {
+      "id": "board-serial",
+      "text": "Find the computer output. In Ardweeno I D E. Serial Monitor shows text sent over U S B. Serial begin sets the speed to ninety six hundred baud. Choose that same speed in Serial Monitor.. Find Serial begin in setup.. Check. The program and Serial Monitor will use ninety six hundred.",
+      "sha256": "cc6b5d9b6ef70c2469dd87e28864cbd2864af7e0012a407d4a2ad57236e1132e",
+      "file": "assets/narration/board-serial-cc6b5d9b6ef7.mp3"
+    },
+    {
+      "id": "board-zero-limit",
+      "text": "Know what the display means. In Ardweeno I D E. zero point zero zero is a near-zero estimate. It cannot tell an unplugged source from a stopped generator. four dashes means a sampled count neared the A D C limit or the value exceeded the display format.. Find the condition that draws four dashes.. Check. You know that four dashes means stop the test and ask your teacher to check the input.",
+      "sha256": "e44340647e7e445604a88112cd677b68823f4ac971e0d88e7ff92b656e814fb1",
+      "file": "assets/narration/board-zero-limit-e44340647e7e.mp3"
+    },
+    {
+      "id": "board-standalone",
+      "text": "Keep the generator separate. At the Freenove board. The generator voltage, polarity and fast spikes are not yet known. A red LED lighting does not establish its maximum voltage.. Ask your teacher to keep the generator disconnected from the Ardweeno while checking it.. Check. No generator wire reaches A zero or any board pin.",
+      "sha256": "276a83475eed8498cc29574635d35ccf3e2cdb75efbdfb1775eabc07b34ae123",
+      "file": "assets/narration/board-standalone-276a83475eed.mp3"
+    },
+    {
+      "id": "board-load-not-divider",
+      "text": "Understand the 100 ohm resistor. At the disconnected turbine. A 100 ohm resistor across the generator is a load: it uses some generated energy and may lower the voltage. A zero would still receive the full terminal voltage in that circuit. It does not protect A zero.. Point to the two generator terminals in the meter drawing.. Check. The meter measures between those terminals. The measuring input needs its own checked interface.",
+      "sha256": "bb6a3367cf3908828419569ba207d1051b4596f404ae2f6c74dbc1114e6d280d",
+      "file": "assets/narration/board-load-not-divider-bb6a3367cf39.mp3"
+    },
+    {
+      "id": "board-meter-leads",
+      "text": "Check the meter sockets. At the Freenove board. For voltage, black goes in COM and red in the voltage socket, usually marked V. Never put the meter in current mode across the generator.. Ask your teacher to check the lead sockets.. Check. Black is in COM and red is in the voltage socket.",
+      "sha256": "d35c696d65df380d87c37f0f5ceb604e701f1c8930d31551e3c5a669a770f55a",
+      "file": "assets/narration/board-meter-leads-d35c696d65df.mp3"
+    },
+    {
+      "id": "board-meter-mode",
+      "text": "Check the voltage mode. At the Freenove board. DC V measures a positive or negative steady-polarity voltage. The teacher selects a suitable voltage range for the generator before testing.. Ask your teacher to check the meter mode and range.. Check. The meter is ready for the output type being checked.",
+      "sha256": "f8cf06d03c678a3ef286fdc3012d7a8608ad7ad8aa838b8b5d356d0003d51a79",
+      "file": "assets/narration/board-meter-mode-f8cf06d03c67.mp3"
+    },
+    {
+      "id": "board-unloaded",
+      "text": "Measure the generator alone. At the Freenove board. Unloaded means the meter measures without the LED or another intentional load across the generator. A load can lower the terminal voltage.. Ask your teacher to check the generator with the LED and other loads removed.. Check. The first characterization measures the generator alone with the meter.",
+      "sha256": "7f1c0d64d586a935bd8e2e915c9a71b3e9b5a8287e036714e587d4a50631e267",
+      "file": "assets/narration/board-unloaded-7f1c0d64d586.mp3"
+    },
+    {
+      "id": "board-meter-connect",
+      "text": "Connect the two meter probes. At the stationary generator · teacher checks the clips. A voltage measurement compares two terminals. Keep the fan off and the blades stopped while attaching the probes. The Ardweeno stays disconnected.. With your teacher, attach one probe to each generator terminal as shown.. Check. The red voltage probe reaches one terminal and the black COM probe reaches the other. Clips are clear of the blades.",
+      "sha256": "7c2bbd607aa64bf23f7b9091c5ae8afc5a0a72c6fcdf4ddc763364668a356d31",
+      "file": "assets/narration/board-meter-connect-7c2bbd607aa6.mp3"
+    },
+    {
+      "id": "board-raw-maximum",
+      "text": "Check the intended highest speed. At the Freenove board. The interface must suit the generator over the intended test conditions. One slow test is not enough. A meter can still miss fast spikes.. Have your teacher measure and note the highest voltage seen across the intended fan settings and distances.. Check. The teacher has a recorded maximum observed voltage for the intended range.",
+      "sha256": "5cdf11330dd18b1272e8840639ec0ea098584188bdf6e226d86cdeaa8fcc2ae5",
+      "file": "assets/narration/board-raw-maximum-5cdf11330dd1.mp3"
+    },
+    {
+      "id": "board-polarity",
+      "text": "Check the output polarity. At the Freenove board. Polarity tells which terminal is positive. A minus sign means the meter sees the opposite direction. Reversed rotation may reverse some generators.. Have your teacher check and record polarity and the generator output type.. Check. The teacher has recorded polarity and checked whether this generator supplies DC or needs AC testing.",
+      "sha256": "73649bc7aa05d97161223019de01b2b2e351b593a8ebc2089162ef31b2c82356",
+      "file": "assets/narration/board-polarity-73649bc7aa05.mp3"
+    },
+    {
+      "id": "board-bench-parts",
+      "text": "Find the low-voltage parts. At the Freenove board. We will test the display circuit using a known low-voltage AA source first. U S B powers the board separately.. Find the AA battery holder, breadboard, jumper wires and two 10 kilohm resistors with your teacher.. Check. The teacher has checked both resistor values.",
+      "sha256": "a33ccf49e6b2b899e90b8e78f7d6bb37a5a6b3e7876fa6561fbaf02d8952f8b2",
+      "file": "assets/narration/board-bench-parts-a33ccf49e6b2.mp3"
+    },
+    {
+      "id": "board-bench-power-off",
+      "text": "Power off before bench wiring. At the Freenove board. Neither U S B nor a test source should power the circuit while you change wires.. Disconnect U S B and the AA source before making the bench circuit.. Check. The board is unpowered and the source leads are disconnected.",
+      "sha256": "23bea095601f63e9a8d52190d3ad112e1b85e59bcdd1de82e9312e632ad5bdce",
+      "file": "assets/narration/board-bench-power-off-23bea095601f.mp3"
+    },
+    {
+      "id": "board-top-resistor",
+      "text": "Place the upper resistor. At the Freenove board. The upper ten kilohm resistor sits between the known source positive lead and the middle measuring junction. The AA source remains disconnected.. Place the upper ten kilohm resistor on the breadboard as shown.. Check. One end is the planned source-positive connection; the other is the middle junction.",
+      "sha256": "eb7b2221cbfdfce2489c78d0206996de1841f48bf647a6ea5e38f4508ee82ad5",
+      "file": "assets/narration/board-top-resistor-eb7b2221cbfd.mp3"
+    },
+    {
+      "id": "board-bottom-resistor",
+      "text": "Place the lower resistor. At the Freenove board. The lower ten kilohm resistor connects the middle junction to ground. The two resistors share only their middle junction.. Place the lower ten kilohm resistor between the middle junction and the ground row.. Check. The two resistors form the divider in the drawing.",
+      "sha256": "956c618fe04bc780398673f22730d8e8d8c44737ce76774cd50b411d24c6550d",
+      "file": "assets/narration/board-bottom-resistor-956c618fe04b.mp3"
+    },
+    {
+      "id": "board-ground",
+      "text": "Join the bench ground. At the Freenove board. The source negative and Ardweeno ground need the same reference point. The battery is still disconnected.. Connect the divider ground row to board ground.. Check. The lower resistor and planned AA negative lead share ground.",
+      "sha256": "19d4667a5924c61e562429d3878ef78d4c67e4489a83c9fc8845b728e6ae1319",
+      "file": "assets/narration/board-ground-19d4667a5924.mp3"
+    },
+    {
+      "id": "board-midpoint",
+      "text": "Join the measuring point. At the Freenove board. A zero reads the middle junction, not the full source-positive terminal.. Connect the middle junction to A zero.. Check. A zero reaches the point between the two ten kilohm resistors.",
+      "sha256": "8f405c9c4e7a0391c5bb7e5ddf8f7abd999604a2525afb9cf37d688b0b5314a7",
+      "file": "assets/narration/board-midpoint-8f405c9c4e7a.mp3"
+    },
+    {
+      "id": "board-bench-usb",
+      "text": "Power the board separately. At the Freenove board. U S B supplies the board. The AA source will supply only the measured signal through the divider.. Connect the checked board to U S B.. Check. The board has power with the AA signal still disconnected.",
+      "sha256": "512b1a8e8fd026b98e88c7fdd31d907a423a373720773103a6d49a8dd8eab73b",
+      "file": "assets/narration/board-bench-usb-512b1a8e8fd0.mp3"
+    },
+    {
+      "id": "board-bench-upload",
+      "text": "Upload the voltage sketch. In Ardweeno I D E. The complete supplied sketch handles measuring and display refresh together.. Click Upload for WindVoltageBench.ino.. Check. Ardweeno I D E reports a successful upload.",
+      "sha256": "5ec4304ac4c311304ec32420e11e4c9adf1a45faa41f01fa107370e1472c2d29",
+      "file": "assets/narration/board-bench-upload-5ec4304ac4c3.mp3"
+    },
+    {
+      "id": "board-open-monitor",
+      "text": "Open Serial Monitor. In Ardweeno I D E. The screen shows rounded volts. Serial Monitor also shows the A zero count, which can help find a wiring problem.. Open Serial Monitor and select ninety six hundred baud.. Check. Text lines include Voltage and A D C.",
+      "sha256": "a8be085f95525a39a41887f914770ef51cd03937abfe97ee575853c3a65982ef",
+      "file": "assets/narration/board-open-monitor-a8be085f9552.mp3"
+    },
+    {
+      "id": "board-bench-zero",
+      "text": "Check the zero input. At the Freenove board. With no source connected, the lower resistor holds A zero near ground. This gives a useful first check.. Read the display with the AA source disconnected.. Check. The display should show approximately zero point zero zero and Serial Monitor should show a near-zero estimate.",
+      "sha256": "eff3c10aca98f413299b3ac78355598db39fd738e71964f3fa2113f027236ea5",
+      "file": "assets/narration/board-bench-zero-eff3c10aca98.mp3"
+    },
+    {
+      "id": "board-bench-battery",
+      "text": "Apply the known AA signal. At the Freenove board. The teacher checks polarity before the source touches the powered measuring circuit. The generator remains disconnected.. Ask your teacher to connect the AA positive through the upper resistor and AA negative to ground.. Check. The display shows an estimate of the AA source voltage.",
+      "sha256": "7557a4a30fd117d8ce90796ce496cad6897f6baa89a72eefe2b0e69c77be09d7",
+      "file": "assets/narration/board-bench-battery-7557a4a30fd1.mp3"
+    },
+    {
+      "id": "board-bench-compare",
+      "text": "Compare the AA readings. At the Freenove board. The meter and Ardweeno must estimate the same source voltage. The meter goes across the AA terminals, not just A zero to ground.. Compare the display with the checked meter across the AA source.. Check. You can see whether the two readings are close.",
+      "sha256": "93f206c09a5e70f6e3613b7b1cd48f5349ec250fe97f91f965a8ae46a91a5963",
+      "file": "assets/narration/board-bench-compare-93f206c09a5e.mp3"
+    },
+    {
+      "id": "board-bench-remove",
+      "text": "Remove the signal first. At the Freenove board. A signal must not remain connected to an unpowered board.. Disconnect the AA signal before anyone disconnects U S B power.. Check. The AA source is separate from the board.",
+      "sha256": "0f9e9b4b24bb67015134df54e54a17725cc90f0052361974136ea2fd67487c30",
+      "file": "assets/narration/board-bench-remove-0f9e9b4b24bb.mp3"
+    },
+    {
+      "id": "board-known-checks",
+      "text": "Check more known inputs. At the Freenove board. One AA reading checks only one point. The teacher checks several known positive voltages within the approved bench range.. Ask your teacher to complete the known-input checks.. Check. The teacher has checked the zero, digit positions, decimal point and meter/display differences.",
+      "sha256": "cfc251fac7c7ee28987edf45de27345d5d888b6aaf8d89e8ebb60abd955b0439",
+      "file": "assets/narration/board-known-checks-cfc251fac7c7.mp3"
+    },
+    {
+      "id": "board-interface-gate",
+      "text": "Wait for the generator interface. At the Freenove board. An interface is the circuit between the generator and A zero. Its divider, load and protection depend on the measured voltage, polarity and possible spikes. The final design still needs a physical teacher check.. Ask your teacher to approve the actual protected generator interface before continuing.. Check. Only teacher approval of the physically tested interface allows generator testing. If approval is pending, stop here and save the completed bench work.",
+      "sha256": "6129998a0ec039d26dc4c32a40bd03231bc4a3952e4e88f2dcbd0bd7b60b2b0f",
+      "file": "assets/narration/board-interface-gate-6129998a0ec0.mp3"
+    },
+    {
+      "id": "board-final-scale",
+      "text": "Match code to the final divider. In Ardweeno I D E. The bench sketch assumes two ten kilohm resistors. A different final divider needs its actual resistor values in the sketch. Its calibration must match the real board.. Have your teacher enter the final checked resistor values and reference voltage in the sketch.. Check. input scale and the reference match the approved circuit.",
+      "sha256": "6f5c54645faa9a3392ce9a7078597f196ad7458b5ef8777c5895e134bccd1dee",
+      "file": "assets/narration/board-final-scale-6f5c54645faa.mp3"
+    },
+    {
+      "id": "board-save-final-code",
+      "text": "Save the checked program. In Ardweeno I D E · File → Save As. Your saved program must match the resistor values and reference that your teacher checked. A filename helps you find that version again.. Save the checked sketch as WindVoltage_Checked_01.. Check. Ardweeno I D E shows the saved program with the approved values.",
+      "sha256": "184e6ee0cfc8fc50c7454c496c68ccf11df76fc75656dca2f7e41585e65e1137",
+      "file": "assets/narration/board-save-final-code-184e6ee0cfc8.mp3"
+    },
+    {
+      "id": "board-final-upload",
+      "text": "Upload the checked version. In Ardweeno I D E. Keep a numbered copy of the sketch that matches the approved circuit. Remove the generator signal before changing or removing board power.. Upload the teacher-checked final sketch with the generator signal disconnected.. Check. The board runs the version whose scale matches the approved divider.",
+      "sha256": "2b6624f0f57f3840557b6098c12e25ccbb6d30bb6f68203ca435ec85a0d122ab",
+      "file": "assets/narration/board-final-upload-2b6624f0f57f.mp3"
+    },
+    {
+      "id": "board-final-connect",
+      "text": "Let the teacher connect it. At the Freenove board. All wiring changes happen with power and signal removed. The board must then have U S B power before a generator signal is present.. Have your teacher connect the approved interface in the checked power-up order.. Check. The existing turbine reaches A zero only through the tested protected interface.",
+      "sha256": "03c7f784c10da02e8440ef81bf1da01532fe5e9f05f4cf80629aef2e11b35e47",
+      "file": "assets/narration/board-final-connect-03c7f784c10d.mp3"
+    },
+    {
+      "id": "board-same-terminals",
+      "text": "Compare the same measurement. At the Freenove board. The final divider and any load change the generator operating conditions. Compare the meter and Ardweeno at the same source terminals under the same connected load.. Ask your teacher to compare both readings during checked fan-off and fan-on trials.. Check. The teacher confirms that the display estimates the voltage at the agreed terminals well enough for this test.",
+      "sha256": "d79e44ce140a67cd8288e31093e5ee5ed0a22afcd1d8c6f1eb5f0af226688388",
+      "file": "assets/narration/board-same-terminals-d79e44ce140a.mp3"
+    },
+    {
+      "id": "board-setup-record",
+      "text": "Keep the checked setup record. In the team test record. This record describes the real equipment checks. A proposed circuit is different from a tested circuit. Record the teacher-confirmed maximum unloaded voltage, polarity, final interface, divider values and calibration check. The team record states the actual checks and teacher approval. Any unfinished check is marked Not checked.",
+      "sha256": "53b6049d07654fc126db37a97b61df5b35c0a8e75546723d6682ea21fd2ef07d",
+      "file": "assets/narration/board-setup-record-53b6049d0765.mp3"
     },
     {
       "id": "teacher-setup",
-      "text": "Check the equipment with your teacher. At the wind model. The meter setup depends on the real generator. Your teacher checks the base, blades, low-voltage connections, meter and guarded fan. Ask your teacher to check the complete setup before any powered test. Check. Your teacher has checked the equipment and can show you the voltage display.",
-      "sha256": "5960dd8e7af5e13b964b40f9e455190b6e9e648adbd795774a5a5884445dafc7",
-      "file": "assets/narration/teacher-setup-5960dd8e7af5.mp3"
+      "text": "Check the equipment with your teacher. At the wind model. The AA bench test and the protected generator test are separate checks. Before formal generator trials, your teacher checks the base, blades, meter, Ardweeno display, final protected interface and guarded fan.. Ask your teacher to check the complete setup before the formal fan-off and fan-on tests.. Check. Your teacher has approved the generator interface and checked the meter against the Ardweeno display at the same loaded terminals.",
+      "sha256": "b3735176f2c565cc6bed388415e6115771e7edb2ae53e22cf5f61bbc05ded83f",
+      "file": "assets/narration/teacher-setup-b3735176f2c5.mp3"
     },
     {
       "id": "fixed-setup",
-      "text": "Record the fixed setup. At the wind model. A fair comparison changes the fan condition while keeping the other parts the same. Your teacher chooses a safe position and one fan-on setting. Write the checked setup in the field below. Which setup will stay fixed?. Check. The distance, setting and agreed waits are written down.",
-      "sha256": "a9df8aaf35792882d6975f98d4b8c32a38f6829bfc04ce9724505bf7f76407d2",
-      "file": "assets/narration/fixed-setup-a9df8aaf3579.mp3"
+      "text": "Record the fixed setup. In the team test record. A fair comparison changes the fan condition while keeping the other parts the same. Your teacher chooses a safe position and one fan-on setting. Record the fan setting, marked distance in centimetres, wait between readings and settling time agreed with your teacher. The fixed setup is written in the team test record before formal readings begin.",
+      "sha256": "49a8ee7b6bac3e85ae08f589de9456ac89b3a3e5cde14421e7a14e397de3789c",
+      "file": "assets/narration/fixed-setup-49a8ee7b6bac.mp3"
     },
     {
       "id": "prediction",
-      "text": "Write your prediction. In this guide. A prediction says what you expect before you see your test results. It can turn out to be wrong. Write what you expect when the fan turns on. What do you predict, and why?. Check. Your answer names a change you expect and a reason.",
-      "sha256": "ebc34b2f020519dbd6639ec2bc90245556811040591885aa9ab56fbea427a5f5",
-      "file": "assets/narration/prediction-ebc34b2f0205.mp3"
+      "text": "Write your prediction. In the team report. A prediction says what you expect before you see your test results. It can turn out to be wrong. Write your prediction and reason under Test and improvement before taking the formal readings. Your prediction names the voltage change you expect when the fan turns on and a reason.",
+      "sha256": "7a52868373ef9d918535daddc577a0c2cf5d1ffba80e49260f04abfcf2f37d9c",
+      "file": "assets/narration/prediction-7a52868373ef.mp3"
     },
     {
       "id": "before-off-ready",
@@ -62,21 +392,21 @@
     },
     {
       "id": "before-off-1",
-      "text": "Fan off: reading 1. At the wind model. Record the display exactly. A real zero is a result. A missing reading is not zero. Read the voltage with the fan off after the agreed wait. Before the change, fan off: what is reading 1?. Check. You have recorded this reading with V.",
-      "sha256": "b313a7b3f233d6276ca5d91cc5b414ef878fa064d78dc204855c909ef340212e",
-      "file": "assets/narration/before-off-1-b313a7b3f233.mp3"
+      "text": "Fan off: reading 1. At the model and in the team test record. Record the display exactly. A real zero is a result. A missing reading is not zero. Record Before the change, fan off, reading 1: copy the checked meter reading with V after the agreed wait. The original table has reading 1 for fan off, including its voltage and any problem.",
+      "sha256": "c80195d0a2c22e1fdec7bead7768852bc77699bdc8c4fd23b281c180448cc2d2",
+      "file": "assets/narration/before-off-1-c80195d0a2c2.mp3"
     },
     {
       "id": "before-off-2",
-      "text": "Fan off: reading 2. At the wind model. Record the display exactly. A real zero is a result. A missing reading is not zero. Read the voltage with the fan off after the agreed wait. Before the change, fan off: what is reading 2?. Check. You have recorded this reading with V.",
-      "sha256": "188b4585d01b3843d85c89155324c4a8b4876e438eac04d312e22832beaacd43",
-      "file": "assets/narration/before-off-2-188b4585d01b.mp3"
+      "text": "Fan off: reading 2. At the model and in the team test record. Record the display exactly. A real zero is a result. A missing reading is not zero. Record Before the change, fan off, reading 2: copy the checked meter reading with V after the agreed wait. The original table has reading 2 for fan off, including its voltage and any problem.",
+      "sha256": "7fb15231ad19a91f02482957077d665bf9ebee174a1ee01235057359525b1ace",
+      "file": "assets/narration/before-off-2-7fb15231ad19.mp3"
     },
     {
       "id": "before-off-3",
-      "text": "Fan off: reading 3. At the wind model. Record the display exactly. A real zero is a result. A missing reading is not zero. Read the voltage with the fan off after the agreed wait. Before the change, fan off: what is reading 3?. Check. You have recorded this reading with V.",
-      "sha256": "080906dd346273a7879b1f97320de99bff618b8517f06e2e5b4a226c6b8f96e4",
-      "file": "assets/narration/before-off-3-080906dd3462.mp3"
+      "text": "Fan off: reading 3. At the model and in the team test record. Record the display exactly. A real zero is a result. A missing reading is not zero. Record Before the change, fan off, reading 3: copy the checked meter reading with V after the agreed wait. The original table has reading 3 for fan off, including its voltage and any problem.",
+      "sha256": "ecdfb394783f67c17eb9f4d744b16d5d5f87b0448252a309973e91d57ab75b01",
+      "file": "assets/narration/before-off-3-ecdfb394783f.mp3"
     },
     {
       "id": "before-on-ready",
@@ -86,21 +416,21 @@
     },
     {
       "id": "before-on-1",
-      "text": "Fan on: reading 1. At the wind model. Use the same wait between readings. Small changes in the display can happen. Read the voltage after the agreed wait. Before the change, fan on: what is reading 1?. Check. You have recorded this reading with V.",
-      "sha256": "6a819a50c389313aa9fafe6a6fa4e0f242905def6d0aa0bc5808494433091b9f",
-      "file": "assets/narration/before-on-1-6a819a50c389.mp3"
+      "text": "Fan on: reading 1. At the model and in the team test record. Use the same wait between readings. Small changes in the display can happen. Record Before the change, fan on, reading 1: copy the checked meter reading with V after the agreed wait. The original table has reading 1 for fan on, including its voltage and any problem.",
+      "sha256": "4bc6f508547b8e0e171fc3dacddef8f528d821502effb7fe757ef0015996712f",
+      "file": "assets/narration/before-on-1-4bc6f508547b.mp3"
     },
     {
       "id": "before-on-2",
-      "text": "Fan on: reading 2. At the wind model. Use the same wait between readings. Small changes in the display can happen. Read the voltage after the agreed wait. Before the change, fan on: what is reading 2?. Check. You have recorded this reading with V.",
-      "sha256": "64f8221f43197a62164280335ad3a4db854ec8616e720c37ccd4695ad147fb9e",
-      "file": "assets/narration/before-on-2-64f8221f4319.mp3"
+      "text": "Fan on: reading 2. At the model and in the team test record. Use the same wait between readings. Small changes in the display can happen. Record Before the change, fan on, reading 2: copy the checked meter reading with V after the agreed wait. The original table has reading 2 for fan on, including its voltage and any problem.",
+      "sha256": "0e4548c840f355f523d159d73f75a05fe52c95f9812cbc03d1fd0d0205bb7605",
+      "file": "assets/narration/before-on-2-0e4548c840f3.mp3"
     },
     {
       "id": "before-on-3",
-      "text": "Fan on: reading 3. At the wind model. Use the same wait between readings. Small changes in the display can happen. Read the voltage after the agreed wait. Before the change, fan on: what is reading 3?. Check. You have recorded this reading with V.",
-      "sha256": "574a0736dd3eea5dab7116936b82641020e886dde84cd7dc222b51e7ce494463",
-      "file": "assets/narration/before-on-3-574a0736dd3e.mp3"
+      "text": "Fan on: reading 3. At the model and in the team test record. Use the same wait between readings. Small changes in the display can happen. Record Before the change, fan on, reading 3: copy the checked meter reading with V after the agreed wait. The original table has reading 3 for fan on, including its voltage and any problem.",
+      "sha256": "b87d75a358320dc7556392ca629889b926ae65a64c4b67a6e95e4ce0e17a0dbd",
+      "file": "assets/narration/before-on-3-b87d75a35832.mp3"
     },
     {
       "id": "before-stop",
@@ -110,15 +440,15 @@
     },
     {
       "id": "before-compare",
-      "text": "Compare your first results. In this guide. Compare the three fan-off readings with the three fan-on readings. Look for higher, lower, similar or changing readings. You do not need to calculate an average. Describe the pattern using your actual readings. What do the first six readings show?. Check. Your comparison uses actual values, including V.",
-      "sha256": "c62a34c5667601f0ab6479564838e9ed1d6c76a5c5b8d726a906817d97bdf305",
-      "file": "assets/narration/before-compare-c62a34c56676.mp3"
+      "text": "Compare your first results. In the team report. Compare the three fan-off readings with the three fan-on readings. Look for higher, lower, similar or changing readings. You do not need to calculate an average. Describe the pattern in the original six readings under Test and improvement. Your comparison names actual fan-off and fan-on values in V and says whether they match your prediction.",
+      "sha256": "efe0708ce2b8d71f362671b2b359c8b013492af2ae9272882aac4e1ce575da88",
+      "file": "assets/narration/before-compare-efe0708ce2b8.mp3"
     },
     {
       "id": "choose-change",
-      "text": "Choose one small change. In this guide. Use your observations to choose one small improvement with your teacher. Changing several things makes the cause hard to explain. Name one change that your teacher agrees can be tested safely. What one change will you test, and why?. Check. Your answer names one change and the evidence behind it.",
-      "sha256": "c0807e6e4093e3b208c094fea23f58adab42f19c18fdf5e1502954a3da8f079b",
-      "file": "assets/narration/choose-change-c0807e6e4093.mp3"
+      "text": "Choose one small change. In the team report. Use your observations to choose one small improvement with your teacher. Changing several things makes the cause hard to explain. Write the one teacher-approved change and the observation that led you to choose it. Your report names one change and the actual evidence behind it.",
+      "sha256": "1915b07be79f445e8baba685088e72e1d1a1c4d7752c6626c389f7057c1f1623",
+      "file": "assets/narration/choose-change-1915b07be79f.mp3"
     },
     {
       "id": "make-change",
@@ -128,9 +458,9 @@
     },
     {
       "id": "change-record",
-      "text": "Keep a change record. In this guide. A dated note helps someone understand what differs between the tests. Keep your first results. Write the date and the one change made. What changed before the second test?. Check. Your note describes the real change.",
-      "sha256": "c923f5517d970abe6fa57c04173c43694cc116b7dc3a80adf2949c6138566884",
-      "file": "assets/narration/change-record-c923f5517d97.mp3"
+      "text": "Keep a change record. In the team test record. A dated note helps someone understand what differs between the tests. Keep your first results. Record the date, the one change made and who made it. Your dated note describes the real change and keeps the original results.",
+      "sha256": "307496ac72d09562f0b0fb6e9f63cb1e3639c10cbdc7bed26c1f099c28043cc3",
+      "file": "assets/narration/change-record-307496ac72d0.mp3"
     },
     {
       "id": "after-setup",
@@ -146,21 +476,21 @@
     },
     {
       "id": "after-off-1",
-      "text": "After change: off reading 1. At the wind model. Keep these results separate from the first set. Read the voltage with the fan off after the agreed wait. After the change, fan off: what is reading 1?. Check. This after-change reading includes V.",
-      "sha256": "dd1eea07aa648498ebeb15d3a752cfe625a68a3fe80e174ee4f797b0bb4e43e9",
-      "file": "assets/narration/after-off-1-dd1eea07aa64.mp3"
+      "text": "After change: off reading 1. At the model and in the team test record. Keep these results separate from the first set. Record After the change, fan off, reading 1: copy the checked meter reading with V after the agreed wait. The after-change table has reading 1 for fan off, including its voltage and any problem.",
+      "sha256": "8198d24ab042b412e376ec71262baf221662a4a1c6784778910a85d4d003f84d",
+      "file": "assets/narration/after-off-1-8198d24ab042.mp3"
     },
     {
       "id": "after-off-2",
-      "text": "After change: off reading 2. At the wind model. Keep these results separate from the first set. Read the voltage with the fan off after the agreed wait. After the change, fan off: what is reading 2?. Check. This after-change reading includes V.",
-      "sha256": "76ab2e20e3c29b0ddc55d1db3915bc26e7aac813cfe6a17494fcf5325076d269",
-      "file": "assets/narration/after-off-2-76ab2e20e3c2.mp3"
+      "text": "After change: off reading 2. At the model and in the team test record. Keep these results separate from the first set. Record After the change, fan off, reading 2: copy the checked meter reading with V after the agreed wait. The after-change table has reading 2 for fan off, including its voltage and any problem.",
+      "sha256": "8f7aab138183cf31f4b990518bbe0b44316a60d6ca051cb41d5919bb10a31499",
+      "file": "assets/narration/after-off-2-8f7aab138183.mp3"
     },
     {
       "id": "after-off-3",
-      "text": "After change: off reading 3. At the wind model. Keep these results separate from the first set. Read the voltage with the fan off after the agreed wait. After the change, fan off: what is reading 3?. Check. This after-change reading includes V.",
-      "sha256": "6c1273620768e88331fb7ad043cbc965480662ed3b823ebcc09072fd5268b625",
-      "file": "assets/narration/after-off-3-6c1273620768.mp3"
+      "text": "After change: off reading 3. At the model and in the team test record. Keep these results separate from the first set. Record After the change, fan off, reading 3: copy the checked meter reading with V after the agreed wait. The after-change table has reading 3 for fan off, including its voltage and any problem.",
+      "sha256": "2a2ba864d5bb7f0f8f9d7255d44220e0fcffeff2820a743ffe74e5496515be20",
+      "file": "assets/narration/after-off-3-2a2ba864d5bb.mp3"
     },
     {
       "id": "after-on-ready",
@@ -170,21 +500,21 @@
     },
     {
       "id": "after-on-1",
-      "text": "After change: on reading 1. At the wind model. Keep the agreed time between readings. Read the voltage after the agreed wait. After the change, fan on: what is reading 1?. Check. This after-change reading includes V.",
-      "sha256": "e6635ec58edb45286177c62883b20d84a44951edd6d902f88275ad77ffaf7b25",
-      "file": "assets/narration/after-on-1-e6635ec58edb.mp3"
+      "text": "After change: on reading 1. At the model and in the team test record. Keep the agreed time between readings. Record After the change, fan on, reading 1: copy the checked meter reading with V after the agreed wait. The after-change table has reading 1 for fan on, including its voltage and any problem.",
+      "sha256": "7fb499e3edf2e7b059d584ffb7129aa2dc3bb7e7ba6daa479bb06660156f6ca0",
+      "file": "assets/narration/after-on-1-7fb499e3edf2.mp3"
     },
     {
       "id": "after-on-2",
-      "text": "After change: on reading 2. At the wind model. Keep the agreed time between readings. Read the voltage after the agreed wait. After the change, fan on: what is reading 2?. Check. This after-change reading includes V.",
-      "sha256": "db6ed6843c70e32aeeaa5ad2134cc937de54736aa744cb8eaf87ff7288f944de",
-      "file": "assets/narration/after-on-2-db6ed6843c70.mp3"
+      "text": "After change: on reading 2. At the model and in the team test record. Keep the agreed time between readings. Record After the change, fan on, reading 2: copy the checked meter reading with V after the agreed wait. The after-change table has reading 2 for fan on, including its voltage and any problem.",
+      "sha256": "960df9f5de486673d09bd43b4fc2767595449a966f61abf2404a8d35ed64d27e",
+      "file": "assets/narration/after-on-2-960df9f5de48.mp3"
     },
     {
       "id": "after-on-3",
-      "text": "After change: on reading 3. At the wind model. Keep the agreed time between readings. Read the voltage after the agreed wait. After the change, fan on: what is reading 3?. Check. This after-change reading includes V.",
-      "sha256": "d44862d4e17e1d510bdba397c34f20a6e0dd23a4c65c37a646b761d035c1e517",
-      "file": "assets/narration/after-on-3-d44862d4e17e.mp3"
+      "text": "After change: on reading 3. At the model and in the team test record. Keep the agreed time between readings. Record After the change, fan on, reading 3: copy the checked meter reading with V after the agreed wait. The after-change table has reading 3 for fan on, including its voltage and any problem.",
+      "sha256": "0d111ba86ce858dcd99832440fbdf30095a434a508534fd3cee83b07fe43a8a2",
+      "file": "assets/narration/after-on-3-0d111ba86ce8.mp3"
     },
     {
       "id": "after-stop",
@@ -194,27 +524,27 @@
     },
     {
       "id": "after-compare",
-      "text": "Explain whether the change helped. In this guide. Use both sets of real results. A change may help, make no clear difference or make the result worse. All three findings are useful. Compare your fan-on results before and after the change. What changed in the results?. Check. Your answer uses readings from both sets.",
-      "sha256": "4c87baa2c3157d1ac7b2952fc3381189f07db94cec8d92e32d7828f3b1c24c73",
-      "file": "assets/narration/after-compare-4c87baa2c315.mp3"
+      "text": "Explain whether the change helped. In the team report. Use both sets of real results. A change may help, make no clear difference or make the result worse. All three findings are useful. Describe the fan-on readings before and after the change under Test and improvement. Your comparison uses actual values from both tables and explains whether the change helped, made no clear difference or made the result worse.",
+      "sha256": "0bdb8e97e2aea92ae939bef54dbbe6743b14aafe16bbc49521fd69cba407b48a",
+      "file": "assets/narration/after-compare-0bdb8e97e2ae.mp3"
     },
     {
       "id": "limits",
-      "text": "Choose an honest limit. At the wind model. We measured voltage. We did not measure useful power delivered to a device. A fan test also differs from wind outside. Choose the conclusion our voltage test supports. Which statement stays within our test?. Choices. Our model can power a home. Our meter showed voltage under the conditions we recorded. Spinning blades prove we can charge a phone.",
-      "sha256": "609e5b042b280b82ca0af4f6e21c3d134589f57f804a06d6351cd0d3d66637e9",
-      "file": "assets/narration/limits-609e5b042b28.mp3"
+      "text": "State the test limit. In the team report. We measured voltage. We did not measure useful power delivered to a device. A fan test also differs from wind outside. Include this limit in your conclusion: our test measured voltage under the recorded conditions. Your report does not claim the model can power a home or charge a phone from voltage readings alone.",
+      "sha256": "37ea4d72d818a68b567d442f5c95146430fcd6a663952b0d7154b73debb0876a",
+      "file": "assets/narration/limits-37ea4d72d818.mp3"
     },
     {
       "id": "report-note",
-      "text": "Add a test explanation. In this guide. Your current report uses four headings: Project; Research; Test and improvement; References. Keep those headings. Your test work belongs in Test and improvement. Draft a short conclusion to add under Test and improvement. What will you add to your current report?. Check. Your conclusion states the result and one limit.",
-      "sha256": "fe18abd6c4ecefcc730dbb2f5eeba2740fe202c61337eb1efbeec968ca41f3ec",
-      "file": "assets/narration/report-note-fe18abd6c4ec.mp3"
+      "text": "Add a test explanation. In the team report. Your current report uses four headings: Project; Research; Test and improvement; References. Keep those headings. Your test work belongs in Test and improvement. Write the conclusion under Test and improvement using your real results and one test limit. The conclusion states what you tested, what changed, what the results show and what should be tested next.",
+      "sha256": "9e0a723a62f6cbb52e20fca64be0400bc4878ec588b63957bad8e2d60fe1bd88",
+      "file": "assets/narration/report-note-9e0a723a62f6.mp3"
     },
     {
       "id": "save-evidence",
-      "text": "Save your test evidence. In this guide. Your guide answers include practice and real records. Keep the practice label. The blank CSV is a backup for recording tests, not a file of completed results. Use Download your answers at the top to save your work. Check. You have downloaded your actual answers, including any unfinished tests.",
-      "sha256": "897918546e0fb412840d99d9edc692468eeec8c1336771708ef46f63e87c0687",
-      "file": "assets/narration/save-evidence-897918546e0f.mp3"
+      "text": "Save your test evidence. In the team Drive folder. Keep the checked Ardweeno program, original and after-change test records, and current team report together. The blank CSV is a backup for recording tests, not completed evidence. Save the actual program, test record and report in the team Drive folder. The folder contains the checked sketch and the real evidence, including any test marked Test not run.",
+      "sha256": "4a4c9455ef03d94a59e0b103cad2fffd3d2c7597e4244d53366f06dd40994edc",
+      "file": "assets/narration/save-evidence-4a4c9455ef03.mp3"
     }
   ]
 }

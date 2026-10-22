@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-HAND-01",
   "slug": "robotic-hand-code-guide",
   "title": "Code your robotic hand",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -16,8 +16,8 @@
     "Use a keyboard and save a file"
   ],
   "estimatedTime": "Unknown, classroom pilot required",
-  "offline": "Serve the downloaded guide folder locally, or use printable-fallback.html. Hardware testing needs the actual supervised model.",
-  "lastReviewed": "2026-10-20",
+  "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
+  "lastReviewed": "2026-10-21",
   "objectives": [
     "Explain setup and repeating loop",
     "Read knob inputs and map bounded motor commands",
@@ -94,7 +94,7 @@
     },
     {
       "id": "sections-check",
-      "title": "Choose where names belong",
+      "title": "Place shared names above setup",
       "entryPath": "#sections-check",
       "estimatedMinutes": null
     },
@@ -154,7 +154,7 @@
     },
     {
       "id": "explain-map",
-      "title": "Check the number ranges",
+      "title": "Read the output range",
       "entryPath": "#explain-map",
       "estimatedMinutes": null
     },
@@ -190,7 +190,7 @@
     },
     {
       "id": "middle-limit",
-      "title": "Explain the upper limit",
+      "title": "Follow the upper limit",
       "entryPath": "#middle-limit",
       "estimatedMinutes": null
     },
@@ -286,7 +286,7 @@
     },
     {
       "id": "record-run",
-      "title": "Record what really happened",
+      "title": "Record the real control test",
       "entryPath": "#record-run",
       "estimatedMinutes": null
     },
@@ -304,7 +304,7 @@
     },
     {
       "id": "test-limits",
-      "title": "Separate commands from angles",
+      "title": "State what the code proves",
       "entryPath": "#test-limits",
       "estimatedMinutes": null
     },
@@ -328,7 +328,7 @@
     },
     {
       "id": "finish",
-      "title": "Check your saved work",
+      "title": "Check the saved team files",
       "entryPath": "#finish",
       "estimatedMinutes": null
     }
@@ -346,5 +346,6 @@
   ],
   "accounts": "No account is needed for the guide. Use school-approved editor accounts if required.",
   "internet": "Local HTTP serving supports bundled guide assets. Opening online editors and Classroom needs internet.",
-  "submission": "Use the current shared four-heading Google Doc and the existing one-team Classroom assignment. Guide PDF is supporting evidence."
+  "submission": "Follow the existing team assignment using the actual code, shared report and real test notes. This site is an instruction-only guide.",
+  "format": "instruction-only guide"
 }

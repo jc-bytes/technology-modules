@@ -1,0 +1,6 @@
+Display pins, common-anode digit codes and shift-register protocol checked against Freenove Projects Kit Chapter16:
+https://docs.freenove.com/projects/fnk0059/en/latest/fnk0059/codes/C/16_4-digit_7-segment_Display.html
+Freenove resources: https://github.com/Freenove/Freenove_Projects_Kit
+Freenove source license: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported.
+The lesson and bench adaptation explain the measurement separately from final generator input protection.
+Board reference photograph supplied by the teacher; it is not a photo of the final turbine circuit.

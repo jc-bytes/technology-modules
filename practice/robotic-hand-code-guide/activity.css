@@ -91,3 +91,6 @@
 
 @media(min-width:761px){.fm-block:has(>.choice-context){display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,1fr);column-gap:30px;align-items:start}.fm-block>.choice-context{grid-column:2;grid-row:1/5}.fm-block:has(>.choice-context)>.fm-question,.fm-block:has(>.choice-context)>form,.fm-block:has(>.choice-context)>.fm-feedback{grid-column:1}.choice-context img{max-height:220px}.choice-context .build-copy{max-width:none}}
 .choice-context .build-where{margin-bottom:6px!important}.fm-clean-step .fm-choice{padding:10px 12px}.fm-clean-step .fm-choices{gap:8px}.fm-clean-step .fm-choice span{font-size:18px}.fm-clean-step .fm-choice b{width:30px;height:30px}
+
+/* Project guides open directly, without student forms or evidence controls. */
+.fm-clean-step .guide-header{height:auto;min-height:72px;flex-wrap:nowrap}.guide-header .fm-brand-title{flex:1;width:auto;min-width:0;text-decoration:none;color:inherit}.guide-header .fm-menu{flex:none}.guide-header .fm-activity-title{max-width:none}.guide-header .fm-menu a[aria-current=step]{background:#e3f2ed;font-weight:700}

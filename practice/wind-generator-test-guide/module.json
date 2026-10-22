@@ -1,8 +1,8 @@
 {
   "id": "MOD-STEAM-WIND-01",
   "slug": "wind-generator-test-guide",
-  "title": "Test your wind generator",
-  "version": "1.0.0",
+  "title": "Code and test your wind generator",
+  "version": "1.2.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -12,19 +12,25 @@
   "publishedUrl": "https://jc-bytes.github.io/technology-modules/practice/wind-generator-test-guide/",
   "prerequisites": [
     "Built low-voltage wind model",
-    "Teacher-configured meter and guarded fan",
+    "Freenove Projects Board FNK0059 with compatible 5 V control board",
+    "Teacher-supervised multimeter and protected input setup",
     "Read a decimal number"
   ],
   "estimatedTime": "Unknown, classroom pilot required",
-  "offline": "Serve the downloaded guide folder locally, or use printable-fallback.html. Hardware testing needs the actual supervised model.",
-  "lastReviewed": "2026-10-20",
+  "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
+  "lastReviewed": "2026-10-21",
   "objectives": [
+    "Use a multimeter to characterize the generator before connecting A0",
+    "Explain the Freenove display and voltage-reading Arduino code",
+    "Test a known low-voltage source using a two-resistor bench divider",
+    "Compare Arduino and multimeter readings through a teacher-checked input circuit",
     "Read voltage in volts",
     "Compare fan-off and fan-on conditions",
     "Keep original readings and test one change",
     "Explain the result and its limits"
   ],
   "software": [
+    "Arduino IDE",
     "Web browser"
   ],
   "owner": "Porfirio Rios",
@@ -51,7 +57,7 @@
     },
     {
       "id": "voltage",
-      "title": "Check what voltage tells us",
+      "title": "Recognize measured voltage",
       "entryPath": "#voltage",
       "estimatedMinutes": null
     },
@@ -63,8 +69,338 @@
     },
     {
       "id": "practice-record",
-      "title": "Practise a reading",
+      "title": "Read a worked record",
       "entryPath": "#practice-record",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-identify",
+      "title": "Find your board",
+      "entryPath": "#board-identify",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-power-off",
+      "title": "Remove power first",
+      "entryPath": "#board-power-off",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-display-switch",
+      "title": "Enable the number display",
+      "entryPath": "#board-display-switch",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-a0-switches",
+      "title": "Free the A0 input",
+      "entryPath": "#board-a0-switches",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-display-pins",
+      "title": "Find the three display pins",
+      "entryPath": "#board-display-pins",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-display-download",
+      "title": "Get the display check",
+      "entryPath": "#board-display-download",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-display-open",
+      "title": "Open the display sketch",
+      "entryPath": "#board-display-open",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-display-usb",
+      "title": "Power the display test",
+      "entryPath": "#board-display-usb",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-board-port",
+      "title": "Choose the board and port",
+      "entryPath": "#board-board-port",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-display-upload",
+      "title": "Upload the display check",
+      "entryPath": "#board-display-upload",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-display-read",
+      "title": "Check all four positions",
+      "entryPath": "#board-display-read",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-download",
+      "title": "Get the voltage program",
+      "entryPath": "#board-bench-download",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-open",
+      "title": "Open the voltage sketch",
+      "entryPath": "#board-bench-open",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-input-pin",
+      "title": "Find the measuring input",
+      "entryPath": "#board-input-pin",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-digit-codes",
+      "title": "Read the digit patterns",
+      "entryPath": "#board-digit-codes",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-send-digit",
+      "title": "Follow one display update",
+      "entryPath": "#board-send-digit",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-divider-idea",
+      "title": "Read the bench divider",
+      "entryPath": "#board-divider-idea",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-scale",
+      "title": "Find why we multiply",
+      "entryPath": "#board-scale",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-reference",
+      "title": "Find the reference voltage",
+      "entryPath": "#board-reference",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-average",
+      "title": "Follow the eight samples",
+      "entryPath": "#board-average",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-conversion",
+      "title": "Follow counts into volts",
+      "entryPath": "#board-conversion",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-rounding",
+      "title": "Read the rounding step",
+      "entryPath": "#board-rounding",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-decimal",
+      "title": "Find the decimal point",
+      "entryPath": "#board-decimal",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-refresh",
+      "title": "Find the display refresh",
+      "entryPath": "#board-refresh",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-serial",
+      "title": "Find the computer output",
+      "entryPath": "#board-serial",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-zero-limit",
+      "title": "Know what the display means",
+      "entryPath": "#board-zero-limit",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-standalone",
+      "title": "Keep the generator separate",
+      "entryPath": "#board-standalone",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-load-not-divider",
+      "title": "Understand the 100 ohm resistor",
+      "entryPath": "#board-load-not-divider",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-meter-leads",
+      "title": "Check the meter sockets",
+      "entryPath": "#board-meter-leads",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-meter-mode",
+      "title": "Check the voltage mode",
+      "entryPath": "#board-meter-mode",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-unloaded",
+      "title": "Measure the generator alone",
+      "entryPath": "#board-unloaded",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-meter-connect",
+      "title": "Connect the two meter probes",
+      "entryPath": "#board-meter-connect",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-raw-maximum",
+      "title": "Check the intended highest speed",
+      "entryPath": "#board-raw-maximum",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-polarity",
+      "title": "Check the output polarity",
+      "entryPath": "#board-polarity",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-parts",
+      "title": "Find the low-voltage parts",
+      "entryPath": "#board-bench-parts",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-power-off",
+      "title": "Power off before bench wiring",
+      "entryPath": "#board-bench-power-off",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-top-resistor",
+      "title": "Place the upper resistor",
+      "entryPath": "#board-top-resistor",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bottom-resistor",
+      "title": "Place the lower resistor",
+      "entryPath": "#board-bottom-resistor",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-ground",
+      "title": "Join the bench ground",
+      "entryPath": "#board-ground",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-midpoint",
+      "title": "Join the measuring point",
+      "entryPath": "#board-midpoint",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-usb",
+      "title": "Power the board separately",
+      "entryPath": "#board-bench-usb",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-upload",
+      "title": "Upload the voltage sketch",
+      "entryPath": "#board-bench-upload",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-open-monitor",
+      "title": "Open Serial Monitor",
+      "entryPath": "#board-open-monitor",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-zero",
+      "title": "Check the zero input",
+      "entryPath": "#board-bench-zero",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-battery",
+      "title": "Apply the known AA signal",
+      "entryPath": "#board-bench-battery",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-compare",
+      "title": "Compare the AA readings",
+      "entryPath": "#board-bench-compare",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-bench-remove",
+      "title": "Remove the signal first",
+      "entryPath": "#board-bench-remove",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-known-checks",
+      "title": "Check more known inputs",
+      "entryPath": "#board-known-checks",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-interface-gate",
+      "title": "Wait for the generator interface",
+      "entryPath": "#board-interface-gate",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-final-scale",
+      "title": "Match code to the final divider",
+      "entryPath": "#board-final-scale",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-save-final-code",
+      "title": "Save the checked program",
+      "entryPath": "#board-save-final-code",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-final-upload",
+      "title": "Upload the checked version",
+      "entryPath": "#board-final-upload",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-final-connect",
+      "title": "Let the teacher connect it",
+      "entryPath": "#board-final-connect",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-same-terminals",
+      "title": "Compare the same measurement",
+      "entryPath": "#board-same-terminals",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-setup-record",
+      "title": "Keep the checked setup record",
+      "entryPath": "#board-setup-record",
       "estimatedMinutes": null
     },
     {
@@ -231,7 +567,7 @@
     },
     {
       "id": "limits",
-      "title": "Choose an honest limit",
+      "title": "State the test limit",
       "entryPath": "#limits",
       "estimatedMinutes": null
     },
@@ -245,12 +581,6 @@
       "id": "save-evidence",
       "title": "Save your test evidence",
       "entryPath": "#save-evidence",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "review",
-      "title": "Your saved answers",
-      "entryPath": "#review",
       "estimatedMinutes": null
     }
   ],
@@ -267,5 +597,6 @@
   ],
   "accounts": "No account is needed for the guide. Use school-approved editor accounts if required.",
   "internet": "Local HTTP serving supports bundled guide assets. Opening online editors and Classroom needs internet.",
-  "submission": "Use the current shared four-heading Google Doc and the existing one-team Classroom assignment. Guide PDF is supporting evidence."
+  "submission": "Follow the existing team assignment using the actual code, shared report and real test notes. This site is an instruction-only guide.",
+  "format": "instruction-only guide"
 }

@@ -116,24 +116,15 @@ export const buildSteps = [
   },
   {
     "id": "sections-check",
-    "title": "Choose where names belong",
+    "title": "Place shared names above setup",
     "why": "Names used by both setup() and loop() belong above both sections. Names placed inside a section may only be usable there.",
-    "where": "In this guide",
-    "do": "Choose the correct location for the five Servo names.",
-    "expected": "You can explain where shared names belong.",
-    "help": "",
+    "where": "In Arduino IDE, above setup()",
+    "do": "Locate Servo motor1; through Servo motor5; after the include line and before setup().",
+    "expected": "The motor names are outside both sections so setup() and loop() can use them.",
+    "help": "Do not place the shared names inside a second loop() or after a closing brace within another section.",
     "links": [],
     "phase": "Code the hand",
-    "stage": "guided",
-    "kind": "check",
-    "question": "Where do Servo motor1; through Servo motor5; belong?",
-    "options": [
-      "Above setup(), after the include line.",
-      "Inside the last closing brace.",
-      "Inside a second loop()."
-    ],
-    "answer": 0,
-    "hint": "Both setup() and loop() use these motor names."
+    "stage": "guided"
   },
   {
     "id": "attach",
@@ -251,24 +242,15 @@ export const buildSteps = [
   },
   {
     "id": "explain-map",
-    "title": "Check the number ranges",
+    "title": "Read the output range",
     "why": "The knob can report 1024 different readings. Our program turns those readings into a smaller set of motor commands.",
-    "where": "In this guide",
-    "do": "Choose the correct meaning of the map line.",
-    "expected": "You understand input readings and output commands.",
-    "help": "",
+    "where": "In Arduino IDE, the angle1 line inside loop()",
+    "do": "Read map(pot1, 0, 1023, 0, 57) as: change the 0–1023 knob reading into a 0–57 position command.",
+    "expected": "The last two numbers are the output range. This line does not measure a physical angle.",
+    "help": "Keep the existing 0–57 output range for motor1. The teacher checks which movements are safe on the real hand.",
     "links": [],
     "phase": "Code the hand",
-    "stage": "guided",
-    "kind": "check",
-    "question": "What does map(pot1, 0, 1023, 0, 57) produce?",
-    "options": [
-      "A position command from 0 to 57.",
-      "A measured physical angle from 0 to 1023.",
-      "A new pin number."
-    ],
-    "answer": 0,
-    "hint": "The last two numbers are the output range."
+    "stage": "guided"
   },
   {
     "id": "knob2",
@@ -338,24 +320,15 @@ export const buildSteps = [
   },
   {
     "id": "middle-limit",
-    "title": "Explain the upper limit",
+    "title": "Follow the upper limit",
     "why": "The command is checked before it is sent. That keeps a held button from making the number grow forever.",
-    "where": "In this guide",
-    "do": "Choose the next sent value when middleAngle is already 160 and S3 is held.",
-    "expected": "You understand why the two limit lines matter.",
-    "help": "",
+    "where": "In Arduino IDE, the S3 button block inside loop()",
+    "do": "Follow the code when middleAngle starts at 160: ++ makes 161, then the limit check sets it back to 160 before write().",
+    "expected": "The block sends 160 rather than 161 when the upper command limit has been reached.",
+    "help": "Keep the limit check before motor4.write(middleAngle). This limits commands; it does not disconnect power.",
     "links": [],
     "phase": "Code the hand",
-    "stage": "guided",
-    "kind": "check",
-    "question": "The ++ line changes 160 to 161. What does the limit check do before write()?",
-    "options": [
-      "Sets middleAngle back to 160.",
-      "Sends 161 and hopes the motor stops.",
-      "Disconnects the power."
-    ],
-    "answer": 0,
-    "hint": "Read if (middleAngle > 160), then the assignment inside it."
+    "stage": "guided"
   },
   {
     "id": "middle-down",
@@ -466,16 +439,13 @@ export const buildSteps = [
     "id": "explain-code",
     "title": "Explain one code path",
     "why": "You understand a program when you can follow an input through its steps to an output.",
-    "where": "In this guide",
-    "do": "Explain one knob or one button using the frame.",
-    "expected": "You name the input, command range and motor.",
-    "help": "For a button, include the limit check. For a knob, explain read, map and write.",
+    "where": "In your existing team report, under Project",
+    "do": "Describe one knob or button in a short paragraph. Name its input, how the code changes its value, its command limits and its motor.",
+    "expected": "Your explanation follows a real input through the code to a motor command.",
+    "help": "For a knob, explain read, map and write. For a button, explain the one-step change and the limit check.",
     "links": [],
     "phase": "Code the hand",
-    "stage": "guided",
-    "kind": "response",
-    "question": "How does your chosen control produce a motor command?",
-    "starter": "I chose ___. The program reads ___. It changes the command by ___. It keeps commands from ___ to ___. It sends the command to ___."
+    "stage": "guided"
   },
   {
     "id": "save-before-run",
@@ -551,18 +521,15 @@ export const buildSteps = [
   },
   {
     "id": "record-run",
-    "title": "Record what really happened",
+    "title": "Record the real control test",
     "why": "An honest observation helps you fix a problem. A result is something you actually saw, not something the code suggests should happen.",
-    "where": "In this guide",
-    "do": "Record one control test using the frame.",
-    "expected": "Your note names the control, expected motor and actual response.",
-    "help": "Write Not run if hardware was unavailable. Do not describe an imagined movement as a result.",
+    "where": "In your existing team report, under Test and improvement",
+    "do": "Record the sketch version, control used, expected motor and command direction, actual response, teacher-checked range and any problem.",
+    "expected": "Your test note separates the expected command from what you actually observed.",
+    "help": "Write Not run and the reason if hardware was unavailable. Do not record an imagined movement as a result.",
     "links": [],
     "phase": "Code the hand",
-    "stage": "independent",
-    "kind": "response",
-    "question": "What happened when you tried one control?",
-    "starter": "Version ___. Control ___. Expected motor and command direction ___. Actual response ___. Teacher-checked range ___. Problem or Not run ___."
+    "stage": "independent"
   },
   {
     "id": "debug",
@@ -590,24 +557,15 @@ export const buildSteps = [
   },
   {
     "id": "test-limits",
-    "title": "Separate commands from angles",
+    "title": "State what the code proves",
     "why": "The code bounds command numbers. Our eyes observe motion. Neither proves an exact angle, lifting strength or an automatic gripping routine.",
-    "where": "In this guide",
-    "do": "Choose the claim supported by checking this code.",
-    "expected": "You can describe what the evidence actually proves.",
-    "help": "",
+    "where": "In Arduino IDE, the S3 block, and your team report",
+    "do": "Inspect the S3 limit check and describe its result: the block caps its written commands at 160.",
+    "expected": "Your explanation distinguishes bounded code commands from measured physical angles.",
+    "help": "This program has no angle sensor or strength test. It does not establish an exact joint angle, lifting strength or automatic grip-and-release operation.",
     "links": [],
     "phase": "Code the hand",
-    "stage": "guided",
-    "kind": "check",
-    "question": "What can code inspection show about the S3 block?",
-    "options": [
-      "Its written commands are capped at 160.",
-      "The physical joint always reaches exactly 160 degrees.",
-      "The hand can lift any object."
-    ],
-    "answer": 0,
-    "hint": "There is no angle sensor or strength test in this program."
+    "stage": "guided"
   },
   {
     "id": "zip",
@@ -624,11 +582,11 @@ export const buildSteps = [
   {
     "id": "handoff",
     "title": "Share the latest version",
-    "why": "The next teammate needs your real saved program and a short note about its state. Guide answers in this browser are not automatically shared.",
+    "why": "The next teammate needs your real saved program and a short note about its state.",
     "where": "Your existing team Drive folder",
     "do": "Upload the numbered sketch ZIP and tell the next editor its exact filename and whether it was only verified or also tested on hardware.",
     "expected": "The team can find one clear latest version and earlier versions remain available.",
-    "help": "Copy useful guide notes into your team work. Saving an answer in this guide does not submit it to Drive or Classroom.",
+    "help": "Keep the editable sketch and its numbered ZIP in the existing team project folder. Follow the teacher’s existing Drive and Classroom instructions.",
     "links": [],
     "phase": "Code the hand",
     "stage": "guided"
@@ -637,28 +595,24 @@ export const buildSteps = [
     "id": "report",
     "title": "Write the coding report",
     "why": "A short explanation connects your code to what you learned. Use your actual work and observations.",
-    "where": "In your existing project report",
-    "do": "Write under the four current headings: Project; Research; Test and improvement; References.",
-    "expected": "The report names the five-motor controls, explains research in your own words, gives an honest test and improvement note, and lists exact source links.",
-    "help": "Use Not run for an unavailable hardware test. Do not add made-up angles or claim automatic grip and release.",
+    "where": "In your existing team report",
+    "do": "Keep the four headings: Project; Research; Test and improvement; References. Under Project, explain the five-motor controls. Under Research, explain a useful source in your own words. Under Test and improvement, add the actual control tests and any checked change or proposed next change. Under References, list each source organization, title and exact link.",
+    "expected": "Your report connects the saved code, research, actual observations and an honest limit.",
+    "help": "Keep original and repeat-test notes. Write Not run for an unavailable test. Do not claim exact physical angles or automatic grip and release.",
     "links": [],
     "phase": "Code the hand",
-    "stage": "guided",
-    "kind": "response",
-    "question": "Write your four short report parts.",
-    "starter": "Project\nWe programmed ___. The program reads ___ and sends ___.\n\nResearch\nWe learned ___ from ___.\n\nTest and improvement\nWe tested ___. We observed ___. Our checked improvement or proposed next change is ___. Our retest result or Not run is ___. Our evidence does not show ___.\n\nReferences\nOrganization ___. Title ___. Exact link ___."
+    "stage": "guided"
   },
   {
     "id": "finish",
-    "title": "Check your saved work",
+    "title": "Check the saved team files",
     "why": "Your program, explanation and real test notes should tell the same story.",
-    "where": "In this guide and your team files",
-    "do": "Check the latest ZIP opens, the final sketch verifies and the report distinguishes code checks from hardware results.",
-    "expected": "You can show the saved program and explain one control without reading every line.",
+    "where": "In Arduino IDE and your existing team Drive folder",
+    "do": "Check that the latest numbered ZIP opens, the saved sketch verifies and the team report distinguishes code checks from hardware results.",
+    "expected": "The next editor can find the correct code and understand what has actually been tested.",
     "help": "Follow your teacher’s existing submission instructions. This guide does not submit work or upload code to the model.",
     "links": [],
     "phase": "Code the hand",
-    "stage": "guided",
-    "kind": "review"
+    "stage": "guided"
   }
 ];

@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-STICK-01",
   "slug": "walking-stick-code-guide",
   "title": "Code your walking stick",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -16,7 +16,7 @@
     "Use MakeCode Blocks"
   ],
   "estimatedTime": "Unknown, classroom pilot required",
-  "offline": "Serve the downloaded guide folder locally, or use printable-fallback.html. Hardware testing needs the actual supervised model.",
+  "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
   "lastReviewed": "2026-10-21",
   "objectives": [
     "Store a fresh valid distance reading",
@@ -88,7 +88,7 @@
     },
     {
       "id": "reading-check",
-      "title": "Check what the number means",
+      "title": "Recognize an unusable reading",
       "entryPath": "#reading-check",
       "estimatedMinutes": null
     },
@@ -196,13 +196,13 @@
     },
     {
       "id": "boundary-check",
-      "title": "Check exactly 30 cm",
+      "title": "Include exactly 30 cm",
       "entryPath": "#boundary-check",
       "estimatedMinutes": null
     },
     {
       "id": "far-check",
-      "title": "Check the far branch",
+      "title": "Follow the farther branch",
       "entryPath": "#far-check",
       "estimatedMinutes": null
     },
@@ -496,13 +496,13 @@
     },
     {
       "id": "bt-check-message",
-      "title": "Choose the message",
+      "title": "Send UNKNOWN for unusable readings",
       "entryPath": "#bt-check-message",
       "estimatedMinutes": null
     },
     {
       "id": "bt-explain-result",
-      "title": "Explain one real result",
+      "title": "Add the Bluetooth test note",
       "entryPath": "#bt-explain-result",
       "estimatedMinutes": null
     },
@@ -541,12 +541,6 @@
       "title": "Submit the program and report",
       "entryPath": "#submit",
       "estimatedMinutes": null
-    },
-    {
-      "id": "review",
-      "title": "Review your guide answers",
-      "entryPath": "#review",
-      "estimatedMinutes": null
     }
   ],
   "teacherGuidePath": "technology-learning-hub/teacher-materials/steam-physical-guides.md",
@@ -562,5 +556,6 @@
   ],
   "accounts": "No account is needed for the guide. Use school-approved editor accounts if required.",
   "internet": "Local HTTP serving supports bundled guide assets. Opening online editors and Classroom needs internet.",
-  "submission": "Use the current shared four-heading Google Doc and the existing one-team Classroom assignment. Guide PDF is supporting evidence."
+  "submission": "Follow the existing team assignment using the actual code, shared report and real test notes. This site is an instruction-only guide.",
+  "format": "instruction-only guide"
 }
