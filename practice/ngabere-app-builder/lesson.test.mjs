@@ -26,18 +26,10 @@ test('native block pictures show the matching event and helper, without student 
  }
  const all=lesson.sections.map(s=>s.html||'').join('');assert.doesNotMatch(all,/Checkpoint|recovery PNG|recovery file/i);
 });
-test('partial PDF uses real answers and preserves blank responses',()=>{
- const config=previewLesson(lesson), state=sampleState(config,'empty');
- state.identity={firstName:'Sample',lastName:'Learner',grade:'8B'};state.responses={'audio-evidence':{response:'Ju played its recording. Dog audio needs checking.'}};
- const report=foundationPdfReport(config,state);const str=JSON.stringify(report);
- assert.ok(str.includes('Dog audio needs checking.'));assert.ok(str.includes('Sample'));
- assert.ok(!str.includes('After signing in again, Ju showed ___.'),'Sentence starter must not become an answer');
-});
-
 test('beginner visuals use actual captures or native blocks only where needed',async()=>{
  const {buildSteps}=await import('./steps/build-data.js');const by=Object.fromEntries(buildSteps.map(s=>[s.id,s]));
  assert.ok(buildSteps.indexOf(by['name-and-text'])>buildSteps.indexOf(by['listen-style']));
- for(const id of ['guide-and-editor','get-starter','open-inventor','names-check','test-listen','three-audios','audio-evidence','save-evidence','save-check','installed-test','final-evidence','files-evidence','review'])assert.ok(!by[id].visuals,id);
+ for(const id of ['guide-and-editor','get-starter','open-inventor','test-listen','three-audios','installed-test','review'])assert.ok(!by[id].visuals,id);
  for(const step of buildSteps){
   assert.ok(!step.image,'No old illustration should remain');
   for(const v of step.visuals||[])assert.match(v.src,/^assets\/(screenshots\/.*\.(?:jpg|png)|blocks\/.*\.svg|runtime\/.*\.png)$/);
@@ -67,13 +59,12 @@ test('required testing uses our viewer and teaches reopening after edits',async(
  assert.match(by['test-listen'].do,/Export a new \.aia/);
  assert.match(by['installed-test'].do,/latest exported \.aia/);
  assert.match(by['build-apk'].do,/If your teacher asks/);
- assert.match(by['files-evidence'].question,/our viewer/);
 });
 
 
 test('whole-guide corrections preserve editor transitions and accurate settings',async()=>{
  const {buildSteps}=await import('./steps/build-data.js');const by=Object.fromEntries(buildSteps.map(s=>[s.id,s]));
- assert.equal(buildSteps.length,52);
+ assert.equal(buildSteps.length,46);
  assert.doesNotMatch(JSON.stringify(buildSteps),/Learn Ngäbere|127\.0\.0\.1:8888/);
  assert.equal(by['navigation-row'].visuals.length,1);
  for(const id of ['listen-style','learned-button','previous-button','next-button'])assert.ok(by[id].settings.some(([key,value])=>key==='FontSize'&&value==='16'),id);
@@ -96,7 +87,16 @@ test('official MIT editor and separate viewer have distinct links',async()=>{
  const {buildSteps}=await import('./steps/build-data.js');const by=Object.fromEntries(buildSteps.map(s=>[s.id,s]));
  assert.equal(by['open-inventor'].links[0][1],'https://ai2.appinventor.mit.edu/');
  const viewer=lesson.sections.find(s=>s.id==='connect-phone');
- assert.match(viewer.html,/href="viewer\/index.html" target="_blank" rel="noopener"/);
+ assert.match(viewer.html,/href="https:\/\/jc-bytes\.github\.io\/appinventor-class-preview\/" target="_blank" rel="noopener"/);
  assert.doesNotMatch(viewer.html,/href="viewer\/index.html" download/);
  for(const id of ['test-listen','test-NextButton','test-PreviousButton','save-test','independent','installed-test'])assert.match(by[id].do+' '+by[id].expected,/export|Export/);
+});
+
+
+test('guide-only path has no identity, quizzes, written answers or answer exports',()=>{
+ assert.equal(lesson.guideOnly,true);
+ for(const page of lesson.sections){assert.equal(page.kind,'html',page.id);assert.doesNotMatch(page.html,/<(?:textarea|form|t3-check)\b/);}
+ for(const [oldId,target]of Object.entries(lesson.routeAliases)){assert.ok(!lesson.sections.some(s=>s.id===oldId));assert.ok(lesson.sections.some(s=>s.id===target));}
+ assert.ok(lesson.sections.some(s=>s.id==='get-starter'&&s.html.includes('download')));
+ assert.ok(lesson.sections.some(s=>s.id==='export'));
 });

@@ -577,22 +577,6 @@ export const buildSteps = [
     "visualCaption": "Actual Web Preview screenshots of this build stage."
   },
   {
-    "id": "names-check",
-    "title": "Check component names",
-    "question": "Which name must match the Click block exactly?",
-    "options": [
-      "The button component name",
-      "The color name",
-      "The project nickname"
-    ],
-    "answer": 0,
-    "hint": "Compare ListenButton in Components with the name on its Click block.",
-    "phase": "1 · Screen layout",
-    "kind": "check",
-    "image": null,
-    "links": []
-  },
-  {
     "id": "upload-1",
     "title": "Upload Ju",
     "do": "Download word1.wav below. In MIT App Inventor, click Designer. On the right, find Media below the Components list and the Rename / Delete buttons. Click Upload File…, choose word1.wav from Downloads, then confirm.",
@@ -695,7 +679,7 @@ export const buildSteps = [
     "links": [
       [
         "Open our app viewer",
-        "viewer/index.html"
+        "https://jc-bytes.github.io/appinventor-class-preview/"
       ]
     ],
     "block": false,
@@ -860,7 +844,7 @@ export const buildSteps = [
     "links": [
       [
         "Open our app viewer",
-        "viewer/index.html"
+        "https://jc-bytes.github.io/appinventor-class-preview/"
       ]
     ],
     "block": false,
@@ -936,7 +920,7 @@ export const buildSteps = [
     "links": [
       [
         "Open our app viewer",
-        "viewer/index.html"
+        "https://jc-bytes.github.io/appinventor-class-preview/"
       ]
     ],
     "block": false,
@@ -1024,7 +1008,7 @@ export const buildSteps = [
     "links": [
       [
         "Open our app viewer",
-        "viewer/index.html"
+        "https://jc-bytes.github.io/appinventor-class-preview/"
       ]
     ],
     "block": false,
@@ -1061,16 +1045,6 @@ export const buildSteps = [
     "before": "Only the first word has been tested.",
     "after": "All three word recordings checked.",
     "where": "In our viewer · Learn"
-  },
-  {
-    "id": "audio-evidence",
-    "title": "Record your audio test",
-    "question": "For Ju, Nukro and Minchi, write what played. Record any problem you still need to fix.",
-    "starter": "Ju played ___. Nukro played ___. Minchi played ___.",
-    "phase": "3 · Listen and navigation",
-    "kind": "response",
-    "image": null,
-    "links": []
   },
   {
     "id": "save-event",
@@ -1139,7 +1113,7 @@ export const buildSteps = [
     "links": [
       [
         "Open our app viewer",
-        "viewer/index.html"
+        "https://jc-bytes.github.io/appinventor-class-preview/"
       ]
     ],
     "block": false,
@@ -1215,32 +1189,6 @@ export const buildSteps = [
     "visualCaption": "Web Preview example with local demonstration data. Repeat sign-out and sign-in with your own account to verify cloud saving."
   },
   {
-    "id": "save-evidence",
-    "title": "Record your save test",
-    "question": "What happened to Ju after you signed out and signed in again?",
-    "starter": "After signing in again, Ju showed ___.",
-    "phase": "4 · Save learning progress",
-    "kind": "response",
-    "image": null,
-    "links": []
-  },
-  {
-    "id": "save-check",
-    "title": "Check whose progress saves",
-    "question": "Two learners sign in with different accounts. Whose progress should Mark as learned change?",
-    "options": [
-      "Only the signed-in learner’s progress",
-      "Every learner’s progress",
-      "Only the teacher’s progress"
-    ],
-    "answer": 0,
-    "hint": "The helper uses the ID of the person signed in.",
-    "phase": "4 · Save learning progress",
-    "kind": "check",
-    "image": null,
-    "links": []
-  },
-  {
     "id": "independent",
     "title": "Make one small improvement",
     "do": "Switch to MIT App Inventor and click Designer. Select InstructionLabel and change its Text to your own short English instruction.",
@@ -1253,7 +1201,7 @@ export const buildSteps = [
     "links": [
       [
         "Open our app viewer",
-        "viewer/index.html"
+        "https://jc-bytes.github.io/appinventor-class-preview/"
       ]
     ],
     "block": false,
@@ -1328,7 +1276,7 @@ export const buildSteps = [
     "id": "installed-test",
     "title": "Run the final viewer test",
     "do": "Open our viewer and choose your latest exported .aia. Sign in if asked. Test Listen, Next, Previous and Mark as learned, then click Progress to check the count.",
-    "expected": "All four controls work in our viewer. Record any problem you still need to fix.",
+    "expected": "All four controls work in our viewer. Fix any problem before demonstrating the app.",
     "image": null,
     "why": "Our viewer tests the exported file you choose. Export again after making any final changes in MIT.",
     "help": "Fix the matching Click event in MIT App Inventor, export a new .aia, then choose that new file in our viewer and try again.",
@@ -1337,7 +1285,7 @@ export const buildSteps = [
     "links": [
       [
         "Open our app viewer",
-        "viewer/index.html"
+        "https://jc-bytes.github.io/appinventor-class-preview/"
       ]
     ],
     "block": false,
@@ -1347,32 +1295,22 @@ export const buildSteps = [
     "where": "In our viewer · final test"
   },
   {
-    "id": "final-evidence",
-    "title": "Explain one connection",
-    "question": "Choose one of your four buttons. Explain what its Click event calls and what that helper does.",
-    "starter": "When I tap ___, the Click event calls ___. The helper ___.",
-    "phase": "5 · Test and export",
-    "kind": "response",
-    "image": null,
-    "links": []
-  },
-  {
-    "id": "files-evidence",
-    "title": "Keep your evidence",
-    "question": "Write your exported .aia filename and state which controls you tested in our viewer.",
-    "starter": "My project file is ___. In the viewer, I tested ___.",
-    "phase": "5 · Test and export",
-    "kind": "response",
-    "image": null,
-    "links": []
-  },
-  {
     "id": "review",
-    "title": "Your build record",
-    "kind": "review",
+    "title": "Your app is ready to demonstrate",
+    "kind": "action",
     "stage": "review",
     "phase": "Finish",
     "image": null,
-    "links": []
+    "links": [
+      [
+        "Open our app viewer",
+        "https://jc-bytes.github.io/appinventor-class-preview/"
+      ]
+    ],
+    "where": "In our viewer",
+    "why": "You have built the learning screen and connected four buttons to their supplied helpers.",
+    "do": "Keep your latest .aia file. Use our viewer to demonstrate Listen, Next, Previous, Mark as learned and saved progress after signing in again.",
+    "expected": "The app uses the original recordings and saves progress for the signed-in learner.",
+    "help": null
   }
 ];

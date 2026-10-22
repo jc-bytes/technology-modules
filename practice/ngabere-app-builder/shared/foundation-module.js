@@ -1,9 +1,8 @@
 
-import { attachNarration, stopGuideNarration } from "../guide-narration.js?v=1.4.1";
-import { practiceCheckSpecs } from "./t3-practice.js?v=1.4.1";
-import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=1.4.1";
-import { downloadStudentPdf } from "./student-pdf.js?v=1.4.1";
-import { selectClassRoute } from "./class-routes.js?v=1.4.1";
+import { attachNarration, stopGuideNarration } from "../guide-narration.js?v=1.5.0";
+import { practiceCheckSpecs } from "./t3-practice.js?v=1.5.0";
+import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=1.5.0";
+import { selectClassRoute } from "./class-routes.js?v=1.5.0";
 
 const clone = (value) => JSON.parse(JSON.stringify(value));
 const escapeHtml = (value = "") => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
@@ -19,19 +18,21 @@ export function mountFoundationModule(config) {
   let storageFailed = false;
   let state = load();
   let activeId = route();
-  let editingIdentity = !state.identityStarted;
+  let editingIdentity = !config.guideOnly && !state.identityStarted;
   for(const section of config.sections)for(const check of section.inlineChecks){if(state.inlineAnswers[check.key]===undefined)try{state.inlineAnswers[check.key]=localStorage.getItem(check.key) || "";}catch{}}
 
   function load() {
+    if(config.guideOnly) return clone(defaultState);
     const record=value=>value && typeof value==='object' && !Array.isArray(value)?value:{};
     try {
       const saved = JSON.parse(localStorage.getItem(config.storageKey) || "null");
       return { ...clone(defaultState), ...saved, attempts: Array.isArray(saved?.attempts) ? saved.attempts.filter(a=>a && typeof a==='object') : [], responses: saved?.responses && typeof saved.responses==='object' ? saved.responses : {}, visited: Array.isArray(saved?.visited) ? saved.visited : defaultState.visited, identity: Object.fromEntries(['firstName','lastName','grade'].map(key=>[key,typeof saved?.identity?.[key]==='string'?saved.identity[key].slice(0,70):''])), choiceDrafts:record(saved?.choiceDrafts), choicePositions:record(saved?.choicePositions), formPositions:record(saved?.formPositions), inlineAnswers:record(saved?.inlineAnswers) };
     } catch { storageFailed = true; return clone(defaultState); }
   }
-  function save() { try { localStorage.setItem(config.storageKey, JSON.stringify(state)); } catch { storageFailed = true; } const warning=document.querySelector("#fm-storage-warning"); if(warning) warning.textContent=storageFailed?"This browser cannot save your work. Keep this tab open and download your answers.":""; }
+  function save() { if(config.guideOnly) return; try { localStorage.setItem(config.storageKey, JSON.stringify(state)); } catch { storageFailed = true; } const warning=document.querySelector("#fm-storage-warning"); if(warning) warning.textContent=storageFailed?"This browser cannot save your work. Keep this tab open and download your answers.":""; }
   function route() {
-    const id = location.hash.replace(/^#/, "");
+    const originalId = location.hash.replace(/^#/, "");
+    const id = config.routeAliases?.[originalId] || originalId;
     const targetIndex = config.sections.findIndex((section) => section.id === id);
     return targetIndex >= 0 ? id : config.sections[0].id;
   }
@@ -42,7 +43,7 @@ export function mountFoundationModule(config) {
     return state.visited.includes(sectionId) ? "started" : "new";
   }
   function nav() {
-    return config.sections.map((item,index) => `<a href="#${item.id}" class="fm-nav-link ${item.id === activeId ? "is-active" : ""}" ${item.id === activeId ? 'aria-current="page"' : ""}>${index+1}. ${escapeHtml(item.short || item.title)}</a>`).join("") + `<button type="button" id="fm-reset-guide" class="fm-reset-guide">Start a new guide attempt</button>`;
+    return config.sections.map((item,index) => `<a href="#${item.id}" class="fm-nav-link ${item.id === activeId ? "is-active" : ""}" ${item.id === activeId ? 'aria-current="page"' : ""}>${index+1}. ${escapeHtml(item.short || item.title)}</a>`).join("") + (config.guideOnly ? "" : `<button type="button" id="fm-reset-guide" class="fm-reset-guide">Start a new guide attempt</button>`);
   }
   function studentLabel() {
     return `<span><strong>${escapeHtml([state.identity.firstName,state.identity.lastName].filter(Boolean).join(' ') || 'Your name')}</strong><small>${escapeHtml(state.identity.grade ? `Grade ${state.identity.grade}` : 'Your grade')}</small></span>`;
@@ -53,7 +54,8 @@ export function mountFoundationModule(config) {
     const branding = config.layout === 'clean-step'
       ? `<div class="fm-brand-title"><small>${escapeHtml(config.subject || 'Technology')}</small><strong class="fm-activity-title">${title}</strong></div>`
       : `<strong class="fm-activity-title">${title}</strong>`;
-    return `<div class="fm-shell ${config.layout === 'clean-step' ? 'fm-clean-step' : ''} ${config.persistentNavigation ? 'fm-persistent-navigation' : ''}"><header class="fm-topbar">${branding}<div class="fm-tools"><div class="fm-student"><span id="fm-student-label">${studentLabel()}</span><button id="fm-edit-identity" class="fm-edit" aria-label="Edit your name and grade" title="Edit your name and grade"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m16 3 5 5-12 12-6 1 1-6Z"/><path d="m14 5 5 5"/></svg></button></div><button id="fm-download" class="fm-button primary" aria-label="Download your answers" title="Download your answers"><svg class="fm-tool-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5"/></svg><span class="fm-tool-text">Download your answers</span></button><details class="fm-menu"><summary aria-label="Steps" title="Steps"><svg class="fm-tool-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 5h13M8 12h13M8 19h13M3 5h1M3 12h1M3 19h1"/></svg><span class="fm-tool-text">Steps</span></summary><nav aria-label="Activity steps">${nav()}</nav></details></div></header><p id="fm-storage-warning" role="status"></p><main id="fm-main" tabindex="-1"></main>${footer}</div><div id="fm-toast" class="fm-toast" role="status" aria-live="polite"></div>`;
+    const identityTools = config.guideOnly ? '' : `<div class="fm-student"><span id="fm-student-label">${studentLabel()}</span><button id="fm-edit-identity" class="fm-edit" aria-label="Edit your name and grade" title="Edit your name and grade"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m16 3 5 5-12 12-6 1 1-6Z"/><path d="m14 5 5 5"/></svg></button></div><button id="fm-download" class="fm-button primary" aria-label="Download your answers" title="Download your answers"><svg class="fm-tool-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5"/></svg><span class="fm-tool-text">Download your answers</span></button>`;
+    return `<div class="fm-shell ${config.layout === 'clean-step' ? 'fm-clean-step' : ''} ${config.persistentNavigation ? 'fm-persistent-navigation' : ''}"><header class="fm-topbar">${branding}<div class="fm-tools">${identityTools}<details class="fm-menu"><summary aria-label="Steps" title="Steps"><svg class="fm-tool-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 5h13M8 12h13M8 19h13M3 5h1M3 12h1M3 19h1"/></svg><span class="fm-tool-text">Steps</span></summary><nav aria-label="Activity steps">${nav()}</nav></details></div></header><p id="fm-storage-warning" role="status"></p><main id="fm-main" tabindex="-1"></main>${footer}</div><div id="fm-toast" class="fm-toast" role="status" aria-live="polite"></div>`;
   }
   function identityPage() {
     if(config.compactIdentity) return `<section class="fm-identity-panel" aria-labelledby="fm-identity-title"><h1 id="fm-identity-title">${state.identityStarted ? 'Your details' : 'Before you start'}</h1><p>Add your name and grade.</p><form id="fm-identity-form">${[['firstName','First name','given-name'],['lastName','Last name','family-name'],['grade','Grade','off']].map(([key,label,autocomplete])=>`<label class="fm-field fm-identity-${key}">${label}<input name="${key}" value="${escapeHtml(state.identity[key])}" autocomplete="${autocomplete}" maxlength="70"></label>`).join('')}<button class="fm-button primary">${state.identityStarted ? 'Save and return' : 'Start lesson →'}</button></form></section>`;
@@ -128,6 +130,7 @@ export function mountFoundationModule(config) {
     return `${hero(item)}${report.includes('<section>') ? body : '<p>No web answers entered.</p>'}${pager(item)}`;
   }
   async function downloadReport(button) {
+    const {downloadStudentPdf}=await import("./student-pdf.js?v=1.5.0");
     const announce = message => toast(config.practiceOnly && message.startsWith('PDF ready:')
       ? 'Practice PDF ready. Keep it for review.' : message);
     await downloadStudentPdf(foundationPdfReport(config, state), `${config.slug}-answers.pdf`, button, announce);
@@ -150,7 +153,7 @@ export function mountFoundationModule(config) {
       hero?.insertAdjacentHTML('afterend',available ? '<div class="fm-reading-tools"><button type="button" id="fm-read-aloud" class="fm-button quiet" aria-pressed="false">Read aloud</button><span id="fm-reading-status" role="status"></span></div>' : '<p class="fm-reading-unavailable">Read aloud is unavailable in this browser.</p>');
     }
     document.querySelector(".fm-menu nav").innerHTML = nav(); bind(item);
-    document.querySelector("#fm-student-label").innerHTML = studentLabel();
+    const student=document.querySelector("#fm-student-label"); if(student) student.innerHTML = studentLabel();
     save();
     if (focus) { document.querySelector("#fm-main").focus({ preventScroll: true }); scrollTo({ top: 0, behavior: "smooth" }); }
   }
@@ -207,8 +210,8 @@ export function mountFoundationModule(config) {
     dialog.showModal();
   });
   document.body.innerHTML = shell();
-  document.querySelector('#fm-download').addEventListener('click',event=>downloadReport(event.currentTarget));
-  document.querySelector('#fm-edit-identity').addEventListener('click',()=>{editingIdentity=true;render({focus:true});});
+  document.querySelector('#fm-download')?.addEventListener('click',event=>downloadReport(event.currentTarget));
+  document.querySelector('#fm-edit-identity')?.addEventListener('click',()=>{editingIdentity=true;render({focus:true});});
   addEventListener("hashchange", () => { activeId = route(); document.querySelector('.fm-menu').open=false; render({ focus: true }); });
   render();
 }

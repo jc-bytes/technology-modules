@@ -1,5 +1,5 @@
-import { validateLesson } from './validate.js?v=1.4.1';
-import { tableHtml } from './content.js?v=1.4.1';
+import { validateLesson } from './validate.js?v=1.5.0';
+import { tableHtml } from './content.js?v=1.5.0';
 
 const result = (name, status, detail) => ({name, status, detail});
 const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));

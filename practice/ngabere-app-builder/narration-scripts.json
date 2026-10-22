@@ -121,12 +121,6 @@
       "sha256": "90fb19f3dc17c6f3d7c3707b88bb3551a7ae013b6ecf22c284ad27419734ede9"
     },
     {
-      "id": "names-check",
-      "text": "Check component names. Which name must match the Click block exactly?. Choices: 1. The button component name. 2. The color name. 3. The project nickname",
-      "file": "assets/narration/names-check.mp3",
-      "sha256": "a45a727d16b7c9c6b39d7c1a83bb25074d60f04edfd97d1887ee5a031a86cd49"
-    },
-    {
       "id": "upload-1",
       "text": "Upload the word for house. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word1 dot wave below. In MIT App Inventor, click Designer. On the right, find Media below the Components list and the Rename / Delete buttons. Click Upload File…, choose word1 dot wave from Downloads, then confirm.. Check: Media lists word1 dot wave. Keep this exact filename.",
       "file": "assets/narration/upload-1.mp3",
@@ -229,12 +223,6 @@
       "sha256": "30feb744eac48ba34f9152b393ed9a94007d9915a7cde2defe849c41be3cc1d1"
     },
     {
-      "id": "audio-evidence",
-      "text": "Record your audio test. For the word for house, the word for dog and the word for cat, write what played. Record any problem you still need to fix.",
-      "file": "assets/narration/audio-evidence.mp3",
-      "sha256": "446bf5825c545ec5eff7380f1db13ce209001e114809acf53728a7ce29f75c1a"
-    },
-    {
       "id": "save-event",
       "text": "Start the save event. In App Inventor · Blocks. We need to tell the app what to do when someone clicks Learned Button. The yellow Click block is the starting point for that tap.. Switch to the MIT App Inventor tab and click Blocks. Select Learned Button in the left component list and drag its Click event into an empty workspace area.. Check: One yellow Learned Button.Click event has an empty do space.",
       "file": "assets/narration/save-event.mp3",
@@ -265,18 +253,6 @@
       "sha256": "3e101b5c17f3d98a37f8c21ed99f915465e2efa418f61a75185f0489a135367c"
     },
     {
-      "id": "save-evidence",
-      "text": "Record your save test. What happened to the word for house after you signed out and signed in again?",
-      "file": "assets/narration/save-evidence.mp3",
-      "sha256": "8fdee97d465f69d5db3050c05d1a94858b95a43595b27754d70d7c174bceee94"
-    },
-    {
-      "id": "save-check",
-      "text": "Check whose progress saves. Two learners sign in with different accounts. Whose progress should Mark as learned change?. Choices: 1. Only the signed-in learner’s progress. 2. Every learner’s progress. 3. Only the teacher’s progress",
-      "file": "assets/narration/save-check.mp3",
-      "sha256": "b27c3fce55d1f7edcf72ce6429f1c05a01516e8e7383c3bc1827fa144fff839b"
-    },
-    {
       "id": "independent",
       "text": "Make one small improvement. In App Inventor · Designer. You now have the four connected controls. Make a small wording change while keeping those working connections.. Switch to MIT App Inventor and click Designer. Select Instruction Label and change its Text to your own short English instruction.. Check: Export a new A I A and choose it in our viewer. Your new instruction appears and the four buttons still work.",
       "file": "assets/narration/independent.mp3",
@@ -296,21 +272,15 @@
     },
     {
       "id": "installed-test",
-      "text": "Run the final viewer test. In our viewer · final test. Our viewer tests the exported file you choose. Export again after making any final changes in MIT.. Open our viewer and choose your latest exported A I A. Sign in if asked. Test Listen, Next, Previous and Mark as learned, then click Progress to check the count.. Check: All four controls work in our viewer. Record any problem you still need to fix.",
+      "text": "Run the final viewer test. In our viewer · final test. Our viewer tests the exported file you choose. Export again after making any final changes in MIT.. Open our viewer and choose your latest exported A I A. Sign in if asked. Test Listen, Next, Previous and Mark as learned, then click Progress to check the count.. Check: All four controls work in our viewer. Fix any problem before demonstrating the app.",
       "file": "assets/narration/installed-test.mp3",
-      "sha256": "0a40d3a402ba28aaa854ab0c965221bbb982f6aef743c4b56b7965070407ec4b"
+      "sha256": "f6748d99966adf67bd640c56199a2f0ff72e4ee4676aa869fffd1280cceda719"
     },
     {
-      "id": "final-evidence",
-      "text": "Explain one connection. Choose one of your four buttons. Explain what its Click event calls and what that helper does.",
-      "file": "assets/narration/final-evidence.mp3",
-      "sha256": "d3bf99f8f28dc0953ea4363d284a160f7198acbebd793db71031e74e884db86d"
-    },
-    {
-      "id": "files-evidence",
-      "text": "Keep your evidence. Write your exported A I A filename and state which controls you tested in our viewer.",
-      "file": "assets/narration/files-evidence.mp3",
-      "sha256": "e0b63a898b6d190c4cfb1919e6b37f89f357307557acc0fd4908e4c684a09a32"
+      "id": "review",
+      "text": "Your app is ready to demonstrate. In our viewer. You have built the learning screen and connected four buttons to their supplied helpers.. Keep your latest A I A file. Use our viewer to demonstrate Listen, Next, Previous, Mark as learned and saved progress after signing in again.. Check: The app uses the original recordings and saves progress for the signed-in learner.",
+      "file": "assets/narration/review.mp3",
+      "sha256": "70e098ad3590974396c6e60acc6916ca1e10b2bebe0883f597615979eecd7aee"
     }
   ]
 }

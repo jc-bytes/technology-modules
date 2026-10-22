@@ -118,12 +118,6 @@
       "sha256": "90fb19f3dc17c6f3d7c3707b88bb3551a7ae013b6ecf22c284ad27419734ede9"
     },
     {
-      "id": "names-check",
-      "durationSeconds": 11.18,
-      "bytes": 90093,
-      "sha256": "a45a727d16b7c9c6b39d7c1a83bb25074d60f04edfd97d1887ee5a031a86cd49"
-    },
-    {
       "id": "upload-1",
       "durationSeconds": 31.45,
       "bytes": 252333,
@@ -226,12 +220,6 @@
       "sha256": "30feb744eac48ba34f9152b393ed9a94007d9915a7cde2defe849c41be3cc1d1"
     },
     {
-      "id": "audio-evidence",
-      "durationSeconds": 9.88,
-      "bytes": 79725,
-      "sha256": "446bf5825c545ec5eff7380f1db13ce209001e114809acf53728a7ce29f75c1a"
-    },
-    {
       "id": "save-event",
       "durationSeconds": 25.25,
       "bytes": 202797,
@@ -262,18 +250,6 @@
       "sha256": "3e101b5c17f3d98a37f8c21ed99f915465e2efa418f61a75185f0489a135367c"
     },
     {
-      "id": "save-evidence",
-      "durationSeconds": 6.53,
-      "bytes": 52845,
-      "sha256": "8fdee97d465f69d5db3050c05d1a94858b95a43595b27754d70d7c174bceee94"
-    },
-    {
-      "id": "save-check",
-      "durationSeconds": 16.27,
-      "bytes": 130989,
-      "sha256": "b27c3fce55d1f7edcf72ce6429f1c05a01516e8e7383c3bc1827fa144fff839b"
-    },
-    {
       "id": "independent",
       "durationSeconds": 26.2,
       "bytes": 210285,
@@ -293,21 +269,15 @@
     },
     {
       "id": "installed-test",
-      "durationSeconds": 26.82,
-      "bytes": 215277,
-      "sha256": "0a40d3a402ba28aaa854ab0c965221bbb982f6aef743c4b56b7965070407ec4b"
+      "durationSeconds": 27.1,
+      "bytes": 217581,
+      "sha256": "f6748d99966adf67bd640c56199a2f0ff72e4ee4676aa869fffd1280cceda719"
     },
     {
-      "id": "final-evidence",
-      "durationSeconds": 7.65,
-      "bytes": 61869,
-      "sha256": "d3bf99f8f28dc0953ea4363d284a160f7198acbebd793db71031e74e884db86d"
-    },
-    {
-      "id": "files-evidence",
-      "durationSeconds": 7.08,
-      "bytes": 57261,
-      "sha256": "e0b63a898b6d190c4cfb1919e6b37f89f357307557acc0fd4908e4c684a09a32"
+      "id": "review",
+      "durationSeconds": 23.57,
+      "bytes": 189357,
+      "sha256": "70e098ad3590974396c6e60acc6916ca1e10b2bebe0883f597615979eecd7aee"
     }
   ]
 }
