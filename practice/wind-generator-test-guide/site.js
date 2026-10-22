@@ -1,7 +1,7 @@
 export const site = {
   "id": "MOD-STEAM-WIND-01",
   "slug": "wind-generator-test-guide",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "title": "Code and test your wind generator",
   "shortTitle": "Wind generator",
   "subject": "Technology",

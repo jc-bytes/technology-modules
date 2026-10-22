@@ -6,7 +6,7 @@ export const buildSteps = [
     "where": "At the wind model",
     "do": "Use the already-built wind model. Keep the generator disconnected from the Arduino until its input circuit is checked.",
     "expected": "The blades turn the generator. A meter reading in V shows measured voltage; spinning alone does not.",
-    "help": "Use the approved built model. You will use a supplied Arduino sketch for the voltage display; you do not need to rebuild the turbine.",
+    "help": "You will build the Arduino voltage program in small sections. Keep the built turbine; this guide does not ask you to rebuild it.",
     "links": [],
     "stage": "model",
     "image": "assets/energy-path.svg",
@@ -19,7 +19,7 @@ export const buildSteps = [
     "where": "At the Freenove board",
     "do": "Find the Freenove Projects Board V1.2, its control board, USB data cable, multimeter, AA holder, breadboard, wires and two 10k resistors.",
     "expected": "Your teacher confirms a classic Uno-compatible 5 V control board and checks both 10k resistor values. The turbine stays disconnected.",
-    "help": "The supplied program is for that checked board. A different processor or supply needs a checked program and input circuit. USB powers the board separately.",
+    "help": "These directions use the checked 5 V Uno-compatible board. A different processor or supply needs a checked program and input circuit. USB powers the board separately.",
     "links": [],
     "stage": "guided",
     "image": "assets/freenove-board-reference.png",
@@ -42,22 +42,6 @@ export const buildSteps = [
     "stage": "guided"
   },
   {
-    "id": "board-display-download",
-    "title": "Open the display check",
-    "why": "Test the existing display before connecting a measuring signal. This small sketch should show 0123. A sketch is an Arduino program.",
-    "where": "In this guide",
-    "do": "Download DisplayCheck.ino and open it in Arduino IDE.",
-    "expected": "The editor shows the supplied display-check sketch. No generator or battery is connected.",
-    "help": "A sketch is an Arduino program. If Arduino asks to create a DisplayCheck folder, accept. Keep the .ino file inside its matching folder.",
-    "links": [
-      [
-        "Download display check",
-        "downloads/DisplayCheck/DisplayCheck.ino"
-      ]
-    ],
-    "stage": "guided"
-  },
-  {
     "id": "board-board-port",
     "title": "Connect USB and choose the board",
     "why": "A USB data cable carries the program from the computer. The board choice must match the actual plugged-in control board.",
@@ -69,83 +53,132 @@ export const buildSteps = [
     "stage": "guided"
   },
   {
-    "id": "board-display-upload",
-    "title": "Upload and check 0123",
-    "why": "Upload copies the program to the connected board. USB supplies board power. There is still no measuring source connected.",
-    "where": "In Arduino IDE",
-    "do": "Click Upload. When it finishes, check that all four display positions read 0123 in order.",
-    "expected": "All four digits are readable and correctly ordered. Stop here if any digit is wrong or missing.",
-    "help": "Ask your teacher to check the board and switches if the display fails. Upload success alone does not prove that the display works.",
-    "links": [],
-    "stage": "guided"
-  },
-  {
     "id": "board-bench-download",
-    "title": "Open the voltage program",
-    "why": "WindVoltageBench.ino is a supplied bench-test program. You will read its main parts instead of typing a long program without understanding it.",
-    "where": "In this guide",
-    "do": "Download WindVoltageBench.ino and open it in Arduino IDE. Keep the generator disconnected.",
-    "expected": "The complete voltage sketch is visible. Keep a copy of the downloaded file.",
-    "help": "Accept a matching WindVoltageBench folder if Arduino asks. The program first uses a known low-voltage AA source, not the unknown generator.",
-    "links": [
-      [
-        "Download voltage sketch",
-        "downloads/WindVoltageBench.ino"
-      ],
-      [
-        "Code sources",
-        "downloads/CODE-SOURCES.txt"
-      ]
-    ],
+    "title": "Create your own voltage sketch",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "A sketch is an Arduino program. You will build this one in short sections, keeping each earlier section as you go.",
+    "do": "Choose File → New Sketch. Save it as WindVoltage_Student. Keep the empty setup() and loop() functions.",
+    "expected": "A saved sketch has one empty setup() and one empty loop(). There is no downloaded complete program.",
+    "help": "Keep the generator disconnected. The next pages add code above or inside these two functions. Do not replace the whole editor when adding a section.",
+    "links": [],
     "stage": "guided"
   },
   {
     "id": "board-input-pin",
-    "title": "Find the input and display pins",
-    "why": "A0 turns the voltage into a number from 0 to 1023 on this checked board. D11 sends display patterns, D13 moves their bits and D12 makes the pattern appear. The display wires are already on the board.",
-    "where": "In Arduino IDE",
-    "do": "Find these four pin names near the top of the sketch. Keep their supplied values.",
-    "expected": "VOLTAGE_PIN is A0. Display data is D11, clock D13 and latch D12.",
-    "help": "On this checked 5 V board, analogRead produces a count from 0 to 1023. The physical A0 input must stay nonnegative and below the actual powered reference voltage. Code cannot protect the input wires.",
+    "title": "Name the pins and measuring values",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "A constant is a named value that stays the same. A0 reads voltage. D11, D13 and D12 talk to the display already on the Freenove board.",
+    "do": "Add this section at the very top, above setup(). Keep these pin numbers and the two 10k bench resistor values.",
+    "expected": "The pin names and measuring constants are above both empty functions.",
+    "help": "ADC_REFERENCE_V starts at 5.00 V for the checked 5 V board. INPUT_SCALE is 2 because the equal resistors halve the source voltage. These are bench values; the teacher checks final calibration later.",
     "links": [],
     "stage": "guided",
-    "code": "const byte VOLTAGE_PIN = A0;\nconst byte LATCH_PIN = 12;\nconst byte CLOCK_PIN = 13;\nconst byte DATA_PIN = 11;"
+    "code": "#include <Arduino.h>\n\nconst byte LATCH_PIN = 12;\nconst byte CLOCK_PIN = 13;\nconst byte DATA_PIN = 11;\nconst byte VOLTAGE_PIN = A0;\nconst float ADC_REFERENCE_V = 5.00; // Measure board 5V-to-GND for calibration.\nconst float R_TOP_OHMS = 10000.0;\nconst float R_BOTTOM_OHMS = 10000.0;\nconst float INPUT_SCALE = (R_TOP_OHMS + R_BOTTOM_OHMS) / R_BOTTOM_OHMS;",
+    "placement": "Add at the top of the sketch, above setup() and loop()."
   },
   {
-    "id": "board-conversion",
-    "title": "See how the count becomes volts",
-    "why": "The code averages eight A0 samples. The two equal 10k resistors halve the source voltage, so INPUT_SCALE is 2 to scale the estimate back up.",
-    "where": "In Arduino IDE",
-    "do": "Find this line in readVoltage. Follow it from left to right.",
-    "expected": "total / 8.0 finds the average count. * means multiply and / means divide. The rest converts that count into an estimate of source volts.",
-    "help": "The reference starts at 5.00 V. Your teacher checks the real value. Two equal 10k resistors give a scale of 2. These quick samples are separate from your three recorded test readings.",
+    "id": "board-screen-data",
+    "title": "Give the program its storage boxes",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "A variable is a named storage box. DIGIT is a lookup table: each pattern turns on the segments needed for one number. screen holds the four display patterns.",
+    "do": "Add this storage section below the constants, still above setup().",
+    "expected": "DIGIT contains patterns for 0 through 9. voltage begins at 0; the two clock variables begin at 0.",
+    "help": "Keep the pattern values exactly as shown. A value starting with 0x is a compact way to write a pattern. The first three screen positions show 0.00 and the fourth is blank. You will use the variables in later sections.",
     "links": [],
     "stage": "guided",
-    "code": "voltage = (total / 8.0) * ADC_REFERENCE_V / 1023.0 * INPUT_SCALE;"
+    "code": "const byte DIGIT[] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99,\n                      0x92, 0x82, 0xf8, 0x80, 0x90};\nbyte screen[4] = {0xc0 & 0x7f, 0xc0, 0xc0, 0xff};\nfloat voltage = 0.0;\nunsigned int rawAverage = 0;\nbool atAdcLimit = false;\nunsigned long lastRead = 0;\nunsigned long lastPrint = 0;",
+    "placement": "Add below the constants. Keep setup() and loop() below it."
+  },
+  {
+    "id": "board-display-helpers",
+    "title": "Add the two display helpers",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "A function is a named group of instructions. sendDigit chooses one display position and sends its pattern. blankDisplay turns the display off between positions.",
+    "do": "Add both helper functions below your storage section and above setup().",
+    "expected": "Each helper has its own closing brace. Neither helper is inside setup() or loop().",
+    "help": "The latch goes LOW while data moves, then HIGH to show it. shiftOut sends the position first, then the segment pattern. 1U << position selects one position. These helpers only control the display; they do not measure voltage.",
+    "links": [],
+    "stage": "guided",
+    "code": "void sendDigit(byte position, byte segments) {\n  digitalWrite(LATCH_PIN, LOW);\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(1U << position));\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, segments);\n  digitalWrite(LATCH_PIN, HIGH);\n}\n\nvoid blankDisplay() {\n  digitalWrite(LATCH_PIN, LOW);\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(0));\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(0xff));\n  digitalWrite(LATCH_PIN, HIGH);\n}",
+    "placement": "Add both functions above setup(), after the storage section."
   },
   {
     "id": "board-decimal",
-    "title": "See how the display stays readable",
-    "why": "The program rounds the voltage to hundredths and shows X.XX. It lights each digit briefly, over and over, so all digits look steady.",
-    "where": "In Arduino IDE",
-    "do": "Find makeScreen and the four-position scan in loop. Keep the supplied DIGIT table and sendDigit function.",
-    "expected": "The decimal point follows the first digit. The fourth position is blank. Avoid long pauses in the display loop.",
-    "help": "DIGIT stores segment patterns for 0 through 9. sendDigit transfers the position, then the pattern, between latch LOW and HIGH. The scan repeats four positions with a 1 ms pause and blanks between them. The program updates the measurement about every 100 ms. Two decimal places do not prove 0.01 V accuracy.",
+    "title": "Build the voltage display patterns",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "The display needs whole digits. Multiply volts by 100 and round to turn 1.73 V into 173. The digit positions then show 1.73.",
+    "do": "Add makeScreen() below the two display helpers and above setup().",
+    "expected": "The first digit has the decimal point. The fourth position stays blank. ---- means stop and check the input.",
+    "help": "hundredths / 100 finds whole volts. (hundredths / 10) % 10 finds tenths; % means remainder. hundredths % 10 finds hundredths. & 0x7f adds the decimal point. The dashes are a warning, not electrical protection.",
     "links": [],
     "stage": "guided",
-    "code": "// Round a positive reading to hundredths:\nunsigned int hundredths = (unsigned int)(voltage * 100.0 + 0.5);\n// Add the decimal point:\nscreen[0] = DIGIT[hundredths / 100] & 0x7f;"
+    "code": "void makeScreen() {\n  unsigned int hundredths = (unsigned int)(voltage * 100.0 + 0.5);\n  if (atAdcLimit || hundredths > 999) {\n    for (byte i = 0; i < 4; ++i) screen[i] = 0xbf; // ----: check range.\n    return;\n  }\n  screen[0] = DIGIT[hundredths / 100] & 0x7f; // Whole volts and decimal point.\n  screen[1] = DIGIT[(hundredths / 10) % 10];\n  screen[2] = DIGIT[hundredths % 10];\n  screen[3] = 0xff; // Fourth position intentionally blank.\n}",
+    "placement": "Add this separate function above setup(), below blankDisplay()."
   },
   {
-    "id": "board-zero-limit",
-    "title": "Know when to stop",
-    "why": "0.00 means near zero, but does not prove a source is connected. ---- is a software warning, not electrical protection. Unsafe voltage can damage A0 before the program reacts.",
-    "where": "In Arduino IDE",
-    "do": "Before applying any signal, find the dashes condition shown here. If dashes appear during a test, have your teacher remove the input signal and check the circuit.",
-    "expected": "You will stop on dashes. You will not treat 0.00 as proof that a source is connected.",
-    "help": "The program uses dashes near the ADC limit or above its display range. This software warning is not electrical protection. An unsafe input can damage the board before it responds.",
+    "id": "board-conversion",
+    "title": "Read A0 and calculate the voltage",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "analogRead gives a count from 0 to 1023. Eight quick samples are averaged to reduce flicker. The formula changes that count into source volts.",
+    "do": "Add readVoltage() below makeScreen() and above setup().",
+    "expected": "The function takes eight samples, calculates voltage and calls makeScreen() to prepare the display.",
+    "help": "total / 8.0 gives the average count. × reference voltage ÷ 1023 gives volts at A0; × INPUT_SCALE estimates source volts. raw >= 1020 sets the warning near the input limit. Unsafe voltage can damage A0 before code reacts.",
     "links": [],
     "stage": "guided",
-    "code": "if (atAdcLimit || hundredths > 999) {\n  for (byte i = 0; i < 4; ++i) screen[i] = 0xbf;\n  return;\n}"
+    "code": "void readVoltage() {\n  unsigned long total = 0;\n  atAdcLimit = false;\n  for (byte i = 0; i < 8; ++i) {\n    unsigned int raw = analogRead(VOLTAGE_PIN);\n    if (raw >= 1020) atAdcLimit = true;\n    total += raw;\n  }\n  rawAverage = (total + 4) / 8;\n  voltage = (total / 8.0) * ADC_REFERENCE_V / 1023.0 * INPUT_SCALE;\n  makeScreen();\n}",
+    "placement": "Add this separate function above setup(), below makeScreen()."
+  },
+  {
+    "id": "board-program-start",
+    "title": "Fill setup(), which runs once",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "setup() prepares the pins and Serial Monitor once when the board starts. It also prepares the first reading.",
+    "do": "Replace only the empty setup() with this filled setup(). Keep your helpers and empty loop().",
+    "expected": "There is exactly one setup(). The display pins are OUTPUT and A0 is INPUT.",
+    "help": "OUTPUT means the board sends a signal. INPUT means it reads one. Serial.begin(9600) sets the text speed; use 9600 in Serial Monitor later. Do not add a second setup().",
+    "links": [],
+    "stage": "guided",
+    "code": "void setup() {\n  Serial.begin(9600);\n  pinMode(LATCH_PIN, OUTPUT);\n  pinMode(CLOCK_PIN, OUTPUT);\n  pinMode(DATA_PIN, OUTPUT);\n  pinMode(VOLTAGE_PIN, INPUT); // No internal pull-up on the measuring input.\n  blankDisplay();\n  readVoltage();\n}",
+    "placement": "Replace only the empty setup() function. Keep everything else."
+  },
+  {
+    "id": "board-loop-read",
+    "title": "Start the repeating measurement",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "loop() repeats. millis() is a clock in milliseconds. This check updates the measurement about every 100 milliseconds while the display can keep refreshing.",
+    "do": "Put these lines inside the empty loop(), between its opening and closing braces.",
+    "expected": "loop() contains the clock and one if that calls readVoltage().",
+    "help": "now - lastRead is the time since the last measurement. >= means greater than or equal to. Keep loop()’s own closing brace below this code; more instructions go before it.",
+    "links": [],
+    "stage": "guided",
+    "code": "  unsigned long now = millis();\n  if (now - lastRead >= 100) {\n    lastRead = now;\n    readVoltage();\n  }",
+    "placement": "Add inside loop(). Keep the outer closing brace below the code."
+  },
+  {
+    "id": "board-loop-refresh",
+    "title": "Refresh the four display positions",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "The board lights one position briefly, then the next. Repeating quickly makes the digits look steady.",
+    "do": "Inside loop(), add this scan below the measurement if and before loop()’s closing brace.",
+    "expected": "The scan visits positions 0, 1, 2 and 3. Each gets a 1 ms pause and is blanked before the next.",
+    "help": "i++ moves to the next position. i < 4 stops after the fourth. Keep delay(1); a long pause would make the display flicker. The scan is outside the 100 ms measurement if.",
+    "links": [],
+    "stage": "guided",
+    "code": "  // Scan continuously. Blank between digits and before sampling/printing.\n  for (byte i = 0; i < 4; ++i) {\n    sendDigit(i, screen[i]);\n    delay(1);\n    blankDisplay();\n  }",
+    "placement": "Add inside loop(), below the first if and before the last brace."
+  },
+  {
+    "id": "board-loop-print",
+    "title": "Send a readable result to Serial Monitor",
+    "where": "In Arduino IDE · WindVoltage_Student",
+    "why": "The display shows the voltage. Serial Monitor also shows the voltage and raw A0 count, which helps compare readings and find errors.",
+    "do": "Inside loop(), add this last if below the display scan and before loop()’s final brace. Then click Verify.",
+    "expected": "Verify finishes without errors. You have one setup(), one loop() and four helper functions.",
+    "help": "This prints about every 250 milliseconds. Serial.print keeps writing the same line; println ends it. voltage, 2 prints two decimal places. F() keeps fixed text in program memory. On an error, first check for a missing brace or a helper placed inside another function.",
+    "links": [],
+    "stage": "guided",
+    "code": "  if (now - lastPrint >= 250) {\n    lastPrint = now;\n    if (atAdcLimit) {\n      Serial.println(F(\"ADC LIMIT: stop and check input voltage\"));\n    } else {\n      Serial.print(F(\"Voltage: \"));\n      Serial.print(voltage, 2);\n      Serial.print(F(\" V; ADC: \"));\n      Serial.println(rawAverage);\n    }\n  }",
+    "placement": "Add inside loop(), after the display scan and before the final brace."
   },
   {
     "id": "board-divider-idea",
@@ -163,9 +196,9 @@ export const buildSteps = [
   {
     "id": "board-bench-upload",
     "title": "Run the voltage program",
-    "why": "The complete supplied sketch handles measuring and display refresh together.",
+    "why": "Your sketch now includes the measurement, display refresh and Serial Monitor output.",
     "where": "In Arduino IDE",
-    "do": "After the wiring check, connect USB and upload WindVoltageBench.ino. Open Serial Monitor at 9600 baud.",
+    "do": "After the wiring check, connect USB and upload your WindVoltage_Student sketch. Open Serial Monitor at 9600 baud.",
     "expected": "Upload finishes. Serial Monitor shows Voltage and ADC lines.",
     "help": "USB powers the board. Keep the AA signal disconnected until the next checks. If text is scrambled, select 9600 baud.",
     "links": [],

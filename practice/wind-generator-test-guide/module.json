@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-WIND-01",
   "slug": "wind-generator-test-guide",
   "title": "Code and test your wind generator",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -18,7 +18,7 @@
   ],
   "estimatedTime": "Unknown, classroom pilot required",
   "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
-  "lastReviewed": "2026-10-21",
+  "lastReviewed": "2026-10-22",
   "objectives": [
     "Use a multimeter to characterize the generator before connecting A0",
     "Explain the Freenove display and voltage-reading Arduino code",
@@ -62,51 +62,69 @@
       "estimatedMinutes": null
     },
     {
-      "id": "board-display-download",
-      "title": "Open the display check",
-      "entryPath": "#board-display-download",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-board-port",
       "title": "Connect USB and choose the board",
       "entryPath": "#board-board-port",
       "estimatedMinutes": null
     },
     {
-      "id": "board-display-upload",
-      "title": "Upload and check 0123",
-      "entryPath": "#board-display-upload",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-bench-download",
-      "title": "Open the voltage program",
+      "title": "Create your own voltage sketch",
       "entryPath": "#board-bench-download",
       "estimatedMinutes": null
     },
     {
       "id": "board-input-pin",
-      "title": "Find the input and display pins",
+      "title": "Name the pins and measuring values",
       "entryPath": "#board-input-pin",
       "estimatedMinutes": null
     },
     {
-      "id": "board-conversion",
-      "title": "See how the count becomes volts",
-      "entryPath": "#board-conversion",
+      "id": "board-screen-data",
+      "title": "Give the program its storage boxes",
+      "entryPath": "#board-screen-data",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-display-helpers",
+      "title": "Add the two display helpers",
+      "entryPath": "#board-display-helpers",
       "estimatedMinutes": null
     },
     {
       "id": "board-decimal",
-      "title": "See how the display stays readable",
+      "title": "Build the voltage display patterns",
       "entryPath": "#board-decimal",
       "estimatedMinutes": null
     },
     {
-      "id": "board-zero-limit",
-      "title": "Know when to stop",
-      "entryPath": "#board-zero-limit",
+      "id": "board-conversion",
+      "title": "Read A0 and calculate the voltage",
+      "entryPath": "#board-conversion",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-program-start",
+      "title": "Fill setup(), which runs once",
+      "entryPath": "#board-program-start",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-loop-read",
+      "title": "Start the repeating measurement",
+      "entryPath": "#board-loop-read",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-loop-refresh",
+      "title": "Refresh the four display positions",
+      "entryPath": "#board-loop-refresh",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "board-loop-print",
+      "title": "Send a readable result to Serial Monitor",
+      "entryPath": "#board-loop-print",
       "estimatedMinutes": null
     },
     {
