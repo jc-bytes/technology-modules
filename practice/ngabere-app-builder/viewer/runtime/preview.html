@@ -1,0 +1,1454 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-fMH5WP1OgDVfCholQxQyKabkLbLM7nhu1RM/Avr8D6E='; style-src 'sha256-UvGmqVCMX1H3ByCNbYGzlpktvQaOj0sZnnaj3Th+sgc='; img-src data: blob:; media-src data: blob:; connect-src https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://languageapp-5e07a-default-rtdb.firebaseio.com; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none';">
+  <title>App preview frame</title>
+  <style>:root {
+  color-scheme: light;
+  font-family: Roboto, Arial, sans-serif;
+  color: #202124;
+  background: #e9edf3;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-height: 100vh; padding: 10px; background: #e9edf3; }
+
+#runtime-status { min-height: 1.2em; margin: 0 auto 8px; max-width: 420px; color: #52627b; font-size: 12px; }
+#runtime-status[data-kind="error"] { color: #a11b1b; }
+
+#preview-mount { display: flex; justify-content: center; }
+
+.webpreview-screen {
+  width: 320px;
+  min-height: 480px;
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid #bcc7d5;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(23 37 60 / 13%);
+}
+
+.webpreview-screen[data-orientation="landscape"] { width: 480px; min-height: 320px; }
+.webpreview-actionbar .webpreview-title { color: #fff; background: #3f51b5; border-bottom-color: #32408f; }
+
+.webpreview-title { align-self: stretch; margin: -16px -16px 16px; padding: 12px 16px; border-bottom: 1px solid #d6deea; font-size: 16px; font-weight: 600; }
+.webpreview-component { max-width: 100%; margin: 5px 0; }
+.webpreview-label { min-height: 22px; line-height: 1.35; overflow-wrap: anywhere; }
+.webpreview-button { min-height: 40px; border: 0; border-radius: 5px; padding: 8px 14px; background: #3f51b5; color: #fff; font: inherit; cursor: pointer; }
+.webpreview-button:disabled { opacity: .55; cursor: default; }
+.webpreview-textbox { min-height: 40px; border: 1px solid #9ba8b8; border-radius: 4px; padding: 8px 10px; background: #fff; color: inherit; font: inherit; }
+.webpreview-verticalarrangement { display: flex; flex-direction: column; align-items: flex-start; }
+.webpreview-spinner { min-height: 40px; border: 1px solid #9ba8b8; border-radius: 4px; padding: 8px 10px; background: #fff; color: inherit; font: inherit; }
+.webpreview-unsupported { margin: 6px 0; padding: 8px; border: 1px dashed #bb7a00; color: #7a4e00; background: #fff7e3; overflow-wrap: anywhere; }
+
+body.phone-preview { min-height: 100vh; padding: 0; background: #fff; }
+.phone-preview #runtime-status:not([data-kind="error"]) { position: absolute; width: 1px; height: 1px; margin: 0; overflow: hidden; clip-path: inset(50%); }
+.phone-preview #runtime-status[data-kind="error"] { padding: 8px; }
+.phone-preview #preview-mount { display: block; min-height: 100vh; }
+.phone-preview .webpreview-screen,
+.phone-preview .webpreview-screen[data-orientation="landscape"] { width: 100%; min-height: 100vh; border: 0; border-radius: 0; box-shadow: none; }
+
+.webpreview-horizontalarrangement { display:flex; flex-direction:row !important; justify-content:space-between; gap:8px; }
+.webpreview-passwordtextbox { min-height:40px; border:1px solid #9ba8b8; border-radius:4px; padding:8px 10px; font:inherit; }
+.webpreview-component[hidden] { display:none !important; }
+.webpreview-label { white-space:pre-wrap; }
+</style>
+</head>
+<body class="phone-preview">
+  <p id="runtime-status" role="status" data-kind="waiting">Waiting for a project from the editor.</p>
+  <main id="preview-mount" aria-live="polite"></main>
+  <script>(function (WebPreview) {
+const COMPONENTS = new Map([
+  ["Form", {
+    element: "section",
+    properties: new Set(["Title", "Width", "Height", "Visible", "BackgroundColor", "AlignHorizontal",
+      "ActionBar", "ScreenOrientation"]),
+    events: new Set(),
+    defaults: { Title: "", Visible: true }
+  }],
+  ["Label", {
+    element: "div",
+    properties: new Set([
+      "Text", "Width", "Height", "Visible", "BackgroundColor", "TextColor",
+      "FontSize", "FontBold", "FontItalic", "TextAlignment"
+    ]),
+    events: new Set(),
+    defaults: { Text: "", Visible: true, FontSize: 14, FontBold: false, FontItalic: false }
+  }],
+  ["Button", {
+    element: "button",
+    properties: new Set([
+      "Text", "Width", "Height", "Visible", "Enabled", "BackgroundColor", "TextColor",
+      "FontSize", "FontBold", "FontItalic", "TextAlignment", "Shape"
+    ]),
+    events: new Set(["Click"]),
+    defaults: { Text: "Button", Visible: true, Enabled: true, FontSize: 14 }
+  }],
+  ["TextBox", {
+    element: "input",
+    properties: new Set([
+      "Text", "Width", "Height", "Visible", "Enabled", "BackgroundColor", "TextColor",
+      "FontSize", "FontBold", "FontItalic", "TextAlignment", "Hint"
+    ]),
+    events: new Set(),
+    defaults: { Text: "", Hint: "", Visible: true, Enabled: true, FontSize: 14 }
+  }],
+  ["VerticalArrangement", {
+    element: "div",
+    properties: new Set(["Width", "Height", "Visible", "BackgroundColor", "AlignHorizontal"]),
+    events: new Set(),
+    defaults: { Visible: true }
+  }],
+  ["Spinner", {
+    element: "select",
+    properties: new Set(["Width", "Height", "Visible", "Enabled", "ElementsFromString", "Selection",
+      "BackgroundColor", "FontSize", "FontTypeface", "TextColor"]),
+    events: new Set(),
+    defaults: { Visible: true, Enabled: true, ElementsFromString: "" }
+  }]
+]);
+
+const BLOCKS = new Map([
+  ["component_event", "event"],
+  ["component_set_get", "property"],
+  ["text", "text"],
+  ["math_number", "number"],
+  ["logic_boolean", "boolean"],
+  ["global_declaration", "global variable"],
+  ["lexical_variable_get", "global variable read"],
+  ["lexical_variable_set", "global variable write"],
+  ["text_join", "text join"]
+]);
+
+const EXTENDED_BLOCKS = new Set([
+  "procedures_defnoreturn", "procedures_callnoreturn", "component_method", "component_component_block",
+  "lists_create_with", "lists_select_item", "lists_length", "lists_is_list", "lists_add_items",
+  "lists_remove_item", "lists_replace_item", "pair", "dictionaries_create_with", "dictionaries_lookup",
+  "dictionaries_set_pair", "text_trim", "logic_compare", "logic_operation", "logic_negate",
+  "math_compare", "math_add", "math_subtract", "controls_choose", "controls_if", "controls_forEach"
+]);
+for (const name of EXTENDED_BLOCKS) BLOCKS.set(name, name);
+COMPONENTS.get("Form").events = new Set(["Initialize", "ErrorOccurred"]);
+for (const p of ["TitleVisible", "Scrollable", "Sizing", "Theme", "PrimaryColor", "PrimaryColorDark", "AccentColor"])
+  COMPONENTS.get("Form").properties.add(p);
+COMPONENTS.get("TextBox").properties.add("MultiLine");
+COMPONENTS.set("PasswordTextBox", {...COMPONENTS.get("TextBox")});
+COMPONENTS.set("HorizontalArrangement", {...COMPONENTS.get("VerticalArrangement")});
+for (const [type, properties, events, methods, defaults] of [
+  ["Web", ["Url", "RequestHeaders", "Timeout", "SaveResponse"], ["GotText", "TimedOut"],
+    ["Get", "PostText", "PutText", "JsonObjectEncode", "JsonTextDecodeWithDictionaries"], {Timeout:15000}],
+  ["TinyDB", ["Namespace"], [], ["GetValue", "StoreValue"], {Namespace:"TinyDB"}],
+  ["Player", ["Source", "Volume", "PlayOnlyInForeground"], [], ["Start", "Stop"], {Volume:100}],
+  ["Clock", ["TimerEnabled", "TimerInterval", "TimerAlwaysFires"], ["Timer"], [], {TimerEnabled:false,TimerInterval:1000}]
+]) COMPONENTS.set(type, {element:"span", nonVisible:true, properties:new Set(properties),
+  events:new Set(events), methods:new Set(methods), defaults});
+
+const LIMITS = Object.freeze({
+  sourceCharacters: 500_000,
+  components: 200,
+  componentDepth: 40,
+  blocks: 2_000,
+  blockDepth: 100,
+  executionSteps: 10_000,
+  expressionDepth: 100
+});
+
+const COMPONENT_METADATA_PROPERTIES = new Set([
+  "$Name", "$Type", "$Version", "$Components", "Uuid"
+]);
+// BlocksToolkit configures editor drawers and has no runtime behavior.
+const FORM_EDITOR_ONLY_PROPERTIES = new Set(["BlocksToolkit"]);
+const FORM_BUILD_ONLY_PROPERTIES = new Set(["AppName"]);
+
+Object.assign(WebPreview, { EXTENDED_BLOCKS, COMPONENTS, BLOCKS, LIMITS, COMPONENT_METADATA_PROPERTIES,
+  FORM_BUILD_ONLY_PROPERTIES, FORM_EDITOR_ONLY_PROPERTIES });
+})(globalThis.WebPreview ||= {});
+
+(function (WebPreview) {
+const { BLOCKS, COMPONENTS, COMPONENT_METADATA_PROPERTIES, FORM_BUILD_ONLY_PROPERTIES, FORM_EDITOR_ONLY_PROPERTIES, LIMITS } = WebPreview;
+
+const NAME_PATTERN = /^[A-Za-z][A-Za-z0-9_]{0,63}$/;
+const GLOBAL_PREFIX = "global ";
+
+function globalName(value) {
+  if (typeof value !== "string" || !value.startsWith(GLOBAL_PREFIX)) return null;
+  const name = value.slice(GLOBAL_PREFIX.length);
+  return NAME_PATTERN.test(name) ? name : null;
+}
+
+function parseScm(source) {
+  if (typeof source === "object" && source !== null) {
+    return validateFormDocument(source);
+  }
+  if (typeof source !== "string" || source.length > LIMITS.sourceCharacters) {
+    throw new Error("Screen source is missing or too large.");
+  }
+
+  let jsonText = source;
+  const marker = "$JSON\n";
+  const start = source.lastIndexOf(marker);
+  if (start !== -1) {
+    const jsonStart = start + marker.length;
+    const end = source.lastIndexOf("\n|#");
+    if (end < jsonStart) {
+      throw new Error("Screen source has no closing |# marker.");
+    }
+    jsonText = source.slice(jsonStart, end);
+  }
+
+  let document;
+  try {
+    document = JSON.parse(jsonText);
+  } catch {
+    throw new Error("Screen source does not contain valid JSON.");
+  }
+  return validateFormDocument(document);
+}
+
+function validateFormDocument(document) {
+  if (!document || typeof document !== "object" || Array.isArray(document)) {
+    throw new Error("Screen source must be a JSON object.");
+  }
+  const properties = document.Properties ?? document.properties;
+  if (!properties || typeof properties !== "object" || Array.isArray(properties)) {
+    throw new Error("Screen source has no Properties object.");
+  }
+  return properties;
+}
+
+function elementName(element) {
+  return (element.localName || element.nodeName || "").split(":").pop();
+}
+
+function directChildren(element, wantedName) {
+  return Array.from(element.childNodes || []).filter(child =>
+    child.nodeType === 1 && elementName(child) === wantedName);
+}
+
+function childByName(element, wantedName, attributeName, attributeValue) {
+  return directChildren(element, wantedName).find(child =>
+    attributeName === undefined || child.getAttribute(attributeName) === attributeValue) || null;
+}
+
+function fieldValue(block, name) {
+  const field = childByName(block, "field", "name", name) || childByName(block, "title", "name", name);
+  return field ? field.textContent : null;
+}
+
+function blockFromInput(block, inputName) {
+  const input = childByName(block, "value", "name", inputName);
+  if (!input) return null;
+  return directChildren(input, "block")[0] || directChildren(input, "shadow")[0] || null;
+}
+
+function propertyMutation(block) {
+  return directChildren(block, "mutation")[0] || null;
+}
+
+function convertBlock(block, state, depth) {
+  if (depth > LIMITS.blockDepth) {
+    throw new Error("Blocks are nested too deeply for Web Preview.");
+  }
+  state.count += 1;
+  if (state.count > LIMITS.blocks) {
+    throw new Error("This project has too many blocks for Web Preview.");
+  }
+  const type = block.getAttribute("type") || "(missing type)";
+  state.seenTypes.add(type);
+
+  if (WebPreview.EXTENDED_BLOCKS.has(type)) {
+    const fields = Object.fromEntries(directChildren(block, "field").map(e => [e.getAttribute("name"), e.textContent]));
+    const mutation = propertyMutation(block);
+    const attrs = mutation ? Object.fromEntries(Array.from(mutation.attributes, a => [a.name, a.value])) : {};
+    if (attrs.is_generic === "true") return unsupported(type, state);
+    const values = Object.fromEntries(directChildren(block, "value").map(e => {
+      const child = directChildren(e, "block")[0] || directChildren(e, "shadow")[0];
+      return [e.getAttribute("name"), child ? convertBlock(child, state, depth + 1) : {kind:"literal", value:""}];
+    }));
+    const bodies = Object.fromEntries(directChildren(block, "statement").map(e => {
+      const first = directChildren(e, "block")[0];
+      return [e.getAttribute("name"), first ? convertStatementChain(first, state, depth + 1) : []];
+    }));
+    return {kind:"block", type, fields, mutation:attrs, values, bodies,
+      args:mutation ? directChildren(mutation, "arg").map(e => e.getAttribute("name")) : []};
+  }
+  if (type === "text") {
+    const value = fieldValue(block, "TEXT");
+    return value === null ? unsupported(type, state) : { kind: "literal", value };
+  }
+  if (type === "math_number") {
+    const value = Number(fieldValue(block, "NUM"));
+    return Number.isFinite(value) ? { kind: "literal", value } : unsupported(type, state);
+  }
+  if (type === "logic_boolean") {
+    const value = fieldValue(block, "BOOL");
+    return value === "TRUE" || value === "FALSE"
+      ? { kind: "literal", value: value === "TRUE" }
+      : unsupported(type, state);
+  }
+  if (type === "global_declaration") {
+    const name = fieldValue(block, "NAME");
+    const value = blockFromInput(block, "VALUE");
+    if (!NAME_PATTERN.test(name || "") || !value) return unsupported(type, state);
+    return { kind: "global", name, value: convertBlock(value, state, depth + 1) };
+  }
+  if (type === "lexical_variable_get") {
+    const name = globalName(fieldValue(block, "VAR"));
+    const local = fieldValue(block, "VAR");
+    return name ? { kind: "getGlobal", name } : local ? {kind:"getLocal", name:local} : unsupported(type, state);
+  }
+  if (type === "lexical_variable_set") {
+    const name = globalName(fieldValue(block, "VAR"));
+    const value = blockFromInput(block, "VALUE");
+    if (!value) return unsupported(type, state);
+    return { kind: name ? "setGlobal" : "setLocal", name: name || fieldValue(block, "VAR"), value: convertBlock(value, state, depth + 1) };
+  }
+  if (type === "text_join") {
+    const count = Number(propertyMutation(block)?.getAttribute("items") ?? 2);
+    if (!Number.isInteger(count) || count < 0 || count > 100) return unsupported(type, state);
+    const values = [];
+    for (let i = 0; i < count; i++) {
+      const value = blockFromInput(block, `ADD${i}`);
+      values.push(value ? convertBlock(value, state, depth + 1) : { kind: "literal", value: "" });
+    }
+    return { kind: "joinText", values };
+  }
+  if (type === "component_set_get") {
+    const mutation = propertyMutation(block);
+    if (!mutation || mutation.getAttribute("is_generic") === "true") return unsupported(type, state);
+    const component = mutation.getAttribute("instance_name") || fieldValue(block, "COMPONENT_SELECTOR");
+    const property = mutation.getAttribute("property_name") || fieldValue(block, "PROP");
+    if (!component || !property) return unsupported(type, state);
+    if (mutation.getAttribute("set_or_get") === "get") {
+      return { kind: "getProperty", component, property };
+    }
+    if (mutation.getAttribute("set_or_get") === "set") {
+      const valueBlock = blockFromInput(block, "VALUE");
+      if (!valueBlock) return unsupported(type, state);
+      return {
+        kind: "setProperty",
+        component,
+        property,
+        value: convertBlock(valueBlock, state, depth + 1)
+      };
+    }
+    return unsupported(type, state);
+  }
+  if (type === "component_event") {
+    const mutation = propertyMutation(block);
+    if (!mutation || mutation.getAttribute("is_generic") === "true") return unsupported(type, state);
+    const component = mutation.getAttribute("instance_name") || fieldValue(block, "COMPONENT_SELECTOR");
+    const componentType = mutation.getAttribute("component_type");
+    const event = mutation.getAttribute("event_name");
+    if (!component || !componentType || !event) return unsupported(type, state);
+    const statement = childByName(block, "statement", "name", "DO");
+    const first = statement && (directChildren(statement, "block")[0] || directChildren(statement, "shadow")[0]);
+    return {
+      kind: "event",
+      component,
+      componentType,
+      event,
+      parameters: mutation ? directChildren(mutation, "arg").map(e => e.getAttribute("name")) : [],
+      body: first ? convertStatementChain(first, state, depth + 1) : []
+    };
+  }
+
+  return unsupported(type, state);
+}
+
+function unsupported(blockType, state) {
+  state?.unsupportedBlocks.add(blockType);
+  return { kind: "unsupported", blockType };
+}
+
+function convertStatementChain(firstBlock, state, depth) {
+  const statements = [];
+  let block = firstBlock;
+  while (block) {
+    if (statements.length >= LIMITS.blocks) {
+      throw new Error("This project has too many blocks for Web Preview.");
+    }
+    const converted = convertBlock(block, state, depth);
+    statements.push(converted.kind === "getProperty"
+      ? unsupported(block.getAttribute("type"))
+      : converted);
+    const next = childByName(block, "next");
+    block = next && (directChildren(next, "block")[0] || directChildren(next, "shadow")[0]);
+  }
+  return statements;
+}
+
+function parseBlocks(source, { DOMParserClass = globalThis.DOMParser } = {}) {
+  if (typeof source !== "string" || source.length > LIMITS.sourceCharacters) {
+    throw new Error("Blocks source is missing or too large.");
+  }
+  if (/<!\s*(?:DOCTYPE|ENTITY)\b/i.test(source)) {
+    throw new Error("Blocks source cannot contain DTD or entity declarations.");
+  }
+  if (typeof DOMParserClass !== "function") {
+    throw new Error("Web Preview needs a browser XML parser.");
+  }
+
+  let document;
+  try {
+    document = new DOMParserClass().parseFromString(source, "application/xml");
+  } catch {
+    throw new Error("Blocks source is not valid XML.");
+  }
+  if (!document.documentElement || elementName(document.documentElement) !== "xml" ||
+      document.getElementsByTagName("parsererror").length > 0) {
+    throw new Error("Blocks source is not valid Blockly XML.");
+  }
+
+  const state = { seenTypes: new Set(), unsupportedBlocks: new Set(), count: 0 };
+  const roots = directChildren(document.documentElement, "block");
+  if (roots.length > LIMITS.blocks) {
+    throw new Error("This project has too many blocks for Web Preview.");
+  }
+  const procedures = [];
+  const events = [];
+  const globals = [];
+  const unsupportedBlocks = [];
+  for (const block of roots) {
+    const converted = convertBlock(block, state, 0);
+    if (converted.kind === "block" && converted.type === "procedures_defnoreturn") {
+      procedures.push(converted);
+    } else if (converted.kind === "event") {
+      events.push(converted);
+    } else if (converted.kind === "global") {
+      if (globals.some(global => global.name === converted.name)) {
+        state.unsupportedBlocks.add("global_declaration (duplicate name)");
+      } else {
+        globals.push(converted);
+      }
+    } else if (converted.kind === "unsupported") {
+      state.unsupportedBlocks.add(converted.blockType);
+    } else if (converted.kind === "getProperty" || converted.kind === "setProperty") {
+      // Property blocks have execution meaning only when connected to a supported event.
+      state.unsupportedBlocks.add(block.getAttribute("type") || "(missing type)");
+    }
+  }
+  for (const blockType of state.seenTypes) {
+    if (!BLOCKS.has(blockType)) state.unsupportedBlocks.add(blockType);
+  }
+  unsupportedBlocks.push(...state.unsupportedBlocks);
+  return { events, globals, procedures, blockTypes: Array.from(state.seenTypes), unsupportedBlocks };
+}
+
+function normalizeComponent(properties, state, depth) {
+  if (!properties || typeof properties !== "object" || Array.isArray(properties)) {
+    throw new Error("A component in Screen source is not an object.");
+  }
+  if (depth > LIMITS.componentDepth) {
+    throw new Error("Screen components are nested too deeply for Web Preview.");
+  }
+  state.count += 1;
+  if (state.count > LIMITS.components) {
+    throw new Error("This project has too many components for Web Preview.");
+  }
+
+  const name = properties.$Name;
+  const type = properties.$Type;
+  if (typeof name !== "string" || !NAME_PATTERN.test(name) || typeof type !== "string" || type.length > 80) {
+    throw new Error("A component has an invalid name or type.");
+  }
+  if (state.names.has(name)) {
+    throw new Error(`The component name ${name} appears more than once.`);
+  }
+  state.names.add(name);
+
+  const values = Object.create(null);
+  for (const [key, value] of Object.entries(properties)) {
+    if (COMPONENT_METADATA_PROPERTIES.has(key) || key.startsWith("$") ||
+        (type === "Form" && FORM_EDITOR_ONLY_PROPERTIES.has(key))) continue;
+    if (["string", "number", "boolean"].includes(typeof value)) {
+      values[key] = value;
+    } else {
+      state.unsupportedProperties.push({ component: name, property: key });
+    }
+  }
+  const supported = COMPONENTS.get(type);
+  if (supported) {
+    for (const property of Object.keys(values)) {
+      if (type === "Form" && FORM_BUILD_ONLY_PROPERTIES.has(property)) {
+        state.buildOnlyProperties.push({ component: name, property });
+        continue;
+      }
+      if (type === "Form" && property === "ScreenOrientation" &&
+          !["portrait", "landscape", "unspecified"].includes(String(values[property]))) {
+        state.unsupportedProperties.push({ component: name, property });
+        continue;
+      }
+      if (!supported.properties.has(property)) {
+        state.unsupportedProperties.push({ component: name, property });
+      }
+    }
+  }
+
+  const children = properties.$Components === undefined ? [] : properties.$Components;
+  if (!Array.isArray(children)) {
+    throw new Error(`The child list for ${name} is not a list.`);
+  }
+  return {
+    name,
+    type,
+    properties: values,
+    children: children.map(child => normalizeComponent(child, state, depth + 1))
+  };
+}
+
+function adaptProject(scmSource, blocksSource, options = {}) {
+  const rootProperties = parseScm(scmSource);
+  if (rootProperties.$Type !== "Form") {
+    throw new Error("Web Preview expects a Form screen at the project root.");
+  }
+  const state = { count: 0, names: new Set(), unsupportedProperties: [], buildOnlyProperties: [] };
+  const screen = normalizeComponent(rootProperties, state, 0);
+  const blocks = parseBlocks(blocksSource, options);
+  const components = new Map();
+  const collect = component => {
+    components.set(component.name, component);
+    component.children.forEach(collect);
+  };
+  collect(screen);
+
+  const unsupportedEvents = [];
+  const unsupportedOperations = new Set();
+  const globalNames = new Set(blocks.globals.map(global => global.name));
+  const checkProperty = (componentName, property) => {
+    const component = components.get(componentName);
+    const adapter = component && COMPONENTS.get(component.type);
+    if (!adapter || !adapter.properties.has(property)) {
+      state.unsupportedProperties.push({ component: componentName, property });
+    }
+  };
+  const checkExpression = expression => {
+    if (expression.kind === "block") {
+      Object.values(expression.values).forEach(checkExpression);
+      Object.values(expression.bodies).forEach(checkStatements);
+      if (expression.type === "component_method") {
+        const m = expression.mutation;
+        const c = components.get(m.instance_name);
+        if (!c || !COMPONENTS.get(c.type)?.methods?.has(m.method_name)) unsupportedOperations.add(`method ${m.instance_name}.${m.method_name}`);
+      }
+    }
+    if (expression.kind === "getProperty") {
+      checkProperty(expression.component, expression.property);
+    } else if (expression.kind === "getGlobal") {
+      if (!globalNames.has(expression.name)) unsupportedOperations.add(`undeclared global ${expression.name}`);
+    } else if (expression.kind === "joinText") {
+      expression.values.forEach(checkExpression);
+    } else if (expression.kind === "unsupported") {
+      unsupportedOperations.add(expression.blockType);
+    }
+  };
+  const checkStatements = statements => {
+    for (const statement of statements) {
+      if (statement.kind === "block") { checkExpression(statement);
+      } else if (statement.kind === "setProperty") {
+        checkProperty(statement.component, statement.property);
+        checkExpression(statement.value);
+      } else if (statement.kind === "setGlobal") {
+        if (!globalNames.has(statement.name)) unsupportedOperations.add(`undeclared global ${statement.name}`);
+        checkExpression(statement.value);
+      } else if (statement.kind === "unsupported") {
+        unsupportedOperations.add(statement.blockType);
+      }
+    }
+  };
+  for (const event of blocks.events) {
+    const component = components.get(event.component);
+    const adapter = component && COMPONENTS.get(component.type);
+    if (!component || component.type !== event.componentType || !adapter?.events.has(event.event)) {
+      unsupportedEvents.push(event);
+    }
+    checkStatements(event.body);
+  }
+  for (const global of blocks.globals) checkExpression(global.value);
+  for (const procedure of blocks.procedures) checkExpression(procedure);
+
+  return {
+    version: 1,
+    screen,
+    program: { events: blocks.events, globals: blocks.globals, procedures: blocks.procedures },
+    features: {
+      blockTypes: blocks.blockTypes,
+      unsupportedBlocks: blocks.unsupportedBlocks,
+      unsupportedProperties: state.unsupportedProperties,
+      buildOnlyProperties: state.buildOnlyProperties,
+      unsupportedEvents,
+      unsupportedOperations: Array.from(unsupportedOperations)
+    }
+  };
+}
+
+Object.assign(WebPreview, { parseScm, parseBlocks, adaptProject });
+})(globalThis.WebPreview ||= {});
+
+(function (WebPreview) {
+const { BLOCKS, COMPONENTS } = WebPreview;
+
+const BLOCK_LABELS = new Map([
+  ["component_event", "component events"],
+  ["component_set_get", "component property blocks"],
+  ["text", "text literals"],
+  ["math_number", "number literals"],
+  ["logic_boolean", "boolean literals"],
+  ["global_declaration", "global variables"],
+  ["lexical_variable_get", "global variable reads"],
+  ["lexical_variable_set", "global variable writes"],
+  ["text_join", "text joining"]
+]);
+
+function analyzeCompatibility(project) {
+  const supported = [];
+  const unsupported = [];
+
+  const visit = component => {
+    const label = `${component.name} (${component.type === "Form" ? "Screen" : component.type})`;
+    if (COMPONENTS.has(component.type)) supported.push(label);
+    else unsupported.push(`Component ${label}`);
+
+    component.children.forEach(visit);
+  };
+  visit(project.screen);
+
+  for (const event of project.program.events) {
+    const component = findComponent(project.screen, event.component);
+    const adapter = component && COMPONENTS.get(component.type);
+    const label = `${event.component}.${event.event}`;
+    if (adapter?.events.has(event.event)) supported.push(label);
+    else unsupported.push(`Event ${label}`);
+  }
+
+  for (const blockType of project.features.blockTypes) {
+    if (BLOCKS.has(blockType)) {
+      const label = BLOCK_LABELS.get(blockType) || `block ${blockType}`;
+      if (!supported.includes(label)) supported.push(label);
+    }
+  }
+  for (const blockType of project.features.unsupportedBlocks) {
+    unsupported.push(`Blockly block ${blockType}`);
+  }
+  for (const { component, property } of project.features.unsupportedProperties) {
+    unsupported.push(`Property ${component}.${property}`);
+  }
+  const androidOnly = (project.features.buildOnlyProperties || []).map(({ component, property }) =>
+    `${component}.${property}: installed app label; no effect on the preview screen`);
+  for (const blockType of project.features.unsupportedOperations) {
+    unsupported.push(`Blockly operation ${blockType}`);
+  }
+  for (const event of project.features.unsupportedEvents) {
+    unsupported.push(`Event ${event.component}.${event.event}`);
+  }
+
+  return {
+    supported: unique(supported),
+    unsupported: unique(unsupported),
+    androidOnly: unique(androidOnly),
+    message: unsupported.length === 0
+      ? androidOnly.length > 0
+        ? "All detected screen and block features are supported. Android build settings are listed separately."
+        : "Every detected feature in this project is supported by the current Web Preview."
+      : `Web Preview does not currently support ${unique(unsupported).length} feature${unique(unsupported).length === 1 ? "" : "s"} in this project. The rest of the project can still be previewed where possible. Use the Android Companion for full testing.`
+  };
+}
+
+function findComponent(component, name) {
+  if (component.name === name) return component;
+  for (const child of component.children) {
+    const found = findComponent(child, name);
+    if (found) return found;
+  }
+  return null;
+}
+
+function unique(items) {
+  return Array.from(new Set(items));
+}
+
+Object.assign(WebPreview, { analyzeCompatibility });
+})(globalThis.WebPreview ||= {});
+
+(function (WebPreview) {
+const { COMPONENTS } = WebPreview;
+
+const SCREEN_CLASS = "webpreview-screen";
+
+function renderScreen(document, mount, project) {
+  mount.replaceChildren();
+  const byName = new Map();
+  const screenElement = document.createElement("section");
+  screenElement.className = SCREEN_CLASS;
+  screenElement.setAttribute("aria-label", "App Inventor screen preview");
+  screenElement.dataset.componentName = project.screen.name;
+  screenElement.dataset.componentType = "Form";
+  applyProperties(screenElement, project.screen, COMPONENTS.get("Form"));
+
+  const title = project.screen.properties.Title;
+  let heading = null;
+  if (project.screen.properties.TitleVisible !== "False" && typeof title === "string" && title.length > 0) {
+    heading = document.createElement("h1");
+    heading.className = "webpreview-title";
+    heading.textContent = title;
+    screenElement.appendChild(heading);
+  }
+  byName.set(project.screen.name, {
+    component: project.screen,
+    adapter: COMPONENTS.get("Form"),
+    element: screenElement,
+    titleElement: heading || null
+  });
+
+  for (const child of project.screen.children) {
+    screenElement.appendChild(renderComponent(document, child, byName));
+  }
+  mount.appendChild(screenElement);
+  return { screenElement, components: byName };
+}
+
+function renderComponent(document, component, byName) {
+  const adapter = COMPONENTS.get(component.type);
+  if (!adapter) {
+    const placeholder = document.createElement("div");
+    placeholder.className = "webpreview-unsupported";
+    placeholder.textContent = `Unsupported component: ${component.type} (${component.name})`;
+    placeholder.dataset.componentName = component.name;
+    for (const child of component.children) {
+      placeholder.appendChild(renderComponent(document, child, byName));
+    }
+    return placeholder;
+  }
+
+  const element = document.createElement(adapter.element);
+  element.className = `webpreview-component webpreview-${component.type.toLowerCase()}`;
+  element.dataset.componentName = component.name;
+  element.dataset.componentType = component.type;
+  if (component.type === "Button") element.type = "button";
+  if (component.type === "TextBox") element.type = "text";
+  if (component.type === "PasswordTextBox") { element.type = "password"; element.autocomplete = "off"; }
+  if (adapter.nonVisible) element.hidden = true;
+  applyProperties(element, component, adapter);
+  byName.set(component.name, { component, adapter, element });
+  for (const child of component.children) {
+    element.appendChild(renderComponent(document, child, byName));
+  }
+  return element;
+}
+
+function applyProperty(instance, property, value) {
+  if (!instance.adapter.properties.has(property)) {
+    throw new Error(`Web Preview does not support property ${instance.component.name}.${property}.`);
+  }
+  instance.component.properties[property] = value;
+  if (property === "Title") {
+    const text = safeText(value);
+    if (instance.titleElement && text) instance.titleElement.textContent = text;
+    else if (instance.titleElement) {
+      instance.titleElement.remove();
+      instance.titleElement = null;
+    } else if (text) {
+      const heading = instance.element.ownerDocument.createElement("h1");
+      heading.className = "webpreview-title";
+      heading.textContent = text;
+      instance.element.prepend(heading);
+      instance.titleElement = heading;
+    }
+  } else {
+    if (!instance.adapter.nonVisible) applyPropertyToElement(instance.element, property, value);
+  }
+}
+
+function readProperty(instance, property) {
+  if (!instance.adapter.properties.has(property)) {
+    throw new Error(`Web Preview does not support property ${instance.component.name}.${property}.`);
+  }
+  if (property === "Text" && instance.element.tagName === "INPUT") {
+    return instance.element.value;
+  }
+  if (property === "Selection" && instance.element.tagName === "SELECT") {
+    return instance.element.value;
+  }
+  if (Object.hasOwn(instance.component.properties, property)) {
+    return instance.component.properties[property];
+  }
+  return instance.adapter.defaults[property] ?? "";
+}
+
+function applyProperties(element, component, adapter) {
+  for (const [property, value] of Object.entries(component.properties)) {
+    if (component.type === "Spinner" && property === "Selection") continue;
+    // Dynamic Android orientation modes need a device sensor; keep the rest of the screen usable.
+    if (component.type === "Form" && property === "ScreenOrientation" &&
+        !["portrait", "landscape", "unspecified"].includes(String(value))) continue;
+    if (adapter.properties.has(property)) applyPropertyToElement(element, property, value);
+  }
+  for (const [property, value] of Object.entries(adapter.defaults)) {
+    if (!Object.hasOwn(component.properties, property)) applyPropertyToElement(element, property, value);
+  }
+  if (component.type === "Spinner" && Object.hasOwn(component.properties, "Selection")) {
+    applyPropertyToElement(element, "Selection", component.properties.Selection);
+  }
+}
+
+function applyPropertyToElement(element, property, value) {
+  switch (property) {
+    case "Title":
+      break;
+    case "Text":
+      if (element.tagName === "INPUT") element.value = safeText(value);
+      else element.textContent = safeText(value);
+      break;
+    case "Hint":
+      element.placeholder = safeText(value);
+      break;
+    case "ElementsFromString":
+      if (element.tagName === "SELECT") {
+        const values = safeText(value);
+        element.replaceChildren(...(values ? values.split(/ *, */).map(item => {
+          const option = element.ownerDocument.createElement("option");
+          option.value = item;
+          option.textContent = item;
+          return option;
+        }) : []));
+      }
+      break;
+    case "Selection":
+      if (element.tagName === "SELECT") element.value = safeText(value);
+      break;
+    case "Visible":
+      element.hidden = !toBoolean(value);
+      break;
+    case "Enabled":
+      if ("disabled" in element) element.disabled = !toBoolean(value);
+      break;
+    case "Width":
+      element.style.width = dimension(value);
+      break;
+    case "Height":
+      element.style.height = dimension(value);
+      break;
+    case "AlignHorizontal": {
+      const alignment = horizontalAlignment(value);
+      if (!alignment) throw new Error("Web Preview could not read this AlignHorizontal value.");
+      element.style.display = "flex";
+      element.style.flexDirection = "column";
+      element.style.alignItems = alignment;
+      break;
+    }
+    case "ActionBar":
+      element.classList.toggle("webpreview-actionbar", toBoolean(value));
+      break;
+    case "ScreenOrientation": {
+      const orientation = String(value);
+      if (!["portrait", "landscape", "unspecified"].includes(orientation)) {
+        throw new Error(`Web Preview does not support ScreenOrientation ${orientation}.`);
+      }
+      element.dataset.orientation = orientation;
+      break;
+    }
+    case "BackgroundColor": {
+      const color = colorValue(value);
+      if (!color) throw new Error("Web Preview could not read this BackgroundColor value.");
+      element.style.backgroundColor = color;
+      break;
+    }
+    case "TextColor": {
+      const color = colorValue(value);
+      if (!color) throw new Error("Web Preview could not read this TextColor value.");
+      element.style.color = color;
+      break;
+    }
+    case "FontSize": {
+      const size = Number(value);
+      if (!Number.isFinite(size) || size < 1 || size > 96) {
+        throw new Error("Web Preview supports font sizes from 1 to 96.");
+      }
+      element.style.fontSize = `${size}px`;
+      break;
+    }
+    case "FontTypeface": {
+      const fonts = { "0": "Roboto, Arial, sans-serif", "1": "Arial, sans-serif",
+        "2": "Georgia, serif", "3": "monospace" };
+      const font = fonts[String(value)];
+      if (!font) throw new Error("Web Preview does not support this FontTypeface value.");
+      element.style.fontFamily = font;
+      break;
+    }
+    case "Shape": {
+      const radii = { "0": "5px", "1": "12px", "2": "0", "3": "999px" };
+      const radius = radii[String(value)];
+      if (radius === undefined) throw new Error("Web Preview does not support this Button Shape value.");
+      element.style.borderRadius = radius;
+      break;
+    }
+    case "FontBold":
+      element.style.fontWeight = toBoolean(value) ? "700" : "400";
+      break;
+    case "FontItalic":
+      element.style.fontStyle = toBoolean(value) ? "italic" : "normal";
+      break;
+    case "TextAlignment": {
+      const alignment = textAlignment(value);
+      if (!alignment) throw new Error("Web Preview could not read this TextAlignment value.");
+      element.style.textAlign = alignment;
+      break;
+    }
+    default:
+      break;
+  }
+}
+
+function safeText(value) {
+  if (["string", "number", "boolean"].includes(typeof value)) return String(value);
+  throw new Error("Web Preview only accepts text, numbers, and booleans for this property.");
+}
+
+function toBoolean(value) {
+  if (value === true || value === "True" || value === "true" || value === 1 || value === "1") return true;
+  if (value === false || value === "False" || value === "false" || value === 0 || value === "0") return false;
+  throw new Error("Web Preview could not read this boolean property value.");
+}
+
+function dimension(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number) || !Number.isInteger(number)) {
+    throw new Error("Web Preview expects an automatic, fill-parent, or whole-number size.");
+  }
+  if (number === -1) return "auto";
+  if (number === -2) return "100%";
+  if (number <= -1000 && number >= -1100) return `${-number - 1000}%`;
+  if (number < 0 || number > 10_000) throw new Error("Web Preview size is outside the supported range.");
+  return `${number}px`;
+}
+
+function horizontalAlignment(value) {
+  return { "1": "flex-start", "2": "flex-end", "3": "center" }[String(value)] || "";
+}
+
+function textAlignment(value) {
+  const alignments = new Map([
+    ["0", "left"], ["1", "center"], ["2", "right"],
+    ["Left", "left"], ["Center", "center"], ["Right", "right"]
+  ]);
+  return alignments.get(String(value)) || "";
+}
+
+function colorValue(value) {
+  const text = String(value);
+  if (/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(text)) return text;
+  const hex = text.match(/^&H([0-9a-f]{8})$/i);
+  if (hex) return argbToCss(Number.parseInt(hex[1], 16));
+  if (/^-?\d+$/.test(text)) return argbToCss(Number(text) >>> 0);
+  return "";
+}
+
+function argbToCss(argb) {
+  const alpha = ((argb >>> 24) & 0xff) / 255;
+  const red = (argb >>> 16) & 0xff;
+  const green = (argb >>> 8) & 0xff;
+  const blue = argb & 0xff;
+  return alpha >= 1 ? `rgb(${red} ${green} ${blue})` : `rgb(${red} ${green} ${blue} / ${alpha})`;
+}
+
+Object.assign(WebPreview, { renderScreen, applyProperty, readProperty });
+})(globalThis.WebPreview ||= {});
+
+(function (W) {
+const { LIMITS, applyProperty, readProperty, renderScreen } = W;
+
+// The browser preview is deliberately restricted to the classroom project's REST services.
+function allowedRequest(raw, method) {
+  let u; try {u = new URL(raw);} catch {return false;}
+  if (u.protocol !== 'https:' || u.username || u.password || u.hash || u.port) return false;
+  if (u.hostname === 'identitytoolkit.googleapis.com')
+    return method === 'POST' && /^\/v1\/accounts:(signInWithPassword|signUp|sendOobCode)$/.test(u.pathname);
+  if (u.hostname === 'securetoken.googleapis.com') return method === 'POST' && u.pathname === '/v1/token';
+  if (u.hostname === 'languageapp-5e07a-default-rtdb.firebaseio.com')
+    return method === 'GET' && /^\/(words|progress\/[A-Za-z0-9_-]{1,128}\/learned)\.json$/.test(u.pathname) ||
+      method === 'PUT' && /^\/progress\/[A-Za-z0-9_-]{1,128}\/learned\/[A-Za-z0-9_-]{1,128}\.json$/.test(u.pathname);
+  return false;
+}
+async function firebaseRequest(url, method, body, headers, timeout) {
+  if (!allowedRequest(url, method)) throw new Error('Web Preview blocked a URL outside the classroom Firebase services.');
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), Math.max(1000, Math.min(Number(timeout) || 15000, 30000)));
+  try {
+    if (String(body || '').length > 100000) throw new Error('Request is too large.');
+    const h = new Headers();
+    for (const pair of headers || []) {
+      if (!Array.isArray(pair) || pair.length !== 2 || String(pair[0]).toLowerCase() !== 'content-type')
+        throw new Error('Only Content-Type headers are supported in this preview.');
+      h.set(pair[0], pair[1]);
+    }
+    const response = await fetch(url, {method, headers:h, body:method === 'GET' ? undefined : String(body),
+      credentials:'omit', redirect:'error', referrerPolicy:'no-referrer', signal:controller.signal});
+    const reader = response.body.getReader();
+    let length = 0, content = ''; const decoder = new TextDecoder();
+    for (;;) {
+      const {done, value} = await reader.read(); if (done) break;
+      length += value.byteLength;
+      if (length > 1000000) { await reader.cancel(); throw new Error('Response is too large.'); }
+      content += decoder.decode(value, {stream:true});
+    }
+    content += decoder.decode();
+    return {code:response.status, type:response.headers.get('content-type') || '', content};
+  } finally { clearTimeout(timer); }
+}
+
+function createRuntime({document, mount, project, onError = () => {}, request = firebaseRequest,
+    storage = Object.create(null), onStore = () => {}, assets = Object.create(null), audioFactory = () => new Audio()}) {
+  const rendered = renderScreen(document, mount, project);
+  const components = rendered.components, globals = new Map(), handlers = new Map();
+  const procedures = new Map((project.program.procedures || []).map(p => [p.fields.NAME, p]));
+  const timers = new Map(), players = new Map();
+  let disposed = false, pendingRequests = 0, requestCount = 0;
+  const budget = () => ({steps:0, calls:0});
+  const spend = b => { if (++b.steps > LIMITS.executionSteps) throw new Error('Web Preview stopped this event after its instruction limit.'); };
+  const own = (o,k) => o != null && Object.hasOwn(o,String(k));
+  const list = v => { if (!Array.isArray(v)) throw new Error('Expected a list.'); return v; };
+  const index = (a, n) => { const i=Number(n)-1; if (!Number.isInteger(i) || i<0 || i>=a.length) throw new Error('List index is outside the list.'); return i; };
+  const component = n => { const c=components.get(n); if (!c) throw new Error(`Component ${n} is missing.`); return c; };
+  const text = v => v === null ? 'null' : typeof v === 'boolean' ? String(v) : typeof v === 'object' ? JSON.stringify(v) : String(v);
+  function runStatements(body, locals, b) { for (const s of body) evaluate(s,locals,b,0); }
+  function evaluate(e, locals, b, depth) {
+    spend(b); if (depth > LIMITS.expressionDepth) throw new Error('Expression is too deeply nested.');
+    const ev = v => evaluate(v,locals,b,depth+1);
+    switch(e.kind) {
+      case 'literal':return e.value;
+      case 'getGlobal': if (!globals.has(e.name)) throw new Error(`Global ${e.name} is missing.`); return globals.get(e.name);
+      case 'setGlobal': if (!globals.has(e.name)) throw new Error(`Global ${e.name} is missing.`); globals.set(e.name,ev(e.value)); return;
+      case 'getLocal': if (!(e.name in locals)) throw new Error(`Variable ${e.name} is missing.`); return locals[e.name];
+      case 'setLocal': if (!(e.name in locals)) throw new Error(`Variable ${e.name} is missing.`); locals[e.name]=ev(e.value); return;
+      case 'getProperty':return readProperty(component(e.component),e.property);
+      case 'setProperty': {
+        const c=component(e.component); applyProperty(c,e.property,ev(e.value));
+        if (c.component.type==='Clock') updateTimer(e.component); return;
+      }
+      case 'joinText':return e.values.map(v=>text(ev(v))).join('');
+      case 'unsupported':throw new Error(`Unsupported block ${e.blockType}.`);
+      case 'block':break;
+      default:throw new Error(`Unsupported operation ${e.kind}.`);
+    }
+    const val = n => { if (!e.values[n]) throw new Error(`Missing ${e.type}.${n}.`); return ev(e.values[n]); };
+    const vals = () => Object.values(e.values).map(ev);
+    const body = n => runStatements(e.bodies[n] || [],locals,b);
+    switch(e.type) {
+      case 'lists_create_with': return vals();
+      case 'pair':return [val('KEY'),val('VALUE')];
+      case 'dictionaries_create_with':return Object.fromEntries(vals());
+      case 'dictionaries_lookup': { const d=val('DICT'), k=val('KEY'); return own(d,k) ? d[k] : val('NOTFOUND'); }
+      case 'dictionaries_set_pair': { const d=val('DICT'); if (!d || Array.isArray(d) || typeof d!=='object') throw new Error('Expected dictionary.'); Object.defineProperty(d,String(val('KEY')),{value:val('VALUE'),writable:true,enumerable:true,configurable:true}); return; }
+      case 'lists_select_item': { const a=list(val('LIST')); return a[index(a,val('NUM'))]; }
+      case 'lists_length':return list(val('LIST')).length;
+      case 'lists_is_list':return Array.isArray(val('ITEM'));
+      case 'lists_add_items': { const a=list(val('LIST')); if (a.length>=2000) throw new Error('List is too large.'); for (const k of Object.keys(e.values).filter(k=>k.startsWith('ITEM'))) a.push(val(k)); return; }
+      case 'lists_remove_item': { const a=list(val('LIST')); a.splice(index(a,val('INDEX')),1); return; }
+      case 'lists_replace_item': { const a=list(val('LIST')); a[index(a,val('NUM'))]=val('ITEM'); return; }
+      case 'text_trim':return text(val('TEXT')).trim();
+      case 'logic_compare':return e.fields.OP==='NEQ' ? val('A')!==val('B') : val('A')===val('B');
+      case 'logic_operation':return e.fields.OP==='OR' ? Boolean(val('A') || val('B')) : Boolean(val('A') && val('B'));
+      case 'logic_negate':return !val('BOOL');
+      case 'math_compare': { const a=val('A'),c=val('B'); return {GT:a>c,GTE:a>=c,LT:a<c,LTE:a<=c,EQ:a===c,NEQ:a!==c}[e.fields.OP]; }
+      case 'math_add':return vals().reduce((a,c)=>a+Number(c),0);
+      case 'math_subtract':return Number(val('A'))-Number(val('B'));
+      case 'controls_choose':return val(val('TEST') ? 'THENRETURN' : 'ELSERETURN');
+      case 'controls_if': { for (let i=0;e.values[`IF${i}`];i++) if (val(`IF${i}`)) { body(`DO${i}`); return; } body('ELSE'); return; }
+      case 'controls_forEach': {
+        for (const item of [...list(val('LIST'))]) { spend(b); const scope=Object.create(locals); scope[e.fields.VAR]=item; runStatements(e.bodies.DO || [],scope,b); } return;
+      }
+      case 'procedures_callnoreturn': {
+        const p=procedures.get(e.fields.PROCNAME); if (!p) throw new Error(`Procedure ${e.fields.PROCNAME} is missing.`);
+        if (++b.calls>50) throw new Error('Procedure call limit reached.');
+        const scope=Object.create(null); (p.args || []).forEach((n,i)=>scope[n]=val(`ARG${i}`));
+        try {runStatements(p.bodies.STACK || [],scope,b);} finally { b.calls--; } return;
+      }
+      case 'component_component_block':return e.mutation.instance_name;
+      case 'component_method':return method(e.mutation.instance_name,e.mutation.method_name,vals());
+      default:throw new Error(`Unsupported block ${e.type}.`);
+    }
+  }
+  function fire(name,event,args={}) {
+    if (disposed) return;
+    try { const b=budget(); for (const h of handlers.get(`${name}.${event}`) || []) runStatements(h.body,Object.assign(Object.create(null),args),b); }
+    catch (e) { onError(e.message || 'Preview event failed.'); }
+  }
+  function method(name,m,a) {
+    const c=component(name), p=c.component.properties;
+    if (!c.adapter.methods?.has(m)) throw new Error(`Unsupported method ${name}.${m}.`);
+    switch(c.component.type) {
+      case 'Web':
+        if (m==='JsonObjectEncode') return JSON.stringify(a[0]);
+        if (m==='JsonTextDecodeWithDictionaries') return JSON.parse(a[0]);
+        {
+          if (pendingRequests >= 8 || ++requestCount > 300) throw new Error('Preview request limit reached. Reopen Web Preview to start a new test.');
+          pendingRequests++;
+          const url=String(p.Url || ''), verb={Get:'GET',PostText:'POST',PutText:'PUT'}[m];
+          Promise.resolve().then(()=>request(url,verb,a[0],structuredClone(p.RequestHeaders || []),p.Timeout)).then(r=>{
+            fire(name,'GotText',{url,responseCode:r.code,responseType:r.type,responseContent:r.content});
+          }).catch(()=>{
+            if (disposed) return;
+            fire(name,'TimedOut',{url});
+            fire(project.screen.name,'ErrorOccurred',{component:name,functionName:m,errorNumber:1101,message:'Web request failed or was blocked by preview policy.'});
+          }).finally(()=>{pendingRequests--;}); return;
+        }
+      case 'TinyDB': {
+        const key=JSON.stringify([String(p.Namespace || 'TinyDB'),String(a[0])]);
+        if (m==='GetValue') return structuredClone(own(storage,key) ? storage[key] : a[1]);
+        const value=structuredClone(a[1]);
+        if (JSON.stringify(value).length>100000) throw new Error('Stored value is too large.');
+        Object.defineProperty(storage,key,{value,writable:true,enumerable:true,configurable:true}); onStore(structuredClone(storage)); return;
+      }
+      case 'Player': {
+        let player=players.get(name); if (!player) { player=audioFactory(); players.set(name,player); }
+        if (m==='Stop') {player.pause(); player.currentTime=0;return;}
+        const source=String(p.Source || '');
+        if (!Object.hasOwn(assets,source) || !/^data:audio\/(wav|mpeg|ogg);base64,[A-Za-z0-9+/=]+$/.test(assets[source])) throw new Error(`Recording ${source} is missing. Import the .aia with its recordings.`);
+        player.src=assets[source]; player.volume=Math.max(0,Math.min(1,Number(p.Volume ?? 100)/100));
+        player.play().catch(()=>onError('The browser could not play this recording. Tap Listen again.')); return;
+      }
+    }
+  }
+  function updateTimer(name) {
+    clearInterval(timers.get(name)); timers.delete(name);
+    const c=component(name), enabled=readProperty(c,'TimerEnabled');
+    if (enabled===true || enabled==='True') timers.set(name,setInterval(()=>fire(name,'Timer'),Math.max(100,Math.min(3600000,Number(readProperty(c,'TimerInterval')) || 1000))));
+  }
+  const initializationBudget = budget();
+  for (const d of project.program.globals) globals.set(d.name,evaluate(d.value,Object.create(null),initializationBudget,0));
+  for (const e of project.program.events) {
+    const c=components.get(e.component); if (!c?.adapter.events.has(e.event)) continue;
+    const key=`${e.component}.${e.event}`; handlers.set(key,[...(handlers.get(key)||[]),e]);
+  }
+  for (const [name,c] of components) {
+    if (c.adapter.events.has('Click')) c.element.addEventListener('click',()=>fire(name,'Click'));
+    if (c.component.type==='Clock') updateTimer(name);
+  }
+  fire(project.screen.name,'Initialize');
+  return {...rendered, globals, fire,
+    dispose() {disposed=true;for(const t of timers.values())clearInterval(t);for(const p of players.values())p.pause();},
+    restart() {this.dispose();return createRuntime({document,mount,project:structuredClone(project),onError,request,storage,onStore,assets,audioFactory});}
+  };
+}
+Object.assign(W,{createRuntime,allowedRequest,firebaseRequest});
+})(globalThis.WebPreview ||= {});
+
+(function (WebPreview) {
+const { LIMITS } = WebPreview;
+
+function validateRuntimeModel(model) {
+  if (JSON.stringify(model).length>2000000) throw new Error("Preview model is too large.");
+  if (!model || model.version !== 1 || !model.screen || !model.program ||
+      !Array.isArray(model.program.events) || !Array.isArray(model.program.globals)) {
+    throw new Error("Preview data has an unsupported format.");
+  }
+  let count = 0;
+  const names = new Set();
+  const visit = (component, depth) => {
+    if (depth > LIMITS.componentDepth || !component || typeof component !== "object") {
+      throw new Error("Preview data has an invalid component tree.");
+    }
+    count += 1;
+    if (count > LIMITS.components || typeof component.name !== "string" ||
+        typeof component.type !== "string" || !component.properties ||
+        typeof component.properties !== "object" || !Array.isArray(component.children)) {
+      throw new Error("Preview data has too many or invalid components.");
+    }
+    if (!/^[A-Za-z][A-Za-z0-9_]{0,63}$/.test(component.name) || names.has(component.name)) {
+      throw new Error("Preview data has an invalid or repeated component name.");
+    }
+    names.add(component.name);
+    if (Object.keys(component.properties).length > 100) {
+      throw new Error("Preview data contains too many component properties.");
+    }
+    for (const [key, value] of Object.entries(component.properties)) {
+      if (key.length > 100 || !["string", "number", "boolean"].includes(typeof value) ||
+          (typeof value === "string" && value.length > 20_000) ||
+          (typeof value === "number" && !Number.isFinite(value))) {
+        throw new Error("Preview data contains an invalid component property.");
+      }
+    }
+    component.children.forEach(child => visit(child, depth + 1));
+  };
+  visit(model.screen, 0);
+  if (model.screen.type !== "Form") throw new Error("Preview data has no Form screen.");
+  if (model.program.events.length + model.program.globals.length > LIMITS.blocks) {
+    throw new Error("Preview data contains too many events.");
+  }
+  const globals = new Set();
+  for (const global of model.program.globals) {
+    if (global.kind !== "global" || !validName(global.name) || globals.has(global.name)) {
+      throw new Error("Preview data contains an invalid global variable.");
+    }
+    globals.add(global.name);
+    validateExpression(global.value, 0);
+  }
+  if (model.program.procedures !== undefined && (!Array.isArray(model.program.procedures) || model.program.procedures.length > 200)) throw new Error("Invalid procedures.");
+  const procedureNames = new Set();
+  for (const p of model.program.procedures || []) {
+    validateExpression(p,0);
+    if (p.kind !== "block" || p.type !== "procedures_defnoreturn" || !validName(p.fields.NAME) || procedureNames.has(p.fields.NAME)) throw new Error("Invalid procedure definition.");
+    procedureNames.add(p.fields.NAME);
+  }
+  for (const event of model.program.events) {
+    if (typeof event.component !== "string" || typeof event.componentType !== "string" ||
+        typeof event.event !== "string" || !Array.isArray(event.body)) {
+      throw new Error("Preview data contains an invalid event.");
+    }
+    validateStatements(event.body, 0);
+  }
+  return model;
+}
+
+function validateStatements(statements, depth) {
+  if (depth > LIMITS.blockDepth || statements.length > LIMITS.blocks) {
+    throw new Error("Preview data contains too many or deeply nested blocks.");
+  }
+  for (const statement of statements) {
+    if (statement.kind === "block") { validateExpression(statement,depth+1);
+    } else if (statement.kind === "setLocal") {
+      if (!validName(statement.name)) throw new Error("Invalid local assignment.");
+      validateExpression(statement.value,depth+1);
+    } else if (statement.kind === "setProperty") {
+      if (typeof statement.component !== "string" || typeof statement.property !== "string") {
+        throw new Error("Preview data contains an invalid property operation.");
+      }
+      validateExpression(statement.value, depth + 1);
+    } else if (statement.kind === "setGlobal") {
+      if (!validName(statement.name)) throw new Error("Preview data contains an invalid global assignment.");
+      validateExpression(statement.value, depth + 1);
+    } else if (statement.kind !== "unsupported" || typeof statement.blockType !== "string") {
+      throw new Error("Preview data contains an invalid block operation.");
+    }
+  }
+}
+
+function validateExpression(expression, depth) {
+  if (depth > LIMITS.expressionDepth || !expression || typeof expression !== "object") {
+    throw new Error("Preview data contains a deeply nested expression.");
+  }
+  if (expression.kind === "block") {
+    if (!WebPreview.EXTENDED_BLOCKS.has(expression.type) || !expression.fields || !expression.mutation || !expression.values || !expression.bodies || !Array.isArray(expression.args) || expression.args.length>100) throw new Error("Invalid extended block.");
+    for (const record of [expression.fields,expression.mutation]) {
+      if (Object.keys(record).length>30 || Object.values(record).some(v=>typeof v!=="string" || v.length>1000)) throw new Error("Invalid block fields.");
+    }
+    if (expression.mutation.is_generic === "true" || expression.args.some(n=>!validName(n))) throw new Error("Invalid block arguments.");
+    if (Object.keys(expression.values).length>100 || Object.keys(expression.bodies).length>100) throw new Error("Too many block inputs.");
+    Object.values(expression.values).forEach(v=>validateExpression(v,depth+1));
+    Object.values(expression.bodies).forEach(v=>{if(!Array.isArray(v)) throw new Error("Invalid body.");validateStatements(v,depth+1);});
+  } else if (expression.kind === "getLocal") {
+    if (!validName(expression.name)) throw new Error("Invalid local variable.");
+  } else if (expression.kind === "literal") {
+    if (!["string", "number", "boolean"].includes(typeof expression.value) ||
+        (typeof expression.value === "number" && !Number.isFinite(expression.value)) ||
+        (typeof expression.value === "string" && expression.value.length > 20_000)) {
+      throw new Error("Preview data contains an invalid literal.");
+    }
+  } else if (expression.kind === "getProperty") {
+    if (typeof expression.component !== "string" || typeof expression.property !== "string") {
+      throw new Error("Preview data contains an invalid property read.");
+    }
+  } else if (expression.kind === "getGlobal") {
+    if (!validName(expression.name)) throw new Error("Preview data contains an invalid global read.");
+  } else if (expression.kind === "joinText") {
+    if (!Array.isArray(expression.values) || expression.values.length > 100) {
+      throw new Error("Preview data contains an invalid text join.");
+    }
+    expression.values.forEach(value => validateExpression(value, depth + 1));
+  } else if (expression.kind !== "unsupported" || typeof expression.blockType !== "string") {
+    throw new Error("Preview data contains an invalid expression.");
+  }
+}
+
+function validName(name) {
+  return typeof name === "string" && /^[A-Za-z][A-Za-z0-9_]{0,63}$/.test(name);
+}
+
+Object.assign(WebPreview, { validateRuntimeModel });
+})(globalThis.WebPreview ||= {});
+
+(function (WebPreview) {
+async function captureScreen(document, mount) {
+  const width = document.documentElement.clientWidth;
+  const height = document.documentElement.clientHeight;
+  if (!mount.firstElementChild || width < 1 || height < 1 || width > 2000 || height > 2000) {
+    throw new Error("There is no preview screen to capture.");
+  }
+  const canvas = document.createElement("canvas");
+  canvas.width = width * 2;
+  canvas.height = height * 2;
+  const context = canvas.getContext("2d");
+  context.scale(2, 2);
+  context.fillStyle = "#fff";
+  context.fillRect(0, 0, width, height);
+  context.beginPath();
+  context.rect(0, 0, width, height);
+  context.clip();
+  paintElement(context, mount);
+  return canvas.toDataURL("image/png");
+}
+
+function paintElement(context, element) {
+  const style = element.ownerDocument.defaultView.getComputedStyle(element);
+  if (style.display === "none" || style.visibility === "hidden") return;
+  const rect = element.getBoundingClientRect();
+  if (rect.width < 1 || rect.height < 1) return;
+  context.save();
+  paintBox(context, rect, style);
+
+  if (style.overflowX !== "visible" || style.overflowY !== "visible") {
+    context.beginPath();
+    context.rect(rect.left, rect.top, rect.width, rect.height);
+    context.clip();
+  }
+  if (element.tagName === "SELECT") {
+    paintControlText(context, element.value, rect, style);
+    context.strokeStyle = style.color;
+    context.lineWidth = 1.5;
+    context.beginPath();
+    context.moveTo(rect.right - 19, rect.top + rect.height / 2 - 3);
+    context.lineTo(rect.right - 14, rect.top + rect.height / 2 + 2);
+    context.lineTo(rect.right - 9, rect.top + rect.height / 2 - 3);
+    context.stroke();
+  } else if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+    paintControlText(context, element.value || element.placeholder || "", rect, style,
+      !element.value ? "#777" : style.color);
+  } else {
+    for (const child of element.childNodes) {
+      if (child.nodeType === 1) paintElement(context, child);
+      else if (child.nodeType === 3) paintTextNode(context, child, style);
+    }
+  }
+  context.restore();
+}
+
+function paintBox(context, rect, style) {
+  const radius = Math.min(parseFloat(style.borderTopLeftRadius) || 0, rect.width / 2, rect.height / 2);
+  if (style.backgroundColor !== "rgba(0, 0, 0, 0)" && style.backgroundColor !== "transparent") {
+    roundedPath(context, rect.left, rect.top, rect.width, rect.height, radius);
+    context.fillStyle = style.backgroundColor;
+    context.fill();
+  }
+  const border = parseFloat(style.borderTopWidth) || 0;
+  if (border > 0 && style.borderTopStyle !== "none") {
+    roundedPath(context, rect.left + border / 2, rect.top + border / 2,
+      rect.width - border, rect.height - border, Math.max(0, radius - border / 2));
+    context.lineWidth = border;
+    context.strokeStyle = style.borderTopColor;
+    context.stroke();
+  }
+}
+
+function roundedPath(context, x, y, width, height, radius) {
+  context.beginPath();
+  context.roundRect(x, y, Math.max(0, width), Math.max(0, height), radius);
+}
+
+function paintTextNode(context, node, style) {
+  const text = node.textContent;
+  if (!text || !text.trim()) return;
+  setTextStyle(context, style);
+  const range = node.ownerDocument.createRange();
+  let offset = 0;
+  for (const grapheme of new Intl.Segmenter(undefined, { granularity: "grapheme" }).segment(text)) {
+    const length = grapheme.segment.length;
+    range.setStart(node, offset);
+    range.setEnd(node, offset + length);
+    const rect = range.getBoundingClientRect();
+    if (rect.width > 0 && grapheme.segment.trim()) {
+      context.fillText(grapheme.segment, rect.left, rect.top);
+    }
+    offset += length;
+  }
+  range.detach();
+}
+
+function paintControlText(context, text, rect, style, color = style.color) {
+  setTextStyle(context, style);
+  context.fillStyle = color;
+  const padding = parseFloat(style.paddingLeft) || 8;
+  const fontSize = parseFloat(style.fontSize) || 14;
+  const x = rect.left + padding;
+  const y = rect.top + (rect.height - fontSize) / 2 - 1;
+  context.fillText(String(text), x, y, rect.width - padding - 25);
+}
+
+function setTextStyle(context, style) {
+  context.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+  context.fillStyle = style.color;
+  context.textBaseline = "top";
+}
+
+WebPreview.captureScreen = captureScreen;
+})(globalThis.WebPreview ||= {});
+
+const status = document.getElementById("runtime-status");
+const mount = document.getElementById("preview-mount");
+let activeRuntime = null;
+
+window.addEventListener("message", event => {
+  if (event.source !== window.parent) return;
+  const message = event.data;
+  if (message?.type === "webpreview:ping" && message.version === 1) {
+    window.parent.postMessage({ type: "webpreview:ready", version: 1 }, "*");
+    return;
+  }
+  if (message?.type === "webpreview:capture" && message.version === 1) {
+    if (!activeRuntime || typeof message.requestId !== "string") return;
+    WebPreview.captureScreen(document, mount).then(png => {
+      window.parent.postMessage({ type: "webpreview:capture-result", version: 1,
+        requestId: message.requestId, png }, "*");
+    }).catch(error => {
+      window.parent.postMessage({ type: "webpreview:capture-result", version: 1,
+        requestId: message.requestId,
+        error: error instanceof Error ? error.message : "Screenshot could not be saved." }, "*");
+    });
+    return;
+  }
+  if (!message || message.type !== "webpreview:launch" || message.version !== 1) return;
+
+  try {
+    const model = WebPreview.validateRuntimeModel(message.project);
+    let launchError = false;
+    activeRuntime?.dispose();
+    activeRuntime = WebPreview.createRuntime({
+      document,
+      mount,
+      project: structuredClone(model),
+      onError: error => { launchError = true; showError(error); },
+      storage: message.storage || Object.create(null), assets: message.assets || Object.create(null),
+      onStore: storage => window.parent.postMessage({type:"webpreview:store", version:1, storage}, "*")
+    });
+    if (launchError) return;
+    setStatus("Preview running.", "ready");
+    window.parent.postMessage({ type: "webpreview:status", version: 1, status: "Preview running." }, "*");
+  } catch (error) {
+    activeRuntime?.dispose();
+    activeRuntime = null;
+    mount.replaceChildren();
+    showError(error instanceof Error ? error.message : "Web Preview could not open this project.");
+  }
+});
+
+window.parent.postMessage({ type: "webpreview:ready", version: 1 }, "*");
+
+function showError(message) {
+  setStatus(message, "error");
+  window.parent.postMessage({
+    type: "webpreview:status",
+    version: 1,
+    status: String(message).slice(0, 500)
+  }, "*");
+}
+
+function setStatus(message, kind) {
+  status.textContent = message;
+  status.dataset.kind = kind;
+}
+</script>
+</body>
+</html>

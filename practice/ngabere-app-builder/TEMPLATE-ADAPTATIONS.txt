@@ -1,0 +1,7 @@
+The formative starter runtime is retained with these local fixes:
+- Preview server MIME types cover SVG, PNG, WAV, AIA and ZIP assets.
+- pdf.js and tableHtml support steps that do not contain a table.
+- Student PDF metadata uses this module ID and semantic version.
+- PDF page layout keeps a task heading with its first response.
+- Steps menu uses exact step titles and includes a confirmed new-attempt action.
+These are local snapshots, not changes to every other teaching site.

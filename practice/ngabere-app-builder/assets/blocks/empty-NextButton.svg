@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="blocklySvg geras-renderer classic-theme" width="226" height="86" viewBox="-12 -12 226 86"><style>.geras-renderer.classic-theme .blocklyText, .geras-renderer.classic-theme .blocklyFlyoutLabelText { font: 11pt sans-serif; }
+.geras-renderer.classic-theme .blocklyText { fill: rgb(255, 255, 255); }
+.geras-renderer.classic-theme .blocklyNonEditableText &gt; rect, .geras-renderer.classic-theme .blocklyEditableText &gt; rect { fill: rgb(255, 255, 255); fill-opacity: 0.6; stroke: none; }
+.geras-renderer.classic-theme .blocklyNonEditableText &gt; text, .geras-renderer.classic-theme .blocklyEditableText &gt; text { fill: rgb(0, 0, 0); }
+.geras-renderer.classic-theme .blocklyFlyoutLabelText { fill: rgb(0, 0, 0); }
+.geras-renderer.classic-theme .blocklyText.blocklyBubbleText { fill: rgb(0, 0, 0); }
+.geras-renderer.classic-theme .blocklyEditableText:not(.editing):hover &gt; rect { stroke: rgb(255, 255, 255); stroke-width: 2; }
+.geras-renderer.classic-theme .blocklyHtmlInput { font-family: sans-serif; font-weight: normal; }
+.geras-renderer.classic-theme .blocklySelected &gt; .blocklyPath { stroke: rgb(255, 204, 51); stroke-width: 3px; }
+.geras-renderer.classic-theme .blocklyHighlightedConnectionPath { stroke: rgb(255, 204, 51); }
+.geras-renderer.classic-theme .blocklyReplaceable .blocklyPath { fill-opacity: 0.5; }
+.geras-renderer.classic-theme .blocklyReplaceable .blocklyPathLight, .geras-renderer.classic-theme .blocklyReplaceable .blocklyPathDark { display: none; }
+.geras-renderer.classic-theme .blocklyInsertionMarker &gt; .blocklyPath { fill-opacity: 0.2; stroke: none; }
+.geras-renderer.classic-theme .blocklyInsertionMarker &gt; .blocklyPathLight, .geras-renderer.classic-theme .blocklyInsertionMarker &gt; .blocklyPathDark { fill-opacity: 0.2; stroke: none; }
+.blocklySvg { background-color: rgb(255, 255, 255); outline: none; overflow: hidden; position: absolute; display: block; }
+.blocklyWidgetDiv { display: none; position: absolute; z-index: 99999; }
+.injectionDiv { height: 100%; position: relative; overflow: hidden; touch-action: none; user-select: none; }
+.blocklyNonSelectable { user-select: none; }
+.blocklyBlockCanvas.blocklyCanvasTransitioning, .blocklyBubbleCanvas.blocklyCanvasTransitioning { transition: transform 0.5s; }
+.blocklyTooltipDiv { background-color: rgb(255, 255, 199); border: 1px solid rgb(221, 221, 204); box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 20px 1px; color: rgb(0, 0, 0); display: none; font: 9pt sans-serif; opacity: 0.9; padding: 2px; position: absolute; z-index: 100000; }
+.blocklyDropDownDiv { position: absolute; left: 0px; top: 0px; z-index: 1000; display: none; border: 1px solid rgb(218, 220, 224); background-color: rgb(255, 255, 255); border-radius: 2px; padding: 4px; box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px 1px; }
+.blocklyDropDownDiv.blocklyFocused { box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px 1px; }
+.blocklyDropDownContent { max-height: 300px; overflow: hidden auto; position: relative; }
+.blocklyDropDownArrow { position: absolute; left: 0px; top: 0px; width: 16px; height: 16px; z-index: -1; background-color: inherit; border-color: inherit; }
+.blocklyDropDownButton { display: inline-block; float: left; padding: 0px; margin: 4px; border-radius: 4px; outline: none; border: 1px solid; transition: box-shadow 0.1s; cursor: pointer; }
+.blocklyArrowTop { border-top-width: 1px; border-top-style: solid; border-left-width: 1px; border-left-style: solid; border-top-left-radius: 4px; border-color: inherit; }
+.blocklyArrowBottom { border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid; border-bottom-right-radius: 4px; border-color: inherit; }
+.blocklyResizeSE { cursor: se-resize; fill: rgb(170, 170, 170); }
+.blocklyResizeSW { cursor: sw-resize; fill: rgb(170, 170, 170); }
+.blocklyResizeLine { stroke: rgb(81, 90, 90); stroke-width: 1; }
+.blocklyHighlightedConnectionPath { fill: none; stroke: rgb(255, 204, 51); stroke-width: 4px; }
+.blocklyPathLight { fill: none; stroke-linecap: round; stroke-width: 1; }
+.blocklySelected &gt; .blocklyPathLight { display: none; }
+.blocklyDraggable { cursor: -webkit-grab; }
+.blocklyDragging { cursor: -webkit-grabbing; pointer-events: auto; }
+.blocklyDraggable:active { cursor: -webkit-grabbing; }
+.blocklyDragging.blocklyDraggingDelete { cursor: url("/mit/lib/blockly/media/handdelete.cur"), auto; }
+.blocklyDragging &gt; .blocklyPath, .blocklyDragging &gt; .blocklyPathLight { fill-opacity: 0.8; stroke-opacity: 0.8; }
+.blocklyDragging &gt; .blocklyPathDark { display: none; }
+.blocklyDisabled &gt; .blocklyPath { fill-opacity: 0.5; stroke-opacity: 0.5; }
+.blocklyDisabled &gt; .blocklyPathLight, .blocklyDisabled &gt; .blocklyPathDark { display: none; }
+.blocklyInsertionMarker &gt; .blocklyPath, .blocklyInsertionMarker &gt; .blocklyPathLight, .blocklyInsertionMarker &gt; .blocklyPathDark { fill-opacity: 0.2; stroke: none; }
+.blocklyNonEditableText &gt; text { pointer-events: none; }
+.blocklyFlyout { position: absolute; z-index: 20; }
+.blocklyText text { cursor: default; }
+.blocklyHidden { display: none; }
+.blocklyFieldDropdown:not(.blocklyHidden) { display: block; }
+.blocklyIconGroup { cursor: default; }
+.blocklyIconGroup:not(:hover), .blocklyIconGroupReadonly { opacity: 0.6; }
+.blocklyIconShape { fill: rgb(0, 0, 255); stroke: rgb(255, 255, 255); stroke-width: 1px; }
+.blocklyIconSymbol { fill: rgb(255, 255, 255); }
+.blocklyMinimalBody { margin: 0px; padding: 0px; height: 100%; }
+.blocklyHtmlInput { border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 4px; height: 100%; margin: 0px; outline: none; padding: 0px; width: 100%; text-align: center; display: block; box-sizing: border-box; }
+input.blocklyHtmlInput[type="number"]::-webkit-inner-spin-button, input.blocklyHtmlInput[type="number"]::-webkit-outer-spin-button { appearance: none; margin: 0px; }
+input[type="number"] { }
+.blocklyMainBackground { stroke-width: 1; stroke: rgb(198, 198, 198); }
+.blocklyMutatorBackground { fill: rgb(255, 255, 255); stroke: rgb(221, 221, 221); stroke-width: 1; }
+.blocklyFlyoutBackground { fill: rgb(221, 221, 221); fill-opacity: 0.8; }
+.blocklyMainWorkspaceScrollbar { z-index: 20; }
+.blocklyFlyoutScrollbar { z-index: 30; }
+.blocklyScrollbarHorizontal, .blocklyScrollbarVertical { position: absolute; outline: none; }
+.blocklyScrollbarBackground { opacity: 0; pointer-events: none; }
+.blocklyScrollbarHandle { fill: rgb(204, 204, 204); }
+.blocklyScrollbarBackground:hover + .blocklyScrollbarHandle, .blocklyScrollbarHandle:hover { fill: rgb(187, 187, 187); }
+.blocklyFlyout .blocklyScrollbarHandle { fill: rgb(187, 187, 187); }
+.blocklyFlyout .blocklyScrollbarBackground:hover + .blocklyScrollbarHandle, .blocklyFlyout .blocklyScrollbarHandle:hover { fill: rgb(170, 170, 170); }
+.blocklyInvalidInput { background: rgb(255, 170, 170); }
+.blocklyVerticalMarker { stroke-width: 3px; fill: rgba(255, 255, 255, 0.5); pointer-events: none; }
+.blocklyComputeCanvas { position: absolute; width: 0px; height: 0px; }
+.blocklyNoPointerEvents { pointer-events: none; }
+.blocklyContextMenu { border-radius: 4px; max-height: 100%; }
+.blocklyDropdownMenu { border-radius: 2px; padding: 0px !important; }
+.blocklyDropdownMenu .blocklyMenuItem { padding-left: 28px; }
+.blocklyDropdownMenu .blocklyMenuItemRtl { padding-left: 5px; padding-right: 28px; }
+.blocklyWidgetDiv .blocklyMenu { background: rgb(255, 255, 255); border: 1px solid transparent; box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px 1px; font: 13px Arial, sans-serif; margin: 0px; outline: none; padding: 4px 0px; position: absolute; overflow: hidden auto; max-height: 100%; z-index: 20000; }
+.blocklyWidgetDiv .blocklyMenu.blocklyFocused { box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px 1px; }
+.blocklyDropDownDiv .blocklyMenu { background: inherit; border: inherit; font: 13px "Helvetica Neue", Helvetica, sans-serif; outline: none; position: relative; z-index: 20000; }
+.blocklyMenuItem { border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: rgb(0, 0, 0); cursor: pointer; list-style: none; margin: 0px; min-width: 7em; padding: 6px 15px; white-space: nowrap; }
+.blocklyMenuItemDisabled { color: rgb(204, 204, 204); cursor: inherit; }
+.blocklyMenuItemHighlight { background-color: rgba(0, 0, 0, 0.1); }
+.blocklyMenuItemCheckbox { height: 16px; position: absolute; width: 16px; }
+.blocklyMenuItemSelected .blocklyMenuItemCheckbox { background: url("/mit/lib/blockly/media/sprites.png") -48px -16px no-repeat; float: left; margin-left: -24px; position: static; }
+.blocklyMenuItemRtl .blocklyMenuItemCheckbox { float: right; margin-right: -24px; }
+.blocklyBlockDragSurface, .blocklyAnimationLayer { position: absolute; inset: 0px; z-index: 80; pointer-events: none; overflow: visible !important; }
+.blocklyZoom &gt; image, .blocklyZoom &gt; svg &gt; image { opacity: 0.4; }
+.blocklyZoom &gt; image:hover, .blocklyZoom &gt; svg &gt; image:hover { opacity: 0.6; }
+.blocklyZoom &gt; image:active, .blocklyZoom &gt; svg &gt; image:active { opacity: 0.8; }
+.injectionDiv { --commentFillColour: #FFFCC7; --commentBorderColour: #F2E49B; }
+.blocklyComment .blocklyTextarea { background-color: var(--commentFillColour); border: 1px solid var(--commentBorderColour); box-sizing: border-box; display: block; outline: 0px; padding: 5px; resize: none; width: 100%; height: 100%; }
+.blocklyReadonly.blocklyComment .blocklyTextarea { cursor: inherit; }
+.blocklyDeleteIcon { width: 20px; height: 20px; display: none; cursor: pointer; }
+.blocklyFoldoutIcon { width: 20px; height: 20px; transform-origin: 12px 12px; cursor: pointer; }
+.blocklyResizeHandle { width: 12px; height: 12px; cursor: se-resize; }
+.blocklyReadonly.blocklyComment .blocklyResizeHandle { cursor: inherit; }
+.blocklyCommentTopbarBackground { fill: var(--commentBorderColour); height: 24px; }
+.blocklyComment .blocklyCommentPreview.blocklyText { fill: rgb(0, 0, 0); dominant-baseline: middle; visibility: hidden; }
+.blocklyCollapsed.blocklyComment .blocklyCommentPreview { visibility: visible; }
+.blocklyCollapsed.blocklyComment .blocklyCommentForeignObject, .blocklyCollapsed.blocklyComment .blocklyResizeHandle { display: none; }
+.blocklyCollapsed.blocklyComment .blocklyFoldoutIcon { transform: rotate(-90deg); }
+.blocklyRTL .blocklyCommentTopbar { transform: scale(-1, 1); }
+.blocklyRTL .blocklyCommentForeignObject { direction: rtl; }
+.blocklyRTL .blocklyCommentPreview { transform: scale(-1, 1); direction: rtl; }
+.blocklyRTL .blocklyResizeHandle { transform: scale(-1, 1); cursor: sw-resize; }
+.blocklyCommentHighlight { fill: none; }
+.blocklySelected .blocklyCommentHighlight { stroke: rgb(255, 204, 51); stroke-width: 3px; }
+.blocklyCollapsed.blocklySelected .blocklyCommentHighlight { stroke: none; }
+.blocklyCollapsed.blocklySelected .blocklyCommentTopbarBackground { stroke: rgb(255, 204, 51); stroke-width: 3px; }
+.blocklyTextInputBubble .blocklyTextarea { background-color: var(--commentFillColour); border: 0px; box-sizing: border-box; display: block; outline: 0px; padding: 5px; resize: none; width: 100%; height: 100%; }
+.blocklyFlyoutButton { fill: rgb(136, 136, 136); cursor: default; }
+.blocklyFlyoutButtonShadow { fill: rgb(102, 102, 102); }
+.blocklyFlyoutButton:hover { fill: rgb(170, 170, 170); }
+.blocklyFlyoutLabel { cursor: default; }
+.blocklyFlyoutLabelBackground { opacity: 0; }
+.blocklyTreeRow:not(.blocklyTreeSelected):hover { background-color: rgba(255, 255, 255, 0.2); }
+.blocklyToolboxDiv[layout="h"] .blocklyToolboxCategory { margin: 1px 5px 1px 0px; }
+.blocklyToolboxDiv[dir="RTL"][layout="h"] .blocklyToolboxCategory { margin: 1px 0px 1px 5px; }
+.blocklyTreeRow { height: 22px; line-height: 22px; margin-bottom: 3px; padding-right: 8px; white-space: nowrap; }
+.blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow { margin-left: 8px; padding-right: 0px; }
+.blocklyTreeIcon { background-image: url("/mit/lib/blockly/media/sprites.png"); height: 16px; vertical-align: middle; visibility: hidden; width: 16px; }
+.blocklyTreeIconClosed { background-position: -32px -1px; }
+.blocklyToolboxDiv[dir="RTL"] .blocklyTreeIconClosed { background-position: 0px -1px; }
+.blocklyTreeSelected &gt; .blocklyTreeIconClosed { background-position: -32px -17px; }
+.blocklyToolboxDiv[dir="RTL"] .blocklyTreeSelected &gt; .blocklyTreeIconClosed { background-position: 0px -17px; }
+.blocklyTreeIconOpen { background-position: -16px -1px; }
+.blocklyTreeSelected &gt; .blocklyTreeIconOpen { background-position: -16px -17px; }
+.blocklyTreeLabel { cursor: default; font: 16px sans-serif; padding: 0px 3px; vertical-align: middle; }
+.blocklyToolboxDelete .blocklyTreeLabel { cursor: url("/mit/lib/blockly/media/handdelete.cur"), auto; }
+.blocklyTreeSelected .blocklyTreeLabel { color: rgb(255, 255, 255); }
+.blocklyTreeSeparator { border-bottom: 1px solid rgb(229, 229, 229); height: 0px; margin: 5px 0px; }
+.blocklyToolboxDiv[layout="h"] .blocklyTreeSeparator { border-right: 1px solid rgb(229, 229, 229); border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor; height: auto; margin: 0px 5px; padding: 5px 0px; width: 0px; }
+.blocklyToolboxDelete { cursor: url("/mit/lib/blockly/media/handdelete.cur"), auto; }
+.blocklyToolboxGrab { cursor: -webkit-grabbing; }
+.blocklyToolboxDiv { background-color: rgb(221, 221, 221); overflow: visible auto; padding: 4px 0px; position: absolute; z-index: 70; -webkit-tap-highlight-color: transparent; }
+.blocklyToolboxContents { display: flex; flex-flow: column wrap; }
+.blocklyToolboxContents:focus { outline: none; }
+.blocklyHtmlTextAreaInput { font-family: monospace; resize: none; overflow: hidden; height: 100%; text-align: left; }
+.blocklyHtmlTextAreaInputOverflowedY { overflow-y: scroll; }
+body { font: 16px system-ui; }
+#workspace { height: 900px; width: 1800px; }
+#status { position: sticky; top: 0px; background: white; z-index: 99; padding: 10px; }
+</style><g data-id="empty1" class="blocklyDraggable"><path class="blocklyPathDark" transform="translate(1,1)" fill="#8e722a" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 192.91619873046875  v 5  H 200.91619873046875  V 5  H 200.91619873046875  V 23  H 200.91619873046875  V 27  H 66.30636596679688  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 8 a 8 8 0 0,0 8,8  H 200.91619873046875  H 200.91619873046875  V 51  V 61  h -192.91619873046875 a 8 8 0 0,1 -8,-8 z&#10;"/><path class="blocklyPath" stroke="none" fill="#b18e35" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 192.91619873046875  v 5  H 200.91619873046875  V 5  H 200.91619873046875  V 23  H 200.91619873046875  V 27  H 66.30636596679688  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 8 a 8 8 0 0,0 8,8  H 200.91619873046875  H 200.91619873046875  V 51  V 61  h -192.91619873046875 a 8 8 0 0,1 -8,-8 z&#10;"/><path class="blocklyPathLight" stroke="#c8b072" d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 200.41619873046875  H 200.41619873046875  M 36.306365966796875,51  m 1.9895923599143455,-1.9895923599143455 a 8.5 8.5 0 0,0 6.0104076400856545,2.4895923599143455  l 156.10983276367188,0  H 200.41619873046875  M 0,61  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 8 &#10;"/><g transform="translate(10,5)" style="display: block;"><text class="blocklyText" x="0" y="14">when </text></g><g class="blocklyEditableText" transform="translate(54.119537353515625,5)" style="cursor: default; display: block;"><rect rx="4" ry="4" x="0" y="0" height="18" width="95.96275329589844" class="blocklyFieldRect blocklyDropdownRect" stroke="#c8b072" fill="transparent"/><text class="blocklyText blocklyDropdownText" text-anchor="start" x="5" y="14">NextButton<tspan style="fill: rgb(177, 142, 53);"> ▾</tspan></text><image style="display: none;"/></g><g transform="translate(155.08229064941406,5)" style="display: block;"><text class="blocklyText" x="0" y="14">.Click</text></g><g transform="translate(10,32)" style="display: block;"><text class="blocklyText" x="0" y="14">do</text></g></g></svg>

@@ -1,0 +1,383 @@
+{
+  "id": "MOD-APP-NGABERE-01",
+  "title": "Build Cultural Language",
+  "slug": "ngabere-app-builder",
+  "version": "1.4.0",
+  "status": "pilot",
+  "recommendedGrades": [
+    8
+  ],
+  "tracks": [
+    "Foundation"
+  ],
+  "sourcePath": "technology-learning-hub/standalone-sites/ngabere-app-builder",
+  "publishedUrl": null,
+  "owner": "Porfirio Rios",
+  "lastReviewed": "2026-10-21",
+  "estimatedMinutes": null,
+  "timingStatus": "Unknown, pilot required",
+  "prerequisites": [
+    "Open an App Inventor project",
+    "Drag and rename components",
+    "Access to our App Inventor editor with Web Preview"
+  ],
+  "objectives": [
+    "Build and style a readable word card",
+    "Upload and match three recorded pronunciations",
+    "Connect four Click events to provided helper procedures",
+    "Test and explain learner-specific progress saving",
+    "Export editable AIA and installable APK files"
+  ],
+  "evidence": [
+    "Editable .aia project",
+    "Four saved test/explanation responses",
+    "Two formative concept checks",
+    "Optional installed APK"
+  ],
+  "sections": [
+    {
+      "id": "goal",
+      "title": "See the app you will finish",
+      "phase": "Start",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "guide-and-editor",
+      "title": "Keep the guide and editor open",
+      "phase": "Start",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "get-starter",
+      "title": "Download your starter",
+      "phase": "Start",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "open-inventor",
+      "title": "Open MIT App Inventor",
+      "phase": "Start",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "import",
+      "title": "Import the project",
+      "phase": "Start",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "starter-check",
+      "title": "Check the starter you opened",
+      "phase": "Start",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "designer-map",
+      "title": "Find the four Designer areas",
+      "phase": "Start",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "find-card",
+      "title": "Find the word card",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "word-style",
+      "title": "Make the word stand out",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "meaning-style",
+      "title": "Style the meaning",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "listen-button",
+      "title": "Add the Listen button",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "listen-style",
+      "title": "Style Listen",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "name-and-text",
+      "title": "A name and a label are different",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "instruction",
+      "title": "Add a short instruction",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "learned-button",
+      "title": "Add Mark as learned",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "navigation-row",
+      "title": "Add a navigation row",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "previous-button",
+      "title": "Add Previous",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "next-button",
+      "title": "Add Next",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "layout-check",
+      "title": "Check your layout",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "names-check",
+      "title": "Check component names",
+      "phase": "1 · Screen layout",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "upload-1",
+      "title": "Upload Ju",
+      "phase": "2 · Words and recordings",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "upload-2",
+      "title": "Upload Nukro",
+      "phase": "2 · Words and recordings",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "upload-3",
+      "title": "Upload Minchi",
+      "phase": "2 · Words and recordings",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "connect-phone",
+      "title": "Open our viewer",
+      "phase": "2 · Words and recordings",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "create-account",
+      "title": "Create your app account",
+      "phase": "2 · Words and recordings",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "event-meaning",
+      "title": "See how a button works",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "provided-code",
+      "title": "Use the supplied procedures",
+      "phase": "3 · Connect buttons",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "listen-event",
+      "title": "Start the Listen event",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "listen-call",
+      "title": "Connect playback",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "test-listen",
+      "title": "Test Ju",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "event-NextButton",
+      "title": "Start the Next event",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "call-NextButton",
+      "title": "Connect Next",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "test-NextButton",
+      "title": "Test Next",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "event-PreviousButton",
+      "title": "Start the Previous event",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "call-PreviousButton",
+      "title": "Connect Previous",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "test-PreviousButton",
+      "title": "Test Previous",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "three-audios",
+      "title": "Test all recordings",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "audio-evidence",
+      "title": "Record your audio test",
+      "phase": "3 · Listen and navigation",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "save-event",
+      "title": "Start the save event",
+      "phase": "4 · Save learning progress",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "save-call",
+      "title": "Connect saving",
+      "phase": "4 · Save learning progress",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "save-test",
+      "title": "Save one learned word",
+      "phase": "4 · Save learning progress",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "progress-test",
+      "title": "Check the progress count",
+      "phase": "4 · Save learning progress",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "return-test",
+      "title": "Check saved progress",
+      "phase": "4 · Save learning progress",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "save-evidence",
+      "title": "Record your save test",
+      "phase": "4 · Save learning progress",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "save-check",
+      "title": "Check whose progress saves",
+      "phase": "4 · Save learning progress",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "independent",
+      "title": "Make one small improvement",
+      "phase": "5 · Test and export",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "export",
+      "title": "Export the editable project",
+      "phase": "5 · Test and export",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "build-apk",
+      "title": "Optional: build an Android file",
+      "phase": "5 · Test and export",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "installed-test",
+      "title": "Run the final viewer test",
+      "phase": "5 · Test and export",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "final-evidence",
+      "title": "Explain one connection",
+      "phase": "5 · Test and export",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "files-evidence",
+      "title": "Keep your evidence",
+      "phase": "5 · Test and export",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "review",
+      "title": "Your build record",
+      "phase": "Finish",
+      "estimatedMinutes": null
+    }
+  ],
+  "requirements": {
+    "software": [
+      "Our App Inventor editor with Web Preview",
+      "Modern browser"
+    ],
+    "internet": "Required for App Inventor, sign-in and Firebase sync",
+    "accounts": "School App Inventor access and a separate app learning account",
+    "device": "Laptop or desktop for building and viewer tests",
+    "accessibility": [
+      "Readable English",
+      "Keyboard controls",
+      "Optional read-aloud",
+      "Image alternatives",
+      "Responsive reflow",
+      "Partial PDF export"
+    ]
+  },
+  "offlineRoute": "Use printable-fallback.html and downloaded recordings. Sketch the four event-to-helper connections and retain the app project. Sign-in and cloud sync require internet.",
+  "acceptance": {
+    "localGuide": "Build/check and 10 tests pass. All 52 routes checked at 1366x768, 1280x720, 1024x720 and 390x844: no horizontal overflow, broken pictures or inaccessible content behind fixed navigation. Real comparison pictures may require vertical scrolling and can be enlarged. Existing response IDs and storage scope retained.",
+    "firebaseBackend": "Live authentication, owner access, cross-user denial, vocabulary permissions and refresh rechecked; temporary records removed.",
+    "androidDevice": "Optional only, not required for classroom viewer testing",
+    "starter": "721 provided blocks load and generate Yail; students add 8 blocks. Actual-block scenario tests passed.",
+    "narration": "51 current Kokoro English clips match the revised authored scripts and all decode. Original three word recordings unchanged."
+  },
+  "teachingReview": "Teacher reported that v1.1 did not explain the start or changes. V1.2 adds verified starter context, editor orientation, explicit purpose/work surface, and before/after diagrams. Needs teacher/student comprehension review; pacing unknown.",
+  "visualSources": {
+    "designerCaptures": "Actual local MIT App Inventor, cumulative capture projects from the starter and completed model. Crops show the changed region. Designer previews are labelled.",
+    "blocks": "Native SVGs rendered by the local MIT App Inventor Blockly engine.",
+    "runtimeOutcomes": "Actual Web Preview screenshots using local demonstration replies. Students verify audio, navigation and real account saving in our viewer."
+  },
+  "studentDownloads": "Starter AIA, three WAV files and Start here only. Recovery AIA projects and block-import PNGs are Teacher Only."
+}

@@ -1,0 +1,3 @@
+export const tableHtml = table => !table ? '' : `<table><caption>${escapeHtml(table.caption||'')}</caption><thead><tr>${table.columns.map(x=>`<th>${escapeHtml(x)}</th>`).join('')}</tr></thead><tbody>${table.rows.map(row=>`<tr>${row.map(x=>`<td>${escapeHtml(x)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+export const escapeHtml = value => String(value).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export const wordTable = {caption:'Words and recordings',columns:['Ngäbere','English','Recording'],rows:[['Ju','House','word1.wav'],['Nukro','Dog','word2.wav'],['Minchi','Cat','word3.wav']]};

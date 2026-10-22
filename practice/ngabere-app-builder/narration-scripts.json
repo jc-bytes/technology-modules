@@ -1,0 +1,316 @@
+{
+  "model": "hexgrad/Kokoro-82M",
+  "voice": "af_heart",
+  "language": "English (US)",
+  "speed": 0.92,
+  "license": "Apache-2.0",
+  "scope": "Authored guide directions only. Ngäbere pronunciations use the original recordings.",
+  "records": [
+    {
+      "id": "goal",
+      "text": "See the app you will finish. In this guide. You will finish Cultural Language. Its first lesson teaches three the language words. A learner can listen, move through the words and mark them learned.. Look at the finished app screen. You will build the word card and its four controls.. Check: Your finished layout will include Listen, Mark as learned, Previous and Next.",
+      "file": "assets/narration/goal.mp3",
+      "sha256": "97d087e211c4fc881a6d7dd2e95f729ae09d53abb15adfdf9549d15f7ce8a99f"
+    },
+    {
+      "id": "guide-and-editor",
+      "text": "Keep the guide and editor open. In this guide. Use three tabs: this guide for directions, MIT App Inventor to build, and our viewer to test exported app files.. Keep this guide and MIT App Inventor open. When you reach testing, open our viewer in another tab.. Check: You know where to read, where to build, and where to test.",
+      "file": "assets/narration/guide-and-editor.mp3",
+      "sha256": "6a6b122dcebeadd2501eb7ea7f4e6f2b08623f7f64a1a65da04301113827be43"
+    },
+    {
+      "id": "get-starter",
+      "text": "Download your starter. In this guide. The starter is the editable app project, not a picture. It already contains sign-in, the three word meanings and the saving instructions.. Click Download starter. Keep the downloaded file ending in A I A; do not unzip it.. Check: Downloads contains Language App_Firebase_Starter A I A.",
+      "file": "assets/narration/get-starter.mp3",
+      "sha256": "86ebcd6bc481f1ff84cea5b2e0ef9d111927a43790fef3d53675bf6275e204d7"
+    },
+    {
+      "id": "open-inventor",
+      "text": "Open MIT App Inventor. In this guide. Build the app on the official MIT App Inventor website.. Open MIT App Inventor using the link below and sign in. If a project opens, click the back arrow at the top left to reach My Projects.. Check: My Projects is open on MIT App Inventor.",
+      "file": "assets/narration/open-inventor.mp3",
+      "sha256": "13ed00eb711a94adfa859a6391e22a72223d8666683f1e848186ef0d770ae621"
+    },
+    {
+      "id": "import",
+      "text": "Import the project. In App Inventor · Projects. Import means opening the supplied project for editing. Do not start with an empty app.. In App Inventor, open Projects. Choose Import project ( A I A) from my computer. Choose Language App_Firebase_Starter A I A from Downloads, then confirm.. Check: The project opens in Designer and its preview shows the word for house and House.",
+      "file": "assets/narration/import.mp3",
+      "sha256": "28bd841a581ae591931e2cf48aaff451880a1ba5df3724108dc75f6bec7e5229"
+    },
+    {
+      "id": "starter-check",
+      "text": "Check the starter you opened. In App Inventor · Designer. The supplied starter should show the word for house and House with no Listen, Mark as learned, Previous or Next buttons. Its sign-in and saving code are already provided.. Compare your newly opened Designer preview with this actual starter.. Check: It shows the word for house / House and has none of your four new buttons.",
+      "file": "assets/narration/starter-check.mp3",
+      "sha256": "4c79b17c123c93c7cb9e868b3a16cd219cd2f0445eb485469088934e1cf414a0"
+    },
+    {
+      "id": "designer-map",
+      "text": "Find the four Designer areas. In this guide. Palette supplies new components. The Designer Viewer arranges the screen. Components lists the items in your app. Properties changes the selected item.. Find Palette, Viewer, Components and Properties before editing anything.. Check: You can point to all four areas.",
+      "file": "assets/narration/designer-map.mp3",
+      "sha256": "97cb37099585eb16e66b19650521fcd6232676fbde0277e8b75cd2a7a83f171d"
+    },
+    {
+      "id": "find-card",
+      "text": "Find the word card. In App Inventor · Designer. The Components list is a list of things inside your app. A Label shows text; an Arrangement holds things together.. In Components, expand Page, then App Panel, Learning Panel and Word Card. Click Word Label.. Check: Word Label is selected. The Properties area now shows its settings.",
+      "file": "assets/narration/find-card.mp3",
+      "sha256": "1daa5d5b9a01c5a5280720c1c8c71a0fea5dcbd834c2e01ecd5e59d219128292"
+    },
+    {
+      "id": "word-style",
+      "text": "Make the word stand out. In App Inventor · Designer. Word Label is the text the word for house. Changing its font makes the same word easier to read; it does not change the recording.. Select Word Label in Components. In Properties, set Font Size to 40, check Font Bold, and set Text Alignment to center.. Check: the word for house becomes large, bold and centered.",
+      "file": "assets/narration/word-style.mp3",
+      "sha256": "43e6b3296c6aaff3b20721b81e5ec023abfe9f8194947bdf04ff445dec333a39"
+    },
+    {
+      "id": "meaning-style",
+      "text": "Style the meaning. In App Inventor · Designer. Meaning Label shows the English meaning. Its smaller text should sit below the large language word.. Select Meaning Label. Set Font Size to 24, Text Color to number 566D68, and Text Alignment to center.. Check: House appears below the word for house in gray text.",
+      "file": "assets/narration/meaning-style.mp3",
+      "sha256": "9efb69a31346b36f34755de1344b5fe7be56e00476760e2a6724676854c1be2c"
+    },
+    {
+      "id": "listen-button",
+      "text": "Add the Listen button. In App Inventor · Designer. A Button is something a learner taps. Adding it changes the screen; it will not play anything until we connect its Click event.. From Palette , then User Interface, drag Button into Word Card, just above Card Bottom. In Components, select the new button, click Rename, and enter Listen Button.. Check: Listen Button appears in Components inside Word Card.",
+      "file": "assets/narration/listen-button.mp3",
+      "sha256": "37b7d64866cbc610812e543bbab61b792a7f095742f727c431a009739a462f31"
+    },
+    {
+      "id": "listen-style",
+      "text": "Style Listen. In App Inventor · Designer. The component name Listen Button is used by the blocks. The Text setting is the word the learner sees on the screen.. Select Listen Button and enter the settings below.. Text: Listen. Font Size: 16. Width / Height: Fill parent / 52 pixels. Shape: Rounded. Background Color / Text Color: number 00695C / number FFFFFF. Check: The button reads Listen and fills the card width.",
+      "file": "assets/narration/listen-style.mp3",
+      "sha256": "f968f35b6fcf46604ca3bb5ded67910233e16df4c1e91d111061be5c830f9b0d"
+    },
+    {
+      "id": "name-and-text",
+      "text": "A name and a label are different. In this guide. Listen Button is the component name used by code. Listen is its Text, the label a learner reads on the button.. In this real capture, find Listen Button in Components and Listen in its Text property.. Check: The component name is used in Blocks; Text is the label shown to the learner.",
+      "file": "assets/narration/name-and-text.mp3",
+      "sha256": "787cf76941fc940b762f5473ef2612b2b35e5e6ef716e675e03c7534b5a4a516"
+    },
+    {
+      "id": "instruction",
+      "text": "Add a short instruction. In App Inventor · Designer. A Label gives directions but cannot be tapped. Student Buttons is the empty space below the word card.. Drag a Label into Student Buttons. Rename it Instruction Label. Set Text to Listen, say it, then mark it. Set Font Size to 15, Text Color to number 566D68 and Width to Fill parent.. Check: A short instruction appears below the card.",
+      "file": "assets/narration/instruction.mp3",
+      "sha256": "5d0dbed33d6a44d95f3e046710e189a7459491e3cb47a576b6503e6ffba3cea6"
+    },
+    {
+      "id": "learned-button",
+      "text": "Add Mark as learned. In App Inventor · Designer. This button will let the learner mark the current word as learned. First we create its appearance; saving comes later.. Drag a Button below Instruction Label, inside Student Buttons. Rename it Learned Button and enter the settings below.. Text: Mark as learned. Font Size: 16. Width / Height: Fill parent / 52 pixels. Shape: Rounded. Background Color / Text Color: number E3F2ED / number 00695C. Check: Mark as learned appears below the instruction.",
+      "file": "assets/narration/learned-button.mp3",
+      "sha256": "b7cd5079d95c2dd8658676bf2aa8a431b18ca16b900f0dd16ba49d43e5fe047c"
+    },
+    {
+      "id": "navigation-row",
+      "text": "Add a navigation row. In App Inventor · Designer. Buttons normally stack downwards. A Horizontal Arrangement is a row that lets Previous and Next sit side by side.. From Palette , then Layout, drag Horizontal Arrangement into Student Buttons, below Learned Button. Rename it Word Navigation. Set Width to Fill parent.. Check: An empty horizontal row is ready for two buttons.",
+      "file": "assets/narration/navigation-row.mp3",
+      "sha256": "4825ef03c2c46c25bbd3abaca44f3708620c8d4cfdb8cb25ac83f79a4758a0eb"
+    },
+    {
+      "id": "previous-button",
+      "text": "Add Previous. In App Inventor · Designer. These buttons will move through the three words. Their positions are ready now; their actions will be connected in Blocks.. Drag a Button into Word Navigation. Rename it Previous Button and enter the settings below.. Text: Previous. Font Size: 16. Width / Height: 44 percent / 52 pixels. Shape: Rounded. Background Color / Text Color: number E3F2ED / number 00695C. Check: Previous appears inside the row.",
+      "file": "assets/narration/previous-button.mp3",
+      "sha256": "fb0218dde0b0e3231d7d754abbe4050fddf003e27407db7a7d4e29fa733622ad"
+    },
+    {
+      "id": "next-button",
+      "text": "Add Next. In App Inventor · Designer. These buttons will move through the three words. Their positions are ready now; their actions will be connected in Blocks.. Drag a Button into Word Navigation. Rename it Next Button and enter the settings below.. Text: Next. Font Size: 16. Width / Height: 44 percent / 52 pixels. Shape: Rounded. Background Color / Text Color: number E3F2ED / number 00695C. Check: Next appears inside the row.",
+      "file": "assets/narration/next-button.mp3",
+      "sha256": "fc21451af48d436785ac248886132da6959321e117f163030de7c7ccfb5b5c65"
+    },
+    {
+      "id": "layout-check",
+      "text": "Check your layout. In App Inventor · Designer. At this point the learning screen should look complete. Its four new buttons still have no Click instructions, so a click will not yet perform these actions.. Compare the controls in your Designer with this running-app view. The four new buttons have no Click instructions yet.. Check: Your word card and all four button names match.",
+      "file": "assets/narration/layout-check.mp3",
+      "sha256": "90fb19f3dc17c6f3d7c3707b88bb3551a7ae013b6ecf22c284ad27419734ede9"
+    },
+    {
+      "id": "names-check",
+      "text": "Check component names. Which name must match the Click block exactly?. Choices: 1. The button component name. 2. The color name. 3. The project nickname",
+      "file": "assets/narration/names-check.mp3",
+      "sha256": "a45a727d16b7c9c6b39d7c1a83bb25074d60f04edfd97d1887ee5a031a86cd49"
+    },
+    {
+      "id": "upload-1",
+      "text": "Upload the word for house. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word1 dot wave using the link below. In Designer, find Media under Components, choose Upload File, select that file from Downloads, and confirm.. Check: Media lists word1 dot wave. Keep this exact filename.",
+      "file": "assets/narration/upload-1.mp3",
+      "sha256": "178d7adf5796940ea98658c7955d960f0de1b098cb08d5caaf4e1c92a7120743"
+    },
+    {
+      "id": "upload-2",
+      "text": "Upload the word for dog. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word2 dot wave using the link below. In Designer, find Media under Components, choose Upload File, select that file from Downloads, and confirm.. Check: Media lists word2 dot wave. Keep this exact filename.",
+      "file": "assets/narration/upload-2.mp3",
+      "sha256": "1f1e5d5a70b0c740c0da234e1ea4421f362aed7405e03f90ed21447f409a6275"
+    },
+    {
+      "id": "upload-3",
+      "text": "Upload the word for cat. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word3 dot wave using the link below. In Designer, find Media under Components, choose Upload File, select that file from Downloads, and confirm.. Check: Media lists word3 dot wave. Keep this exact filename.",
+      "file": "assets/narration/upload-3.mp3",
+      "sha256": "e963dad35b3b1f4fdcac204586770bea60a495b40862e928d8447a68bd6d57fc"
+    },
+    {
+      "id": "connect-phone",
+      "text": "Open your exported app in our viewer. MIT App Inventor , then our viewer. Our viewer is a separate website. It runs the A I A file you choose; it cannot see unsaved changes in the MIT editor.. In MIT App Inventor, choose Projects , then Export selected project ( A I A) to my computer. Open our viewer below. Click Choose File and select the A I A you just exported.. Check: Wait for Preview running. Cultural Language opens at its account screen.",
+      "file": "assets/narration/connect-phone.mp3",
+      "sha256": "b6ac6f899cd3dcaa4944120c9d9c4005208ef0957a38ae4e91a6adaf0f128a99"
+    },
+    {
+      "id": "create-account",
+      "text": "Create your app account. In our viewer · Cultural Language. This account belongs to Cultural Language. It is separate from the account used to open the editor.. In the viewer, enter an email you control and a new app password of at least six characters. Click Create account. If you already have this app account, click Sign in.. Check: Learn opens in the viewer and shows the first word. Keep your password out of guide answers and screenshots.",
+      "file": "assets/narration/create-account.mp3",
+      "sha256": "05d13918a1150f4b96690e8317b6ffb798c070ff7752e33f0c6d11fe8236a7ff"
+    },
+    {
+      "id": "event-meaning",
+      "text": "See how a button works. In this guide. An event means something happened. A Click event means someone tapped a button. A procedure is a named set of instructions already supplied in your starter.. Read this example: when Listen Button is tapped, call Play Word. Play Word chooses and plays the recording for the word on the card.. Check: The yellow event starts the purple instruction.",
+      "file": "assets/narration/event-meaning.mp3",
+      "sha256": "119c403945c8971558b90128792970c470f934a46deff2287d5262e55e3a3e52"
+    },
+    {
+      "id": "provided-code",
+      "text": "Use the supplied procedures. In App Inventor · Blocks. The starter already knows how to sign in, choose a word, play its file and save progress. These named instructions are procedures.. In Blocks, use the empty area beside the supplied code. Leave the provided procedures in place.. Check: Your job is four Click events, each with one procedure call.",
+      "file": "assets/narration/provided-code.mp3",
+      "sha256": "6252367d3fcb97c4b3d91bc0fd162602bb27dac4c91b1e1ca765c309095ffb55"
+    },
+    {
+      "id": "listen-event",
+      "text": "Start the Listen event. In App Inventor · Blocks. We need to tell the app what to do when someone clicks Listen Button. The yellow Click block is the starting point for that tap.. Switch to the MIT App Inventor tab and click Blocks. In the component list, select Listen Button. Drag when Listen Button.Click into an empty workspace area.. Check: One yellow Listen Button.Click event has an empty do space.",
+      "file": "assets/narration/listen-event.mp3",
+      "sha256": "9ad98394ae4a4a669e6e849d7e04fca48fadd30b3662af816adc24f368302c15"
+    },
+    {
+      "id": "listen-call",
+      "text": "Connect playback. In App Inventor · Blocks. Play Word is a procedure already in the starter. It contains the instructions to play the current word recording. You only connect it to the button.. Open Built-in , then Procedures on the left. Find call Play Word, then drag it inside the do space of Listen Button.Click until it snaps in.. Check: The purple call Play Word block is attached inside the yellow event.",
+      "file": "assets/narration/listen-call.mp3",
+      "sha256": "77dfafe614961fe5a3ab9ca789e91257e229c85bd50d95f830fd8a9f29db7c05"
+    },
+    {
+      "id": "test-listen",
+      "text": "Test the word for house. In our viewer · Learn. The new connection changes behavior, not appearance. A click now runs Play Word, which uses the uploaded file for the current word.. Export a new A I A from MIT, then choose that newest file in our viewer. Sign in if asked. Click Listen while the word for house is on the card.. Check: You hear the original recording of the word for house. The card still says the word for house / House.",
+      "file": "assets/narration/test-listen.mp3",
+      "sha256": "98fddd6e506418c862b0f9f2c78ccd039babbfbd0b49c83a0f7b7b2c9fc0dac9"
+    },
+    {
+      "id": "event-NextButton",
+      "text": "Start the Next event. In App Inventor · Blocks. We need to tell the app what to do when someone clicks Next Button. The yellow Click block is the starting point for that tap.. Switch to the MIT App Inventor tab and click Blocks. Select Next Button in the left component list and drag its Click event into an empty workspace area.. Check: One yellow Next Button.Click event has an empty do space.",
+      "file": "assets/narration/event-NextButton.mp3",
+      "sha256": "4b3826bca27d6a9c9288227fa5415b009841e47ff40902fe5dde9ed8413e4e94"
+    },
+    {
+      "id": "call-NextButton",
+      "text": "Connect Next. In App Inventor · Blocks. Next Word is a procedure already in the starter. It contains the instructions to show the next word. You only connect it to the button.. Open Built-in , then Procedures on the left. Find call Next Word, then drag it inside the do space of Next Button.Click until it snaps in.. Check: The purple call Next Word block is attached inside the yellow event.",
+      "file": "assets/narration/call-NextButton.mp3",
+      "sha256": "735b2f75cd35a1260ad00abfe92c638949c29b9a80fbc7108b4e3e5ff52b8a78"
+    },
+    {
+      "id": "test-NextButton",
+      "text": "Test Next. In our viewer · Learn. Next Word changes both the language word and its English meaning. It does not add a new word to the database.. Export a new A I A from MIT, then choose that newest file in our viewer. Sign in if asked. Starting at the word for house, click Next once for the word for dog and again for the word for cat.. Check: The pairs are the word for house / House, the word for dog / Dog, then the word for cat / Cat.",
+      "file": "assets/narration/test-NextButton.mp3",
+      "sha256": "e351fd53d9c435eeedcd653c3df223415f31c4271a66300c1ce4ae0bb40ddc24"
+    },
+    {
+      "id": "event-PreviousButton",
+      "text": "Start the Previous event. In App Inventor · Blocks. We need to tell the app what to do when someone clicks Previous Button. The yellow Click block is the starting point for that tap.. Switch to the MIT App Inventor tab and click Blocks. Select Previous Button in the left component list and drag its Click event into an empty workspace area.. Check: One yellow Previous Button.Click event has an empty do space.",
+      "file": "assets/narration/event-PreviousButton.mp3",
+      "sha256": "4b9784279ed23552941dfdb741318e994d7f0652f273941dd258a70dafbc960a"
+    },
+    {
+      "id": "call-PreviousButton",
+      "text": "Connect Previous. In App Inventor · Blocks. Previous Word is a procedure already in the starter. It contains the instructions to show the previous word. You only connect it to the button.. Open Built-in , then Procedures on the left. Find call Previous Word, then drag it inside the do space of Previous Button.Click until it snaps in.. Check: The purple call Previous Word block is attached inside the yellow event.",
+      "file": "assets/narration/call-PreviousButton.mp3",
+      "sha256": "2659e4490ff68c3d8c6714752d6c1e54dee124f90d580f729bace9c09d556cb9"
+    },
+    {
+      "id": "test-PreviousButton",
+      "text": "Test Previous. In our viewer · Learn. Previous Word moves backwards through the same list. Test it from the last word so the change is easy to see.. Export a new A I A from MIT, then choose that newest file in our viewer. Sign in if asked. Click Next twice to reach the word for cat, then Previous once for the word for dog and again for the word for house.. Check: The word and meaning move backwards together.",
+      "file": "assets/narration/test-PreviousButton.mp3",
+      "sha256": "b7ce720486101c49b53d1296b5a104c3802fb9da195cbdb7f9240d467eeef145"
+    },
+    {
+      "id": "three-audios",
+      "text": "Test all recordings. In our viewer · Learn. The app uses the current word to choose its recording. Testing only the word for house would miss a wrong filename for Dog or Cat.. In our viewer, use Next and Previous to visit the word for house, the word for dog and the word for cat. Click Listen once on each word.. Check: Each card plays its matching original recording.",
+      "file": "assets/narration/three-audios.mp3",
+      "sha256": "30feb744eac48ba34f9152b393ed9a94007d9915a7cde2defe849c41be3cc1d1"
+    },
+    {
+      "id": "audio-evidence",
+      "text": "Record your audio test. For the word for house, the word for dog and the word for cat, write what played. Record any problem you still need to fix.",
+      "file": "assets/narration/audio-evidence.mp3",
+      "sha256": "446bf5825c545ec5eff7380f1db13ce209001e114809acf53728a7ce29f75c1a"
+    },
+    {
+      "id": "save-event",
+      "text": "Start the save event. In App Inventor · Blocks. We need to tell the app what to do when someone clicks Learned Button. The yellow Click block is the starting point for that tap.. Switch to the MIT App Inventor tab and click Blocks. Select Learned Button in the left component list and drag its Click event into an empty workspace area.. Check: One yellow Learned Button.Click event has an empty do space.",
+      "file": "assets/narration/save-event.mp3",
+      "sha256": "42878c1a0378a889036a458ac664f849932e9de3e2020af722493e21b97d3811"
+    },
+    {
+      "id": "save-call",
+      "text": "Connect saving. In App Inventor · Blocks. Save Learned Word is a procedure already in the starter. It contains the instructions to save the current word as learned for this account. You only connect it to the button.. Open Built-in , then Procedures on the left. Find call Save Learned Word, then drag it inside the do space of Learned Button.Click until it snaps in.. Check: The purple call Save Learned Word block is attached inside the yellow event.",
+      "file": "assets/narration/save-call.mp3",
+      "sha256": "747776f62276d3ddfa35750eee035e65ba296452f67ae098280c6e2eb5a36b69"
+    },
+    {
+      "id": "save-test",
+      "text": "Save one learned word. In our viewer · Learn. Save Learned Word sends this word to Firebase under the signed-in learner’s account. Other learners keep their own progress.. Export a new A I A from MIT, then choose that newest file in our viewer. Sign in if asked. On the word for house, click Mark as learned and wait for the sync message.. Check: the word for house shows Learned , check mark and the app reports Progress is up to date.",
+      "file": "assets/narration/save-test.mp3",
+      "sha256": "ec73714a70e36d37c3fec15f8c119a3d4fd1c0cce8c1e16d2a67924ba48ca3d9"
+    },
+    {
+      "id": "progress-test",
+      "text": "Check the progress count. In our viewer · Progress. Progress counts the words saved as learned for the current account. It may already include earlier practice.. Click Progress at the top of the app in our viewer.. Check: The learned count includes the word for house. If this account was empty, it now shows 1 / 3.",
+      "file": "assets/narration/progress-test.mp3",
+      "sha256": "a53afbfe14ee49d76ba57781634859ad6c0c20f10d3f26f6a2ebee83445d8ae2"
+    },
+    {
+      "id": "return-test",
+      "text": "Check saved progress. In our viewer · Learn. A label changing once does not prove saving worked. Signing in again checks whether the app can retrieve the saved progress.. Click Progress, then Sign out. Sign in again with the same Cultural Language email and password. Check the word for house after progress finishes loading.. Check: the word for house still shows Learned , check mark after the app finishes syncing.",
+      "file": "assets/narration/return-test.mp3",
+      "sha256": "3e101b5c17f3d98a37f8c21ed99f915465e2efa418f61a75185f0489a135367c"
+    },
+    {
+      "id": "save-evidence",
+      "text": "Record your save test. What happened to the word for house after you signed out and signed in again?",
+      "file": "assets/narration/save-evidence.mp3",
+      "sha256": "8fdee97d465f69d5db3050c05d1a94858b95a43595b27754d70d7c174bceee94"
+    },
+    {
+      "id": "save-check",
+      "text": "Check whose progress saves. Two learners sign in with different accounts. Whose progress should Mark as learned change?. Choices: 1. Only the signed-in learner’s progress. 2. Every learner’s progress. 3. Only the teacher’s progress",
+      "file": "assets/narration/save-check.mp3",
+      "sha256": "b27c3fce55d1f7edcf72ce6429f1c05a01516e8e7383c3bc1827fa144fff839b"
+    },
+    {
+      "id": "independent",
+      "text": "Make one small improvement. In App Inventor · Designer. You now have the four connected controls. Make a small wording change while keeping those working connections.. Switch to MIT App Inventor and click Designer. Select Instruction Label and change its Text to your own short English instruction.. Check: Export a new A I A and choose it in our viewer. Your new instruction appears and the four buttons still work.",
+      "file": "assets/narration/independent.mp3",
+      "sha256": "551f62342eeb75b321871d4347c7d3cb2853e62b9728e5841a3e256cab7bd980"
+    },
+    {
+      "id": "export",
+      "text": "Export the editable project. In App Inventor · Projects. An A I A keeps the editable design, blocks and recordings. This is the file you can import later to continue building.. In the MIT App Inventor tab, open Projects and choose Export selected project ( A I A) to my computer.. Check: An A I A copy of your current project is in Downloads.",
+      "file": "assets/narration/export.mp3",
+      "sha256": "f25cf458d62ac7d424840ac9b784404e690eb306e30ecd6ad3d6e5d35e35408e"
+    },
+    {
+      "id": "build-apk",
+      "text": "Optional: build an Android file. Optional · MIT App Inventor Build. The viewer is our classroom test tool. An APK is an optional Android installation file.. If your teacher asks for an APK, choose Build , then Android App ( A P K) and download it. Otherwise, continue to the final viewer test.. Check: Your editable A I A is saved. An APK is needed only if your teacher requests one.",
+      "file": "assets/narration/build-apk.mp3",
+      "sha256": "a984e34d1e315ab72b70f6c3ae88ad3266c1534866a917667892a76fc54b01f0"
+    },
+    {
+      "id": "installed-test",
+      "text": "Run the final viewer test. In our viewer · final test. Our viewer tests the exported file you choose. Export again after making any final changes in MIT.. Open our viewer and choose your latest exported A I A. Sign in if asked. Test Listen, Next, Previous and Mark as learned, then click Progress to check the count.. Check: All four controls work in our viewer. Record any problem you still need to fix.",
+      "file": "assets/narration/installed-test.mp3",
+      "sha256": "0a40d3a402ba28aaa854ab0c965221bbb982f6aef743c4b56b7965070407ec4b"
+    },
+    {
+      "id": "final-evidence",
+      "text": "Explain one connection. Choose one of your four buttons. Explain what its Click event calls and what that helper does.",
+      "file": "assets/narration/final-evidence.mp3",
+      "sha256": "d3bf99f8f28dc0953ea4363d284a160f7198acbebd793db71031e74e884db86d"
+    },
+    {
+      "id": "files-evidence",
+      "text": "Keep your evidence. Write your exported A I A filename and state which controls you tested in our viewer.",
+      "file": "assets/narration/files-evidence.mp3",
+      "sha256": "e0b63a898b6d190c4cfb1919e6b37f89f357307557acc0fd4908e4c684a09a32"
+    }
+  ]
+}

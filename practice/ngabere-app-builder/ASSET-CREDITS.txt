@@ -1,0 +1,28 @@
+Palette icons and block shapes: MIT App Inventor local source, appinventor-web-preview.
+Block pictures were rendered with the local MIT App Inventor Blockly engine.
+Designer references are actual local editor captures. Runtime references are screenshots from the extended local Web Preview. They are not Android device screenshots.
+
+Recordings: CINTV Canal Indígena Ngäbe, https://www.youtube.com/watch?v=C_E4OajTxpM
+Words credited to Rosalinda Santos. Voice and production credited to Noe Abdias Blandford.
+Ju = House; Nukro = Dog; Minchi = Cat.
+Original recordings preserved; no computer-generated pronunciation.
+Use these source excerpts for the credited classroom model. No ownership of the source video is claimed.
+
+English guide narration: generated locally with hexgrad/Kokoro-82M, af_heart voice, speed 0.92.
+Model: https://huggingface.co/hexgrad/Kokoro-82M
+Software: https://github.com/hexgrad/kokoro
+Model license: Apache-2.0 (see KOKORO-LICENSE.txt).
+These computer-generated English directions do not replace or imitate the original Ngäbere recordings.
+Only authored instructions are used for generation; no student information or answers are used.
+
+Displayed Designer and Media references are actual local App Inventor captures. Blocks use native Blockly SVG rendering.
+The four Designer-area labels are HTML annotations over the real screenshot, also present in its enlarged view.
+Running-app images use the actual Web Preview renderer/interpreter and cumulative private App Inventor checkpoints.
+Controlled local service replies and a fictional learner establish example visible states only, not Firebase or Android acceptance.
+2026-10-21 review replaced four incorrectly cropped runtime cards, the clipped Web Preview toolbar, and the confusing empty-row comparison.
+The navigation reference now shows an empty WordNavigation in Components with Width set to Fill parent.
+
+Bundled viewer: existing appinventor-web-preview static host, renderer and interpreter.
+JSZip 3.10.1 reads the local .aia archive; copyright Stuart Knightley and contributors,
+MIT/GPLv3 dual license notice preserved in viewer/assets/jszip.min.js.
+The official MIT editor is linked separately; our runtime runs exported .aia files.
