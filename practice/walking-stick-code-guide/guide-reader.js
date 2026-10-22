@@ -1,5 +1,5 @@
-import {stepAliases} from './step-aliases.js?v=1.8.0';
-import {attachNarration,stopGuideNarration} from './shared/guide-narration.js?v=1.8.0';
+import {stepAliases} from './step-aliases.js?v=1.9.0';
+import {attachNarration,stopGuideNarration} from './shared/guide-narration.js?v=1.9.0';
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function mountGuide(lesson){
  const steps=lesson.sections;
@@ -15,10 +15,6 @@ export function mountGuide(lesson){
   if(index<0){index=id==='review'?steps.length-1:0;history.replaceState(null,'','#'+steps[index].id);}
   const step=steps[index];
   main.innerHTML=`<header class="fm-hero"><h1>${escape(step.title)}</h1></header>${step.narration?'<div class="fm-reading-tools"><button type="button" id="fm-read-aloud" class="fm-button quiet" aria-pressed="false">Read aloud</button><span id="fm-reading-status" role="status"></span></div>':''}${step.html}`;
-  main.querySelector('.copy-code')?.addEventListener('click',async event=>{
-   const panel=event.currentTarget.closest('.complete-code'),text=panel.querySelector('code').textContent,status=panel.querySelector('.copy-status');
-   try{await navigator.clipboard.writeText(text);status.textContent='Copied. Replace the whole MakeCode JavaScript editor.';}catch{const range=document.createRange();range.selectNodeContents(panel.querySelector('code'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);status.textContent='Code selected. Press Ctrl+C or Command+C to copy.';}
-  });
   pager.innerHTML=`${index?`<a class="previous" href="#${escape(steps[index-1].id)}">← Previous step</a>`:'<span class="fm-nav-placeholder"></span>'}<span class="fm-step-count">Step ${index+1} of ${steps.length}</span>${index<steps.length-1?`<a class="next" href="#${escape(steps[index+1].id)}">Next step →</a>`:'<span class="fm-nav-placeholder"></span>'}`;
   menu.querySelectorAll('a').forEach(a=>{if(a.dataset.step===step.id)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
   menu.open=false;

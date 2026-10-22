@@ -1,15 +1,1 @@
-Walking-stick programming guide
-
-Start with the built model and its existing checked MakeCode sensor project.
-No hardware-specific walking-stick source was found in the supplied packs.
-The source references mention micro:bit and an ultrasonic sensor, without exact model, pins or sensor error behavior.
-
-WalkingStick_Warning_Reference.ts is a reference function only. It has no sensor adapter or forever loop. It cannot be flashed by itself. Keep your existing extension, pins, centimetre reading and documented validity check.
-WalkingStick_Trials.csv is a blank 12-row trial sheet. Never substitute sample readings for actual observations.
-
-Reference documentation
-https://makecode.microbit.org/blocks/variables
-https://makecode.microbit.org/blocks/logic/if
-https://makecode.microbit.org/device/usb
-https://makecode.microbit.org/v1/pkg/microsoft/pxt-sonar
-The sonar page is a concept example, not evidence of this model’s actual pins.
+Build your own program by following the guide. The complete block map is a picture reference for checking your work, not an importable program. Keep the built sensor wiring: Trig P0 and Echo P1.
