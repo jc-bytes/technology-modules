@@ -1,7 +1,7 @@
 export const site = {
   "id": "MOD-STEAM-HAND-01",
   "slug": "robotic-hand-code-guide",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "title": "Code your robotic hand",
   "shortTitle": "Robotic hand",
   "subject": "Technology",

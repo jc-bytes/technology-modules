@@ -17,13 +17,13 @@ export const narrationFiles = {
   "base-up": "assets/narration/base-up-c5d2441225ab.mp3",
   "base-down": "assets/narration/base-down-a4c08517027b.mp3",
   "loop-pause": "assets/narration/loop-pause-500643475d81.mp3",
-  "teacher-check": "assets/narration/teacher-check-e65080f73a93.mp3",
-  "upload": "assets/narration/upload-72b0f2fc76c4.mp3",
-  "startup-test": "assets/narration/startup-test-89f5ea87fd97.mp3",
+  "teacher-check": "assets/narration/teacher-check-3fffbcd14d3d.mp3",
+  "upload": "assets/narration/upload-1b89b849f077.mp3",
+  "startup-test": "assets/narration/startup-test-30f5927032c3.mp3",
   "knob-test": "assets/narration/knob-test-5867b0643c94.mp3",
   "button-test": "assets/narration/button-test-12b6b6fda342.mp3",
   "opposing-test": "assets/narration/opposing-test-9b1d93ce27f4.mp3",
-  "debug": "assets/narration/debug-c9a67909419f.mp3",
+  "debug": "assets/narration/debug-d752e4047958.mp3",
   "report": "assets/narration/report-60c59a840d21.mp3",
   "handoff": "assets/narration/handoff-07e2c1a2ef0e.mp3"
 };

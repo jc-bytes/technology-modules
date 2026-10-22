@@ -116,21 +116,21 @@
     },
     {
       "id": "teacher-check",
-      "text": "Ask for the hardware check. At the assembled model, with the teacher. Servo signals can move the mechanism as soon as an uploaded program starts. Code numbers alone cannot establish safe physical movement. Show the teacher the saved code. Ask them to check the Freenove control board, module switches, servo power, motor3 isolation, starting pose, active knob positions and allowed movement before Upload. Check. The teacher has checked the exact saved version and its real startup targets. If that check is unavailable, leave hardware tests unrun.",
-      "sha256": "e65080f73a93411a09eb72e888b9e18af90b90efbbba75fa2e2588116b13bbad",
-      "file": "assets/narration/teacher-check-e65080f73a93.mp3"
+      "text": "Check the model before testing. At the assembled model. Servo signals can move the mechanism as soon as an uploaded program starts. Code numbers alone cannot establish safe physical movement. Before the first test, have the teacher check the Freenove control board, module switches, servo power, motor3 isolation, starting pose, active knob positions and allowed movement. Check. The model has its initial hardware check. Your complete program passes Verify. Repeat the hardware check if the wiring, power or movement limits change.",
+      "sha256": "3fffbcd14d3d386b73f93879edbbc0c8d90d6fef9f57042ca681c5380d5f6df3",
+      "file": "assets/narration/teacher-check-3fffbcd14d3d.mp3"
     },
     {
       "id": "upload",
-      "text": "Upload with the teacher. Ardweeno I D E board and port selection, with the teacher. Upload sends your program to the board. The hand can move as soon as setup() starts. After the hardware check, have the teacher connect the approved model’s U S B cable. Select the board and port they identify, then choose Upload with the teacher. Check. The I D E reports that uploading finished.",
-      "sha256": "72b0f2fc76c4d7169b4431219901bb9a408139e34cb93a4b73b607a60fc92135",
-      "file": "assets/narration/upload-72b0f2fc76c4.mp3"
+      "text": "Send the code to Ardweeno. Ardweeno I D E > Upload. Upload sends the saved program to Ardweeno. Editing code on the computer does not change the program running on the board. The hand can move as soon as the new program starts. Connect the checked model by U S B. Select Ardweeno Uno and its U S B port. Choose Upload to send your complete saved program to Ardweeno. Test it after the I D E reports that sending finished. Check. Ardweeno runs the version you just sent. Repeat Upload and the affected test after every modification to the complete program.",
+      "sha256": "1b89b849f077a983f4e334dcb2208e742f6c5296fe9b771122d86436f85e68af",
+      "file": "assets/narration/upload-1b89b849f077.mp3"
     },
     {
       "id": "startup-test",
-      "text": "Observe the checked startup. At the checked model, with the teacher. Correct startup code still sends targets that may differ from the current physical pose. Only a real test shows the movement. Watch the teacher perform one approved restart from the checked pose and knob settings. Record the starting movement in Test and improvement. Check. Your note identifies the sketch version, starting settings, actual movement and any strain or unexpected motion.",
-      "sha256": "89f5ea87fd977eee32840690c93b3aa1f7d854f3f3bca3492eb538e0caa34a6e",
-      "file": "assets/narration/startup-test-89f5ea87fd97.mp3"
+      "text": "Observe startup after sending. At the checked model. Correct startup code still sends targets that may differ from the current physical pose. Only a real test shows the movement. After sending the complete program to Ardweeno, watch its starting movement from the checked pose and knob settings. Record what happens in Test and improvement. Check. Your note identifies the sketch version, starting settings, actual movement and any strain or unexpected motion.",
+      "sha256": "30f5927032c3cb98ce834a465a7fc7af14c8a3124222bb3005eb968e06c1c9b5",
+      "file": "assets/narration/startup-test-30f5927032c3.mp3"
     },
     {
       "id": "knob-test",
@@ -152,9 +152,9 @@
     },
     {
       "id": "debug",
-      "text": "Check one problem and retest. Ardweeno I D E and the test note, with the teacher. Changing one thing lets you see whether that change helped. If a control failed, compare its input, motor name and limits with the reference. After a teacher-checked correction, Verify and save a new numbered version. Upload that version with the teacher before repeating the failed control test. Check. Your test note keeps the old result and the new result for the same control.",
-      "sha256": "c9a67909419f253fd9cde8e94e9183b911fbd52aff371036dbf4635283f8a8cd",
-      "file": "assets/narration/debug-c9a67909419f.mp3"
+      "text": "Change, send and test again. Ardweeno I D E and your test note. Change one thing at a time so you can tell whether it helped. Ardweeno keeps running the old program until you send the new version. After each modification to the complete program, choose Verify. Save a new numbered version. Choose Upload to send it to Ardweeno. Repeat the same affected control test and record the result. Check. Each modification has a saved version, a successful Upload and a matching test result. Keep the previous result for comparison.",
+      "sha256": "d752e40479582ce99892b7ca39032e8a937f9596d4db7734a9c9e159abdf9c71",
+      "file": "assets/narration/debug-d752e4047958.mp3"
     },
     {
       "id": "report",

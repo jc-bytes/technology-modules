@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-HAND-01",
   "slug": "robotic-hand-code-guide",
   "title": "Code your robotic hand",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -148,19 +148,19 @@
     },
     {
       "id": "teacher-check",
-      "title": "Ask for the hardware check",
+      "title": "Check the model before testing",
       "entryPath": "#teacher-check",
       "estimatedMinutes": null
     },
     {
       "id": "upload",
-      "title": "Upload with the teacher",
+      "title": "Send the code to Arduino",
       "entryPath": "#upload",
       "estimatedMinutes": null
     },
     {
       "id": "startup-test",
-      "title": "Observe the checked startup",
+      "title": "Observe startup after sending",
       "entryPath": "#startup-test",
       "estimatedMinutes": null
     },
@@ -184,7 +184,7 @@
     },
     {
       "id": "debug",
-      "title": "Check one problem and retest",
+      "title": "Change, send and test again",
       "entryPath": "#debug",
       "estimatedMinutes": null
     },
