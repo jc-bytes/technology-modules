@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-WIND-01",
   "slug": "wind-generator-test-guide",
   "title": "Code and test your wind generator",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -45,536 +45,158 @@
   "sections": [
     {
       "id": "goal",
-      "title": "Test the built model",
+      "title": "What you will make",
       "entryPath": "#goal",
       "estimatedMinutes": null
     },
     {
-      "id": "energy-path",
-      "title": "Follow the moving air",
-      "entryPath": "#energy-path",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "voltage",
-      "title": "Recognize measured voltage",
-      "entryPath": "#voltage",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "model-reading",
-      "title": "Read an example meter",
-      "entryPath": "#model-reading",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "practice-record",
-      "title": "Read a worked record",
-      "entryPath": "#practice-record",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-identify",
-      "title": "Find your board",
+      "title": "Check the board and parts",
       "entryPath": "#board-identify",
       "estimatedMinutes": null
     },
     {
-      "id": "board-power-off",
-      "title": "Remove power first",
-      "entryPath": "#board-power-off",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-display-switch",
-      "title": "Enable the number display",
+      "title": "Set the board switches",
       "entryPath": "#board-display-switch",
       "estimatedMinutes": null
     },
     {
-      "id": "board-a0-switches",
-      "title": "Free the A0 input",
-      "entryPath": "#board-a0-switches",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-display-pins",
-      "title": "Find the three display pins",
-      "entryPath": "#board-display-pins",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-display-download",
-      "title": "Get the display check",
+      "title": "Open the display check",
       "entryPath": "#board-display-download",
       "estimatedMinutes": null
     },
     {
-      "id": "board-display-open",
-      "title": "Open the display sketch",
-      "entryPath": "#board-display-open",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-display-usb",
-      "title": "Power the display test",
-      "entryPath": "#board-display-usb",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-board-port",
-      "title": "Choose the board and port",
+      "title": "Connect USB and choose the board",
       "entryPath": "#board-board-port",
       "estimatedMinutes": null
     },
     {
       "id": "board-display-upload",
-      "title": "Upload the display check",
+      "title": "Upload and check 0123",
       "entryPath": "#board-display-upload",
       "estimatedMinutes": null
     },
     {
-      "id": "board-display-read",
-      "title": "Check all four positions",
-      "entryPath": "#board-display-read",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-bench-download",
-      "title": "Get the voltage program",
+      "title": "Open the voltage program",
       "entryPath": "#board-bench-download",
       "estimatedMinutes": null
     },
     {
-      "id": "board-bench-open",
-      "title": "Open the voltage sketch",
-      "entryPath": "#board-bench-open",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-input-pin",
-      "title": "Find the measuring input",
+      "title": "Find the input and display pins",
       "entryPath": "#board-input-pin",
       "estimatedMinutes": null
     },
     {
-      "id": "board-digit-codes",
-      "title": "Read the digit patterns",
-      "entryPath": "#board-digit-codes",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-send-digit",
-      "title": "Follow one display update",
-      "entryPath": "#board-send-digit",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-divider-idea",
-      "title": "Read the bench divider",
-      "entryPath": "#board-divider-idea",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-scale",
-      "title": "Find why we multiply",
-      "entryPath": "#board-scale",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-reference",
-      "title": "Find the reference voltage",
-      "entryPath": "#board-reference",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-average",
-      "title": "Follow the eight samples",
-      "entryPath": "#board-average",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-conversion",
-      "title": "Follow counts into volts",
+      "title": "See how the count becomes volts",
       "entryPath": "#board-conversion",
       "estimatedMinutes": null
     },
     {
-      "id": "board-rounding",
-      "title": "Read the rounding step",
-      "entryPath": "#board-rounding",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-decimal",
-      "title": "Find the decimal point",
+      "title": "See how the display stays readable",
       "entryPath": "#board-decimal",
       "estimatedMinutes": null
     },
     {
-      "id": "board-refresh",
-      "title": "Find the display refresh",
-      "entryPath": "#board-refresh",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-serial",
-      "title": "Find the computer output",
-      "entryPath": "#board-serial",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-zero-limit",
-      "title": "Know what the display means",
+      "title": "Know when to stop",
       "entryPath": "#board-zero-limit",
       "estimatedMinutes": null
     },
     {
-      "id": "board-standalone",
-      "title": "Keep the generator separate",
-      "entryPath": "#board-standalone",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-load-not-divider",
-      "title": "Understand the 100 ohm resistor",
-      "entryPath": "#board-load-not-divider",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-meter-leads",
-      "title": "Check the meter sockets",
-      "entryPath": "#board-meter-leads",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-meter-mode",
-      "title": "Check the voltage mode",
-      "entryPath": "#board-meter-mode",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-unloaded",
-      "title": "Measure the generator alone",
-      "entryPath": "#board-unloaded",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-meter-connect",
-      "title": "Connect the two meter probes",
-      "entryPath": "#board-meter-connect",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-raw-maximum",
-      "title": "Check the intended highest speed",
-      "entryPath": "#board-raw-maximum",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-polarity",
-      "title": "Check the output polarity",
-      "entryPath": "#board-polarity",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-bench-parts",
-      "title": "Find the low-voltage parts",
-      "entryPath": "#board-bench-parts",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-bench-power-off",
-      "title": "Power off before bench wiring",
-      "entryPath": "#board-bench-power-off",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-top-resistor",
-      "title": "Place the upper resistor",
-      "entryPath": "#board-top-resistor",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-bottom-resistor",
-      "title": "Place the lower resistor",
-      "entryPath": "#board-bottom-resistor",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-ground",
-      "title": "Join the bench ground",
-      "entryPath": "#board-ground",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-midpoint",
-      "title": "Join the measuring point",
-      "entryPath": "#board-midpoint",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-bench-usb",
-      "title": "Power the board separately",
-      "entryPath": "#board-bench-usb",
+      "id": "board-divider-idea",
+      "title": "Wire the known AA test circuit",
+      "entryPath": "#board-divider-idea",
       "estimatedMinutes": null
     },
     {
       "id": "board-bench-upload",
-      "title": "Upload the voltage sketch",
+      "title": "Run the voltage program",
       "entryPath": "#board-bench-upload",
       "estimatedMinutes": null
     },
     {
-      "id": "board-open-monitor",
-      "title": "Open Serial Monitor",
-      "entryPath": "#board-open-monitor",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-bench-zero",
-      "title": "Check the zero input",
+      "title": "Check zero before the battery",
       "entryPath": "#board-bench-zero",
       "estimatedMinutes": null
     },
     {
       "id": "board-bench-battery",
-      "title": "Apply the known AA signal",
+      "title": "Compare with a known voltage",
       "entryPath": "#board-bench-battery",
       "estimatedMinutes": null
     },
     {
-      "id": "board-bench-compare",
-      "title": "Compare the AA readings",
-      "entryPath": "#board-bench-compare",
+      "id": "board-meter-connect",
+      "title": "Set up the generator-only meter test",
+      "entryPath": "#board-meter-connect",
       "estimatedMinutes": null
     },
     {
-      "id": "board-bench-remove",
-      "title": "Remove the signal first",
-      "entryPath": "#board-bench-remove",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-known-checks",
-      "title": "Check more known inputs",
-      "entryPath": "#board-known-checks",
+      "id": "board-raw-maximum",
+      "title": "Measure the generator on its own",
+      "entryPath": "#board-raw-maximum",
       "estimatedMinutes": null
     },
     {
       "id": "board-interface-gate",
-      "title": "Wait for the generator interface",
+      "title": "Check the protected generator interface",
       "entryPath": "#board-interface-gate",
       "estimatedMinutes": null
     },
     {
       "id": "board-final-scale",
-      "title": "Match code to the final divider",
+      "title": "Match the code to the checked circuit",
       "entryPath": "#board-final-scale",
       "estimatedMinutes": null
     },
     {
-      "id": "board-save-final-code",
-      "title": "Save the checked program",
-      "entryPath": "#board-save-final-code",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-final-upload",
-      "title": "Upload the checked version",
-      "entryPath": "#board-final-upload",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-final-connect",
-      "title": "Let the teacher connect it",
+      "title": "Check the live generator display",
       "entryPath": "#board-final-connect",
       "estimatedMinutes": null
     },
     {
-      "id": "board-same-terminals",
-      "title": "Compare the same measurement",
-      "entryPath": "#board-same-terminals",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-setup-record",
-      "title": "Keep the checked setup record",
-      "entryPath": "#board-setup-record",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "teacher-setup",
-      "title": "Check the equipment with your teacher",
-      "entryPath": "#teacher-setup",
-      "estimatedMinutes": null
-    },
-    {
       "id": "fixed-setup",
-      "title": "Record the fixed setup",
+      "title": "Set up a fair comparison",
       "entryPath": "#fixed-setup",
       "estimatedMinutes": null
     },
     {
-      "id": "prediction",
-      "title": "Write your prediction",
-      "entryPath": "#prediction",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "before-off-ready",
-      "title": "Start with the fan off",
-      "entryPath": "#before-off-ready",
-      "estimatedMinutes": null
-    },
-    {
       "id": "before-off-1",
-      "title": "Fan off: reading 1",
+      "title": "Take three fan-off readings",
       "entryPath": "#before-off-1",
       "estimatedMinutes": null
     },
     {
-      "id": "before-off-2",
-      "title": "Fan off: reading 2",
-      "entryPath": "#before-off-2",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "before-off-3",
-      "title": "Fan off: reading 3",
-      "entryPath": "#before-off-3",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "before-on-ready",
-      "title": "Turn the fan on",
-      "entryPath": "#before-on-ready",
-      "estimatedMinutes": null
-    },
-    {
       "id": "before-on-1",
-      "title": "Fan on: reading 1",
+      "title": "Take three fan-on readings",
       "entryPath": "#before-on-1",
       "estimatedMinutes": null
     },
     {
-      "id": "before-on-2",
-      "title": "Fan on: reading 2",
-      "entryPath": "#before-on-2",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "before-on-3",
-      "title": "Fan on: reading 3",
-      "entryPath": "#before-on-3",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "before-stop",
-      "title": "Stop before comparing",
-      "entryPath": "#before-stop",
-      "estimatedMinutes": null
-    },
-    {
       "id": "before-compare",
-      "title": "Compare your first results",
+      "title": "Compare and choose one improvement",
       "entryPath": "#before-compare",
       "estimatedMinutes": null
     },
     {
-      "id": "choose-change",
-      "title": "Choose one small change",
-      "entryPath": "#choose-change",
-      "estimatedMinutes": null
-    },
-    {
       "id": "make-change",
-      "title": "Make the checked change",
+      "title": "Make the change and repeat the test",
       "entryPath": "#make-change",
       "estimatedMinutes": null
     },
     {
-      "id": "change-record",
-      "title": "Keep a change record",
-      "entryPath": "#change-record",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-setup",
-      "title": "Check the repeat setup",
-      "entryPath": "#after-setup",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-off-ready",
-      "title": "Repeat with the fan off",
-      "entryPath": "#after-off-ready",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-off-1",
-      "title": "After change: off reading 1",
-      "entryPath": "#after-off-1",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-off-2",
-      "title": "After change: off reading 2",
-      "entryPath": "#after-off-2",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-off-3",
-      "title": "After change: off reading 3",
-      "entryPath": "#after-off-3",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-on-ready",
-      "title": "Repeat with the fan on",
-      "entryPath": "#after-on-ready",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-on-1",
-      "title": "After change: on reading 1",
-      "entryPath": "#after-on-1",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-on-2",
-      "title": "After change: on reading 2",
-      "entryPath": "#after-on-2",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-on-3",
-      "title": "After change: on reading 3",
-      "entryPath": "#after-on-3",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "after-stop",
-      "title": "Stop the fan after testing",
-      "entryPath": "#after-stop",
-      "estimatedMinutes": null
-    },
-    {
       "id": "after-compare",
-      "title": "Explain whether the change helped",
+      "title": "Explain what the results show",
       "entryPath": "#after-compare",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "limits",
-      "title": "State the test limit",
-      "entryPath": "#limits",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "report-note",
-      "title": "Add a test explanation",
-      "entryPath": "#report-note",
       "estimatedMinutes": null
     },
     {

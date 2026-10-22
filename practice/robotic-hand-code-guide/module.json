@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-HAND-01",
   "slug": "robotic-hand-code-guide",
   "title": "Code your robotic hand",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -46,20 +46,8 @@
     },
     {
       "id": "editor",
-      "title": "Open Arduino IDE",
+      "title": "Open your team sketch",
       "entryPath": "#editor",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "shared-work",
-      "title": "Find the latest sketch",
-      "entryPath": "#shared-work",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "new-sketch",
-      "title": "Save a named sketch",
-      "entryPath": "#new-sketch",
       "estimatedMinutes": null
     },
     {
@@ -70,32 +58,14 @@
     },
     {
       "id": "library",
-      "title": "Add the servo library",
+      "title": "Name the five servo motors",
       "entryPath": "#library",
       "estimatedMinutes": null
     },
     {
-      "id": "names",
-      "title": "Name the five motors",
-      "entryPath": "#names",
-      "estimatedMinutes": null
-    },
-    {
       "id": "button-pins",
-      "title": "Name the button pins",
+      "title": "Name the buttons and starting values",
       "entryPath": "#button-pins",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "remember-positions",
-      "title": "Remember two positions",
-      "entryPath": "#remember-positions",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "sections-check",
-      "title": "Place shared names above setup",
-      "entryPath": "#sections-check",
       "estimatedMinutes": null
     },
     {
@@ -106,92 +76,32 @@
     },
     {
       "id": "pullup",
-      "title": "Prepare the four buttons",
+      "title": "Prepare the buttons and starting commands",
       "entryPath": "#pullup",
       "estimatedMinutes": null
     },
     {
-      "id": "start-positions",
-      "title": "Send the starting commands",
-      "entryPath": "#start-positions",
-      "estimatedMinutes": null
-    },
-    {
       "id": "verify-setup",
-      "title": "Verify the setup code",
+      "title": "Check the setup code",
       "entryPath": "#verify-setup",
       "estimatedMinutes": null
     },
     {
-      "id": "verify-errors",
-      "title": "Read the first error",
-      "entryPath": "#verify-errors",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "loop-place",
-      "title": "Find the repeating section",
-      "entryPath": "#loop-place",
-      "estimatedMinutes": null
-    },
-    {
       "id": "read-knob1",
-      "title": "Read knob one",
+      "title": "Make knob one control motor one",
       "entryPath": "#read-knob1",
       "estimatedMinutes": null
     },
     {
-      "id": "map-knob1",
-      "title": "Scale knob one",
-      "entryPath": "#map-knob1",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "write-knob1",
-      "title": "Command motor one",
-      "entryPath": "#write-knob1",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "explain-map",
-      "title": "Read the output range",
-      "entryPath": "#explain-map",
-      "estimatedMinutes": null
-    },
-    {
       "id": "knob2",
-      "title": "Add knob two",
+      "title": "Repeat the pattern for knobs two and three",
       "entryPath": "#knob2",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "knob3",
-      "title": "Add knob three",
-      "entryPath": "#knob3",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "knob-audit",
-      "title": "Compare all three knobs",
-      "entryPath": "#knob-audit",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "pressed-low",
-      "title": "Recognize a pressed button",
-      "entryPath": "#pressed-low",
       "estimatedMinutes": null
     },
     {
       "id": "middle-up",
       "title": "Add the middle-up button",
       "entryPath": "#middle-up",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "middle-limit",
-      "title": "Follow the upper limit",
-      "entryPath": "#middle-limit",
       "estimatedMinutes": null
     },
     {
@@ -213,45 +123,9 @@
       "estimatedMinutes": null
     },
     {
-      "id": "button-order",
-      "title": "Check the four button blocks",
-      "entryPath": "#button-order",
-      "estimatedMinutes": null
-    },
-    {
       "id": "loop-pause",
-      "title": "Finish with a short pause",
+      "title": "Finish and verify the full program",
       "entryPath": "#loop-pause",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "braces",
-      "title": "Check the code sections",
-      "entryPath": "#braces",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "reference",
-      "title": "Compare the complete sketch",
-      "entryPath": "#reference",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "verify-final",
-      "title": "Verify the full sketch",
-      "entryPath": "#verify-final",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "explain-code",
-      "title": "Explain one code path",
-      "entryPath": "#explain-code",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "save-before-run",
-      "title": "Save the verified version",
-      "entryPath": "#save-before-run",
       "estimatedMinutes": null
     },
     {
@@ -261,75 +135,39 @@
       "estimatedMinutes": null
     },
     {
-      "id": "board-port",
-      "title": "Select the checked board",
-      "entryPath": "#board-port",
-      "estimatedMinutes": null
-    },
-    {
       "id": "upload",
-      "title": "Upload the checked program",
+      "title": "Upload with the teacher",
       "entryPath": "#upload",
       "estimatedMinutes": null
     },
     {
       "id": "knob-test",
-      "title": "Try one knob",
+      "title": "Test and record the three knobs",
       "entryPath": "#knob-test",
       "estimatedMinutes": null
     },
     {
       "id": "button-test",
-      "title": "Try one button",
+      "title": "Test and record the four buttons",
       "entryPath": "#button-test",
       "estimatedMinutes": null
     },
     {
-      "id": "record-run",
-      "title": "Record the real control test",
-      "entryPath": "#record-run",
-      "estimatedMinutes": null
-    },
-    {
       "id": "debug",
-      "title": "Find one cause at a time",
+      "title": "Check one problem and retest",
       "entryPath": "#debug",
       "estimatedMinutes": null
     },
     {
-      "id": "retest",
-      "title": "Retest a correction",
-      "entryPath": "#retest",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "test-limits",
-      "title": "State what the code proves",
-      "entryPath": "#test-limits",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "zip",
-      "title": "Save the whole sketch folder",
-      "entryPath": "#zip",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "handoff",
-      "title": "Share the latest version",
-      "entryPath": "#handoff",
-      "estimatedMinutes": null
-    },
-    {
       "id": "report",
-      "title": "Write the coding report",
+      "title": "Explain the code in your team report",
       "entryPath": "#report",
       "estimatedMinutes": null
     },
     {
-      "id": "finish",
-      "title": "Check the saved team files",
-      "entryPath": "#finish",
+      "id": "handoff",
+      "title": "Save and share the tested version",
+      "entryPath": "#handoff",
       "estimatedMinutes": null
     }
   ],

@@ -94,3 +94,16 @@
 
 /* Project guides open directly, without student forms or evidence controls. */
 .fm-clean-step .guide-header{height:auto;min-height:72px;flex-wrap:nowrap}.guide-header .fm-brand-title{flex:1;width:auto;min-width:0;text-decoration:none;color:inherit}.guide-header .fm-menu{flex:none}.guide-header .fm-activity-title{max-width:none}.guide-header .fm-menu a[aria-current=step]{background:#e3f2ed;font-weight:700}
+
+/* Guide menu: bounded, readable rows at laptop, phone and enlarged text sizes. */
+.guide-header .fm-menu nav{width:360px;max-width:calc(100vw - 32px);max-height:min(65dvh,520px);top:calc(100% + 10px);padding:8px;gap:3px;overscroll-behavior:contain;border:1px solid #a7bfb4;border-radius:12px;box-shadow:0 12px 32px #173c3326;background:#fff;font-size:16px;line-height:1.4;text-align:left;z-index:30}
+.guide-header .guide-step-link{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:10px;min-height:46px;padding:9px 10px;border-radius:7px;color:#234b40;text-decoration:none;font-size:16px;font-weight:400;line-height:1.4;overflow-wrap:anywhere}
+.guide-header .guide-step-number{color:#5b746b;font-size:13px;text-align:center;font-variant-numeric:tabular-nums}
+.guide-header .guide-step-link:hover{background:#f0f6f3}
+.guide-header .guide-step-link[aria-current=step]{background:#e0f0e9;color:#005b4d;font-weight:700;box-shadow:inset 3px 0 #007965}
+.guide-header .guide-step-link:focus-visible{outline:3px solid #b77813;outline-offset:-3px}
+.guide-header .guide-step-link:visited{color:#234b40}
+.guide-header .guide-step-link[aria-current=step]:visited{color:#005b4d}
+@media(max-width:520px){.guide-header .fm-menu nav{max-width:calc(100vw - 24px);width:340px}.guide-header .guide-step-link{min-height:48px}}
+
+.guide-header .fm-menu summary{width:auto;min-width:64px;height:auto;min-height:44px;padding:10px 14px;font-size:16px;line-height:1.4}
