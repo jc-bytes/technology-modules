@@ -102,7 +102,7 @@ export const buildSteps = [
   {
     "id": "board-input-pin",
     "title": "Find the input and display pins",
-    "why": "A0 reads the measuring circuit. D11 sends display patterns, D13 moves their bits and D12 makes the new pattern appear. These display wires are already on the board.",
+    "why": "A0 turns the voltage into a number from 0 to 1023 on this checked board. D11 sends display patterns, D13 moves their bits and D12 makes the pattern appear. The display wires are already on the board.",
     "where": "In Arduino IDE",
     "do": "Find these four pin names near the top of the sketch. Keep their supplied values.",
     "expected": "VOLTAGE_PIN is A0. Display data is D11, clock D13 and latch D12.",
@@ -114,10 +114,10 @@ export const buildSteps = [
   {
     "id": "board-conversion",
     "title": "See how the count becomes volts",
-    "why": "The code averages eight quick A0 samples. It converts that count into A0 volts, then multiplies by INPUT_SCALE to estimate voltage before the divider.",
+    "why": "The code averages eight A0 samples. The two equal 10k resistors halve the source voltage, so INPUT_SCALE is 2 to scale the estimate back up.",
     "where": "In Arduino IDE",
     "do": "Find this line in readVoltage. Follow it from left to right.",
-    "expected": "Divide by 8 for the average, multiply by the board reference, divide by 1023, then multiply by the divider scale.",
+    "expected": "total / 8.0 finds the average count. * means multiply and / means divide. The rest converts that count into an estimate of source volts.",
     "help": "The reference starts at 5.00 V. Your teacher checks the real value. Two equal 10k resistors give a scale of 2. These quick samples are separate from your three recorded test readings.",
     "links": [],
     "stage": "guided",
@@ -138,9 +138,9 @@ export const buildSteps = [
   {
     "id": "board-zero-limit",
     "title": "Know when to stop",
-    "why": "0.00 is a near-zero estimate. It cannot tell an unplugged source from a stopped generator. ---- means a sampled count neared the ADC limit or the value exceeded the display format.",
+    "why": "0.00 means near zero, but does not prove a source is connected. ---- is a software warning, not electrical protection. Unsafe voltage can damage A0 before the program reacts.",
     "where": "In Arduino IDE",
-    "do": "Remember these meanings before applying a test signal: 0.00 is near zero; ---- means remove the signal and ask your teacher to check.",
+    "do": "Before applying any signal, find the dashes condition shown here. If dashes appear during a test, have your teacher remove the input signal and check the circuit.",
     "expected": "You will stop on dashes. You will not treat 0.00 as proof that a source is connected.",
     "help": "The program uses dashes near the ADC limit or above its display range. This software warning is not electrical protection. An unsafe input can damage the board before it responds.",
     "links": [],
@@ -187,7 +187,7 @@ export const buildSteps = [
     "title": "Compare with a known voltage",
     "why": "A known source lets us check the estimate before using the generator. The meter must measure across the AA terminals, not just A0 to GND.",
     "where": "At the Freenove board",
-    "do": "With USB power on, have your teacher connect AA positive through the upper resistor and AA negative to GND. Compare the board reading with the checked meter across the AA terminals.",
+    "do": "With divider wiring checked and USB power on, have your teacher apply the AA signal through the prepared connections: positive through the upper resistor, negative to GND. Compare the display with the checked meter across the AA terminals.",
     "expected": "The teacher records the difference and checks whether calibration is adequate. Remove the AA signal before removing USB power.",
     "help": "The source need not be exactly its nominal voltage. The teacher checks additional known positive inputs within the approved bench range. On dashes, remove the signal immediately. A bench pass does not approve the generator interface.",
     "links": [],
@@ -198,8 +198,8 @@ export const buildSteps = [
     "title": "Set up the generator-only meter test",
     "where": "At the stationary generator · teacher checks the clips",
     "why": "The generator voltage is still unknown. A red LED lighting does not establish its maximum. Keep the Arduino completely disconnected for this check.",
-    "do": "With the fan off and blades stopped, have your teacher check black in COM, red in V, and the correct voltage mode and range. Attach one probe to each generator terminal.",
-    "expected": "The clips are clear of the blades. The LED and other intentional loads are removed for the unloaded check.",
+    "do": "With fan off and blades stopped, have your teacher identify the output type and choose its voltage mode and range. Check black in COM and red in V. Attach one probe to each generator terminal.",
+    "expected": "The Arduino and intentional loads are disconnected. Clips are clear of blades. Never use current mode across the generator.",
     "help": "Never use current mode across the generator. A 100 ohm resistor across its terminals is a load, not A0 protection. It can heat up and needs a suitable rating. The teacher checks DC or AC output; this program needs a checked positive DC input.",
     "image": "assets/turbine-meter.svg",
     "alt": "Red voltage probe and black COM probe attach to different stationary generator terminals. No Arduino connection.",
@@ -248,7 +248,7 @@ export const buildSteps = [
     "why": "All wiring changes happen with power and signal removed. The board must then have USB power before a generator signal is present.",
     "where": "At the Freenove board",
     "do": "Have your teacher connect the approved interface with power and signal removed, power the board by USB, then apply the generator signal. Compare meter and display at the same source terminals under the same load.",
-    "expected": "The teacher checks fan-off and fan-on readings and approves the display estimate. Record the interface, divider values and calibration check.",
+    "expected": "The teacher checks fan-off/on readings at the same loaded terminals. Record the approved interface and calibration. At shutdown, remove the generator signal before removing USB power.",
     "help": "Remove the generator signal before removing USB power. Never compare an unloaded meter result with a loaded Arduino result. Mark unfinished checks Not checked.",
     "links": [],
     "stage": "guided"
@@ -258,17 +258,22 @@ export const buildSteps = [
     "title": "Set up a fair comparison",
     "why": "A fair comparison changes the fan condition while keeping the other parts the same. Your teacher chooses a safe position and one fan-on setting.",
     "where": "In the team test record",
-    "do": "Record the marked fan distance in cm, one fan-on setting, settling time and wait between readings. Write your expected voltage change and reason before measuring.",
-    "expected": "The teacher checks the base, guarded fan, blades and measuring connections. Only fan off/on will change during the first comparison.",
-    "help": "Keep hands clear of blades and leave meter settings and connections to the teacher. A settling time is how long you wait after starting the fan before reading.",
-    "links": []
+    "do": "Open your team test record. Record the marked fan distance in cm, fan-on setting, settling time and wait between readings. Write your expected voltage change and reason.",
+    "expected": "Use the checked multimeter for recorded readings and compare the Arduino display alongside it. The teacher checks the complete setup before testing.",
+    "help": "Settling time is the wait after starting the fan. Keep the same model, distance, connections and fan-on setting for the first comparison. Keep hands clear of blades; leave meter settings and connections to the teacher.",
+    "links": [
+      [
+        "Download blank test sheet",
+        "downloads/Wind_Test_Record_Blank.csv"
+      ]
+    ]
   },
   {
     "id": "before-off-1",
     "title": "Take three fan-off readings",
     "why": "Three readings help you see whether the number stays steady. A real zero is a result; a missing reading is not zero.",
     "where": "At the model and in the team test record",
-    "do": "With the fan off and blades stopped, take three readings using the agreed wait. Record each under Before change, fan off, as reading 1, 2 and 3, with V.",
+    "do": "With fan off and blades stopped, take three multimeter readings using the agreed wait. Under Before change, fan off, record readings 1, 2 and 3, each with V. Compare the Arduino display too.",
     "expected": "Your test record has three real fan-off readings, including decimal points and any minus signs.",
     "help": "Example only: 0.42 V is read zero point four two volts. Use your own readings. Write Test not run and a reason if you cannot measure.",
     "links": [],
@@ -279,7 +284,7 @@ export const buildSteps = [
     "title": "Take three fan-on readings",
     "why": "Keep the marked distance, fan setting, connections and wait unchanged.",
     "where": "At the model and in the team test record",
-    "do": "Have your teacher start the guarded fan. After the settling time, record three readings under Before change, fan on. Then stop the fan and wait for all blades to stop.",
+    "do": "Have your teacher start the guarded fan. After the settling time, record three multimeter readings under Before change, fan on. Compare the Arduino display. Then stop the fan and wait for all blades to stop.",
     "expected": "Your original record now has six readings, three off and three on.",
     "help": "Record a changing display honestly. Stop if the base moves or a part comes loose. Never touch or adjust moving blades.",
     "links": []
@@ -299,7 +304,7 @@ export const buildSteps = [
     "title": "Make the change and repeat the test",
     "why": "Changing just one thing makes the comparison easier to explain. Keep the first results.",
     "where": "At the wind model",
-    "do": "With fan off and blades stopped, make the approved change with your teacher. Record the change and date. After the teacher checks the setup, repeat three off and three on readings under After change. Stop the fan afterward.",
+    "do": "With fan off and blades stopped, make the approved change with your teacher and record its date. After the setup check, repeat three multimeter readings off and three on under After change. Compare the Arduino display and stop the fan afterward.",
     "expected": "Both sets of six readings are saved. Use the same distance, fan setting and timing unless that was the one approved change.",
     "help": "Any electrical change needs power and signal removed. Recheck its code scale and meter comparison before testing. Do not replace original readings or write zero for a test not run.",
     "links": []

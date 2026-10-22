@@ -8,141 +8,141 @@
   "records": [
     {
       "id": "goal",
-      "text": "One program, three results. At your already-built walking stick. The sensor reads distance. Your program chooses a result. A valid near reading gives X and a sound. A valid farther reading gives a blank display and silence. An unusable reading gives ? and unknown.. Follow this guide using your working sensor program and the separate sound page.. Check. You will update one Make Code project. The built sensor wiring stays as it is.",
-      "sha256": "49f2befa5ff054cf0760045c77cc7d58df8b27bd0aa382bf735ca3e586f5a9c0",
-      "file": "assets/narration/goal-49f2befa5ff0.mp3"
+      "text": "One program, three results. At your already-built walking stick. The sensor reads distance. Your program chooses a result. A valid near reading gives X and a sound. A valid farther reading gives a blank display and silence. An unusable reading gives ? and unknown. Use Blocks view in your working Make Code project. Follow this guide with the separate sound page. Check. You will update one project and keep the built sensor wiring. Code panels show the same blocks in JavaScript; they are not a replacement sensor program.",
+      "sha256": "594f48cbb6c1988ff7ca9e97e5ea231874690ec2221560dd83caf108d124495e",
+      "file": "assets/narration/goal-594f48cbb6c1.mp3"
     },
     {
       "id": "open-team-project",
-      "text": "Open and protect the working program. In Make Code · Home → your team project. Your working program has the sensor settings that match the built model. A saved copy lets you undo today’s changes.. Open the latest team project, then download a backup named WalkingStick_BeforeBluetooth.hex.. Check. The working sensor blocks are visible and the starting file is saved in the team folder.",
-      "sha256": "0a9ea9ca1ed800af23af404031e090f234205495ac7afbff27a1540aab503cbb",
-      "file": "assets/narration/open-team-project-0a9ea9ca1ed8.mp3"
+      "text": "Open and protect the working program. In Make Code · Home → your team project. Your working program has the sensor settings that match the built model. A saved copy lets you undo today’s changes. Open the latest team project, then download a backup named WalkingStick_BeforeBluetooth.hex. Check. The working sensor blocks are visible and the starting file is saved in the team folder.",
+      "sha256": "89eab715fc6fbe8f3857cf0c7c046c883f17f799c8475ac9b0d78f4f1875fb94",
+      "file": "assets/narration/open-team-project-89eab715fc6f.mp3"
     },
     {
       "id": "sensor-profile",
-      "text": "Check the existing sensor once. With your teacher · current sensor program. Keep the actual sensor block, extension and pin choices. We need a distance in centimetres and the sensor’s real failed-reading rule. Different sensors can report errors differently.. With your teacher, identify the repeating sensor loop, its centimetre value and the exact valid/invalid test.. Check. Continue only when the teacher has confirmed the read, centimetre unit and exact valid/invalid rule. Otherwise keep the backup and stop for preparation.",
-      "sha256": "74aff247a2e00f649b38562a9e1a7d0cf82d2a7fe3e0f09f08cdd37dd7bbb89c",
-      "file": "assets/narration/sensor-profile-74aff247a2e0.mp3"
+      "text": "Check the existing sensor once. With your teacher · current sensor program. Keep the sensor blocks, extension and pins that already work. Find the distance in centimetres, written centimetres. Also find how this sensor reports a failed reading. With your teacher, find the forever loop that reads the sensor, the value in centimetres and the test that separates usable readings from failed ones. Check. The teacher has checked all three before you continue. If one is missing, keep the backup and stop here for preparation.",
+      "sha256": "bd3134096d3b24dd179377e7915ad3bbe6589d04bea44d65fc433ae7b3473aff",
+      "file": "assets/narration/sensor-profile-bd3134096d3b.mp3"
     },
     {
       "id": "rule",
-      "text": "Keep the 30 centimetres rule. In the existing sensor decision blocks. First check whether the measurement is usable. Only then compare its distance. Exactly 30 centimetres belongs to the near branch.. Trace these three outcomes in the existing loop: invalid → ?, valid at or below 30 centimetres → X, valid above 30 centimetres → blank.. Check. All three outcomes belong to the same loop that reads the sensor.",
-      "sha256": "b0a1378f3d6f828bbb4a8e5cc29ed080f87858780836de416ea3d158abff2765",
-      "file": "assets/narration/rule-b0a1378f3d6f.mp3"
+      "text": "Keep the 30 centimetres rule. In the existing sensor decision blocks. Check for a usable reading first. Then compare the distance with 30 centimetres. The symbol ≤ means less than or equal to, so exactly 30 centimetres counts as near. Follow the arrows: failed reading → ?; usable reading at or below 30 centimetres → X; usable reading above 30 centimetres → blank. Check. All three outcomes belong to the same loop that reads the sensor.",
+      "sha256": "612bdcae24abc12b1918bacd3ac7f33f5a7f189cdaae538d1a83b8a6f4fd86ab",
+      "file": "assets/narration/rule-612bdcae24ab.mp3"
     },
     {
       "id": "bluetooth-sound",
-      "text": "Add Bluetooth to this project. In Make Code · Extensions. you art is the Bluetooth message service used by the sound page. Add it to this one sensor project. There is no separate button-rehearsal project to merge.. Open Extensions and add the official Bluetooth extension.. Check. Bluetooth blocks appear and the existing sensor blocks remain available.",
-      "sha256": "627125e098fcca5fc8e4ac7e2870c9c4bae82b2cff8582719bc9072337c61941",
-      "file": "assets/narration/bluetooth-sound-627125e098fc.mp3"
+      "text": "Add Bluetooth to this project. In Make Code · Extensions. Bluetooth lets the board send messages without a cable. The you art service sends the short text messages that the sound page understands. Open Extensions and add the official Bluetooth extension. Check. Bluetooth blocks appear and the existing sensor blocks remain available.",
+      "sha256": "663ab25fe2d9073c13072b8618e1180216782a10f9f43535ce8e0de303c1fb4d",
+      "file": "assets/narration/bluetooth-sound-663ab25fe2d9.mp3"
     },
     {
       "id": "connection-setting",
-      "text": "Use the checked classroom setting. In Make Code · Project Settings. For this supervised demonstration, the teacher checks No Pairing Required. This permits nearby devices to connect. Chrome still asks you to select a device.. Select the teacher-approved No Pairing Required setting for this classroom demonstration.. Check. The project has the checked setting before it is downloaded.",
-      "sha256": "c42144e97b6609c8db617b3291383afd1cd560a06549d957bc77bfb4bc6fc67c",
-      "file": "assets/narration/connection-setting-c42144e97b66.mp3"
+      "text": "Use the checked classroom setting. In Make Code · Project Settings. For this supervised demonstration, the teacher checks No Pairing Required. This permits nearby devices to connect. Chrome still asks you to select a device. Select the teacher-approved No Pairing Required setting for this classroom demonstration. Check. The project has the checked setting before it is downloaded.",
+      "sha256": "8ec22ee90050933dfcf6bd123743e60f685c4c42558a866d711ee80d51e3a323",
+      "file": "assets/narration/connection-setting-8ec22ee90050.mp3"
     },
     {
       "id": "start-uart",
-      "text": "Prepare the two message variables. In Make Code · Variables and on start. stick status holds the latest result. B T connected remembers whether the website is connected. Starting with unknown avoids pretending that an untested reading is far.. Create stick status and B T connected. In on start, set them as shown and start the Bluetooth you art service.. Check. The two variables and you art startup exist once in this program.",
-      "sha256": "d1c90c36afbf2f88adc534b02c19155e6e9c02c5896ea398117e366337db54b2",
-      "file": "assets/narration/start-uart-d1c90c36afbf.mp3"
+      "text": "Prepare the two message variables. In Make Code · Variables and on start. A variable is a named box that remembers a value. stick status holds text. B T connected holds true or false to remember the connection. In Variables → Make a Variable, create stick status and B T connected. In on start, set stick status to the text unknown and B T connected to the Logic value false. Add Bluetooth → start you art service. Check. The on start block has both set blocks and one start you art service block. unknown means no usable result yet.",
+      "sha256": "7e02744d7fb22375e0cdb673a627f91e2ac1fbea5d33461e3c443c724cc7f34f",
+      "file": "assets/narration/start-uart-7e02744d7fb2.mp3"
     },
     {
       "id": "connection-events",
-      "text": "Remember connection and disconnection. In Make Code · Bluetooth events. The website may disconnect and reconnect. These events change a flag; the sensor loop keeps choosing the display.. In Bluetooth, add on bluetooth connected and on bluetooth disconnected. Put the shown variable assignments inside them.. Check. Connecting sets B T connected true. Disconnecting sets it false and clears the old message state.",
-      "sha256": "7059717c1bcf1efa7b60038368b0a6324c967c62ec68025847fab57064f83898",
-      "file": "assets/narration/connection-events-7059717c1bcf.mp3"
+      "text": "Remember connection and disconnection. In Make Code · Bluetooth events. An event runs when something happens. These two events remember when the website connects or disconnects. The sensor loop still controls the display. From Bluetooth, add on bluetooth connected and put set B T connected to true inside it. Add on bluetooth disconnected; put set B T connected to false and set stick status to unknown inside it. Check. Each event exists once. true means connected; false means disconnected.",
+      "sha256": "ba2c25eb8af7b0c3f0968bbc054639a1c9e538b2204553fb89beeb84ce07ad33",
+      "file": "assets/narration/connection-events-ba2c25eb8af7.mp3"
     },
     {
       "id": "near-message",
-      "text": "Add the near message. In the existing valid, distance ≤30 centimetres branch. The same decision must drive both the display and the message. This branch is reached only after a usable reading.. Add set stick status to near beside the existing X display.. Check. A valid near reading selects near and still shows X.",
-      "sha256": "3f782e48390ad5678eb8641339eaf414ddbc20faf3d7cc552dcb84aebf83cfde",
-      "file": "assets/narration/near-message-3f782e48390a.mp3"
+      "text": "Add the near message. In the existing valid, distance ≤30 centimetres branch. The same decision must drive both the display and the message. This branch is reached only after a usable reading. From Variables, drag set stick status to into the existing near branch, beside the X display. Put a Text block in its value space and type near in capitals. Check. A valid near reading selects near and still shows X.",
+      "sha256": "b9a711d625dde5e5f380ff94b404918c91ff5bea2ef813f913a8583681b604a5",
+      "file": "assets/narration/near-message-b9a711d625dd.mp3"
     },
     {
       "id": "far-message",
-      "text": "Add the farther message. In the existing valid, distance >30 centimetres branch. far means the latest valid measurement is farther than 30 centimetres. It does not prove a whole walking route is clear.. Add set stick status to far beside the existing clear screen block.. Check. A valid farther reading selects far and clears the display.",
-      "sha256": "5cc8b23e903984a1f5199f66f409ba99a98b84c7fe5ccfe95a4350bceed28b04",
-      "file": "assets/narration/far-message-5cc8b23e9039.mp3"
+      "text": "Add the farther message. In the existing valid, distance >30 centimetres branch. far means the latest valid measurement is farther than 30 centimetres. It does not prove a whole walking route is clear. Add another set stick status to block inside the existing farther branch, beside clear screen. Put the text far in its value space. Check. A valid farther reading selects far and clears the display.",
+      "sha256": "3941c5fa579e852aafed28ac3df8cd78d0d4f246f26438fd82d4b4f4e4a0fe1d",
+      "file": "assets/narration/far-message-3941c5fa579e.mp3"
     },
     {
       "id": "unknown-message",
-      "text": "Add the unusable-reading message. In the existing invalid-reading branch. A missing or unusable measurement gives unknown. The older Mandrake code used five hundred00 as a placeholder; that must never become a large, apparently valid distance.. Add set stick status to unknown beside the existing ? display.. Check. The checked invalid-reading path chooses unknown, not far.",
-      "sha256": "e1aae5c64217bbc748b865dfde7748c5cd90b16a94515ec255bd9ccb9ca4b085",
-      "file": "assets/narration/unknown-message-e1aae5c64217.mp3"
+      "text": "Add the unusable-reading message. In the existing invalid-reading branch. A failed measurement must choose unknown. It must never be treated as a large, valid distance. Add set stick status to inside the existing failed-reading branch, beside the ? display. Use the text unknown. Check. The checked invalid-reading path chooses unknown, not far.",
+      "sha256": "256296d55bdf06305b7b739c016bc007774a4001bd1b50063c1676f32cce96ad",
+      "file": "assets/narration/unknown-message-256296d55bdf.mp3"
     },
     {
       "id": "send-fresh",
-      "text": "Send after the fresh sensor decision. In the same sensor-reading forever loop. Only one sender may remain. Remove old distance: writes and separate background transmitters; keep the sensor read. Send after the full near/far/invalid decision in this same loop. If fresh readings stop, old results must stop too.. Replace the old send with if B T connected → uart write line stick status, then one checked five hundred ms pause.. Check. Only near, far or unknown is sent after each fresh decision in the sensor loop.",
-      "sha256": "229294c7192578d56a4fde5f6446a3b398e03500e2ffb5888c8b66679952bcd4",
-      "file": "assets/narration/send-fresh-229294c71925.mp3"
+      "text": "Send after the fresh sensor decision. In the same sensor-reading forever loop. Use one sender in the same forever loop that reads the sensor. It must send after the whole near/far/failed decision, so it reports the newest result. Remove the old distance: send blocks and any separate sending loop. After the complete sensor decision, add a Logic if with B T connected as its condition. Inside it, add Bluetooth uart write line with the stick status variable. Put one checked five hundred ms pause after the if. Check. The sensor read stays in place. Only near, far or unknown is sent. The write line block adds the line ending for you.",
+      "sha256": "c30d65382f4f2296451100f85e58bb0adf62752d194320fe41553074cdbaf448",
+      "file": "assets/narration/send-fresh-c30d65382f4f.mp3"
     },
     {
       "id": "save-transfer",
-      "text": "Save and run the updated program. In Make Code · Download, then the MICROBIT drive. A numbered file records the exact program being tested. The simulator cannot prove a physical ultrasonic reading or Bluetooth link.. Download the next unused WalkingStick number, then copy that .hex to MICROBIT through the checked U S B data cable.. Check. The board runs the new sensor-and-Bluetooth program.",
-      "sha256": "b1cfed1f7f9f4f97ebf6b5aaee48bb45b8b8f42238dcaa084568e72a659bdb8f",
-      "file": "assets/narration/save-transfer-b1cfed1f7f9f.mp3"
+      "text": "Save and run the updated program. In Make Code · Download, then the MICROBIT drive. A numbered file records the exact program being tested. The simulator cannot prove a physical ultrasonic reading or Bluetooth link. Download the next unused numbered .hex, for example WalkingStick_02.hex. Copy it to the MICROBIT drive using the checked U S B data cable. Check. Wait for copying and flashing to finish. Keep the cable connected until the board is running the updated program.",
+      "sha256": "b2fb5767b45c5a13c92d45ac7bf42f7d801e9bcac990ce1c1384bdda32a3ff50",
+      "file": "assets/narration/save-transfer-b2fb5767b45c.mp3"
     },
     {
       "id": "sound-page",
-      "text": "Open the sound page. In Chrome · a separate tab. The website is already provided. It plays the warning sent by your micro:bit. Browsers wait for a click before allowing sound.. Open Walking-stick sounds and click Enable sound.. Check. The page is ready to play a warning; connecting is the next step.",
-      "sha256": "d9f7eb1b386411a5ab0ba486825b546472d710986b9b2ca8bc1286d47ffc762c",
-      "file": "assets/narration/sound-page-d9f7eb1b3864.mp3"
+      "text": "Open the sound page. In Chrome · a separate tab. The website is already provided. It plays the warning sent by your micro:bit. Browsers wait for a click before allowing sound. Open Walking-stick sounds and click Enable sound. Check. The page is ready to play a warning; connecting is the next step.",
+      "sha256": "bfa1bf5e600290c2d242b26b0ddb4acc847a4af1426a64509e593ede08d2d24c",
+      "file": "assets/narration/sound-page-bfa1bf5e6002.mp3"
     },
     {
       "id": "connect-board",
-      "text": "Connect your team’s micro:bit. On Walking-stick sounds. Chrome asks which nearby board to connect. Your program must be running on the board you choose.. Click Connect micro:bit and select your team’s identified device.. Check. The website shows a live connection and receives fresh sensor messages.",
-      "sha256": "0151c1efd653048062cc8d40b2fcfef5d00edbf81d939439e827dd8bac5851f1",
-      "file": "assets/narration/connect-board-0151c1efd653.mp3"
+      "text": "Connect your team’s micro:bit. On Walking-stick sounds. Chrome asks which nearby board to connect. Your program must be running on the board you choose. Click Connect micro:bit and select your team’s identified device. Check. The website shows a live connection and receives fresh sensor messages.",
+      "sha256": "4a564af8389a6573d85e2ad43d4803434771edc6585284e8fd3b910fba815ca6",
+      "file": "assets/narration/connect-board-4a564af8389a.mp3"
     },
     {
       "id": "test-near",
-      "text": "Test cardboard at 20 centimetres. At the tabletop model · sound tab visible. This checks the whole path: sensor → program → Bluetooth → website → speaker. Use a ruler, not a guessed distance.. Place the cardboard 20 centimetres from the sensor’s front face and observe both displays and the sound.. Check. A usable reading near 20 centimetres gives X, near and the near warning.",
-      "sha256": "7a60cb57447aa6c8bf61aff19957a4ef854cdce1b8143ac1eacec4731545d28b",
-      "file": "assets/narration/test-near-7a60cb57447a.mp3"
+      "text": "Test cardboard at 20 centimetres. At the tabletop model · sound tab visible. This checks the whole path: sensor → program → Bluetooth → website → speaker. Use a ruler, not a guessed distance. Place the cardboard 20 centimetres from the sensor’s front face and observe both displays and the sound. Check. A usable reading near 20 centimetres gives X, near and the near warning.",
+      "sha256": "ceb724436eaefbc575515055730cb032a6ebb5d9901f1523f2df53ee902218b7",
+      "file": "assets/narration/test-near-ceb724436eae.mp3"
     },
     {
       "id": "test-far",
-      "text": "Move the same cardboard to 40 centimetres. At the tabletop model · sound tab visible. Keep the object and setup the same while changing the distance. The result must come from a valid new reading.. Move the cardboard to 40 centimetres from the sensor face and observe again.. Check. A usable reading near 40 centimetres gives a blank display and far. The near warning stops.",
-      "sha256": "fbbe721f51ea55697a986754217acd707b588dcf5552a180087ec6b3d7200fc8",
-      "file": "assets/narration/test-far-fbbe721f51ea.mp3"
+      "text": "Move the same cardboard to 40 centimetres. At the tabletop model · sound tab visible. Keep the object and setup the same while changing the distance. The result must come from a valid new reading. Move the cardboard to 40 centimetres from the sensor face and observe again. Check. A usable reading near 40 centimetres gives a blank display and far. The near warning stops.",
+      "sha256": "f39a154a88ee2f9fbcf0c5fb394ef9828bd27707ab4ca7b180084f4f6335af15",
+      "file": "assets/narration/test-far-f39a154a88ee.mp3"
     },
     {
       "id": "test-unknown",
-      "text": "Check an unusable sensor reading. With your teacher · sound tab visible. The error path matters as much as the near and far paths. Different sensors need different safe invalid-reading tests.. Have your teacher run the already-checked unusable-reading test for this model.. Check. The board shows ? and the website reports unknown, with the near warning stopped.",
-      "sha256": "7aadde6a6bbe1a287d9f6f10adac4ec5f1441e9728f21d4fb6dba9cb744a100c",
-      "file": "assets/narration/test-unknown-7aadde6a6bbe.mp3"
+      "text": "Check an unusable sensor reading. With your teacher · sound tab visible. The error path matters as much as the near and far paths. Different sensors need different safe invalid-reading tests. Have your teacher run the already-checked unusable-reading test for this model. Check. The board shows ? and the website reports unknown, with the near warning stopped.",
+      "sha256": "cf7368904d55b426ef93c46a2610554da4c3b92853cb579eec5eeb3f296df402",
+      "file": "assets/narration/test-unknown-cf7368904d55.mp3"
     },
     {
       "id": "test-connection-loss",
-      "text": "Check loss of the connection. On Walking-stick sounds · tabletop model. A disconnected board must not leave an old warning sounding. Separately, more than three seconds without fresh complete messages makes the page show Signal paused.. Click Disconnect and check that sound stops. Reconnect the same board and wait for a fresh result.. Check. The page shows disconnection, then returns to live sensor messages after reconnecting.",
-      "sha256": "5d1621664cf024ff4c5840c8adf683dc8e6682aa3035c0db8c35dd3d7198b6fd",
-      "file": "assets/narration/test-connection-loss-5d1621664cf0.mp3"
+      "text": "Check loss of the connection. On Walking-stick sounds · tabletop model. A disconnected board must not leave an old warning sounding. Separately, more than three seconds without fresh complete messages makes the page show Signal paused. Click Disconnect and check that sound stops. Reconnect the same board and wait for a fresh result. Check. The page shows disconnection, then returns to live sensor messages after reconnecting.",
+      "sha256": "5cabaf2ba9cea4aa3bf65da8d0fa888508a56afb4e03f083398c52a24b5db2bb",
+      "file": "assets/narration/test-connection-loss-5cabaf2ba9ce.mp3"
     },
     {
       "id": "record-trials",
-      "text": "Keep three real trials at each distance. In your existing team test record. One successful try can happen by chance. Repeat the same measured positions so failures are visible too.. Run three trials at 20 centimetres and three at 40 centimetres. Record distance, actual reading, board display, website message and sound.. Check. Six real trials show what happened, including any failed or missing readings.",
-      "sha256": "c958dbed478f4041f3f977b3712b011c30f241062970b126dbdd1840e58fffcd",
-      "file": "assets/narration/record-trials-c958dbed478f.mp3"
+      "text": "Keep three real trials at each distance. In your existing team test record. One successful try can happen by chance. Repeat the same measured positions so failures are visible too. Run three trials at 20 centimetres and three at 40 centimetres. Record distance, actual reading, board display, website message and sound. Check. Six real trials show what happened, including any failed or missing readings.",
+      "sha256": "7045e81f781fb4382b6506f0ca40a114c3419f33734282589fb22ea5dd16c081",
+      "file": "assets/narration/record-trials-7045e81f781f.mp3"
     },
     {
       "id": "improve-retest",
-      "text": "Improve one thing and repeat the tests. In the same project and team test record. Changing one thing helps you see what caused a difference. Keep the original observations.. Use the first results to choose one checked correction, save a new numbered version and repeat the same six trials.. Check. A separate after-change record can be compared with the original.",
-      "sha256": "0f5ea24d472681639ddbbd8cc178057c342650b5f0c893e96ce33f5a5215a1c6",
-      "file": "assets/narration/improve-retest-0f5ea24d4726.mp3"
+      "text": "Improve one thing and repeat the tests. In the same project and team test record. Changing one thing helps you see what caused a difference. Keep the original observations. Choose one checked correction using the first results. Save the next numbered .hex and copy it to MICROBIT. Wait for transfer to finish, reconnect the sound page, then repeat the same six trials. Check. A separate after-change record can be compared with the original.",
+      "sha256": "ad3b23b98943e870acc1b6876c4ffc13969770bb94d73fbb0199d46fdced6201",
+      "file": "assets/narration/improve-retest-ad3b23b98943.mp3"
     },
     {
       "id": "save-evidence",
-      "text": "Save the final program and results. In your existing team folder and shared report. The saved code should match the program that produced the recorded behavior. The guide itself does not collect answers.. Keep the final numbered .hex and actual test notes in the team folder. Update Test and improvement in the shared report.. Check. The next editor can find the working version, results and any untested behavior.",
-      "sha256": "010c92e97e467e4ffd4e6d2de55a950440f1ad76dcd2baed76cc160ba5f0fc2f",
-      "file": "assets/narration/save-evidence-010c92e97e46.mp3"
+      "text": "Save the final program and results. In your existing team folder and shared report. The saved code should match the program that produced the recorded behavior. The guide itself does not collect answers. Keep the final numbered .hex and actual test notes in the team folder. Update Test and improvement in the shared report. Check. The next editor can find the working version, results and any untested behavior.",
+      "sha256": "75376fc3f3d2cd7da574937c111a020612563024eaf1ce9eec2e66a5e3e4e0fc",
+      "file": "assets/narration/save-evidence-75376fc3f3d2.mp3"
     },
     {
       "id": "submit",
-      "text": "Use the existing team handoff. In Google Classroom · existing STEAM assignment. The teacher needs access to the shared report and the final program that your team demonstrates. This is the same project, not another assignment.. Have one team member attach the shared report and final numbered .hex to the existing assignment by its announced deadline.. Check. The files open for your teacher and match the demonstrated tabletop model.",
-      "sha256": "ed09abfe600425786412df51fbffc11ecd4fa6e35d1e536366d4a190c123fc07",
-      "file": "assets/narration/submit-ed09abfe6004.mp3"
+      "text": "Use the existing team handoff. In Google Classroom · existing STEAM assignment. The teacher needs access to the shared report and the final program that your team demonstrates. This is the same project, not another assignment. Have one team member attach the shared report and final numbered .hex to the existing assignment by its announced deadline. Check. The files open for your teacher and match the demonstrated tabletop model.",
+      "sha256": "883a74c57a777239734370231bb7f15a21fd1baa2f14771fceb82c5de7e0fcb9",
+      "file": "assets/narration/submit-883a74c57a77.mp3"
     }
   ]
 }

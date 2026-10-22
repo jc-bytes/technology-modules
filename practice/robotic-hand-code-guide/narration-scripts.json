@@ -20,27 +20,27 @@
     },
     {
       "id": "frame",
-      "text": "Keep two empty sections. In the sketch editor. setup() runs once when the board starts. loop() repeats while the board runs. Curly braces mark the start and end of each section. For a new sketch, keep the two empty sections shown below. When continuing, find these sections in your existing code instead of adding duplicates. Check. There is one setup() and one loop(). Both have an opening { and a closing }.",
-      "sha256": "ff6cc2bb19771a73d7d9a6218f7e5d63cb489553f3c237153fc0397cef8eae67",
-      "file": "assets/narration/frame-ff6cc2bb1977.mp3"
+      "text": "Keep two empty sections. In the sketch editor. setup() runs once when the board starts. loop() repeats while the board runs. Curly braces mark the start and end of each section. For a new sketch, keep the two empty sections shown below. When continuing, find these sections in your existing code instead of adding duplicates. Check. One setup() and one loop(), each with { and }. If later code is already present, compare it and add only missing lines; do not duplicate it.",
+      "sha256": "feab4c046681525cb49de99e0fe9265c41b7e219f30ab8ccee100a1529278866",
+      "file": "assets/narration/frame-feab4c046681.mp3"
     },
     {
       "id": "library",
-      "text": "Name the five servo motors. At the very top, before setup(). Servo.h supplies the motor instructions. Each Servo name is a separate box for one motor’s commands. Add the include line and five Servo names above setup(), outside both sections. Check. The sketch has five motor names, motor1 through motor5.",
-      "sha256": "1163b0c5f9c48a074c4d85a6ffde8cdea823954d752b50dd2faf624f9db2fcf5",
-      "file": "assets/narration/library-1163b0c5f9c4.mp3"
+      "text": "Name the five servo motors. At the very top, before setup(). #include <Servo.h> loads the servo instructions. Servo names the motor type; motor1 is the name we give one motor. The semicolon ; ends each Servo line. Add the include line and five Servo names above setup(), outside both sections. Check. The sketch has five motor names, motor1 through motor5.",
+      "sha256": "55e14f07db7dcd6ab89a5b77a48c97c7c3231e7511a33cf81f5ae6a8de2542a7",
+      "file": "assets/narration/library-55e14f07db7d.mp3"
     },
     {
       "id": "button-pins",
-      "text": "Name the buttons and starting values. Below the five Servo lines, before setup(). const int gives a fixed pin number a name. int stores a number that can change. The two button-controlled motors remember their last commands. Add these six lines below the Servo names and above setup(). Check. S1–S4 name pins 2–5. middleAngle starts at 125 and baseAngle at 86.",
-      "sha256": "3abc679c9533c00f6188f72c121f6078f683986b5f8a2a65ed19d9d3618edbd4",
-      "file": "assets/narration/button-pins-3abc679c9533.mp3"
+      "text": "Name the buttons and starting values. Below the five Servo lines, before setup(). const int names a fixed pin number. int stores a number that can change. The = sign stores the number on its right in the name on its left. Add these six lines below the Servo names and above setup(). Check. S1–S4 name pins 2–5. middleAngle starts at 125 and baseAngle at 86.",
+      "sha256": "01390e33b357ec2a8f8af33aa7794cfffccb9f29b64fcdad0f82fcae1d11e06a",
+      "file": "assets/narration/button-pins-01390e33b357.mp3"
     },
     {
       "id": "attach",
-      "text": "Match motors to signal pins. Inside setup(), between its braces. attach() tells the library which signal pin sends instructions to each motor. It can start servo signals when the program runs. Add the five attach lines. Check. Motor 1 uses D6, motor 2 D7, motor 3 D8, motor 4 D9 and motor 5 D10.",
-      "sha256": "6df33c311d5a093c2a6f99c5ab8833c712eec4010c3391fb9537d09ed7af8ac8",
-      "file": "assets/narration/attach-6df33c311d5a.mp3"
+      "text": "Match motors to signal pins. Inside setup(), between its braces. motor1.attach(6) tells the library to send motor1 signals through pin 6. The parentheses hold the pin number. Signals can start when this program runs. Add these five lines immediately after void setup() {, inside that section. Check. Motor 1 uses D6, motor 2 D7, motor 3 D8, motor 4 D9 and motor 5 D10.",
+      "sha256": "91f878beca685c9c508353bd02c1d758bc4cb4dc2da3196acd37c98dd31ec530",
+      "file": "assets/narration/attach-91f878beca68.mp3"
     },
     {
       "id": "pullup",
@@ -56,9 +56,9 @@
     },
     {
       "id": "read-knob1",
-      "text": "Make knob one control motor one. At the start of loop(), inside its existing braces. Read, scale, send: analogRead gets a knob number from 0 to 1023. map changes that range to 0–57. write sends the new command to motor1. Add these three lines in order. Check. A one supplies pot1, angle1 holds the scaled value, and motor1 receives angle1.",
-      "sha256": "086a0126d3359463948c6ac99402f156a252a267df1ed0656bcec19b623f5978",
-      "file": "assets/narration/read-knob1-086a0126d335.mp3"
+      "text": "Make knob one control motor one. At the start of loop(), inside its existing braces. analogRead stores the A one knob reading in pot1. map changes its 0–1023 range into a 0–57 command stored in angle1. write sends angle1 to motor1. Add these three lines in order. Check. A one supplies pot1, angle1 holds the scaled value, and motor1 receives angle1.",
+      "sha256": "79bddba0e4d53febf3fe357e1ccbd6b4cb2b330ade3f63460c3a6ac805efd727",
+      "file": "assets/narration/read-knob1-79bddba0e4d5.mp3"
     },
     {
       "id": "knob2",
@@ -80,15 +80,15 @@
     },
     {
       "id": "base-up",
-      "text": "Add the base-up button. Inside loop(), after the complete S1 block. The base has its own remembered command, baseAngle. S4 adds one and stops the command at 176. Add the S4 block. Check. S4 commands motor5 toward 176.",
-      "sha256": "fb58269c09387b51088f9bba1d389cc73a112ab28b4970c1e9d80ef388d5d135",
-      "file": "assets/narration/base-up-fb58269c0938.mp3"
+      "text": "Add the base-up button. Inside loop(), after the complete S1 block. The base has its own remembered command, baseAngle. S4 adds one and stops the command at 176. Add the complete S4 block after the closing brace of the S1 block, still inside loop(). Check. S4 commands motor5 toward 176.",
+      "sha256": "b585544c78262beb78d0ab2d32fe390046565af3a17c9fa922e126cb9d70b952",
+      "file": "assets/narration/base-up-b585544c7826.mp3"
     },
     {
       "id": "base-down",
-      "text": "Add the base-down button. Inside loop(), after the complete S4 block. S2 subtracts one from the base command. The lower limit keeps it at or above zero. Add the S2 block. Check. S2 commands motor5 toward 0.",
-      "sha256": "ff48a0b10bc1ce203a1c21b4ee02d02a70b791ea38a7c53e816537edf1f37724",
-      "file": "assets/narration/base-down-ff48a0b10bc1.mp3"
+      "text": "Add the base-down button. Inside loop(), after the complete S4 block. S2 subtracts one from the base command. The lower limit keeps it at or above zero. Add the complete S2 block after the closing brace of the S4 block, still inside loop(). Check. S2 commands motor5 toward 0.",
+      "sha256": "a8902f562ada8b8eab2b7ea608ffd59d88435d0728941baa18063c97f380e750",
+      "file": "assets/narration/base-down-a8902f562ada.mp3"
     },
     {
       "id": "loop-pause",
@@ -104,9 +104,9 @@
     },
     {
       "id": "upload",
-      "text": "Upload with the teacher. Ardweeno I D E board and port selection, with the teacher. Upload sends your program to the board. The hand can move as soon as setup() starts. After the hardware check, select the board and port the teacher identifies. Choose Upload with the teacher. Check. The I D E reports that uploading finished.",
-      "sha256": "80a79bd42c243eca714986d914bbd4efa91aa63c92c4c8c5d43f2a49045785e6",
-      "file": "assets/narration/upload-80a79bd42c24.mp3"
+      "text": "Upload with the teacher. Ardweeno I D E board and port selection, with the teacher. Upload sends your program to the board. The hand can move as soon as setup() starts. After the hardware check, have the teacher connect the approved model’s U S B cable. Select the board and port they identify, then choose Upload with the teacher. Check. The I D E reports that uploading finished.",
+      "sha256": "72b0f2fc76c4d7169b4431219901bb9a408139e34cb93a4b73b607a60fc92135",
+      "file": "assets/narration/upload-72b0f2fc76c4.mp3"
     },
     {
       "id": "knob-test",
@@ -122,9 +122,9 @@
     },
     {
       "id": "debug",
-      "text": "Check one problem and retest. Ardweeno I D E and the test note, with the teacher. Changing one thing lets you see whether that change helped. If a control failed, compare its input, motor name and limits with the reference. After a teacher-checked correction, Verify, save a new numbered version and repeat that control test with teacher approval. Check. Your test note keeps the old result and the new result for the same control.",
-      "sha256": "5c888df2da19b9e835a8f0a1464682ab1aeb4cc7f73365c9a5c18a54341cdd8c",
-      "file": "assets/narration/debug-5c888df2da19.mp3"
+      "text": "Check one problem and retest. Ardweeno I D E and the test note, with the teacher. Changing one thing lets you see whether that change helped. If a control failed, compare its input, motor name and limits with the reference. After a teacher-checked correction, Verify and save a new numbered version. Upload that version with the teacher before repeating the failed control test. Check. Your test note keeps the old result and the new result for the same control.",
+      "sha256": "c9a67909419f253fd9cde8e94e9183b911fbd52aff371036dbf4635283f8a8cd",
+      "file": "assets/narration/debug-c9a67909419f.mp3"
     },
     {
       "id": "report",
