@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-HAND-01",
   "slug": "robotic-hand-code-guide",
   "title": "Code your robotic hand",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -17,12 +17,12 @@
   ],
   "estimatedTime": "Unknown, classroom pilot required",
   "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
-  "lastReviewed": "2026-10-21",
+  "lastReviewed": "2026-10-22",
   "objectives": [
     "Explain setup and repeating loop",
     "Read knob inputs and map bounded motor commands",
     "Use buttons to change bounded positions",
-    "Verify, upload and test the current five-servo program"
+    "Verify, upload and test the current four-working-servo program"
   ],
   "software": [
     "Arduino IDE",
@@ -58,7 +58,7 @@
     },
     {
       "id": "library",
-      "title": "Name the five servo motors",
+      "title": "Name the four working servos",
       "entryPath": "#library",
       "estimatedMinutes": null
     },
@@ -69,15 +69,33 @@
       "estimatedMinutes": null
     },
     {
-      "id": "attach",
-      "title": "Match motors to signal pins",
-      "entryPath": "#attach",
+      "id": "pullup",
+      "title": "Prepare the four buttons",
+      "entryPath": "#pullup",
       "estimatedMinutes": null
     },
     {
-      "id": "pullup",
-      "title": "Prepare the buttons and starting commands",
-      "entryPath": "#pullup",
+      "id": "start-knob1",
+      "title": "Load motor one before signals start",
+      "entryPath": "#start-knob1",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "start-knobs23",
+      "title": "Load the second knob target",
+      "entryPath": "#start-knobs23",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "start-joints",
+      "title": "Load the middle and base targets",
+      "entryPath": "#start-joints",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "attach",
+      "title": "Match motors to signal pins",
+      "entryPath": "#attach",
       "estimatedMinutes": null
     },
     {
@@ -94,25 +112,25 @@
     },
     {
       "id": "knob2",
-      "title": "Repeat the pattern for knobs two and three",
+      "title": "Make knob two control motor two",
       "entryPath": "#knob2",
       "estimatedMinutes": null
     },
     {
       "id": "middle-up",
-      "title": "Add the middle-up button",
+      "title": "Make S3 move down",
       "entryPath": "#middle-up",
       "estimatedMinutes": null
     },
     {
       "id": "middle-down",
-      "title": "Add the middle-down button",
+      "title": "Make S1 move up",
       "entryPath": "#middle-down",
       "estimatedMinutes": null
     },
     {
       "id": "base-up",
-      "title": "Add the base-up button",
+      "title": "Read the base pair and add increase",
       "entryPath": "#base-up",
       "estimatedMinutes": null
     },
@@ -141,8 +159,14 @@
       "estimatedMinutes": null
     },
     {
+      "id": "startup-test",
+      "title": "Observe the checked startup",
+      "entryPath": "#startup-test",
+      "estimatedMinutes": null
+    },
+    {
       "id": "knob-test",
-      "title": "Test and record the three knobs",
+      "title": "Test and record the two knobs",
       "entryPath": "#knob-test",
       "estimatedMinutes": null
     },
@@ -150,6 +174,12 @@
       "id": "button-test",
       "title": "Test and record the four buttons",
       "entryPath": "#button-test",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "opposing-test",
+      "title": "Check opposite buttons together",
+      "entryPath": "#opposing-test",
       "estimatedMinutes": null
     },
     {

@@ -11,7 +11,7 @@ export const stepAliases = {
   "remember-positions": "button-pins",
   "attach": "attach",
   "pullup": "pullup",
-  "start-positions": "pullup",
+  "start-positions": "start-joints",
   "verify-setup": "verify-setup",
   "verify-errors": "verify-setup",
   "loop-place": "read-knob1",

@@ -8,15 +8,15 @@
   "records": [
     {
       "id": "goal",
-      "text": "Control the assembled hand. In this guide. An Ardweeno program reads three knobs and four buttons, then sends position numbers to five servo motors. A servo is a motor that moves toward a chosen position. Find the three knobs and four buttons on the assembled model. Keep the model disconnected while writing code. Check. You can point to all seven controls. Keep the existing wiring.",
-      "sha256": "8cfac9fbb168485c1fc27db97f55b709d1fa36312dba2c6632c8f5bae41856da",
-      "file": "assets/narration/goal-8cfac9fbb168.mp3"
+      "text": "Control the assembled hand. In this guide. This program uses four working servos: motor1, motor2, motor4 and motor5. Two knobs and four buttons control them. Motor3 is broken and disabled. A servo moves toward a chosen position. Find knobs 1 and 2 and buttons S1 to S4. Leave knob 3 unused. Keep the model disconnected while writing code. Check. You can point to the six active controls. Motor3 and its A three knob are not used. Keep the existing wiring.",
+      "sha256": "d8d8dee387582820599749a07494d2e49e66bcbc322207bf865edd0fa812d5b7",
+      "file": "assets/narration/goal-d8d8dee38758.mp3"
     },
     {
       "id": "editor",
-      "text": "Open your team sketch. Ardweeno I D E > File. A sketch is an Ardweeno program. Work in one saved team copy so teammates do not replace each other’s changes. Open Ardweeno I D E. Open the latest numbered team sketch. For a first session, choose New Sketch and Save As RoboticHand_01. Check. You have one editable sketch with a numbered name.",
-      "sha256": "ac7af1313f4fa5b1850e4f97560ee12a6a01d41513d16a71fecd436d9d32e474",
-      "file": "assets/narration/editor-ac7af1313f4f.mp3"
+      "text": "Open your team sketch. Ardweeno I D E > File. A sketch is an Ardweeno program. Work in one saved team copy so teammates do not replace each other’s changes. Open the latest numbered team sketch. Save a new numbered copy before editing. For a first session, create and save RoboticHand_01 in Ardweeno I D E. Check. You have one editable sketch with a numbered name.",
+      "sha256": "8bc6540d95a616c0380bef3698189f86720e49cb06077df2ee7530aa2fba5401",
+      "file": "assets/narration/editor-8bc6540d95a6.mp3"
     },
     {
       "id": "frame",
@@ -26,81 +26,99 @@
     },
     {
       "id": "library",
-      "text": "Name the five servo motors. At the very top, before setup(). #include <Servo.h> loads the servo instructions. Servo names the motor type; motor1 is the name we give one motor. The semicolon ; ends each Servo line. Add the include line and five Servo names above setup(), outside both sections. Check. The sketch has five motor names, motor1 through motor5.",
-      "sha256": "55e14f07db7dcd6ab89a5b77a48c97c7c3231e7511a33cf81f5ae6a8de2542a7",
-      "file": "assets/narration/library-55e14f07db7d.mp3"
+      "text": "Name the four working servos. At the very top, before setup(). #include <Servo.h> loads the servo instructions. Servo names the motor type; motor1 is the name we give one motor. The semicolon ; ends each Servo line. Add the include line and the four working motor names above setup. Check. The sketch names motor1, motor2, motor4 and motor5. There is no motor3 object.",
+      "sha256": "0a8e442ab5c0e7820bf279ed7ba10f109fc0fe711d4a377f1db2695c8e1512e0",
+      "file": "assets/narration/library-0a8e442ab5c0.mp3"
     },
     {
       "id": "button-pins",
-      "text": "Name the buttons and starting values. Below the five Servo lines, before setup(). const int names a fixed pin number. int stores a number that can change. The = sign stores the number on its right in the name on its left. Add these six lines below the Servo names and above setup(). Check. S1–S4 name pins 2–5. middleAngle starts at 125 and baseAngle at 86.",
-      "sha256": "01390e33b357ec2a8f8af33aa7794cfffccb9f29b64fcdad0f82fcae1d11e06a",
-      "file": "assets/narration/button-pins-01390e33b357.mp3"
-    },
-    {
-      "id": "attach",
-      "text": "Match motors to signal pins. Inside setup(), between its braces. motor1.attach(6) tells the library to send motor1 signals through pin 6. The parentheses hold the pin number. Signals can start when this program runs. Add these five lines immediately after void setup() {, inside that section. Check. Motor 1 uses D6, motor 2 D7, motor 3 D8, motor 4 D9 and motor 5 D10.",
-      "sha256": "91f878beca685c9c508353bd02c1d758bc4cb4dc2da3196acd37c98dd31ec530",
-      "file": "assets/narration/attach-91f878beca68.mp3"
+      "text": "Name the buttons and starting values. Below the four working Servo lines, before setup(). const int names a fixed pin number. int stores a number that can change. The = sign stores the number on its right in the name on its left. Add these six lines below the Servo names and above setup(). Check. S1–S4 name pins 2–5. middleAngle starts at 125 and baseAngle at 86.",
+      "sha256": "4fbbc7655ef413b2be3ed655aea2522baafffad7efa31225d961d13da9bef13e",
+      "file": "assets/narration/button-pins-4fbbc7655ef4.mp3"
     },
     {
       "id": "pullup",
-      "text": "Prepare the buttons and starting commands. Inside setup(), after the attach lines. input pull up makes an unpressed button read high and a pressed button read low with the checked wiring. write() sends a position command to a motor. Add these lines inside setup(), after the five attach lines and before its closing brace. Check. All four buttons use input pull up. Motor4 starts with middleAngle and motor5 with baseAngle.",
-      "sha256": "eb24aa962d9ac49ea9f1dfc1d1462b897d63b0d4dfb5c372177237cecc3ec0ac",
-      "file": "assets/narration/pullup-eb24aa962d9a.mp3"
+      "text": "Prepare the four buttons. At the start of setup(), inside its braces. input pull up makes an unpressed button read high and a pressed button read low with the checked wiring. Add these four lines immediately after void setup() {. Move any old attach lines to the later signal-pin step. Check. All four buttons use input pull up. No motor is attached yet.",
+      "sha256": "17e7fb8cd02efb4abeffbc9356229732cf3092f4e0af4773a5e9b2e53500131d",
+      "file": "assets/narration/pullup-17e7fb8cd02e.mp3"
+    },
+    {
+      "id": "start-knob1",
+      "text": "Load motor one before signals start. Inside setup(), after the four pinMode lines. analogRead reads knob one. map changes its 0-1023 reading into a 0-57 command. write stores that target. Before attach, this stores a target without enabling motor signals. Add these three lines before any attach line. Check. Motor1 has a starting target from A one, within 0-57, before its signals start.",
+      "sha256": "10e4e1efb412762500485af5b6818e55d34169601c1edf20fb7b58d5365751a6",
+      "file": "assets/narration/start-knob1-10e4e1efb412.mp3"
+    },
+    {
+      "id": "start-knobs23",
+      "text": "Load the second knob target. Inside setup(), after the motor1 starting lines. Motor2 needs its own bounded starting target. Use read, map, write again. Motor3 is disabled, so do not add an A three group. Add this motor2 group before any attach line. Check. A two supplies motor2 with a 0-180 starting command. A three remains unused.",
+      "sha256": "5ae2b4d51fc0b45e5e404e96e0818ea5b30b7d17c5f9fa69fbd8ef3555fb8713",
+      "file": "assets/narration/start-knobs23-5ae2b4d51fc0.mp3"
+    },
+    {
+      "id": "start-joints",
+      "text": "Load the middle and base targets. Inside setup(), after the two active knob targets. The buttons use remembered commands. Their starting values are middleAngle 125 and baseAngle 86. Add these two write lines before all four attach lines. Check. All four working motors have targets loaded before any servo signals are enabled.",
+      "sha256": "ad2088942096dfc168a4043178caecb51e56035c615df337d330abe345cd1bf1",
+      "file": "assets/narration/start-joints-ad2088942096.mp3"
+    },
+    {
+      "id": "attach",
+      "text": "Match motors to signal pins. At the end of setup(), after all four starting write lines. attach enables servo signals on a pin. Loading every target first prevents the library default from being the first commanded pulse. Place these four attach lines after the starting targets and before setup closes. Remove any earlier copies and every motor3 attach. Check. Only D6, D7, D9 and D10 are attached. D8 is never attached. Every starting write comes before the first attach.",
+      "sha256": "a1ad0138c1cd20eb9e57837ea480497f2937da5a2936aaa27f19f592aa2c52ee",
+      "file": "assets/narration/attach-a1ad0138c1cd.mp3"
     },
     {
       "id": "verify-setup",
-      "text": "Check the setup code. Ardweeno I D E > Verify, the checkmark button. Verify checks whether the computer can compile your sketch. Compile means translating code into instructions the board can run. Verify does not run the hand. Ask the teacher to confirm the board type in the I D E, then choose Verify (the checkmark) with the model disconnected. Check. The I D E finishes without a compilation error.",
-      "sha256": "ad458a1986f336673a8873174ba0cd914aa4fabb1a51e192d9769136271caf6a",
-      "file": "assets/narration/verify-setup-ad458a1986f3.mp3"
+      "text": "Check the setup code. Ardweeno I D E > Verify, the checkmark button. Verify checks whether the computer can compile your sketch. Compile means translating code into instructions the board can run. Verify does not run the hand. Choose Ardweeno Uno for the confirmed FNK0059-compatible control board. Choose Verify with the model disconnected. Check. The I D E finishes without a compilation error.",
+      "sha256": "5ad14392e618c9d73bafcc8bffbd5c299fe5a19aa1513511cebd9e2dd5f4b438",
+      "file": "assets/narration/verify-setup-5ad14392e618.mp3"
     },
     {
       "id": "read-knob1",
-      "text": "Make knob one control motor one. At the start of loop(), inside its existing braces. analogRead stores the A one knob reading in pot1. map changes its 0–1023 range into a 0–57 command stored in angle1. write sends angle1 to motor1. Add these three lines in order. Check. A one supplies pot1, angle1 holds the scaled value, and motor1 receives angle1.",
-      "sha256": "79bddba0e4d53febf3fe357e1ccbd6b4cb2b330ade3f63460c3a6ac805efd727",
-      "file": "assets/narration/read-knob1-79bddba0e4d5.mp3"
+      "text": "Make knob one control motor one. At the start of loop(), inside its existing braces. setup reads the knobs once for startup. loop reads them again and again so the motors follow later knob changes. Add these three lines in order. Check. A one supplies pot1, angle1 holds the scaled value, and motor1 receives angle1.",
+      "sha256": "bc4fbf0a5cac199cddd3f7017d79d042e38c8f4860c2fe48e4758a2afca6be5a",
+      "file": "assets/narration/read-knob1-bc4fbf0a5cac.mp3"
     },
     {
       "id": "knob2",
-      "text": "Repeat the pattern for knobs two and three. Inside loop(), after the three knob-one lines. Each knob uses read, scale, send. Change the names, input pin and output range so it controls its own motor. Add these two three-line groups after knob one, inside loop(). Check. A two controls motor2 with 0–180 commands. A three controls motor3 with 0–90 commands.",
-      "sha256": "73c1eda6fcd9365801eb1c7db0a92bdde708b4f516c451f3da69b58ae4f6b6b3",
-      "file": "assets/narration/knob2-73c1eda6fcd9.mp3"
+      "text": "Make knob two control motor two. Inside loop(), after the three knob-one lines. Use read, map, write again for motor2. Motor3 is broken, so A three is not read and D8 is not driven. Add this motor2 group after the knob-one lines inside loop. Remove the old A three and motor3 group if present. Check. A two controls motor2 with 0-180 commands. The sketch has no A three read or motor3 write.",
+      "sha256": "582cbbdb04802af0605809ec78bb788180221819b263e67ce002859bb6ade419",
+      "file": "assets/narration/knob2-582cbbdb0480.mp3"
     },
     {
       "id": "middle-up",
-      "text": "Add the middle-up button. Inside loop(), after the knobs. if checks a condition. digitalRead(S3) == low means S3 is pressed. ++ adds one to middleAngle; the inner if caps it at 160 before write sends it. Add this complete S3 block. Check. Holding S3 raises middleAngle toward 160. It cannot keep increasing above 160 in this block.",
-      "sha256": "794f4061605bd143bbfb4e847975c7f66df56f99c2217e9be46698bdb4edc592",
-      "file": "assets/narration/middle-up-794f4061605b.mp3"
+      "text": "Make S3 move down. Inside loop(), after the knobs. S3 moves the middle joint down by increasing its command. bool stores true or false. The first two lines read S3 and S1 once. and means and; not means not. The if runs only when S3 is pressed and S1 is not. Replace the old S3 block with these button readings and the guarded increase block. Check. S3 alone moves the middle joint down. Its command increases up to 160. Both pressed skips this block.",
+      "sha256": "8aa0731896716b15550f719cb09706e13a898d6f138277aba927cf20df6885bb",
+      "file": "assets/narration/middle-up-8aa073189671.mp3"
     },
     {
       "id": "middle-down",
-      "text": "Add the middle-down button. Inside loop(), after the complete S3 block. -- subtracts one. The lower limit check sets the command back to 90 if it went below 90. Add this complete S1 block. Check. Holding S1 lowers the motor4 command toward 90.",
-      "sha256": "813edf724b61316f6710b759453139cee56c691ad1f9c5cc4faffb0bf5e70654",
-      "file": "assets/narration/middle-down-813edf724b61.mp3"
+      "text": "Make S1 move up. Inside loop(), after the complete S3 block. S1 moves the middle joint up by decreasing its command. This block uses the same saved button readings. It runs only when S1 is pressed and S3 is not. -- subtracts one. Replace the old S1 block with this guarded decrease block. Check. S1 alone moves the middle joint up. Its command decreases to 90. Both middle buttons pressed leaves the target unchanged.",
+      "sha256": "1361f228364683eeb4414008d6eaa669a3f3f7a7ee113a0ec6b6b0465a0a4b4f",
+      "file": "assets/narration/middle-down-1361f2283646.mp3"
     },
     {
       "id": "base-up",
-      "text": "Add the base-up button. Inside loop(), after the complete S1 block. The base has its own remembered command, baseAngle. S4 adds one and stops the command at 176. Add the complete S4 block after the closing brace of the S1 block, still inside loop(). Check. S4 commands motor5 toward 176.",
-      "sha256": "b585544c78262beb78d0ab2d32fe390046565af3a17c9fa922e126cb9d70b952",
-      "file": "assets/narration/base-up-b585544c7826.mp3"
+      "text": "Read the base pair and add increase. Inside loop(), after the complete S1 block. The base has its own saved button readings and command. S4 increases only when S2 is not pressed. Replace the old S4 block with these two readings and the guarded increase block, after the S1 block. Check. S4 alone increases baseAngle up to 176. Both base buttons pressed skips this block.",
+      "sha256": "cd05aa3a1bb8eb7704adba9e01b29596a2c3971591ed4cb75f6f743f80851893",
+      "file": "assets/narration/base-up-cd05aa3a1bb8.mp3"
     },
     {
       "id": "base-down",
-      "text": "Add the base-down button. Inside loop(), after the complete S4 block. S2 subtracts one from the base command. The lower limit keeps it at or above zero. Add the complete S2 block after the closing brace of the S4 block, still inside loop(). Check. S2 commands motor5 toward 0.",
-      "sha256": "a8902f562ada8b8eab2b7ea608ffd59d88435d0728941baa18063c97f380e750",
-      "file": "assets/narration/base-down-a8902f562ada.mp3"
+      "text": "Add the base-down button. Inside loop(), after the complete S4 block. S2 decreases only when S4 is not pressed. The lower limit keeps baseAngle at or above zero. Replace the old S2 block with this guarded decrease block, after the S4 block. Check. S2 alone lowers the command toward 0. Both base buttons pressed leaves the command unchanged.",
+      "sha256": "ed9398994aaaee175000c4c600bbdfd5aa7088a0c45afa4c197698d550967ab2",
+      "file": "assets/narration/base-down-ed9398994aaa.mp3"
     },
     {
       "id": "loop-pause",
-      "text": "Finish and verify the full program. At the end of loop(), then Ardweeno I D E > Verify. A short pause ends each pass through loop(). Verify checks whether the complete code can be translated for the selected board. Add delay(15); after the complete S2 block, before loop() closes. Choose Verify and save the numbered sketch when it passes. Check. One setup(), one loop(), all four button blocks and every limit check compile without errors.",
-      "sha256": "04d6bfa823aabde175f65c1a5cdbfb926a316bd111efcd4ff128ea216e239145",
-      "file": "assets/narration/loop-pause-04d6bfa823aa.mp3"
+      "text": "Finish and verify the full program. At the end of loop(), then Ardweeno I D E > Verify. A short pause ends each pass through loop(). Verify checks whether the complete code can be translated for the selected board. Add delay(15); after the complete S2 block, before loop() closes. Choose Verify and save the numbered sketch when it passes. Check. One setup, one loop, all four guarded button blocks and every limit check compile without errors.",
+      "sha256": "500643475d81e8f895ae3a4397da7200792f955b2dd0206ec3de0fdfa7e3f9db",
+      "file": "assets/narration/loop-pause-500643475d81.mp3"
     },
     {
       "id": "teacher-check",
-      "text": "Ask for the hardware check. At the assembled model, with the teacher. Servo signals can move the mechanism as soon as an uploaded program starts. Code numbers alone cannot establish safe physical movement. Show the teacher the saved code and ask them to check the real board, power, starting positions and allowed movement before connecting and uploading. Check. The teacher has checked the exact saved program, board, power and allowed movement. If the check is unavailable, leave hardware tests unrun.",
-      "sha256": "37974f96d790de4f5a1e9737f739b574b5db167cfe7d558b60c1f8974a9cbfd8",
-      "file": "assets/narration/teacher-check-37974f96d790.mp3"
+      "text": "Ask for the hardware check. At the assembled model, with the teacher. Servo signals can move the mechanism as soon as an uploaded program starts. Code numbers alone cannot establish safe physical movement. Show the teacher the saved code. Ask them to check the Freenove control board, module switches, servo power, motor3 isolation, starting pose, active knob positions and allowed movement before Upload. Check. The teacher has checked the exact saved version and its real startup targets. If that check is unavailable, leave hardware tests unrun.",
+      "sha256": "e65080f73a93411a09eb72e888b9e18af90b90efbbba75fa2e2588116b13bbad",
+      "file": "assets/narration/teacher-check-e65080f73a93.mp3"
     },
     {
       "id": "upload",
@@ -109,16 +127,28 @@
       "file": "assets/narration/upload-72b0f2fc76c4.mp3"
     },
     {
+      "id": "startup-test",
+      "text": "Observe the checked startup. At the checked model, with the teacher. Correct startup code still sends targets that may differ from the current physical pose. Only a real test shows the movement. Watch the teacher perform one approved restart from the checked pose and knob settings. Record the starting movement in Test and improvement. Check. Your note identifies the sketch version, starting settings, actual movement and any strain or unexpected motion.",
+      "sha256": "89f5ea87fd977eee32840690c93b3aa1f7d854f3f3bca3492eb538e0caa34a6e",
+      "file": "assets/narration/startup-test-89f5ea87fd97.mp3"
+    },
+    {
       "id": "knob-test",
-      "text": "Test and record the three knobs. At the checked model, with the teacher. Testing one input at a time shows which input caused the response. A correct compile cannot tell us which physical part moved. Turn knob 1 slowly within the checked range and watch motor1. Repeat separately for knobs 2 and 3. Record each actual response under Test and improvement in the team report. Check. For each knob, your note names the sketch version, expected motor, actual movement and any problem.",
-      "sha256": "68d5d8f8f8f950b34238c0d63397b262599a658c776915072bbc872f731eab98",
-      "file": "assets/narration/knob-test-68d5d8f8f8f9.mp3"
+      "text": "Test and record the two knobs. At the checked model, with the teacher. Testing one input at a time shows which input caused the response. A correct compile cannot tell us which physical part moved. Turn knob 1 slowly within the checked range and watch motor1. Repeat separately with knob 2 and motor2. Record both actual responses under Test and improvement. Check. Each note names the sketch version, expected motor, actual movement and any problem. Knob 3 remains unused.",
+      "sha256": "5867b0643c94b9071101ade5be9bcdb3b5546959906f5e42b5fae3795b456904",
+      "file": "assets/narration/knob-test-5867b0643c94.mp3"
     },
     {
       "id": "button-test",
-      "text": "Test and record the four buttons. At the checked model, with the teacher. Each button should change one remembered command in one direction while it is held. Releasing it stops that button block from changing the command. Try S1, S2, S3 and S4 separately within the checked range. Release each before trying the next. Add each actual response to the same test note. Check. S1/S3 command motor4 in opposite directions; S2/S4 command motor5 in opposite directions. Your notes say what actually moved.",
-      "sha256": "1048ebb653270905fac6db450c77805400e8cf021befff24aea66322d58821a7",
-      "file": "assets/narration/button-test-1048ebb65327.mp3"
+      "text": "Test and record the four buttons. At the checked model, with the teacher. A single pressed button changes one remembered command. Releasing it stops further changes from that button. The servo remains active and may still reach or hold its last target. Try S1, S2, S3 and S4 separately within the checked range. Release each before trying the next. Add each actual response to the same test note. Check. S1/S3 command motor4 in opposite directions; S2/S4 command motor5 in opposite directions. Your notes say what actually moved.",
+      "sha256": "12b6b6fda342a4057a07d7c1db5bbe35f3ed3594ca07a6d5c697a24c5f545cc3",
+      "file": "assets/narration/button-test-12b6b6fda342.mp3"
+    },
+    {
+      "id": "opposing-test",
+      "text": "Check opposite buttons together. At the checked model, with the teacher. When both buttons of one pair are pressed, both guarded blocks are skipped. This keeps that joint command unchanged. It is not a power-off or an emergency stop. After the single-button tests, briefly hold S1 and S3 together at a settled checked position. Release both. Repeat with S2 and S4. Record each result. Check. Each pair leaves its joint target unchanged. After releasing both, a single button still works.",
+      "sha256": "9b1d93ce27f4520f8851d02bb2fd758f5d7725e195d503faecea8f9374d63f80",
+      "file": "assets/narration/opposing-test-9b1d93ce27f4.mp3"
     },
     {
       "id": "debug",
