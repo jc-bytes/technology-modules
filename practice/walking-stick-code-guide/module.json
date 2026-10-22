@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-STICK-01",
   "slug": "walking-stick-code-guide",
   "title": "Code your walking stick",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -40,7 +40,7 @@
   "sections": [
     {
       "id": "goal",
-      "title": "One program, three results",
+      "title": "One project, four separate stacks",
       "entryPath": "#goal",
       "estimatedMinutes": null
     },
@@ -58,7 +58,7 @@
     },
     {
       "id": "rule",
-      "title": "Keep the 30 cm rule",
+      "title": "Build the sensor decision inside forever",
       "entryPath": "#rule",
       "estimatedMinutes": null
     },
@@ -76,13 +76,13 @@
     },
     {
       "id": "start-uart",
-      "title": "Prepare the two message variables",
+      "title": "Fill only the on start stack",
       "entryPath": "#start-uart",
       "estimatedMinutes": null
     },
     {
       "id": "connection-events",
-      "title": "Remember connection and disconnection",
+      "title": "Build the two separate event stacks",
       "entryPath": "#connection-events",
       "estimatedMinutes": null
     },
@@ -106,8 +106,14 @@
     },
     {
       "id": "send-fresh",
-      "title": "Send after the fresh sensor decision",
+      "title": "Send at the bottom of forever",
       "entryPath": "#send-fresh",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "complete-program",
+      "title": "Compare the complete program",
+      "entryPath": "#complete-program",
       "estimatedMinutes": null
     },
     {

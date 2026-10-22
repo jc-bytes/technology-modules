@@ -1,16 +1,16 @@
 export const buildSteps = [
   {
     "id": "goal",
-    "title": "One program, three results",
+    "title": "One project, four separate stacks",
     "where": "At your already-built walking stick",
-    "why": "The sensor reads distance. Your program chooses a result. A valid near reading gives X and a sound. A valid farther reading gives a blank display and silence. An unusable reading gives ? and UNKNOWN.",
-    "do": "Use Blocks view in your working MakeCode project. Follow this guide with the separate sound page.",
-    "expected": "You will update one project and keep the built sensor wiring. Code panels show the same blocks in JavaScript; they are not a replacement sensor program.",
+    "why": "on start runs once. The two Bluetooth events remember connection changes. forever reads the sensor again and again, chooses one result and sends it.",
+    "do": "Use your working sensor project. Follow this four-stack plan while keeping the built sensor wiring.",
+    "expected": "NEAR, FAR and failed-reading UNKNOWN belong in different forever branches. The sensor read and message sender repeat together.",
     "help": "Keep the model on a table during tests. This is a classroom prototype, not tested mobility equipment.",
     "links": [],
     "stage": "guided",
-    "image": "assets/input-output.svg",
-    "alt": "One program, three results reference drawing. Open full size for the labels."
+    "diagram": "overview",
+    "wideDiagram": false
   },
   {
     "id": "open-team-project",
@@ -18,7 +18,7 @@ export const buildSteps = [
     "where": "In MakeCode · Home → your team project",
     "why": "Your working program has the sensor settings that match the built model. A saved copy lets you undo today’s changes.",
     "do": "Open the latest team project, then download a backup named WalkingStick_BeforeBluetooth.hex.",
-    "expected": "The working sensor blocks are visible and the starting file is saved in the team folder.",
+    "expected": "Your working sensor program is open and backed up. You can see its sensor-reading forever stack. Bluetooth setup alone is not the walking-stick program.",
     "help": "For a saved .hex, use Import → Import File. Do not start from the older Mandrake program or change pins to P15/P16 just because it used them.",
     "links": [
       [
@@ -41,16 +41,21 @@ export const buildSteps = [
   },
   {
     "id": "rule",
-    "title": "Keep the 30 cm rule",
-    "where": "In the existing sensor decision blocks",
-    "why": "Check for a usable reading first. Then compare the distance with 30 cm. The symbol ≤ means less than or equal to, so exactly 30 cm counts as near.",
-    "do": "Follow the arrows: failed reading → ?; usable reading at or below 30 cm → X; usable reading above 30 cm → blank.",
-    "expected": "All three outcomes belong to the same loop that reads the sensor.",
-    "help": "Keep an existing correct decision. If it is missing, build the outer valid/invalid if first, then the ≤30 if inside its valid branch, using the checked sensor value.",
-    "links": [],
+    "title": "Build the sensor decision inside forever",
+    "where": "Inside the existing forever · immediately after the sensor read",
+    "why": "The outer if/else checks the reading. Inside its usable path, a second if/else checks the distance.",
+    "do": "Keep or add an outer Logic if/else after the sensor read, using the checked usable-reading condition. Inside its usable branch, keep or add an if/else comparing your cm value ≤ 30. Put X in this inner if, clear screen in its else, and ? in the outer failed-reading branch.",
+    "expected": "If displays are missing, use Basic show icon with X, clear screen, and show string with ?. Add only missing blocks. The next pages add the message assignments.",
+    "help": "Use the + on a Logic if to add an else branch. Use a Logic comparison set to ≤ with your existing cm value and 30. The bracketed valid-reading condition is your teacher-checked sensor rule, not a new block to search for. Keep an existing correct decision and its actual branch meanings.",
+    "links": [
+      [
+        "See the complete program layout",
+        "#complete-program"
+      ]
+    ],
     "stage": "guided",
-    "image": "assets/decision.svg",
-    "alt": "Keep the 30 cm rule reference drawing. Open full size for the labels."
+    "diagram": "decision",
+    "wideDiagram": false
   },
   {
     "id": "bluetooth-sound",
@@ -81,80 +86,93 @@ export const buildSteps = [
   },
   {
     "id": "start-uart",
-    "title": "Prepare the two message variables",
-    "where": "In MakeCode · Variables and on start",
-    "why": "A variable is a named box that remembers a value. stickStatus holds text. btConnected holds true or false to remember the connection.",
-    "do": "In Variables → Make a Variable, create stickStatus and btConnected. In on start, set stickStatus to the text UNKNOWN and btConnected to the Logic value false. Add Bluetooth → start UART service.",
-    "expected": "The on start block has both set blocks and one start UART service block. UNKNOWN means no usable result yet.",
-    "help": "For UNKNOWN, use a Text block and type the word in capitals. For false, use Logic, not a text block. Reuse any matching startup blocks already present. The download is a setup reference, not a complete sensor program.",
-    "links": [
-      [
-        "Download Bluetooth setup reference",
-        "downloads/WalkingStick_Bluetooth_Setup.ts"
-      ]
-    ],
+    "title": "Fill only the on start stack",
+    "where": "Inside on start · not inside forever or an event",
+    "why": "on start runs once. Bluetooth uart service prepares the message service. Bluetooth uart write sends a result and belongs later in forever.",
+    "do": "Create stickStatus and btConnected in Variables. In on start, keep one set stickStatus to UNKNOWN, one set btConnected to Logic false and one Bluetooth uart service. Remove misplaced NEAR/FAR setters, extra UNKNOWN setters, all UART write blocks, send if blocks and loop pauses from on start.",
+    "expected": "Keep any existing sensor setup. Startup has UART service, not UART write. The result choices and sending blocks will go in forever.",
+    "help": "A variable is a named box for a value. stickStatus holds text; use a Text block for UNKNOWN. btConnected holds true or false; use Logic false. If repairing the earlier straight stack, remove only the misplaced Bluetooth/result/send blocks. Keep the real sensor setup.",
+    "links": [],
     "stage": "guided",
-    "code": "let stickStatus = \"UNKNOWN\"\nlet btConnected = false\nbluetooth.startUartService()"
+    "diagram": "startup"
   },
   {
     "id": "connection-events",
-    "title": "Remember connection and disconnection",
-    "where": "In MakeCode · Bluetooth events",
+    "title": "Build the two separate event stacks",
+    "where": "Two separate top-level stacks · outside on start and forever",
     "why": "An event runs when something happens. These two events remember when the website connects or disconnects. The sensor loop still controls the display.",
-    "do": "From Bluetooth, add on bluetooth connected and put set btConnected to true inside it. Add on bluetooth disconnected; put set btConnected to false and set stickStatus to UNKNOWN inside it.",
-    "expected": "Each event exists once. true means connected; false means disconnected.",
+    "do": "From Bluetooth, drag on bluetooth connected into an empty workspace area and put set btConnected to true inside it. Beside it, add on bluetooth disconnected with set btConnected to false and set stickStatus to UNKNOWN.",
+    "expected": "Two separate event stacks look like the diagram. Neither event contains sensor reads, NEAR/FAR decisions or the send block.",
     "help": "Do not put sensor reading or a second forever loop in these events. Remove old temporary connection-display animations if they cover the sensor warning.",
     "links": [],
     "stage": "guided",
-    "code": "bluetooth.onBluetoothConnected(function () {\n    btConnected = true\n})\nbluetooth.onBluetoothDisconnected(function () {\n    btConnected = false\n    stickStatus = \"UNKNOWN\"\n})"
+    "diagram": "events"
   },
   {
     "id": "near-message",
     "title": "Add the near message",
-    "where": "In the existing valid, distance ≤30 cm branch",
-    "why": "The same decision must drive both the display and the message. This branch is reached only after a usable reading.",
-    "do": "From Variables, drag set stickStatus to into the existing near branch, beside the X display. Put a Text block in its value space and type NEAR in capitals.",
-    "expected": "A valid near reading selects NEAR and still shows X.",
+    "where": "forever → usable-reading branch → distance ≤ 30 branch",
+    "why": "An if/else chooses one path. The near result belongs inside the usable-reading path, where the checked distance is at or below 30 cm.",
+    "do": "Inside the existing forever stack, find the usable-reading test and its distance ≤ 30 branch. Put set stickStatus to the text NEAR directly beside the existing X display.",
+    "expected": "NEAR is nested inside both checks. It is not in on start. Exactly 30 cm belongs to this near branch.",
     "help": "Keep the exact uppercase word. Use the existing near branch; do not add another sensor read for Bluetooth.",
     "links": [],
     "stage": "guided",
-    "code": "stickStatus = \"NEAR\"\n// Keep the existing X display in this branch."
+    "diagram": "near"
   },
   {
     "id": "far-message",
     "title": "Add the farther message",
-    "where": "In the existing valid, distance >30 cm branch",
-    "why": "FAR means the latest valid measurement is farther than 30 cm. It does not prove a whole walking route is clear.",
-    "do": "Add another set stickStatus to block inside the existing farther branch, beside clear screen. Put the text FAR in its value space.",
-    "expected": "A valid farther reading selects FAR and clears the display.",
+    "where": "forever → usable-reading branch → distance check’s else",
+    "why": "This else belongs to the distance check. It runs only when the reading is usable and the distance is above 30 cm.",
+    "do": "Inside the same usable-reading path, find the else paired with distance ≤ 30. Put set stickStatus to the text FAR beside the existing clear screen block.",
+    "expected": "FAR is inside the distance check’s else. Do not put it after NEAR or outside the usable-reading test.",
     "help": "Keep this branch inside the valid-reading decision. A failed reading must not fall into FAR.",
     "links": [],
     "stage": "guided",
-    "code": "stickStatus = \"FAR\"\n// Keep the existing clear-screen block in this branch."
+    "diagram": "far"
   },
   {
     "id": "unknown-message",
     "title": "Add the unusable-reading message",
-    "where": "In the existing invalid-reading branch",
-    "why": "A failed measurement must choose UNKNOWN. It must never be treated as a large, valid distance.",
-    "do": "Add set stickStatus to inside the existing failed-reading branch, beside the ? display. Use the text UNKNOWN.",
-    "expected": "The checked invalid-reading path chooses UNKNOWN, not FAR.",
-    "help": "Keep the checked sensor failure condition. The older Mandrake example sent 50000 for a failed reading. Do not copy that placeholder into another sensor program or let it become FAR.",
+    "where": "forever → failed-reading branch of the outer sensor test",
+    "why": "The failed-reading branch is separate from both usable-distance branches. It must not fall through to FAR.",
+    "do": "Find the failed-reading branch paired with the outer usable-reading test. Put set stickStatus to the text UNKNOWN beside the existing ? display.",
+    "expected": "Each fresh reading selects only one result: NEAR, FAR or UNKNOWN. UNKNOWN does not sit after FAR in a straight stack.",
+    "help": "Use your existing checked validity rule. The diagram puts usable readings in if and failed ones in else. If your existing test is the other way round, keep its correct branch meanings. Never treat the older 50000 placeholder as a usable far distance.",
     "links": [],
     "stage": "guided",
-    "code": "stickStatus = \"UNKNOWN\"\n// Keep the existing question-mark display in this branch."
+    "diagram": "unknown"
   },
   {
     "id": "send-fresh",
-    "title": "Send after the fresh sensor decision",
-    "where": "In the same sensor-reading forever loop",
-    "why": "Use one sender in the same forever loop that reads the sensor. It must send after the whole near/far/failed decision, so it reports the newest result.",
-    "do": "Remove the old distance: send blocks and any separate sending loop. After the complete sensor decision, add a Logic if with btConnected as its condition. Inside it, add Bluetooth uart write line with the stickStatus variable. Put one checked 500 ms pause after the if.",
-    "expected": "The sensor read stays in place. Only NEAR, FAR or UNKNOWN is sent. The write line block adds the line ending for you.",
-    "help": "Do not add a new forever sender. 500 milliseconds is half a second. If the sensor loop already pauses, have your teacher keep one suitable pause instead of stacking waits. The website does not accept distance: numbers.",
+    "title": "Send at the bottom of forever",
+    "where": "Inside the same forever · after the entire sensor if/else",
+    "why": "The complete sensor decision finishes first. The send if is a separate block after that decision, still inside forever.",
+    "do": "Keep the sensor read. Remove old distance: send blocks and any separate sending loop. After the whole sensor decision, add if btConnected with Bluetooth uart write line stickStatus inside it. Put one checked pause 500 after the send if.",
+    "expected": "The send if is not inside NEAR, FAR, UNKNOWN or on start. The pause is inside forever but outside the send if, so it runs even when disconnected.",
+    "help": "Close the full sensor decision before placing the send if. Match the nesting in the diagram. Reuse one suitable existing pause with your teacher rather than stacking waits. Write line adds the line ending automatically.",
     "links": [],
     "stage": "guided",
-    "code": "// Inside the EXISTING sensor loop, after its whole decision:\nif (btConnected) {\n    bluetooth.uartWriteLine(stickStatus)\n}\nbasic.pause(500)"
+    "diagram": "send"
+  },
+  {
+    "id": "complete-program",
+    "title": "Compare the complete program",
+    "where": "In MakeCode · all four stacks before Download",
+    "why": "The four stacks work together. The left stacks prepare and remember the connection. The forever stack keeps reading, chooses one result and then sends it.",
+    "do": "Scroll through all four stacks and compare them with your workspace. Check the two different else branches and the send if after the complete sensor decision. Open the map on its own for a larger view.",
+    "expected": "on start has initial UNKNOWN, false and UART service. NEAR/FAR/failed UNKNOWN sit in their own forever branches. The send if and pause are at the bottom of that same forever.",
+    "help": "This is a complete placement map, not an importable replacement sensor program. Dashed boxes and bracketed labels mean your existing checked sensor read, value, setup or validity condition. Keep those real blocks. If they are missing, reopen the saved working sensor project before continuing.",
+    "links": [
+      [
+        "Open the complete map on its own",
+        "downloads/WalkingStick_Complete_Block_Map.html"
+      ]
+    ],
+    "stage": "guided",
+    "diagram": "complete",
+    "wideDiagram": true
   },
   {
     "id": "save-transfer",

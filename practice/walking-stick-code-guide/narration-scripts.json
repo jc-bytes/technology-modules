@@ -8,15 +8,15 @@
   "records": [
     {
       "id": "goal",
-      "text": "One program, three results. At your already-built walking stick. The sensor reads distance. Your program chooses a result. A valid near reading gives X and a sound. A valid farther reading gives a blank display and silence. An unusable reading gives ? and unknown. Use Blocks view in your working Make Code project. Follow this guide with the separate sound page. Check. You will update one project and keep the built sensor wiring. Code panels show the same blocks in JavaScript; they are not a replacement sensor program.",
-      "sha256": "594f48cbb6c1988ff7ca9e97e5ea231874690ec2221560dd83caf108d124495e",
-      "file": "assets/narration/goal-594f48cbb6c1.mp3"
+      "text": "One project, four separate stacks. At your already-built walking stick. on start runs once. The two Bluetooth events remember connection changes. forever reads the sensor again and again, chooses one result and sends it. Use your working sensor project. Follow this four-stack plan while keeping the built sensor wiring. Check. near, far and failed-reading unknown belong in different forever branches. The sensor read and message sender repeat together.",
+      "sha256": "a35fbecfbbb70ad301b759e8ab34eb4a2e07e98639695ef05d774482e3437384",
+      "file": "assets/narration/goal-a35fbecfbbb7.mp3"
     },
     {
       "id": "open-team-project",
-      "text": "Open and protect the working program. In Make Code · Home → your team project. Your working program has the sensor settings that match the built model. A saved copy lets you undo today’s changes. Open the latest team project, then download a backup named WalkingStick_BeforeBluetooth.hex. Check. The working sensor blocks are visible and the starting file is saved in the team folder.",
-      "sha256": "89eab715fc6fbe8f3857cf0c7c046c883f17f799c8475ac9b0d78f4f1875fb94",
-      "file": "assets/narration/open-team-project-89eab715fc6f.mp3"
+      "text": "Open and protect the working program. In Make Code · Home → your team project. Your working program has the sensor settings that match the built model. A saved copy lets you undo today’s changes. Open the latest team project, then download a backup named WalkingStick_BeforeBluetooth.hex. Check. Your working sensor program is open and backed up. You can see its sensor-reading forever stack. Bluetooth setup alone is not the walking-stick program.",
+      "sha256": "f2031f8617dcc8d5d80f9121f5f2471e8560f26b774cb4d6f32c68e68c11e7a5",
+      "file": "assets/narration/open-team-project-f2031f8617dc.mp3"
     },
     {
       "id": "sensor-profile",
@@ -26,9 +26,9 @@
     },
     {
       "id": "rule",
-      "text": "Keep the 30 centimetres rule. In the existing sensor decision blocks. Check for a usable reading first. Then compare the distance with 30 centimetres. The symbol ≤ means less than or equal to, so exactly 30 centimetres counts as near. Follow the arrows: failed reading → ?; usable reading at or below 30 centimetres → X; usable reading above 30 centimetres → blank. Check. All three outcomes belong to the same loop that reads the sensor.",
-      "sha256": "612bdcae24abc12b1918bacd3ac7f33f5a7f189cdaae538d1a83b8a6f4fd86ab",
-      "file": "assets/narration/rule-612bdcae24ab.mp3"
+      "text": "Build the sensor decision inside forever. Inside the existing forever · immediately after the sensor read. The outer if/else checks the reading. Inside its usable path, a second if/else checks the distance. Keep or add an outer Logic if/else after the sensor read, using the checked usable-reading condition. Inside its usable branch, keep or add an if/else comparing your centimetres value ≤ 30. Put X in this inner if, clear screen in its else, and ? in the outer failed-reading branch. Check. If displays are missing, use Basic show icon with X, clear screen, and show string with ?. Add only missing blocks. The next pages add the message assignments.",
+      "sha256": "1404ebaa6a188f3950ce32019753331efa7482acb402feff06c88efbfba2debd",
+      "file": "assets/narration/rule-1404ebaa6a18.mp3"
     },
     {
       "id": "bluetooth-sound",
@@ -44,39 +44,45 @@
     },
     {
       "id": "start-uart",
-      "text": "Prepare the two message variables. In Make Code · Variables and on start. A variable is a named box that remembers a value. stick status holds text. B T connected holds true or false to remember the connection. In Variables → Make a Variable, create stick status and B T connected. In on start, set stick status to the text unknown and B T connected to the Logic value false. Add Bluetooth → start you art service. Check. The on start block has both set blocks and one start you art service block. unknown means no usable result yet.",
-      "sha256": "7e02744d7fb22375e0cdb673a627f91e2ac1fbea5d33461e3c443c724cc7f34f",
-      "file": "assets/narration/start-uart-7e02744d7fb2.mp3"
+      "text": "Fill only the on start stack. Inside on start · not inside forever or an event. on start runs once. Bluetooth uart service prepares the message service. Bluetooth uart write sends a result and belongs later in forever. Create stick status and B T connected in Variables. In on start, keep one set stick status to unknown, one set B T connected to Logic false and one Bluetooth uart service. Remove misplaced near/far setters, extra unknown setters, all you art write blocks, send if blocks and loop pauses from on start. Check. Keep any existing sensor setup. Startup has you art service, not you art write. The result choices and sending blocks will go in forever.",
+      "sha256": "39112111119bc3eb9f900116cdbfbc07b6ac889014014b7e37ce22bc51f76005",
+      "file": "assets/narration/start-uart-39112111119b.mp3"
     },
     {
       "id": "connection-events",
-      "text": "Remember connection and disconnection. In Make Code · Bluetooth events. An event runs when something happens. These two events remember when the website connects or disconnects. The sensor loop still controls the display. From Bluetooth, add on bluetooth connected and put set B T connected to true inside it. Add on bluetooth disconnected; put set B T connected to false and set stick status to unknown inside it. Check. Each event exists once. true means connected; false means disconnected.",
-      "sha256": "ba2c25eb8af7b0c3f0968bbc054639a1c9e538b2204553fb89beeb84ce07ad33",
-      "file": "assets/narration/connection-events-ba2c25eb8af7.mp3"
+      "text": "Build the two separate event stacks. Two separate top-level stacks · outside on start and forever. An event runs when something happens. These two events remember when the website connects or disconnects. The sensor loop still controls the display. From Bluetooth, drag on bluetooth connected into an empty workspace area and put set B T connected to true inside it. Beside it, add on bluetooth disconnected with set B T connected to false and set stick status to unknown. Check. Two separate event stacks look like the diagram. Neither event contains sensor reads, near/far decisions or the send block.",
+      "sha256": "fe338c0c7e8df49e5703fb46367db4b97feb0b27da1f8a4271f72b3381085df0",
+      "file": "assets/narration/connection-events-fe338c0c7e8d.mp3"
     },
     {
       "id": "near-message",
-      "text": "Add the near message. In the existing valid, distance ≤30 centimetres branch. The same decision must drive both the display and the message. This branch is reached only after a usable reading. From Variables, drag set stick status to into the existing near branch, beside the X display. Put a Text block in its value space and type near in capitals. Check. A valid near reading selects near and still shows X.",
-      "sha256": "b9a711d625dde5e5f380ff94b404918c91ff5bea2ef813f913a8583681b604a5",
-      "file": "assets/narration/near-message-b9a711d625dd.mp3"
+      "text": "Add the near message. forever → usable-reading branch → distance ≤ 30 branch. An if/else chooses one path. The near result belongs inside the usable-reading path, where the checked distance is at or below 30 centimetres. Inside the existing forever stack, find the usable-reading test and its distance ≤ 30 branch. Put set stick status to the text near directly beside the existing X display. Check. near is nested inside both checks. It is not in on start. Exactly 30 centimetres belongs to this near branch.",
+      "sha256": "d61fdf0c79bf5110d71463c76c0f3f26651fef77157ce59927ebfad7b2c2a1d6",
+      "file": "assets/narration/near-message-d61fdf0c79bf.mp3"
     },
     {
       "id": "far-message",
-      "text": "Add the farther message. In the existing valid, distance >30 centimetres branch. far means the latest valid measurement is farther than 30 centimetres. It does not prove a whole walking route is clear. Add another set stick status to block inside the existing farther branch, beside clear screen. Put the text far in its value space. Check. A valid farther reading selects far and clears the display.",
-      "sha256": "3941c5fa579e852aafed28ac3df8cd78d0d4f246f26438fd82d4b4f4e4a0fe1d",
-      "file": "assets/narration/far-message-3941c5fa579e.mp3"
+      "text": "Add the farther message. forever → usable-reading branch → distance check’s else. This else belongs to the distance check. It runs only when the reading is usable and the distance is above 30 centimetres. Inside the same usable-reading path, find the else paired with distance ≤ 30. Put set stick status to the text far beside the existing clear screen block. Check. far is inside the distance check’s else. Do not put it after near or outside the usable-reading test.",
+      "sha256": "aed60eacd4947c875a511e6ec53f3cdba892bdeb9862dec7d6fa0f031590169c",
+      "file": "assets/narration/far-message-aed60eacd494.mp3"
     },
     {
       "id": "unknown-message",
-      "text": "Add the unusable-reading message. In the existing invalid-reading branch. A failed measurement must choose unknown. It must never be treated as a large, valid distance. Add set stick status to inside the existing failed-reading branch, beside the ? display. Use the text unknown. Check. The checked invalid-reading path chooses unknown, not far.",
-      "sha256": "256296d55bdf06305b7b739c016bc007774a4001bd1b50063c1676f32cce96ad",
-      "file": "assets/narration/unknown-message-256296d55bdf.mp3"
+      "text": "Add the unusable-reading message. forever → failed-reading branch of the outer sensor test. The failed-reading branch is separate from both usable-distance branches. It must not fall through to far. Find the failed-reading branch paired with the outer usable-reading test. Put set stick status to the text unknown beside the existing ? display. Check. Each fresh reading selects only one result: near, far or unknown. unknown does not sit after far in a straight stack.",
+      "sha256": "11e5af3acad94ec712b89b69472c9c68c2c8f7c4fe3184fe319b487b1eb33716",
+      "file": "assets/narration/unknown-message-11e5af3acad9.mp3"
     },
     {
       "id": "send-fresh",
-      "text": "Send after the fresh sensor decision. In the same sensor-reading forever loop. Use one sender in the same forever loop that reads the sensor. It must send after the whole near/far/failed decision, so it reports the newest result. Remove the old distance: send blocks and any separate sending loop. After the complete sensor decision, add a Logic if with B T connected as its condition. Inside it, add Bluetooth uart write line with the stick status variable. Put one checked five hundred ms pause after the if. Check. The sensor read stays in place. Only near, far or unknown is sent. The write line block adds the line ending for you.",
-      "sha256": "c30d65382f4f2296451100f85e58bb0adf62752d194320fe41553074cdbaf448",
-      "file": "assets/narration/send-fresh-c30d65382f4f.mp3"
+      "text": "Send at the bottom of forever. Inside the same forever · after the entire sensor if/else. The complete sensor decision finishes first. The send if is a separate block after that decision, still inside forever. Keep the sensor read. Remove old distance: send blocks and any separate sending loop. After the whole sensor decision, add if B T connected with Bluetooth uart write line stick status inside it. Put one checked pause five hundred after the send if. Check. The send if is not inside near, far, unknown or on start. The pause is inside forever but outside the send if, so it runs even when disconnected.",
+      "sha256": "f0a994ae8651ba2b796d4afbf605b4f20631d12198e48f6ed1d2e9a48088c8c4",
+      "file": "assets/narration/send-fresh-f0a994ae8651.mp3"
+    },
+    {
+      "id": "complete-program",
+      "text": "Compare the complete program. In Make Code · all four stacks before Download. The four stacks work together. The left stacks prepare and remember the connection. The forever stack keeps reading, chooses one result and then sends it. Scroll through all four stacks and compare them with your workspace. Check the two different else branches and the send if after the complete sensor decision. Open the map on its own for a larger view. Check. on start has initial unknown, false and you art service. near/far/failed unknown sit in their own forever branches. The send if and pause are at the bottom of that same forever. The complete map reads as follows. On start: keep any existing sensor setup, set stick Status to unknown, set bee tee Connected to false, and start the Bluetooth you art service. On Bluetooth connected: set bee tee Connected to true. On Bluetooth disconnected: set bee tee Connected to false and stick Status to unknown. In forever: keep the real sensor read in centimetres. If the reading is usable, check whether the distance is at or below thirty centimetres. If it is, show X and choose near. Otherwise, clear the screen and choose far. If the reading was unusable, show a question mark and choose unknown. After this whole decision, if bee tee Connected is true, write the stick Status line over Bluetooth. Outside that sending if, but still inside forever, pause five hundred milliseconds and repeat. Dashed boxes and bracketed labels mean your own existing sensor blocks.",
+      "sha256": "80c66ee4c10ff4222bd40c76aedbe47de7431b57af0cf7ee9befe5f5e07dde9f",
+      "file": "assets/narration/complete-program-80c66ee4c10f.mp3"
     },
     {
       "id": "save-transfer",
