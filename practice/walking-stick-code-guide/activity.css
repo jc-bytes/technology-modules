@@ -122,4 +122,4 @@
 
 .snippet-reference .makecode-picture{margin-top:16px}.snippet-reference .makecode-picture figcaption{font-size:14px}.snippet-reference .makecode-picture img{max-width:100%}
 
-.build-step:has(.build-actions) .build-copy>details{margin-top:5px}
+.build-step:has(.build-actions) .build-copy>details{margin-top:0}
