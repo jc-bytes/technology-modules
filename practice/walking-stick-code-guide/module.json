@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-STICK-01",
   "slug": "walking-stick-code-guide",
   "title": "Code your walking stick",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -11,22 +11,21 @@
   "sourcePath": "technology-learning-hub/standalone-sites/walking-stick-code-guide",
   "publishedUrl": "https://jc-bytes.github.io/technology-modules/practice/walking-stick-code-guide/",
   "prerequisites": [
-    "Built walking-stick model with its existing working sensor program",
-    "One confirmed sensor read, centimetre unit and invalid-reading condition",
-    "Teacher-checked Chrome laptop and Bluetooth setup"
+    "Built walking-stick model with Trig P0 and Echo P1",
+    "Teacher-checked sensor electrical interface",
+    "Chrome laptop, USB cable and Bluetooth"
   ],
   "estimatedTime": "Unknown, classroom pilot required",
   "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
-  "lastReviewed": "2026-10-21",
+  "lastReviewed": "2026-10-22",
   "objectives": [
-    "Keep the existing sensor adapter and pin settings",
+    "Use the complete P0/P1 sensor and Bluetooth program",
     "Explain valid near, valid far and unusable outcomes",
     "Send one fresh NEAR/FAR/UNKNOWN message from the sensor loop",
     "Test the board display and website sound using real measured distances"
   ],
   "software": [
-    "Microsoft MakeCode",
-    "Existing hardware-specific sensor project"
+    "Microsoft MakeCode with Bluetooth extension"
   ],
   "owner": "Porfirio Rios",
   "recommendedGrades": [
@@ -40,79 +39,79 @@
   "sections": [
     {
       "id": "goal",
-      "title": "One project, four separate stacks",
+      "title": "One complete sensor and Bluetooth program",
       "entryPath": "#goal",
       "estimatedMinutes": null
     },
     {
       "id": "open-team-project",
-      "title": "Open and protect the working program",
+      "title": "Protect the old program and make a test copy",
       "entryPath": "#open-team-project",
       "estimatedMinutes": null
     },
     {
-      "id": "sensor-profile",
-      "title": "Check the existing sensor once",
-      "entryPath": "#sensor-profile",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "rule",
-      "title": "Build the sensor decision inside forever",
-      "entryPath": "#rule",
-      "estimatedMinutes": null
-    },
-    {
       "id": "bluetooth-sound",
-      "title": "Add Bluetooth to this project",
+      "title": "Add Bluetooth before pasting",
       "entryPath": "#bluetooth-sound",
       "estimatedMinutes": null
     },
     {
       "id": "connection-setting",
-      "title": "Use the checked classroom setting",
+      "title": "Choose the classroom Bluetooth setting",
       "entryPath": "#connection-setting",
       "estimatedMinutes": null
     },
     {
+      "id": "sensor-profile",
+      "title": "Paste the complete program once",
+      "entryPath": "#sensor-profile",
+      "estimatedMinutes": null
+    },
+    {
       "id": "start-uart",
-      "title": "Fill only the on start stack",
+      "title": "Inspect the on start stack",
       "entryPath": "#start-uart",
       "estimatedMinutes": null
     },
     {
+      "id": "rule",
+      "title": "Inspect the sensor-reading function",
+      "entryPath": "#rule",
+      "estimatedMinutes": null
+    },
+    {
       "id": "connection-events",
-      "title": "Build the two separate event stacks",
+      "title": "Inspect the two Bluetooth events",
       "entryPath": "#connection-events",
       "estimatedMinutes": null
     },
     {
+      "id": "unknown-message",
+      "title": "Check the invalid echo first",
+      "entryPath": "#unknown-message",
+      "estimatedMinutes": null
+    },
+    {
       "id": "near-message",
-      "title": "Add the near message",
+      "title": "Follow a usable echo to NEAR",
       "entryPath": "#near-message",
       "estimatedMinutes": null
     },
     {
       "id": "far-message",
-      "title": "Add the farther message",
+      "title": "Follow a usable farther echo to FAR",
       "entryPath": "#far-message",
       "estimatedMinutes": null
     },
     {
-      "id": "unknown-message",
-      "title": "Add the unusable-reading message",
-      "entryPath": "#unknown-message",
-      "estimatedMinutes": null
-    },
-    {
       "id": "send-fresh",
-      "title": "Send at the bottom of forever",
+      "title": "Inspect the sender after the whole decision",
       "entryPath": "#send-fresh",
       "estimatedMinutes": null
     },
     {
       "id": "complete-program",
-      "title": "Compare the complete program",
+      "title": "Compare all five stacks before running",
       "entryPath": "#complete-program",
       "estimatedMinutes": null
     },
