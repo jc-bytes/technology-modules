@@ -125,21 +125,21 @@
     },
     {
       "id": "upload-1",
-      "durationSeconds": 26.9,
-      "bytes": 215853,
-      "sha256": "178d7adf5796940ea98658c7955d960f0de1b098cb08d5caaf4e1c92a7120743"
+      "durationSeconds": 31.45,
+      "bytes": 252333,
+      "sha256": "aedf50ea97aecc35d5707ba6099d3fde73d5033c4385072d58d13269e479054b"
     },
     {
       "id": "upload-2",
-      "durationSeconds": 27.1,
-      "bytes": 217581,
-      "sha256": "1f1e5d5a70b0c740c0da234e1ea4421f362aed7405e03f90ed21447f409a6275"
+      "durationSeconds": 30.2,
+      "bytes": 242349,
+      "sha256": "d8b01327e15ba4902d9669db446b26d34977d8e9ea0335009ff6a356d59d6ead"
     },
     {
       "id": "upload-3",
-      "durationSeconds": 27.05,
-      "bytes": 217197,
-      "sha256": "e963dad35b3b1f4fdcac204586770bea60a495b40862e928d8447a68bd6d57fc"
+      "durationSeconds": 31.62,
+      "bytes": 253677,
+      "sha256": "56eb4a5a974ba187f62ca5e62f06f4170293271fed37d598e2225db4a2316882"
     },
     {
       "id": "connect-phone",

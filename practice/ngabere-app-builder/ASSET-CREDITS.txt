@@ -26,3 +26,5 @@ Bundled viewer: existing appinventor-web-preview static host, renderer and inter
 JSZip 3.10.1 reads the local .aia archive; copyright Stuart Knightley and contributors,
 MIT/GPLv3 dual license notice preserved in viewer/assets/jszip.min.js.
 The official MIT editor is linked separately; our runtime runs exported .aia files.
+
+Version 1.4.1: Steps 21–23 use a screenshot of the official MIT Designer Media panel, with guide boxes and labels marking Media and Upload File. assets/media-upload-map.html is the annotation source.

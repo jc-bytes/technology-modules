@@ -128,21 +128,21 @@
     },
     {
       "id": "upload-1",
-      "text": "Upload the word for house. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word1 dot wave using the link below. In Designer, find Media under Components, choose Upload File, select that file from Downloads, and confirm.. Check: Media lists word1 dot wave. Keep this exact filename.",
+      "text": "Upload the word for house. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word1 dot wave below. In MIT App Inventor, click Designer. On the right, find Media below the Components list and the Rename / Delete buttons. Click Upload File…, choose word1 dot wave from Downloads, then confirm.. Check: Media lists word1 dot wave. Keep this exact filename.",
       "file": "assets/narration/upload-1.mp3",
-      "sha256": "178d7adf5796940ea98658c7955d960f0de1b098cb08d5caaf4e1c92a7120743"
+      "sha256": "aedf50ea97aecc35d5707ba6099d3fde73d5033c4385072d58d13269e479054b"
     },
     {
       "id": "upload-2",
-      "text": "Upload the word for dog. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word2 dot wave using the link below. In Designer, find Media under Components, choose Upload File, select that file from Downloads, and confirm.. Check: Media lists word2 dot wave. Keep this exact filename.",
+      "text": "Upload the word for dog. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word2 dot wave below. In MIT App Inventor, click Designer. On the right, find Media below the Components list and the Rename / Delete buttons. Click Upload File…, choose word2 dot wave from Downloads, then confirm.. Check: Media lists word2 dot wave. Keep this exact filename.",
       "file": "assets/narration/upload-2.mp3",
-      "sha256": "1f1e5d5a70b0c740c0da234e1ea4421f362aed7405e03f90ed21447f409a6275"
+      "sha256": "d8b01327e15ba4902d9669db446b26d34977d8e9ea0335009ff6a356d59d6ead"
     },
     {
       "id": "upload-3",
-      "text": "Upload the word for cat. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word3 dot wave using the link below. In Designer, find Media under Components, choose Upload File, select that file from Downloads, and confirm.. Check: Media lists word3 dot wave. Keep this exact filename.",
+      "text": "Upload the word for cat. In App Inventor · Designer , then Media. Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.. Download word3 dot wave below. In MIT App Inventor, click Designer. On the right, find Media below the Components list and the Rename / Delete buttons. Click Upload File…, choose word3 dot wave from Downloads, then confirm.. Check: Media lists word3 dot wave. Keep this exact filename.",
       "file": "assets/narration/upload-3.mp3",
-      "sha256": "e963dad35b3b1f4fdcac204586770bea60a495b40862e928d8447a68bd6d57fc"
+      "sha256": "56eb4a5a974ba187f62ca5e62f06f4170293271fed37d598e2225db4a2316882"
     },
     {
       "id": "connect-phone",

@@ -1,7 +1,7 @@
 export const site = {
   "id": "MOD-APP-NGABERE-01",
   "slug": "ngabere-app-builder",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "title": "Build Cultural Language",
   "shortTitle": "Cultural Language builder",
   "subject": "Technology",

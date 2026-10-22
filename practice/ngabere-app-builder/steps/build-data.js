@@ -595,11 +595,11 @@ export const buildSteps = [
   {
     "id": "upload-1",
     "title": "Upload Ju",
-    "do": "Download word1.wav using the link below. In Designer, find Media under Components, choose Upload File, select that file from Downloads, and confirm.",
+    "do": "Download word1.wav below. In MIT App Inventor, click Designer. On the right, find Media below the Components list and the Rename / Delete buttons. Click Upload File…, choose word1.wav from Downloads, then confirm.",
     "expected": "Media lists word1.wav. Keep this exact filename.",
     "image": null,
     "why": "Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.",
-    "help": "If the downloaded file is named word1 (1).wav, rename it to word1.wav before uploading. The exact filename lets PlayWord find it.",
+    "help": "Use the Media panel on the right, not the Media category in the left Palette. If you cannot see it, scroll down on the right. If the file is named word1 (1).wav, rename it to word1.wav before uploading.",
     "phase": "2 · Words and recordings",
     "stage": "guided",
     "links": [
@@ -615,25 +615,21 @@ export const buildSteps = [
     "where": "In App Inventor · Designer → Media",
     "visuals": [
       {
-        "src": "assets/screenshots/stage-09-media.jpg",
-        "label": "Before upload"
-      },
-      {
-        "src": "assets/screenshots/stage-10-media.jpg",
-        "label": "After upload"
+        "label": "Find Media and Upload File on the right",
+        "src": "assets/screenshots/media-upload-marked.png"
       }
     ],
     "visualKind": "designer",
-    "visualCaption": "Actual local MIT App Inventor Designer captures. Gray outlines and empty spaces are editor guides, not a phone test."
+    "visualCaption": "Actual MIT Designer panel with Media and Upload File marked. Your Media list may already contain the recordings from earlier steps."
   },
   {
     "id": "upload-2",
     "title": "Upload Nukro",
-    "do": "Download word2.wav using the link below. In Designer, find Media under Components, choose Upload File, select that file from Downloads, and confirm.",
+    "do": "Download word2.wav below. In MIT App Inventor, click Designer. On the right, find Media below the Components list and the Rename / Delete buttons. Click Upload File…, choose word2.wav from Downloads, then confirm.",
     "expected": "Media lists word2.wav. Keep this exact filename.",
     "image": null,
     "why": "Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.",
-    "help": "If the downloaded file is named word2 (1).wav, rename it to word2.wav before uploading. The exact filename lets PlayWord find it.",
+    "help": "Use the Media panel on the right, not the Media category in the left Palette. If you cannot see it, scroll down on the right. If the file is named word2 (1).wav, rename it to word2.wav before uploading.",
     "phase": "2 · Words and recordings",
     "stage": "guided",
     "links": [
@@ -649,25 +645,21 @@ export const buildSteps = [
     "where": "In App Inventor · Designer → Media",
     "visuals": [
       {
-        "src": "assets/screenshots/stage-10-media.jpg",
-        "label": "Before upload"
-      },
-      {
-        "src": "assets/screenshots/stage-11-media.jpg",
-        "label": "After upload"
+        "label": "Find Media and Upload File on the right",
+        "src": "assets/screenshots/media-upload-marked.png"
       }
     ],
     "visualKind": "designer",
-    "visualCaption": "Actual local MIT App Inventor Designer captures. Gray outlines and empty spaces are editor guides, not a phone test."
+    "visualCaption": "Actual MIT Designer panel with Media and Upload File marked. Your Media list may already contain the recordings from earlier steps."
   },
   {
     "id": "upload-3",
     "title": "Upload Minchi",
-    "do": "Download word3.wav using the link below. In Designer, find Media under Components, choose Upload File, select that file from Downloads, and confirm.",
+    "do": "Download word3.wav below. In MIT App Inventor, click Designer. On the right, find Media below the Components list and the Rename / Delete buttons. Click Upload File…, choose word3.wav from Downloads, then confirm.",
     "expected": "Media lists word3.wav. Keep this exact filename.",
     "image": null,
     "why": "Uploading puts a recording inside the project so our viewer can play it. Uploading does not change the visible word card.",
-    "help": "If the downloaded file is named word3 (1).wav, rename it to word3.wav before uploading. The exact filename lets PlayWord find it.",
+    "help": "Use the Media panel on the right, not the Media category in the left Palette. If you cannot see it, scroll down on the right. If the file is named word3 (1).wav, rename it to word3.wav before uploading.",
     "phase": "2 · Words and recordings",
     "stage": "guided",
     "links": [
@@ -683,16 +675,12 @@ export const buildSteps = [
     "where": "In App Inventor · Designer → Media",
     "visuals": [
       {
-        "src": "assets/screenshots/stage-11-media.jpg",
-        "label": "Before upload"
-      },
-      {
-        "src": "assets/screenshots/stage-12-media.jpg",
-        "label": "After upload"
+        "label": "Find Media and Upload File on the right",
+        "src": "assets/screenshots/media-upload-marked.png"
       }
     ],
     "visualKind": "designer",
-    "visualCaption": "Actual local MIT App Inventor Designer captures. Gray outlines and empty spaces are editor guides, not a phone test."
+    "visualCaption": "Actual MIT Designer panel with Media and Upload File marked. Your Media list may already contain the recordings from earlier steps."
   },
   {
     "id": "connect-phone",

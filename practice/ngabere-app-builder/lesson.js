@@ -1,9 +1,9 @@
-import { singleActionLesson } from './step-flow.js?v=1.4.0';
-import { site } from './site.js?v=1.4.0';
-import { buildSteps } from './steps/build-data.js?v=1.4.0';
-import { narrationFiles } from './narration-manifest.js?v=1.4.0';
-import { choiceStep, explanationStep } from './step-patterns.js?v=1.4.0';
-import { escapeHtml as e, tableHtml, wordTable } from './content.js?v=1.4.0';
+import { singleActionLesson } from './step-flow.js?v=1.4.1';
+import { site } from './site.js?v=1.4.1';
+import { buildSteps } from './steps/build-data.js?v=1.4.1';
+import { narrationFiles } from './narration-manifest.js?v=1.4.1';
+import { choiceStep, explanationStep } from './step-patterns.js?v=1.4.1';
+import { escapeHtml as e, tableHtml, wordTable } from './content.js?v=1.4.1';
 function render(s){
  if(s.kind==='review')return {...s,short:'Finish'};
  if(s.kind==='check')return choiceStep({id:s.id,title:s.title,short:s.title,activityTitle:s.title,question:s.question,options:s.options,answer:s.answer,hint:s.hint,stage:'practice'});
