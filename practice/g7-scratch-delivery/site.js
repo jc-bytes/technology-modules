@@ -1,10 +1,11 @@
 export const site = {
   "id": "MOD-CS-DELIVERY-01",
   "slug": "g7-scratch-delivery",
-  "title": "Scratch delivery practice",
-  "shortTitle": "Scratch delivery practice",
+  "title": "Deliver to three houses",
+  "shortTitle": "Deliver to three houses",
   "subject": "Technology",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "layout": "clean-step",
-  "storageKey": "formative:g7-scratch-delivery:v1"
+  "storageKey": "formative:g7-scratch-delivery:v2",
+  "previousWorkUrl": "./previous.html"
 };

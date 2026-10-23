@@ -1,5 +1,5 @@
-import { tableHtml } from './content.js';
-import { taskPdf } from './pdf.js';
+import { tableHtml } from './content.js?v=2.0.0';
+import { taskPdf } from './pdf.js?v=2.0.0';
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 

@@ -8,7 +8,7 @@ export const checkChoice = (label, choices, answer, hint) => `<t3-check answer="
 const drafts = new Map();
 export function practiceCheckKey(check) {
  const input=check.querySelector('input,select');
- return 't3-practice:v1:'+location.pathname+location.search+':'+(check.closest('.t3-lab')?.querySelector('p')?.textContent||'')+':'+input.getAttribute('aria-label');
+ return 't3-practice:v1:'+(document.body.dataset.practicePath ?? location.pathname)+(document.body.dataset.practiceSearch ?? location.search)+':'+(check.closest('.t3-lab')?.querySelector('p')?.textContent||'')+':'+input.getAttribute('aria-label');
 }
 export function practiceCheckSpecs(html) {
  const template=document.createElement('template');template.innerHTML=html || '';

@@ -1,0 +1,23 @@
+export const narrationFiles = {
+  "goalV2": "assets/narration/goalV2-143408cd2153.mp3",
+  "downloadV2": "assets/narration/downloadV2-355f47dff107.mp3",
+  "loadV2": "assets/narration/loadV2-fdb41f5ea0ec.mp3",
+  "spriteV2": "assets/narration/spriteV2-db6bf2e4de85.mp3",
+  "coordinatesV2": "assets/narration/coordinatesV2-91173bc80d6d.mp3",
+  "resetV2": "assets/narration/resetV2-596e93a0402d.mp3",
+  "makeV2": "assets/narration/makeV2-892bacf971fe.mp3",
+  "nameV2": "assets/narration/nameV2-2b4608399324.mp3",
+  "movementV2": "assets/narration/movementV2-9ab566a80cb4.mp3",
+  "counterV2": "assets/narration/counterV2-2d55b25d7ef0.mp3",
+  "pauseV2": "assets/narration/pauseV2-7d0e289a00f4.mp3",
+  "callV2": "assets/narration/callV2-97b4374e77ce.mp3",
+  "observeV2": "assets/narration/observeV2-004b709654a8.mp3",
+  "understandV2": "assets/narration/understandV2-4583f437c5a4.mp3",
+  "repeatV2": "assets/narration/repeatV2-b081f054feb6.mp3",
+  "insideV2": "assets/narration/insideV2-1272213f27a4.mp3",
+  "exampleV2": "assets/narration/exampleV2-4bf8960fb548.mp3",
+  "testV2": "assets/narration/testV2-e2cb521f33cd.mp3",
+  "explainV2": "assets/narration/explainV2-23edc6424ee7.mp3",
+  "saveV2": "assets/narration/saveV2-d33fc62d8c46.mp3",
+  "submitV2": "assets/narration/submitV2-c00f7ebe84ef.mp3"
+};

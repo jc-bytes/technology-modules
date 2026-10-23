@@ -10,6 +10,7 @@ async function fontData() {
     }).catch(error => { fontPromise = null; throw error; });
   return fontPromise;
 }
+const answerText = value => value === null || value === undefined || String(value).trim() === '' ? 'Not entered' : String(value);
 const clean = value => String(value ?? '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '');
 
 function createAssessmentLayout(pdf, report) {
@@ -51,7 +52,7 @@ function createAssessmentLayout(pdf, report) {
   const wrappedHeight = (value,size,maxWidth) => Math.max(1,linesFor(value,size,maxWidth).length)*lineHeight(size);
   const itemHeight = item => {
     if (item.type==='calculation') return 18 + Math.max(wrappedHeight(item.multiplication,9,94),wrappedHeight(item.total,9,55));
-    return 12 + Math.max(4.8,wrappedHeight(item.answer || 'Not entered',9,width-12));
+    return 12 + Math.max(4.8,wrappedHeight(answerText(item.answer),9,width-12));
   };
   const visualHeight = visual => visual==='pixel-grid' ? 25 : visual==='sample-groups' ? 21 : 0;
   const taskHeight = task => 20 + Math.max(9,wrappedHeight(task.prompt,9,width-14)+4) + (task.visual?visualHeight(task.visual)+3:0) + task.items.reduce((sum,item)=>sum+itemHeight(item)+2,0);
@@ -106,8 +107,8 @@ function createAssessmentLayout(pdf, report) {
         setText(item.total?colors.ink:colors.muted);
         pdf.text(linesFor(item.total || 'Not entered',9,secondW),secondX,itemY+13);
       } else {
-        pdf.setFontSize(9); setText(item.answer?colors.ink:colors.muted);
-        pdf.text(linesFor(item.answer || 'Not entered',9,width-14),left+7,itemY+10);
+        pdf.setFontSize(9); setText(answerText(item.answer)!=='Not entered'?colors.ink:colors.muted);
+        pdf.text(linesFor(answerText(item.answer),9,width-14),left+7,itemY+10);
       }
       itemY+=h+2;
     }
@@ -234,7 +235,7 @@ function createStructuredLayout(pdf, report) {
   const itemHeight=item=>{
     const labelHeight=itemLabelHeight(item);
     if(item.type==='calculation')return 8+labelHeight+7+Math.max(wrappedHeight(item.multiplication||'Not entered',9,width*.53),wrappedHeight(item.total||'Not entered',9,width*.34))+3;
-    return 7+labelHeight+Math.max(4.8,wrappedHeight(item.answer||'Not entered',9,width-12))+4;
+    return 7+labelHeight+Math.max(4.8,wrappedHeight(answerText(item.answer),9,width-12))+4;
   };
   const drawItem=(item,top)=>{
     const height=itemHeight(item),labelLines=linesFor(item.label||'Response',8.5,width-12);
@@ -247,7 +248,7 @@ function createStructuredLayout(pdf, report) {
       pdf.setFontSize(9);setText(item.multiplication?colors.ink:colors.muted);pdf.text(linesFor(item.multiplication||'Not entered',9,firstW),left+7,bodyTop+8);
       setText(item.total?colors.ink:colors.muted);pdf.text(linesFor(item.total||'Not entered',9,secondW),secondX,bodyTop+8);
     }else{
-      pdf.setFontSize(9);setText(item.answer?colors.ink:colors.muted);pdf.text(linesFor(item.answer||'Not entered',9,width-12),left+7,bodyTop+5);
+      pdf.setFontSize(9);setText(answerText(item.answer)!=='Not entered'?colors.ink:colors.muted);pdf.text(linesFor(answerText(item.answer),9,width-12),left+7,bodyTop+5);
     }
     return height;
   };
@@ -255,7 +256,7 @@ function createStructuredLayout(pdf, report) {
   for(const task of report.tasks||[]){
     if(task.pageBreakBefore&&pageHasTask)newPage();
     const promptLines=linesFor(task.prompt||'Student responses for this section.',9,width-14),promptHeight=Math.max(9,promptLines.length*lineHeight(9)+4),visual=task.visual,graphicHeight=visualHeight(visual),introHeight=14+promptHeight+(visual?graphicHeight+3:0);
-    if(y+introHeight>bottom)newPage();
+    if(y+introHeight+(task.items?.[0]?itemHeight(task.items[0])+3:0)>bottom)newPage();
     drawTaskLabel(task);
     drawPrompt(task.prompt);
     if(visual){y+=drawVisual(visual,y)+3;}
@@ -275,7 +276,7 @@ function createStructuredLayout(pdf, report) {
 }
 
 export async function createStudentPdf(report, font) {
-  const jspdfModule = await import('./jspdf.umd.min.js');
+  const jspdfModule = await import('./jspdf.umd.min.js?v=2.0.0');
   const { jsPDF } = globalThis.jspdf || jspdfModule.default || jspdfModule;
   const pdf = new jsPDF({ unit: 'mm', format: 'a4', compress: true, putOnlyUsedFonts: true });
   pdf.addFileToVFS('StudentSans.ttf', font || await fontData());

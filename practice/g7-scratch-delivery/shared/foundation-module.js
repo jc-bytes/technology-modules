@@ -1,8 +1,10 @@
+import {attachNarration,stopGuideNarration} from './guide-narration.js?v=2.0.0';
+import {narrationFiles} from '../narration-manifest.js?v=2.0.0';
 
-import { practiceCheckSpecs } from "./t3-practice.js";
-import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js";
-import { downloadStudentPdf } from "./student-pdf.js";
-import { selectClassRoute } from "./class-routes.js";
+import { practiceCheckSpecs } from "./t3-practice.js?v=2.0.0";
+import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=2.0.0";
+import { downloadStudentPdf } from "./student-pdf.js?v=2.0.0";
+import { selectClassRoute } from "./class-routes.js?v=2.0.0";
 
 const clone = (value) => JSON.parse(JSON.stringify(value));
 const escapeHtml = (value = "") => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
@@ -41,7 +43,7 @@ export function mountFoundationModule(config) {
     return state.visited.includes(sectionId) ? "started" : "new";
   }
   function nav() {
-    return config.sections.map((item,index) => `<a href="#${item.id}" class="fm-nav-link ${item.id === activeId ? "is-active" : ""}" ${item.id === activeId ? 'aria-current="page"' : ""}>${index+1}. ${escapeHtml(item.short || item.title)}</a>`).join("");
+    return config.sections.map((item,index) => `<a href="#${item.id}" class="fm-nav-link ${item.id === activeId ? "is-active" : ""}" ${item.id === activeId ? 'aria-current="page"' : ""}>${index+1}. ${escapeHtml(item.short || item.title)}</a>`).join("") + (config.previousWorkUrl ? `<a href="${escapeHtml(config.previousWorkUrl)}">Previous activity and saved answers</a>` : "");
   }
   function studentLabel() {
     return `<span><strong>${escapeHtml([state.identity.firstName,state.identity.lastName].filter(Boolean).join(' ') || 'Your name')}</strong><small>${escapeHtml(state.identity.grade ? `Grade ${state.identity.grade}` : 'Your grade')}</small></span>`;
@@ -51,7 +53,7 @@ export function mountFoundationModule(config) {
     const branding = config.layout === 'clean-step'
       ? `<div class="fm-brand-title"><small>${escapeHtml(config.subject || 'Technology')}</small><strong class="fm-activity-title">${title}</strong></div>`
       : `<strong class="fm-activity-title">${title}</strong>`;
-    return `<div class="fm-shell ${config.layout === 'clean-step' ? 'fm-clean-step' : ''}"><header class="fm-topbar">${branding}<div class="fm-tools"><div class="fm-student"><span id="fm-student-label">${studentLabel()}</span><button id="fm-edit-identity" class="fm-edit" aria-label="Edit your name and grade" title="Edit your name and grade"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m16 3 5 5-12 12-6 1 1-6Z"/><path d="m14 5 5 5"/></svg></button></div><button id="fm-download" class="fm-button primary">Download your answers</button><details class="fm-menu"><summary>Steps</summary><nav aria-label="Activity steps">${nav()}</nav></details></div></header><p id="fm-storage-warning" role="status"></p><main id="fm-main" tabindex="-1"></main><footer class="fm-footer"><a href="${escapeHtml(assignedRoute?.fallback || './printable-fallback.html')}" target="_blank">Paper version</a></footer></div><div id="fm-toast" class="fm-toast" role="status" aria-live="polite"></div>`;
+    return `<div class="fm-shell ${config.layout === 'clean-step' ? 'fm-clean-step' : ''}"><header class="fm-topbar">${branding}<div class="fm-tools"><div class="fm-student"><span id="fm-student-label">${studentLabel()}</span><button id="fm-edit-identity" class="fm-edit" aria-label="Edit your name and grade" title="Edit your name and grade"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m16 3 5 5-12 12-6 1 1-6Z"/><path d="m14 5 5 5"/></svg></button></div><button id="fm-download" class="fm-button primary" aria-label="Download your answers" title="Download your answers"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg><span class="fm-download-label">Download your answers</span></button><details class="fm-menu"><summary aria-label="Open activity steps"><span aria-hidden="true">☰</span><span class="fm-steps-label">Steps</span></summary><nav aria-label="Activity steps">${nav()}</nav></details></div></header><p id="fm-storage-warning" role="status"></p><main id="fm-main" tabindex="-1"></main><footer class="fm-footer">${config.previousWorkUrl?'':`<a href="./index.html">Open the new three-house guide</a>`}</footer></div><div id="fm-toast" class="fm-toast" role="status" aria-live="polite"></div>`;
   }
   function identityPage() {
     return `<h1>What is your name?</h1><form id="fm-identity-form">${[['firstName','First name','given-name'],['lastName','Last name','family-name'],['grade','Grade','off']].map(([key,label,autocomplete])=>`<label class="fm-field">${label}<input name="${key}" value="${escapeHtml(state.identity[key])}" autocomplete="${autocomplete}" maxlength="70"></label>`).join('')}<button class="fm-button primary">Continue</button></form>`;
@@ -64,7 +66,7 @@ export function mountFoundationModule(config) {
   function pager(item) {
     const index = config.sections.findIndex((entry) => entry.id === item.id);
     const previous = config.sections[index - 1]; const next = config.sections[index + 1];
-    return `<nav class="fm-pager" aria-label="Lesson navigation">${previous ? `<a href="#${previous.id}">${config.layout === 'clean-step' ? '← Previous step' : `← ${previous.short}`}</a>` : "<span></span>"}${next ? `<a class="next" href="#${next.id}">${config.layout === 'clean-step' ? 'Next step' : `${next.short} →`}</a>` : ""}</nav>`;
+    return `<nav class="fm-pager" aria-label="Lesson navigation">${previous ? `<a href="#${previous.id}">${config.layout === 'clean-step' ? '← Previous step' : `← ${previous.short}`}</a>` : "<span></span>"}<span class="fm-page-count">${index+1} / ${config.sections.length}</span>${next ? `<a class="next" href="#${next.id}">${config.layout === 'clean-step' ? 'Next step' : `${next.short} →`}</a>` : ""}</nav>`;
   }
   function block(label, title, html, className = "") { return `<section class="fm-block ${className}"><p class="fm-label">${label}</p>${title ? `<h2>${title}</h2>` : ''}${html}</section>`; }
   function practiceHeader(item, position) {
@@ -84,6 +86,10 @@ export function mountFoundationModule(config) {
     return `${hero(item)}${count}${block('',config.layout === 'clean-step' && item.items.length === 1 ? '' : activity.title,`${activity.visual || ''}<p class="fm-question">${activity.question}</p><form id="fm-choice-form"><input type="hidden" name="activity" value="${shownIndex}"><div class="fm-choices">${choices}</div><button class="fm-button primary">Check</button></form>${feedback}${questionNav}`)}${pager(item)}`;
   }
   function formPage(item) {
+    if(item.allFields){
+      const saved=state.responses[item.responseSource || item.id] || {};
+      return `${hero(item)}${item.intro || ''}<form id="fm-record-form" class="fm-record-form fm-all-fields">${item.fields.map(field=>`<label class="fm-field"><span>${escapeHtml(field.label)}</span><input type="${field.type || 'text'}" name="${escapeHtml(field.name)}" value="${escapeHtml(saved[field.name] ?? '')}" ${field.type==='number'?'step="1" inputmode="numeric"':''}><small>${escapeHtml(field.help || '')}</small></label>`).join('')}</form>${pager(item)}`;
+    }
     const saved = state.responses[item.responseSource || item.id] || {};
     const position = Math.max(0, Math.min(Number.isInteger(state.formPositions[item.id]) ? state.formPositions[item.id] : 0,item.fields.length-1));
     const field = item.fields[position];
@@ -115,12 +121,18 @@ export function mountFoundationModule(config) {
   }
   function toast(message) { const el = document.querySelector("#fm-toast"); el.textContent = message; el.classList.add("show"); setTimeout(() => el.classList.remove("show"), 1800); }
   function render({ focus = false } = {}) {
+    stopGuideNarration(); document.querySelectorAll("video").forEach(video=>video.pause());
     const notice=document.querySelector("#fm-toast");if(notice)notice.textContent="";
     const item = section(); if (!state.visited.includes(item.id)) state.visited.push(item.id); save();
     const renderer = item.kind === "choice" ? choicePage : item.kind === "form" ? formPage : item.kind === "sensor" ? sensorPage : item.kind === "review" ? reviewPage : lessonPage;
     const launch = assignedRoute && config.layout !== "clean-step" && item.id === config.sections[0].id ? `<p class="fm-label">${escapeHtml(assignedRoute.title)}</p>${assignedRoute.assignmentStatus === "optional-unassigned" ? `<p class="fm-block">${escapeHtml(assignedRoute.instructions)}</p>` : ""}` : "";
     document.querySelector("#fm-main").innerHTML = editingIdentity ? identityPage() : launch + renderer(item);
     document.querySelector(".fm-menu nav").innerHTML = nav(); bind(item);
+    if(!editingIdentity && config.version==='2.0.0' && narrationFiles[item.id]){
+      const controls=document.createElement('div');controls.className='fm-reading';controls.innerHTML='<button type="button" class="fm-read-button" aria-pressed="false">Read aloud</button><span role="status"></span>';
+      document.querySelector('.fm-hero').append(controls);attachNarration(controls.querySelector('button'),controls.querySelector('[role=status]'),narrationFiles[item.id]);
+    }
+
     document.querySelector("#fm-student-label").innerHTML = studentLabel();
     save();
     if (focus) { document.querySelector("#fm-main").focus({ preventScroll: true }); scrollTo({ top: 0, behavior: "smooth" }); }
