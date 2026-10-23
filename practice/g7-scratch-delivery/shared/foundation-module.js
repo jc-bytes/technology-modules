@@ -1,10 +1,10 @@
-import {attachNarration,stopGuideNarration} from './guide-narration.js?v=2.0.0';
-import {narrationFiles} from '../narration-manifest.js?v=2.0.0';
+import {attachNarration,stopGuideNarration} from './guide-narration.js?v=2.0.1';
+import {narrationFiles} from '../narration-manifest.js?v=2.0.1';
 
-import { practiceCheckSpecs } from "./t3-practice.js?v=2.0.0";
-import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=2.0.0";
-import { downloadStudentPdf } from "./student-pdf.js?v=2.0.0";
-import { selectClassRoute } from "./class-routes.js?v=2.0.0";
+import { practiceCheckSpecs } from "./t3-practice.js?v=2.0.1";
+import { checkChoice, foundationEvidence, foundationPdfReport } from "./foundation-evidence.js?v=2.0.1";
+import { downloadStudentPdf } from "./student-pdf.js?v=2.0.1";
+import { selectClassRoute } from "./class-routes.js?v=2.0.1";
 
 const clone = (value) => JSON.parse(JSON.stringify(value));
 const escapeHtml = (value = "") => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
@@ -128,7 +128,7 @@ export function mountFoundationModule(config) {
     const launch = assignedRoute && config.layout !== "clean-step" && item.id === config.sections[0].id ? `<p class="fm-label">${escapeHtml(assignedRoute.title)}</p>${assignedRoute.assignmentStatus === "optional-unassigned" ? `<p class="fm-block">${escapeHtml(assignedRoute.instructions)}</p>` : ""}` : "";
     document.querySelector("#fm-main").innerHTML = editingIdentity ? identityPage() : launch + renderer(item);
     document.querySelector(".fm-menu nav").innerHTML = nav(); bind(item);
-    if(!editingIdentity && config.version==='2.0.0' && narrationFiles[item.id]){
+    if(!editingIdentity && narrationFiles[item.id]){
       const controls=document.createElement('div');controls.className='fm-reading';controls.innerHTML='<button type="button" class="fm-read-button" aria-pressed="false">Read aloud</button><span role="status"></span>';
       document.querySelector('.fm-hero').append(controls);attachNarration(controls.querySelector('button'),controls.querySelector('[role=status]'),narrationFiles[item.id]);
     }

@@ -1,6 +1,6 @@
-import { mountFoundationModule } from './shared/foundation-module.js?v=2.0.0';
-import { lesson } from './lesson.js?v=2.0.0';
-import { validateLesson } from './validate.js?v=2.0.0';
+import { mountFoundationModule } from './shared/foundation-module.js?v=2.0.1';
+import { lesson } from './lesson.js?v=2.0.1';
+import { validateLesson } from './validate.js?v=2.0.1';
 validateLesson(lesson);
 try {
  if(!localStorage.getItem(lesson.storageKey)){
