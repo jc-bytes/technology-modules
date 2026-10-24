@@ -14,7 +14,6 @@ export const narrationFiles = {
   "far-message": "assets/narration/far-message-35baf1636460.mp3",
   "send-fresh": "assets/narration/send-fresh-9b82cffbaac4.mp3",
   "send-distance": "assets/narration/send-distance-c2d866071356.mp3",
-  "complete-program": "assets/narration/complete-program-7a7631fb8b3e.mp3",
   "save-transfer": "assets/narration/save-transfer-d63da13e18fc.mp3",
   "sound-page": "assets/narration/sound-page-1d44639d35f0.mp3",
   "connect-board": "assets/narration/connect-board-1f7a5d1ea32c.mp3",
@@ -25,5 +24,6 @@ export const narrationFiles = {
   "record-trials": "assets/narration/record-trials-c81553a69a91.mp3",
   "improve-retest": "assets/narration/improve-retest-12d02e5931b8.mp3",
   "save-evidence": "assets/narration/save-evidence-603a52c70601.mp3",
-  "submit": "assets/narration/submit-b55d5ae92dd2.mp3"
+  "submit": "assets/narration/submit-b55d5ae92dd2.mp3",
+  "complete-program": "assets/narration/complete-program-ba1e1388c664.mp3"
 };

@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-STICK-01",
   "slug": "walking-stick-code-guide",
   "title": "Code your walking stick",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -17,7 +17,7 @@
   ],
   "estimatedTime": "Unknown, classroom pilot required",
   "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
-  "lastReviewed": "2026-10-22",
+  "lastReviewed": "2026-10-24",
   "objectives": [
     "Build the P0/P1 sensor and Bluetooth program in short sections",
     "Explain valid near, valid far and unusable outcomes",
@@ -128,12 +128,6 @@
       "estimatedMinutes": null
     },
     {
-      "id": "complete-program",
-      "title": "Check the five stacks you built",
-      "entryPath": "#complete-program",
-      "estimatedMinutes": null
-    },
-    {
       "id": "save-transfer",
       "title": "Save and run the updated program",
       "entryPath": "#save-transfer",
@@ -197,6 +191,12 @@
       "id": "submit",
       "title": "Use the existing team handoff",
       "entryPath": "#submit",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "complete-program",
+      "title": "Check your complete program",
+      "entryPath": "#complete-program",
       "estimatedMinutes": null
     }
   ],

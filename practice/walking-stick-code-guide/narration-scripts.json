@@ -97,12 +97,6 @@
       "file": "assets/narration/send-distance-c2d866071356.mp3"
     },
     {
-      "id": "complete-program",
-      "text": "Check the five stacks you built. In Make Code · whole Blocks workspace. The finished image is a check for placement. Your program should read a new echo, choose one result, then send that result and a usable distance. Compare your own blocks with the five stacks below. Trace a missing echo, a 20 centimetres reading and a 40 centimetres reading through the branches. Check: One on start, one sensor function, two Bluetooth events and one forever. Each usable reading sends a result with centimetres; unknown sends no number. Check the two different sensor else branches and the separate sending if. Correct misplaced blocks in your own program. The simulator cannot prove a physical ultrasonic reading or Bluetooth connection.",
-      "sha256": "7a7631fb8b3e4231bd0f654898b56f69707c905417704c66d23cecae9878856f",
-      "file": "assets/narration/complete-program-7a7631fb8b3e.mp3"
-    },
-    {
       "id": "save-transfer",
       "text": "Save and run the updated program. In Make Code · Download, then the MICROBIT drive. A numbered file records the exact program being tested. The simulator cannot prove a physical ultrasonic reading or Bluetooth link. Download the next unused numbered .hex, for example WalkingStick_02.hex. Copy it to the MICROBIT drive using the checked U S B data cable. Check: Wait for copying and flashing to finish. Keep the cable connected until the board is running the updated program. Keep the earlier backup. If Make Code shows errors or downloading removes a needed setting, resolve that before testing the model.",
       "sha256": "d63da13e18fcbb24e3924bb55a5bdaf9f0b7b1aa9d2f473720162578649ca2d6",
@@ -167,6 +161,12 @@
       "text": "Use the existing team handoff. In Google Classroom · existing STEAM assignment. The teacher needs access to the shared report and the final program that your team demonstrates. This is the same project, not another assignment. Have one team member attach the shared report and final numbered .hex to the existing assignment by its announced deadline. Check: The files open for your teacher and match the demonstrated tabletop model. Each member explains their contribution and one actual result. The website does not submit files for you.",
       "sha256": "b55d5ae92dd205324258180b7b4ae01a75ffa8b3614cb76d42874a88e9f37298",
       "file": "assets/narration/submit-b55d5ae92dd2.mp3"
+    },
+    {
+      "id": "complete-program",
+      "text": "Check your complete program. Final reference · JavaScript or Blocks. Use this full program to check the code you built one step at a time. Compare your saved program. Choose JavaScript for the full code or Blocks for all five stacks. Check. Five stacks: one startup, one sensor function, two Bluetooth events and one forever.",
+      "sha256": "ba1e1388c66432ed4192b863484ec8c43070021a32d968c91873a92ddaa47b92",
+      "file": "assets/narration/complete-program-ba1e1388c664.mp3"
     }
   ]
 }

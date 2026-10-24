@@ -224,19 +224,6 @@ export const buildSteps = [
     "pairImage": "send-distance"
   },
   {
-    "id": "complete-program",
-    "title": "Check the five stacks you built",
-    "where": "In MakeCode · whole Blocks workspace",
-    "why": "The finished image is a check for placement. Your program should read a new echo, choose one result, then send that result and a usable distance.",
-    "do": "Compare your own blocks with the five stacks below. Trace a missing echo, a 20 cm reading and a 40 cm reading through the branches.",
-    "expected": "One on start, one sensor function, two Bluetooth events and one forever. Each usable reading sends a result with cm; UNKNOWN sends no number.",
-    "help": "Check the two different sensor else branches and the separate sending if. Correct misplaced blocks in your own program. The simulator cannot prove a physical ultrasonic reading or Bluetooth connection.",
-    "links": [],
-    "stage": "guided",
-    "diagram": "complete",
-    "wideDiagram": true
-  },
-  {
     "id": "save-transfer",
     "title": "Save and run the updated program",
     "where": "In MakeCode · Download, then the MICROBIT drive",
@@ -398,5 +385,21 @@ export const buildSteps = [
     "help": "Each member explains their contribution and one actual result. The website does not submit files for you.",
     "links": [],
     "stage": "guided"
+  },
+  {
+    "id": "complete-program",
+    "title": "Check your complete program",
+    "where": "Final reference · JavaScript or Blocks",
+    "why": "Use this full program to check the code you built one step at a time.",
+    "do": "Compare your saved program. Choose JavaScript for the full code or Blocks for all five stacks.",
+    "expected": "Five stacks: one startup, one sensor function, two Bluetooth events and one forever.",
+    "help": "Keep your tested project and results. If you need to try the reference, create a separate MakeCode copy with Bluetooth added. Copy the complete program into that copy, download a new numbered HEX, send it to the micro:bit and repeat the physical tests. Code that compiles does not prove the real sensor or Bluetooth works.",
+    "links": [],
+    "stage": "guided",
+    "diagram": "complete",
+    "wideDiagram": true,
+    "completeCode": "let trigPin = DigitalPin.P0\nlet echoPin = DigitalPin.P1\nlet echoTime = 0\nlet distanceCm = 0\nlet stickStatus = \"UNKNOWN\"\nlet btConnected = false\n\nbluetooth.startUartService()\n\nfunction readUltrasonicDistance() {\n    pins.digitalWritePin(trigPin, 0)\n    control.waitMicros(2)\n    pins.digitalWritePin(trigPin, 1)\n    control.waitMicros(10)\n    pins.digitalWritePin(trigPin, 0)\n    return pins.pulseIn(echoPin, PulseValue.High, 25000)\n}\n\nbluetooth.onBluetoothConnected(function () {\n    btConnected = true\n})\n\nbluetooth.onBluetoothDisconnected(function () {\n    btConnected = false\n    stickStatus = \"UNKNOWN\"\n})\n\nbasic.forever(function () {\n    echoTime = readUltrasonicDistance()\n    if (echoTime < 116 || echoTime > 23200) {\n        distanceCm = 0\n        stickStatus = \"UNKNOWN\"\n        basic.showString(\"?\")\n    } else {\n        distanceCm = Math.round(echoTime / 58 * 10) / 10\n        if (distanceCm <= 30) {\n            stickStatus = \"NEAR\"\n            basic.showIcon(IconNames.No)\n        } else {\n            stickStatus = \"FAR\"\n            basic.clearScreen()\n        }\n    }\n    if (btConnected) {\n        if (stickStatus == \"UNKNOWN\") {\n            bluetooth.uartWriteLine(stickStatus)\n        } else {\n            bluetooth.uartWriteLine(stickStatus + \",\" + distanceCm)\n        }\n    }\n    basic.pause(500)\n})",
+    "placement": "To try the reference, replace all JavaScript in a separate MakeCode test copy with Bluetooth added. Keep your saved team program.",
+    "explain": "The complete Blocks view has one on start, one sensor function, two Bluetooth events and one forever. Click any image to inspect it full size."
   }
 ];
