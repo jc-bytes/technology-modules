@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-WIND-01",
   "slug": "wind-generator-test-guide",
   "title": "Code and test your wind generator",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -13,18 +13,17 @@
   "prerequisites": [
     "Built low-voltage wind model",
     "Freenove Projects Board FNK0059 with compatible 5 V control board",
-    "Teacher-supervised multimeter and protected input setup",
+    "Teacher-checked input voltage range, polarity, transients and component ratings",
     "Read a decimal number"
   ],
   "estimatedTime": "Unknown, classroom pilot required",
   "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
   "lastReviewed": "2026-10-24",
   "objectives": [
-    "Use a multimeter to characterize the generator before connecting A0",
-    "Explain the Freenove display and voltage-reading Arduino code",
-    "Test a known low-voltage source using a two-resistor bench divider",
-    "Compare Arduino and multimeter readings through a teacher-checked input circuit",
-    "Read voltage in volts",
+    "Explain the existing 220 ohm load and LED connections",
+    "Build the Arduino voltage display program in short sections",
+    "Use a direct A0 reading with INPUT_SCALE = 1.0 after the teacher input check",
+    "Read and record voltage estimates from the board display",
     "Compare fan-off and fan-on conditions",
     "Keep original readings and test one change",
     "Explain the result and its limits"
@@ -140,56 +139,26 @@
       "estimatedMinutes": null
     },
     {
-      "id": "board-divider-idea",
-      "title": "Wire the known AA test circuit",
-      "entryPath": "#board-divider-idea",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-bench-upload",
-      "title": "Run the voltage program",
+      "title": "Upload your voltage program",
       "entryPath": "#board-bench-upload",
       "estimatedMinutes": null
     },
     {
-      "id": "board-bench-zero",
-      "title": "Check zero before the battery",
-      "entryPath": "#board-bench-zero",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-bench-battery",
-      "title": "Compare with a known voltage",
-      "entryPath": "#board-bench-battery",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-meter-connect",
-      "title": "Set up the generator-only meter test",
-      "entryPath": "#board-meter-connect",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "board-raw-maximum",
-      "title": "Measure the generator on its own",
-      "entryPath": "#board-raw-maximum",
-      "estimatedMinutes": null
-    },
-    {
       "id": "board-interface-gate",
-      "title": "Check the protected generator interface",
+      "title": "Check before connecting the model",
       "entryPath": "#board-interface-gate",
       "estimatedMinutes": null
     },
     {
       "id": "board-final-scale",
-      "title": "Match the code to the checked circuit",
+      "title": "Check the direct-reading scale",
       "entryPath": "#board-final-scale",
       "estimatedMinutes": null
     },
     {
       "id": "board-final-connect",
-      "title": "Check the live generator display",
+      "title": "Check the model display",
       "entryPath": "#board-final-connect",
       "estimatedMinutes": null
     },

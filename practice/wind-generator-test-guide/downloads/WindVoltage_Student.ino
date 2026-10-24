@@ -1,10 +1,10 @@
-/* Freenove Projects Board FNK0059 voltage-display BENCH CANDIDATE.
-   Display protocol checked against Freenove's Chapter 16 example.
-   Do not connect an uncharacterized turbine to this input.
-   Bench wiring: known positive DC source -> 10k -> A0 -> 10k -> GND.
-   Source negative -> GND. Board powered separately through USB.
-   Keep A0 between 0 V and the board's measured ADC reference voltage.
-   Resistor divider is NOT transient or reverse-polarity protection.
+/* Freenove Projects Board FNK0059 voltage display for the existing wind model.
+   Direct positive DC input at A0; INPUT_SCALE = 1.0.
+   The 220 ohm resistor and LED are parallel loads, not input protection.
+   Teacher must verify voltage range, polarity, transients and component ratings.
+   Keep A0 nonnegative and below the actual powered reference voltage.
+   Power the board by USB before connecting the signal; remove signal before USB.
+   Display protocol adapted from Freenove Chapter 16.
 */
 #include <Arduino.h>
 
@@ -13,9 +13,7 @@ const byte CLOCK_PIN = 13;
 const byte DATA_PIN = 11;
 const byte VOLTAGE_PIN = A0;
 const float ADC_REFERENCE_V = 5.00; // Measure board 5V-to-GND for calibration.
-const float R_TOP_OHMS = 10000.0;
-const float R_BOTTOM_OHMS = 10000.0;
-const float INPUT_SCALE = (R_TOP_OHMS + R_BOTTOM_OHMS) / R_BOTTOM_OHMS;
+const float INPUT_SCALE = 1.0; // Direct A0 reading; no voltage divider.
 const byte DIGIT[] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99,
                       0x92, 0x82, 0xf8, 0x80, 0x90};
 byte screen[4] = {0xc0 & 0x7f, 0xc0, 0xc0, 0xff};

@@ -17,9 +17,9 @@ export const buildSteps = [
     "title": "Check the board and parts",
     "why": "The photo shows the Freenove Projects Board V1.2 used for these directions. It does not show the wiring of your turbine prototype. The smaller control board plugs into it.",
     "where": "At the Freenove board",
-    "do": "Find the Freenove Projects Board V1.2, its control board, USB data cable, multimeter, AA holder, breadboard, wires and two 10k resistors.",
-    "expected": "Your teacher confirms a classic Uno-compatible 5 V control board and checks both 10k resistor values. The turbine stays disconnected.",
-    "help": "These directions use the checked 5 V Uno-compatible board. A different processor or supply needs a checked program and input circuit. USB powers the board separately.",
+    "do": "Find the built wind model, Freenove board, control board, USB data cable and computer with Arduino IDE. The model has a 220 Ω load resistor and a red LED.",
+    "expected": "Your teacher confirms a classic Uno-compatible 5 V control board. Keep the generator signal disconnected during programming.",
+    "help": "Red and white are positive. Black and gray are negative. USB powers the board separately. The electrical checks are teacher preparation, not a separate student meter activity.",
     "links": [],
     "stage": "guided",
     "image": "assets/freenove-board-reference.png",
@@ -32,7 +32,7 @@ export const buildSteps = [
     "why": "Red and white are positive. Black and gray are negative.",
     "do": "Trace the 220 Ω resistor and the LED. Each connects across the same positive and negative points.",
     "expected": "White goes directly to A0. Black goes to GND. The 220 Ω resistor is a load, not input protection.",
-    "help": "This drawing records the existing model. Keep the generator disconnected until the later physical input check. The AA bench program uses a different two-resistor circuit and scale.",
+    "help": "This drawing records the existing model. Keep the generator signal disconnected until the teacher input check. The 220 Ω resistor is a load across the motor. It does not divide the voltage reaching A0.",
     "links": [],
     "stage": "model",
     "image": "assets/wind-existing-circuit.svg",
@@ -101,12 +101,12 @@ export const buildSteps = [
     "title": "Name the pins and measuring values",
     "where": "In Arduino IDE · WindVoltage_Student",
     "why": "A constant is a named value that stays the same. A0 reads voltage. D11, D13 and D12 talk to the display already on the Freenove board.",
-    "do": "Add this section at the very top, above setup(). Keep these pin numbers and the two 10k bench resistor values.",
+    "do": "Add this section at the very top, above setup(). Keep these pin numbers. Use INPUT_SCALE = 1.0 for the direct A0 connection in the diagram.",
     "expected": "The pin names and measuring constants are above both empty functions.",
-    "help": "ADC_REFERENCE_V starts at 5.00 V for the checked 5 V board. INPUT_SCALE is 2 because the equal resistors halve the source voltage. These are bench values; the teacher checks final calibration later.",
+    "help": "ADC_REFERENCE_V starts at 5.00 V for the checked 5 V board. INPUT_SCALE is 1 because A0 reads the same voltage as the generator terminals. The 220 Ω load does not change that scale. Your teacher checks the actual reference voltage.",
     "links": [],
     "stage": "guided",
-    "code": "#include <Arduino.h>\n\nconst byte LATCH_PIN = 12;\nconst byte CLOCK_PIN = 13;\nconst byte DATA_PIN = 11;\nconst byte VOLTAGE_PIN = A0;\nconst float ADC_REFERENCE_V = 5.00; // Measure board 5V-to-GND for calibration.\nconst float R_TOP_OHMS = 10000.0;\nconst float R_BOTTOM_OHMS = 10000.0;\nconst float INPUT_SCALE = (R_TOP_OHMS + R_BOTTOM_OHMS) / R_BOTTOM_OHMS;",
+    "code": "#include <Arduino.h>\n\nconst byte LATCH_PIN = 12;\nconst byte CLOCK_PIN = 13;\nconst byte DATA_PIN = 11;\nconst byte VOLTAGE_PIN = A0;\nconst float ADC_REFERENCE_V = 5.00; // Measure board 5V-to-GND for calibration.\nconst float INPUT_SCALE = 1.0; // Direct A0 reading; no voltage divider.",
     "placement": "Add at the top of the sketch, above setup() and loop()."
   },
   {
@@ -214,108 +214,47 @@ export const buildSteps = [
     "placement": "Add inside loop(), after the display scan and before the final brace."
   },
   {
-    "id": "board-divider-idea",
-    "title": "Wire the known AA test circuit",
-    "why": "This bench circuit uses two equal 10k resistors. A0 connects between them and sees about half the known AA voltage. This drawing is not final turbine wiring.",
-    "where": "At the Freenove board",
-    "do": "Disconnect USB and the AA source. Place the two 10k resistors as drawn. Join their middle point to A0 and their lower end to board GND. Leave the AA source disconnected.",
-    "expected": "The teacher checks the connected breadboard rows, both resistor values, A0 at the midpoint and the shared GND before power is applied.",
-    "help": "The upper resistor goes from the planned AA positive to the middle point. The lower goes from that point to GND. AA negative will share GND. Do not put both ends of a resistor in the same connected row. The generator stays separate.",
-    "links": [],
-    "stage": "guided",
-    "image": "assets/bench-divider.svg",
-    "alt": "Bench-only divider with known AA source, upper and lower 10 kilohm resistors, A0 at their midpoint, shared GND and separate USB board power."
-  },
-  {
     "id": "board-bench-upload",
-    "title": "Run the voltage program",
+    "title": "Upload your voltage program",
     "why": "Your sketch now includes the measurement, display refresh and Serial Monitor output.",
     "where": "In Arduino IDE",
-    "do": "After the wiring check, connect USB and upload your WindVoltage_Student sketch. Open Serial Monitor at 9600 baud.",
-    "expected": "Upload finishes. Serial Monitor shows Voltage and ADC lines.",
-    "help": "USB powers the board. Keep the AA signal disconnected until the next checks. If text is scrambled, select 9600 baud.",
-    "links": [],
-    "stage": "guided"
-  },
-  {
-    "id": "board-bench-zero",
-    "title": "Check zero before the battery",
-    "why": "With no source connected, the lower resistor holds A0 near ground. This gives a useful first check.",
-    "where": "At the Freenove board",
-    "do": "With the AA source disconnected, read the display and Serial Monitor.",
-    "expected": "Both should show a near-zero estimate, about 0.00 V.",
-    "help": "The lower resistor holds A0 near GND. If the result is wrong, disconnect power and ask your teacher to check GND, the midpoint and the A0 sensor switches.",
-    "links": [],
-    "stage": "guided"
-  },
-  {
-    "id": "board-bench-battery",
-    "title": "Compare with a known voltage",
-    "why": "A known source lets us check the estimate before using the generator. The meter must measure across the AA terminals, not just A0 to GND.",
-    "where": "At the Freenove board",
-    "do": "With divider wiring checked and USB power on, have your teacher apply the AA signal through the prepared connections: positive through the upper resistor, negative to GND. Compare the display with the checked meter across the AA terminals.",
-    "expected": "The teacher records the difference and checks whether calibration is adequate. Remove the AA signal before removing USB power.",
-    "help": "The source need not be exactly its nominal voltage. The teacher checks additional known positive inputs within the approved bench range. On dashes, remove the signal immediately. A bench pass does not approve the generator interface.",
-    "links": [],
-    "stage": "guided"
-  },
-  {
-    "id": "board-meter-connect",
-    "title": "Set up the generator-only meter test",
-    "where": "At the stationary generator · teacher checks the clips",
-    "why": "The generator voltage is still unknown. A red LED lighting does not establish its maximum. Keep the Arduino completely disconnected for this check.",
-    "do": "With fan off and blades stopped, have your teacher identify the output type and choose its voltage mode and range. Check black in COM and red in V. Attach one probe to each generator terminal.",
-    "expected": "The Arduino and intentional loads are disconnected. Clips are clear of blades. Never use current mode across the generator.",
-    "help": "Never use current mode across the generator. A 100 ohm resistor across its terminals is a load, not A0 protection. It can heat up and needs a suitable rating. The teacher checks DC or AC output; this program needs a checked positive DC input.",
-    "image": "assets/turbine-meter.svg",
-    "alt": "Red voltage probe and black COM probe attach to different stationary generator terminals. No Arduino connection.",
-    "links": [],
-    "stage": "guided"
-  },
-  {
-    "id": "board-raw-maximum",
-    "title": "Measure the generator on its own",
-    "why": "The interface must suit the generator over the intended test conditions. One slow test is not enough. A meter can still miss fast spikes.",
-    "where": "At the Freenove board",
-    "do": "Have your teacher test the intended fan settings and distances, including the highest intended speed. Record the maximum observed voltage, polarity and output type.",
-    "expected": "The record contains real meter readings. A minus sign is recorded, not ignored.",
-    "help": "Some generators reverse polarity when rotation reverses. A meter can miss fast spikes. The observed maximum alone does not establish a safe Arduino input. Keep hands clear of the moving blades.",
+    "do": "Keep the generator signal disconnected. Connect USB and upload your WindVoltage_Student sketch. Open Serial Monitor at 9600 baud.",
+    "expected": "Upload finishes. Serial Monitor shows Voltage and ADC lines. With no signal connected, the number may move.",
+    "help": "A disconnected A0 input can float, so it is not a zero-voltage test. USB powers the board. If text is scrambled, select 9600 baud. The next checks use the teacher-checked model.",
     "links": [],
     "stage": "guided"
   },
   {
     "id": "board-interface-gate",
-    "title": "Check the protected generator interface",
-    "why": "An interface is the circuit between the generator and A0. Its divider, load and protection depend on the measured voltage, polarity and possible spikes. The final design still needs a physical teacher check.",
-    "where": "At the Freenove board",
-    "do": "Continue only after your teacher physically tests and approves the actual circuit between the generator and A0. If it is not approved, save the bench work and stop here.",
-    "expected": "The interface handles the measured range, polarity and possible spikes. A0 stays nonnegative and below the powered reference voltage.",
-    "help": "A divider alone, an LED or a 100 ohm load does not establish protection. The final load, divider, rectification and protection depend on the real generator. Do not connect it directly to A0.",
+    "title": "Check before connecting the model",
+    "why": "The drawing shows the existing 220 Ω load and LED. The load does not protect A0.",
+    "where": "At the built model",
+    "do": "Keep the generator signal disconnected until your teacher confirms the model is suitable for this powered board.",
+    "expected": "Teacher preparation covers the voltage range, polarity, possible spikes, LED current and load resistor power rating.",
+    "help": "For this 5 V board, the signal must stay nonnegative and below the actual powered reference voltage. A dim LED does not prove this. Stop if the model has not been checked. This guide does not certify the direct connection.",
     "links": [],
-    "stage": "guided",
-    "image": "assets/measure-path.svg",
-    "alt": "Generator reaches A0 only through a physically checked teacher-selected interface, then the display. Final interface is unresolved until checked."
+    "stage": "guided"
   },
   {
     "id": "board-final-scale",
-    "title": "Match the code to the checked circuit",
-    "why": "The bench sketch assumes two 10k resistors. A different final divider needs its actual resistor values in the sketch. Its calibration must match the real board.",
+    "title": "Check the direct-reading scale",
+    "why": "The 220 Ω resistor is across the motor. It is a load, not a two-resistor divider. The diagram uses a direct A0 reading.",
     "where": "In Arduino IDE",
-    "do": "Have your teacher enter the actual resistor values and reference voltage. Save as WindVoltage_Checked_01 and upload with the generator signal disconnected.",
-    "expected": "The saved sketch matches the approved interface and calibration.",
-    "help": "INPUT_SCALE changes when the resistor ratio changes. Do not keep bench values for a different circuit. The sketch cannot undo an unknown rectifier drop. Keep the complete .ino file in its matching sketch folder.",
+    "do": "Check that INPUT_SCALE is 1.0. Have your teacher check ADC_REFERENCE_V against the powered board. Save your sketch.",
+    "expected": "The direct-reading program does not multiply the generator voltage by two.",
+    "help": "If your teacher changes the input circuit, the program scale must match that circuit. The program cannot protect against excessive or reversed voltage.",
     "links": [],
     "stage": "guided",
-    "code": "const float ADC_REFERENCE_V = 5.00;\nconst float R_TOP_OHMS = 10000.0;\nconst float R_BOTTOM_OHMS = 10000.0;"
+    "code": "const float ADC_REFERENCE_V = 5.00;\nconst float INPUT_SCALE = 1.0;"
   },
   {
     "id": "board-final-connect",
-    "title": "Check the live generator display",
-    "why": "All wiring changes happen with power and signal removed. The board must then have USB power before a generator signal is present.",
+    "title": "Check the model display",
+    "why": "USB powers the board. The generator supplies the voltage signal. The display and Serial Monitor show the same estimate.",
     "where": "At the Freenove board",
-    "do": "Have your teacher connect the approved interface with power and signal removed, power the board by USB, then apply the generator signal. Compare meter and display at the same source terminals under the same load.",
-    "expected": "The teacher checks fan-off/on readings at the same loaded terminals. Record the approved interface and calibration. At shutdown, remove the generator signal before removing USB power.",
-    "help": "Remove the generator signal before removing USB power. Never compare an unloaded meter result with a loaded Arduino result. Mark unfinished checks Not checked.",
+    "do": "After the teacher input check, have your teacher apply USB power before connecting the generator signal. Compare the board display with the Voltage line in Serial Monitor.",
+    "expected": "Both show the same voltage to two decimal places. At shutdown, remove the generator signal before removing USB power.",
+    "help": "Agreement between the display and Serial Monitor checks the program output, not measurement accuracy. Calibration is a teacher check. On dashes or an ADC LIMIT message, stop the fan and have your teacher remove the signal.",
     "links": [],
     "stage": "guided"
   },
@@ -325,8 +264,8 @@ export const buildSteps = [
     "why": "A fair comparison changes the fan condition while keeping the other parts the same. Your teacher chooses a safe position and one fan-on setting.",
     "where": "In the team test record",
     "do": "Open your team test record. Record the marked fan distance in cm, fan-on setting, settling time and wait between readings. Write your expected voltage change and reason.",
-    "expected": "Use the checked multimeter for recorded readings and compare the Arduino display alongside it. The teacher checks the complete setup before testing.",
-    "help": "Settling time is the wait after starting the fan. Keep the same model, distance, connections and fan-on setting for the first comparison. Keep hands clear of blades; leave meter settings and connections to the teacher.",
+    "expected": "Use the board display for every recorded reading. Keep the 220 Ω load, LED and all connections unchanged during the comparison.",
+    "help": "Settling time is the wait after starting the fan. Keep the same model, distance, connections and fan-on setting. Keep hands clear of blades. Your teacher checks the model before testing.",
     "links": [
       [
         "Download blank test sheet",
@@ -339,7 +278,7 @@ export const buildSteps = [
     "title": "Take three fan-off readings",
     "why": "Three readings help you see whether the number stays steady. A real zero is a result; a missing reading is not zero.",
     "where": "At the model and in the team test record",
-    "do": "With fan off and blades stopped, take three multimeter readings using the agreed wait. Under Before change, fan off, record readings 1, 2 and 3, each with V. Compare the Arduino display too.",
+    "do": "With fan off and blades stopped, read the board display three times using the agreed wait. Under Before change, fan off, record readings 1, 2 and 3, each with V.",
     "expected": "Your test record has three real fan-off readings, including decimal points and any minus signs.",
     "help": "Example only: 0.42 V is read zero point four two volts. Use your own readings. Write Test not run and a reason if you cannot measure.",
     "links": [],
@@ -350,7 +289,7 @@ export const buildSteps = [
     "title": "Take three fan-on readings",
     "why": "Keep the marked distance, fan setting, connections and wait unchanged.",
     "where": "At the model and in the team test record",
-    "do": "Have your teacher start the guarded fan. After the settling time, record three multimeter readings under Before change, fan on. Compare the Arduino display. Then stop the fan and wait for all blades to stop.",
+    "do": "Have your teacher start the guarded fan. After the settling time, record three board-display readings under Before change, fan on. Then stop the fan and wait for all blades to stop.",
     "expected": "Your original record now has six readings, three off and three on.",
     "help": "Record a changing display honestly. Stop if the base moves or a part comes loose. Never touch or adjust moving blades.",
     "links": []
@@ -370,9 +309,9 @@ export const buildSteps = [
     "title": "Make the change and repeat the test",
     "why": "Changing just one thing makes the comparison easier to explain. Keep the first results.",
     "where": "At the wind model",
-    "do": "With fan off and blades stopped, make the approved change with your teacher and record its date. After the setup check, repeat three multimeter readings off and three on under After change. Compare the Arduino display and stop the fan afterward.",
+    "do": "With fan off and blades stopped, make the approved change with your teacher and record its date. After the setup check, repeat three board-display readings off and three on under After change. Stop the fan afterward.",
     "expected": "Both sets of six readings are saved. Use the same distance, fan setting and timing unless that was the one approved change.",
-    "help": "Any electrical change needs power and signal removed. Recheck its code scale and meter comparison before testing. Do not replace original readings or write zero for a test not run.",
+    "help": "Any electrical change needs power and signal removed. Your teacher rechecks the input and code scale before testing. Do not replace original readings or write zero for a test not run.",
     "links": []
   },
   {
@@ -405,17 +344,17 @@ export const buildSteps = [
     "id": "complete-program",
     "title": "Check your complete program",
     "where": "Final reference · Arduino IDE",
-    "why": "Use this complete bench-test sketch to check the code you built one section at a time.",
-    "do": "Compare your saved sketch with the full code below. These are the AA bench-test settings. Keep the actual resistor values and calibration checked for your generator.",
+    "why": "Use this complete direct-reading sketch to check the code you built one section at a time.",
+    "do": "Compare your saved sketch with the full code below. This version uses INPUT_SCALE = 1.0 for the direct A0 connection shown in the diagrams.",
     "expected": "Four display helpers, one setup and one loop. The sketch reads A0, updates the display and prints the voltage estimate.",
-    "help": "Keep your tested program and results. If you try the reference, save a separate numbered copy first. The two 10k bench resistors do not protect against unknown generator voltage, reverse polarity or spikes. Use the actual teacher-approved interface and matching calibration for generator tests. The program is not input protection.",
+    "help": "Save a separate numbered copy before trying the reference. The teacher must check the real model and calibration. The 220 Ω load and the program do not protect A0.",
     "links": [
       [
-        "Download complete bench reference",
-        "downloads/WindVoltageBench.zip"
+        "Download complete direct-reading program",
+        "downloads/WindVoltage_Student.zip"
       ]
     ],
     "stage": "guided",
-    "completeCode": "/* Freenove Projects Board FNK0059 voltage-display BENCH CANDIDATE.\n   Display protocol checked against Freenove's Chapter 16 example.\n   Do not connect an uncharacterized turbine to this input.\n   Bench wiring: known positive DC source -> 10k -> A0 -> 10k -> GND.\n   Source negative -> GND. Board powered separately through USB.\n   Keep A0 between 0 V and the board's measured ADC reference voltage.\n   Resistor divider is NOT transient or reverse-polarity protection.\n*/\n#include <Arduino.h>\n\nconst byte LATCH_PIN = 12;\nconst byte CLOCK_PIN = 13;\nconst byte DATA_PIN = 11;\nconst byte VOLTAGE_PIN = A0;\nconst float ADC_REFERENCE_V = 5.00; // Measure board 5V-to-GND for calibration.\nconst float R_TOP_OHMS = 10000.0;\nconst float R_BOTTOM_OHMS = 10000.0;\nconst float INPUT_SCALE = (R_TOP_OHMS + R_BOTTOM_OHMS) / R_BOTTOM_OHMS;\nconst byte DIGIT[] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99,\n                      0x92, 0x82, 0xf8, 0x80, 0x90};\nbyte screen[4] = {0xc0 & 0x7f, 0xc0, 0xc0, 0xff};\nfloat voltage = 0.0;\nunsigned int rawAverage = 0;\nbool atAdcLimit = false;\nunsigned long lastRead = 0;\nunsigned long lastPrint = 0;\n\nvoid sendDigit(byte position, byte segments) {\n  digitalWrite(LATCH_PIN, LOW);\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(1U << position));\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, segments);\n  digitalWrite(LATCH_PIN, HIGH);\n}\n\nvoid blankDisplay() {\n  digitalWrite(LATCH_PIN, LOW);\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(0));\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(0xff));\n  digitalWrite(LATCH_PIN, HIGH);\n}\n\nvoid makeScreen() {\n  unsigned int hundredths = (unsigned int)(voltage * 100.0 + 0.5);\n  if (atAdcLimit || hundredths > 999) {\n    for (byte i = 0; i < 4; ++i) screen[i] = 0xbf; // ----: check range.\n    return;\n  }\n  screen[0] = DIGIT[hundredths / 100] & 0x7f; // Whole volts and decimal point.\n  screen[1] = DIGIT[(hundredths / 10) % 10];\n  screen[2] = DIGIT[hundredths % 10];\n  screen[3] = 0xff; // Fourth position intentionally blank.\n}\n\nvoid readVoltage() {\n  unsigned long total = 0;\n  atAdcLimit = false;\n  for (byte i = 0; i < 8; ++i) {\n    unsigned int raw = analogRead(VOLTAGE_PIN);\n    if (raw >= 1020) atAdcLimit = true;\n    total += raw;\n  }\n  rawAverage = (total + 4) / 8;\n  voltage = (total / 8.0) * ADC_REFERENCE_V / 1023.0 * INPUT_SCALE;\n  makeScreen();\n}\n\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(LATCH_PIN, OUTPUT);\n  pinMode(CLOCK_PIN, OUTPUT);\n  pinMode(DATA_PIN, OUTPUT);\n  pinMode(VOLTAGE_PIN, INPUT); // No internal pull-up on the measuring input.\n  blankDisplay();\n  readVoltage();\n}\n\nvoid loop() {\n  unsigned long now = millis();\n  if (now - lastRead >= 100) {\n    lastRead = now;\n    readVoltage();\n  }\n  // Scan continuously. Blank between digits and before sampling/printing.\n  for (byte i = 0; i < 4; ++i) {\n    sendDigit(i, screen[i]);\n    delay(1);\n    blankDisplay();\n  }\n  if (now - lastPrint >= 250) {\n    lastPrint = now;\n    if (atAdcLimit) {\n      Serial.println(F(\"ADC LIMIT: stop and check input voltage\"));\n    } else {\n      Serial.print(F(\"Voltage: \"));\n      Serial.print(voltage, 2);\n      Serial.print(F(\" V; ADC: \"));\n      Serial.println(rawAverage);\n    }\n  }\n}\n"
+    "completeCode": "/* Freenove Projects Board FNK0059 voltage display for the existing wind model.\n   Direct positive DC input at A0; INPUT_SCALE = 1.0.\n   The 220 ohm resistor and LED are parallel loads, not input protection.\n   Teacher must verify voltage range, polarity, transients and component ratings.\n   Keep A0 nonnegative and below the actual powered reference voltage.\n   Power the board by USB before connecting the signal; remove signal before USB.\n   Display protocol adapted from Freenove Chapter 16.\n*/\n#include <Arduino.h>\n\nconst byte LATCH_PIN = 12;\nconst byte CLOCK_PIN = 13;\nconst byte DATA_PIN = 11;\nconst byte VOLTAGE_PIN = A0;\nconst float ADC_REFERENCE_V = 5.00; // Measure board 5V-to-GND for calibration.\nconst float INPUT_SCALE = 1.0; // Direct A0 reading; no voltage divider.\nconst byte DIGIT[] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99,\n                      0x92, 0x82, 0xf8, 0x80, 0x90};\nbyte screen[4] = {0xc0 & 0x7f, 0xc0, 0xc0, 0xff};\nfloat voltage = 0.0;\nunsigned int rawAverage = 0;\nbool atAdcLimit = false;\nunsigned long lastRead = 0;\nunsigned long lastPrint = 0;\n\nvoid sendDigit(byte position, byte segments) {\n  digitalWrite(LATCH_PIN, LOW);\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(1U << position));\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, segments);\n  digitalWrite(LATCH_PIN, HIGH);\n}\n\nvoid blankDisplay() {\n  digitalWrite(LATCH_PIN, LOW);\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(0));\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(0xff));\n  digitalWrite(LATCH_PIN, HIGH);\n}\n\nvoid makeScreen() {\n  unsigned int hundredths = (unsigned int)(voltage * 100.0 + 0.5);\n  if (atAdcLimit || hundredths > 999) {\n    for (byte i = 0; i < 4; ++i) screen[i] = 0xbf; // ----: check range.\n    return;\n  }\n  screen[0] = DIGIT[hundredths / 100] & 0x7f; // Whole volts and decimal point.\n  screen[1] = DIGIT[(hundredths / 10) % 10];\n  screen[2] = DIGIT[hundredths % 10];\n  screen[3] = 0xff; // Fourth position intentionally blank.\n}\n\nvoid readVoltage() {\n  unsigned long total = 0;\n  atAdcLimit = false;\n  for (byte i = 0; i < 8; ++i) {\n    unsigned int raw = analogRead(VOLTAGE_PIN);\n    if (raw >= 1020) atAdcLimit = true;\n    total += raw;\n  }\n  rawAverage = (total + 4) / 8;\n  voltage = (total / 8.0) * ADC_REFERENCE_V / 1023.0 * INPUT_SCALE;\n  makeScreen();\n}\n\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(LATCH_PIN, OUTPUT);\n  pinMode(CLOCK_PIN, OUTPUT);\n  pinMode(DATA_PIN, OUTPUT);\n  pinMode(VOLTAGE_PIN, INPUT); // No internal pull-up on the measuring input.\n  blankDisplay();\n  readVoltage();\n}\n\nvoid loop() {\n  unsigned long now = millis();\n  if (now - lastRead >= 100) {\n    lastRead = now;\n    readVoltage();\n  }\n  // Scan continuously. Blank between digits and before sampling/printing.\n  for (byte i = 0; i < 4; ++i) {\n    sendDigit(i, screen[i]);\n    delay(1);\n    blankDisplay();\n  }\n  if (now - lastPrint >= 250) {\n    lastPrint = now;\n    if (atAdcLimit) {\n      Serial.println(F(\"ADC LIMIT: stop and check input voltage\"));\n    } else {\n      Serial.print(F(\"Voltage: \"));\n      Serial.print(voltage, 2);\n      Serial.print(F(\" V; ADC: \"));\n      Serial.println(rawAverage);\n    }\n  }\n}\n"
   }
 ];
