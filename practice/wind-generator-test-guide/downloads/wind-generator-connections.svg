@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1510" viewBox="0 0 1800 1510"><style>text{font-family:Arial,sans-serif;fill:#172b40}.title{font-size:46px;font-weight:700}.h{font-size:29px;font-weight:700}.t{font-size:25px}.s{font-size:22px}</style><rect width="1800" height="1510" fill="#f3f6fa"/>
+<text x="65" y="72" class="title">Wind generator: existing connections</text>
+<text x="65" y="119" class="h">Red and white = positive (+)     |     Black and gray = negative (−)</text>
+<rect x="65" y="155" width="1670" height="565" rx="18" fill="#fff" stroke="#cad4df" stroke-width="3"/>
+<text x="95" y="202" class="h">220 Ω load resistor and LED both connect across the same + and − points.</text>
+<rect x="100" y="335" width="250" height="215" rx="18" fill="#edf2f7" stroke="#cad4df" stroke-width="3"/>
+<text x="124" y="381" class="h">Wind generator</text>
+<text x="124" y="450" class="t">Small motor</text>
+<text x="315" y="410" class="h">+</text>
+<text x="315" y="520" class="h">−</text>
+<path d="M350 390 H420 V280 H500" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 390 H420 V280 H500" fill="none" stroke="#e04545" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 500 H420 V610 H500" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 500 H420 V610 H500" fill="none" stroke="#9aa0a8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M500 280 H1470" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M500 280 H1470" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M500 610 H1470" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M500 610 H1470" fill="none" stroke="#20252b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="500" cy="280" r="8" fill="#172b40"/>
+<circle cx="500" cy="610" r="8" fill="#172b40"/>
+<circle cx="650" cy="280" r="8" fill="#172b40"/>
+<circle cx="650" cy="610" r="8" fill="#172b40"/>
+<circle cx="1050" cy="280" r="8" fill="#172b40"/>
+<circle cx="1050" cy="610" r="8" fill="#172b40"/>
+<text x="465" y="252" class="t">RED + from motor</text>
+<text x="1130" y="252" class="t">WHITE + to A0</text>
+<text x="450" y="658" class="t">GRAY − from motor</text>
+<text x="1120" y="658" class="t">BLACK − to GND</text>
+<path d="M650 280 V390" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M650 280 V390" fill="none" stroke="#e04545" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="620" y="390" width="60" height="110" fill="#fff0bd" stroke="#967a2f" stroke-width="4"/>
+<path d="M650 500 V610" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M650 500 V610" fill="none" stroke="#9aa0a8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="710" y="419" class="h">220 Ω</text>
+<text x="710" y="459" class="t">Load resistor</text>
+<text x="710" y="497" class="s">Across + and −</text>
+<path d="M1050 280 V400" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1050 280 V400" fill="none" stroke="#e04545" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1015 475 V435 a35 35 0 0 1 70 0 V475 Z" fill="#f16c70" stroke="#a43c40" stroke-width="4"/>
+<path d="M1050 475 V610" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1050 475 V610" fill="none" stroke="#9aa0a8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1098" y="376" class="s">+ Anode</text>
+<text x="1100" y="441" class="h">Red LED</text>
+<text x="1098" y="510" class="s">− Cathode</text>
+<rect x="1470" y="215" width="225" height="445" rx="18" fill="#e7f1eb" stroke="#80a58d" stroke-width="3"/>
+<text x="1490" y="250" class="h">Freenove</text>
+<text x="1490" y="297" class="h">A0</text>
+<text x="1490" y="618" class="h">GND</text>
+<text x="1490" y="393" class="s">USB powers</text>
+<text x="1490" y="426" class="s">the board.</text>
+<text x="95" y="699" class="s">Both branches are parallel. There is no series resistor in the LED branch and no voltage divider at A0.</text>
+<rect x="65" y="750" width="1670" height="607" rx="18" fill="#fff" stroke="#cad4df" stroke-width="3"/>
+<text x="95" y="796" class="h">Breadboard layout: two separate numbered strips</text>
+<text x="95" y="839" class="t">10 and 20 are example positions. Each shaded group joins five holes on the same A–E side.</text>
+<rect x="452" y="880" width="96" height="300" rx="18" fill="#e7edf3" stroke="#b3c2d0" stroke-width="3"/>
+<text x="484" y="872" class="h">10</text>
+<path d="M500 922 V1142" stroke="#b0bdca" stroke-width="8"/>
+<circle cx="500" cy="922" r="10" fill="#2c3744"/>
+<circle cx="500" cy="977" r="10" fill="#2c3744"/>
+<circle cx="500" cy="1032" r="10" fill="#2c3744"/>
+<circle cx="500" cy="1087" r="10" fill="#2c3744"/>
+<circle cx="500" cy="1142" r="10" fill="#2c3744"/>
+<rect x="952" y="880" width="96" height="300" rx="18" fill="#e7edf3" stroke="#b3c2d0" stroke-width="3"/>
+<text x="984" y="872" class="h">20</text>
+<path d="M1000 922 V1142" stroke="#b0bdca" stroke-width="8"/>
+<circle cx="1000" cy="922" r="10" fill="#2c3744"/>
+<circle cx="1000" cy="977" r="10" fill="#2c3744"/>
+<circle cx="1000" cy="1032" r="10" fill="#2c3744"/>
+<circle cx="1000" cy="1087" r="10" fill="#2c3744"/>
+<circle cx="1000" cy="1142" r="10" fill="#2c3744"/>
+<text x="420" y="906" class="s">A</text>
+<text x="420" y="961" class="s">B</text>
+<text x="420" y="1016" class="s">C</text>
+<text x="420" y="1071" class="s">D</text>
+<text x="420" y="1126" class="s">E</text>
+<path d="M125 922 H500" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M125 922 H500" fill="none" stroke="#e04545" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="122" y="904" class="t">RED + from motor</text>
+<path d="M125 977 H500" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M125 977 H500" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="122" y="1020" class="t">WHITE + to A0</text>
+<path d="M1000 922 H1300" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1000 922 H1300" fill="none" stroke="#9aa0a8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1330" y="932" class="t">GRAY − from motor</text>
+<path d="M1000 977 H1300" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1000 977 H1300" fill="none" stroke="#20252b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1330" y="987" class="t">BLACK − to GND</text>
+<path d="M500 1032 H660" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M500 1032 H660" fill="none" stroke="#e04545" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="660" y="1010" width="180" height="44" fill="#fff0bd" stroke="#967a2f" stroke-width="4"/>
+<path d="M840 1032 H1000" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M840 1032 H1000" fill="none" stroke="#9aa0a8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="682" y="1096" class="h">220 Ω load</text>
+<path d="M500 1142 V1230 H715" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M500 1142 V1230 H715" fill="none" stroke="#e04545" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1000 1142 V1230 H790" fill="none" stroke="#627286" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1000 1142 V1230 H790" fill="none" stroke="#9aa0a8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M715 1195 H755 a35 35 0 0 1 0 70 H715 Z" fill="#f16c70" stroke="#a43c40" stroke-width="4"/>
+<text x="550" y="1192" class="s">+ Anode</text>
+<text x="851" y="1192" class="s">− Cathode</text>
+<text x="725" y="1309" class="h">LED</text>
+<text x="1210" y="1097" class="t">Strip 10 = positive</text>
+<text x="1210" y="1142" class="t">Strip 20 = negative</text>
+<text x="1210" y="1210" class="s">Resistor: C10 → C20</text>
+<text x="1210" y="1248" class="s">LED: E10 → E20</text>
+<rect x="65" y="1384" width="1670" height="90" rx="18" fill="#fff4dc" stroke="#d8b66d" stroke-width="3"/>
+<text x="90" y="1420" class="t">This documents the requested existing circuit. The 220 Ω resistor is a load, not A0 input protection.</text>
+<text x="90" y="1455" class="s">Generator voltage range, polarity, transients and resistor power rating still need checking.</text>
+</svg>

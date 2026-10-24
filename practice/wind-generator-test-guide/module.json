@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-WIND-01",
   "slug": "wind-generator-test-guide",
   "title": "Code and test your wind generator",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -53,6 +53,18 @@
       "id": "board-identify",
       "title": "Check the board and parts",
       "entryPath": "#board-identify",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "existing-circuit",
+      "title": "Read the existing circuit",
+      "entryPath": "#existing-circuit",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "existing-breadboard",
+      "title": "Find the two breadboard connections",
+      "entryPath": "#existing-breadboard",
       "estimatedMinutes": null
     },
     {

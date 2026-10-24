@@ -1,6 +1,8 @@
 export const narrationFiles = {
   "goal": "assets/narration/goal-3d293b5e750b.mp3",
   "board-identify": "assets/narration/board-identify-8378b8af3282.mp3",
+  "existing-circuit": "assets/narration/existing-circuit-5f9916c31a26.mp3",
+  "existing-breadboard": "assets/narration/existing-breadboard-87e5499cd23e.mp3",
   "board-display-switch": "assets/narration/board-display-switch-a6f3e0a36269.mp3",
   "board-board-port": "assets/narration/board-board-port-85eeb07249cf.mp3",
   "board-bench-download": "assets/narration/board-bench-download-81b679db3dc6.mp3",

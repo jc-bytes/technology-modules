@@ -26,6 +26,39 @@ export const buildSteps = [
     "alt": "Reference photo of a Freenove project board, not a turbine wiring diagram."
   },
   {
+    "id": "existing-circuit",
+    "title": "Read the existing circuit",
+    "where": "On the connection diagram",
+    "why": "Red and white are positive. Black and gray are negative.",
+    "do": "Trace the 220 Ω resistor and the LED. Each connects across the same positive and negative points.",
+    "expected": "White goes directly to A0. Black goes to GND. The 220 Ω resistor is a load, not input protection.",
+    "help": "This drawing records the existing model. Keep the generator disconnected until the later physical input check. The AA bench program uses a different two-resistor circuit and scale.",
+    "links": [],
+    "stage": "model",
+    "image": "assets/wind-existing-circuit.svg",
+    "alt": "Existing model circuit: motor positive is red and white to A0; negative is gray and black to GND. A 220 ohm load resistor and a red LED are separate parallel branches across positive and negative. A0 is direct, with no divider.",
+    "diagram": true
+  },
+  {
+    "id": "existing-breadboard",
+    "title": "Find the two breadboard connections",
+    "where": "On the breadboard diagram",
+    "why": "Each shaded strip joins five holes. The two strips are separate.",
+    "do": "Find red and white on positive, then gray and black on negative. Follow both the resistor legs and the LED legs.",
+    "expected": "The 220 Ω resistor and LED each span the two strips. Strip numbers 10 and 20 are examples.",
+    "help": "LED anode is positive; cathode is negative. The drawing uses the same A–E side of a breadboard. This is a reference drawing of the existing wiring, not a new instruction to power it.",
+    "links": [
+      [
+        "Download both diagrams",
+        "downloads/wind-generator-connections.png"
+      ]
+    ],
+    "stage": "model",
+    "image": "assets/wind-existing-breadboard.svg",
+    "alt": "Breadboard example: A10 red positive, B10 white to A0, A20 gray negative, B20 black to GND. The 220 ohm resistor bridges C10 and C20; LED anode is E10 and cathode E20. Each numbered five-hole strip is connected internally.",
+    "diagram": true
+  },
+  {
     "id": "board-display-switch",
     "title": "Set the board switches",
     "why": "The number display is already wired inside the board. Some other modules share its pins or A0, so we must turn those modules off.",

@@ -19,6 +19,18 @@
       "file": "assets/narration/board-identify-8378b8af3282.mp3"
     },
     {
+      "id": "existing-circuit",
+      "text": "Read the existing circuit. Red and white are positive. Black and gray are negative. Trace the two hundred and twenty ohm resistor and the L E D. Each connects across the same positive and negative points. White goes directly to A zero. Black goes to ground. The two hundred and twenty ohm resistor is a load, not input protection. This drawing records the existing model. Keep the generator disconnected until the later physical input check.",
+      "sha256": "5f9916c31a26863c6cb7c94c19b3ffe60409b806321dd41adcc1f6842a95a105",
+      "file": "assets/narration/existing-circuit-5f9916c31a26.mp3"
+    },
+    {
+      "id": "existing-breadboard",
+      "text": "Find the two breadboard connections. Each shaded strip joins five holes. The two strips are separate. Find red and white on positive, then gray and black on negative. Follow both the resistor legs and the L E D legs. The two hundred and twenty ohm resistor and L E D each span the two strips. Strip numbers ten and twenty are examples. The resistor bridges C ten and C twenty. The L E D anode is at E ten, and the cathode is at E twenty. You can download both diagrams.",
+      "sha256": "87e5499cd23e8f88cb4a553d73374c0c8d0fb856f8eff437a722f6bfc7014e65",
+      "file": "assets/narration/existing-breadboard-87e5499cd23e.mp3"
+    },
+    {
       "id": "board-display-switch",
       "text": "Set the board switches. At the Freenove board. The number display is already wired inside the board. Some other modules share its pins or A zero, so we must turn those modules off. Disconnect U S B and every signal source. Set Digital Tube, module 15, ON. Set all unused modules OFF, including Light Res and Thermistor. . Check. The board is unpowered. Digital Tube is ON, and the two A zero sensor switches are OFF. Use the printed module names, not an assumed switch direction. Keep LED Matrix, LED Bar, Blue LED, motor and RFID functions OFF. Change switches and wires only with power and signal disconnected.",
       "sha256": "a6f3e0a36269c1287ab308ccdb9cdaa243fde5173aa7b0190f6df3c9d8635f24",

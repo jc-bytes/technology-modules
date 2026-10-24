@@ -115,3 +115,10 @@
 
 /* Full program reference uses normal page scrolling only on the final page. */
 .complete-reference-page,.complete-reference-page .build-copy{width:100%;max-width:none}.complete-code-reference{margin-top:20px;min-width:0}.complete-code-reference .guide-code{font-size:16px;line-height:1.5}.copy-complete-code{margin-bottom:12px}.complete-code-status{display:block;font-size:14px;color:#45665a}.complete-code-status:empty{display:none}@media print{.copy-complete-code,.complete-code-status{display:none}}
+
+/* Wide circuit drawings retain their labels and a full-size link. */
+.diagram-page{max-width:none;width:100%}.diagram-page .build-copy{max-width:none;font-size:18px;line-height:1.35}.diagram-page .build-copy p{margin:6px 0!important}.diagram-page .build-result{font-size:17px!important}.diagram-page details{margin-top:6px}.diagram-page .build-links{margin:6px 0}.diagram-page .resource-link{min-height:32px;padding:4px 10px;font-size:15px}.diagram-page .build-picture{margin-top:12px}.diagram-page .build-picture img{width:100%;max-height:clamp(180px,calc(100dvh - 500px),340px)}
+@media(max-width:760px){.diagram-page .build-picture img{max-height:none}.diagram-page .build-copy{font-size:18px}}
+.diagram-page .build-copy details{display:inline-block;vertical-align:middle}.diagram-page .build-copy .build-links{display:inline-flex;vertical-align:middle;margin-left:18px}
+@media print{.diagram-page img{max-width:100%;height:auto}}
+@media(min-width:761px){.diagram-page:has(.build-links) .build-picture img{max-height:clamp(180px,calc(100dvh - 510px),315px)}}
