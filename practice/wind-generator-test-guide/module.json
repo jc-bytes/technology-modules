@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-WIND-01",
   "slug": "wind-generator-test-guide",
   "title": "Code and test your wind generator",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -24,7 +24,7 @@
     "Build the Arduino voltage display program in short sections",
     "Use a direct A0 reading with INPUT_SCALE = 1.0 after the teacher input check",
     "Read and record voltage estimates from the board display",
-    "Compare fan-off and fan-on conditions",
+    "Compare fan-on voltage readings before and after one change",
     "Keep original readings and test one change",
     "Explain the result and its limits"
   ],
@@ -163,38 +163,26 @@
       "estimatedMinutes": null
     },
     {
-      "id": "fixed-setup",
-      "title": "Set up a fair comparison",
-      "entryPath": "#fixed-setup",
-      "estimatedMinutes": null
-    },
-    {
-      "id": "before-off-1",
-      "title": "Take three fan-off readings",
-      "entryPath": "#before-off-1",
-      "estimatedMinutes": null
-    },
-    {
       "id": "before-on-1",
-      "title": "Take three fan-on readings",
+      "title": "Record three readings before the change",
       "entryPath": "#before-on-1",
       "estimatedMinutes": null
     },
     {
       "id": "before-compare",
-      "title": "Compare and choose one improvement",
+      "title": "Choose one change to the model",
       "entryPath": "#before-compare",
       "estimatedMinutes": null
     },
     {
       "id": "make-change",
-      "title": "Make the change and repeat the test",
+      "title": "Make the change and record three new readings",
       "entryPath": "#make-change",
       "estimatedMinutes": null
     },
     {
       "id": "after-compare",
-      "title": "Explain what the results show",
+      "title": "Compare your before and after readings",
       "entryPath": "#after-compare",
       "estimatedMinutes": null
     },

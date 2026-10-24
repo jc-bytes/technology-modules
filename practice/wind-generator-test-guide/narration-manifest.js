@@ -1,5 +1,5 @@
 export const narrationFiles = {
-  "goal": "assets/narration/goal-3d293b5e750b.mp3",
+  "goal": "assets/narration/goal-a06d1694c7a6.mp3",
   "board-identify": "assets/narration/board-identify-705c094882b6.mp3",
   "existing-circuit": "assets/narration/existing-circuit-d6ad50af5919.mp3",
   "existing-breadboard": "assets/narration/existing-breadboard-87e5499cd23e.mp3",
@@ -19,12 +19,10 @@ export const narrationFiles = {
   "board-interface-gate": "assets/narration/board-interface-gate-609be66d9247.mp3",
   "board-final-scale": "assets/narration/board-final-scale-28f5d125fd1a.mp3",
   "board-final-connect": "assets/narration/board-final-connect-baa92510f964.mp3",
-  "fixed-setup": "assets/narration/fixed-setup-20416f506318.mp3",
-  "before-off-1": "assets/narration/before-off-1-ff3545ef0e11.mp3",
-  "before-on-1": "assets/narration/before-on-1-6085d1880078.mp3",
-  "before-compare": "assets/narration/before-compare-00537fe54d06.mp3",
-  "make-change": "assets/narration/make-change-5e92585a8933.mp3",
-  "after-compare": "assets/narration/after-compare-81df3542c5f7.mp3",
-  "save-evidence": "assets/narration/save-evidence-1b7cc0c36232.mp3",
+  "before-on-1": "assets/narration/before-on-1-ff186cc1f65e.mp3",
+  "before-compare": "assets/narration/before-compare-48de42e9a86b.mp3",
+  "make-change": "assets/narration/make-change-0092e178fd5f.mp3",
+  "after-compare": "assets/narration/after-compare-a5ee2e54e61c.mp3",
+  "save-evidence": "assets/narration/save-evidence-3b76d9af69cf.mp3",
   "complete-program": "assets/narration/complete-program-7c6806874442.mp3"
 };

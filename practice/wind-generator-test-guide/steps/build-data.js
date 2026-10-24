@@ -2,7 +2,7 @@ export const buildSteps = [
   {
     "id": "goal",
     "title": "What you will make",
-    "why": "Moving air turns the blades and generator. We will make the board show its voltage, then compare fan-off and fan-on readings. Voltage is electrical push, measured in volts, written V.",
+    "why": "Moving air turns the blades and generator. We will make the board show its voltage, then compare readings before and after one change. Voltage is electrical push, measured in volts, written V.",
     "where": "At the wind model",
     "do": "Use the already-built wind model. Keep the generator disconnected from the Arduino until its input circuit is checked.",
     "expected": "The blades turn the generator. A meter reading in V shows measured voltage; spinning alone does not.",
@@ -259,13 +259,13 @@ export const buildSteps = [
     "stage": "guided"
   },
   {
-    "id": "fixed-setup",
-    "title": "Set up a fair comparison",
-    "why": "A fair comparison changes the fan condition while keeping the other parts the same. Your teacher chooses a safe position and one fan-on setting.",
-    "where": "In the team test record",
-    "do": "Open your team test record. Record the marked fan distance in cm, fan-on setting, settling time and wait between readings. Write your expected voltage change and reason.",
-    "expected": "Use the board display for every recorded reading. Keep the 220 Ω load, LED and all connections unchanged during the comparison.",
-    "help": "Settling time is the wait after starting the fan. Keep the same model, distance, connections and fan-on setting. Keep hands clear of blades. Your teacher checks the model before testing.",
+    "id": "before-on-1",
+    "title": "Record three readings before the change",
+    "why": "These are your starting readings. Keep them so you can compare them with the model after one change.",
+    "where": "At the model and in the team test record",
+    "do": "Open the blank test sheet. Have your teacher start the guarded fan. Once the blades spin steadily, record the board voltage three times, five seconds apart, in the Before change rows. Stop the fan afterward.",
+    "expected": "All three Before change voltage cells contain your actual readings.",
+    "help": "Keep the fan in the same marked position and use the same setting for the repeat test. Keep the 220 Ω load, LED and connections unchanged. If a number moves, record what you see. Keep hands clear of moving blades.",
     "links": [
       [
         "Download blank test sheet",
@@ -274,63 +274,44 @@ export const buildSteps = [
     ]
   },
   {
-    "id": "before-off-1",
-    "title": "Take three fan-off readings",
-    "why": "Three readings help you see whether the number stays steady. A real zero is a result; a missing reading is not zero.",
-    "where": "At the model and in the team test record",
-    "do": "With fan off and blades stopped, read the board display three times using the agreed wait. Under Before change, fan off, record readings 1, 2 and 3, each with V.",
-    "expected": "Your test record has three real fan-off readings, including decimal points and any minus signs.",
-    "help": "Example only: 0.42 V is read zero point four two volts. Use your own readings. Write Test not run and a reason if you cannot measure.",
-    "links": [],
-    "stage": "independent"
-  },
-  {
-    "id": "before-on-1",
-    "title": "Take three fan-on readings",
-    "why": "Keep the marked distance, fan setting, connections and wait unchanged.",
-    "where": "At the model and in the team test record",
-    "do": "Have your teacher start the guarded fan. After the settling time, record three board-display readings under Before change, fan on. Then stop the fan and wait for all blades to stop.",
-    "expected": "Your original record now has six readings, three off and three on.",
-    "help": "Record a changing display honestly. Stop if the base moves or a part comes loose. Never touch or adjust moving blades.",
-    "links": []
-  },
-  {
     "id": "before-compare",
-    "title": "Compare and choose one improvement",
-    "why": "Compare the three fan-off readings with the three fan-on readings. Look for higher, lower, similar or changing readings. You do not need to calculate an average.",
+    "title": "Choose one change to the model",
+    "why": "Change one part of the model so you can test whether it affects the voltage.",
     "where": "In the team report",
-    "do": "Compare the three off readings with the three on readings. Use actual values to describe the pattern. Choose one small change with your teacher and record why the evidence supports it.",
-    "expected": "Your report says whether the pattern matched your prediction and names just one approved change.",
-    "help": "Higher, lower, similar and unclear are all possible results. You do not need an average. If a test was not run, explain what is missing instead of claiming a pattern.",
-    "links": []
+    "do": "Choose one small change with your teacher. In your report, finish: \"We will change ___ because ___.\"",
+    "expected": "Name one change to the model. Keep the fan setting and position the same.",
+    "help": "Choose a change that can be made with the fan stopped. Keep your first readings. Your teacher checks the physical change before testing.",
+    "links": [],
+    "example": "If the model allows it, change the blade angle, meaning how much the blades tilt. Do not also change their size."
   },
   {
     "id": "make-change",
-    "title": "Make the change and repeat the test",
-    "why": "Changing just one thing makes the comparison easier to explain. Keep the first results.",
+    "title": "Make the change and record three new readings",
+    "why": "Repeat the same test after changing one part of the model.",
     "where": "At the wind model",
-    "do": "With fan off and blades stopped, make the approved change with your teacher and record its date. After the setup check, repeat three board-display readings off and three on under After change. Stop the fan afterward.",
-    "expected": "Both sets of six readings are saved. Use the same distance, fan setting and timing unless that was the one approved change.",
-    "help": "Any electrical change needs power and signal removed. Your teacher rechecks the input and code scale before testing. Do not replace original readings or write zero for a test not run.",
+    "do": "With fan off and blades stopped, make the approved change with your teacher. Use the same fan setting and position. Once the blades spin steadily, record three display readings, five seconds apart, in the After change rows. Stop the fan afterward.",
+    "expected": "The sheet contains six readings: three before and three after the model change.",
+    "help": "Keep the LED, 220 Ω load and wiring unchanged. Any electrical change requires a separate teacher input check. Do not replace the first readings or fill an unrun test with zero.",
     "links": []
   },
   {
     "id": "after-compare",
-    "title": "Explain what the results show",
-    "why": "Use both sets of real results. A change may help, make no clear difference or make the result worse. All three findings are useful.",
+    "title": "Compare your before and after readings",
+    "why": "Look at all three readings in each set. The new readings may be higher, lower or mixed.",
     "where": "In the team report",
-    "do": "Under Test and improvement, compare actual before/after voltages. Say whether the change helped, made no clear difference or made the result worse. State one limit.",
-    "expected": "Your explanation uses real values and says this test measured voltage under the recorded conditions.",
-    "help": "Overlapping or changing readings may make the result unclear. Voltage alone does not show useful power delivered to a device. This fan test differs from outdoor wind. Keep the four report headings: Project; Research; Test and improvement; References.",
-    "links": []
+    "do": "Under Test and improvement, write: \"We changed ___. Before, we measured ___ V, ___ V and ___ V. After, we measured ___ V, ___ V and ___ V. The readings were ___.\" Then state one limit of the test.",
+    "expected": "Use your own six numbers. If the sets overlap or move around, say there is no clear difference.",
+    "help": "You do not need an average. A limit might be changing fan airflow or small display changes. This test estimates voltage; it does not measure power. Keep the report headings Project, Research, Test and improvement, and References.",
+    "links": [],
+    "example": "Before: 0.80, 0.82, 0.81 V. After: 1.10, 1.08, 1.11 V. All three after readings are higher. These are example numbers only."
   },
   {
     "id": "save-evidence",
     "title": "Save your test evidence",
-    "why": "Keep the checked Arduino program, original and after-change test records, and current team report together. The blank CSV is a backup for recording tests, not completed evidence.",
+    "why": "Keep the program, six real voltage readings, description of your model change and team report together.",
     "where": "In the team Drive folder",
-    "do": "Save the actual program, test record and report in the team Drive folder.",
-    "expected": "The folder contains the checked sketch and the real evidence, including any test marked Test not run.",
+    "do": "Save the tested sketch, completed test sheet and report in the team Drive folder.",
+    "expected": "The folder contains your original readings and after-change readings. Mark a test you could not run as Test not run.",
     "help": "One team member attaches the shared report to the existing 8B STEAM assignment in Classroom. Show the physical model to your teacher. If equipment failed, arrange a supervised catch-up. Do not claim an unrun test is complete.",
     "links": [
       [

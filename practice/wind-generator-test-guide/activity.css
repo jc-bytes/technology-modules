@@ -122,3 +122,5 @@
 .diagram-page .build-copy details{display:inline-block;vertical-align:middle}.diagram-page .build-copy .build-links{display:inline-flex;vertical-align:middle;margin-left:18px}
 @media print{.diagram-page img{max-width:100%;height:auto}}
 @media(min-width:761px){.diagram-page:has(.build-links) .build-picture img{max-height:clamp(180px,calc(100dvh - 510px),315px)}}
+
+.build-example{border-left:3px solid #7b976a;padding-left:14px;font-size:18px;line-height:1.4}
