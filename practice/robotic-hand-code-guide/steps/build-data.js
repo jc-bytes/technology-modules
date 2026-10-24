@@ -226,13 +226,8 @@ export const buildSteps = [
     "where": "At the end of loop(), then Arduino IDE > Verify",
     "do": "Add delay(15); after the complete S2 block, before loop() closes. Choose Verify and save the numbered sketch when it passes.",
     "expected": "One setup, one loop, all four guarded button blocks and every limit check compile without errors.",
-    "help": "Check that all four startup writes come before the first attach. Check each button condition includes the other button not pressed. Remove every old motor3 declaration, A3 read, motor3 write and D8 attach. Compare with the corrected reference ZIP. Keep the limits. Verify does not prove safe motion.",
-    "links": [
-      [
-        "Download complete reference sketch",
-        "downloads/RoboticHandControls.zip"
-      ]
-    ],
+    "help": "Check that all four startup writes come before the first attach. Check each button condition includes the other button not pressed. Remove every old motor3 declaration, A3 read, motor3 write and D8 attach. Compare each part with its step example. Keep the limits. Verify does not prove safe motion.",
+    "links": [],
     "phase": "Code the hand",
     "stage": "guided",
     "code": "  delay(15);"
@@ -344,5 +339,23 @@ export const buildSteps = [
     "links": [],
     "phase": "Code the hand",
     "stage": "guided"
+  },
+  {
+    "id": "complete-program",
+    "title": "Check your complete program",
+    "where": "Final reference · Arduino IDE",
+    "why": "Use this full sketch to check the program you built one section at a time.",
+    "do": "Compare your saved sketch with the complete code below. Keep motors 1, 2, 4 and 5. Motor3 stays disabled.",
+    "expected": "All four starting targets come before attach. Opposing buttons leave that joint target unchanged. There is no A3 read or D8 attachment.",
+    "help": "If you try the reference, save a separate numbered copy first. Verify it, send it to Arduino, then repeat the affected tests. Keep the checked movement limits and earlier results. S3 moves the middle down and S1 up. S4 moves the base down and S2 up.",
+    "links": [
+      [
+        "Download complete reference sketch",
+        "downloads/RoboticHandControls.zip"
+      ]
+    ],
+    "phase": "Code the hand",
+    "stage": "guided",
+    "completeCode": "#include <Servo.h>\n\nServo motor1;  // D6, 0 to 57\nServo motor2;  // D7, 0 to 180\n// Motor 3 on D8 is broken and disabled. A3 is unused.\nServo motor4;  // D9, middle, 90 to 160\nServo motor5;  // D10, base, 0 to 176\n\nconst int S1 = 2;\nconst int S2 = 3;\nconst int S3 = 4;\nconst int S4 = 5;\nint middleAngle = 125;\nint baseAngle = 86;\n\nvoid setup() {\n  pinMode(S1, INPUT_PULLUP);\n  pinMode(S2, INPUT_PULLUP);\n  pinMode(S3, INPUT_PULLUP);\n  pinMode(S4, INPUT_PULLUP);\n\n  // Load every working motor target before enabling any servo signals.\n  // The two active knobs choose their own bounded starting targets.\n  int startPot1 = analogRead(A1);\n  int startAngle1 = map(startPot1, 0, 1023, 0, 57);\n  motor1.write(startAngle1);\n\n  int startPot2 = analogRead(A2);\n  int startAngle2 = map(startPot2, 0, 1023, 0, 180);\n  motor2.write(startAngle2);\n\n  motor4.write(middleAngle);\n  motor5.write(baseAngle);\n\n  // Attaching can move the model toward the loaded targets.\n  // The teacher must still check power, starting pose and safe travel.\n  motor1.attach(6);\n  motor2.attach(7);\n  motor4.attach(9);\n  motor5.attach(10);\n}\n\nvoid loop() {\n  int pot1 = analogRead(A1);\n  int angle1 = map(pot1, 0, 1023, 0, 57);\n  motor1.write(angle1);\n\n  int pot2 = analogRead(A2);\n  int angle2 = map(pot2, 0, 1023, 0, 180);\n  motor2.write(angle2);\n\n  // Read each button once. Opposing buttons cancel for this joint.\n  bool s3Pressed = digitalRead(S3) == LOW;\n  bool s1Pressed = digitalRead(S1) == LOW;\n  if (s3Pressed && !s1Pressed) {\n    middleAngle++;\n    if (middleAngle > 160) {\n      middleAngle = 160;\n    }\n    motor4.write(middleAngle);\n    delay(20);\n  }\n  if (s1Pressed && !s3Pressed) {\n    middleAngle--;\n    if (middleAngle < 90) {\n      middleAngle = 90;\n    }\n    motor4.write(middleAngle);\n    delay(20);\n  }\n\n  bool s4Pressed = digitalRead(S4) == LOW;\n  bool s2Pressed = digitalRead(S2) == LOW;\n  if (s4Pressed && !s2Pressed) {\n    baseAngle++;\n    if (baseAngle > 176) {\n      baseAngle = 176;\n    }\n    motor5.write(baseAngle);\n    delay(20);\n  }\n  if (s2Pressed && !s4Pressed) {\n    baseAngle--;\n    if (baseAngle < 0) {\n      baseAngle = 0;\n    }\n    motor5.write(baseAngle);\n    delay(20);\n  }\n\n  delay(15);\n}\n"
   }
 ];

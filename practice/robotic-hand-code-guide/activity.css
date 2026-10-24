@@ -110,3 +110,6 @@
 
 /* Text-only tasks use the available lesson width. */
 .build-step:not(.with-picture),.build-step:not(.with-picture)>.build-copy{width:100%;max-width:none}
+
+/* The full reference uses normal page scrolling on the final page. */
+.complete-reference-page,.complete-reference-page .build-copy{width:100%;max-width:none}.complete-code-reference{margin-top:20px;min-width:0}.complete-code-reference .guide-code{font-size:16px;line-height:1.5}.copy-complete-code{margin-bottom:12px}.complete-code-status{display:block;font-size:14px;color:#45665a}.complete-code-status:empty{display:none}@media print{.copy-complete-code,.complete-code-status{display:none}}

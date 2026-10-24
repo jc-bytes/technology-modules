@@ -25,5 +25,6 @@ export const narrationFiles = {
   "opposing-test": "assets/narration/opposing-test-9b1d93ce27f4.mp3",
   "debug": "assets/narration/debug-d752e4047958.mp3",
   "report": "assets/narration/report-60c59a840d21.mp3",
-  "handoff": "assets/narration/handoff-07e2c1a2ef0e.mp3"
+  "handoff": "assets/narration/handoff-07e2c1a2ef0e.mp3",
+  "complete-program": "assets/narration/complete-program-ce521ceb096d.mp3"
 };

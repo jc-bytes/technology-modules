@@ -167,6 +167,12 @@
       "text": "Save and share the tested version. Your computer file manager and existing team Drive folder. The next editor needs the real code and a clear note about what was checked. Save the sketch. Compress its whole numbered folder as a ZIP and upload it to the team folder. Check that it contains the matching .ino. Tell the next editor the filename and whether hardware tests ran. Check. The team has the latest editable program, its ZIP and the matching report. Earlier versions remain available.",
       "sha256": "07e2c1a2ef0e0122907edc859a8e4406fa7bf79d56090e2b9d6aaaa7013f4f31",
       "file": "assets/narration/handoff-07e2c1a2ef0e.mp3"
+    },
+    {
+      "id": "complete-program",
+      "text": "Check your complete program. Final reference · Ardweeno I D E. Use this full sketch to check the program you built one section at a time. Compare your saved sketch with the complete code below. Keep motors 1, 2, 4 and 5. Motor3 stays disabled. Check. All four starting targets come before attach. Opposing buttons leave that joint target unchanged. There is no A three read or D8 attachment.",
+      "sha256": "ce521ceb096df68c70d62ba2201996acbb5c8a9c307fa3b9c4d113dc642d4c36",
+      "file": "assets/narration/complete-program-ce521ceb096d.mp3"
     }
   ]
 }
