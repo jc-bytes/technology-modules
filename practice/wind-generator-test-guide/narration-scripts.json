@@ -185,6 +185,12 @@
       "text": "Save your test evidence. In the team Drive folder. Keep the checked Ardweeno program, original and after-change test records, and current team report together. The blank CSV is a backup for recording tests, not completed evidence. Save the actual program, test record and report in the team Drive folder. . Check. The folder contains the checked sketch and the real evidence, including any test marked Test not run. One team member attaches the shared report to the existing 8B STEAM assignment in Classroom. Show the physical model to your teacher. If equipment failed, arrange a supervised catch-up. Do not claim an unrun test is complete.",
       "sha256": "1b7cc0c36232e7d5e9172bd25718cdcdf200549f2f9062d6576f0e1ed278f197",
       "file": "assets/narration/save-evidence-1b7cc0c36232.mp3"
+    },
+    {
+      "id": "complete-program",
+      "text": "Check your complete program. Final reference · Ardweeno I D E. Use this complete bench-test sketch to check the code you built one section at a time. Compare your saved sketch with the full code below. These are the AA bench-test settings. Keep the actual resistor values and calibration checked for your generator. Check. Four display helpers, one setup and one loop. The sketch reads A zero, updates the display and prints the voltage estimate.",
+      "sha256": "2622ecb568d75f4846f7f3d2ce9173d99d739b22928cd0646793b6030d436d87",
+      "file": "assets/narration/complete-program-2622ecb568d7.mp3"
     }
   ]
 }

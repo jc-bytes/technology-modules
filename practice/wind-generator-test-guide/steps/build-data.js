@@ -367,5 +367,22 @@ export const buildSteps = [
       ]
     ],
     "stage": "independent"
+  },
+  {
+    "id": "complete-program",
+    "title": "Check your complete program",
+    "where": "Final reference · Arduino IDE",
+    "why": "Use this complete bench-test sketch to check the code you built one section at a time.",
+    "do": "Compare your saved sketch with the full code below. These are the AA bench-test settings. Keep the actual resistor values and calibration checked for your generator.",
+    "expected": "Four display helpers, one setup and one loop. The sketch reads A0, updates the display and prints the voltage estimate.",
+    "help": "Keep your tested program and results. If you try the reference, save a separate numbered copy first. The two 10k bench resistors do not protect against unknown generator voltage, reverse polarity or spikes. Use the actual teacher-approved interface and matching calibration for generator tests. The program is not input protection.",
+    "links": [
+      [
+        "Download complete bench reference",
+        "downloads/WindVoltageBench.zip"
+      ]
+    ],
+    "stage": "guided",
+    "completeCode": "/* Freenove Projects Board FNK0059 voltage-display BENCH CANDIDATE.\n   Display protocol checked against Freenove's Chapter 16 example.\n   Do not connect an uncharacterized turbine to this input.\n   Bench wiring: known positive DC source -> 10k -> A0 -> 10k -> GND.\n   Source negative -> GND. Board powered separately through USB.\n   Keep A0 between 0 V and the board's measured ADC reference voltage.\n   Resistor divider is NOT transient or reverse-polarity protection.\n*/\n#include <Arduino.h>\n\nconst byte LATCH_PIN = 12;\nconst byte CLOCK_PIN = 13;\nconst byte DATA_PIN = 11;\nconst byte VOLTAGE_PIN = A0;\nconst float ADC_REFERENCE_V = 5.00; // Measure board 5V-to-GND for calibration.\nconst float R_TOP_OHMS = 10000.0;\nconst float R_BOTTOM_OHMS = 10000.0;\nconst float INPUT_SCALE = (R_TOP_OHMS + R_BOTTOM_OHMS) / R_BOTTOM_OHMS;\nconst byte DIGIT[] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99,\n                      0x92, 0x82, 0xf8, 0x80, 0x90};\nbyte screen[4] = {0xc0 & 0x7f, 0xc0, 0xc0, 0xff};\nfloat voltage = 0.0;\nunsigned int rawAverage = 0;\nbool atAdcLimit = false;\nunsigned long lastRead = 0;\nunsigned long lastPrint = 0;\n\nvoid sendDigit(byte position, byte segments) {\n  digitalWrite(LATCH_PIN, LOW);\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(1U << position));\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, segments);\n  digitalWrite(LATCH_PIN, HIGH);\n}\n\nvoid blankDisplay() {\n  digitalWrite(LATCH_PIN, LOW);\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(0));\n  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, byte(0xff));\n  digitalWrite(LATCH_PIN, HIGH);\n}\n\nvoid makeScreen() {\n  unsigned int hundredths = (unsigned int)(voltage * 100.0 + 0.5);\n  if (atAdcLimit || hundredths > 999) {\n    for (byte i = 0; i < 4; ++i) screen[i] = 0xbf; // ----: check range.\n    return;\n  }\n  screen[0] = DIGIT[hundredths / 100] & 0x7f; // Whole volts and decimal point.\n  screen[1] = DIGIT[(hundredths / 10) % 10];\n  screen[2] = DIGIT[hundredths % 10];\n  screen[3] = 0xff; // Fourth position intentionally blank.\n}\n\nvoid readVoltage() {\n  unsigned long total = 0;\n  atAdcLimit = false;\n  for (byte i = 0; i < 8; ++i) {\n    unsigned int raw = analogRead(VOLTAGE_PIN);\n    if (raw >= 1020) atAdcLimit = true;\n    total += raw;\n  }\n  rawAverage = (total + 4) / 8;\n  voltage = (total / 8.0) * ADC_REFERENCE_V / 1023.0 * INPUT_SCALE;\n  makeScreen();\n}\n\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(LATCH_PIN, OUTPUT);\n  pinMode(CLOCK_PIN, OUTPUT);\n  pinMode(DATA_PIN, OUTPUT);\n  pinMode(VOLTAGE_PIN, INPUT); // No internal pull-up on the measuring input.\n  blankDisplay();\n  readVoltage();\n}\n\nvoid loop() {\n  unsigned long now = millis();\n  if (now - lastRead >= 100) {\n    lastRead = now;\n    readVoltage();\n  }\n  // Scan continuously. Blank between digits and before sampling/printing.\n  for (byte i = 0; i < 4; ++i) {\n    sendDigit(i, screen[i]);\n    delay(1);\n    blankDisplay();\n  }\n  if (now - lastPrint >= 250) {\n    lastPrint = now;\n    if (atAdcLimit) {\n      Serial.println(F(\"ADC LIMIT: stop and check input voltage\"));\n    } else {\n      Serial.print(F(\"Voltage: \"));\n      Serial.print(voltage, 2);\n      Serial.print(F(\" V; ADC: \"));\n      Serial.println(rawAverage);\n    }\n  }\n}\n"
   }
 ];

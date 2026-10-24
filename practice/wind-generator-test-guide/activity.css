@@ -112,3 +112,6 @@
 .build-step:not(.with-picture),.build-step:not(.with-picture)>.build-copy{width:100%;max-width:none}
 
 .code-piece{min-width:0}.code-placement{font-size:15px!important;line-height:1.4!important;font-weight:650;color:#00695c;margin:0 0 10px!important}.code-piece .guide-code{font-size:15px;line-height:1.4;tab-size:2}.build-step:has(.code-piece){grid-template-columns:minmax(0,.9fr) minmax(0,1.15fr)}@media(max-width:760px){.build-step:has(.code-piece){grid-template-columns:1fr}.code-piece .guide-code{font-size:14px}}
+
+/* Full program reference uses normal page scrolling only on the final page. */
+.complete-reference-page,.complete-reference-page .build-copy{width:100%;max-width:none}.complete-code-reference{margin-top:20px;min-width:0}.complete-code-reference .guide-code{font-size:16px;line-height:1.5}.copy-complete-code{margin-bottom:12px}.complete-code-status{display:block;font-size:14px;color:#45665a}.complete-code-status:empty{display:none}@media print{.copy-complete-code,.complete-code-status{display:none}}

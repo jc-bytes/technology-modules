@@ -1,5 +1,5 @@
-import {stepAliases} from './step-aliases.js?v=1.5.0';
-import {attachNarration,stopGuideNarration} from './shared/guide-narration.js?v=1.5.0';
+import {stepAliases} from './step-aliases.js?v=1.6.0';
+import {attachNarration,stopGuideNarration} from './shared/guide-narration.js?v=1.6.0';
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function mountGuide(lesson){
  const steps=lesson.sections;
@@ -19,6 +19,12 @@ export function mountGuide(lesson){
   menu.querySelectorAll('a').forEach(a=>{if(a.dataset.step===step.id)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
   menu.open=false;
   if(step.narration)attachNarration(document.querySelector('#fm-read-aloud'),document.querySelector('#fm-reading-status'),step.narration);
+  const copy=main.querySelector('.copy-complete-code');
+  if(copy)copy.addEventListener('click',async()=>{
+   const code=main.querySelector('.complete-code-reference code'),status=main.querySelector('.complete-code-status');
+   try{await navigator.clipboard.writeText(code.textContent);status.textContent='Copied. Paste into a separate numbered sketch.';}
+   catch{const range=document.createRange();range.selectNodeContents(code);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);status.textContent='Code selected. Press Ctrl+C or Command+C to copy.';}
+  });
   window.scrollTo(0,0);if(focus)main.focus({preventScroll:true});
  }
  window.addEventListener('hashchange',()=>render(true));

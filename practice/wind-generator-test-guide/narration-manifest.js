@@ -28,5 +28,6 @@ export const narrationFiles = {
   "before-compare": "assets/narration/before-compare-00537fe54d06.mp3",
   "make-change": "assets/narration/make-change-d39671d28feb.mp3",
   "after-compare": "assets/narration/after-compare-81df3542c5f7.mp3",
-  "save-evidence": "assets/narration/save-evidence-1b7cc0c36232.mp3"
+  "save-evidence": "assets/narration/save-evidence-1b7cc0c36232.mp3",
+  "complete-program": "assets/narration/complete-program-2622ecb568d7.mp3"
 };

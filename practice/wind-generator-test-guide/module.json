@@ -2,7 +2,7 @@
   "id": "MOD-STEAM-WIND-01",
   "slug": "wind-generator-test-guide",
   "title": "Code and test your wind generator",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "status": "pilot",
   "gradeRange": [
     8,
@@ -18,7 +18,7 @@
   ],
   "estimatedTime": "Unknown, classroom pilot required",
   "offline": "Use printable-fallback.html for an instruction-only backup, or serve the guide folder through localhost. Real equipment checks require the physical model.",
-  "lastReviewed": "2026-10-22",
+  "lastReviewed": "2026-10-24",
   "objectives": [
     "Use a multimeter to characterize the generator before connecting A0",
     "Explain the Freenove display and voltage-reading Arduino code",
@@ -221,6 +221,12 @@
       "id": "save-evidence",
       "title": "Save your test evidence",
       "entryPath": "#save-evidence",
+      "estimatedMinutes": null
+    },
+    {
+      "id": "complete-program",
+      "title": "Check your complete program",
+      "entryPath": "#complete-program",
       "estimatedMinutes": null
     }
   ],
