@@ -123,16 +123,31 @@ async function restart() {
     if (turn === generation) $('status').textContent = 'Your program could not load. Check your connection and reload this page.';
   }
 }
+document.querySelectorAll('[data-sighting]').forEach(button => {
+  button.onclick = () => {
+    if (state.high === 'local') {
+      $('keepersReply').textContent = button.dataset.sighting === 'plant'
+        ? 'Keeper: “That’s what I saw too. The plant board is showing the warning to itself. Let’s change the block so it tells me at the door.”'
+        : 'Keeper: “Try B on the plant board once more. The X lights up beside the tray. Look at my board at the door. Did the message reach me?”';
+    } else {
+      $('keepersReply').textContent = 'Keeper: “You’ve already changed the sender. Test the radio message with your current blocks in the next step.”';
+    }
+  };
+});
 function reportRadio(packet) {
   const el = steps[state.step].querySelector('[data-radio]');
   if (!el) return;
   const bytes = packet.payload?.bufferData;
   const word = bytes && new TextDecoder().decode(new Uint8Array(bytes)).match(/ALERT|CLEAR/)?.[0];
   if (!word) return;
-  let hint = '';
-  if (state.step === 1 && word === 'CLEAR') hint = ' If you pressed B, try the other radio word in the upper branch.';
-  if (state.step === 2 && state.low === 'alert' && state.high === 'alert') hint = ' Both branches send the same word. How will the door know when to clear?';
-  el.textContent = 'Radio message from the plant: '+word+'.'+hint;
+  const replies = {
+    1: {ALERT:'“That warning reached my door. Now try lowering the plant.”', CLEAR:'“That tells me to clear the warning. If the plant is up at 19 cm, which word do I need?”'},
+    2: {ALERT:'“I have the warning. Lower the plant to 18 cm with A+B. Can you get my display to clear?”', CLEAR:'“The all-clear reached me. Raise the plant and lower it again to see if you can repeat it.”'},
+    3: {ALERT:'“Listen here at the door. How long did that first beep last?”'},
+    4: {ALERT:'“Listen again. How does this beep compare with the one you heard earlier?”'}
+  };
+  const reply = replies[state.step]?.[word];
+  el.textContent = 'Radio message: '+word+'.'+(reply ? ' Keeper: '+reply : '');
 }
 window.addEventListener('message',e => {
   if (e.origin !== origin) return;

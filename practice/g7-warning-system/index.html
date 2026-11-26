@@ -8,6 +8,7 @@
 <div class="step" data-title="A warning at the greenhouse door" data-scene="“When I lift a mandrake out of its tray, I need the person at the door to hear the warning. My board lights up, but theirs stays dark.”">
 <p>Help the greenhouse keeper fix the radio link. One micro:bit stays by the plant. The other hangs by the door. The buttons stand in for a distance sensor measuring how far the plant has been lifted.</p>
 <p><strong>Try the fault.</strong> On a fresh starter, press <b>B</b> on the plant board. That means 19 cm. Look at both boards. Which one reacts?</p>
+<div class="reply" aria-label="Tell the keeper what you saw"><button type="button" data-sighting="plant">I saw the X by the plant</button> <button type="button" data-sighting="door">I saw a skull at the door</button></div><p id="keepersReply" role="status"></p>
 </div>
 <div class="step" hidden data-title="Get the warning to the door" data-scene="“I see the X beside the tray. Can you send the warning to me instead?”">
 <p>Change the block inside <b>if distance &gt; 18</b>. The door board knows the radio words <b>ALERT</b> and <b>CLEAR</b>. Which message should it get at 19 cm?</p>
