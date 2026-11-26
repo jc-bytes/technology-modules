@@ -6,13 +6,15 @@ const origin = 'https://trg-microbit.userpxt.io';
 const branches = ['local','alert','clear'];
 const durations = ['200','500'];
 const distances = [17,18,19];
-const state = {step:0, round:1, high:'local', low:'local', tone:'200', notes:{}, revisions:{}};
+const state = {step:0, round:1, high:'local', low:'local', tone:'200', notes:{}, revisions:{}, fieldTests:[], repotted:false};
 try {
   const prior = JSON.parse(localStorage.getItem(storageKey));
   if (prior) {
     for (const key of ['high','low']) if (branches.includes(prior[key])) state[key] = prior[key];
     if (durations.includes(prior.tone)) state.tone = prior.tone;
     if (steps[prior.step]) state.step = Number(prior.step);
+    if (Array.isArray(prior.fieldTests)) state.fieldTests=[...new Set(prior.fieldTests.filter(t=>/^[12]-(17|18|19)$/.test(t)))];
+    state.repotted = prior.repotted === true;
     if (prior.round === 2) state.round = 2;
     for (const key of ['notes','revisions']) {
       for (const [name,value] of Object.entries(prior[key] || {})) {
@@ -59,13 +61,27 @@ function renderStep(focus=false) {
   steps.forEach(s => { s.hidden = s !== step; });
   $('title').textContent = step.dataset.title;
   $('scene').textContent = step.dataset.scene;
-  greenhouse.say(state.step === 0 ? 'Lift the mandrake to 19 cm. Does the warning reach me over here?' : step.dataset.scene);
+  greenhouse.say(state.step===0 ? 'Pip’s pot cracked on the cart! I brought a spare. Try the lift at 19 cm while Mara keeps watch at the door.' : step.dataset.scene, [0,5].includes(state.step)?'courier':'keeper');
   $('position').textContent = 'Step '+(state.step+1)+' of '+steps.length;
   $('back').disabled = state.step === 0;
   $('next').hidden = state.step === steps.length-1;
   document.querySelectorAll('[data-code]').forEach(el => { el.value = state[el.dataset.code]; });
   document.querySelectorAll('[data-radio]').forEach(el => { el.textContent = ''; });
   renderRounds();
+  $('codeView').value=[3,4].includes(state.step)?'receiver':'sender';
+  updateProgram();
+  const control=step.querySelector('[data-code]');
+  if(control){
+    let choices=step.querySelector('.lessonChoices');
+    if(!choices){
+      choices=document.createElement('div');choices.className='lessonChoices';
+      control.parentElement.after(choices);
+    }
+    showPalette(choices,control,value=>{
+      applyBlock(control,value);
+      choices.querySelector('[aria-pressed="true"]').focus({preventScroll:true});
+    });
+  }
   if (focus) { window.scrollTo(0,0); $('title').focus({preventScroll:true}); }
 }
 function move(delta) { state.step += delta; renderStep(true); save(); }
@@ -85,6 +101,7 @@ document.addEventListener('input',e => {
 document.addEventListener('change',e => {
   const key = e.target.dataset.code;
   if (!key) return;
+  if(state[key]!==e.target.value){state.fieldTests=[];state.repotted=false;}
   state[key] = e.target.value;
   renderStep(); save(); restart();
 });
@@ -101,6 +118,14 @@ let boards = [];
 let program;
 let generation = 0;
 let startupTimer;
+let lastDistance=0, transferPending=false;
+function updateProgram(){showProgram($('programBlocks'),$('codeView').value,state);}
+$('codeView').onchange=updateProgram;
+function applyBlock(control,value){
+  if(control.value===value)return;
+  control.value=value;
+  control.dispatchEvent(new Event('change',{bubbles:true}));
+}
 let nextSceneTest = null;
 let sceneSound = false;
 // Mirror a reading only when the compiled MakeCode button handler actually runs.
@@ -125,13 +150,16 @@ window.addEventListener('greenhouse-bench', () => {
 function openBench() {
   const control = steps[state.step].querySelector('select');
   if (!control) return;
-  const editor = $('benchEdit');
-  editor.replaceChildren(...Array.from(control.options, option => option.cloneNode(true)));
-  editor.value = control.value;
-  $('benchLabel').textContent = control.parentElement.firstChild.textContent.trim();
-  editor.onchange = () => { control.value = editor.value; control.dispatchEvent(new Event('change',{bubbles:true})); openBench(); };
+  $('benchLabel').textContent = control.parentElement.firstChild.textContent.trim()+ ' · choose a block';
+  showProgram($('benchBlocks'),control.dataset.code==='tone'?'receiver':'sender',state);
+  showPalette($('benchPalette'),control,value=>{
+    applyBlock(control,value);
+    openBench();
+  });
   $('workbench').hidden = false;
-  editor.focus({preventScroll:true});
+  greenhouse.say(control.dataset.code==='tone'?'I can change the length of the note here. Then I’ll listen at the door.':'Here’s the rule inside my sender. I can swap this block, then lift Pip and see what Mara gets.','apprentice');
+  $('benchPalette').querySelector('[aria-pressed="true"]').focus({preventScroll:true});
+
 }
 $('closeBench').onclick = () => {
   $('workbench').hidden = true;
@@ -148,6 +176,26 @@ function toNotes(index) {
   const field=steps[index].querySelector('textarea,input');
   if(field) { field.focus({preventScroll:true}); field.scrollIntoView({block:'center'}); }
 }
+$('handoff').onclick=()=>$('courierSpot').click();
+window.addEventListener('greenhouse-courier',()=>{
+  if(state.repotted){
+    greenhouse.say('Pip is asleep in the blue pot. I can take him to the next greenhouse. Keep your test sheet for the demonstration.','courier');
+    offerAction('My files',offerDownloads);
+  }else if(revision()!=='alert-clear-500'){
+    greenhouse.say('Feel that crack in the old pot? I’ll hold the new one. Get Mara’s warning working before we lift Pip out.','courier');
+    offerAction('Go to the repair bench',toBench);
+  }else if(state.fieldTests.length<6){
+    greenhouse.say('I have the blue pot ready. Run each height in round 1 and again in round 2. We’ve checked '+state.fieldTests.length+' of the six lifts.','courier');
+    offerAction('Open the test log',()=>toNotes(5));
+  }else{
+    greenhouse.say('All six lifts checked. I’ll slide the blue pot under Pip. Lower him into it when Mara gives the all-clear.','courier');
+    offerAction('Lower Pip into the blue pot',()=>{
+      if(running.size!==2){greenhouse.say('Wait for the two boards, then talk to me again.','courier');return;}
+      transferPending=true;
+      window.dispatchEvent(new CustomEvent('greenhouse-test',{detail:18}));
+    });
+  }
+});
 window.addEventListener('greenhouse-talk', () => {
   if (state.high !== 'alert') greenhouse.say('The warning belongs here at the door. Walk to the repair bench and give the sender a radio block.');
   else if (state.low !== 'clear') greenhouse.say('Try 19 cm and then 18 cm. If the skull stays on at the door, repair the lower branch.');
@@ -162,7 +210,7 @@ async function restart() {
   const turn = ++generation;
   clearTimeout(startupTimer);
   boards = [];
-  running.clear();
+  running.clear(); transferPending=false; lastDistance=0;
   greenhouse.start(); nextSceneTest=null; sceneSound=false;
   $('status').textContent = 'Starting your program…';
   try {
@@ -200,11 +248,20 @@ function reportRadio(packet) {
   const word = bytes && new TextDecoder().decode(new Uint8Array(bytes)).match(/ALERT|CLEAR/)?.[0];
   if (!word) return;
   greenhouse.radio(word,Number(state.tone),sceneSound);
+  if(state.step===5 && revision()==='alert-clear-500' && distances.includes(lastDistance) && word===(lastDistance===19?'ALERT':'CLEAR')){
+    const tag=state.round+'-'+lastDistance;
+    if(!state.fieldTests.includes(tag)){state.fieldTests.push(tag);save();}
+  }
+  if(transferPending && word==='CLEAR' && lastDistance===18){
+    transferPending=false;state.repotted=true;save();greenhouse.settle();
+    greenhouse.say('Look, his leaves have stopped shaking. Pip’s asleep in the blue pot. Mara, you can let the visitors in!','courier');
+    offerAction('Finish the signal diagram',()=>toNotes(6));return;
+  }
   const replies = {
-    1: {ALERT:'“That warning reached my door. Now try lowering the plant.”', CLEAR:'“That tells me to clear the warning. If the plant is up at 19 cm, which word do I need?”'},
-    2: {ALERT:'“I have the warning. Lower the plant to 18 cm with A+B. Can you get my display to clear?”', CLEAR:'“The all-clear reached me. Raise the plant and lower it again to see if you can repeat it.”'},
-    3: {ALERT:'“Listen here at the door. How long did that first beep last?”'},
-    4: {ALERT:'“Listen again. How does this beep compare with the one you heard earlier?”'}
+    1: {ALERT:'“The warning reached me! I’ll keep the visitors outside. Lower Pip into the moss and tell me when I can open up.”', CLEAR:'“That tells me to clear the warning. If the plant is up at 19 cm, which word do I need?”'},
+    2: {ALERT:'“I have the warning. Lower the plant to 18 cm with A+B. Can you get my display to clear?”', CLEAR:'“Your all-clear reached me. Pip’s quiet. I can let the visitors through.”'},
+    3: {ALERT:'“There! I almost missed it under the fans. What did you hear?”'},
+    4: {ALERT:'“I caught that one over the fans. Kit, bring the blue pot over for the test lifts.”'}
   };
   const reply = replies[state.step]?.[word];
   greenhouse.say(reply || (word==='ALERT'?'The warning reached my door. I see the skull.':'The all-clear reached my door. The lights went out.'));
@@ -226,6 +283,7 @@ window.addEventListener('message',e => {
     if (running.size === 2) {
       clearTimeout(startupTimer);
       greenhouse.ready();
+      if(state.repotted) greenhouse.settle(false);
       $('status').textContent = 'Both micro:bits are ready.';
     }
   } else if (msg?.type === 'greenhouse-distance' && frame.id === 'sender' && distances.includes(msg.distance)) {
@@ -234,6 +292,7 @@ window.addEventListener('message',e => {
     $('receiver').contentWindow.postMessage({type:'mute',mute:sceneSound},origin);
     $('workbench').hidden = true;
     $('keeperAction').hidden = true;
+    lastDistance=msg.distance;
     greenhouse.distance(msg.distance,state.high,state.low);
     if (msg.distance===19 && state.high==='local') offerAction('Repair the radio',toBench);
   } else if (msg?.type === 'radiopacket' && running.size === 2) {

@@ -1,42 +1,42 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The greenhouse alarm · Grade 7 Technology</title><link rel="stylesheet" href="story.css">
-<script defer src="jszip.min.js"></script><script defer src="greenhouse.js"></script><script defer src="story.js"></script></head>
+<script defer src="jszip.min.js"></script><script defer src="greenhouse.js"></script><script defer src="block-view.js"></script><script defer src="story.js"></script></head>
 <body><header><div><b>The greenhouse alarm</b><span id="who"></span></div><button id="files" type="button">My files</button></header>
 <main><p id="storage" role="status"></p><section id="world" aria-label="Greenhouse game">
 <div class="landscape" id="landscape"><canvas id="garden" width="480" height="178" aria-label="Inside the greenhouse, the apprentice is by the potting table and Mara is by the door."></canvas>
-<button class="spot plant" id="plantSpot">Test the plant</button><button class="spot bench" id="benchSpot">Repair bench</button><button class="spot keeper" id="keeperSpot">Talk to Mara</button></div>
-<div id="workbench" hidden><strong>Repair bench</strong><label id="benchLabel" for="benchEdit">Sender block</label><select id="benchEdit"></select><button id="closeBench">Back to the plant</button></div>
+<button class="spot courier" id="courierSpot">Talk to Kit</button><button class="spot plant" id="plantSpot">Test the plant</button><button class="spot bench" id="benchSpot">Repair bench</button><button class="spot keeper" id="keeperSpot">Talk to Mara</button></div>
+<div id="workbench" hidden><strong>Repair bench</strong><div id="benchBlocks"></div><div class="blockChoices"><strong id="benchLabel">Choose a block</strong><div id="benchPalette"></div></div><button id="closeBench">Back to the plant</button></div>
 <div class="gamebar"><strong id="gameReadout" aria-live="polite">Mandrake in its pot</strong><div class="liftKeys" aria-label="Lift the mandrake to a distance"><button data-lift="17">17 cm</button><button data-lift="18">18 cm</button><button data-lift="19">19 cm</button></div></div>
-<div class="dialogue"><strong>Mara <small>Greenhouse keeper</small></strong><p id="speech" aria-live="polite">Lift the mandrake to 19 cm. Does the warning reach me over here?</p><button id="keeperAction" hidden></button></div></section><div class="lab">
+<div class="dialogue"><img id="portrait" src="art/courier-portrait.png" alt=""><strong><span id="speaker">Kit</span><small id="role">Catfolk courier</small></strong><p id="speech" aria-live="polite">Pip’s pot cracked on the cart! I brought a spare. Try the lift at 19 cm while Mara keeps watch at the door.</p><button id="keeperAction" hidden></button></div></section><div class="lab">
 <article><h1 id="title" tabindex="-1"></h1><p class="voice" id="scene"></p>
 <div class="step" data-title="A warning at the greenhouse door" data-scene="“When I lift a mandrake out of its tray, I need the person at the door to hear the warning. My board lights up, but theirs stays dark.”">
-<p>The plant board reads the height. Mara needs the warning on her board at the door.</p>
+<p>You are the human apprentice on lift duty. Above the 18 cm rim, Pip wakes and howls. Mara must hold the visitors outside until his roots are back in the moss. The misting fans are too loud for Kit to call to her.</p>
 <p><strong>Try the fault.</strong> Pick <b>19 cm</b> in the greenhouse. Which board reacts?</p>
 <div class="reply" aria-label="Tell the keeper what you saw"><button type="button" data-sighting="plant">I saw the X by the plant</button> <button type="button" data-sighting="door">I saw a skull at the door</button></div><p id="keepersReply" role="status"></p>
 </div>
-<div class="step" hidden data-title="Get the warning to the door" data-scene="“I see the X beside the tray. Can you send the warning to me instead?”">
+<div class="step" hidden data-title="Get the warning to the door" data-scene="“I’m at the door with the visitors. That little X by the pot is no use to me here. Can your board radio mine?”">
 <p>Change the block inside <b>if distance &gt; 18</b>. The door board knows the radio words <b>ALERT</b> and <b>CLEAR</b>. Which message should it get at 19 cm?</p>
 <label>When the plant is above 18 cm<select data-code="high"><option value="local">show X on the plant board</option><option value="clear">radio send string CLEAR</option><option value="alert">radio send string ALERT</option></select></label>
 <p><strong>Test your edit.</strong> Wait for both boards to start, then press <b>B</b> on the sender. Look for a skull on the door board and listen for its short beep.</p>
 <p data-radio role="status"></p></div>
-<div class="step" hidden data-title="Clear the warning at the boundary" data-scene="“I’ve lowered the plant to exactly 18 cm. Why is the warning still on?”">
+<div class="step" hidden data-title="Clear the warning at the boundary" data-scene="“Pip is tucked back into the moss. His ears have stopped twitching. Why does my board still say to wait?”">
 <p>The alarm belongs on only <em>above</em> 18 cm. Complete the <b>else</b> branch so the door can turn it off.</p>
 <label>At 18 cm or below<select data-code="low"><option value="local">clear the plant board’s display</option><option value="alert">radio send string ALERT</option><option value="clear">radio send string CLEAR</option></select></label>
 <p><strong>Test the change.</strong> Press <b>B</b> to turn the warning on. Then press the sender’s <b>A+B</b> button for 18 cm. Watch what happens at the door.</p>
 <p data-radio role="status"></p></div>
-<div class="step" hidden data-title="Listen to the first beep" data-scene="“I saw the skull. I nearly missed the sound. Can you listen before we change it?”">
+<div class="step" hidden data-title="Listen to the first beep" data-scene="“The misting fans started up. I saw the skull but nearly missed the beep. Listen to this one before you change it.”">
 <p>Set the receiver’s beep to <b>200 milliseconds</b>. Click the face of the door board to enable sound, then press <b>B</b> on the plant board.</p>
 <label>Play 440 Hz for<select data-code="tone"><option value="200">200 milliseconds</option><option value="500">500 milliseconds</option></select></label>
 <label>What did you hear at 200 ms?<textarea data-field="before" rows="2"></textarea></label><p data-radio role="status"></p></div>
-<div class="step" hidden data-title="Give the keeper a longer warning" data-scene="“Keep the same note. Make it last half a second so I have time to notice it.”">
+<div class="step" hidden data-title="Give the keeper a longer warning" data-scene="“Keep that note. Give me half a second to hear it over the fans.”">
 <p>Change the duration to <b>500 milliseconds</b>. Keep the pitch at 440 Hz. Test with <b>B</b> at the same volume.</p>
 <label>Play 440 Hz for<select data-code="tone"><option value="200">200 milliseconds</option><option value="500">500 milliseconds</option></select></label>
 <label>What changed when you heard the second beep?<textarea data-field="after" rows="2"></textarea></label><p data-radio role="status"></p></div>
-<div class="step" hidden data-title="Check the greenhouse twice" data-scene="“Before I leave this at the door, try each distance twice. Tell me exactly what you see and hear.”">
+<div class="step" hidden data-title="Check the greenhouse twice" data-scene="“I have Pip’s spare pot. Try each height twice. Once the warning and all-clear both work, talk to me and we can move him.”">
 <p>Use your finished program. Press <b>A</b>, <b>A+B</b>, then <b>B</b>. Write the receiver’s icon and sound after each press. Repeat for round 2.</p>
 <div class="rounds"><button type="button" data-round="1">Round 1</button><button type="button" data-round="2">Round 2</button></div>
-<div id="trials"></div><p data-radio role="status"></p></div>
+<div id="trials"></div><button id="handoff" type="button">Talk to Kit about the transfer</button><p data-radio role="status"></p></div>
 <div class="step" hidden data-title="Trace the message" data-scene="“Walk me through the 19 cm test, from your button press to what happened at my door.”">
 <p>Complete the three parts of your system diagram in your own words.</p>
 <label>1 · Input: Which button did you press? What real sensor does it represent?<textarea data-field="input" rows="2"></textarea></label>
@@ -49,7 +49,9 @@
 </article>
 <aside aria-label="Your program running on two micro:bits"><h2 class="boardHeading">Live micro:bits</h2><div class="boards"><section><h2>Plant · sender</h2><iframe id="sender" title="Plant micro:bit sender" allow="autoplay"></iframe></section><section><h2>Door · receiver</h2><iframe id="receiver" title="Door micro:bit receiver" allow="autoplay"></iframe></section></div>
 <p class="keys"><b>A</b> 17 cm &nbsp; <b>A+B</b> 18 cm &nbsp; <b>B</b> 19 cm</p><p id="status" role="status">Starting your program…</p>
+<section class="programPanel"><h2>Your MakeCode blocks</h2><label for="codeView">Show code for</label><select id="codeView"><option value="sender">Sender distance rule</option><option value="receiver">Receiver and beep</option><option value="inputs">Buttons and radio group</option></select><div id="programBlocks"></div></section>
 <details><summary>Using the boards</summary><p>Click the face of the receiver once for sound. Use the sender’s buttons for each test. The small white button marked A+B tests both buttons together.</p><a href="example.html" target="_blank" rel="noopener">See the finished example</a></details>
+<details><summary>Sprite credits</summary><p>The human, werewolf and catfolk sprites and portraits are by Gabriel “tiopalada” Lima. <a href="https://opengameart.org/content/tiny-rpg-cc0-characters-and-portraits">Tiny RPG characters and portraits</a>.</p><p>Pip uses the mandrake root by Idylwild. <a href="https://opengameart.org/content/idylwilds-arcanum">Idylwild’s Arcanum</a>. Both packs use <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>.</p></details>
 </aside></div></main>
 <footer><button id="back">Previous</button><span id="position"></span><button id="next">Next</button></footer>
 <dialog id="downloads"><h2>My files</h2><p>Download the program you built and your test record so far. Your work also saves in this browser.</p><label>First name<input data-field="first" autocomplete="given-name"></label><label>Last name<input data-field="last" autocomplete="family-name"></label><label>Class<input data-field="group" placeholder="7A or 7B"></label><p id="fileName"></p><button id="hex">Download my program (.hex)</button><button id="sheet">Download my test sheet (.docx)</button><p id="exportStatus" role="status"></p><details><summary>Other class files</summary><p><a href="G7_Mandrake_Start.hex" download>Original MakeCode starter</a> · <a href="G7_MandrakeExam_Firstname_Lastname.docx" download>Blank test sheet</a> · <a href="https://makecode.microbit.org/" target="_blank" rel="noopener">Open MakeCode</a></p></details><form method="dialog"><button>Close</button></form></dialog>

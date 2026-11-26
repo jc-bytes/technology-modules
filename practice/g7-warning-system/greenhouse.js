@@ -5,8 +5,13 @@ const greenhouse = (() => {
   const art = document.createElement('canvas');
   art.width = canvas.width; art.height = canvas.height;
   const bg = art.getContext('2d');
-  const sprites = new Image();
-  sprites.src = 'greenhouse-characters.png';
+  const loadSprite = file => {
+    const image = new Image();
+    image.src = 'art/'+file+'.png';
+    return image;
+  };
+  const people=['apprentice','keeper','courier'].map(loadSprite);
+  const root=loadSprite('mandrake');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const $ = id => document.getElementById(id);
   const ink = '#2b4036', iron = '#385953', light = '#a4bb98';
@@ -92,28 +97,39 @@ const greenhouse = (() => {
   drawRoom();
   let x=22,goal=77, arrival=null,lift=0,desired=0,alarm=false,localX=false,radioAt=-10000,word='',last=0,walk=0,clock=0,ready=false;
   let pending=19,audio;
-  function say(s){$('speech').textContent=s;}
+  let settled=false, transferAt=0;
+  const cast = {keeper:['Mara','Werewolf keeper'],courier:['Kit','Catfolk courier'],apprentice:['You','Human apprentice']};
+  function say(text,who='keeper'){
+    $('speech').textContent=text;
+    [$('speaker').textContent,$('role').textContent]=cast[who];
+    $('portrait').src='art/'+who+'-portrait.png';
+  }
   function walkTo(where,fn){goal=where;arrival=fn;}
   function character(x,y,row,facing,phase,scale=1){
-    if(!sprites.complete || !sprites.naturalWidth)return;
-    const tile=phase===null?0:1+(Math.floor(phase)%8);
-    ctx.save();ctx.translate(Math.round(x),Math.round(y));ctx.scale(facing*scale,scale);ctx.drawImage(sprites,tile*36,row*60,36,60,-18,-60,36,60);ctx.restore();
+    const image=people[row];
+    if(!image.complete || !image.naturalWidth)return;
+    const tile=phase===null?0:Math.floor(phase)%6;
+    const direction=phase===null?0:facing<0?1:3;
+    const size=Math.round(68*scale);
+    ctx.drawImage(image,tile*48,direction*48,48,48,Math.round(x-size/2),Math.round(y-size),size,size);
   }
   function board(x,y,pattern){
     box(ctx,x-8,y-8,16,15,'#202b2c');box(ctx,x-7,y+6,14,2,'#bf9e4b');
     for(let k=0;k<25;k++)box(ctx,x-5+k%5*2,y-6+Math.floor(k/5)*2,1.6,1.6,pattern[k]==='1'?'#ff6369':'#3a4440');
   }
   function mandrake(t){
-    const y=94-lift, sway=reduce.matches?0:Math.sin(t/480)*1.6;
-    const xs=110;
-    // A sling slides along the rail as the apprentice turns the crank.
+    const progress=settled?(reduce.matches?1:Math.min(1,(t-transferAt)/1200)):0;
+    const slide=progress*progress*(3-2*progress);
+    const xs=110-26*slide, y=94-lift-14*Math.sin(Math.PI*slide);
     box(ctx,95,y+3,14,2,'#c49651');box(ctx,94,y,4,7,'#d8ac65');
-    line(ctx,99,y+4,106,y+8,1,'#896d49');line(ctx,108,y+8,117,y+4,1,'#896d49');
-    line(ctx,xs-2,y+4,xs-5+sway,y+13,2,'#9a7142');line(ctx,xs+3,y+4,xs+6-sway,y+12,2,'#aa7b45');
-    poly(ctx,[[xs-5,y-6],[xs+3,y-8],[xs+7,y-4],[xs+6,y+3],[xs+2,y+7],[xs-4,y+6],[xs-7,y+1]],'#a87443');
-    box(ctx,xs-5,y-5,9,7,'#d3a262');box(ctx,xs-4,y-2,2,2,ink);box(ctx,xs+2,y-2,2,2,ink);box(ctx,xs-1,y+2,2,1,'#865335');
-    for(const [dx,dy,col] of [[-13,-10,'#407b4c'],[11,-10,'#568d50'],[-5,-14,'#79a25e'],[5,-16,'#57944d']])leaf(ctx,xs,y-6,dx+sway,dy,.22,col);
+    if(root.complete && root.naturalWidth){
+      ctx.save();ctx.translate(xs,y-3);
+      if(!reduce.matches)ctx.rotate(Math.sin(t/(lift>24?100:650))*(lift>24?.10:.035));
+      ctx.drawImage(root,-16,-22,32,36);ctx.restore();
+    }
     pot(ctx,110,98,1.4);
+    line(ctx,111,100,108,105,1,'#4c3828');line(ctx,108,105,111,107,1,'#4c3828');line(ctx,111,107,109,110,1,'#4c3828');
+    poly(ctx,[[74,98],[94,98],[91,111],[78,111]],'#517f88');box(ctx,73,96,22,4,'#81aba9');
   }
   function frame(now){
     const dt=Math.min(now-last||16,80);last=now;clock+=dt;
@@ -139,6 +155,7 @@ const greenhouse = (() => {
     board(368,71,alarm?'0111010101111110111001110':'');
     box(ctx,363,51,10,4,alarm?'#ffb845':'#596353');box(ctx,365,48,6,4,alarm?'#ffd679':'#889581');
     const bob=reduce.matches?0:Math.sin(now/580)*.8;
+    character(39+(settled?Math.min(22,(now-transferAt)/40):0),133+bob,2,1,null,.88);
     character(345,134+bob-(alarm&&signal&&!reduce.matches?Math.abs(Math.sin(traveling/125))*5:0),1,-1,null,.97);
     character(x,145,0,moving?(diff>=0?1:-1):(x>220?-1:1),moving?walk:null,1.02);
     if(signal || alarm){box(ctx,337,62,12,9,'#fff1c8');box(ctx,338,71,3,2,'#fff1c8');box(ctx,342,64,2,3,ink);box(ctx,342,68,2,1,ink);}
@@ -156,29 +173,34 @@ const greenhouse = (() => {
     pending=distance;walkTo(88,()=>window.dispatchEvent(new CustomEvent('greenhouse-test',{detail:distance})));
   }
   for(const b of document.querySelectorAll('[data-lift]'))b.onclick=()=>test(Number(b.dataset.lift));
+  $('courierSpot').onclick=()=>walkTo(62,()=>window.dispatchEvent(new Event('greenhouse-courier')));
   $('plantSpot').onclick=()=>test(pending);
   $('benchSpot').onclick=()=>walkTo(201,()=>window.dispatchEvent(new Event('greenhouse-bench')));
   $('keeperSpot').onclick=()=>walkTo(317,()=>window.dispatchEvent(new Event('greenhouse-talk')));
   canvas.tabIndex=0;canvas.setAttribute('aria-label','Greenhouse floor. Walk with the left and right arrows. Press Enter to use the nearest station.');
   canvas.onclick=e=>{
     const pos=(e.clientX-canvas.getBoundingClientRect().left)/canvas.clientWidth*480;
-    if(pos<164)test(pending);else if(pos<291)$('benchSpot').click();else $('keeperSpot').click();
+    if(pos<55)$('courierSpot').click();else if(pos<168)test(pending);else if(pos<291)$('benchSpot').click();else $('keeperSpot').click();
   };
   canvas.onkeydown=e=>{
     if(!['ArrowLeft','ArrowRight','Enter',' '].includes(e.key))return;
     e.preventDefault();
     if(e.key==='ArrowLeft'||e.key==='ArrowRight')walkTo(Math.min(434,Math.max(28,goal+(e.key==='ArrowLeft'?-22:22))),null);
-    else $(x<150?'plantSpot':x<278?'benchSpot':'keeperSpot').click();
+    else $(x<66?'courierSpot':x<150?'plantSpot':x<278?'benchSpot':'keeperSpot').click();
   };
   return {
     say,
-    start(){ready=false;arrival=null;alarm=false;localX=false;desired=0;radioAt=-10000;stopTone();$('gameReadout').textContent='Mandrake in its pot';document.querySelectorAll('[data-lift]').forEach(b=>b.removeAttribute('aria-pressed'));},
+    settle(animate=true){
+      settled=true;desired=0;transferAt=animate?performance.now():-2000;
+      $('gameReadout').textContent='Pip is in the blue pot';
+    },
+    start(){ready=false;arrival=null;settled=false;alarm=false;localX=false;desired=0;radioAt=-10000;stopTone();$('gameReadout').textContent='Mandrake in its pot';document.querySelectorAll('[data-lift]').forEach(b=>b.removeAttribute('aria-pressed'));},
     ready(){ready=true;},
     distance(d,high,low){
       desired={17:10,18:22,19:35}[d];pending=d;
       $('gameReadout').textContent='Plant height · '+d+' cm';
       document.querySelectorAll('[data-lift]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.lift===d)));
-      if(d===19&&high==='local'){localX=true;say('I can see an X at the pot. Nothing reached my door. Meet me at the repair bench.');}
+      if(d===19&&high==='local'){localX=true;say('An X at the pot! Mara can’t see it from the door. Take the radio to the repair bench.','courier');}
       if(d<19&&low==='local'){localX=false;say(alarm?'My warning is still on. The plant cleared its own board. Check the lower branch at the bench.':'The plant board cleared itself. Watch my board when you test the radio.');}
     },
     radio(message,duration,sceneSound){
