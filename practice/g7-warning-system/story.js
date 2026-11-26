@@ -54,9 +54,12 @@ function renderRounds() {
 }
 function renderStep(focus=false) {
   const step = steps[state.step];
+  $('keeperAction').hidden = true;
+  $('workbench').hidden = true;
   steps.forEach(s => { s.hidden = s !== step; });
   $('title').textContent = step.dataset.title;
   $('scene').textContent = step.dataset.scene;
+  greenhouse.say(state.step === 0 ? 'Lift the mandrake to 19 cm. Does the warning reach me over here?' : step.dataset.scene);
   $('position').textContent = 'Step '+(state.step+1)+' of '+steps.length;
   $('back').disabled = state.step === 0;
   $('next').hidden = state.step === steps.length-1;
@@ -98,12 +101,69 @@ let boards = [];
 let program;
 let generation = 0;
 let startupTimer;
+let nextSceneTest = null;
+let sceneSound = false;
+// Mirror a reading only when the compiled MakeCode button handler actually runs.
+function observeSender(code) {
+  return code.replace(/(globals\.distance___\d+ = \((17|18|19)\);)/g,
+    (_, assignment, distance) => assignment + ' pxsim.Runtime.postMessage({type:"greenhouse-distance",distance:'+distance+'});');
+}
+window.addEventListener('greenhouse-test', event => {
+  if (running.size !== 2) return;
+  const id = {17:1,18:3,19:2}[event.detail];
+  if (!id) return;
+  nextSceneTest = event.detail;
+  $('sender').contentWindow.postMessage({type:'eventbus',id,eventid:3},origin);
+});
+window.addEventListener('greenhouse-bench', () => {
+  // The same bench handles both radio branches and the tone dial.
+  const step = state.high !== 'alert' ? 1 : state.low !== 'clear' ? 2 : !note('before') ? 3 : 4;
+  state.step = step;
+  renderStep(); save();
+  openBench();
+});
+function openBench() {
+  const control = steps[state.step].querySelector('select');
+  if (!control) return;
+  const editor = $('benchEdit');
+  editor.replaceChildren(...Array.from(control.options, option => option.cloneNode(true)));
+  editor.value = control.value;
+  $('benchLabel').textContent = control.parentElement.firstChild.textContent.trim();
+  editor.onchange = () => { control.value = editor.value; control.dispatchEvent(new Event('change',{bubbles:true})); openBench(); };
+  $('workbench').hidden = false;
+  editor.focus({preventScroll:true});
+}
+$('closeBench').onclick = () => {
+  $('workbench').hidden = true;
+  $('plantSpot').focus({preventScroll:true});
+  $('plantSpot').click();
+};
+function offerAction(label,action) {
+  const b=$('keeperAction'); b.textContent=label; b.hidden=false;
+  b.onclick=()=>{ b.hidden=true; action(); };
+}
+function toBench(){ $('benchSpot').click(); }
+function toNotes(index) {
+  state.step=index;renderStep();save();
+  const field=steps[index].querySelector('textarea,input');
+  if(field) { field.focus({preventScroll:true}); field.scrollIntoView({block:'center'}); }
+}
+window.addEventListener('greenhouse-talk', () => {
+  if (state.high !== 'alert') greenhouse.say('The warning belongs here at the door. Walk to the repair bench and give the sender a radio block.');
+  else if (state.low !== 'clear') greenhouse.say('Try 19 cm and then 18 cm. If the skull stays on at the door, repair the lower branch.');
+  else if (state.tone === '200') greenhouse.say('Listen to our short beep at 19 cm. Record it before you make it longer at the bench.');
+  else greenhouse.say('Test all three heights twice. Bring me your results and show me how the warning works.');
+  if(state.high !== 'alert' || state.low !== 'clear') offerAction('Go to the bench',toBench);
+  else if(state.tone==='200') offerAction('Record the short beep',()=>toNotes(3));
+  else offerAction('Open the test log',()=>toNotes(5));
+});
 const running = new Set();
 async function restart() {
   const turn = ++generation;
   clearTimeout(startupTimer);
   boards = [];
   running.clear();
+  greenhouse.start(); nextSceneTest=null; sceneSound=false;
   $('status').textContent = 'Starting your program…';
   try {
     const [settings,code] = await Promise.all([fetchFile('board.json').then(r=>r.json()), compiledFile(revision(),'sim').then(r=>r.text())]);
@@ -136,10 +196,10 @@ document.querySelectorAll('[data-sighting]').forEach(button => {
 });
 function reportRadio(packet) {
   const el = steps[state.step].querySelector('[data-radio]');
-  if (!el) return;
   const bytes = packet.payload?.bufferData;
   const word = bytes && new TextDecoder().decode(new Uint8Array(bytes)).match(/ALERT|CLEAR/)?.[0];
   if (!word) return;
+  greenhouse.radio(word,Number(state.tone),sceneSound);
   const replies = {
     1: {ALERT:'“That warning reached my door. Now try lowering the plant.”', CLEAR:'“That tells me to clear the warning. If the plant is up at 19 cm, which word do I need?”'},
     2: {ALERT:'“I have the warning. Lower the plant to 18 cm with A+B. Can you get my display to clear?”', CLEAR:'“The all-clear reached me. Raise the plant and lower it again to see if you can repeat it.”'},
@@ -147,7 +207,11 @@ function reportRadio(packet) {
     4: {ALERT:'“Listen again. How does this beep compare with the one you heard earlier?”'}
   };
   const reply = replies[state.step]?.[word];
-  el.textContent = 'Radio message: '+word+'.'+(reply ? ' Keeper: '+reply : '');
+  greenhouse.say(reply || (word==='ALERT'?'The warning reached my door. I see the skull.':'The all-clear reached my door. The lights went out.'));
+  if (state.step === 1 && word === 'ALERT') offerAction('Fix the all-clear',toBench);
+  if (state.step === 2 && word === 'CLEAR' && state.low === 'clear') offerAction('Compare the beep',()=>toNotes(3));
+  if (state.step === 4 && word === 'ALERT' && state.tone === '500') offerAction('Record the longer beep',()=>toNotes(4));
+  if (el) el.textContent = 'Radio message: '+word+'.'+(reply ? ' Keeper: '+reply : '');
 }
 window.addEventListener('message',e => {
   if (e.origin !== origin) return;
@@ -156,13 +220,22 @@ window.addEventListener('message',e => {
   const msg = e.data;
   if (msg?.type === 'ready') {
     const first = frame.id === 'sender';
-    frame.contentWindow.postMessage({...program,id:frame.id,frameCounter:first?1:2,options:{theme:first?'yellow':'green'}},origin);
+    frame.contentWindow.postMessage({...program,code:first?observeSender(program.code):program.code,id:frame.id,frameCounter:first?1:2,options:{theme:first?'yellow':'green'}},origin);
   } else if (msg?.type === 'status' && msg.state === 'running') {
     running.add(frame);
     if (running.size === 2) {
       clearTimeout(startupTimer);
+      greenhouse.ready();
       $('status').textContent = 'Both micro:bits are ready.';
     }
+  } else if (msg?.type === 'greenhouse-distance' && frame.id === 'sender' && distances.includes(msg.distance)) {
+    sceneSound = nextSceneTest === msg.distance;
+    nextSceneTest = null;
+    $('receiver').contentWindow.postMessage({type:'mute',mute:sceneSound},origin);
+    $('workbench').hidden = true;
+    $('keeperAction').hidden = true;
+    greenhouse.distance(msg.distance,state.high,state.low);
+    if (msg.distance===19 && state.high==='local') offerAction('Repair the radio',toBench);
   } else if (msg?.type === 'radiopacket' && running.size === 2) {
     boards.find(f=>f!==frame).contentWindow.postMessage(msg,origin);
     if (frame.id === 'sender') reportRadio(msg);

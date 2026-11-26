@@ -1,13 +1,18 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The greenhouse alarm · Grade 7 Technology</title><link rel="stylesheet" href="story.css">
-<script defer src="jszip.min.js"></script><script defer src="story.js"></script></head>
+<script defer src="jszip.min.js"></script><script defer src="greenhouse.js"></script><script defer src="story.js"></script></head>
 <body><header><div><b>The greenhouse alarm</b><span id="who"></span></div><button id="files" type="button">My files</button></header>
-<main><p id="storage" role="status"></p><div class="lab">
+<main><p id="storage" role="status"></p><section id="world" aria-label="Greenhouse game">
+<div class="landscape" id="landscape"><canvas id="garden" width="480" height="178" aria-label="Inside the greenhouse, the apprentice is by the potting table and Mara is by the door."></canvas>
+<button class="spot plant" id="plantSpot">Test the plant</button><button class="spot bench" id="benchSpot">Repair bench</button><button class="spot keeper" id="keeperSpot">Talk to Mara</button></div>
+<div id="workbench" hidden><strong>Repair bench</strong><label id="benchLabel" for="benchEdit">Sender block</label><select id="benchEdit"></select><button id="closeBench">Back to the plant</button></div>
+<div class="gamebar"><strong id="gameReadout" aria-live="polite">Mandrake in its pot</strong><div class="liftKeys" aria-label="Lift the mandrake to a distance"><button data-lift="17">17 cm</button><button data-lift="18">18 cm</button><button data-lift="19">19 cm</button></div></div>
+<div class="dialogue"><strong>Mara <small>Greenhouse keeper</small></strong><p id="speech" aria-live="polite">Lift the mandrake to 19 cm. Does the warning reach me over here?</p><button id="keeperAction" hidden></button></div></section><div class="lab">
 <article><h1 id="title" tabindex="-1"></h1><p class="voice" id="scene"></p>
 <div class="step" data-title="A warning at the greenhouse door" data-scene="“When I lift a mandrake out of its tray, I need the person at the door to hear the warning. My board lights up, but theirs stays dark.”">
-<p>Help the greenhouse keeper fix the radio link. One micro:bit stays by the plant. The other hangs by the door. The buttons stand in for a distance sensor measuring how far the plant has been lifted.</p>
-<p><strong>Try the fault.</strong> On a fresh starter, press <b>B</b> on the plant board. That means 19 cm. Look at both boards. Which one reacts?</p>
+<p>The plant board reads the height. Mara needs the warning on her board at the door.</p>
+<p><strong>Try the fault.</strong> Pick <b>19 cm</b> in the greenhouse. Which board reacts?</p>
 <div class="reply" aria-label="Tell the keeper what you saw"><button type="button" data-sighting="plant">I saw the X by the plant</button> <button type="button" data-sighting="door">I saw a skull at the door</button></div><p id="keepersReply" role="status"></p>
 </div>
 <div class="step" hidden data-title="Get the warning to the door" data-scene="“I see the X beside the tray. Can you send the warning to me instead?”">
@@ -42,7 +47,7 @@
 <ol><li>Press <b>B</b> for 19 cm. Trace the radio message to the door.</li><li>Press <b>A+B</b> for 18 cm. Explain why the warning clears.</li><li>Use your notes to explain the change from 200 to 500 ms.</li></ol>
 <p>Present in English for 90 seconds. Submit the HEX and Word test sheet in Google Classroom.</p><button id="finishFiles">Open my files</button></div>
 </article>
-<aside aria-label="Your program running on two micro:bits"><div class="boards"><section><h2>Plant · sender</h2><iframe id="sender" title="Plant micro:bit sender" allow="autoplay"></iframe></section><section><h2>Door · receiver</h2><iframe id="receiver" title="Door micro:bit receiver" allow="autoplay"></iframe></section></div>
+<aside aria-label="Your program running on two micro:bits"><h2 class="boardHeading">Live micro:bits</h2><div class="boards"><section><h2>Plant · sender</h2><iframe id="sender" title="Plant micro:bit sender" allow="autoplay"></iframe></section><section><h2>Door · receiver</h2><iframe id="receiver" title="Door micro:bit receiver" allow="autoplay"></iframe></section></div>
 <p class="keys"><b>A</b> 17 cm &nbsp; <b>A+B</b> 18 cm &nbsp; <b>B</b> 19 cm</p><p id="status" role="status">Starting your program…</p>
 <details><summary>Using the boards</summary><p>Click the face of the receiver once for sound. Use the sender’s buttons for each test. The small white button marked A+B tests both buttons together.</p><a href="example.html" target="_blank" rel="noopener">See the finished example</a></details>
 </aside></div></main>
