@@ -2,7 +2,7 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Warning system simulator · Grade 7 Technology</title>
+<title>Build your warning system · Grade 7 Technology</title>
 <style>
 * { box-sizing: border-box }
 body { margin: 0; background: #f7f8fa; color: #172a37; font: 1.05rem/1.55 "Atkinson Hyperlegible Next",Arial,sans-serif }
@@ -13,12 +13,33 @@ section { background: white; border: 1px solid #d1dbe1; border-radius: 12px; pad
 h2 { margin: 0 0 .5rem; font-size: 1.2rem }
 iframe { width: 100%; aspect-ratio: 1.22; border: 0; display: block }
 p { max-width: 65ch }
+a { color: #125875; text-underline-offset: .15em }
+.files { display: flex; flex-wrap: wrap; gap: .65rem; margin: 1rem 0 }
+.files a { padding: .45rem .85rem; border-radius: 6px; border: 1px solid #21647c; font-weight: 600 }
+.files a:first-child { color: white; background: #15566b }
+ol { padding-left: 1.55rem; max-width: 72ch }
+li { margin-block: .8rem; padding-left: .2rem }
+li::marker { font-weight: 700 }
+#example { padding-top: .8rem; margin-top: 1.3rem; border-top: 1px solid #ccd6db }
 #status { font-size: .95rem }
 @media(max-width: 570px) { main { margin: 0 auto } .boards { grid-template-columns: 1fr } iframe { max-height: 245px } }
 </style>
 <main>
-<h1>Warning system simulator</h1>
-<p>Press a button on the sender. Watch the lights and listen for a beep on the receiver.</p>
+<h1>Build your warning system</h1>
+<p>Your job is to make one micro:bit warn another when a distance is greater than 18 cm. The buttons stand in for a distance sensor. Build and test your program in class, then show it working on exam day.</p>
+<h2>Before exam day</h2>
+<ol>
+<li><strong>Open your starter.</strong> Download both files. Open the starter in MakeCode using <b>Import → Import File</b>, then select <b>Blocks</b>. Open the Word sheet to record your results.
+<div class="files"><a href="G7_Mandrake_Start.hex" download>Download starter (.hex)</a><a href="G7_MandrakeExam_Firstname_Lastname.docx" download>Download test sheet (.docx)</a><a href="https://makecode.microbit.org/" target="_blank" rel="noopener">Open MakeCode ↗</a></div></li>
+<li><strong>Make the sender send a message.</strong> Find <b>checkDistance</b>. Inside <b>if distance &gt; 18</b>, replace the X icon block with <b>Radio → radio send string</b> and type <b>ALERT</b>. Under <b>else</b>, replace <b>clear screen</b> with a second <b>radio send string</b> and type <b>CLEAR</b>. Keep radio group 7.</li>
+<li><strong>Make the warning last longer.</strong> Press <b>B</b> on your sender and listen to the receiver. If the second board just appeared, press B again. Record what you hear at 200 ms. In <b>on radio received</b>, change the tone duration to <b>500 ms</b>. Keep the pitch at 440 Hz. Press B again and record what changed.</li>
+<li><strong>Test your own finished program.</strong> In MakeCode, press <b>A</b> (17 cm), <b>A+B</b> (18 cm), then <b>B</b> (19 cm). For each press, write what you saw and heard on the receiver. Repeat the three presses for round 2. Finish the signal diagram on your sheet.</li>
+<li><strong>Save your work.</strong> Download your program and save your completed sheet. Name both files <b>G7_MandrakeExam_Firstname_Lastname</b> using your own name. The program ends in <b>.hex</b> and the sheet ends in <b>.docx</b>.</li>
+</ol>
+<h2>On exam day</h2>
+<p>Open your saved program for your 90-second demonstration in English. Press B and explain how the message reached the receiver. Press A+B and explain why the warning clears at 18 cm. Use your notes to describe the change in beep length. Turn in your program and test sheet in Google Classroom.</p>
+<h2 id="example">Try the finished example</h2>
+<p>Press a button on the sender below to see how a working system behaves. Use your own MakeCode program for the six results on your sheet.</p>
 <p><strong>A</strong> = 17 cm &nbsp;·&nbsp; <strong>A+B</strong> = 18 cm &nbsp;·&nbsp; <strong>B</strong> = 19 cm</p>
 <div class="boards">
 <section><h2>Sender</h2><iframe id="sender" title="Sender micro:bit" allow="autoplay"></iframe></section>
